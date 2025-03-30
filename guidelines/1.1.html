@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.1 Alternatywa tekstowa - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.1 Alternatywa tekstowa</h2>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#text-alternatives" target="_blank"
+                            rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis</h3>
+                <p>Zapewnij alternatywę tekstową dla każdej treści nietekstowej, tak aby mogła być zamieniona na inne
+                    formy, których ludzie potrzebują, takie jak: powiększony druk, brajl, mowa, symbole lub język
+                    uproszczony.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tej wytycznej jest zapewnienie, że wszystkie treści nietekstowe są również dostępne w formie
+                    tekstowej. Tekst jest niezwykle uniwersalny - może być łatwo przekształcony na różne formy odbioru
+                    (np. mowę syntetyczną, brajl) oraz może być przystosowany do indywidualnych potrzeb użytkownika (np.
+                    zmiana rozmiaru, koloru czy kontrastu). Dzięki alternatywom tekstowym osoby niewidome, słabowidzące
+                    oraz mające trudności poznawcze mogą uzyskać dostęp do treści, której w przeciwnym razie nie mogłyby
+                    odebrać.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Kryteria sukcesu</h3>
+                <p>Wytyczna 1.1 zawiera następujące kryterium sukcesu:</p>
+
+                <ul class="criteria-list">
+                    <li><a href="1.1.1.html">1.1.1 Treść nietekstowa (A)</a></li>
+                </ul>
+
+                <h3>Ogólne wskazówki</h3>
+                <div class="tips">
+                    <h4>Kluczowe zastosowania alternatyw tekstowych</h4>
+                    <ul>
+                        <li><strong>Obrazy i grafiki</strong> - wymagają atrybutu alt opisującego ich zawartość lub
+                            funkcję</li>
+                        <li><strong>Przyciski graficzne</strong> - wymagają opisu tekstowego swojej funkcji</li>
+                        <li><strong>Ikony</strong> - powinny mieć alternatywę tekstową wyjaśniającą ich znaczenie</li>
+                        <li><strong>Wykresy i diagramy</strong> - potrzebują tekstowego opisu przedstawianych danych i
+                            trendów</li>
+                        <li><strong>CAPTCHA</strong> - wymaga alternatywnych metod weryfikacji dla osób z
+                            niepełnosprawnościami</li>
+                        <li><strong>Obrazy ozdobne</strong> - potrzebują pustego alt (alt=""), aby były pomijane przez
+                            czytniki ekranu</li>
+                    </ul>
+
+                    <h4>Dobre praktyki tworzenia alternatyw tekstowych</h4>
+                    <ul>
+                        <li><strong>Zwięzłość</strong> - alternatywa tekstowa powinna być krótka, ale kompletna</li>
+                        <li><strong>Kontekst</strong> - opis powinien uwzględniać kontekst, w jakim obraz jest używany
+                        </li>
+                        <li><strong>Celowość</strong> - należy skupić się na celu obrazu, a nie opisywać każdy jego
+                            szczegół</li>
+                        <li><strong>Unikanie redundancji</strong> - nie należy powtarzać informacji już obecnych w
+                            otaczającym tekście</li>
+                        <li><strong>Złożone obrazy</strong> - dla złożonych wykresów czy diagramów warto zapewnić
+                            dłuższy opis, używając atrybutu longdesc lub linkując do strony z pełnym opisem</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/tutorials/images/" target="_blank" rel="noopener">Przewodnik
+                            WAI: Obrazy i dostępność</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/text-alternatives.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG: Alternatywa tekstowa</a></li>
+                    <li><a href="https://webaim.org/techniques/alttext/" target="_blank" rel="noopener">WebAIM:
+                            Alternatywny tekst</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="../index.html">Poprzedni: Strona główna</a></li>
+                    <li><a href="1.1.1.html">Następny: 1.1.1 Treść nietekstowa</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
