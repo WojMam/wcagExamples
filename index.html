@@ -129,6 +129,46 @@
                 padding: 30px 20px;
             }
         }
+
+        /* Style dla trybu wysokiego kontrastu */
+        body.high-contrast .tile {
+            background-color: #000;
+            border: 2px solid #fff;
+            box-shadow: none;
+        }
+
+        body.high-contrast .tile-header {
+            background-color: #000;
+            color: #ffff00;
+            border-bottom: 2px solid #fff;
+        }
+
+        body.high-contrast .tile-content {
+            color: #fff;
+        }
+
+        body.high-contrast .tile-footer {
+            background-color: #222;
+            border-top: 2px solid #fff;
+        }
+
+        body.high-contrast .tile-link {
+            background-color: #000;
+            color: #ffff00;
+            border: 2px solid #ffff00;
+            font-weight: bold;
+        }
+
+        body.high-contrast .tile-link:hover,
+        body.high-contrast .tile-link:focus {
+            background-color: #ffff00;
+            color: #000;
+        }
+
+        body.high-contrast .note {
+            color: #fff;
+            border-left: 3px solid #ffff00;
+        }
     </style>
 </head>
 
