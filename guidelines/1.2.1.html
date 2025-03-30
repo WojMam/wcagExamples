@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.2.1 Tylko audio lub tylko wideo (nagranie) (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <h1>WCAG 2.1 - Nieoficjalny przewodnik dostępności</h1>
+        <nav aria-label="Główna nawigacja">
+            <ul class="main-nav">
+                <li><a href="../index.html">Strona główna</a></li>
+                <li>
+                    <a href="../index.html#section-1" aria-current="page">1. Postrzegalność</a>
+                    <ul class="subnav">
+                        <li><a href="../index.html#guideline-1-1">1.1 Alternatywa tekstowa</a></li>
+                        <li><a href="../index.html#guideline-1-2">1.2 Media zsynchronizowane</a></li>
+                        <li><a href="../index.html#guideline-1-3">1.3 Możliwość adaptacji</a></li>
+                        <li><a href="../index.html#guideline-1-4">1.4 Możliwość rozróżnienia</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.2.1 Tylko audio lub tylko wideo (nagranie) (A)</h2>
+                <div class="meta">
+                    <p class="level"><span class="level-tag">Poziom A</span></p>
+                    <p><a href="https://www.w3.org/TR/WCAG21/#audio-only-and-video-only-prerecorded" target="_blank"
+                            rel="noopener">Oficjalna dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis</h3>
+                <p>Dla mediów nagranych zawierających tylko audio lub tylko wideo obowiązują następujące zasady, z
+                    wyjątkiem sytuacji, kiedy nagranie audio lub wideo jest alternatywą dla tekstu i jest wyraźnie
+                    oznaczone jako takie:</p>
+
+                <ul>
+                    <li><strong>Tylko audio (nagranie):</strong> Zapewniona jest alternatywa dla mediów
+                        zsynchronizowanych przedstawiająca informacje odpowiadające nagraniu audio.</li>
+                    <li><strong>Tylko wideo (nagranie):</strong> Zapewniona jest alternatywa dla mediów
+                        zsynchronizowanych albo ścieżka dźwiękowa przedstawiająca informacje odpowiadające nagraniu
+                        wideo.</li>
+                </ul>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest zapewnienie, że osoby z różnymi typami niepełnosprawności mają
+                    dostęp do informacji prezentowanych w formie audio lub wideo bez dźwięku.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <h4>Tylko audio (nagranie)</h4>
+                <div class="example-container">
+                    <div class="example good">
+                        <h5>Dobry przykład - audio z transkrypcją</h5>
+                        <audio controls>
+                            <source src="../audio/example-audio.mp3" type="audio/mpeg">
+                            Twoja przeglądarka nie obsługuje elementu audio.
+                        </audio>
+                        <details>
+                            <summary>Transkrypcja nagrania</summary>
+                            <div class="transcript">
+                                <p><strong>Spiker:</strong> Witamy w naszym przykładowym nagraniu dotyczącym dostępności
+                                    cyfrowej. Dzisiaj omówimy, dlaczego alternatywy tekstowe są tak ważne.</p>
+                                <p><strong>Spiker:</strong> Transkrypcje, takie jak ta, pozwalają osobom niesłyszącym i
+                                    głuchoniewidomym na dostęp do treści audio.</p>
+                                <p><strong>[dźwięk dzwoniącego telefonu]</strong></p>
+                                <p><strong>Spiker:</strong> Przepraszam za to przerwanie. Jak widzicie, dobra
+                                    transkrypcja zawiera również opisy ważnych dźwięków tła.</p>
+                            </div>
+                        </details>
+                        <pre><code>&lt;audio controls&gt;
+    &lt;source src="audio/example-audio.mp3" type="audio/mpeg"&gt;
+    Twoja przeglądarka nie obsługuje elementu audio.
+&lt;/audio&gt;
+&lt;details&gt;
+    &lt;summary&gt;Transkrypcja nagrania&lt;/summary&gt;
+    &lt;div class="transcript"&gt;
+        &lt;p&gt;&lt;strong&gt;Spiker:&lt;/strong&gt; Witamy w naszym przykładowym nagraniu...&lt;/p&gt;
+        &lt;!-- Pozostała treść transkrypcji --&gt;
+    &lt;/div&gt;
+&lt;/details&gt;</code></pre>
+                        <p class="explanation">To nagranie audio zawiera pełną transkrypcję tekstu i istotnych dźwięków,
+                            co umożliwia osobom niesłyszącym dostęp do treści.</p>
+                    </div>
+
+                    <div class="example bad">
+                        <h5>Zły przykład - audio bez alternatywy</h5>
+                        <audio controls>
+                            <source src="../audio/example-audio.mp3" type="audio/mpeg">
+                            Twoja przeglądarka nie obsługuje elementu audio.
+                        </audio>
+                        <pre><code>&lt;audio controls&gt;
+    &lt;source src="audio/example-audio.mp3" type="audio/mpeg"&gt;
+    Twoja przeglądarka nie obsługuje elementu audio.
+&lt;/audio&gt;</code></pre>
+                        <p class="explanation">Problem: Brak transkrypcji lub alternatywy tekstowej dla nagrania audio.
+                            Osoby niesłyszące nie mają dostępu do treści.</p>
+                    </div>
+                </div>
+
+                <h4>Tylko wideo (nagranie)</h4>
+                <div class="example-container">
+                    <div class="example good">
+                        <h5>Dobry przykład - wideo bez dźwięku z alternatywą tekstową</h5>
+                        <video controls width="300">
+                            <source src="../videos/silent-video.mp4" type="video/mp4">
+                            Twoja przeglądarka nie obsługuje tagu video.
+                        </video>
+                        <details>
+                            <summary>Opis wideo</summary>
+                            <div class="transcript">
+                                <p>Wideo prezentuje proces tworzenia dostępnej strony internetowej:</p>
+                                <ol>
+                                    <li>Projektant szkicuje układ strony, zwracając szczególną uwagę na hierarchię
+                                        nagłówków.</li>
+                                    <li>Następnie dodaje alternatywne teksty do wszystkich obrazów.</li>
+                                    <li>Testuje kontrast kolorów używając specjalnego narzędzia.</li>
+                                    <li>Na końcu sprawdza nawigację klawiaturą, aby upewnić się, że strona jest dostępna
+                                        dla osób niewidomych.</li>
+                                </ol>
+                                <p>Cały proces trwa około 2 minut i demonstruje podstawowe zasady dostępności cyfrowej.
+                                </p>
+                            </div>
+                        </details>
+                        <pre><code>&lt;video controls width="300"&gt;
+    &lt;source src="videos/silent-video.mp4" type="video/mp4"&gt;
+    Twoja przeglądarka nie obsługuje tagu video.
+&lt;/video&gt;
+&lt;details&gt;
+    &lt;summary&gt;Opis wideo&lt;/summary&gt;
+    &lt;div class="transcript"&gt;
+        &lt;p&gt;Wideo prezentuje proces tworzenia dostępnej strony internetowej:&lt;/p&gt;
+        &lt;ol&gt;
+            &lt;li&gt;Projektant szkicuje układ strony...&lt;/li&gt;
+            &lt;!-- Pozostała treść opisu --&gt;
+        &lt;/ol&gt;
+    &lt;/div&gt;
+&lt;/details&gt;</code></pre>
+                        <p class="explanation">To wideo bez dźwięku zawiera szczegółowy opis tekstowy, który przekazuje
+                            wszystkie istotne informacje wizualne, umożliwiając osobom niewidomym dostęp do treści.</p>
+                    </div>
+
+                    <div class="example good">
+                        <h5>Dobry przykład - wideo bez dźwięku z ścieżką dźwiękową</h5>
+                        <video controls width="300">
+                            <source src="../videos/video-with-narration.mp4" type="video/mp4">
+                            Twoja przeglądarka nie obsługuje tagu video.
+                        </video>
+                        <pre><code>&lt;video controls width="300"&gt;
+    &lt;source src="videos/video-with-narration.mp4" type="video/mp4"&gt;
+    Twoja przeglądarka nie obsługuje tagu video.
+&lt;/video&gt;</code></pre>
+                        <p class="explanation">To wideo bez oryginalnego dźwięku zawiera dodaną narrację, która opisuje
+                            to, co dzieje się na ekranie, umożliwiając osobom niewidomym dostęp do treści wizualnych.
+                        </p>
+                    </div>
+
+                    <div class="example bad">
+                        <h5>Zły przykład - wideo bez dźwięku i bez alternatywy</h5>
+                        <video controls width="300">
+                            <source src="../videos/silent-video.mp4" type="video/mp4">
+                            Twoja przeglądarka nie obsługuje tagu video.
+                        </video>
+                        <pre><code>&lt;video controls width="300"&gt;
+    &lt;source src="videos/silent-video.mp4" type="video/mp4"&gt;
+    Twoja przeglądarka nie obsługuje tagu video.
+&lt;/video&gt;</code></pre>
+                        <p class="explanation">Problem: Wideo bez dźwięku nie posiada ani alternatywy tekstowej, ani
+                            ścieżki dźwiękowej. Osoby niewidome nie mają dostępu do treści wizualnych.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/audio-only-and-video-only-prerecorded.html"
+                            target="_blank" rel="noopener">Zrozumieć WCAG: Tylko audio lub tylko wideo (nagranie)</a>
+                    </li>
+                    <li><a href="https://www.w3.org/WAI/media/av/transcripts/" target="_blank" rel="noopener">WAI:
+                            Tworzenie transkrypcji</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.2.html">Poprzedni: 1.2 Media zsynchronizowane</a></li>
+                    <li><a href="1.2.2.html">Następny: 1.2.2 Napisy rozszerzone (nagranie)</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

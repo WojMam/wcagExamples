@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.2.6 Język migowy (nagranie) (AAA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .video-wrapper {
+            position: relative;
+            width: 400px;
+            margin-bottom: 20px;
+        }
+
+        .main-video-area {
+            position: relative;
+        }
+
+        .sign-interpreter {
+            position: absolute;
+            bottom: 60px;
+            right: 10px;
+            width: 120px;
+            height: 160px;
+            z-index: 10;
+        }
+
+        .interpreter-frame {
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 2px solid #fff;
+            border-radius: 4px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .dual-video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+            max-width: 820px;
+        }
+
+        .sign-video {
+            width: 160px;
+            height: 220px;
+        }
+
+        .interpreter-container {
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .toggle-interpreter {
+            width: 100%;
+            padding: 8px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .toggle-interpreter:hover {
+            background-color: #0055aa;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <h1>WCAG 2.1 - Nieoficjalny przewodnik dostępności</h1>
+        <nav aria-label="Główna nawigacja">
+            <ul class="main-nav">
+                <li><a href="../index.html">Strona główna</a></li>
+                <li>
+                    <a href="../index.html#section-1" aria-current="page">1. Postrzegalność</a>
+                    <ul class="subnav">
+                        <li><a href="../index.html#guideline-1-1">1.1 Alternatywa tekstowa</a></li>
+                        <li><a href="../index.html#guideline-1-2">1.2 Media zsynchronizowane</a></li>
+                        <li><a href="../index.html#guideline-1-3">1.3 Możliwość adaptacji</a></li>
+                        <li><a href="../index.html#guideline-1-4">1.4 Możliwość rozróżnienia</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.2.6 Język migowy (nagranie) (AAA)</h2>
+                <div class="meta">
+                    <p class="level"><span class="level-tag">Poziom AAA</span></p>
+                    <p><a href="https://www.w3.org/TR/WCAG21/#sign-language-prerecorded" target="_blank"
+                            rel="noopener">Oficjalna dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis</h3>
+                <p>Zapewnione jest tłumaczenie na język migowy dla wszystkich nagrań audio w multimediach
+                    zsynchronizowanych.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest zapewnienie osobom głuchym, dla których język migowy jest
+                    podstawowym sposobem komunikacji, dostępu do treści audio w nagraniach. Dla wielu osób głuchych od
+                    urodzenia lub wczesnego dzieciństwa, język migowy jest pierwszym i najbardziej naturalnym językiem,
+                    a język pisany może być trudniejszy do zrozumienia.</p>
+
+                <p>Podczas gdy napisy rozszerzone (kryterium 1.2.2) zapewniają transkrypcję dialogów, tłumaczenie na
+                    język migowy dodatkowo przekazuje intonację, emocje i inne aspekty komunikacji, które mogą być
+                    trudne do oddania w tekście.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <h4>Implementacja tłumaczenia na język migowy</h4>
+                <div class="example-container">
+                    <div class="example good">
+                        <h5>Dobry przykład - wideo z tłumaczem języka migowego (PJM)</h5>
+                        <p>Film edukacyjny z tłumaczem języka migowego widocznym w prawym dolnym rogu:</p>
+                        <div class="video-wrapper">
+                            <div class="main-video-area">
+                                <video controls width="400">
+                                    <source src="../videos/example-video.mp4" type="video/mp4">
+                                    <track kind="captions" src="../videos/captions.vtt" label="Polski" default>
+                                    Twoja przeglądarka nie obsługuje znacznika wideo.
+                                </video>
+                                <div class="sign-interpreter">
+                                    <div class="interpreter-frame">
+                                        <div class="interpreter-content">
+                                            [Tłumacz PJM]
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <pre><code>&lt;video controls width="800"&gt;
+    &lt;source src="../videos/presentation-with-sign-language.mp4" type="video/mp4"&gt;
+    &lt;track kind="captions" src="../videos/captions.vtt" label="Polski" default&gt;
+    Twoja przeglądarka nie obsługuje znacznika wideo.
+&lt;/video&gt;</code></pre>
+                        <p class="explanation">W tym przykładzie główny film zawiera już wbudowanego tłumacza języka
+                            migowego. Osoba migająca jest widoczna przez cały czas trwania materiału w prawym dolnym
+                            rogu ekranu, co umożliwia osobom głuchym pełne zrozumienie treści w ich naturalnym języku.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h5>Dobry przykład - oddzielna ścieżka wideo z tłumaczem języka migowego</h5>
+                        <p>Implementacja przełączalnego tłumaczenia na język migowy:</p>
+                        <div class="dual-video-container">
+                            <div class="main-video">
+                                <video controls width="400">
+                                    <source src="../videos/example-video.mp4" type="video/mp4">
+                                    <track kind="captions" src="../videos/captions.vtt" label="Polski" default>
+                                    Twoja przeglądarka nie obsługuje znacznika wideo.
+                                </video>
+                            </div>
+                            <div class="sign-video">
+                                <div class="interpreter-container">
+                                    <div class="interpreter-frame">
+                                        <div class="interpreter-content">
+                                            [Tłumacz PJM]
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="toggle-interpreter" aria-pressed="true">Ukryj tłumacza języka
+                                migowego</button>
+                        </div>
+                        <pre><code>&lt;div class="video-container"&gt;
+    &lt;video id="main-video" controls width="800"&gt;
+        &lt;source src="../videos/example-video.mp4" type="video/mp4"&gt;
+        &lt;track kind="captions" src="../videos/captions.vtt" label="Polski" default&gt;
+        Twoja przeglądarka nie obsługuje znacznika wideo.
+    &lt;/video&gt;
+    
+    &lt;div id="sign-language-container" class="sign-language"&gt;
+        &lt;video id="sign-language-video" width="250" muted&gt;
+            &lt;source src="../videos/sign-language.mp4" type="video/mp4"&gt;
+        &lt;/video&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="controls"&gt;
+    &lt;button id="toggle-sign-language"&gt;Pokaż/ukryj język migowy&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    const mainVideo = document.getElementById('main-video');
+    const signVideo = document.getElementById('sign-language-video');
+    const toggleButton = document.getElementById('toggle-sign-language');
+    const signContainer = document.getElementById('sign-language-container');
+    
+    // Synchronizacja odtwarzania
+    mainVideo.addEventListener('play', () => {
+        signVideo.currentTime = mainVideo.currentTime;
+        signVideo.play();
+    });
+    
+    mainVideo.addEventListener('pause', () => {
+        signVideo.pause();
+    });
+    
+    mainVideo.addEventListener('seeking', () => {
+        signVideo.currentTime = mainVideo.currentTime;
+    });
+    
+    // Przełączanie widoczności tłumacza
+    toggleButton.addEventListener('click', () => {
+        if (signContainer.style.display === 'none') {
+            signContainer.style.display = 'block';
+            toggleButton.setAttribute('aria-pressed', 'true');
+        } else {
+            signContainer.style.display = 'none';
+            toggleButton.setAttribute('aria-pressed', 'false');
+        }
+    });
+&lt;/script&gt;</code></pre>
+                        <p class="explanation">Ten przykład pokazuje implementację, w której tłumacz języka migowego
+                            jest wyświetlany w osobnym oknie, które można pokazać lub ukryć. Oba filmy (główny i z
+                            tłumaczem) są zsynchronizowane, dzięki czemu tłumaczenie dokładnie odpowiada dźwiękowi. To
+                            rozwiązanie daje użytkownikowi większą kontrolę nad sposobem wyświetlania tłumaczenia.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h5>Zły przykład - brak tłumaczenia na język migowy</h5>
+                        <pre><code>&lt;video controls width="400"&gt;
+    &lt;source src="../videos/example-video.mp4" type="video/mp4"&gt;
+    &lt;track kind="captions" src="../videos/captions.vtt" label="Polski" default&gt;
+    Twoja przeglądarka nie obsługuje znacznika wideo.
+&lt;/video&gt;</code></pre>
+                        <p class="explanation">Problem: Ten film zawiera napisy rozszerzone (co spełnia kryterium 1.2.2
+                            poziom A), ale nie zapewnia tłumaczenia na język migowy. Osoby głuche, dla których język
+                            migowy jest pierwszym językiem, będą miały ograniczone zrozumienie treści, szczególnie jeśli
+                            zawiera ona złożone pojęcia lub specjalistyczne terminy.</p>
+                    </div>
+                </div>
+
+                <h4>Najlepsze praktyki tworzenia treści z językiem migowym</h4>
+                <ul>
+                    <li><strong>Widoczność tłumacza</strong> - Tłumacz języka migowego powinien być dobrze widoczny,
+                        zazwyczaj w rogu ekranu, z kontrastowym tłem umożliwiającym dobrą widoczność rąk i mimiki.</li>
+                    <li><strong>Rozmiar okna</strong> - Okno z tłumaczem powinno być odpowiednio duże (zwykle co
+                        najmniej 1/6 wysokości ekranu), aby gesty i mimika były czytelne.</li>
+                    <li><strong>Oświetlenie</strong> - Tłumacz powinien być dobrze oświetlony, bez cieni na twarzy i
+                        dłoniach.</li>
+                    <li><strong>Właściwy dialekt</strong> - Należy używać odpowiedniego dialektu języka migowego dla
+                        danej lokalizacji (np. Polski Język Migowy - PJM).</li>
+                    <li><strong>Profesjonalny tłumacz</strong> - Zawartość powinna być tłumaczona przez profesjonalnego
+                        tłumacza języka migowego, posiadającego doświadczenie w tłumaczeniu specjalistycznych treści.
+                    </li>
+                    <li><strong>Synchronizacja</strong> - Tłumaczenie powinno być dobrze zsynchronizowane z treścią
+                        audio.</li>
+                </ul>
+
+                <h4>Wyzwania i ograniczenia</h4>
+                <ul>
+                    <li><strong>Różne języki migowe</strong> - Na świecie istnieje wiele różnych języków migowych, które
+                        nie są od siebie wzajemnie zrozumiałe (np. Polski Język Migowy, Amerykański Język Migowy,
+                        Brytyjski Język Migowy itp.).</li>
+                    <li><strong>Koszt</strong> - Zapewnienie profesjonalnego tłumaczenia na język migowy może być
+                        kosztowne, szczególnie dla dużych ilości treści.</li>
+                    <li><strong>Przeładowanie informacyjne</strong> - Jeśli wideo zawiera już wiele elementów
+                        wizualnych, dodanie tłumacza języka migowego może być trudne bez zakłócania głównej treści.</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/sign-language-prerecorded.html"
+                            target="_blank" rel="noopener">Zrozumienie kryterium 1.2.6</a></li>
+                    <li><a href="https://www.nad.org/resources/technology/captioning-for-access/communication-access-realtime-translation/"
+                            target="_blank" rel="noopener">National Association of the Deaf: Wytyczne dotyczące
+                            tłumaczenia w czasie rzeczywistym</a></li>
+                    <li><a href="https://pzg.warszawa.pl/" target="_blank" rel="noopener">Polski Związek Głuchych</a>
+                    </li>
+                    <li><a href="https://www.w3.org/WAI/media/av/sign-languages/" target="_blank" rel="noopener">W3C:
+                            Języki migowe w mediach</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.2.5.html">Poprzedni: 1.2.5 Audiodeskrypcja (nagranie)</a></li>
+                    <li><a href="1.2.7.html">Następny: 1.2.7 Rozszerzona audiodeskrypcja (nagranie)</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleButton = document.querySelector('.toggle-interpreter');
+            const signVideo = document.querySelector('.sign-video');
+
+            if (toggleButton && signVideo) {
+                toggleButton.addEventListener('click', function () {
+                    if (signVideo.style.display === 'none') {
+                        signVideo.style.display = 'block';
+                        toggleButton.textContent = 'Ukryj tłumacza języka migowego';
+                        toggleButton.setAttribute('aria-pressed', 'true');
+                    } else {
+                        signVideo.style.display = 'none';
+                        toggleButton.textContent = 'Pokaż tłumacza języka migowego';
+                        toggleButton.setAttribute('aria-pressed', 'false');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

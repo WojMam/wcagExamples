@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Przykładowe Audio</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .audio-placeholder {
+            width: 400px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .audio-title {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .audio-player {
+            width: 100%;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .play-btn {
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 25px solid #333;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+
+        .progress-bar {
+            flex-grow: 1;
+            height: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 30%;
+            background-color: #4CAF50;
+        }
+
+        .time {
+            margin-left: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .transcript {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="audio-placeholder">
+        <h2 class="audio-title">Przykładowe nagranie audio</h2>
+        <div class="audio-player">
+            <div class="play-btn"></div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <div class="time">01:20 / 04:30</div>
+        </div>
+        <div class="transcript">
+            <h3>Transkrypcja:</h3>
+            <p><strong>Spiker:</strong> Witamy w naszym przykładowym nagraniu dotyczącym dostępności cyfrowej. Dzisiaj
+                omówimy, dlaczego alternatywy tekstowe są tak ważne.</p>
+            <p><strong>Spiker:</strong> Transkrypcje, takie jak ta, pozwalają osobom niesłyszącym i głuchoniewidomym na
+                dostęp do treści audio.</p>
+            <p><strong>[dźwięk dzwoniącego telefonu]</strong></p>
+            <p><strong>Spiker:</strong> Przepraszam za to przerwanie. Jak widzicie, dobra transkrypcja zawiera również
+                opisy ważnych dźwięków tła.</p>
+        </div>
+    </div>
+</body>
+
+</html>

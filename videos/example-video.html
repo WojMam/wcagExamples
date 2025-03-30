@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placeholder Video</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .video-placeholder {
+            width: 400px;
+            height: 300px;
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+
+        .icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .controls {
+            position: absolute;
+            bottom: 10px;
+            width: 90%;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .play-btn {
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            clip-path: polygon(0 0, 0 100%, 100% 50%);
+            margin-right: 10px;
+        }
+
+        .progress {
+            flex-grow: 1;
+            height: 5px;
+            background-color: #444;
+            position: relative;
+        }
+
+        .progress::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 30%;
+            background-color: #fff;
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 50px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="video-placeholder">
+        <div class="icon">▶️</div>
+        <div>Przykładowy film wideo</div>
+        <div class="caption">Witaj w przykładowym filmie</div>
+        <div class="controls">
+            <div class="play-btn"></div>
+            <div class="progress"></div>
+        </div>
+    </div>
+</body>
+
+</html>

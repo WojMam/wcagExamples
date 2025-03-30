@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.2.4 Napisy rozszerzone (na żywo) (AA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <h1>WCAG 2.1 - Nieoficjalny przewodnik dostępności</h1>
+        <nav aria-label="Główna nawigacja">
+            <ul class="main-nav">
+                <li><a href="../index.html">Strona główna</a></li>
+                <li>
+                    <a href="../index.html#section-1" aria-current="page">1. Postrzegalność</a>
+                    <ul class="subnav">
+                        <li><a href="../index.html#guideline-1-1">1.1 Alternatywa tekstowa</a></li>
+                        <li><a href="../index.html#guideline-1-2">1.2 Media zsynchronizowane</a></li>
+                        <li><a href="../index.html#guideline-1-3">1.3 Możliwość adaptacji</a></li>
+                        <li><a href="../index.html#guideline-1-4">1.4 Możliwość rozróżnienia</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.2.4 Napisy rozszerzone (na żywo) (AA)</h2>
+                <div class="meta">
+                    <p class="level"><span class="level-tag">Poziom AA</span></p>
+                    <p><a href="https://www.w3.org/TR/WCAG21/#captions-live" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis</h3>
+                <p>Napisy rozszerzone są zapewnione dla wszystkich treści audio na żywo prezentowanych w formie
+                    multimediów zsynchronizowanych.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest zapewnienie, że osoby niesłyszące lub niedosłyszące mają dostęp do
+                    treści audio prezentowanych na żywo. Napisy rozszerzone dostarczają alternatywę tekstową dla
+                    dźwięku, umożliwiając osobom niesłyszącym lub niedosłyszącym dostęp do informacji dźwiękowych w
+                    czasie rzeczywistym.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <h4>Metody zapewniania napisów na żywo</h4>
+                <div class="example-container">
+                    <div class="example good">
+                        <h5>Dobry przykład - profesjonalne usługi napisów na żywo</h5>
+                        <p>Transmisja na żywo z profesjonalną usługą napisów w czasie rzeczywistym (CART - Communication
+                            Access Realtime Translation).</p>
+                        <pre><code>&lt;video id="live-stream" controls autoplay&gt;
+    &lt;source src="https://example.com/live-stream" type="video/mp4"&gt;
+    &lt;track kind="captions" src="https://example.com/live-captions" label="Polski" default&gt;
+    Twoja przeglądarka nie obsługuje znacznika wideo.
+&lt;/video&gt;
+
+&lt;script&gt;
+    // Kod do dynamicznego aktualizowania pliku napisów
+    function updateCaptions() {
+        const videoElement = document.getElementById('live-stream');
+        const textTrack = videoElement.textTracks[0];
+        
+        // Pobieranie aktualizacji napisów z serwera co sekundę
+        fetch('https://example.com/live-captions-update')
+            .then(response => response.json())
+            .then(data => {
+                // Aktualizacja napisów
+                // Szczegóły implementacji zależą od używanej usługi
+            });
+    }
+    
+    // Aktualizuj napisy co sekundę
+    setInterval(updateCaptions, 1000);
+&lt;/script&gt;</code></pre>
+                        <p class="explanation">Ten przykład pokazuje implementację dynamicznych napisów na żywo, które
+                            są aktualizowane w czasie rzeczywistym przez profesjonalną usługę transkrypcji. Usługi CART
+                            (Communication Access Realtime Translation) wykorzystują stenografów, którzy w czasie
+                            rzeczywistym tworzą napisy.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h5>Dobry przykład - automatyczne generowanie napisów</h5>
+                        <p>Wykorzystanie technologii rozpoznawania mowy do automatycznego generowania napisów:</p>
+                        <pre><code>&lt;iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/LIVE_VIDEO_ID?cc_load_policy=1&amp;cc_lang_pref=pl" 
+    frameborder="0" 
+    allowfullscreen
+&gt;&lt;/iframe&gt;</code></pre>
+                        <p class="explanation">W tym przykładzie wykorzystywana jest platforma streamingowa (np.
+                            YouTube), która oferuje automatyczne generowanie napisów dla transmisji na żywo. Parametry
+                            URL włączają automatyczne wyświetlanie napisów. Należy pamiętać, że automatycznie generowane
+                            napisy mogą zawierać błędy, zwłaszcza przy specjalistycznym słownictwie.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h5>Zły przykład - brak napisów dla transmisji na żywo</h5>
+                        <pre><code>&lt;video id="live-stream" controls autoplay&gt;
+    &lt;source src="https://example.com/live-stream" type="video/mp4"&gt;
+    Twoja przeglądarka nie obsługuje znacznika wideo.
+&lt;/video&gt;</code></pre>
+                        <p class="explanation">Problem: Ta transmisja na żywo nie zawiera żadnych napisów, co
+                            uniemożliwia osobom niesłyszącym i niedosłyszącym zrozumienie treści audio. Brak
+                            jakiejkolwiek alternatywy dla dźwięku w treściach na żywo stanowi barierę dostępności.</p>
+                    </div>
+                </div>
+
+                <h4>Wyzwania związane z napisami na żywo</h4>
+                <ul>
+                    <li><strong>Opóźnienie</strong> - Napisy na żywo często mają pewne opóźnienie w stosunku do dźwięku,
+                        zazwyczaj od 2 do 10 sekund, zależnie od metody.</li>
+                    <li><strong>Dokładność</strong> - Automatyczne rozpoznawanie mowy może mieć ograniczoną dokładność,
+                        zwłaszcza przy akcentach, słownictwie specjalistycznym lub słabej jakości dźwięku.</li>
+                    <li><strong>Koszt</strong> - Profesjonalne usługi napisów na żywo (CART) zapewniają wysoką jakość,
+                        ale są kosztowne.</li>
+                </ul>
+
+                <h4>Najlepsze praktyki</h4>
+                <ul>
+                    <li>Jeśli to możliwe, użyj profesjonalnych stenografów do tworzenia napisów na żywo dla ważnych
+                        wydarzeń.</li>
+                    <li>Zapewnij dobrą jakość dźwięku, aby poprawić dokładność automatycznego rozpoznawania mowy.</li>
+                    <li>Dostarczaj mówcom listę specjalistycznych terminów i nazwisk przed wydarzeniem, aby poprawić
+                        dokładność napisów.</li>
+                    <li>Informuj uczestników o dostępności napisów na żywo i jak je włączyć.</li>
+                    <li>Po zakończeniu transmisji, rozważ skorygowanie napisów i udostępnienie poprawionej wersji
+                        nagrania.</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/captions-live.html" target="_blank"
+                            rel="noopener">Zrozumienie kryterium 1.2.4</a></li>
+                    <li><a href="https://www.w3.org/WAI/media/av/captions/" target="_blank" rel="noopener">W3C: Napisy i
+                            transkrypcje</a></li>
+                    <li><a href="https://dcmp.org/learn/213" target="_blank" rel="noopener">Dobre praktyki tworzenia
+                            napisów w czasie rzeczywistym</a></li>
+                    <li><a href="https://support.google.com/youtube/answer/6373554" target="_blank"
+                            rel="noopener">YouTube: Automatyczne generowanie napisów dla transmisji na żywo</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.2.3.html">Poprzedni: 1.2.3 Audiodeskrypcja lub alternatywa tekstowa (nagranie)</a>
+                    </li>
+                    <li><a href="1.2.5.html">Następny: 1.2.5 Audiodeskrypcja (nagranie)</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

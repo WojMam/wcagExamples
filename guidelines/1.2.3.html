@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.2.3 Audiodeskrypcja lub alternatywa tekstowa (nagranie) (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <h1>WCAG 2.1 - Nieoficjalny przewodnik dostępności</h1>
+        <nav aria-label="Główna nawigacja">
+            <ul class="main-nav">
+                <li><a href="../index.html">Strona główna</a></li>
+                <li>
+                    <a href="../index.html#section-1" aria-current="page">1. Postrzegalność</a>
+                    <ul class="subnav">
+                        <li><a href="../index.html#guideline-1-1">1.1 Alternatywa tekstowa</a></li>
+                        <li><a href="../index.html#guideline-1-2">1.2 Media zsynchronizowane</a></li>
+                        <li><a href="../index.html#guideline-1-3">1.3 Możliwość adaptacji</a></li>
+                        <li><a href="../index.html#guideline-1-4">1.4 Możliwość rozróżnienia</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.2.3 Audiodeskrypcja lub alternatywa tekstowa (nagranie) (A)</h2>
+                <div class="meta">
+                    <p class="level"><span class="level-tag">Poziom A</span></p>
+                    <p><a href="https://www.w3.org/TR/WCAG21/#audio-description-or-media-alternative-prerecorded"
+                            target="_blank" rel="noopener">Oficjalna dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis</h3>
+                <p>Zapewniona jest alternatywa dla mediów lub audiodeskrypcja dla nagrań zawierających zsynchronizowany
+                    dźwięk i obraz.</p>
+                <p>To kryterium wymaga, aby informacje wizualne zawarte w filmach, które nie są obecne w ścieżce
+                    dźwiękowej, były dostępne dla użytkowników niewidomych i słabowidzących. Można to zrealizować na dwa
+                    sposoby:</p>
+                <ul>
+                    <li>Dodając audiodeskrypcję, która opisuje ważne elementy wizualne podczas naturalnych przerw w
+                        dialogach</li>
+                    <li>Zapewniając alternatywę tekstową, która opisuje zarówno dźwięk, jak i treści wizualne</li>
+                </ul>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <h4>Audiodeskrypcja</h4>
+                <div class="example-container">
+                    <div class="example good">
+                        <h5>Dobry przykład - wideo z audiodeskrypcją</h5>
+                        <p>Materiał wideo zawierający audiodeskrypcję jako drugą ścieżkę dźwiękową.</p>
+                        <video controls width="400">
+                            <source src="../videos/example-video.mp4" type="video/mp4">
+                            <track kind="captions" src="../videos/captions.vtt" label="Polski" default>
+                            <track kind="descriptions" src="../videos/audiodescription.vtt" label="Audiodeskrypcja">
+                            Twoja przeglądarka nie obsługuje tagu video.
+                        </video>
+                        <pre><code>&lt;video controls width="400"&gt;
+    &lt;source src="../videos/example-video.mp4" type="video/mp4"&gt;
+    &lt;track kind="captions" src="../videos/captions.vtt" label="Polski" default&gt;
+    &lt;!-- Audiodeskrypcja jako osobna ścieżka audio --&gt;
+    &lt;track kind="descriptions" src="../videos/audiodescription.vtt" label="Audiodeskrypcja"&gt;
+    Twoja przeglądarka nie obsługuje znacznika wideo.
+&lt;/video&gt;</code></pre>
+                        <p class="explanation">W tym przykładzie:</p>
+                        <ul>
+                            <li>Zastosowano element <code>&lt;track&gt;</code> z atrybutem
+                                <code>kind="descriptions"</code>
+                            </li>
+                            <li>Audiodeskrypcja opisuje istotne elementy wizualne, które nie są wspomniane w dialogach
+                            </li>
+                            <li>Opis jest wstawiany w naturalne przerwy w ścieżce dźwiękowej</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>Alternatywa tekstowa</h4>
+                <div class="example-container">
+                    <div class="example good">
+                        <h5>Dobry przykład - wideo z alternatywą tekstową</h5>
+                        <p>Materiał wideo z szczegółowym opisem tekstowym.</p>
+                        <video controls width="400">
+                            <source src="../videos/example-video.mp4" type="video/mp4">
+                            Twoja przeglądarka nie obsługuje tagu video.
+                        </video>
+                        <details>
+                            <summary>Pełny opis nagrania (alternatywa tekstowa)</summary>
+                            <div class="transcript">
+                                <p>Film przedstawia proces tworzenia dostępnej strony internetowej:</p>
+                                <p><strong>Scena 1 (0:00-0:15):</strong> Programista siedzący przy biurku zaczyna pracę
+                                    nad strukturą HTML. Na ekranie widać kod, w którym tworzy nagłówki (h1, h2, h3) w
+                                    logicznej hierarchii.</p>
+                                <p><strong>Programista mówi:</strong> "Zacznijmy od stworzenia prawidłowej struktury
+                                    nagłówków, aby użytkownicy czytników ekranu mogli łatwo nawigować po stronie."</p>
+                                <p><strong>Scena 2 (0:16-0:35):</strong> Programista dodaje znaczniki do obrazów. Widać
+                                    jak wpisuje atrybuty alt z dokładnymi opisami.</p>
+                                <p><strong>Programista mówi:</strong> "Każdy obraz powinien mieć alternatywę tekstową,
+                                    która opisuje jego zawartość i funkcję."</p>
+                                <p><strong>Scena 3 (0:36-1:00):</strong> Sprawdzanie kontrastu kolorów. Na ekranie widać
+                                    narzędzie do testowania kontrastu pokazujące wartości dla różnych elementów strony.
+                                </p>
+                                <p><strong>Programista mówi:</strong> "Odpowiedni kontrast między tekstem a tłem jest
+                                    kluczowy dla osób słabowidzących. Minimalna wartość to 4,5:1 dla zwykłego tekstu."
+                                </p>
+                            </div>
+                        </details>
+                        <p class="explanation">Ta alternatywa tekstowa zawiera:</p>
+                        <ul>
+                            <li>Opis wszystkich istotnych treści wizualnych</li>
+                            <li>Transkrypcję wypowiadanych dialogów</li>
+                            <li>Informacje o czasie poszczególnych scen</li>
+                            <li>Strukturę, która ułatwia zrozumienie treści</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h4>Przykład nieprawidłowy</h4>
+                <div class="example-container">
+                    <div class="example bad">
+                        <h5>Zły przykład - wideo bez audiodeskrypcji i alternatywy</h5>
+                        <p>Materiał wideo, który zawiera istotne elementy wizualne, ale nie zapewnia audiodeskrypcji ani
+                            alternatywy tekstowej.</p>
+                        <pre><code>&lt;video controls width="400"&gt;
+    &lt;source src="../videos/example-video.mp4" type="video/mp4"&gt;
+    &lt;track kind="captions" src="../videos/example-captions.vtt" label="Polski" default&gt;
+    Twoja przeglądarka nie obsługuje znacznika wideo.
+&lt;/video&gt;</code></pre>
+                        <p class="explanation">Problem: Ten film zawiera napisy dla osób niesłyszących, ale nie zapewnia
+                            audiodeskrypcji ani alternatywy tekstowej. Osoby niewidome nie mają dostępu do treści
+                            wizualnych, które nie są wymienione w dialogach.</p>
+                    </div>
+                </div>
+
+                <h4>Format audiodeskrypcji</h4>
+                <p>Audiodeskrypcja może być zapewniona na kilka sposobów:</p>
+                <ul>
+                    <li>Jako oddzielna ścieżka dźwiękowa zintegrowana z wideo</li>
+                    <li>Jako alternatywna wersja filmu z wbudowaną audiodeskrypcją</li>
+                    <li>Jako ścieżka tekstowa (WebVTT), którą czytniki ekranu mogą odczytać</li>
+                </ul>
+                <p>Przykład pliku WebVTT dla audiodeskrypcji:</p>
+                <pre><code>WEBVTT
+
+00:00:15.000 --> 00:00:18.000
+Mężczyzna wpisuje kod na klawiaturze, na ekranie widać strukturę HTML
+
+00:00:35.000 --> 00:00:38.000
+Programista sprawdza kontrast kolorów używając specjalnego narzędzia
+
+00:00:58.000 --> 00:01:02.000
+Na ekranie pojawia się raport z testów dostępności pokazujący wyniki</code></pre>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/audio-description-or-media-alternative-prerecorded.html"
+                            target="_blank" rel="noopener">Zrozumienie kryterium 1.2.3</a></li>
+                    <li><a href="https://www.w3.org/WAI/media/av/description/" target="_blank" rel="noopener">W3C:
+                            Tworzenie audiodeskrypcji</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/Audio_and_video_delivery/Adding_captions_and_subtitles_to_HTML5_video#Audio_Description_Tracks"
+                            target="_blank" rel="noopener">MDN: Dodawanie ścieżek audiodeskrypcji do wideo HTML5</a>
+                    </li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.2.2.html">Poprzedni: 1.2.2 Napisy rozszerzone (nagranie)</a></li>
+                    <li><a href="1.2.4.html">Następny: 1.2.4 Napisy rozszerzone (na żywo)</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

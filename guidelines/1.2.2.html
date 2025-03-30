@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.2.2 Napisy rozszerzone (nagranie) (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <h1>WCAG 2.1 - Nieoficjalny przewodnik dostępności</h1>
+        <nav aria-label="Główna nawigacja">
+            <ul class="main-nav">
+                <li><a href="../index.html">Strona główna</a></li>
+                <li>
+                    <a href="../index.html#section-1" aria-current="page">1. Postrzegalność</a>
+                    <ul class="subnav">
+                        <li><a href="../index.html#guideline-1-1">1.1 Alternatywa tekstowa</a></li>
+                        <li><a href="../index.html#guideline-1-2">1.2 Media zsynchronizowane</a></li>
+                        <li><a href="../index.html#guideline-1-3">1.3 Możliwość adaptacji</a></li>
+                        <li><a href="../index.html#guideline-1-4">1.4 Możliwość rozróżnienia</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.2.2 Napisy rozszerzone (nagranie) (A)</h2>
+                <div class="meta">
+                    <p class="level"><span class="level-tag">Poziom A</span></p>
+                    <p><a href="https://www.w3.org/TR/WCAG21/#captions-prerecorded" target="_blank"
+                            rel="noopener">Oficjalna dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis</h3>
+                <p>Napisy rozszerzone są zapewnione dla wszystkich nagrań audio w multimediach zsynchronizowanych.</p>
+                <p>To kryterium sukcesu wymaga, aby wszystkie nagrania audio w materiałach wideo posiadały napisy.
+                    Napisy pozwalają osobom niesłyszącym lub mającym trudności ze słyszeniem na dostęp do zawartości
+                    dźwiękowej.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <h4>Przykład prawidłowy</h4>
+                <div class="example-container">
+                    <div class="example good">
+                        <h5>Dobry przykład - wideo z napisami rozszerzonymi</h5>
+                        <p>Materiał wideo z prawidłowo zaimplementowanymi napisami.</p>
+                        <pre><code>&lt;video controls width="400"&gt;
+    &lt;source src="../videos/example-video.mp4" type="video/mp4"&gt;
+    &lt;track kind="captions" src="../videos/example-captions.vtt" label="Polski" default&gt;
+    Twoja przeglądarka nie obsługuje znacznika wideo.
+&lt;/video&gt;</code></pre>
+                        <p class="explanation">Zauważ, że:</p>
+                        <ul>
+                            <li>Zastosowano element <code>&lt;track&gt;</code> z atrybutem <code>kind="captions"</code>
+                            </li>
+                            <li>Atrybut <code>default</code> powoduje, że napisy są automatycznie wyświetlane</li>
+                            <li>Atrybut <code>label</code> określa język napisów</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p>Możesz zobaczyć interaktywny przykład wideo z napisami <a href="../videos/captions-example.html"
+                        target="_blank">na tej stronie</a>.</p>
+
+                <h4>Przykład nieprawidłowy</h4>
+                <div class="example-container">
+                    <div class="example bad">
+                        <h5>Zły przykład - wideo bez napisów</h5>
+                        <p>Materiał wideo bez napisów lub z niewłaściwie przygotowanymi napisami.</p>
+                        <pre><code>&lt;video controls width="400"&gt;
+    &lt;source src="../videos/example-video.mp4" type="video/mp4"&gt;
+    Twoja przeglądarka nie obsługuje znacznika wideo.
+&lt;/video&gt;</code></pre>
+                        <p class="explanation">Problem: Brak elementu <code>&lt;track&gt;</code> z napisami. Osoby
+                            niesłyszące nie mają dostępu do informacji dźwiękowej.</p>
+                    </div>
+                </div>
+
+                <h4>Format WebVTT</h4>
+                <p>Format WebVTT (Web Video Text Tracks) jest standardowym formatem napisów używanym w HTML5. Plik
+                    WebVTT ma następującą strukturę:</p>
+                <pre><code>WEBVTT
+
+00:00:02.500 --> 00:00:05.000
+Pierwsza linijka napisów.
+
+00:00:05.500 --> 00:00:10.000
+Osoba 1: To jest wypowiedź pierwszej osoby.
+
+00:00:10.500 --> 00:00:15.000
+Osoba 2: A to wypowiedź drugiej osoby.
+
+00:00:15.500 --> 00:00:18.000
+[dźwięk telefonu]</code></pre>
+                <p>Pełny przykład pliku WebVTT możesz zobaczyć <a href="../videos/example-captions.vtt"
+                        target="_blank">tutaj</a>.</p>
+
+                <h4>Najlepsze praktyki</h4>
+                <ul>
+                    <li>Napisy powinny zawierać wszystkie wypowiedzi oraz ważne dźwięki w nagraniu</li>
+                    <li>Napisy powinny identyfikować mówiących, gdy w materiale jest więcej niż jedna osoba</li>
+                    <li>Ważne dźwięki tła (jak dzwonek telefonu, śmiech, oklaski) powinny być opisane w nawiasach
+                        kwadratowych</li>
+                    <li>Napisy powinny być zsynchronizowane z dźwiękiem</li>
+                    <li>Napisy nie powinny być dłuższe niż 2-3 linijki tekstu naraz</li>
+                    <li>Napisy powinny być widoczne przez wystarczająco długi czas, aby użytkownik zdążył je przeczytać
+                    </li>
+                    <li>Napisy powinny być odpowiednio skontrastowane z tłem</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebVTT_API" target="_blank"
+                            rel="noopener">Dokumentacja WebVTT na MDN</a></li>
+                    <li><a href="https://www.w3.org/TR/webvtt1/" target="_blank" rel="noopener">Specyfikacja WebVTT</a>
+                    </li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/captions-prerecorded.html" target="_blank"
+                            rel="noopener">Zrozumienie kryterium 1.2.2</a></li>
+                    <li><a href="https://dequeuniversity.com/rules/axe/4.0/video-caption" target="_blank"
+                            rel="noopener">Testy automatyczne dla napisów wideo</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.2.1.html">Poprzedni: 1.2.1 Tylko audio lub tylko wideo (nagranie)</a></li>
+                    <li><a href="1.2.3.html">Następny: 1.2.3 Audiodeskrypcja lub alternatywa tekstowa</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

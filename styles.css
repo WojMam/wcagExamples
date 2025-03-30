@@ -1,0 +1,358 @@
+/* Reset and base styles */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--primary-color: #005a9c;
+	--secondary-color: #0078d4;
+	--good-color: #4caf50;
+	--average-color: #ffc107;
+	--bad-color: #f44336;
+	--text-color: #333;
+	--bg-color: #f5f5f5;
+	--card-bg: #fff;
+	--header-bg: #005a9c;
+	--header-text: #fff;
+	--code-bg: #f1f1f1;
+	--example-bg: #f9f9f9;
+	--border-color: #ddd;
+	--footer-text: #666;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	line-height: 1.6;
+	color: var(--text-color);
+	background-color: var(--bg-color);
+	padding: 20px;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+/* Skip link dla dostępności */
+.skip-link {
+	position: absolute;
+	top: -40px;
+	left: 0;
+	background-color: var(--primary-color);
+	color: var(--header-text);
+	padding: 8px;
+	z-index: 100;
+	transition: top 0.3s;
+}
+
+.skip-link:focus {
+	top: 0;
+}
+
+header {
+	background-color: var(--header-bg);
+	color: var(--header-text);
+	padding: 20px;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+main {
+	background-color: var(--card-bg);
+	padding: 20px;
+	border-radius: 5px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-bottom: 0.5em;
+	color: var(--primary-color);
+}
+
+h1 {
+	margin-bottom: 15px;
+	color: var(--header-text);
+}
+
+h2 {
+	padding-bottom: 10px;
+	border-bottom: 2px solid var(--primary-color);
+	margin-top: 1.5em;
+}
+
+p {
+	margin-bottom: 1em;
+}
+
+/* Główna strona z wytycznymi */
+.guideline-section {
+	margin-bottom: 30px;
+}
+
+.guideline {
+	margin: 20px 0;
+	padding-left: 20px;
+	border-left: 3px solid var(--secondary-color);
+}
+
+.criteria-list {
+	list-style-type: none;
+	padding-left: 10px;
+	margin: 10px 0;
+}
+
+.criteria-list li {
+	margin-bottom: 5px;
+}
+
+.criteria-list a {
+	color: var(--secondary-color);
+	text-decoration: none;
+	padding: 3px 6px;
+	border-radius: 3px;
+	transition: background-color 0.2s;
+}
+
+.criteria-list a:hover,
+.criteria-list a:focus {
+	background-color: rgba(0, 120, 212, 0.1);
+	text-decoration: underline;
+}
+
+/* Strony szczegółów kryteriów */
+.criterion-detail {
+	padding: 20px 0;
+}
+
+.criterion-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+}
+
+.level-tag {
+	display: inline-block;
+	background-color: var(--primary-color);
+	color: var(--header-text);
+	padding: 3px 8px;
+	border-radius: 3px;
+	font-size: 0.9em;
+}
+
+.criterion-description {
+	margin-bottom: 30px;
+}
+
+/* Przykłady */
+.example-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 20px;
+	margin: 20px 0;
+}
+
+.example {
+	border: 1px solid var(--border-color);
+	border-radius: 5px;
+	padding: 15px;
+	background-color: var(--card-bg);
+}
+
+.good {
+	border-left: 5px solid var(--good-color);
+}
+
+.average {
+	border-left: 5px solid var(--average-color);
+}
+
+.bad {
+	border-left: 5px solid var(--bad-color);
+}
+
+.explanation {
+	margin-top: 10px;
+	padding: 10px;
+	background-color: var(--example-bg);
+	border-radius: 3px;
+}
+
+/* Kod źródłowy */
+code {
+	font-family: "Courier New", monospace;
+	background-color: var(--code-bg);
+	padding: 2px 4px;
+	border-radius: 3px;
+}
+
+pre {
+	background-color: var(--code-bg);
+	padding: 15px;
+	border-radius: 5px;
+	overflow-x: auto;
+	margin: 15px 0;
+}
+
+/* Nawigacja */
+nav ul {
+	list-style-type: none;
+}
+
+.main-nav {
+	display: flex;
+	gap: 20px;
+}
+
+.main-nav a {
+	color: var(--header-text);
+	text-decoration: none;
+	padding: 5px 10px;
+	border-radius: 3px;
+	transition: background-color 0.3s;
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+	background-color: var(--secondary-color);
+	outline: 2px solid var(--header-text);
+}
+
+.subnav {
+	margin-top: 10px;
+	padding-left: 20px;
+}
+
+.criterion-nav {
+	margin-top: 30px;
+	padding-top: 15px;
+	border-top: 1px solid var(--border-color);
+}
+
+.criterion-nav ul {
+	display: flex;
+	justify-content: space-between;
+}
+
+/* Dodatkowe zasoby */
+.resources {
+	background-color: var(--example-bg);
+	padding: 15px;
+	border-radius: 5px;
+	margin: 20px 0;
+}
+
+/* Szczegóły i zwijane opisy */
+details {
+	margin: 10px 0;
+	padding: 10px;
+	background-color: var(--example-bg);
+	border-radius: 5px;
+}
+
+summary {
+	cursor: pointer;
+	font-weight: bold;
+	color: var(--secondary-color);
+}
+
+/* Stopka */
+footer {
+	text-align: center;
+	padding: 20px;
+	color: var(--footer-text);
+	font-size: 0.9em;
+	margin-top: 20px;
+}
+
+/* Przycisk wysokiego kontrastu */
+.contrast-button {
+	position: fixed;
+	right: 20px;
+	bottom: 20px;
+	padding: 10px;
+	background-color: var(--text-color);
+	color: var(--bg-color);
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	z-index: 100;
+}
+
+/* Podstawowe style dla linków */
+a {
+	color: var(--secondary-color);
+	text-decoration: underline;
+}
+
+a:hover, a:focus {
+	text-decoration: none;
+	outline: 2px solid var(--secondary-color);
+}
+
+/* Style dla trybu wysokiego kontrastu */
+body.high-contrast {
+	--bg-color: #000;
+	--card-bg: #000;
+	--text-color: #fff;
+	--header-bg: #000;
+	--header-text: #fff;
+	--primary-color: #ffff00;
+	--secondary-color: #ffff00;
+	--code-bg: #333;
+	--example-bg: #222;
+	--border-color: #fff;
+	--footer-text: #fff;
+}
+
+/* Dodatkowe reguły specyficzne dla wysokiego kontrastu */
+body.high-contrast .level-tag {
+	color: #000; /* Czarny tekst na żółtym tle */
+	font-weight: bold; /* Pogrubienie dla lepszej czytelności */
+}
+
+body.high-contrast a {
+	color: #ffff00; /* Żółte linki zamiast niebieskich */
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+body.high-contrast a:hover, 
+body.high-contrast a:focus {
+	background-color: #ffff00;
+	color: #000;
+	text-decoration: none;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+	.criterion-header {
+		flex-direction: column;
+	}
+
+	.main-nav {
+		flex-direction: column;
+		gap: 10px;
+	}
+
+	.example-container {
+		grid-template-columns: 1fr;
+	}
+}
+
+/* Dostępność */
+:focus {
+	outline: 3px solid var(--secondary-color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* {
+		transition: none !important;
+		animation: none !important;
+	}
+}

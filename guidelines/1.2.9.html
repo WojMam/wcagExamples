@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.2.9 Tylko audio (na żywo) (AAA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .live-caption-example {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+        }
+
+        .live-player {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .caption-display {
+            width: 100%;
+            max-width: 600px;
+            min-height: 120px;
+            background-color: #000;
+            color: #fff;
+            padding: 15px;
+            margin-top: 15px;
+            font-family: Arial, sans-serif;
+            border-radius: 5px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .caption-text {
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .caption-source {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #aaa;
+            text-align: right;
+        }
+
+        .caption-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .caption-controls button {
+            padding: 8px 12px;
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .caption-controls button:hover {
+            background-color: #0055aa;
+        }
+
+        .technology-comparison {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .technology-comparison th {
+            background-color: #f1f1f1;
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .technology-comparison td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .technology-comparison tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <h1>WCAG 2.1 - Nieoficjalny przewodnik dostępności</h1>
+        <nav aria-label="Główna nawigacja">
+            <ul class="main-nav">
+                <li><a href="../index.html">Strona główna</a></li>
+                <li>
+                    <a href="../index.html#section-1" aria-current="page">1. Postrzegalność</a>
+                    <ul class="subnav">
+                        <li><a href="../index.html#guideline-1-1">1.1 Alternatywa tekstowa</a></li>
+                        <li><a href="../index.html#guideline-1-2">1.2 Media zsynchronizowane</a></li>
+                        <li><a href="../index.html#guideline-1-3">1.3 Możliwość adaptacji</a></li>
+                        <li><a href="../index.html#guideline-1-4">1.4 Możliwość rozróżnienia</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.2.9 Tylko audio (na żywo) (AAA)</h2>
+                <div class="meta">
+                    <p class="level"><span class="level-tag">Poziom AAA</span></p>
+                    <p><a href="https://www.w3.org/TR/WCAG21/#audio-only-live" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis</h3>
+                <p>Zapewniona jest alternatywa dla mediów czasowych, przedstawiająca równoważne informacje dla
+                    transmisji live tylko audio.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest zapewnienie osobom niesłyszącym lub słabosłyszącym dostępu do
+                    treści audio nadawanych na żywo, takich jak transmisje internetowe, webinary, podcasty na żywo czy
+                    audycje radiowe dostępne przez internet. Dzięki napisom na żywo (live captions), treści te stają się
+                    dostępne w czasie rzeczywistym.</p>
+
+                <p>W odróżnieniu od kryterium 1.2.2 (poziom A), które wymaga napisów dla wcześniej nagranych treści,
+                    kryterium 1.2.9 dotyczy napisów dla transmisji na żywo i jest wymaganiem na poziomie AAA.</p>
+
+                <p>Napisy na żywo są szczególnie istotne podczas:</p>
+                <ul>
+                    <li>Transmisji ważnych wydarzeń (konferencje, przemówienia)</li>
+                    <li>Webinarów i szkoleń online</li>
+                    <li>Podcastów nadawanych na żywo</li>
+                    <li>Internetowych transmisji radiowych</li>
+                    <li>Wideokonferencji i spotkań online</li>
+                </ul>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <h4>Napisy na żywo dla transmisji audio</h4>
+                <div class="example-container">
+                    <div class="example good">
+                        <h5>Dobry przykład - napisy na żywo dla webinaru</h5>
+                        <div class="live-caption-example">
+                            <div class="live-player">
+                                <audio controls>
+                                    <source src="../podcasts/example-podcast.mp3" type="audio/mpeg">
+                                    Twoja przeglądarka nie obsługuje elementu audio.
+                                </audio>
+                                <p><strong>Webinar: Dostępność cyfrowa w praktyce</strong> (symulacja transmisji na
+                                    żywo)</p>
+
+                                <div class="caption-display">
+                                    <p class="caption-text" id="live-caption">Witamy w dzisiejszym webinarze na temat
+                                        dostępności cyfrowej. Za chwilę rozpoczniemy dyskusję o tym, jak implementować
+                                        WCAG 2.1 w rzeczywistych projektach.</p>
+                                    <p class="caption-source">Napisy generowane automatycznie</p>
+                                </div>
+
+                                <div class="caption-controls">
+                                    <button id="caption-demo-btn">Zasymuluj napisy na żywo</button>
+                                </div>
+                            </div>
+
+                            <p class="explanation">Powyższy przykład pokazuje implementację napisów na żywo dla webinaru
+                                audio. Napisy pojawiają się w dedykowanym obszarze pod odtwarzaczem, umożliwiając osobom
+                                niesłyszącym śledzenie treści w czasie rzeczywistym. W rzeczywistym wdrożeniu napisy
+                                byłyby generowane automatycznie przez systemy rozpoznawania mowy lub tworzone przez
+                                stenotypistów.</p>
+                        </div>
+
+                        <h5>Implementacja</h5>
+                        <pre><code>&lt;div class="webinar-container"&gt;
+    &lt;h2&gt;Webinar: Dostępność cyfrowa w praktyce&lt;/h2&gt;
+    
+    &lt;!-- Odtwarzacz audio --&gt;
+    &lt;div class="audio-player"&gt;
+        &lt;audio id="live-audio" controls&gt;
+            &lt;source src="webinar-stream.mp3" type="audio/mpeg"&gt;
+            Twoja przeglądarka nie obsługuje odtwarzania audio.
+        &lt;/audio&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- Obszar napisów na żywo --&gt;
+    &lt;div class="live-captions" aria-live="polite" aria-atomic="false"&gt;
+        &lt;h3&gt;Napisy na żywo&lt;/h3&gt;
+        &lt;div id="captions-container" class="captions-text"&gt;
+            &lt;!-- Tutaj będą pojawiać się napisy na żywo --&gt;
+            Witamy w dzisiejszym webinarze na temat dostępności cyfrowej.
+        &lt;/div&gt;
+        &lt;p class="captions-info"&gt;Napisy generowane automatycznie poprzez rozpoznawanie mowy.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    // W rzeczywistej implementacji ten kod zostałby zastąpiony
+    // integracją z API rozpoznawania mowy lub serwisem napisów na żywo
+    
+    // Przykład połączenia z serwisem napisów
+    document.addEventListener('DOMContentLoaded', function() {
+        const captionsContainer = document.getElementById('captions-container');
+        
+        // Przykładowe połączenie WebSocket do serwera napisów
+        const captionSocket = new WebSocket('wss://captions-service.example/live');
+        
+        captionSocket.onmessage = function(event) {
+            // Dodanie nowego tekstu napisów
+            const newCaption = document.createElement('p');
+            newCaption.textContent = event.data;
+            captionsContainer.appendChild(newCaption);
+            
+            // Przewinięcie kontenera, aby pokazać najnowsze napisy
+            captionsContainer.scrollTop = captionsContainer.scrollHeight;
+            
+            // Usunięcie starszych napisów, aby utrzymać czytelność
+            while (captionsContainer.childNodes.length > 5) {
+                captionsContainer.removeChild(captionsContainer.firstChild);
+            }
+        };
+        
+        // Obsługa błędów i ponowne połączenie
+        captionSocket.onerror = captionSocket.onclose = function() {
+            setTimeout(function() {
+                // Próba ponownego połączenia po utracie połączenia
+                // ...kod ponownego połączenia...
+            }, 5000);
+        };
+    });
+&lt;/script&gt;</code></pre>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h5>Dobry przykład - system CART dla wydarzeń na żywo</h5>
+                        <p>Podczas transmisji ważnych konferencji i wydarzeń, można zastosować profesjonalny system CART
+                            (Communication Access Realtime Translation), który polega na zatrudnieniu profesjonalnych
+                            stenotypistów, którzy na żywo tworzą napisy z bardzo wysoką dokładnością:</p>
+
+                        <pre><code>&lt;div class="live-stream"&gt;
+    &lt;h2&gt;Konferencja: "Przyszłość dostępności cyfrowej"&lt;/h2&gt;
+    
+    &lt;div class="stream-container"&gt;
+        &lt;audio id="conference-audio" controls&gt;
+            &lt;source src="conference-stream.mp3" type="audio/mpeg"&gt;
+            Twoja przeglądarka nie obsługuje odtwarzania audio.
+        &lt;/audio&gt;
+        
+        &lt;div class="stream-info"&gt;
+            &lt;p&gt;Transmisja na żywo z Konferencji Dostępności Cyfrowej 2023&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Aktualny prelegent:&lt;/strong&gt; Anna Kowalska, Ekspert ds. UX&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="cart-captions"&gt;
+        &lt;h3&gt;Napisy na żywo (CART)&lt;/h3&gt;
+        &lt;div id="cart-container" class="cart-text" aria-live="polite"&gt;
+            &lt;iframe 
+                src="https://cart-service.example/embed/conference123" 
+                title="Napisy CART na żywo"
+                width="100%" 
+                height="300"&gt;
+            &lt;/iframe&gt;
+        &lt;/div&gt;
+        &lt;p class="cart-info"&gt;
+            Napisy tworzone na żywo przez profesjonalnego stenotypistę.
+            &lt;a href="https://cart-service.example/transcript/conference123" target="_blank"&gt;
+                Otwórz napisy w nowym oknie
+            &lt;/a&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        <p class="explanation">Ten przykład przedstawia implementację profesjonalnego systemu CART dla
+                            transmisji konferencji audio. Zamiast polegać na automatycznym rozpoznawaniu mowy, które
+                            może mieć niższą dokładność, system CART wykorzystuje profesjonalnych stenotypistów, którzy
+                            tworzą napisy w czasie rzeczywistym z bardzo wysoką dokładnością. Jest to idealne
+                            rozwiązanie dla ważnych wydarzeń, gdzie precyzja napisów jest kluczowa.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h5>Zły przykład - brak napisów dla transmisji audio na żywo</h5>
+                        <pre><code>&lt;div class="live-radio"&gt;
+    &lt;h2&gt;Radio Internetowe - Audycja na żywo&lt;/h2&gt;
+    
+    &lt;div class="radio-player"&gt;
+        &lt;audio controls autoplay&gt;
+            &lt;source src="https://radio-stream.example/live" type="audio/mpeg"&gt;
+            Twoja przeglądarka nie obsługuje odtwarzania audio.
+        &lt;/audio&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="radio-info"&gt;
+        &lt;p&gt;Słuchasz audycji "Technologie przyszłości" na żywo.&lt;/p&gt;
+        &lt;p&gt;Dzisiaj rozmawiamy o sztucznej inteligencji i jej wpływie na społeczeństwo.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        <p class="explanation">Problem: Ten przykład nie spełnia kryterium 1.2.9, ponieważ nie zapewnia
+                            żadnej alternatywy tekstowej dla treści audio nadawanej na żywo. Osoby niesłyszące nie mają
+                            dostępu do informacji przekazywanych w audycji. Aby spełnić to kryterium, należałoby dodać
+                            system napisów na żywo za pomocą automatycznego rozpoznawania mowy lub profesjonalnych
+                            stenotypistów.</p>
+                    </div>
+                </div>
+
+                <h4>Technologie napisów na żywo</h4>
+                <p>Istnieje kilka różnych technologii umożliwiających tworzenie napisów na żywo:</p>
+
+                <table class="technology-comparison">
+                    <thead>
+                        <tr>
+                            <th>Technologia</th>
+                            <th>Opis</th>
+                            <th>Zalety</th>
+                            <th>Wady</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Automatyczne rozpoznawanie mowy (ASR)</td>
+                            <td>Wykorzystuje sztuczną inteligencję do automatycznego przekształcania mowy na tekst</td>
+                            <td>
+                                <ul>
+                                    <li>Niski koszt</li>
+                                    <li>Natychmiastowa dostępność</li>
+                                    <li>Nie wymaga dodatkowego personelu</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Niższa dokładność (70-90%)</li>
+                                    <li>Problemy z dialektami i akcentami</li>
+                                    <li>Trudności z terminologią specjalistyczną</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>CART (Communication Access Realtime Translation)</td>
+                            <td>Profesjonalni stenotypiści tworzą napisy w czasie rzeczywistym</td>
+                            <td>
+                                <ul>
+                                    <li>Bardzo wysoka dokładność (>98%)</li>
+                                    <li>Lepsze formatowanie i interpunkcja</li>
+                                    <li>Identyfikacja mówców i dźwięków tła</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Wysoki koszt</li>
+                                    <li>Wymaga rezerwacji z wyprzedzeniem</li>
+                                    <li>Ograniczona dostępność stenotypistów</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Respeaking</td>
+                            <td>Przeszkoleni specjaliści powtarzają treść do systemu ASR, poprawiając dokładność</td>
+                            <td>
+                                <ul>
+                                    <li>Większa dokładność niż samo ASR</li>
+                                    <li>Niższy koszt niż CART</li>
+                                    <li>Można dostosować do różnych języków</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Wymaga przeszkolonych specjalistów</li>
+                                    <li>Lekkie opóźnienie w napisach</li>
+                                    <li>Mniejsza dokładność niż CART</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>WebVTT z aktualizacją na żywo</td>
+                            <td>Używa standardu WebVTT, ale pliki są aktualizowane w czasie rzeczywistym</td>
+                            <td>
+                                <ul>
+                                    <li>Zgodność z istniejącymi odtwarzaczami</li>
+                                    <li>Możliwość stylizacji napisów</li>
+                                    <li>Dobra integracja z HTML5</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Wymaga specjalnej infrastruktury serwerowej</li>
+                                    <li>Możliwe opóźnienia</li>
+                                    <li>Złożoność techniczna</li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>Wyzwania napisów na żywo</h4>
+                <ul>
+                    <li><strong>Opóźnienie</strong> - Nawet najlepsze systemy napisów na żywo mają pewne opóźnienie w
+                        stosunku do dźwięku</li>
+                    <li><strong>Dokładność</strong> - Automatyczne systemy mogą mieć problemy ze specjalistycznymi
+                        terminami, nazwami własnymi czy akcentami</li>
+                    <li><strong>Koszt</strong> - Profesjonalne usługi CART mogą być kosztowne, szczególnie dla długich
+                        transmisji</li>
+                    <li><strong>Integracja techniczna</strong> - Połączenie systemu napisów z platformą transmisji może
+                        być technicznie złożone</li>
+                    <li><strong>Wielojęzyczność</strong> - Obsługa transmisji w wielu językach wymaga dodatkowych
+                        zasobów</li>
+                </ul>
+
+                <h4>Najlepsze praktyki</h4>
+                <ul>
+                    <li><strong>Testowanie przed wydarzeniem</strong> - Sprawdzenie systemu napisów przed faktyczną
+                        transmisją</li>
+                    <li><strong>Informowanie prelegentów</strong> - Poproszenie mówców o wyraźne mówienie i wyjaśnianie
+                        specjalistycznych terminów</li>
+                    <li><strong>Dostarczenie słownika</strong> - Przekazanie stenotypistom lub systemom ASR listy
+                        specjalistycznych terminów</li>
+                    <li><strong>Dublowanie informacji</strong> - Kluczowe informacje warto przekazać także w formie
+                        wizualnej (slajdy, grafiki)</li>
+                    <li><strong>Obszar napisów</strong> - Zapewnienie dedykowanego, dobrze widocznego obszaru dla
+                        napisów</li>
+                    <li><strong>Opcje personalizacji</strong> - Umożliwienie użytkownikom dostosowania rozmiaru, kolorów
+                        i położenia napisów</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/audio-only-live.html" target="_blank"
+                            rel="noopener">Zrozumienie kryterium 1.2.9</a></li>
+                    <li><a href="https://www.w3.org/TR/WCAG21/#dfn-captions" target="_blank" rel="noopener">Definicja
+                            napisów w WCAG 2.1</a></li>
+                    <li><a href="https://www.3playmedia.com/learn/popular-topics/live-captioning/" target="_blank"
+                            rel="noopener">Przewodnik po napisach na żywo</a></li>
+                    <li><a href="https://dcmp.org/learn/213" target="_blank" rel="noopener">Standardy i najlepsze
+                            praktyki tworzenia napisów</a></li>
+                    <li><a href="https://www.nad.org/resources/technology/captioning-for-access/what-is-captioning/"
+                            target="_blank" rel="noopener">Informacje o napisach od National Association of the Deaf</a>
+                    </li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.2.8.html">Poprzedni: 1.2.8 Alternatywa dla mediów (nagranie)</a></li>
+                    <li><a href="../index.html#guideline-1-3">Następny: 1.3 Możliwość adaptacji</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Przykładowe teksty dla symulacji napisów na żywo
+            const liveCaptionTexts = [
+                "Witamy w dzisiejszym webinarze na temat dostępności cyfrowej. Za chwilę rozpoczniemy dyskusję o tym, jak implementować WCAG 2.1 w rzeczywistych projektach.",
+                "W pierwszej części omówimy kryteria sukcesu z poziomu A, które są absolutnie podstawowe dla każdej dostępnej strony internetowej.",
+                "Jak widzieliśmy na poprzednich przykładach, implementacja alternatywnych tekstów dla obrazów jest pierwszym krokiem do dostępności.",
+                "Jednym z najczęstszych błędów jest pomijanie odpowiednich opisów dla elementów interfejsu, co powoduje, że użytkownicy czytników ekranu nie mogą z nich korzystać.",
+                "Przejdźmy teraz do omówienia napisów do treści audio i wideo, które są kluczowe dla użytkowników niesłyszących lub słabosłyszących.",
+                "Pytanie od uczestnika: Czy napisy automatycznie generowane przez YouTube są wystarczające, aby spełnić kryteria WCAG?",
+                "To dobre pytanie. Napisy automatyczne często zawierają błędy, szczególnie w przypadku terminów specjalistycznych. W większości przypadków wymagają one ręcznej korekty."
+            ];
+
+            let currentCaptionIndex = 0;
+            const captionText = document.getElementById('live-caption');
+            const captionDemoBtn = document.getElementById('caption-demo-btn');
+
+            if (captionDemoBtn) {
+                captionDemoBtn.addEventListener('click', function () {
+                    // Resetuj indeks, jeśli przycisk zostanie kliknięty ponownie
+                    currentCaptionIndex = 0;
+
+                    // Uruchom symulację napisów na żywo
+                    simulateLiveCaptions();
+
+                    // Zmień tekst przycisku
+                    this.textContent = 'Napisy aktywne...';
+                    this.disabled = true;
+
+                    // Przywróć przycisk po zakończeniu symulacji
+                    setTimeout(() => {
+                        this.textContent = 'Zasymuluj napisy na żywo';
+                        this.disabled = false;
+                    }, liveCaptionTexts.length * 4000);
+                });
+            }
+
+            function simulateLiveCaptions() {
+                if (currentCaptionIndex < liveCaptionTexts.length) {
+                    // Aktualizuj tekst napisów
+                    if (captionText) {
+                        captionText.textContent = liveCaptionTexts[currentCaptionIndex];
+                    }
+
+                    // Przejdź do następnego tekstu po 4 sekundach
+                    currentCaptionIndex++;
+                    setTimeout(simulateLiveCaptions, 4000);
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

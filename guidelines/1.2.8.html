@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.2.8 Alternatywa dla mediów (nagranie) (AAA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .media-transcript {
+            max-width: 600px;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-left: 4px solid #0066cc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        .transcript-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .transcript-content {
+            margin-bottom: 15px;
+        }
+
+        .transcript-speaker {
+            font-weight: bold;
+            color: #0066cc;
+        }
+
+        .transcript-time {
+            color: #666;
+            font-size: 0.9em;
+            margin-right: 10px;
+        }
+
+        .transcript-description {
+            background-color: #e6f2ff;
+            padding: 5px 10px;
+            margin: 5px 0;
+            border-radius: 3px;
+            font-style: italic;
+        }
+
+        .toggle-transcript {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        .toggle-transcript:hover {
+            background-color: #0055aa;
+        }
+
+        .collapsed {
+            max-height: 100px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .collapsed::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 40px;
+            background: linear-gradient(transparent, #f5f5f5);
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <h1>WCAG 2.1 - Nieoficjalny przewodnik dostępności</h1>
+        <nav aria-label="Główna nawigacja">
+            <ul class="main-nav">
+                <li><a href="../index.html">Strona główna</a></li>
+                <li>
+                    <a href="../index.html#section-1" aria-current="page">1. Postrzegalność</a>
+                    <ul class="subnav">
+                        <li><a href="../index.html#guideline-1-1">1.1 Alternatywa tekstowa</a></li>
+                        <li><a href="../index.html#guideline-1-2">1.2 Media zsynchronizowane</a></li>
+                        <li><a href="../index.html#guideline-1-3">1.3 Możliwość adaptacji</a></li>
+                        <li><a href="../index.html#guideline-1-4">1.4 Możliwość rozróżnienia</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.2.8 Alternatywa dla mediów (nagranie) (AAA)</h2>
+                <div class="meta">
+                    <p class="level"><span class="level-tag">Poziom AAA</span></p>
+                    <p><a href="https://www.w3.org/TR/WCAG21/#media-alternative-prerecorded" target="_blank"
+                            rel="noopener">Oficjalna dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis</h3>
+                <p>Dla wszystkich nagrań zawierających media zsynchronizowane (dźwięk i obraz) oraz tylko wideo,
+                    zapewniona jest alternatywa dla mediów.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest zapewnienie osobom z różnymi rodzajami niepełnosprawności dostępu
+                    do pełnej zawartości multimediów zsynchronizowanych poprzez dostarczenie alternatywy tekstowej.
+                    Alternatywa ta musi opisywać wszystko, co dzieje się wizualnie, oraz zawierać wszystkie dialogi i
+                    istotne dźwięki.</p>
+
+                <p>W przeciwieństwie do opisów tekstowych lub audiodeskrypcji, alternatywa dla mediów stanowi pełny,
+                    samodzielny dokument, który może być używany zamiast treści multimedialnej. Pozwala osobom, które
+                    nie mogą odbierać treści wizualnych i/lub dźwiękowych, na pełne zrozumienie informacji
+                    prezentowanych w multimediach.</p>
+
+                <p><strong>Różnica w stosunku do innych kryteriów:</strong></p>
+                <ul>
+                    <li><strong>1.2.1 (A)</strong> wymaga tylko opisu treści dla samego wideo (bez dźwięku)</li>
+                    <li><strong>1.2.2 (A)</strong> wymaga napisów do dźwięku</li>
+                    <li><strong>1.2.3 (A)</strong> wymaga audiodeskrypcji lub alternatywy</li>
+                    <li><strong>1.2.5 (AA)</strong> wymaga audiodeskrypcji</li>
+                    <li><strong>1.2.7 (AAA)</strong> wymaga rozszerzonej audiodeskrypcji</li>
+                    <li><strong>1.2.8 (AAA)</strong> wymaga pełnej, kompletnej alternatywy tekstowej dla całego
+                        materiału</li>
+                </ul>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <h4>Pełna transkrypcja tekstowa nagrania wideo</h4>
+                <div class="example-container">
+                    <div class="example good">
+                        <h5>Dobry przykład - transkrypcja wideo z prezentacją</h5>
+                        <div class="video-container">
+                            <video controls width="400">
+                                <source src="../videos/example-video.mp4" type="video/mp4">
+                                <track kind="captions" src="../videos/captions.vtt" label="Polski" default>
+                                Twoja przeglądarka nie obsługuje odtwarzania wideo.
+                            </video>
+                        </div>
+                        <button class="toggle-transcript" id="toggle-transcript-1">Pokaż pełną transkrypcję</button>
+                        <div class="media-transcript collapsed" id="transcript-1">
+                            <div class="transcript-title">Transkrypcja: Wprowadzenie do dostępności cyfrowej</div>
+                            <div class="transcript-content">
+                                <p><span class="transcript-time">[00:00]</span> <span
+                                        class="transcript-description">Ekran tytułowy pokazuje tekst "Wprowadzenie do
+                                        dostępności cyfrowej" na niebieskim tle z symbolem dostępności.</span></p>
+
+                                <p><span class="transcript-time">[00:10]</span> <span
+                                        class="transcript-speaker">Prezenter:</span> Witam wszystkich na dzisiejszej
+                                    prezentacji dotyczącej dostępności cyfrowej. Mam nadzieję, że ta sesja pomoże wam
+                                    zrozumieć, jak tworzyć bardziej włączające strony internetowe.</p>
+
+                                <p><span class="transcript-time">[00:22]</span> <span
+                                        class="transcript-description">Slajd pokazuje listę z czterema filarami WCAG:
+                                        Postrzegalność, Funkcjonalność, Zrozumiałość, Solidność.</span></p>
+
+                                <p><span class="transcript-time">[00:30]</span> <span
+                                        class="transcript-speaker">Prezenter:</span> WCAG opiera się na czterech
+                                    głównych zasadach. Pierwsza to postrzegalność - informacje i komponenty interfejsu
+                                    użytkownika muszą być przedstawione użytkownikom w sposób, który mogą postrzegać.
+                                </p>
+
+                                <p><span class="transcript-time">[00:45]</span> <span class="transcript-description">Na
+                                        ekranie pojawia się przykład strony internetowej z kontrastem tekstu oznaczonym
+                                        jako dobry (zielone obramowanie) i zły (czerwone obramowanie).</span></p>
+
+                                <p><span class="transcript-time">[00:55]</span> <span
+                                        class="transcript-speaker">Prezenter:</span> Na przykład, odpowiedni kontrast
+                                    jest kluczowy dla czytelności. Po lewej stronie widzimy przykład tekstu z dobrym
+                                    kontrastem, który jest łatwy do odczytania. Po prawej stronie mamy tekst z
+                                    niewystarczającym kontrastem, co utrudnia jego odczytanie wielu osobom, szczególnie
+                                    z wadami wzroku.</p>
+
+                                <p><span class="transcript-time">[01:15]</span> <span
+                                        class="transcript-description">Prezenter demonstruje użycie czytnika ekranu na
+                                        stronie internetowej. Słyszymy syntezator mowy czytający nagłówki i
+                                        linki.</span></p>
+
+                                <p><span class="transcript-time">[01:30]</span> <span
+                                        class="transcript-speaker">Prezenter:</span> Druga zasada to funkcjonalność.
+                                    Komponenty interfejsu użytkownika i nawigacja muszą być możliwe do obsługi. Na
+                                    przykład, wszystkie funkcje powinny być dostępne za pomocą klawiatury, nie tylko
+                                    myszy.</p>
+
+                                <p><span class="transcript-time">[01:50]</span> <span class="transcript-description">Na
+                                        ekranie prezenter pokazuje przykład formularza z etykietami powiązanymi z polami
+                                        za pomocą atrybutu "for".</span></p>
+
+                                <p><span class="transcript-time">[02:05]</span> <span
+                                        class="transcript-speaker">Prezenter:</span> Trzecia zasada to zrozumiałość.
+                                    Informacje i obsługa interfejsu użytkownika muszą być zrozumiałe. Etykiety
+                                    formularzy są dobrym przykładem - każde pole formularza powinno mieć jasną etykietę,
+                                    która jest z nim programowo powiązana.</p>
+
+                                <p><span class="transcript-time">[02:30]</span> <span class="transcript-description">Na
+                                        ekranie pojawia się przykład kodu HTML pokazujący semantyczne znaczniki, takie
+                                        jak &lt;article&gt;, &lt;nav&gt;, &lt;header&gt;.</span></p>
+
+                                <p><span class="transcript-time">[02:45]</span> <span
+                                        class="transcript-speaker">Prezenter:</span> Czwarta zasada to solidność. Treść
+                                    musi być wystarczająco solidna, aby mogła być interpretowana przez szeroką gamę
+                                    programów użytkownika, w tym technologie wspomagające. Używanie semantycznego HTML
+                                    jest kluczowe dla tej zasady.</p>
+
+                                <p><span class="transcript-time">[03:10]</span> <span
+                                        class="transcript-description">Prezenter pokazuje narzędzie do testowania
+                                        dostępności, które wyświetla listę problemów znalezionych na stronie.</span></p>
+
+                                <p><span class="transcript-time">[03:20]</span> <span
+                                        class="transcript-speaker">Prezenter:</span> Istnieje wiele narzędzi, które mogą
+                                    pomóc w identyfikacji problemów z dostępnością na waszych stronach. Pamiętajcie
+                                    jednak, że automatyczne testowanie może znaleźć tylko około 30% problemów z
+                                    dostępnością. Ręczne testy są również niezbędne.</p>
+
+                                <p><span class="transcript-time">[03:40]</span> <span class="transcript-description">Na
+                                        ekranie pojawia się slajd z pytaniami od publiczności.</span></p>
+
+                                <p><span class="transcript-time">[03:45]</span> <span
+                                        class="transcript-speaker">Uczestnik 1:</span> Czy możesz polecić najlepsze
+                                    praktyki dotyczące dostępnych formularzy?</p>
+
+                                <p><span class="transcript-time">[03:50]</span> <span
+                                        class="transcript-speaker">Prezenter:</span> Oczywiście! Upewnij się, że każde
+                                    pole ma etykietę, dodaj atrybuty ARIA, gdy to konieczne, i zapewnij jasne komunikaty
+                                    o błędach. Ważne jest też, aby formularze były nawigowalne za pomocą klawiatury.</p>
+
+                                <p><span class="transcript-time">[04:15]</span> <span
+                                        class="transcript-description">Slajd końcowy pokazuje podsumowanie kluczowych
+                                        punktów i dane kontaktowe prezentera.</span></p>
+
+                                <p><span class="transcript-time">[04:20]</span> <span
+                                        class="transcript-speaker">Prezenter:</span> Dziękuję za uwagę! Pamiętajcie, że
+                                    dostępność to proces ciągły, a nie jednorazowe zadanie. Jeśli macie pytania, jestem
+                                    dostępny pod adresem e-mail wyświetlonym na ekranie.</p>
+                            </div>
+                        </div>
+
+                        <h5>Implementacja</h5>
+                        <pre><code>&lt;div class="video-section"&gt;
+    &lt;h3&gt;Wprowadzenie do dostępności cyfrowej&lt;/h3&gt;
+    &lt;div class="video-container"&gt;
+        &lt;video controls width="400"&gt;
+            &lt;source src="videos/wprowadzenie-do-dostepnosci.mp4" type="video/mp4"&gt;
+            &lt;track kind="captions" src="videos/captions.vtt" label="Polski" default&gt;
+            Twoja przeglądarka nie obsługuje odtwarzania wideo.
+        &lt;/video&gt;
+    &lt;/div&gt;
+    
+    &lt;button class="toggle-transcript" id="toggle-transcript"&gt;
+        Pokaż pełną transkrypcję
+    &lt;/button&gt;
+    
+    &lt;div class="media-transcript collapsed" id="transcript"&gt;
+        &lt;div class="transcript-title"&gt;
+            Transkrypcja: Wprowadzenie do dostępności cyfrowej
+        &lt;/div&gt;
+        &lt;div class="transcript-content"&gt;
+            &lt;!-- Pełna transkrypcja z opisami wizualnymi, dźwiękami, dialogami --&gt;
+            &lt;p&gt;&lt;span class="transcript-time"&gt;[00:00]&lt;/span&gt; 
+               &lt;span class="transcript-description"&gt;Ekran tytułowy pokazuje...&lt;/span&gt;&lt;/p&gt;
+            
+            &lt;p&gt;&lt;span class="transcript-time"&gt;[00:10]&lt;/span&gt; 
+               &lt;span class="transcript-speaker"&gt;Prezenter:&lt;/span&gt; Witam wszystkich...&lt;/p&gt;
+            
+            &lt;!-- Dalsza zawartość transkrypcji --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    document.getElementById('toggle-transcript').addEventListener('click', function() {
+        const transcript = document.getElementById('transcript');
+        transcript.classList.toggle('collapsed');
+        
+        if (transcript.classList.contains('collapsed')) {
+            this.textContent = 'Pokaż pełną transkrypcję';
+        } else {
+            this.textContent = 'Zwiń transkrypcję';
+        }
+    });
+&lt;/script&gt;</code></pre>
+                        <p class="explanation">Ten przykład pokazuje pełną transkrypcję materiału wideo, która spełnia
+                            wymagania kryterium 1.2.8. Transkrypcja zawiera wszystkie dialogi, informacje o tym, kto
+                            mówi, opisy wizualne (co dzieje się na ekranie) oraz znaczniki czasu. Taka alternatywa
+                            tekstowa jest bardzo wartościowa dla osób z różnymi niepełnosprawnościami, a także dla
+                            wszystkich użytkowników, którzy wolą czytać zamiast oglądać wideo lub szukają konkretnych
+                            informacji.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h5>Dobry przykład - alternatywa tekstowa dla podcastu</h5>
+                        <div class="audio-container">
+                            <audio controls>
+                                <source src="../podcasts/example-podcast.mp3" type="audio/mpeg">
+                                Twoja przeglądarka nie obsługuje elementu audio.
+                            </audio>
+                            <p><a href="../podcasts/example-podcast.mp3" download>Pobierz plik MP3</a></p>
+                            <p><strong>Odcinek 5: Projektowanie włączające</strong><br>
+                                Czas trwania: 28:45 | Rozmówcy: Alicja Nowak, Jan Kowalski</p>
+                        </div>
+
+                        <button class="toggle-transcript" id="toggle-transcript-2">Pokaż pełną transkrypcję</button>
+                        <div class="media-transcript collapsed" id="transcript-2">
+                            <div class="transcript-title">Transkrypcja: Projektowanie włączające</div>
+                            <div class="transcript-content">
+                                <p><span class="transcript-speaker">Alicja:</span> Witam w kolejnym odcinku naszego
+                                    podcastu. Dziś rozmawiamy o projektowaniu włączającym z naszym gościem, Janem
+                                    Kowalskim, który jest specjalistą UX z 15-letnim doświadczeniem.</p>
+
+                                <p><span class="transcript-speaker">Jan:</span> Dziękuję za zaproszenie, Alicjo. Cieszę
+                                    się, że mogę podzielić się swoją wiedzą na ten ważny temat.</p>
+
+                                <p><span class="transcript-speaker">Alicja:</span> Janie, zacznijmy od podstaw. Co to
+                                    jest projektowanie włączające i dlaczego jest tak ważne?</p>
+
+                                <p><span class="transcript-speaker">Jan:</span> Projektowanie włączające to podejście,
+                                    które uwzględnia potrzeby jak najszerszej grupy użytkowników, niezależnie od ich
+                                    zdolności czy kontekstu użycia. Chodzi o to, by nie wykluczać nikogo z korzystania z
+                                    naszych produktów cyfrowych.</p>
+
+                                <p>[Dźwięk dzwonka telefonicznego]</p>
+
+                                <p><span class="transcript-speaker">Alicja:</span> Przepraszam, musimy na chwilę
+                                    przerwać. Wrócimy po krótkiej przerwie.</p>
+
+                                <p>[Muzyka w tle, 10 sekund]</p>
+
+                                <p><span class="transcript-speaker">Alicja:</span> Wracamy do naszej rozmowy. Janie,
+                                    wspomniałeś o kilku przykładach. Może omówmy je bardziej szczegółowo?</p>
+
+                                <p><span class="transcript-speaker">Jan:</span> Oczywiście. Jednym z najważniejszych
+                                    aspektów projektowania włączającego jest zapewnienie, że interfejs jest użyteczny
+                                    dla różnych grup użytkowników...</p>
+                            </div>
+                        </div>
+
+                        <h5>Implementacja</h5>
+                        <pre><code>&lt;div class="podcast-episode"&gt;
+    &lt;h3&gt;Odcinek 5: Projektowanie włączające&lt;/h3&gt;
+    
+    &lt;div class="audio-player"&gt;
+        &lt;audio controls&gt;
+            &lt;source src="podcasts/ep5-projektowanie-wlaczajace.mp3" type="audio/mpeg"&gt;
+            Twoja przeglądarka nie obsługuje elementu audio.
+        &lt;/audio&gt;
+        &lt;div class="player-controls"&gt;
+            &lt;a href="podcasts/ep5-projektowanie-wlaczajace.mp3" download&gt;Pobierz plik MP3&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="podcast-info"&gt;
+        &lt;p&gt;Czas trwania: 28:45 | Rozmówcy: Alicja Nowak, Jan Kowalski&lt;/p&gt;
+        &lt;p&gt;W tym odcinku rozmawiamy o projektowaniu włączającym i jego znaczeniu 
+           dla dostępności cyfrowej.&lt;/p&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="podcast-transcript"&gt;
+        &lt;h4&gt;Pełna transkrypcja odcinka&lt;/h4&gt;
+        
+        &lt;div class="transcript-content"&gt;
+            &lt;p&gt;&lt;strong&gt;Alicja:&lt;/strong&gt; Witam w kolejnym odcinku naszego podcastu. Dziś 
+               rozmawiamy o projektowaniu włączającym z naszym gościem, Janem Kowalskim, 
+               który jest specjalistą UX z 15-letnim doświadczeniem.&lt;/p&gt;
+            
+            &lt;p&gt;&lt;strong&gt;Jan:&lt;/strong&gt; Dziękuję za zaproszenie, Alicjo. Cieszę się, że mogę 
+               podzielić się swoją wiedzą na ten ważny temat.&lt;/p&gt;
+            
+            &lt;p&gt;&lt;strong&gt;Alicja:&lt;/strong&gt; Janie, zacznijmy od podstaw. Co to jest 
+               projektowanie włączające i dlaczego jest tak ważne?&lt;/p&gt;
+            
+            &lt;p&gt;&lt;strong&gt;Jan:&lt;/strong&gt; Projektowanie włączające to podejście, które 
+               uwzględnia potrzeby jak najszerszej grupy użytkowników, niezależnie od ich 
+               zdolności czy kontekstu użycia. Chodzi o to, by nie wykluczać nikogo...&lt;/p&gt;
+            
+            &lt;!-- Dalsza zawartość transkrypcji --&gt;
+            
+            &lt;p&gt;[Dźwięk dzwonka telefonicznego]&lt;/p&gt;
+            
+            &lt;p&gt;&lt;strong&gt;Alicja:&lt;/strong&gt; Przepraszam, musimy na chwilę przerwać. 
+               Wrócimy po krótkiej przerwie.&lt;/p&gt;
+            
+            &lt;p&gt;[Muzyka w tle, 10 sekund]&lt;/p&gt;
+            
+            &lt;p&gt;&lt;strong&gt;Alicja:&lt;/strong&gt; Wracamy do naszej rozmowy. Janie, wspomniałeś 
+               o kilku przykładach...&lt;/p&gt;
+            
+            &lt;!-- Kontynuacja transkrypcji... --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        <p class="explanation">Ten przykład pokazuje alternatywę tekstową dla podcastu. Transkrypcja
+                            zawiera całą treść audio, identyfikuje mówców, a także opisuje istotne dźwięki tła i efekty
+                            (takie jak dzwonek telefoniczny czy muzyka). Dzięki temu osoby niesłyszące lub słabosłyszące
+                            mają pełny dostęp do wszystkich informacji zawartych w nagraniu.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h5>Zły przykład - brak alternatywy dla materiału wideo</h5>
+                        <pre><code>&lt;div class="video-tutorial"&gt;
+    &lt;h3&gt;Jak poprawić dostępność swojej strony&lt;/h3&gt;
+    &lt;video controls width="600"&gt;
+        &lt;source src="videos/accessibility-tutorial.mp4" type="video/mp4"&gt;
+        &lt;track kind="captions" src="videos/captions.vtt" label="Polski" default&gt;
+        Przepraszamy, Twoja przeglądarka nie obsługuje wideo.
+    &lt;/video&gt;
+    
+    &lt;div class="video-description"&gt;
+        &lt;p&gt;W tym filmie pokazujemy najlepsze praktyki dotyczące poprawy dostępności 
+           cyfrowej.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        <p class="explanation">Problem: Ten przykład nie spełnia kryterium 1.2.8, ponieważ nie zawiera
+                            pełnej alternatywy tekstowej dla materiału wideo. Samo krótkie podsumowanie tematu nie jest
+                            wystarczające. Chociaż wideo zawiera napisy, nie stanowią one pełnej alternatywy, gdyż nie
+                            opisują elementów wizualnych (co jest pokazywane na ekranie). Osoby niewidome lub z
+                            poważnymi wadami wzroku nie będą miały dostępu do informacji wizualnych prezentowanych w
+                            materiale.</p>
+                    </div>
+                </div>
+
+                <h4>Najlepsze praktyki tworzenia alternatyw dla mediów</h4>
+                <ul>
+                    <li><strong>Kompletność</strong> - Alternatywa powinna zawierać wszystkie istotne informacje z
+                        materiału multimedialnego, zarówno dźwiękowe, jak i wizualne</li>
+                    <li><strong>Struktura</strong> - Transkrypcja powinna być strukturalnie zorganizowana, najlepiej
+                        chronologicznie, z zachowaniem podziału na sekcje i oznaczeniem czasu</li>
+                    <li><strong>Identyfikacja mówców</strong> - Przy dialogach należy wyraźnie wskazać, kto mówi,
+                        używając konsekwentnego formatowania</li>
+                    <li><strong>Opisy wizualne</strong> - Należy dokładnie opisać ważne elementy wizualne, które nie są
+                        oczywiste z samej treści dialogów</li>
+                    <li><strong>Opisy dźwięków</strong> - Istotne dźwięki tła, muzyka i efekty dźwiękowe powinny być
+                        opisane</li>
+                    <li><strong>Czytelność</strong> - Transkrypcja powinna być sformatowana w sposób czytelny, z użyciem
+                        paragrafów, nagłówków i innych elementów strukturalnych</li>
+                    <li><strong>Dostępność</strong> - Sama alternatywa tekstowa również musi być dostępna (odpowiedni
+                        kontrast, rozmiar tekstu, struktura semantyczna)</li>
+                </ul>
+
+                <h4>Korzyści z alternatyw tekstowych dla mediów</h4>
+                <ul>
+                    <li><strong>Dostępność dla osób z niepełnosprawnościami</strong> - Osoby niewidome, niesłyszące lub
+                        z innymi niepełnosprawnościami mogą korzystać z treści</li>
+                    <li><strong>Lepsza indeksacja</strong> - Wyszukiwarki mogą indeksować treść tekstową, zwiększając
+                        widoczność materiału</li>
+                    <li><strong>Opcje wyboru</strong> - Użytkownicy mogą wybrać preferowany sposób konsumpcji treści
+                        (wideo lub tekst)</li>
+                    <li><strong>Wsparcie dla wolnych łączy</strong> - Użytkownicy z wolnym połączeniem mogą czytać
+                        zamiast pobierać duże pliki wideo</li>
+                    <li><strong>Wyszukiwanie i cytowanie</strong> - Tekstowa alternatywa umożliwia łatwe wyszukiwanie
+                        informacji i cytowanie fragmentów</li>
+                    <li><strong>Tłumaczenie</strong> - Tekst można łatwiej przetłumaczyć na inne języki niż materiały
+                        audio/wideo</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/media-alternative-prerecorded.html"
+                            target="_blank" rel="noopener">Zrozumienie kryterium 1.2.8</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G69" target="_blank"
+                            rel="noopener">Technika G69: Dostarczanie alternatywy dla mediów czasowych</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G159" target="_blank"
+                            rel="noopener">Technika G159: Dostarczanie alternatywnego sposobu odbioru zawartości
+                            czasowej</a></li>
+                    <li><a href="https://webaim.org/techniques/captions/" target="_blank" rel="noopener">WebAIM: Napisy,
+                            transkrypcje i audiodeskrypcje</a></li>
+                    <li><a href="https://www.3playmedia.com/learn/popular-topics/transcription/" target="_blank"
+                            rel="noopener">Przewodnik po tworzeniu transkrypcji</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.2.7.html">Poprzedni: 1.2.7 Rozszerzona audiodeskrypcja (nagranie)</a></li>
+                    <li><a href="1.2.9.html">Następny: 1.2.9 Tylko audio (na żywo)</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggleButtons = document.querySelectorAll('.toggle-transcript');
+
+            toggleButtons.forEach(button => {
+                const id = button.id.split('-').pop();
+                const transcript = document.getElementById('transcript-' + id);
+
+                button.addEventListener('click', function () {
+                    transcript.classList.toggle('collapsed');
+
+                    if (transcript.classList.contains('collapsed')) {
+                        this.textContent = 'Pokaż pełną transkrypcję';
+                    } else {
+                        this.textContent = 'Zwiń transkrypcję';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
