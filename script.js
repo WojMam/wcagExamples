@@ -23,7 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	document.body.prepend(skipLink);
 
-	// Load footer content
+	// Load header and footer content
+	loadHeader();
 	loadFooter();
 
 	// Example of accessible form validation
@@ -110,6 +111,67 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 /**
+ * Funkcja ładująca zawartość nagłówka z pliku header.html
+ */
+function loadHeader() {
+	const headerElement = document.querySelector("header");
+
+	if (headerElement) {
+		// Określ ścieżkę do pliku header.html
+		let headerPath = "header.html";
+
+		// Sprawdź, czy jesteśmy w podfolderze (np. guidelines)
+		if (window.location.pathname.includes("/guidelines/")) {
+			headerPath = "../header.html";
+		} else if (
+			window.location.pathname.includes("/videos/") ||
+			window.location.pathname.includes("/images/") ||
+			window.location.pathname.includes("/audio/")
+		) {
+			headerPath = "../header.html";
+		}
+
+		// Użyj fetch API do pobrania zawartości header.html
+		fetch(headerPath)
+			.then(response => {
+				if (!response.ok) {
+					throw new Error("Nie udało się załadować nagłówka");
+				}
+				return response.text();
+			})
+			.then(html => {
+				// Dostosuj ścieżki do obrazów i linków w zależności od lokalizacji
+				if (
+					window.location.pathname.includes("/guidelines/") ||
+					window.location.pathname.includes("/videos/") ||
+					window.location.pathname.includes("/images/") ||
+					window.location.pathname.includes("/audio/")
+				) {
+					// Zmień ścieżki w pobranym HTML
+					html = html.replace(/href="index.html/g, 'href="../index.html');
+					html = html.replace(/src="images\//g, 'src="../images/');
+				}
+
+				headerElement.innerHTML = html;
+			})
+			.catch(error => {
+				console.error("Błąd ładowania nagłówka:", error);
+				// W przypadku błędu, wyświetl domyślny nagłówek
+				headerElement.innerHTML = `
+					<h1>WCAG 2.1 - Nieoficjalny przewodnik dostępności</h1>
+					<nav aria-label="Główna nawigacja">
+						<ul class="main-nav">
+							<li><a href="${
+								window.location.pathname.includes("/guidelines/") ? "../" : ""
+							}index.html">Strona główna</a></li>
+						</ul>
+					</nav>
+				`;
+			});
+	}
+}
+
+/**
  * Funkcja ładująca zawartość stopki z pliku footer.html
  */
 function loadFooter() {
@@ -121,6 +183,12 @@ function loadFooter() {
 
 		// Sprawdź, czy jesteśmy w podfolderze (np. guidelines)
 		if (window.location.pathname.includes("/guidelines/")) {
+			footerPath = "../footer.html";
+		} else if (
+			window.location.pathname.includes("/videos/") ||
+			window.location.pathname.includes("/images/") ||
+			window.location.pathname.includes("/audio/")
+		) {
 			footerPath = "../footer.html";
 		}
 
