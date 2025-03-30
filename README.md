@@ -1,36 +1,56 @@
-# Przykłady WCAG 2.1 - Przewodnik po dostępności stron internetowych
+# WCAG 2.1 Przewodnik Dostępności
 
-Ten projekt to edukacyjna strona internetowa demonstrująca dobre, średnie i złe praktyki w zakresie dostępności stron internetowych zgodnie z wytycznymi WCAG 2.1 (Web Content Accessibility Guidelines).
+Nieoficjalny przewodnik i przykłady implementacji wytycznych dostępności WCAG 2.1 w języku polskim.
 
 ## O projekcie
 
-Strona zawiera przykłady implementacji HTML, CSS i JavaScript, które pokazują jak prawidłowo tworzyć dostępne elementy interfejsu użytkownika oraz jakich błędów należy unikać.
+Ten projekt ma charakter edukacyjny i służy do prezentacji dobrych praktyk w tworzeniu dostępnych stron internetowych. Zawiera przykłady implementacji różnych kryteriów sukcesu WCAG 2.1, wraz z wyjaśnieniami, dlaczego dane rozwiązania są dostępne lub niedostępne.
 
-Projekt skupia się na przedstawieniu czterech głównych zasad WCAG 2.1:
+**UWAGA:** Ten projekt nie jest oficjalną dokumentacją WCAG 2.1. Został stworzony w celach edukacyjnych i może zawierać błędy lub nieścisłości. Oficjalna dokumentacja WCAG 2.1 jest dostępna na stronie [W3C](https://www.w3.org/TR/WCAG21/).
 
-1. Postrzegalność (Perceivable)
-2. Funkcjonalność (Operable)
-3. Zrozumiałość (Understandable)
-4. Solidność (Robust)
+## Zawartość
 
-## Struktura projektu
+Projekt zawiera przykłady implementacji dla następujących wytycznych:
 
-- `index.html` - główny plik HTML strony
-- `styles.css` - arkusz stylów CSS
-- `script.js` - skrypty JavaScript
-- `images/` - katalog zawierający obrazy używane w przykładach
-- `videos/` - katalog zawierający filmy używane w przykładach
+### 1. Postrzegalność
+
+- **1.1 Alternatywa tekstowa**
+
+  - 1.1.1 Treść nietekstowa (A)
+
+- **1.2 Media zsynchronizowane**
+  - 1.2.1 Tylko audio lub tylko wideo (nagranie) (A)
+  - 1.2.2 Napisy rozszerzone (nagranie) (A)
+  - 1.2.3 Audiodeskrypcja lub alternatywa tekstowa (A)
+  - 1.2.4 Napisy rozszerzone (na żywo) (AA)
+  - 1.2.5 Audiodeskrypcja (nagranie) (AA)
+  - 1.2.6 Język migowy (nagranie) (AAA)
+  - 1.2.7 Rozszerzona audiodeskrypcja (nagranie) (AAA)
+  - 1.2.8 Alternatywa dla mediów (nagranie) (AAA)
+  - 1.2.9 Tylko audio (na żywo) (AAA)
 
 ## Jak korzystać
 
-Otwórz plik `index.html` w przeglądarce internetowej, aby zobaczyć stronę. Możesz przeglądać poszczególne sekcje odpowiadające zasadom WCAG, aby zobaczyć przykłady dobrych i złych praktyk.
+Każda strona zawiera:
 
-## Zasoby dotyczące WCAG 2.1
+1. Opis kryterium sukcesu
+2. Wyjaśnienie intencji kryterium
+3. Przykłady dobrej implementacji (zgodnej z WCAG)
+4. Przykłady złej implementacji (niezgodnej z WCAG)
+5. Wyjaśnienia, dlaczego dane rozwiązania są dostępne lub niedostępne
+6. Kod źródłowy przykładów, który można bezpośrednio wykorzystać w swoich projektach
+7. Linki do dodatkowych zasobów i oficjalnej dokumentacji
 
-- [Oficjalna dokumentacja WCAG 2.1 (W3C)](https://www.w3.org/TR/WCAG21/)
-- [Zrozumieć WCAG 2.1](https://www.w3.org/WAI/WCAG21/Understanding/)
-- [Jak spełnić WCAG 2.1](https://www.w3.org/WAI/WCAG21/quickref/)
+## Technologie
+
+Projekt wykorzystuje wyłącznie:
+
+- HTML5
+- CSS3
+- JavaScript
+
+Bez zewnętrznych bibliotek czy frameworków, aby skupić się na podstawach dostępności.
 
 ## Licencja
 
-Ten projekt jest udostępniany na warunkach licencji MIT.
+Projekt jest dostępny na licencji MIT. Możesz swobodnie korzystać z kodu źródłowego i przykładów w swoich projektach.
