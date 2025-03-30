@@ -115,59 +115,136 @@ document.addEventListener("DOMContentLoaded", function () {
  */
 function loadHeader() {
 	const headerElement = document.querySelector("header");
+	console.log("Funkcja loadHeader() uruchomiona");
+	console.log("Znaleziony element nagłówka:", headerElement);
 
 	if (headerElement) {
 		// Określ ścieżkę do pliku header.html
 		let headerPath = "header.html";
+		// Flaga określająca, czy jesteśmy w podkatalogu
+		let isSubdirectory = false;
 
 		// Sprawdź, czy jesteśmy w podfolderze (np. guidelines)
-		if (window.location.pathname.includes("/guidelines/")) {
+		const path = window.location.pathname;
+		console.log("Aktualna ścieżka:", path);
+
+		if (path.includes("/guidelines/")) {
 			headerPath = "../header.html";
+			isSubdirectory = true;
+			console.log("Wykryto katalog guidelines, ustawiam ścieżkę:", headerPath);
 		} else if (
-			window.location.pathname.includes("/videos/") ||
-			window.location.pathname.includes("/images/") ||
-			window.location.pathname.includes("/audio/")
+			path.includes("/videos/") ||
+			path.includes("/images/") ||
+			path.includes("/audio/")
 		) {
 			headerPath = "../header.html";
+			isSubdirectory = true;
+			console.log("Wykryto inny podkatalog, ustawiam ścieżkę:", headerPath);
+		} else {
+			console.log("Wykryto katalog główny, ustawiam ścieżkę:", headerPath);
 		}
 
-		// Użyj fetch API do pobrania zawartości header.html
-		fetch(headerPath)
-			.then(response => {
-				if (!response.ok) {
-					throw new Error("Nie udało się załadować nagłówka");
-				}
-				return response.text();
-			})
-			.then(html => {
+		console.log("Ładowanie nagłówka z:", headerPath);
+
+		// Tymczasowo wyświetl zawartość awaryjną, żeby coś było widoczne
+		headerElement.innerHTML = `<h1>Ładowanie nagłówka...</h1>`;
+
+		try {
+			// Użyj XMLHttpRequest zamiast fetch dla plików lokalnych
+			const xhr = new XMLHttpRequest();
+			xhr.open("GET", headerPath, false); // tryb synchroniczny
+			xhr.send();
+
+			if (xhr.status === 200) {
+				let html = xhr.responseText;
+				console.log("Pobrano zawartość nagłówka, długość:", html.length);
+
 				// Dostosuj ścieżki do obrazów i linków w zależności od lokalizacji
-				if (
-					window.location.pathname.includes("/guidelines/") ||
-					window.location.pathname.includes("/videos/") ||
-					window.location.pathname.includes("/images/") ||
-					window.location.pathname.includes("/audio/")
-				) {
-					// Zmień ścieżki w pobranym HTML
+				if (isSubdirectory) {
 					html = html.replace(/href="index.html/g, 'href="../index.html');
 					html = html.replace(/src="images\//g, 'src="../images/');
+					console.log("Dostosowano ścieżki dla podkatalogu");
 				}
 
 				headerElement.innerHTML = html;
-			})
-			.catch(error => {
-				console.error("Błąd ładowania nagłówka:", error);
-				// W przypadku błędu, wyświetl domyślny nagłówek
-				headerElement.innerHTML = `
-					<h1>WCAG 2.1 - Nieoficjalny przewodnik dostępności</h1>
-					<nav aria-label="Główna nawigacja">
-						<ul class="main-nav">
-							<li><a href="${
-								window.location.pathname.includes("/guidelines/") ? "../" : ""
-							}index.html">Strona główna</a></li>
-						</ul>
-					</nav>
-				`;
-			});
+				console.log("Zaktualizowano zawartość nagłówka");
+			} else {
+				throw new Error(
+					"Nie udało się załadować nagłówka, status: " + xhr.status
+				);
+			}
+		} catch (error) {
+			console.error("Błąd ładowania nagłówka:", error);
+			// W przypadku błędu, wstaw bezpośrednio zawartość nagłówka
+			const headerContent = isSubdirectory
+				? `
+				<h1>WCAG 2.1 - Nieoficjalny przewodnik dostępności</h1>
+				<p class="subtitle">Przykłady implementacji wytycznych dostępności stron internetowych</p>
+
+				<div class="disclaimer-banner" role="alert">
+					<img src="../images/under-development-banner.png" alt="Projekt w trakcie rozwoju" width="80" height="80"
+						style="float: left; margin-right: 20px; margin-bottom: 10px;">
+					<div style="overflow: hidden;">
+						<strong>Uwaga! To nie jest oficjalna strona WCAG!</strong>
+						Ta strona służy jedynie do celów edukacyjnych i ćwiczeniowych. Nie jest to oficjalna dokumentacja WCAG 2.1.
+						Na stronie mogą występować błędy lub niektóre funkcje mogą nie działać poprawnie, ponieważ projekt jest w
+						trakcie rozwoju.
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+
+				<nav aria-label="Główna nawigacja">
+					<ul class="main-nav">
+						<li><a href="../index.html">Strona główna</a></li>
+						<li>
+							<a href="../index.html#section-1">1. Postrzegalność</a>
+							<ul class="subnav">
+								<li><a href="../index.html#guideline-1-1">1.1 Alternatywa tekstowa</a></li>
+								<li><a href="../index.html#guideline-1-2">1.2 Media zsynchronizowane</a></li>
+								<li><a href="../index.html#guideline-1-3">1.3 Możliwość adaptacji</a></li>
+								<li><a href="../index.html#guideline-1-4">1.4 Możliwość rozróżnienia</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			`
+				: `
+				<h1>WCAG 2.1 - Nieoficjalny przewodnik dostępności</h1>
+				<p class="subtitle">Przykłady implementacji wytycznych dostępności stron internetowych</p>
+
+				<div class="disclaimer-banner" role="alert">
+					<img src="images/under-development-banner.png" alt="Projekt w trakcie rozwoju" width="80" height="80"
+						style="float: left; margin-right: 20px; margin-bottom: 10px;">
+					<div style="overflow: hidden;">
+						<strong>Uwaga! To nie jest oficjalna strona WCAG!</strong>
+						Ta strona służy jedynie do celów edukacyjnych i ćwiczeniowych. Nie jest to oficjalna dokumentacja WCAG 2.1.
+						Na stronie mogą występować błędy lub niektóre funkcje mogą nie działać poprawnie, ponieważ projekt jest w
+						trakcie rozwoju.
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+
+				<nav aria-label="Główna nawigacja">
+					<ul class="main-nav">
+						<li><a href="index.html">Strona główna</a></li>
+						<li>
+							<a href="index.html#section-1">1. Postrzegalność</a>
+							<ul class="subnav">
+								<li><a href="index.html#guideline-1-1">1.1 Alternatywa tekstowa</a></li>
+								<li><a href="index.html#guideline-1-2">1.2 Media zsynchronizowane</a></li>
+								<li><a href="index.html#guideline-1-3">1.3 Możliwość adaptacji</a></li>
+								<li><a href="index.html#guideline-1-4">1.4 Możliwość rozróżnienia</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			`;
+
+			headerElement.innerHTML = headerContent;
+			console.log("Załadowano zawartość nagłówka bezpośrednio z kodu");
+		}
+	} else {
+		console.error("Nie znaleziono elementu nagłówka na stronie!");
 	}
 }
 
@@ -180,38 +257,45 @@ function loadFooter() {
 	if (footerElement) {
 		// Określ ścieżkę do pliku footer.html
 		let footerPath = "footer.html";
+		// Flaga określająca, czy jesteśmy w podkatalogu
+		let isSubdirectory = false;
 
 		// Sprawdź, czy jesteśmy w podfolderze (np. guidelines)
 		if (window.location.pathname.includes("/guidelines/")) {
 			footerPath = "../footer.html";
+			isSubdirectory = true;
 		} else if (
 			window.location.pathname.includes("/videos/") ||
 			window.location.pathname.includes("/images/") ||
 			window.location.pathname.includes("/audio/")
 		) {
 			footerPath = "../footer.html";
+			isSubdirectory = true;
 		}
 
-		// Użyj fetch API do pobrania zawartości footer.html
-		fetch(footerPath)
-			.then(response => {
-				if (!response.ok) {
-					throw new Error("Nie udało się załadować stopki");
-				}
-				return response.text();
-			})
-			.then(html => {
+		try {
+			// Użyj XMLHttpRequest zamiast fetch dla plików lokalnych
+			const xhr = new XMLHttpRequest();
+			xhr.open("GET", footerPath, false); // tryb synchroniczny
+			xhr.send();
+
+			if (xhr.status === 200) {
+				let html = xhr.responseText;
 				footerElement.innerHTML = html;
-			})
-			.catch(error => {
-				console.error("Błąd ładowania stopki:", error);
-				// W przypadku błędu, wyświetl domyślną stopkę
-				footerElement.innerHTML = `
-					<p>&copy; Nieoficjalny przewodnik WCAG 2.1 - Autor: Wojciech Mamys</p>
-					<p>
-						<a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener">Oficjalna dokumentacja WCAG 2.1</a>
-					</p>
-				`;
-			});
+			} else {
+				throw new Error(
+					"Nie udało się załadować stopki, status: " + xhr.status
+				);
+			}
+		} catch (error) {
+			console.error("Błąd ładowania stopki:", error);
+			// W przypadku błędu, wstaw bezpośrednio zawartość stopki
+			footerElement.innerHTML = `
+				<p>&copy; Nieoficjalny przewodnik WCAG 2.1 - Autor: Wojciech Mamys</p>
+				<p>
+					<a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener">Oficjalna dokumentacja WCAG 2.1</a>
+				</p>
+			`;
+		}
 	}
 }
