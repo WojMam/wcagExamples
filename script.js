@@ -162,6 +162,7 @@ function loadHeader() {
 				// Dostosuj ścieżki do obrazów i linków w zależności od lokalizacji
 				if (isSubdirectory) {
 					html = html.replace(/href="index.html/g, 'href="../index.html');
+					html = html.replace(/href="wytyczne.html/g, 'href="../wytyczne.html');
 					html = html.replace(/src="images\//g, 'src="../images/');
 					console.log("Dostosowano ścieżki dla podkatalogu");
 				}
@@ -179,7 +180,7 @@ function loadHeader() {
 			const headerContent = isSubdirectory
 				? `
 				<h1>WCAG 2.1 - Nieoficjalny przewodnik dostępności</h1>
-				<p class="subtitle">Przykłady implementacji wytycznych dostępności stron internetowych</p>
+				<p class="subtitle">Praktyczne przykłady implementacji wytycznych WCAG 2.1</p>
 
 				<div class="disclaimer-banner" role="alert">
 					<img src="../images/under-development-banner.png" alt="Projekt w trakcie rozwoju" width="80" height="80"
@@ -196,21 +197,13 @@ function loadHeader() {
 				<nav aria-label="Główna nawigacja">
 					<ul class="main-nav">
 						<li><a href="../index.html">Strona główna</a></li>
-						<li>
-							<a href="../index.html#section-1">1. Postrzegalność</a>
-							<ul class="subnav">
-								<li><a href="../index.html#guideline-1-1">1.1 Alternatywa tekstowa</a></li>
-								<li><a href="../index.html#guideline-1-2">1.2 Media zsynchronizowane</a></li>
-								<li><a href="../index.html#guideline-1-3">1.3 Możliwość adaptacji</a></li>
-								<li><a href="../index.html#guideline-1-4">1.4 Możliwość rozróżnienia</a></li>
-							</ul>
-						</li>
+						<li><a href="../wytyczne.html">Przykłady wytycznych</a></li>
 					</ul>
 				</nav>
 			`
 				: `
 				<h1>WCAG 2.1 - Nieoficjalny przewodnik dostępności</h1>
-				<p class="subtitle">Przykłady implementacji wytycznych dostępności stron internetowych</p>
+				<p class="subtitle">Praktyczne przykłady implementacji wytycznych WCAG 2.1</p>
 
 				<div class="disclaimer-banner" role="alert">
 					<img src="images/under-development-banner.png" alt="Projekt w trakcie rozwoju" width="80" height="80"
@@ -227,15 +220,7 @@ function loadHeader() {
 				<nav aria-label="Główna nawigacja">
 					<ul class="main-nav">
 						<li><a href="index.html">Strona główna</a></li>
-						<li>
-							<a href="index.html#section-1">1. Postrzegalność</a>
-							<ul class="subnav">
-								<li><a href="index.html#guideline-1-1">1.1 Alternatywa tekstowa</a></li>
-								<li><a href="index.html#guideline-1-2">1.2 Media zsynchronizowane</a></li>
-								<li><a href="index.html#guideline-1-3">1.3 Możliwość adaptacji</a></li>
-								<li><a href="index.html#guideline-1-4">1.4 Możliwość rozróżnienia</a></li>
-							</ul>
-						</li>
+						<li><a href="wytyczne.html">Przykłady wytycznych</a></li>
 					</ul>
 				</nav>
 			`;
