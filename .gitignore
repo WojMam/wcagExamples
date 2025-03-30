@@ -1,0 +1,41 @@
+# Pliki systemowe
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Pliki IDE i edytorów
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.settings/
+.classpath
+.factorypath
+
+# Pliki tymczasowe
+*.log
+*.tmp
+*.temp
+.sass-cache/
+node_modules/
+bower_components/
+dist/
+build/
+temp/
+tmp/
+
+# Inne
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log* 
