@@ -114,6 +114,21 @@ p {
 }
 
 /* Główna strona z wytycznymi */
+.page-intro {
+	margin-bottom: 30px;
+}
+
+.page-intro h1 {
+	font-size: 2em;
+	margin-bottom: 15px;
+}
+
+.page-intro p {
+	font-size: 1.1em;
+	line-height: 1.6;
+	margin-bottom: 20px;
+}
+
 .guideline-section {
 	margin-bottom: 30px;
 }

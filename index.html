@@ -4,25 +4,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WCAG 2.1 - Przewodnik dostępności</title>
+    <title>WCAG 2.1 - Nieoficjalny przewodnik dostępności</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        .disclaimer-banner {
-            background-color: #ffeb3b;
-            color: #333;
-            padding: 12px 20px;
-            margin-bottom: 20px;
-            border-radius: 4px;
-            border-left: 5px solid #f57c00;
-            font-size: 16px;
-            line-height: 1.5;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
         }
 
-        .disclaimer-banner strong {
+        .tile {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tile:hover,
+        .tile:focus-within {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .tile-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+
+        .tile-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
             display: block;
-            margin-bottom: 4px;
-            font-size: 18px;
+            text-align: center;
+        }
+
+        .tile-content {
+            padding: 20px;
+            flex: 1;
+        }
+
+        .tile-description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .tile-footer {
+            padding: 15px 20px;
+            text-align: right;
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+
+        .tile-link {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .tile-link:hover,
+        .tile-link:focus {
+            background-color: var(--secondary-color);
+            outline: none;
+            text-decoration: none;
+        }
+
+        .hero {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            max-width: 800px;
+            line-height: 1.5;
+        }
+
+        .page-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .page-intro h2 {
+            font-size: 1.8em;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        .disclaimer-banner {
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 30px 20px;
+            }
         }
     </style>
 </head>
@@ -35,88 +140,74 @@
     </header>
 
     <main id="main">
-        <section class="guideline-section">
-            <h2>1. Postrzegalność</h2>
-            <p>Informacje oraz komponenty interfejsu użytkownika muszą być przedstawione użytkownikom w sposób, który
-                umożliwi im ich postrzeganie.</p>
-
-            <div class="guideline">
-                <h3><a href="guidelines/1.1.html">1.1 Alternatywa tekstowa</a></h3>
-                <ul class="criteria-list">
-                    <li><a href="guidelines/1.1.1.html">1.1.1 Treść nietekstowa (A)</a></li>
-                </ul>
-            </div>
-
-            <div class="guideline">
-                <h3><a href="guidelines/1.2.html">1.2 Media zsynchronizowane</a></h3>
-                <ul class="criteria-list">
-                    <li><a href="guidelines/1.2.1.html">1.2.1 Tylko audio lub tylko wideo (nagranie) (A)</a></li>
-                    <li><a href="guidelines/1.2.2.html">1.2.2 Napisy rozszerzone (nagranie) (A)</a></li>
-                    <li><a href="guidelines/1.2.3.html">1.2.3 Audiodeskrypcja lub alternatywa tekstowa (A)</a></li>
-                    <li><a href="guidelines/1.2.4.html">1.2.4 Napisy rozszerzone (na żywo) (AA)</a></li>
-                    <li><a href="guidelines/1.2.5.html">1.2.5 Audiodeskrypcja (nagranie) (AA)</a></li>
-                    <li><a href="guidelines/1.2.6.html">1.2.6 Język migowy (nagranie) (AAA)</a></li>
-                    <li><a href="guidelines/1.2.7.html">1.2.7 Rozszerzona audiodeskrypcja (nagranie) (AAA)</a></li>
-                    <li><a href="guidelines/1.2.8.html">1.2.8 Alternatywa dla mediów (nagranie) (AAA)</a></li>
-                    <li><a href="guidelines/1.2.9.html">1.2.9 Tylko audio (na żywo) (AAA)</a></li>
-                </ul>
-            </div>
-
-            <div class="guideline">
-                <h3>1.3 Możliwość adaptacji</h3>
-                <p class="note"><em>Podstrony dla tej wytycznej są w trakcie przygotowania.</em></p>
-                <ul class="criteria-list">
-                    <li>1.3.1 Informacje i relacje (A)</li>
-                    <li>1.3.2 Zrozumiała kolejność (A)</li>
-                    <li>1.3.3 Właściwości zmysłowe (A)</li>
-                    <li>1.3.4 Orientacja (AA)</li>
-                    <li>1.3.5 Określenie pożądanej wartości (AA)</li>
-                    <li>1.3.6 Określenie przeznaczenia (AAA)</li>
-                </ul>
-            </div>
-
-            <div class="guideline">
-                <h3>1.4 Możliwość rozróżnienia</h3>
-                <p class="note"><em>Podstrony dla tej wytycznej są w trakcie przygotowania.</em></p>
-                <ul class="criteria-list">
-                    <li>1.4.1 Użycie koloru (A)</li>
-                    <li>1.4.2 Kontrola odtwarzania dźwięku (A)</li>
-                    <li>1.4.3 Kontrast (minimalny) (AA)</li>
-                    <li>1.4.4 Zmiana rozmiaru tekstu (AA)</li>
-                    <li>1.4.5 Obrazy tekstu (AA)</li>
-                    <li>1.4.6 Kontrast (rozszerzony) (AAA)</li>
-                    <li>1.4.7 Niska głośność lub brak tła dźwiękowego (AAA)</li>
-                    <li>1.4.8 Prezentacja wizualna (AAA)</li>
-                    <li>1.4.9 Obrazy tekstu (bez wyjątków) (AAA)</li>
-                    <li>1.4.10 Zawijanie tekstu (AA)</li>
-                    <li>1.4.11 Kontrast elementów nietekstowych (AA)</li>
-                    <li>1.4.12 Odstępy w tekście (AA)</li>
-                    <li>1.4.13 Treść spod kursora lub fokusu (AA)</li>
-                </ul>
-            </div>
+        <section class="hero">
+            <h1>WCAG 2.1 - Nieoficjalny przewodnik dostępności</h1>
+            <p>Narzędzia, przykłady i poradniki pomagające w tworzeniu dostępnych stron internetowych zgodnych ze
+                standardem WCAG 2.1</p>
         </section>
 
-        <section class="guideline-section">
-            <h2>2. Funkcjonalność</h2>
-            <p>Komponenty interfejsu użytkownika oraz nawigacja muszą być możliwe do użycia.</p>
-            <p class="note"><em>Ta sekcja jest w trakcie przygotowania.</em></p>
-            <!-- Podobne sekcje dla wytycznych 2.x -->
-        </section>
+        <div class="page-intro">
+            <h2>Wybierz narzędzie</h2>
+            <p>Poniżej znajdziesz dostępne narzędzia i zasoby dotyczące dostępności cyfrowej.</p>
+        </div>
 
-        <section class="guideline-section">
-            <h2>3. Zrozumiałość</h2>
-            <p>Treść oraz obsługa interfejsu użytkownika muszą być zrozumiałe.</p>
-            <p class="note"><em>Ta sekcja jest w trakcie przygotowania.</em></p>
-            <!-- Podobne sekcje dla wytycznych 3.x -->
-        </section>
+        <div class="dashboard">
+            <div class="tile">
+                <div class="tile-header">
+                    <span class="tile-icon">📋</span>
+                    Przykłady wytycznych
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Przeglądaj przykłady implementacji wytycznych WCAG 2.1 z praktycznymi
+                        przykładami kodu i omówieniem każdego kryterium sukcesu.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="wytyczne.html" class="tile-link">Przejdź do wytycznych</a>
+                </div>
+            </div>
 
-        <section class="guideline-section">
-            <h2>4. Solidność</h2>
-            <p>Treść musi być wystarczająco solidna, aby mogła być skutecznie interpretowana przez różnorodne programy
-                użytkownika, w tym technologie wspomagające.</p>
-            <p class="note"><em>Ta sekcja jest w trakcie przygotowania.</em></p>
-            <!-- Podobne sekcje dla wytycznych 4.x -->
-        </section>
+            <div class="tile">
+                <div class="tile-header">
+                    <span class="tile-icon">🔍</span>
+                    Tester dostępności
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Sprawdź dostępność swojej strony poprzez serię testów weryfikujących
+                        zgodność z wytycznymi WCAG 2.1.</p>
+                </div>
+                <div class="tile-footer">
+                    <p class="note"><em>Narzędzie w przygotowaniu</em></p>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    <span class="tile-icon">📚</span>
+                    Poradniki i artykuły
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Materiały edukacyjne dotyczące dostępności cyfrowej - artykuły,
+                        poradniki i najlepsze praktyki w projektowaniu uniwersalnym.</p>
+                </div>
+                <div class="tile-footer">
+                    <p class="note"><em>Sekcja w przygotowaniu</em></p>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tile-header">
+                    <span class="tile-icon">🛠️</span>
+                    Narzędzia i zasoby
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Zbiór narzędzi, bibliotek i zasobów wspomagających wdrażanie dostępności
+                        na stronach internetowych i w aplikacjach.</p>
+                </div>
+                <div class="tile-footer">
+                    <p class="note"><em>Sekcja w przygotowaniu</em></p>
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer>
