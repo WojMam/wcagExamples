@@ -43,10 +43,11 @@
             <div class="examples">
                 <h3>Przykłady</h3>
 
-                <div class="good-example">
-                    <h4>Dobry przykład - semantyczny HTML</h4>
-                    <p>Używanie prawidłowych znaczników semantycznych HTML5 dla struktury strony:</p>
-                    <pre><code class="language-html">&lt;header&gt;
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - semantyczny HTML</h4>
+                        <p>Używanie prawidłowych znaczników semantycznych HTML5 dla struktury strony:</p>
+                        <pre><code class="language-html">&lt;header&gt;
     &lt;h1&gt;Tytuł strony&lt;/h1&gt;
     &lt;nav&gt;
         &lt;ul&gt;
@@ -71,15 +72,19 @@
 &lt;footer&gt;
     &lt;p&gt;Informacje stopki&lt;/p&gt;
 &lt;/footer&gt;</code></pre>
-                    <p>Ten kod używa semantycznych elementów HTML5 (header, nav, main, article, section, footer) oraz
-                        prawidłowej hierarchii nagłówków (h1, h2, h3), co pozwala technologiom wspomagającym rozpoznać
-                        strukturę strony.</p>
+                        <p>Ten kod używa semantycznych elementów HTML5 (header, nav, main, article, section, footer)
+                            oraz
+                            prawidłowej hierarchii nagłówków (h1, h2, h3), co pozwala technologiom wspomagającym
+                            rozpoznać
+                            strukturę strony.</p>
+                    </div>
                 </div>
 
-                <div class="bad-example">
-                    <h4>Zły przykład - brak semantyki</h4>
-                    <p>Użycie elementów &lt;div&gt; bez semantycznego znaczenia i formatowanie tylko wizualne:</p>
-                    <pre><code class="language-html">&lt;div class="header"&gt;
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - brak semantyki</h4>
+                        <p>Użycie elementów &lt;div&gt; bez semantycznego znaczenia i formatowanie tylko wizualne:</p>
+                        <pre><code class="language-html">&lt;div class="header"&gt;
     &lt;div class="title" style="font-size: 24px; font-weight: bold;"&gt;Tytuł strony&lt;/div&gt;
     &lt;div class="nav"&gt;
         &lt;div&gt;Link nawigacyjny 1&lt;/div&gt;
@@ -102,14 +107,16 @@
 &lt;div class="footer"&gt;
     &lt;div&gt;Informacje stopki&lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                    <p>Ten kod używa tylko elementów &lt;div&gt; i stylizacji CSS do formatowania wizualnego, bez
-                        semantycznego znaczenia. Technologie wspomagające nie mogą rozpoznać struktury treści ani
-                        hierarchii nagłówków.</p>
+                        <p>Ten kod używa tylko elementów &lt;div&gt; i stylizacji CSS do formatowania wizualnego, bez
+                            semantycznego znaczenia. Technologie wspomagające nie mogą rozpoznać struktury treści ani
+                            hierarchii nagłówków.</p>
+                    </div>
                 </div>
 
-                <div class="good-example">
-                    <h4>Dobry przykład - tabela danych z odpowiednim oznaczeniem</h4>
-                    <pre><code class="language-html">&lt;table&gt;
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - tabela danych z odpowiednim oznaczeniem</h4>
+                        <pre><code class="language-html">&lt;table&gt;
     &lt;caption&gt;Harmonogram zajęć na tydzień&lt;/caption&gt;
     &lt;thead&gt;
         &lt;tr&gt;
@@ -134,15 +141,17 @@
         &lt;/tr&gt;
     &lt;/tbody&gt;
 &lt;/table&gt;</code></pre>
-                    <p>Ta tabela używa odpowiednich znaczników: &lt;caption&gt; dla opisania zawartości tabeli,
-                        &lt;thead&gt; i &lt;tbody&gt; dla organizacji struktury, &lt;th&gt; z atrybutem scope dla
-                        określenia nagłówków kolumn i wierszy, co pozwala technologiom wspomagającym prawidłowo
-                        interpretować dane.</p>
+                        <p>Ta tabela używa odpowiednich znaczników: &lt;caption&gt; dla opisania zawartości tabeli,
+                            &lt;thead&gt; i &lt;tbody&gt; dla organizacji struktury, &lt;th&gt; z atrybutem scope dla
+                            określenia nagłówków kolumn i wierszy, co pozwala technologiom wspomagającym prawidłowo
+                            interpretować dane.</p>
+                    </div>
                 </div>
 
-                <div class="good-example">
-                    <h4>Dobry przykład - formularz z prawidłowymi powiązaniami</h4>
-                    <pre><code class="language-html">&lt;form&gt;
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - formularz z prawidłowymi powiązaniami</h4>
+                        <pre><code class="language-html">&lt;form&gt;
     &lt;fieldset&gt;
         &lt;legend&gt;Dane kontaktowe&lt;/legend&gt;
         
@@ -175,9 +184,10 @@
         &lt;button type="submit"&gt;Wyślij&lt;/button&gt;
     &lt;/fieldset&gt;
 &lt;/form&gt;</code></pre>
-                    <p>Ten formularz używa elementów &lt;label&gt; powiązanych z polami formularza poprzez id,
-                        &lt;fieldset&gt; i &lt;legend&gt; do grupowania powiązanych pól, co ułatwia zrozumienie
-                        struktury formularza przez technologie wspomagające.</p>
+                        <p>Ten formularz używa elementów &lt;label&gt; powiązanych z polami formularza poprzez id,
+                            &lt;fieldset&gt; i &lt;legend&gt; do grupowania powiązanych pól, co ułatwia zrozumienie
+                            struktury formularza przez technologie wspomagające.</p>
+                    </div>
                 </div>
             </div>
 
