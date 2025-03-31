@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.3.6 Określenie przeznaczenia - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.3.6 Określenie przeznaczenia</h2>
+                <p class="criterion-level">Poziom AAA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#identify-purpose" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>W treści implementowanej przy użyciu języków znaczników, przeznaczenie komponentów interfejsu
+                    użytkownika, ikon i regionów może zostać określone programowo.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest umożliwienie technologiom wspomagającym prezentowanie i obsługiwanie
+                    treści w sposób dostosowany do indywidualnych potrzeb użytkowników poprzez zapewnienie, że wszystkie
+                    komponenty, ikony i regiony na stronie są programowo identyfikowalne. Dzięki temu:</p>
+                <ul>
+                    <li>Osoby z zaburzeniami poznawczymi mogą dostosować prezentację treści do swoich potrzeb,
+                        np. upraszczając interfejs, zmieniając symbole lub eliminując rozpraszające elementy</li>
+                    <li>Osoby z niepełnosprawnościami wzroku mogą uzyskać dostęp do bardziej zrozumiałego interfejsu,
+                        gdy technologie wspomagające prezentują treść w formie bardziej przyjaznej dla nich</li>
+                    <li>Użytkownicy mogą stosować własne symbole i oznaczenia, które są dla nich bardziej zrozumiałe
+                    </li>
+                    <li>Technologie wspomagające mogą lepiej pomagać w nawigacji i zrozumieniu struktury strony</li>
+                </ul>
+                <p>Jest to najwyższy poziom (AAA) w serii kryteriów dotyczących programowej identyfikacji
+                    (wraz z 1.3.4 i 1.3.5), obejmujący praktycznie wszystkie komponenty interfejsu.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - ikony i komponenty bez identyfikacji programowej</h4>
+                        <p>Strona z ikonami i komponentami bez odpowiednich znaczników:</p>
+                        <pre><code class="language-html">&lt;div class="header"&gt;
+    &lt;div class="logo"&gt;MojaAplikacja&lt;/div&gt;
+    &lt;div class="menu"&gt;
+        &lt;div class="menu-item"&gt;
+            &lt;span class="icon"&gt;🏠&lt;/span&gt; Strona główna
+        &lt;/div&gt;
+        &lt;div class="menu-item"&gt;
+            &lt;span class="icon"&gt;👤&lt;/span&gt; Profil
+        &lt;/div&gt;
+        &lt;div class="menu-item"&gt;
+            &lt;span class="icon"&gt;⚙️&lt;/span&gt; Ustawienia
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class="user-panel"&gt;
+        &lt;span class="icon"&gt;🔔&lt;/span&gt;
+        &lt;span class="icon"&gt;✉️&lt;/span&gt;
+        &lt;span class="avatar"&gt;JK&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="main-content"&gt;
+    &lt;div class="sidebar"&gt;
+        &lt;div class="category"&gt;
+            &lt;span class="icon"&gt;📁&lt;/span&gt; Dokumenty
+        &lt;/div&gt;
+        &lt;div class="category"&gt;
+            &lt;span class="icon"&gt;🖼️&lt;/span&gt; Zdjęcia
+        &lt;/div&gt;
+        &lt;div class="category"&gt;
+            &lt;span class="icon"&gt;📊&lt;/span&gt; Statystyki
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="content"&gt;
+        &lt;div class="actions"&gt;
+            &lt;button&gt;&lt;span class="icon"&gt;➕&lt;/span&gt; Dodaj&lt;/button&gt;
+            &lt;button&gt;&lt;span class="icon"&gt;🔍&lt;/span&gt; Wyszukaj&lt;/button&gt;
+            &lt;button&gt;&lt;span class="icon"&gt;↓&lt;/span&gt; Pobierz&lt;/button&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="items"&gt;
+            &lt;!-- Zawartość --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                        <p>Ten przykład jest problemem z dostępnością, ponieważ:</p>
+                        <ul>
+                            <li>Nie używa odpowiednich znaczników semantycznych HTML jak <code>&lt;header&gt;</code>,
+                                <code>&lt;nav&gt;</code>,
+                                <code>&lt;main&gt;</code>, <code>&lt;aside&gt;</code> do oznaczenia regionów
+                            </li>
+                            <li>Ikony są zaimplementowane jako zwykłe znaki emoji bez opisów alternatywnych lub ról ARIA
+                            </li>
+                            <li>Menu i przyciski nie są odpowiednio oznaczone pod względem ich roli i stanu</li>
+                            <li>Brak odpowiednich atrybutów ARIA które identyfikowałyby komponenty interfejsu</li>
+                            <li>Brak możliwości programowej identyfikacji przeznaczenia elementów</li>
+                            <li>Technologie wspomagające nie mogą precyzyjnie określić regionów, elementów nawigacyjnych
+                                i funkcji</li>
+                        </ul>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div style="border: 1px solid #ddd; padding: 15px; max-width: 600px; margin: 0 auto;">
+                                    <div
+                                        style="display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid #eee;">
+                                        <div style="font-weight: bold;">MojaAplikacja</div>
+                                        <div style="display: flex; gap: 10px;">
+                                            <div>🏠 Strona główna</div>
+                                            <div>👤 Profil</div>
+                                            <div>⚙️ Ustawienia</div>
+                                        </div>
+                                        <div style="display: flex; gap: 10px;">
+                                            <span>🔔</span>
+                                            <span>✉️</span>
+                                            <span
+                                                style="background: #eee; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center;">JK</span>
+                                        </div>
+                                    </div>
+
+                                    <div style="display: flex; margin-top: 15px;">
+                                        <div style="width: 25%; padding-right: 15px;">
+                                            <div style="margin-bottom: 10px;"><span>📁</span> Dokumenty</div>
+                                            <div style="margin-bottom: 10px;"><span>🖼️</span> Zdjęcia</div>
+                                            <div style="margin-bottom: 10px;"><span>📊</span> Statystyki</div>
+                                        </div>
+
+                                        <div style="width: 75%;">
+                                            <div style="margin-bottom: 15px;">
+                                                <button
+                                                    style="margin-right: 5px; padding: 5px 10px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 4px;"><span>➕</span>
+                                                    Dodaj</button>
+                                                <button
+                                                    style="margin-right: 5px; padding: 5px 10px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 4px;"><span>🔍</span>
+                                                    Wyszukaj</button>
+                                                <button
+                                                    style="padding: 5px 10px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 4px;"><span>↓</span>
+                                                    Pobierz</button>
+                                            </div>
+
+                                            <div
+                                                style="background: #fafafa; height: 100px; display: flex; align-items: center; justify-content: center; border: 1px dashed #ccc;">
+                                                Zawartość
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - ikony i komponenty z identyfikacją programową</h4>
+                        <p>Ta sama strona z odpowiednimi znacznikami semantycznymi i ARIA:</p>
+                        <pre><code class="language-html">&lt;header role="banner"&gt;
+    &lt;div class="logo" role="img" aria-label="MojaAplikacja"&gt;MojaAplikacja&lt;/div&gt;
+    
+    &lt;nav aria-label="Menu główne"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;
+                &lt;a href="/" aria-current="page"&gt;
+                    &lt;svg aria-hidden="true" focusable="false" class="icon"&gt;
+                        &lt;title&gt;Strona główna&lt;/title&gt;
+                        &lt;use href="#icon-home"&gt;&lt;/use&gt;
+                    &lt;/svg&gt;
+                    &lt;span&gt;Strona główna&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href="/profile"&gt;
+                    &lt;svg aria-hidden="true" focusable="false" class="icon"&gt;
+                        &lt;title&gt;Profil&lt;/title&gt;
+                        &lt;use href="#icon-profile"&gt;&lt;/use&gt;
+                    &lt;/svg&gt;
+                    &lt;span&gt;Profil&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href="/settings"&gt;
+                    &lt;svg aria-hidden="true" focusable="false" class="icon"&gt;
+                        &lt;title&gt;Ustawienia&lt;/title&gt;
+                        &lt;use href="#icon-settings"&gt;&lt;/use&gt;
+                    &lt;/svg&gt;
+                    &lt;span&gt;Ustawienia&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+    
+    &lt;div class="user-panel" role="region" aria-label="Powiadomienia i profil"&gt;
+        &lt;button aria-label="Powiadomienia" aria-haspopup="true"&gt;
+            &lt;svg aria-hidden="true" focusable="false" class="icon"&gt;
+                &lt;title&gt;Powiadomienia&lt;/title&gt;
+                &lt;use href="#icon-notification"&gt;&lt;/use&gt;
+            &lt;/svg&gt;
+            &lt;span class="visually-hidden"&gt;Powiadomienia&lt;/span&gt;
+        &lt;/button&gt;
+        
+        &lt;button aria-label="Wiadomości" aria-haspopup="true"&gt;
+            &lt;svg aria-hidden="true" focusable="false" class="icon"&gt;
+                &lt;title&gt;Wiadomości&lt;/title&gt;
+                &lt;use href="#icon-messages"&gt;&lt;/use&gt;
+            &lt;/svg&gt;
+            &lt;span class="visually-hidden"&gt;Wiadomości&lt;/span&gt;
+        &lt;/button&gt;
+        
+        &lt;button aria-label="Profil użytkownika" aria-haspopup="true" aria-expanded="false"&gt;
+            &lt;span class="avatar" aria-hidden="true"&gt;JK&lt;/span&gt;
+            &lt;span class="visually-hidden"&gt;Profil użytkownika&lt;/span&gt;
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;div class="main-wrapper"&gt;
+    &lt;aside aria-label="Kategorie"&gt;
+        &lt;nav aria-label="Menu kategorii"&gt;
+            &lt;ul&gt;
+                &lt;li&gt;
+                    &lt;a href="/documents"&gt;
+                        &lt;svg aria-hidden="true" focusable="false" class="icon"&gt;
+                            &lt;title&gt;Dokumenty&lt;/title&gt;
+                            &lt;use href="#icon-documents"&gt;&lt;/use&gt;
+                        &lt;/svg&gt;
+                        &lt;span&gt;Dokumenty&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a href="/photos"&gt;
+                        &lt;svg aria-hidden="true" focusable="false" class="icon"&gt;
+                            &lt;title&gt;Zdjęcia&lt;/title&gt;
+                            &lt;use href="#icon-photos"&gt;&lt;/use&gt;
+                        &lt;/svg&gt;
+                        &lt;span&gt;Zdjęcia&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                    &lt;a href="/statistics"&gt;
+                        &lt;svg aria-hidden="true" focusable="false" class="icon"&gt;
+                            &lt;title&gt;Statystyki&lt;/title&gt;
+                            &lt;use href="#icon-statistics"&gt;&lt;/use&gt;
+                        &lt;/svg&gt;
+                        &lt;span&gt;Statystyki&lt;/span&gt;
+                    &lt;/a&gt;
+                &lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/aside&gt;
+    
+    &lt;main&gt;
+        &lt;div class="actions" role="toolbar" aria-label="Akcje dokumentów"&gt;
+            &lt;button&gt;
+                &lt;svg aria-hidden="true" focusable="false" class="icon"&gt;
+                    &lt;title&gt;Dodaj&lt;/title&gt;
+                    &lt;use href="#icon-add"&gt;&lt;/use&gt;
+                &lt;/svg&gt;
+                Dodaj
+            &lt;/button&gt;
+            
+            &lt;button&gt;
+                &lt;svg aria-hidden="true" focusable="false" class="icon"&gt;
+                    &lt;title&gt;Wyszukaj&lt;/title&gt;
+                    &lt;use href="#icon-search"&gt;&lt;/use&gt;
+                &lt;/svg&gt;
+                Wyszukaj
+            &lt;/button&gt;
+            
+            &lt;button&gt;
+                &lt;svg aria-hidden="true" focusable="false" class="icon"&gt;
+                    &lt;title&gt;Pobierz&lt;/title&gt;
+                    &lt;use href="#icon-download"&gt;&lt;/use&gt;
+                &lt;/svg&gt;
+                Pobierz
+            &lt;/button&gt;
+        &lt;/div&gt;
+        
+        &lt;section aria-label="Zawartość" class="items"&gt;
+            &lt;!-- Zawartość --&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+&lt;/div&gt;
+
+&lt;!-- Definicje ikon SVG (ukryte) --&gt;
+&lt;svg xmlns="http://www.w3.org/2000/svg" style="display: none;"&gt;
+    &lt;symbol id="icon-home" viewBox="0 0 24 24"&gt;
+        &lt;!-- Ścieżka ikony domu --&gt;
+        &lt;path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/&gt;
+    &lt;/symbol&gt;
+    &lt;!-- Pozostałe definicje ikon --&gt;
+&lt;/svg&gt;</code></pre>
+
+                        <p>Ten przykład jest dostępny, ponieważ:</p>
+                        <ul>
+                            <li>Używa semantycznych elementów HTML (<code>&lt;header&gt;</code>,
+                                <code>&lt;nav&gt;</code>,
+                                <code>&lt;main&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;section&gt;</code>),
+                                które
+                                jasno określają strukturę strony
+                            </li>
+                            <li>Wykorzystuje atrybuty ARIA do dalszego określenia ról i etykiet, np.
+                                <code>role="banner"</code>,
+                                <code>aria-label="Menu główne"</code>
+                            </li>
+                            <li>Ikony są implementowane jako dostępne SVG z ukrytym tekstem dla czytników ekranu
+                                (<code>aria-hidden="true"</code> dla ikony, tekst widoczny lub
+                                <code>visually-hidden</code> dla opisu)
+                            </li>
+                            <li>Przyciski i elementy interaktywne mają opisane stany (<code>aria-expanded</code>,
+                                <code>aria-haspopup</code>) i etykiety
+                            </li>
+                            <li>Regiony są programowo identyfikowalne dzięki odpowiednim rolom i etykietom</li>
+                            <li>Technologie wspomagające mogą precyzyjnie interpretować przeznaczenie każdego elementu
+                                interfejsu</li>
+                            <li>Element <code>&lt;title&gt;</code> wewnątrz SVG zapewnia alternatywny tekst dla ikon
+                            </li>
+                        </ul>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div style="border: 1px solid #ddd; padding: 15px; max-width: 600px; margin: 0 auto;">
+                                    <header
+                                        style="display: flex; justify-content: space-between; padding-bottom: 10px; border-bottom: 1px solid #eee;">
+                                        <div style="font-weight: bold;">MojaAplikacja</div>
+                                        <nav>
+                                            <ul
+                                                style="display: flex; gap: 15px; list-style: none; padding: 0; margin: 0;">
+                                                <li><a href="#"
+                                                        style="text-decoration: none; color: #0066cc; display: flex; align-items: center;">
+                                                        <svg aria-hidden="true"
+                                                            style="width: 16px; height: 16px; margin-right: 5px; fill: currentColor;">
+                                                            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path>
+                                                        </svg>
+                                                        Strona główna</a>
+                                                </li>
+                                                <li><a href="#"
+                                                        style="text-decoration: none; color: #0066cc; display: flex; align-items: center;">
+                                                        <svg aria-hidden="true"
+                                                            style="width: 16px; height: 16px; margin-right: 5px; fill: currentColor;">
+                                                            <circle cx="12" cy="8" r="5"></circle>
+                                                            <path
+                                                                d="M12 14c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4z">
+                                                            </path>
+                                                        </svg>
+                                                        Profil</a>
+                                                </li>
+                                                <li><a href="#"
+                                                        style="text-decoration: none; color: #0066cc; display: flex; align-items: center;">
+                                                        <svg aria-hidden="true"
+                                                            style="width: 16px; height: 16px; margin-right: 5px; fill: currentColor;">
+                                                            <path
+                                                                d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z">
+                                                            </path>
+                                                        </svg>
+                                                        Ustawienia</a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                        <div style="display: flex; gap: 10px;">
+                                            <button aria-label="Powiadomienia"
+                                                style="background: none; border: none; cursor: pointer;">
+                                                <svg aria-hidden="true" style="width: 20px; height: 20px; fill: #666;">
+                                                    <path
+                                                        d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.89 2 2 2zm6-6v-5c0-3.07-1.64-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.63 5.36 6 7.92 6 11v5l-2 2v1h16v-1l-2-2z">
+                                                    </path>
+                                                </svg>
+                                            </button>
+                                            <button aria-label="Wiadomości"
+                                                style="background: none; border: none; cursor: pointer;">
+                                                <svg aria-hidden="true" style="width: 20px; height: 20px; fill: #666;">
+                                                    <path
+                                                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z">
+                                                    </path>
+                                                </svg>
+                                            </button>
+                                            <button aria-label="Profil użytkownika"
+                                                style="background: #eee; border: none; border-radius: 50%; width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer;">JK</button>
+                                        </div>
+                                    </header>
+
+                                    <div style="display: flex; margin-top: 15px;">
+                                        <aside style="width: 25%; padding-right: 15px;">
+                                            <nav>
+                                                <ul style="list-style: none; padding: 0; margin: 0;">
+                                                    <li style="margin-bottom: 10px;">
+                                                        <a href="#"
+                                                            style="text-decoration: none; color: #0066cc; display: flex; align-items: center;">
+                                                            <svg aria-hidden="true"
+                                                                style="width: 16px; height: 16px; margin-right: 5px; fill: currentColor;">
+                                                                <path
+                                                                    d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z">
+                                                                </path>
+                                                            </svg>
+                                                            Dokumenty
+                                                        </a>
+                                                    </li>
+                                                    <li style="margin-bottom: 10px;">
+                                                        <a href="#"
+                                                            style="text-decoration: none; color: #0066cc; display: flex; align-items: center;">
+                                                            <svg aria-hidden="true"
+                                                                style="width: 16px; height: 16px; margin-right: 5px; fill: currentColor;">
+                                                                <path
+                                                                    d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z">
+                                                                </path>
+                                                            </svg>
+                                                            Zdjęcia
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#"
+                                                            style="text-decoration: none; color: #0066cc; display: flex; align-items: center;">
+                                                            <svg aria-hidden="true"
+                                                                style="width: 16px; height: 16px; margin-right: 5px; fill: currentColor;">
+                                                                <path
+                                                                    d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z">
+                                                                </path>
+                                                            </svg>
+                                                            Statystyki
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </aside>
+
+                                        <main style="width: 75%;">
+                                            <div style="margin-bottom: 15px; display: flex; gap: 5px;">
+                                                <button
+                                                    style="padding: 5px 10px; background: #0066cc; color: white; border: none; border-radius: 4px; display: flex; align-items: center; cursor: pointer;">
+                                                    <svg aria-hidden="true"
+                                                        style="width: 14px; height: 14px; margin-right: 5px; fill: white;">
+                                                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                                                    </svg>
+                                                    Dodaj
+                                                </button>
+                                                <button
+                                                    style="padding: 5px 10px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 4px; display: flex; align-items: center; cursor: pointer;">
+                                                    <svg aria-hidden="true"
+                                                        style="width: 14px; height: 14px; margin-right: 5px; fill: #666;">
+                                                        <path
+                                                            d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                                                        </path>
+                                                    </svg>
+                                                    Wyszukaj
+                                                </button>
+                                                <button
+                                                    style="padding: 5px 10px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 4px; display: flex; align-items: center; cursor: pointer;">
+                                                    <svg aria-hidden="true"
+                                                        style="width: 14px; height: 14px; margin-right: 5px; fill: #666;">
+                                                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"></path>
+                                                    </svg>
+                                                    Pobierz
+                                                </button>
+                                            </div>
+
+                                            <section
+                                                style="background: #fafafa; min-height: 100px; display: flex; align-items: center; justify-content: center; border: 1px dashed #ccc;">
+                                                Zawartość
+                                            </section>
+                                        </main>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - znaczniki z danymi dla technologii wspomagających</h4>
+                        <p>Panel narzędzi z zaawansowanym oznaczeniem dla technologii wspomagających:</p>
+                        <pre><code class="language-html">&lt;div 
+    role="region" 
+    aria-label="Narzędzia edycji tekstu" 
+    data-purpose="text-editor-toolbar"
+    data-simplification-target="optional-features"&gt;
+    
+    &lt;div role="toolbar" aria-label="Formatowanie tekstu"&gt;
+        &lt;div role="group" aria-label="Styl czcionki"&gt;
+            &lt;button 
+                aria-pressed="false" 
+                aria-label="Pogrubienie" 
+                data-purpose="bold-text"
+                data-icon="format-bold"&gt;
+                
+                &lt;svg aria-hidden="true" focusable="false" class="icon"&gt;
+                    &lt;title&gt;Pogrubienie&lt;/title&gt;
+                    &lt;use href="#icon-bold"&gt;&lt;/use&gt;
+                &lt;/svg&gt;
+                &lt;span class="visually-hidden"&gt;Pogrubienie&lt;/span&gt;
+            &lt;/button&gt;
+            
+            &lt;button 
+                aria-pressed="false" 
+                aria-label="Kursywa" 
+                data-purpose="italic-text"
+                data-icon="format-italic"&gt;
+                
+                &lt;svg aria-hidden="true" focusable="false" class="icon"&gt;
+                    &lt;title&gt;Kursywa&lt;/title&gt;
+                    &lt;use href="#icon-italic"&gt;&lt;/use&gt;
+                &lt;/svg&gt;
+                &lt;span class="visually-hidden"&gt;Kursywa&lt;/span&gt;
+            &lt;/button&gt;
+            
+            &lt;button 
+                aria-pressed="false" 
+                aria-label="Podkreślenie" 
+                data-purpose="underline-text"
+                data-icon="format-underline"&gt;
+                
+                &lt;svg aria-hidden="true" focusable="false" class="icon"&gt;
+                    &lt;title&gt;Podkreślenie&lt;/title&gt;
+                    &lt;use href="#icon-underline"&gt;&lt;/use&gt;
+                &lt;/svg&gt;
+                &lt;span class="visually-hidden"&gt;Podkreślenie&lt;/span&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+        
+        &lt;div role="group" aria-label="Wyrównanie tekstu"&gt;
+            &lt;button 
+                aria-pressed="true" 
+                aria-label="Wyrównaj do lewej" 
+                data-purpose="align-left"
+                data-icon="align-left"&gt;
+                
+                &lt;svg aria-hidden="true" focusable="false" class="icon"&gt;
+                    &lt;title&gt;Wyrównaj do lewej&lt;/title&gt;
+                    &lt;use href="#icon-align-left"&gt;&lt;/use&gt;
+                &lt;/svg&gt;
+                &lt;span class="visually-hidden"&gt;Wyrównaj do lewej&lt;/span&gt;
+            &lt;/button&gt;
+            
+            &lt;button 
+                aria-pressed="false" 
+                aria-label="Wyśrodkuj" 
+                data-purpose="align-center"
+                data-icon="align-center"&gt;
+                
+                &lt;svg aria-hidden="true" focusable="false" class="icon"&gt;
+                    &lt;title&gt;Wyśrodkuj&lt;/title&gt;
+                    &lt;use href="#icon-align-center"&gt;&lt;/use&gt;
+                &lt;/svg&gt;
+                &lt;span class="visually-hidden"&gt;Wyśrodkuj&lt;/span&gt;
+            &lt;/button&gt;
+            
+            &lt;button 
+                aria-pressed="false" 
+                aria-label="Wyrównaj do prawej" 
+                data-purpose="align-right"
+                data-icon="align-right"&gt;
+                
+                &lt;svg aria-hidden="true" focusable="false" class="icon"&gt;
+                    &lt;title&gt;Wyrównaj do prawej&lt;/title&gt;
+                    &lt;use href="#icon-align-right"&gt;&lt;/use&gt;
+                &lt;/svg&gt;
+                &lt;span class="visually-hidden"&gt;Wyrównaj do prawej&lt;/span&gt;
+            &lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                        <p>Ten przykład prezentuje jeszcze bardziej zaawansowane podejście do identyfikacji
+                            przeznaczenia, ponieważ:</p>
+                        <ul>
+                            <li>Dodaje atrybuty <code>data-purpose</code>, które jednoznacznie identyfikują funkcję
+                                każdego komponentu</li>
+                            <li>Wykorzystuje <code>data-icon</code> do określenia typu ikony używanej w komponencie</li>
+                            <li>Zawiera <code>data-simplification-target</code>, które może być wykorzystywane przez
+                                technologie wspomagające do uproszczenia interfejsu (np. ukrycia niekrytycznych funkcji)
+                            </li>
+                            <li>Grupuje powiązane elementy za pomocą <code>role="group"</code> z odpowiednimi etykietami
+                            </li>
+                            <li>Używa <code>aria-pressed</code> do wskazania stanu przycisków przełączających</li>
+                            <li>Zapewnia kontekst dla regionów, pasków narzędzi i grup elementów poprzez hierarchiczną
+                                strukturę atrybutów ARIA</li>
+                            <li>Takie szczegółowe oznaczenie umożliwia zaawansowanym technologiom wspomagającym pełną
+                                personalizację interfejsu w zależności od potrzeb użytkownika</li>
+                        </ul>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="border: 1px solid #ddd; padding: 15px; max-width: 600px; margin: 0 auto; background: #f9f9f9;">
+                                    <div
+                                        style="border: 1px solid #e0e0e0; padding: 10px; border-radius: 4px; background: white;">
+                                        <div
+                                            style="margin-bottom: 10px; font-weight: bold; color: #444; font-size: 14px;">
+                                            Narzędzia edycji tekstu</div>
+
+                                        <div
+                                            style="border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px;">
+                                            <div style="font-size: 13px; color: #666; margin-bottom: 5px;">Formatowanie
+                                                tekstu</div>
+
+                                            <div style="display: flex; gap: 5px; margin-bottom: 10px;">
+                                                <div
+                                                    style="padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-size: 13px; color: #666;">
+                                                    Styl czcionki</div>
+                                                <button
+                                                    style="padding: 5px 10px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; display: flex; align-items: center;">
+                                                    <svg aria-hidden="true"
+                                                        style="width: 16px; height: 16px; margin-right: 5px; fill: #444; font-weight: bold;">
+                                                        <path
+                                                            d="M15.6 10.79c.97-.67 1.65-1.77 1.65-2.79 0-2.26-1.75-4-4-4H7v14h7.04c2.09 0 3.71-1.7 3.71-3.79 0-1.52-.86-2.82-2.15-3.42zM10 6.5h3c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5h-3v-3zm3.5 9H10v-3h3.5c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5z">
+                                                        </path>
+                                                    </svg>
+                                                    <span class="visually-hidden">Pogrubienie</span>
+                                                </button>
+                                                <button
+                                                    style="padding: 5px 10px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; display: flex; align-items: center;">
+                                                    <svg aria-hidden="true"
+                                                        style="width: 16px; height: 16px; margin-right: 5px; fill: #444;">
+                                                        <path d="M10 4v3h2.21l-3.42 8H6v3h8v-3h-2.21l3.42-8H18V4z">
+                                                        </path>
+                                                    </svg>
+                                                    <span class="visually-hidden">Kursywa</span>
+                                                </button>
+                                                <button
+                                                    style="padding: 5px 10px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; display: flex; align-items: center;">
+                                                    <svg aria-hidden="true"
+                                                        style="width: 16px; height: 16px; margin-right: 5px; fill: #444;">
+                                                        <path
+                                                            d="M12 17c3.31 0 6-2.69 6-6V3h-2.5v8c0 1.93-1.57 3.5-3.5 3.5S8.5 12.93 8.5 11V3H6v8c0 3.31 2.69 6 6 6zm-7 2v2h14v-2H5z">
+                                                        </path>
+                                                    </svg>
+                                                    <span class="visually-hidden">Podkreślenie</span>
+                                                </button>
+                                            </div>
+
+                                            <div style="display: flex; gap: 5px;">
+                                                <div
+                                                    style="padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-size: 13px; color: #666;">
+                                                    Wyrównanie tekstu</div>
+                                                <button
+                                                    style="padding: 5px 10px; background: #e6f0fa; border: 1px solid #0066cc; border-radius: 4px; cursor: pointer; display: flex; align-items: center;">
+                                                    <svg aria-hidden="true"
+                                                        style="width: 16px; height: 16px; margin-right: 5px; fill: #0066cc;">
+                                                        <path
+                                                            d="M15 15H3v2h12v-2zm0-8H3v2h12V7zM3 13h18v-2H3v2zm0 8h18v-2H3v2zM3 3v2h18V3H3z">
+                                                        </path>
+                                                    </svg>
+                                                    <span class="visually-hidden">Wyrównaj do lewej</span>
+                                                </button>
+                                                <button
+                                                    style="padding: 5px 10px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; display: flex; align-items: center;">
+                                                    <svg aria-hidden="true"
+                                                        style="width: 16px; height: 16px; margin-right: 5px; fill: #444;">
+                                                        <path
+                                                            d="M7 15v2h10v-2H7zm-4 6h18v-2H3v2zm0-8h18v-2H3v2zm4-6v2h10V7H7zM3 3v2h18V3H3z">
+                                                        </path>
+                                                    </svg>
+                                                    <span class="visually-hidden">Wyśrodkuj</span>
+                                                </button>
+                                                <button
+                                                    style="padding: 5px 10px; background: #f0f0f0; border: 1px solid #ddd; border-radius: 4px; cursor: pointer; display: flex; align-items: center;">
+                                                    <svg aria-hidden="true"
+                                                        style="width: 16px; height: 16px; margin-right: 5px; fill: #444;">
+                                                        <path
+                                                            d="M3 21h18v-2H3v2zm6-4h12v-2H9v2zm-6-4h18v-2H3v2zm6-4h12V7H9v2zM3 3v2h18V3H3z">
+                                                        </path>
+                                                    </svg>
+                                                    <span class="visually-hidden">Wyrównaj do prawej</span>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <div style="font-size: 12px; color: #666; font-style: italic;">
+                                            Przykładowa wizualizacja - w rzeczywistej implementacji technologie
+                                            wspomagające
+                                            mogłyby dostosować ten interfejs do potrzeb użytkownika dzięki atrybutom
+                                            data-*
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="challenges-tips">
+                <h3>Wyzwania i wskazówki</h3>
+                <ul>
+                    <li><strong>Używaj semantycznego HTML</strong> - wykorzystuj elementy HTML5
+                        (<code>&lt;header&gt;</code>,
+                        <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;aside&gt;</code>,
+                        <code>&lt;section&gt;</code>,
+                        <code>&lt;article&gt;</code>) do zdefiniowania regionów strony
+                    </li>
+                    <li><strong>Stosuj ARIA, gdy HTML nie wystarcza</strong> - używaj ról, stanów i właściwości ARIA
+                        do wskazania przeznaczenia komponentów UI, np. <code>role="navigation"</code>,
+                        <code>aria-haspopup="true"</code>
+                    </li>
+                    <li><strong>Oznaczaj ikony i symbole</strong> - zapewniaj alternatywne opisy dla wszystkich ikon,
+                        najlepiej za pomocą elementu <code>&lt;title&gt;</code> w SVG lub atrybutu <code>alt</code> dla
+                        obrazów</li>
+                    <li><strong>Grupuj powiązane elementy</strong> - używaj <code>role="group"</code> z odpowiednimi
+                        etykietami do grupowania powiązanych elementów</li>
+                    <li><strong>Dostarczaj metadata dla personalizacji</strong> - używaj atrybutów <code>data-*</code>
+                        do dostarczania dodatkowych informacji o przeznaczeniu komponentów dla technologii
+                        wspomagających</li>
+                    <li><strong>Testuj z technologiami wspomagającymi</strong> - sprawdzaj, jak czytniki ekranu i inne
+                        narzędzia interpretują twoje komponenty</li>
+                    <li><strong>Stosuj standardy Symbol Sets</strong> - jeśli to możliwe, używaj standardowych zestawów
+                        symboli z odpowiednimi metadanymi</li>
+                    <li><strong>Dokumentuj znaczenie symboli i ikon</strong> - udostępniaj słownik lub legendę używanych
+                        ikon i ich znaczeń</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/identify-purpose.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG: Określenie przeznaczenia</a></li>
+                    <li><a href="https://www.w3.org/TR/wai-aria-1.1/" target="_blank" rel="noopener">WAI-ARIA 1.1</a>
+                    </li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA" target="_blank"
+                            rel="noopener">MDN: ARIA</a></li>
+                    <li><a href="https://inclusive-components.design/" target="_blank" rel="noopener">Inclusive
+                            Components</a></li>
+                    <li><a href="https://personalization.w3.org/" target="_blank" rel="noopener">W3C Personalization
+                            Semantics</a></li>
+                    <li><a href="https://www.w3.org/WAI/personalization-semantics/content/" target="_blank"
+                            rel="noopener">Personalization Semantics Content Module</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.3.5.html">Poprzedni: 1.3.5 Określenie pożądanej wartości</a></li>
+                    <li><a href="1.4.1.html">Następny: 1.4.1 Użycie koloru</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
