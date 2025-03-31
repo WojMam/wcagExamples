@@ -101,53 +101,66 @@
             width: 100%;
             height: 500px;
             border: none;
+            display: block;
         }
 
-        .filters-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 10;
-        }
-
-        /* Filtry dla symulacji dysfunkcji wzroku */
-        .protanopia {
+        /* Filtr nakładamy bezpośrednio na preview-container zamiast na dodatkowy element */
+        .preview-container.protanopia {
             filter: url('#protanopia-filter');
         }
 
-        .deuteranopia {
+        .preview-container.deuteranopia {
             filter: url('#deuteranopia-filter');
         }
 
-        .tritanopia {
+        .preview-container.tritanopia {
             filter: url('#tritanopia-filter');
         }
 
-        .achromatopsia {
+        .preview-container.achromatopsia {
             filter: grayscale(100%);
         }
 
-        .cataract {
+        .preview-container.cataract {
             filter: contrast(70%) brightness(80%) blur(2px);
         }
 
-        .amd {
-            filter: blur(12px);
-            box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.3) 0px 0px 50px 50px inset;
+        .preview-container.amd {
+            position: relative;
         }
 
-        .tunnel-vision {
-            box-shadow: rgba(0, 0, 0, 0.9) 0px 0px 0px 60px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+        .preview-container.amd::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 0%, transparent 70%);
+            pointer-events: none;
         }
 
-        .blur {
+        .preview-container.tunnel-vision {
+            position: relative;
+        }
+
+        .preview-container.tunnel-vision::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            box-shadow: 0 0 0 60px rgba(0, 0, 0, 0.9) inset;
+            pointer-events: none;
+        }
+
+        .preview-container.blur {
             filter: blur(2px);
         }
 
-        .high-blur {
+        .preview-container.high-blur {
             filter: blur(4px);
         }
 
@@ -297,7 +310,6 @@
             <div class="preview-container">
                 <iframe id="preview-frame" class="preview-frame" title="Podgląd strony z symulowaną dysfunkcją"
                     src="about:blank"></iframe>
-                <div id="filters-container" class="filters-container"></div>
             </div>
 
             <div class="info-section">
@@ -403,7 +415,7 @@
             const loadPageButton = document.getElementById('load-page');
             const useExampleButton = document.getElementById('use-example');
             const previewFrame = document.getElementById('preview-frame');
-            const filtersContainer = document.getElementById('filters-container');
+            const previewContainer = document.querySelector('.preview-container');
             const visionFilterButtons = document.querySelectorAll('#vision-filter .control-button');
 
             // Przykładowa strona do testowania
@@ -459,11 +471,16 @@
                     const filterType = button.getAttribute('data-filter');
 
                     // Usuń wszystkie klasy filtrów
-                    filtersContainer.className = 'filters-container';
+                    // Zapisujemy listę wszystkich możliwych klas filtrów
+                    const filterClasses = ['protanopia', 'deuteranopia', 'tritanopia', 'achromatopsia',
+                        'cataract', 'amd', 'tunnel-vision', 'blur', 'high-blur'];
+
+                    // Usuwamy wszystkie klasy filtrów z kontenera
+                    previewContainer.classList.remove(...filterClasses);
 
                     // Dodaj odpowiednią klasę filtru, jeśli nie jest to normalne widzenie
                     if (filterType !== 'normal') {
-                        filtersContainer.classList.add(filterType);
+                        previewContainer.classList.add(filterType);
                     }
                 });
             });
