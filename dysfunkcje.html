@@ -72,10 +72,12 @@
             display: flex;
             gap: 10px;
             margin: 20px 0;
+            flex-wrap: wrap;
         }
 
         .url-input input {
             flex: 1;
+            min-width: 200px;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 5px;
@@ -263,6 +265,18 @@
 
             .preview-frame {
                 height: 400px;
+            }
+
+            .url-input {
+                flex-direction: column;
+            }
+
+            .url-input input {
+                width: 100%;
+            }
+
+            .url-input button {
+                width: 100%;
             }
         }
 
