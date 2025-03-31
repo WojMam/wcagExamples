@@ -17,38 +17,40 @@
     </header>
 
     <main id="main">
-        <article class="guideline">
-            <h1>1.3.5 Określanie sposobu wprowadzania danych <span class="level">Poziom AA</span></h1>
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.3.5 Określanie sposobu wprowadzania danych</h2>
+                <p class="level-tag">Poziom AA</p>
+            </div>
 
-            <div class="page-intro">
+            <div class="criterion-description">
                 <p>Cel pola formularza, który zbiera informacje o użytkowniku, może zostać określony programowo, gdy:
                 </p>
                 <ul>
-                    <li>Pole formularza służy do celu wskazanego w sekcji „Cele wprowadzania danych użytkownika" oraz
+                    <li>Pole formularza służy do celu wskazanego w sekcji "Cele wprowadzania danych użytkownika" oraz
                     </li>
                     <li>Treść została zaimplementowana przy wykorzystaniu technologii z obsługą wskazywania celu podania
                         danych przez użytkownika.</li>
                 </ul>
-            </div>
 
-            <section class="guideline-section">
-                <h2>Intencja</h2>
+                <h3>Intencja</h3>
                 <p>Intencją tego kryterium jest umożliwienie przeglądarkom i technologiom wspomagającym przedstawiania
                     spersonalizowanych interfejsów użytkownika, w których pola formularzy mogą być automatycznie
                     wypełniane danymi użytkownika. Jest to szczególnie pomocne dla osób z zaburzeniami poznawczymi,
                     które mogą mieć trudności z zapamiętaniem swoich danych osobowych lub z poprawnym wprowadzaniem ich
                     za pomocą klawiatury.</p>
-            </section>
+            </div>
 
-            <section class="guideline-section">
+            <section class="examples">
                 <h2>Przykłady</h2>
 
-                <div class="example">
-                    <h3>Zły przykład - brak identyfikacji celu pól formularza</h3>
-                    <p>Formularz rejestracyjny, w którym pola formularza nie mają prawidłowo określonego celu
-                        wprowadzania danych.</p>
-                    <div class="code-example">
-                        <pre><code>&lt;form&gt;
+                <div class="example-container">
+                    <div class="example bad">
+                        <h3>Zły przykład - brak identyfikacji celu pól formularza</h3>
+                        <p>Formularz rejestracyjny, w którym pola formularza nie mają prawidłowo określonego celu
+                            wprowadzania danych.</p>
+                        <div class="code-example">
+                            <pre><code>&lt;form&gt;
     &lt;label for="name"&gt;Imię i nazwisko:&lt;/label&gt;
     &lt;input type="text" id="name" name="name"&gt;
     
@@ -58,18 +60,53 @@
     &lt;label for="tel"&gt;Telefon:&lt;/label&gt;
     &lt;input type="tel" id="tel" name="tel"&gt;
 &lt;/form&gt;</code></pre>
+                        </div>
+                        <div class="preview">
+                            <h5>Podgląd</h5>
+                            <div class="preview-content">
+                                <form style="display: flex; flex-direction: column; max-width: 300px; gap: 8px;">
+                                    <div>
+                                        <label for="preview-name" style="display: block; margin-bottom: 4px;">Imię
+                                            i nazwisko:</label>
+                                        <input type="text" id="preview-name" name="name"
+                                            style="width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                                    </div>
+
+                                    <div>
+                                        <label for="preview-email"
+                                            style="display: block; margin-bottom: 4px;">E-mail:</label>
+                                        <input type="email" id="preview-email" name="email"
+                                            style="width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                                    </div>
+
+                                    <div>
+                                        <label for="preview-tel"
+                                            style="display: block; margin-bottom: 4px;">Telefon:</label>
+                                        <input type="tel" id="preview-tel" name="tel"
+                                            style="width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 4px;">
+                                    </div>
+                                </form>
+                                <p style="margin-top: 10px; color: #d32f2f; font-style: italic;">Uwaga: Te pola
+                                    formularza nie mają atrybutów autocomplete, więc przeglądarka nie wie jakiego
+                                    rodzaju dane powinny być wprowadzane i nie może ich automatycznie uzupełnić.</p>
+                            </div>
+                        </div>
+                        <p>W tym przykładzie pola formularza mają podstawowe atrybuty, takie jak typy (text, email,
+                            tel),
+                            ale brakuje atrybutów <code>autocomplete</code>, które określałyby dokładny cel każdego
+                            pola.
+                        </p>
                     </div>
-                    <p>W tym przykładzie pola formularza mają podstawowe atrybuty, takie jak typy (text, email, tel),
-                        ale brakuje atrybutów <code>autocomplete</code>, które określałyby dokładny cel każdego pola.
-                    </p>
                 </div>
 
-                <div class="example">
-                    <h3>Dobry przykład - prawidłowe określanie celu pól formularza</h3>
-                    <p>Ten sam formularz rejestracyjny z prawidłowo określonymi celami pól formularza za pomocą atrybutu
-                        autocomplete.</p>
-                    <div class="code-example">
-                        <pre><code>&lt;form&gt;
+                <div class="example-container">
+                    <div class="example good">
+                        <h3>Dobry przykład - prawidłowe określanie celu pól formularza</h3>
+                        <p>Ten sam formularz rejestracyjny z prawidłowo określonymi celami pól formularza za pomocą
+                            atrybutu
+                            autocomplete.</p>
+                        <div class="code-example">
+                            <pre><code>&lt;form&gt;
     &lt;label for="name"&gt;Imię i nazwisko:&lt;/label&gt;
     &lt;input type="text" id="name" name="name" autocomplete="name"&gt;
     
@@ -79,16 +116,55 @@
     &lt;label for="tel"&gt;Telefon:&lt;/label&gt;
     &lt;input type="tel" id="tel" name="tel" autocomplete="tel"&gt;
 &lt;/form&gt;</code></pre>
+                        </div>
+                        <div class="preview">
+                            <h5>Podgląd</h5>
+                            <div class="preview-content">
+                                <form style="display: flex; flex-direction: column; max-width: 300px; gap: 8px;">
+                                    <div>
+                                        <label for="preview-name-good" style="display: block; margin-bottom: 4px;">Imię
+                                            i nazwisko:</label>
+                                        <input type="text" id="preview-name-good" name="name" autocomplete="name"
+                                            style="width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; background-color: #f0fff0;">
+                                        <small
+                                            style="color: #4caf50; font-size: 0.8em; margin-top: 2px; display: block;">autocomplete="name"</small>
+                                    </div>
+
+                                    <div>
+                                        <label for="preview-email-good"
+                                            style="display: block; margin-bottom: 4px;">E-mail:</label>
+                                        <input type="email" id="preview-email-good" name="email" autocomplete="email"
+                                            style="width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; background-color: #f0fff0;">
+                                        <small
+                                            style="color: #4caf50; font-size: 0.8em; margin-top: 2px; display: block;">autocomplete="email"</small>
+                                    </div>
+
+                                    <div>
+                                        <label for="preview-tel-good"
+                                            style="display: block; margin-bottom: 4px;">Telefon:</label>
+                                        <input type="tel" id="preview-tel-good" name="tel" autocomplete="tel"
+                                            style="width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; background-color: #f0fff0;">
+                                        <small
+                                            style="color: #4caf50; font-size: 0.8em; margin-top: 2px; display: block;">autocomplete="tel"</small>
+                                    </div>
+                                </form>
+                                <p style="margin-top: 10px; color: #4caf50; font-style: italic;">Te pola formularza mają
+                                    atrybuty autocomplete, które pozwalają przeglądarce zrozumieć jakie dane są
+                                    oczekiwane i automatycznie je uzupełnić.</p>
+                            </div>
+                        </div>
+                        <p>Dzięki dodaniu atrybutów <code>autocomplete</code> z odpowiednimi wartościami, przeglądarka
+                            może
+                            automatycznie wypełnić te pola danymi użytkownika, które zostały wcześniej zapisane.</p>
                     </div>
-                    <p>Dzięki dodaniu atrybutów <code>autocomplete</code> z odpowiednimi wartościami, przeglądarka może
-                        automatycznie wypełnić te pola danymi użytkownika, które zostały wcześniej zapisane.</p>
                 </div>
 
-                <div class="example">
-                    <h3>Bardziej złożony przykład - adres pocztowy</h3>
-                    <p>Formularz adresu pocztowego z dokładnie określonymi celami dla każdego pola.</p>
-                    <div class="code-example">
-                        <pre><code>&lt;form&gt;
+                <div class="example-container">
+                    <div class="example good">
+                        <h3>Bardziej złożony przykład - adres pocztowy</h3>
+                        <p>Formularz adresu pocztowego z dokładnie określonymi celami dla każdego pola.</p>
+                        <div class="code-example">
+                            <pre><code>&lt;form&gt;
     &lt;label for="street"&gt;Ulica i numer:&lt;/label&gt;
     &lt;input type="text" id="street" name="street" autocomplete="address-line1"&gt;
     
@@ -105,14 +181,66 @@
         &lt;option value="US"&gt;Stany Zjednoczone&lt;/option&gt;
     &lt;/select&gt;
 &lt;/form&gt;</code></pre>
+                        </div>
+                        <div class="preview">
+                            <h5>Podgląd</h5>
+                            <div class="preview-content">
+                                <form style="display: flex; flex-direction: column; max-width: 300px; gap: 8px;">
+                                    <div>
+                                        <label for="preview-street" style="display: block; margin-bottom: 4px;">Ulica i
+                                            numer:</label>
+                                        <input type="text" id="preview-street" name="street"
+                                            autocomplete="address-line1"
+                                            style="width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; background-color: #f0fff0;">
+                                        <small
+                                            style="color: #4caf50; font-size: 0.8em; margin-top: 2px; display: block;">autocomplete="address-line1"</small>
+                                    </div>
+
+                                    <div>
+                                        <label for="preview-city"
+                                            style="display: block; margin-bottom: 4px;">Miasto:</label>
+                                        <input type="text" id="preview-city" name="city" autocomplete="address-level2"
+                                            style="width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; background-color: #f0fff0;">
+                                        <small
+                                            style="color: #4caf50; font-size: 0.8em; margin-top: 2px; display: block;">autocomplete="address-level2"</small>
+                                    </div>
+
+                                    <div>
+                                        <label for="preview-postal" style="display: block; margin-bottom: 4px;">Kod
+                                            pocztowy:</label>
+                                        <input type="text" id="preview-postal" name="postal" autocomplete="postal-code"
+                                            style="width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; background-color: #f0fff0;">
+                                        <small
+                                            style="color: #4caf50; font-size: 0.8em; margin-top: 2px; display: block;">autocomplete="postal-code"</small>
+                                    </div>
+
+                                    <div>
+                                        <label for="preview-country"
+                                            style="display: block; margin-bottom: 4px;">Kraj:</label>
+                                        <select id="preview-country" name="country" autocomplete="country"
+                                            style="width: 100%; padding: 6px; border: 1px solid #ccc; border-radius: 4px; background-color: #f0fff0;">
+                                            <option value="PL">Polska</option>
+                                            <option value="DE">Niemcy</option>
+                                            <option value="US">Stany Zjednoczone</option>
+                                        </select>
+                                        <small
+                                            style="color: #4caf50; font-size: 0.8em; margin-top: 2px; display: block;">autocomplete="country"</small>
+                                    </div>
+                                </form>
+                                <p style="margin-top: 10px; color: #4caf50; font-style: italic;">Ta grupa pól formularza
+                                    ma precyzyjne atrybuty autocomplete dla poszczególnych części adresu, co ułatwia
+                                    automatyczne wypełnienie całego adresu.</p>
+                            </div>
+                        </div>
+                        <p>Ten przykład pokazuje, jak można precyzyjnie określić cel każdego pola adresowego, co pozwala
+                            przeglądarkom na automatyczne wypełnianie formularzy i ułatwia użytkownikom proces
+                            wprowadzania
+                            danych.</p>
                     </div>
-                    <p>Ten przykład pokazuje, jak można precyzyjnie określić cel każdego pola adresowego, co pozwala
-                        przeglądarkom na automatyczne wypełnianie formularzy i ułatwia użytkownikom proces wprowadzania
-                        danych.</p>
                 </div>
             </section>
 
-            <section class="guideline-section">
+            <section class="benefits">
                 <h2>Korzyści</h2>
                 <ul>
                     <li>Osoby z trudnościami kognitywnymi i motorycznymi mogą łatwiej wypełniać formularze dzięki
@@ -123,7 +251,7 @@
                 </ul>
             </section>
 
-            <section class="guideline-section">
+            <section class="challenges-tips">
                 <h2>Techniki wdrożenia</h2>
                 <p>Głównym sposobem implementacji tego kryterium jest używanie atrybutu <code>autocomplete</code> z
                     odpowiednimi wartościami dla pól formularza, które zbierają dane użytkownika. Pełna lista
@@ -149,7 +277,7 @@
                 </ul>
             </section>
 
-            <div class="additional-resources">
+            <div class="resources">
                 <h2>Dodatkowe źródła</h2>
                 <ul>
                     <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html"
