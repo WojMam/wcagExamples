@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.3 Możliwość adaptacji - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.3 Możliwość adaptacji</h2>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#adaptable" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis</h3>
+                <p>Twórz treści, które mogą być prezentowane na różne sposoby (np. uproszczony układ) bez utraty
+                    informacji czy struktury.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tej wytycznej jest zapewnienie, że wszystkie informacje są dostępne w formie, która może być
+                    postrzegana przez wszystkich użytkowników. Treści powinny być tak opracowane, aby mogły być
+                    prezentowane w różny sposób, np. w prostszym układzie wizualnym, za pomocą czytników ekranu czy w
+                    formie brajlowskiej. Struktura i relacje między elementami powinny być możliwe do określenia
+                    programowo lub dostępne w postaci tekstu.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Kryteria sukcesu</h3>
+                <p>Wytyczna 1.3 zawiera następujące kryteria sukcesu:</p>
+
+                <ul class="criteria-list">
+                    <li><a href="1.3.1.html">1.3.1 Informacje i relacje (A)</a></li>
+                    <li><a href="1.3.2.html">1.3.2 Zrozumiała kolejność (A)</a></li>
+                    <li><a href="1.3.3.html">1.3.3 Właściwości zmysłowe (A)</a></li>
+                    <li><a href="1.3.4.html">1.3.4 Orientacja (AA)</a></li>
+                    <li><a href="1.3.5.html">1.3.5 Określenie pożądanej wartości (AA)</a></li>
+                    <li><a href="1.3.6.html">1.3.6 Określenie przeznaczenia (AAA)</a></li>
+                </ul>
+
+                <h3>Ogólne wskazówki</h3>
+                <div class="tips">
+                    <h4>Kluczowe problemy adaptacji</h4>
+                    <ul>
+                        <li><strong>Struktura semantyczna</strong> - używaj znaczników semantycznych (nagłówki, listy,
+                            tabele) do określenia struktury treści</li>
+                        <li><strong>Kolejność odczytu</strong> - upewnij się, że kolejność treści w kodzie jest
+                            logiczna, nawet bez stylów</li>
+                        <li><strong>Informacje niezależne od zmysłów</strong> - nie polegaj wyłącznie na kolorze,
+                            kształcie, lokalizacji czy dźwięku</li>
+                        <li><strong>Responsywność</strong> - zapewnij, że strona jest użyteczna w różnych orientacjach
+                            ekranu</li>
+                        <li><strong>Automatyczne wypełnianie</strong> - umożliw rozpoznanie pól formularzy przez
+                            przeglądarki</li>
+                    </ul>
+
+                    <h4>Korzyści z projektowania adaptacyjnego</h4>
+                    <ul>
+                        <li><strong>Wsparcie dla technologii wspomagających</strong> - prawidłowa struktura jest
+                            kluczowa dla czytników ekranu</li>
+                        <li><strong>Dostępność mobilna</strong> - adaptacyjne treści działają lepiej na różnych
+                            urządzeniach</li>
+                        <li><strong>Lepsza użyteczność</strong> - jasna struktura pomaga wszystkim użytkownikom</li>
+                        <li><strong>Łatwiejsze utrzymanie</strong> - semantyczny kod jest łatwiejszy w zarządzaniu</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/adaptable.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG: Możliwość adaptacji</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML" target="_blank"
+                            rel="noopener">MDN: Dostępność w HTML</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/page-structure/" target="_blank" rel="noopener">WAI:
+                            Samouczek struktury strony</a></li>
+                    <li><a href="https://webaim.org/techniques/semanticstructure/" target="_blank"
+                            rel="noopener">WebAIM: Struktura semantyczna</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.2.html">Poprzedni: 1.2 Media zsynchronizowane</a></li>
+                    <li><a href="1.3.1.html">Następny: 1.3.1 Informacje i relacje</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
