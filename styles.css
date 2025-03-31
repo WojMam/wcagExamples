@@ -224,6 +224,11 @@ p {
 	border-left: 5px solid var(--average-color);
 }
 
+.example.exceptions {
+	background-color: #fff8e1;
+	border-left: 5px solid var(--average-color);
+}
+
 .example h5 {
 	margin-top: 0;
 	margin-bottom: 10px;
