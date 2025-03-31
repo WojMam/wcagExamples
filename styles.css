@@ -284,7 +284,13 @@ code {
 .preview-content footer,
 .preview-content article,
 .preview-content section,
-.preview-content nav {
+.preview-content nav,
+.preview-content .example-header,
+.preview-content .example-main,
+.preview-content .example-footer,
+.preview-content .example-article,
+.preview-content .example-section,
+.preview-content .example-nav {
 	border: 1px dashed #aaa;
 	padding: 10px;
 	margin: 5px 0;
@@ -296,8 +302,13 @@ code {
 .preview-content footer:before,
 .preview-content article:before,
 .preview-content section:before,
-.preview-content nav:before {
-	content: attr(class);
+.preview-content nav:before,
+.preview-content .example-header:before,
+.preview-content .example-main:before,
+.preview-content .example-footer:before,
+.preview-content .example-article:before,
+.preview-content .example-section:before,
+.preview-content .example-nav:before {
 	position: absolute;
 	top: -8px;
 	left: 10px;
@@ -306,6 +317,25 @@ code {
 	font-size: 0.7em;
 	color: #666;
 	font-family: monospace;
+}
+
+.preview-content .example-header:before {
+	content: "header";
+}
+.preview-content .example-nav:before {
+	content: "nav";
+}
+.preview-content .example-main:before {
+	content: "main";
+}
+.preview-content .example-article:before {
+	content: "article";
+}
+.preview-content .example-section:before {
+	content: "section";
+}
+.preview-content .example-footer:before {
+	content: "footer";
 }
 
 /* Specjalne style dla elementów formularza w podglądzie */
