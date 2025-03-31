@@ -5,6 +5,13 @@
 	box-sizing: border-box;
 }
 
+/* Dodane style dla list */
+ul,
+ol {
+	padding-left: 2em;
+	margin-left: 1em;
+}
+
 :root {
 	--primary-color: #005a9c;
 	--secondary-color: #0078d4;
