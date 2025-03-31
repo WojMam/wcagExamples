@@ -262,21 +262,46 @@ nav ul {
 
 .main-nav {
 	display: flex;
-	gap: 20px;
+	gap: 30px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
 .main-nav a {
 	color: var(--header-text);
 	text-decoration: none;
-	padding: 5px 10px;
-	border-radius: 3px;
-	transition: background-color 0.3s;
+	padding: 8px 16px;
+	border-radius: 25px;
+	font-weight: 500;
+	font-size: 1.1em;
+	transition: all 0.3s ease;
+	position: relative;
+	background: rgba(255, 255, 255, 0.1);
 }
 
 .main-nav a:hover,
 .main-nav a:focus {
-	background-color: var(--secondary-color);
-	outline: 2px solid var(--header-text);
+	background: rgba(255, 255, 255, 0.2);
+	transform: translateY(-2px);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.main-nav a::after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 2px;
+	background: var(--header-text);
+	transition: all 0.3s ease;
+	transform: translateX(-50%);
+}
+
+.main-nav a:hover::after,
+.main-nav a:focus::after {
+	width: 80%;
 }
 
 .subnav {
@@ -394,7 +419,8 @@ body.high-contrast a:focus {
 
 	.main-nav {
 		flex-direction: column;
-		gap: 10px;
+		gap: 15px;
+		width: 100%;
 	}
 
 	.example-container {
@@ -437,6 +463,26 @@ body.high-contrast a:focus {
 		font-size: 14px;
 		padding: 1px 3px;
 	}
+
+	.header-content {
+		flex-direction: column;
+		gap: 20px;
+		padding: 15px 0;
+	}
+
+	.logo {
+		width: 80px;
+		height: 80px;
+	}
+
+	.header-text {
+		margin: 10px 0;
+	}
+
+	.main-nav a {
+		text-align: center;
+		padding: 12px 20px;
+	}
 }
 
 /* Dostępność */
@@ -455,38 +501,36 @@ body.high-contrast a:focus {
 .header-content {
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	gap: 20px;
+	justify-content: space-between;
+	padding: 20px 0;
 	margin-bottom: 20px;
+	border-bottom: 2px solid rgba(255, 255, 255, 0.1);
 }
 
 .logo-link {
 	display: block;
-	transition: transform 0.3s ease;
+	transition: all 0.3s ease;
+	padding: 10px;
+	background: rgba(255, 255, 255, 0.1);
+	border-radius: 50%;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .logo-link:hover {
-	transform: scale(1.1);
+	transform: scale(1.05);
+	background: rgba(255, 255, 255, 0.2);
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .logo {
 	display: block;
-	max-width: 80px;
-	height: auto;
+	width: 100px;
+	height: 100px;
+	object-fit: contain;
 }
 
 .header-text {
 	flex: 1;
 	text-align: center;
-}
-
-@media (max-width: 768px) {
-	.header-content {
-		flex-direction: column;
-		gap: 15px;
-	}
-
-	.logo {
-		max-width: 60px;
-	}
+	margin: 0 30px;
 }
