@@ -72,6 +72,38 @@
 &lt;footer&gt;
     &lt;p&gt;Informacje stopki&lt;/p&gt;
 &lt;/footer&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <header>
+                                    <h1>Tytuł strony</h1>
+                                    <nav>
+                                        <ul>
+                                            <li><a href="#">Link nawigacyjny 1</a></li>
+                                            <li><a href="#">Link nawigacyjny 2</a></li>
+                                        </ul>
+                                    </nav>
+                                </header>
+
+                                <main>
+                                    <article>
+                                        <h2>Tytuł artykułu</h2>
+                                        <p>Pierwszy paragraf tekstu.</p>
+
+                                        <section>
+                                            <h3>Podsekcja artykułu</h3>
+                                            <p>Tekst podsekcji.</p>
+                                        </section>
+                                    </article>
+                                </main>
+
+                                <footer>
+                                    <p>Informacje stopki</p>
+                                </footer>
+                            </div>
+                        </div>
+
                         <p>Ten kod używa semantycznych elementów HTML5 (header, nav, main, article, section, footer)
                             oraz
                             prawidłowej hierarchii nagłówków (h1, h2, h3), co pozwala technologiom wspomagającym
@@ -107,6 +139,36 @@
 &lt;div class="footer"&gt;
     &lt;div&gt;Informacje stopki&lt;/div&gt;
 &lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div class="header">
+                                    <div class="title" style="font-size: 24px; font-weight: bold;">Tytuł strony</div>
+                                    <div class="nav">
+                                        <div>Link nawigacyjny 1</div>
+                                        <div>Link nawigacyjny 2</div>
+                                    </div>
+                                </div>
+
+                                <div class="content">
+                                    <div>
+                                        <div style="font-size: 20px; font-weight: bold;">Tytuł artykułu</div>
+                                        <div>Pierwszy paragraf tekstu.</div>
+
+                                        <div>
+                                            <div style="font-size: 18px; font-weight: bold;">Podsekcja artykułu</div>
+                                            <div>Tekst podsekcji.</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="footer">
+                                    <div>Informacje stopki</div>
+                                </div>
+                            </div>
+                        </div>
+
                         <p>Ten kod używa tylko elementów &lt;div&gt; i stylizacji CSS do formatowania wizualnego, bez
                             semantycznego znaczenia. Technologie wspomagające nie mogą rozpoznać struktury treści ani
                             hierarchii nagłówków.</p>
@@ -141,6 +203,38 @@
         &lt;/tr&gt;
     &lt;/tbody&gt;
 &lt;/table&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <table>
+                                    <caption>Harmonogram zajęć na tydzień</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Godzina</th>
+                                            <th scope="col">Poniedziałek</th>
+                                            <th scope="col">Wtorek</th>
+                                            <th scope="col">Środa</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">9:00</th>
+                                            <td>Matematyka</td>
+                                            <td>Fizyka</td>
+                                            <td>Chemia</td>
+                                        </tr>
+                                        <tr>
+                                            <th scope="row">11:00</th>
+                                            <td>Język polski</td>
+                                            <td>Historia</td>
+                                            <td>Geografia</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
                         <p>Ta tabela używa odpowiednich znaczników: &lt;caption&gt; dla opisania zawartości tabeli,
                             &lt;thead&gt; i &lt;tbody&gt; dla organizacji struktury, &lt;th&gt; z atrybutem scope dla
                             określenia nagłówków kolumn i wierszy, co pozwala technologiom wspomagającym prawidłowo
@@ -184,6 +278,48 @@
         &lt;button type="submit"&gt;Wyślij&lt;/button&gt;
     &lt;/fieldset&gt;
 &lt;/form&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <form>
+                                    <fieldset>
+                                        <legend>Dane kontaktowe</legend>
+
+                                        <div>
+                                            <label for="form-preview-name">Imię i nazwisko:</label>
+                                            <input type="text" id="form-preview-name" name="name" required>
+                                        </div>
+
+                                        <div>
+                                            <label for="form-preview-email">Adres e-mail:</label>
+                                            <input type="email" id="form-preview-email" name="email" required>
+                                        </div>
+
+                                        <div>
+                                            <fieldset>
+                                                <legend>Preferowany kontakt:</legend>
+
+                                                <div>
+                                                    <input type="radio" id="form-preview-contact-email" name="contact"
+                                                        value="email">
+                                                    <label for="form-preview-contact-email">E-mail</label>
+                                                </div>
+
+                                                <div>
+                                                    <input type="radio" id="form-preview-contact-phone" name="contact"
+                                                        value="phone">
+                                                    <label for="form-preview-contact-phone">Telefon</label>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+
+                                        <button type="button">Wyślij</button>
+                                    </fieldset>
+                                </form>
+                            </div>
+                        </div>
+
                         <p>Ten formularz używa elementów &lt;label&gt; powiązanych z polami formularza poprzez id,
                             &lt;fieldset&gt; i &lt;legend&gt; do grupowania powiązanych pól, co ułatwia zrozumienie
                             struktury formularza przez technologie wspomagające.</p>
