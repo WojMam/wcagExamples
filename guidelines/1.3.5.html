@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1.3.5 Określenie pożądanej wartości - Nieoficjalny przewodnik WCAG 2.1</title>
+    <title>1.3.5 Określanie sposobu wprowadzania danych (AA) - WCAG 2.1</title>
+    <meta name="description" content="Kryterium sukcesu 1.3.5 WCAG 2.1 - Określanie sposobu wprowadzania danych">
     <link rel="stylesheet" href="../styles.css">
 </head>
 
@@ -16,581 +17,155 @@
     </header>
 
     <main id="main">
-        <article class="criterion-detail">
-            <div class="criterion-header">
-                <h2>1.3.5 Określenie pożądanej wartości</h2>
-                <p class="criterion-level">Poziom AA</p>
-                <div class="meta">
-                    <p><a href="https://www.w3.org/TR/WCAG21/#identify-input-purpose" target="_blank"
-                            rel="noopener">Oficjalna
-                            dokumentacja W3C</a></p>
-                </div>
-            </div>
+        <article class="guideline">
+            <h1>1.3.5 Określanie sposobu wprowadzania danych <span class="level">Poziom AA</span></h1>
 
-            <div class="criterion-description">
-                <h3>Opis kryterium</h3>
-                <p>Cel danych wejściowych może zostać określony programowo, gdy:</p>
+            <div class="page-intro">
+                <p>Cel pola formularza, który zbiera informacje o użytkowniku, może zostać określony programowo, gdy:
+                </p>
                 <ul>
-                    <li>Pola formularza zbierające informacje o użytkowniku mają określony cel zgodnie z sekcją
-                        <a href="https://www.w3.org/TR/WCAG21/#input-purposes" target="_blank">Input Purposes for User
-                            Interface Components</a>
+                    <li>Pole formularza służy do celu wskazanego w sekcji „Cele wprowadzania danych użytkownika" oraz
                     </li>
-                </ul>
-
-                <h3>Intencja</h3>
-                <p>Celem tego kryterium jest zapewnienie, że pola formularzy zbierających dane użytkownika (np. dane
-                    osobowe,
-                    informacje kontaktowe) są odpowiednio oznaczone, aby przeglądarki i technologie wspomagające mogły
-                    automatycznie
-                    rozpoznać ich cel. Dzięki temu:</p>
-                <ul>
-                    <li>Przeglądarki mogą automatycznie wypełniać formularze zapisanymi wcześniej danymi</li>
-                    <li>Użytkownicy z zaburzeniami poznawczymi mają wsparcie przy wypełnianiu formularzy</li>
-                    <li>Technologie wspomagające mogą prezentować pola w bardziej zrozumiały sposób, np. dodając ikony
-                        ułatwiające identyfikację</li>
-                    <li>Użytkownicy z ograniczoną motoryką muszą wykonać mniej czynności, aby wypełnić formularze</li>
+                    <li>Treść została zaimplementowana przy wykorzystaniu technologii z obsługą wskazywania celu podania
+                        danych przez użytkownika.</li>
                 </ul>
             </div>
 
-            <div class="examples">
-                <h3>Przykłady</h3>
+            <section class="guideline-section">
+                <h2>Intencja</h2>
+                <p>Intencją tego kryterium jest umożliwienie przeglądarkom i technologiom wspomagającym przedstawiania
+                    spersonalizowanych interfejsów użytkownika, w których pola formularzy mogą być automatycznie
+                    wypełniane danymi użytkownika. Jest to szczególnie pomocne dla osób z zaburzeniami poznawczymi,
+                    które mogą mieć trudności z zapamiętaniem swoich danych osobowych lub z poprawnym wprowadzaniem ich
+                    za pomocą klawiatury.</p>
+            </section>
 
-                <div class="example-container">
-                    <div class="example bad">
-                        <h4>Zły przykład - brak określenia celu pól formularza</h4>
-                        <p>Formularz bez atrybutów określających cel pól:</p>
-                        <pre><code class="language-html">&lt;form&gt;
-    &lt;div&gt;
-        &lt;label for="name"&gt;Imię i nazwisko:&lt;/label&gt;
-        &lt;input type="text" id="name" name="name"&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="email"&gt;Email:&lt;/label&gt;
-        &lt;input type="email" id="email" name="email"&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="tel"&gt;Telefon:&lt;/label&gt;
-        &lt;input type="tel" id="tel" name="tel"&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="address"&gt;Adres:&lt;/label&gt;
-        &lt;input type="text" id="address" name="address"&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="city"&gt;Miasto:&lt;/label&gt;
-        &lt;input type="text" id="city" name="city"&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="postal"&gt;Kod pocztowy:&lt;/label&gt;
-        &lt;input type="text" id="postal" name="postal"&gt;
-    &lt;/div&gt;
-    &lt;button type="submit"&gt;Wyślij&lt;/button&gt;
+            <section class="guideline-section">
+                <h2>Przykłady</h2>
+
+                <div class="example">
+                    <h3>Zły przykład - brak identyfikacji celu pól formularza</h3>
+                    <p>Formularz rejestracyjny, w którym pola formularza nie mają prawidłowo określonego celu
+                        wprowadzania danych.</p>
+                    <div class="code-example">
+                        <pre><code>&lt;form&gt;
+    &lt;label for="name"&gt;Imię i nazwisko:&lt;/label&gt;
+    &lt;input type="text" id="name" name="name"&gt;
+    
+    &lt;label for="email"&gt;E-mail:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email"&gt;
+    
+    &lt;label for="tel"&gt;Telefon:&lt;/label&gt;
+    &lt;input type="tel" id="tel" name="tel"&gt;
 &lt;/form&gt;</code></pre>
-
-                        <div class="preview">
-                            <h5>Podgląd:</h5>
-                            <div class="preview-content">
-                                <form style="max-width: 400px; margin: 0 auto;">
-                                    <div style="margin-bottom: 10px;">
-                                        <label for="preview-name">Imię i nazwisko:</label>
-                                        <input type="text" id="preview-name" name="name"
-                                            style="display: block; width: 100%; padding: 8px; margin-top: 5px;">
-                                    </div>
-                                    <div style="margin-bottom: 10px;">
-                                        <label for="preview-email">Email:</label>
-                                        <input type="email" id="preview-email" name="email"
-                                            style="display: block; width: 100%; padding: 8px; margin-top: 5px;">
-                                    </div>
-                                    <div style="margin-bottom: 10px;">
-                                        <label for="preview-tel">Telefon:</label>
-                                        <input type="tel" id="preview-tel" name="tel"
-                                            style="display: block; width: 100%; padding: 8px; margin-top: 5px;">
-                                    </div>
-                                    <div style="margin-bottom: 10px;">
-                                        <label for="preview-address">Adres:</label>
-                                        <input type="text" id="preview-address" name="address"
-                                            style="display: block; width: 100%; padding: 8px; margin-top: 5px;">
-                                    </div>
-                                    <div style="margin-bottom: 10px;">
-                                        <label for="preview-city">Miasto:</label>
-                                        <input type="text" id="preview-city" name="city"
-                                            style="display: block; width: 100%; padding: 8px; margin-top: 5px;">
-                                    </div>
-                                    <div style="margin-bottom: 10px;">
-                                        <label for="preview-postal">Kod pocztowy:</label>
-                                        <input type="text" id="preview-postal" name="postal"
-                                            style="display: block; width: 100%; padding: 8px; margin-top: 5px;">
-                                    </div>
-                                    <button type="button"
-                                        style="padding: 8px 16px; background-color: #0066cc; color: white; border: none; border-radius: 4px;">Wyślij</button>
-                                </form>
-                            </div>
-                        </div>
-
-                        <p>Ten przykład jest problemem z dostępnością, ponieważ:</p>
-                        <ul>
-                            <li>Pola nie zawierają atrybutu <code>autocomplete</code> określającego ich cel</li>
-                            <li>Przeglądarki nie mogą rozpoznać konkretnego przeznaczenia pól</li>
-                            <li>Automatyczne wypełnianie formularza może działać nieprawidłowo</li>
-                            <li>Technologie wspomagające nie otrzymują dodatkowych informacji o celu pól</li>
-                            <li>Osoby z niepełnosprawnościami poznawczymi muszą włożyć więcej wysiłku w zrozumienie i
-                                wypełnienie formularza</li>
-                        </ul>
                     </div>
+                    <p>W tym przykładzie pola formularza mają podstawowe atrybuty, takie jak typy (text, email, tel),
+                        ale brakuje atrybutów <code>autocomplete</code>, które określałyby dokładny cel każdego pola.
+                    </p>
                 </div>
 
-                <div class="example-container">
-                    <div class="example good">
-                        <h4>Dobry przykład - określenie celu pól formularza za pomocą autocomplete</h4>
-                        <p>Formularz z atrybutami autocomplete określającymi cel pól:</p>
-                        <pre><code class="language-html">&lt;form&gt;
-    &lt;div&gt;
-        &lt;label for="name"&gt;Imię i nazwisko:&lt;/label&gt;
-        &lt;input type="text" id="name" name="name" autocomplete="name"&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="email"&gt;Email:&lt;/label&gt;
-        &lt;input type="email" id="email" name="email" autocomplete="email"&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="tel"&gt;Telefon:&lt;/label&gt;
-        &lt;input type="tel" id="tel" name="tel" autocomplete="tel"&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="street-address"&gt;Adres:&lt;/label&gt;
-        &lt;input type="text" id="street-address" name="street-address" autocomplete="street-address"&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="address-level2"&gt;Miasto:&lt;/label&gt;
-        &lt;input type="text" id="address-level2" name="city" autocomplete="address-level2"&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="postal-code"&gt;Kod pocztowy:&lt;/label&gt;
-        &lt;input type="text" id="postal-code" name="postal" autocomplete="postal-code"&gt;
-    &lt;/div&gt;
-    &lt;button type="submit"&gt;Wyślij&lt;/button&gt;
+                <div class="example">
+                    <h3>Dobry przykład - prawidłowe określanie celu pól formularza</h3>
+                    <p>Ten sam formularz rejestracyjny z prawidłowo określonymi celami pól formularza za pomocą atrybutu
+                        autocomplete.</p>
+                    <div class="code-example">
+                        <pre><code>&lt;form&gt;
+    &lt;label for="name"&gt;Imię i nazwisko:&lt;/label&gt;
+    &lt;input type="text" id="name" name="name" autocomplete="name"&gt;
+    
+    &lt;label for="email"&gt;E-mail:&lt;/label&gt;
+    &lt;input type="email" id="email" name="email" autocomplete="email"&gt;
+    
+    &lt;label for="tel"&gt;Telefon:&lt;/label&gt;
+    &lt;input type="tel" id="tel" name="tel" autocomplete="tel"&gt;
 &lt;/form&gt;</code></pre>
-
-                        <div class="preview">
-                            <h5>Podgląd:</h5>
-                            <div class="preview-content">
-                                <form style="max-width: 400px; margin: 0 auto;">
-                                    <div style="margin-bottom: 10px;">
-                                        <label for="preview-name2">Imię i nazwisko:</label>
-                                        <input type="text" id="preview-name2" name="name" autocomplete="name"
-                                            style="display: block; width: 100%; padding: 8px; margin-top: 5px;">
-                                    </div>
-                                    <div style="margin-bottom: 10px;">
-                                        <label for="preview-email2">Email:</label>
-                                        <input type="email" id="preview-email2" name="email" autocomplete="email"
-                                            style="display: block; width: 100%; padding: 8px; margin-top: 5px;">
-                                    </div>
-                                    <div style="margin-bottom: 10px;">
-                                        <label for="preview-tel2">Telefon:</label>
-                                        <input type="tel" id="preview-tel2" name="tel" autocomplete="tel"
-                                            style="display: block; width: 100%; padding: 8px; margin-top: 5px;">
-                                    </div>
-                                    <div style="margin-bottom: 10px;">
-                                        <label for="preview-address2">Adres:</label>
-                                        <input type="text" id="preview-address2" name="street-address"
-                                            autocomplete="street-address"
-                                            style="display: block; width: 100%; padding: 8px; margin-top: 5px;">
-                                    </div>
-                                    <div style="margin-bottom: 10px;">
-                                        <label for="preview-city2">Miasto:</label>
-                                        <input type="text" id="preview-city2" name="city" autocomplete="address-level2"
-                                            style="display: block; width: 100%; padding: 8px; margin-top: 5px;">
-                                    </div>
-                                    <div style="margin-bottom: 10px;">
-                                        <label for="preview-postal2">Kod pocztowy:</label>
-                                        <input type="text" id="preview-postal2" name="postal" autocomplete="postal-code"
-                                            style="display: block; width: 100%; padding: 8px; margin-top: 5px;">
-                                    </div>
-                                    <button type="button"
-                                        style="padding: 8px 16px; background-color: #0066cc; color: white; border: none; border-radius: 4px;">Wyślij</button>
-                                </form>
-                            </div>
-                        </div>
-
-                        <p>Ten przykład jest dostępny, ponieważ:</p>
-                        <ul>
-                            <li>Każde pole ma odpowiedni atrybut <code>autocomplete</code> zgodny ze specyfikacją</li>
-                            <li>Przeglądarki mogą automatycznie rozpoznać cel pól i oferować wypełnienie danymi</li>
-                            <li>Wartości <code>autocomplete</code> są zgodne ze standardem <a
-                                    href="https://www.w3.org/TR/WCAG21/#input-purposes" target="_blank">Input Purposes
-                                    for User Interface Components</a></li>
-                            <li>Technologie wspomagające mogą dostarczyć dodatkowe wskazówki wizualne lub dźwiękowe</li>
-                            <li>Użytkownicy z zaburzeniami poznawczymi mogą łatwiej zidentyfikować przeznaczenie pól
-                            </li>
-                            <li>Użytkownicy z ograniczoną motoryką wykonują mniej czynności dzięki automatycznemu
-                                wypełnianiu</li>
-                        </ul>
                     </div>
+                    <p>Dzięki dodaniu atrybutów <code>autocomplete</code> z odpowiednimi wartościami, przeglądarka może
+                        automatycznie wypełnić te pola danymi użytkownika, które zostały wcześniej zapisane.</p>
                 </div>
 
-                <div class="example-container">
-                    <div class="example good">
-                        <h4>Dobry przykład - złożony formularz z sekcjami i pełnym zestawem atrybutów autocomplete</h4>
-                        <p>Bardziej rozbudowany formularz z atrybutami autocomplete:</p>
-                        <pre><code class="language-html">&lt;form&gt;
-    &lt;h3&gt;Dane osobowe&lt;/h3&gt;
-    &lt;div&gt;
-        &lt;label for="given-name"&gt;Imię:&lt;/label&gt;
-        &lt;input type="text" id="given-name" name="given-name" autocomplete="given-name" required&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="family-name"&gt;Nazwisko:&lt;/label&gt;
-        &lt;input type="text" id="family-name" name="family-name" autocomplete="family-name" required&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="bday"&gt;Data urodzenia:&lt;/label&gt;
-        &lt;input type="date" id="bday" name="bday" autocomplete="bday"&gt;
-    &lt;/div&gt;
+                <div class="example">
+                    <h3>Bardziej złożony przykład - adres pocztowy</h3>
+                    <p>Formularz adresu pocztowego z dokładnie określonymi celami dla każdego pola.</p>
+                    <div class="code-example">
+                        <pre><code>&lt;form&gt;
+    &lt;label for="street"&gt;Ulica i numer:&lt;/label&gt;
+    &lt;input type="text" id="street" name="street" autocomplete="address-line1"&gt;
     
-    &lt;h3&gt;Dane kontaktowe&lt;/h3&gt;
-    &lt;div&gt;
-        &lt;label for="email"&gt;Email:&lt;/label&gt;
-        &lt;input type="email" id="email" name="email" autocomplete="email" required&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="tel"&gt;Telefon:&lt;/label&gt;
-        &lt;input type="tel" id="tel" name="tel" autocomplete="tel"&gt;
-    &lt;/div&gt;
+    &lt;label for="city"&gt;Miasto:&lt;/label&gt;
+    &lt;input type="text" id="city" name="city" autocomplete="address-level2"&gt;
     
-    &lt;h3&gt;Adres dostawy&lt;/h3&gt;
-    &lt;div&gt;
-        &lt;label for="shipping-street-address"&gt;Ulica i numer:&lt;/label&gt;
-        &lt;input type="text" id="shipping-street-address" name="shipping-street-address" autocomplete="shipping street-address" required&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="shipping-address-level2"&gt;Miasto:&lt;/label&gt;
-        &lt;input type="text" id="shipping-address-level2" name="shipping-city" autocomplete="shipping address-level2" required&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="shipping-postal-code"&gt;Kod pocztowy:&lt;/label&gt;
-        &lt;input type="text" id="shipping-postal-code" name="shipping-postal" autocomplete="shipping postal-code" required&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="shipping-country"&gt;Kraj:&lt;/label&gt;
-        &lt;select id="shipping-country" name="shipping-country" autocomplete="shipping country" required&gt;
-            &lt;option value="PL"&gt;Polska&lt;/option&gt;
-            &lt;option value="DE"&gt;Niemcy&lt;/option&gt;
-            &lt;option value="CZ"&gt;Czechy&lt;/option&gt;
-            &lt;option value="SK"&gt;Słowacja&lt;/option&gt;
-        &lt;/select&gt;
-    &lt;/div&gt;
+    &lt;label for="postal"&gt;Kod pocztowy:&lt;/label&gt;
+    &lt;input type="text" id="postal" name="postal" autocomplete="postal-code"&gt;
     
-    &lt;h3&gt;Dane karty płatniczej&lt;/h3&gt;
-    &lt;div&gt;
-        &lt;label for="cc-name"&gt;Imię i nazwisko na karcie:&lt;/label&gt;
-        &lt;input type="text" id="cc-name" name="cc-name" autocomplete="cc-name"&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="cc-number"&gt;Numer karty:&lt;/label&gt;
-        &lt;input type="text" id="cc-number" name="cc-number" autocomplete="cc-number"&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="cc-exp"&gt;Data ważności:&lt;/label&gt;
-        &lt;input type="text" id="cc-exp" name="cc-exp" autocomplete="cc-exp" placeholder="MM/RR"&gt;
-    &lt;/div&gt;
-    &lt;div&gt;
-        &lt;label for="cc-csc"&gt;Kod bezpieczeństwa:&lt;/label&gt;
-        &lt;input type="text" id="cc-csc" name="cc-csc" autocomplete="cc-csc"&gt;
-    &lt;/div&gt;
-    
-    &lt;button type="submit"&gt;Zamów i zapłać&lt;/button&gt;
+    &lt;label for="country"&gt;Kraj:&lt;/label&gt;
+    &lt;select id="country" name="country" autocomplete="country"&gt;
+        &lt;option value="PL"&gt;Polska&lt;/option&gt;
+        &lt;option value="DE"&gt;Niemcy&lt;/option&gt;
+        &lt;option value="US"&gt;Stany Zjednoczone&lt;/option&gt;
+    &lt;/select&gt;
 &lt;/form&gt;</code></pre>
-
-                        <p>Ten przykład jest dostępny, ponieważ:</p>
-                        <ul>
-                            <li>Każde pole ma odpowiedni i dokładny atrybut <code>autocomplete</code></li>
-                            <li>Formularz używa precyzyjnych wartości, np. <code>given-name</code> i
-                                <code>family-name</code> zamiast ogólnego <code>name</code>
-                            </li>
-                            <li>Prefiks <code>shipping</code> jest używany dla pól adresu dostawy, co pozwala
-                                przeglądarkom rozróżnić adresy dostawy od adresów rozliczeniowych</li>
-                            <li>Dane karty płatniczej mają prefiks <code>cc-</code> zgodnie ze standardem</li>
-                            <li>Formularz jest podzielony na sekcje z nagłówkami, co dodatkowo poprawia strukturę i
-                                czytelność</li>
-                            <li>Wymagane pola są oznaczone atrybutem <code>required</code>, co stanowi dodatkową
-                                informację dla użytkownika</li>
-                        </ul>
-
-                        <div class="preview">
-                            <h5>Podgląd:</h5>
-                            <div class="preview-content">
-                                <form
-                                    style="max-width: 450px; margin: 0 auto; padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9;">
-                                    <h3
-                                        style="margin-top: 0; color: #333; border-bottom: 1px solid #eee; padding-bottom: 10px;">
-                                        Dane osobowe</h3>
-                                    <div style="margin-bottom: 15px;">
-                                        <label for="preview-given-name"
-                                            style="display: block; margin-bottom: 5px; font-weight: bold;">Imię:</label>
-                                        <input type="text" id="preview-given-name" name="given-name"
-                                            autocomplete="given-name" required
-                                            style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                        <div style="font-size: 11px; color: #666; margin-top: 2px;">
-                                            autocomplete="given-name"</div>
-                                    </div>
-                                    <div style="margin-bottom: 15px;">
-                                        <label for="preview-family-name"
-                                            style="display: block; margin-bottom: 5px; font-weight: bold;">Nazwisko:</label>
-                                        <input type="text" id="preview-family-name" name="family-name"
-                                            autocomplete="family-name" required
-                                            style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                        <div style="font-size: 11px; color: #666; margin-top: 2px;">
-                                            autocomplete="family-name"</div>
-                                    </div>
-                                    <div style="margin-bottom: 15px;">
-                                        <label for="preview-bday"
-                                            style="display: block; margin-bottom: 5px; font-weight: bold;">Data
-                                            urodzenia:</label>
-                                        <input type="date" id="preview-bday" name="bday" autocomplete="bday"
-                                            style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                        <div style="font-size: 11px; color: #666; margin-top: 2px;">autocomplete="bday"
-                                        </div>
-                                    </div>
-
-                                    <h3 style="color: #333; border-bottom: 1px solid #eee; padding-bottom: 10px;">Dane
-                                        kontaktowe</h3>
-                                    <div style="margin-bottom: 15px;">
-                                        <label for="preview-email3"
-                                            style="display: block; margin-bottom: 5px; font-weight: bold;">Email:</label>
-                                        <input type="email" id="preview-email3" name="email" autocomplete="email"
-                                            required
-                                            style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                        <div style="font-size: 11px; color: #666; margin-top: 2px;">autocomplete="email"
-                                        </div>
-                                    </div>
-                                    <div style="margin-bottom: 15px;">
-                                        <label for="preview-tel3"
-                                            style="display: block; margin-bottom: 5px; font-weight: bold;">Telefon:</label>
-                                        <input type="tel" id="preview-tel3" name="tel" autocomplete="tel"
-                                            style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                        <div style="font-size: 11px; color: #666; margin-top: 2px;">autocomplete="tel"
-                                        </div>
-                                    </div>
-
-                                    <h3 style="color: #333; border-bottom: 1px solid #eee; padding-bottom: 10px;">Adres
-                                        dostawy</h3>
-                                    <div style="margin-bottom: 15px;">
-                                        <label for="preview-shipping-street"
-                                            style="display: block; margin-bottom: 5px; font-weight: bold;">Ulica i
-                                            numer:</label>
-                                        <input type="text" id="preview-shipping-street" name="shipping-street-address"
-                                            autocomplete="shipping street-address" required
-                                            style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                        <div style="font-size: 11px; color: #666; margin-top: 2px;">
-                                            autocomplete="shipping street-address"</div>
-                                    </div>
-                                    <div style="margin-bottom: 15px;">
-                                        <label for="preview-shipping-city"
-                                            style="display: block; margin-bottom: 5px; font-weight: bold;">Miasto:</label>
-                                        <input type="text" id="preview-shipping-city" name="shipping-city"
-                                            autocomplete="shipping address-level2" required
-                                            style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                        <div style="font-size: 11px; color: #666; margin-top: 2px;">
-                                            autocomplete="shipping address-level2"</div>
-                                    </div>
-                                    <div style="margin-bottom: 15px;">
-                                        <label for="preview-shipping-postal"
-                                            style="display: block; margin-bottom: 5px; font-weight: bold;">Kod
-                                            pocztowy:</label>
-                                        <input type="text" id="preview-shipping-postal" name="shipping-postal"
-                                            autocomplete="shipping postal-code" required
-                                            style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                        <div style="font-size: 11px; color: #666; margin-top: 2px;">
-                                            autocomplete="shipping postal-code"</div>
-                                    </div>
-                                    <div style="margin-bottom: 15px;">
-                                        <label for="preview-shipping-country"
-                                            style="display: block; margin-bottom: 5px; font-weight: bold;">Kraj:</label>
-                                        <select id="preview-shipping-country" name="shipping-country"
-                                            autocomplete="shipping country" required
-                                            style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                            <option value="PL">Polska</option>
-                                            <option value="DE">Niemcy</option>
-                                            <option value="CZ">Czechy</option>
-                                            <option value="SK">Słowacja</option>
-                                        </select>
-                                        <div style="font-size: 11px; color: #666; margin-top: 2px;">
-                                            autocomplete="shipping country"</div>
-                                    </div>
-
-                                    <h3 style="color: #333; border-bottom: 1px solid #eee; padding-bottom: 10px;">Dane
-                                        karty płatniczej</h3>
-                                    <div style="margin-bottom: 15px;">
-                                        <label for="preview-cc-name"
-                                            style="display: block; margin-bottom: 5px; font-weight: bold;">Imię i
-                                            nazwisko na karcie:</label>
-                                        <input type="text" id="preview-cc-name" name="cc-name" autocomplete="cc-name"
-                                            style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                        <div style="font-size: 11px; color: #666; margin-top: 2px;">
-                                            autocomplete="cc-name"</div>
-                                    </div>
-                                    <div style="margin-bottom: 15px;">
-                                        <label for="preview-cc-number"
-                                            style="display: block; margin-bottom: 5px; font-weight: bold;">Numer
-                                            karty:</label>
-                                        <input type="text" id="preview-cc-number" name="cc-number"
-                                            autocomplete="cc-number"
-                                            style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                        <div style="font-size: 11px; color: #666; margin-top: 2px;">
-                                            autocomplete="cc-number"</div>
-                                    </div>
-                                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-                                        <div style="flex: 1;">
-                                            <label for="preview-cc-exp"
-                                                style="display: block; margin-bottom: 5px; font-weight: bold;">Data
-                                                ważności:</label>
-                                            <input type="text" id="preview-cc-exp" name="cc-exp" autocomplete="cc-exp"
-                                                placeholder="MM/RR"
-                                                style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                            <div style="font-size: 11px; color: #666; margin-top: 2px;">
-                                                autocomplete="cc-exp"</div>
-                                        </div>
-                                        <div style="flex: 1;">
-                                            <label for="preview-cc-csc"
-                                                style="display: block; margin-bottom: 5px; font-weight: bold;">Kod
-                                                bezpieczeństwa:</label>
-                                            <input type="text" id="preview-cc-csc" name="cc-csc" autocomplete="cc-csc"
-                                                style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-                                            <div style="font-size: 11px; color: #666; margin-top: 2px;">
-                                                autocomplete="cc-csc"</div>
-                                        </div>
-                                    </div>
-
-                                    <button type="button"
-                                        style="background-color: #0066cc; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; font-weight: bold; width: 100%;">Zamów
-                                        i zapłać</button>
-                                </form>
-                            </div>
-                        </div>
                     </div>
+                    <p>Ten przykład pokazuje, jak można precyzyjnie określić cel każdego pola adresowego, co pozwala
+                        przeglądarkom na automatyczne wypełnianie formularzy i ułatwia użytkownikom proces wprowadzania
+                        danych.</p>
                 </div>
-            </div>
+            </section>
 
-            <div class="challenges-tips">
-                <h3>Wyzwania i wskazówki</h3>
+            <section class="guideline-section">
+                <h2>Korzyści</h2>
                 <ul>
-                    <li><strong>Zidentyfikuj odpowiednie pola</strong> - to kryterium dotyczy przede wszystkim pól
-                        zbierających dane osobowe, nie wszystkie pola formularzy</li>
-                    <li><strong>Używaj standardowych wartości autocomplete</strong> - aby spełnić to kryterium, stosuj
-                        wartości z <a href="https://www.w3.org/TR/WCAG21/#input-purposes" target="_blank">oficjalnej
-                            listy WCAG</a></li>
-                    <li><strong>Grupuj powiązane pola</strong> - używaj prefiksów takich jak <code>shipping</code>,
-                        <code>billing</code> czy <code>cc-</code> dla pól należących do tych samych kategorii
-                    </li>
-                    <li><strong>Zachowaj spójność</strong> - używaj tych samych wartości autocomplete dla podobnych pól
-                        w całej witrynie</li>
-                    <li><strong>Nie nadużywaj autocomplete</strong> - używaj go tylko dla standardowych typów danych
-                        opisanych w specyfikacji</li>
-                    <li><strong>Pamiętaj o prywatności</strong> - dla pól z danymi wrażliwymi możesz rozważyć użycie
-                        <code>autocomplete="off"</code>, ale tylko gdy jest to uzasadnione
-                    </li>
-                    <li><strong>Testuj w różnych przeglądarkach</strong> - zachowanie funkcji autouzupełniania może się
-                        różnić między przeglądarkami</li>
+                    <li>Osoby z trudnościami kognitywnymi i motorycznymi mogą łatwiej wypełniać formularze dzięki
+                        automatycznemu wypełnianiu.</li>
+                    <li>Zmniejszenie liczby błędów podczas wprowadzania danych osobowych.</li>
+                    <li>Skrócenie czasu potrzebnego na wypełnienie formularzy.</li>
+                    <li>Zwiększenie pewności użytkowników, że ich dane są wprowadzane poprawnie.</li>
                 </ul>
+            </section>
 
-                <h4 style="margin-top: 30px;">Lista najczęściej używanych wartości autocomplete:</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Wartość</th>
-                            <th>Opis</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><code>name</code></td>
-                            <td>Pełne imię i nazwisko</td>
-                        </tr>
-                        <tr>
-                            <td><code>given-name</code></td>
-                            <td>Imię</td>
-                        </tr>
-                        <tr>
-                            <td><code>family-name</code></td>
-                            <td>Nazwisko</td>
-                        </tr>
-                        <tr>
-                            <td><code>email</code></td>
-                            <td>Adres e-mail</td>
-                        </tr>
-                        <tr>
-                            <td><code>tel</code></td>
-                            <td>Numer telefonu</td>
-                        </tr>
-                        <tr>
-                            <td><code>street-address</code></td>
-                            <td>Adres - ulica i numer</td>
-                        </tr>
-                        <tr>
-                            <td><code>address-level2</code></td>
-                            <td>Miasto</td>
-                        </tr>
-                        <tr>
-                            <td><code>postal-code</code></td>
-                            <td>Kod pocztowy</td>
-                        </tr>
-                        <tr>
-                            <td><code>country</code></td>
-                            <td>Kraj</td>
-                        </tr>
-                        <tr>
-                            <td><code>bday</code></td>
-                            <td>Data urodzenia (pełna)</td>
-                        </tr>
-                        <tr>
-                            <td><code>username</code></td>
-                            <td>Nazwa użytkownika</td>
-                        </tr>
-                        <tr>
-                            <td><code>current-password</code></td>
-                            <td>Aktualne hasło</td>
-                        </tr>
-                        <tr>
-                            <td><code>new-password</code></td>
-                            <td>Nowe hasło</td>
-                        </tr>
-                        <tr>
-                            <td><code>cc-name</code></td>
-                            <td>Imię i nazwisko na karcie płatniczej</td>
-                        </tr>
-                        <tr>
-                            <td><code>cc-number</code></td>
-                            <td>Numer karty płatniczej</td>
-                        </tr>
-                        <tr>
-                            <td><code>cc-exp</code></td>
-                            <td>Data ważności karty</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            <section class="guideline-section">
+                <h2>Techniki wdrożenia</h2>
+                <p>Głównym sposobem implementacji tego kryterium jest używanie atrybutu <code>autocomplete</code> z
+                    odpowiednimi wartościami dla pól formularza, które zbierają dane użytkownika. Pełna lista
+                    dozwolonych wartości znajduje się w specyfikacji HTML.</p>
 
-            <div class="resources">
-                <h3>Dodatkowe zasoby</h3>
+                <p>Najczęściej używane wartości atrybutu <code>autocomplete</code>:</p>
+                <ul>
+                    <li><code>name</code> - imię i nazwisko</li>
+                    <li><code>given-name</code> - imię</li>
+                    <li><code>family-name</code> - nazwisko</li>
+                    <li><code>email</code> - adres e-mail</li>
+                    <li><code>tel</code> - numer telefonu</li>
+                    <li><code>street-address</code> - adres ulicy</li>
+                    <li><code>postal-code</code> - kod pocztowy</li>
+                    <li><code>country</code> - kraj</li>
+                    <li><code>cc-name</code> - imię i nazwisko na karcie kredytowej</li>
+                    <li><code>cc-number</code> - numer karty kredytowej</li>
+                    <li><code>cc-exp</code> - data ważności karty kredytowej</li>
+                    <li><code>cc-csc</code> - kod bezpieczeństwa karty kredytowej</li>
+                    <li><code>username</code> - nazwa użytkownika</li>
+                    <li><code>new-password</code> - nowe hasło</li>
+                    <li><code>current-password</code> - obecne hasło</li>
+                </ul>
+            </section>
+
+            <div class="additional-resources">
+                <h2>Dodatkowe źródła</h2>
                 <ul>
                     <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/identify-input-purpose.html"
-                            target="_blank" rel="noopener">Zrozumieć WCAG: Określenie pożądanej wartości</a></li>
-                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete"
-                            target="_blank" rel="noopener">MDN: Atrybut autocomplete</a></li>
-                    <li><a href="https://www.w3.org/TR/WCAG21/#input-purposes" target="_blank" rel="noopener">WCAG 2.1:
-                            Lista celów danych wejściowych</a></li>
-                    <li><a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill"
-                            target="_blank" rel="noopener">HTML Living Standard: Autofill</a></li>
-                    <li><a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-field"
-                            target="_blank" rel="noopener">HTML Living Standard: Pełna lista pól autouzupełniania</a>
+                            target="_blank" rel="noopener">Zrozumieć WCAG: Określanie sposobu wprowadzania danych</a>
                     </li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete"
+                            target="_blank" rel="noopener">MDN Web Docs: atrybut autocomplete</a></li>
+                    <li><a href="https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill"
+                            target="_blank" rel="noopener">Specyfikacja HTML: Autofill</a></li>
                 </ul>
             </div>
 
             <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
                 <ul>
                     <li><a href="1.3.4.html">Poprzedni: 1.3.4 Orientacja</a></li>
-                    <li><a href="1.3.6.html">Następny: 1.3.6 Określenie przeznaczenia</a></li>
+                    <li><a href="1.3.6.html">Następny: 1.3.6 Określanie przeznaczenia</a></li>
                 </ul>
             </nav>
         </article>

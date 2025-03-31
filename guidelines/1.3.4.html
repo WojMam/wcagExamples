@@ -4,502 +4,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1.3.4 Orientacja - Nieoficjalny przewodnik WCAG 2.1</title>
+    <title>1.3.4 Orientacja (AA) - WCAG 2.1</title>
+    <meta name="description" content="Kryterium sukcesu 1.3.4 WCAG 2.1 - Orientacja">
     <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
-    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
-
     <header>
         <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
     </header>
 
-    <main id="main">
-        <article class="criterion-detail">
-            <div class="criterion-header">
-                <h2>1.3.4 Orientacja</h2>
-                <p class="criterion-level">Poziom AA</p>
-                <div class="meta">
-                    <p><a href="https://www.w3.org/TR/WCAG21/#orientation" target="_blank" rel="noopener">Oficjalna
-                            dokumentacja W3C</a></p>
+    <main>
+        <article class="guideline">
+            <h1>1.3.4 Orientacja <span class="level">Poziom AA</span></h1>
+
+            <div class="page-intro">
+                <p>Wyświetlanie i obsługa treści nie jest ograniczona tylko do jednej orientacji wyświetlania, takiej
+                    jak pionowa lub pozioma, chyba że konkretna orientacja wyświetlania jest niezbędna.</p>
+            </div>
+
+            <section class="guideline-section">
+                <h2>Intencja</h2>
+                <p>Celem tego kryterium jest zapewnienie, że treści mogą być obsługiwane i wyświetlane w orientacji
+                    preferowanej przez użytkownika. Niektórzy użytkownicy mają swoje urządzenia zamontowane w stałej
+                    orientacji (np. przymocowane do podłokietnika wózka inwalidzkiego), a inni mogą mieć trudności z
+                    obracaniem urządzenia lub zmianą jego pozycji. Strony internetowe i aplikacje, które wymuszają
+                    określoną orientację (np. tylko poziomą) mogą uniemożliwić tym osobom wygodne korzystanie z treści.
+                </p>
+            </section>
+
+            <section class="guideline-section">
+                <h2>Przykłady</h2>
+
+                <div class="example">
+                    <h3>Zły przykład - wymuszanie orientacji poziomej</h3>
+                    <p>Aplikacja lub strona internetowa, która blokuje wyświetlanie w orientacji pionowej i wyświetla
+                        komunikat nakazujący obrócenie urządzenia do pozycji poziomej:</p>
+                    <div class="code-example">
+                        <pre><code>@media screen and (orientation: portrait) {
+    .app-content {
+        display: none;
+    }
+    
+    .rotate-message {
+        display: flex;
+        height: 100vh;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: #f0f0f0;
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .app-content {
+        display: block;
+    }
+    
+    .rotate-message {
+        display: none;
+    }
+}</code></pre>
+                    </div>
+                    <div class="code-example">
+                        <pre><code>&lt;div class="rotate-message"&gt;
+    &lt;div&gt;
+        &lt;img src="../images/rotate-device.svg" alt="Ikona obracania urządzenia"&gt;
+        &lt;h2&gt;Proszę obrócić urządzenie&lt;/h2&gt;
+        &lt;p&gt;Ta aplikacja działa tylko w trybie poziomym.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="app-content"&gt;
+    &lt;!-- Zawartość aplikacji widoczna tylko w trybie poziomym --&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                    <p>W tym przykładzie cała zawartość aplikacji jest ukryta, gdy urządzenie jest w orientacji
+                        pionowej. Zamiast tego wyświetlany jest komunikat nakazujący użytkownikowi obrócenie urządzenia.
+                        Jest to problem dla osób, które nie mogą zmienić orientacji swojego urządzenia.</p>
                 </div>
-            </div>
 
-            <div class="criterion-description">
-                <h3>Opis kryterium</h3>
-                <p>Wyświetlanie treści i obsługa nie są ograniczone do jednej orientacji wyświetlania, takiej jak
-                    pionowa lub pozioma, chyba że konkretna orientacja wyświetlania jest niezbędna.</p>
+                <div class="example">
+                    <h3>Dobry przykład - responsywny design obsługujący obie orientacje</h3>
+                    <p>Strona internetowa zaprojektowana tak, aby dostosowywała się do obu orientacji, używając
+                        responsywnego designu:</p>
+                    <div class="code-example">
+                        <pre><code>/* Style dla obu orientacji */
+.app-content {
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-                <h3>Intencja</h3>
-                <p>Celem tego kryterium jest zapewnienie, że strony internetowe i aplikacje mogą być używane w różnych
-                    orientacjach ekranu (pionowej i poziomej), co jest istotne dla osób z niepełnosprawnościami, które
-                    mogą mieć urządzenie zamontowane w określonej orientacji. Na przykład, osoby z ograniczoną
-                    mobilnością mogą mieć telefon lub tablet zamontowany w określonej pozycji. Ograniczanie interfejsu
-                    do jednej orientacji może uniemożliwić im efektywne korzystanie z aplikacji.</p>
-            </div>
+/* Dostosowania dla orientacji pionowej */
+@media screen and (orientation: portrait) {
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
 
-            <div class="examples">
-                <h3>Przykłady</h3>
-
-                <div class="example-container">
-                    <div class="example bad">
-                        <h4>Zły przykład - blokowanie orientacji</h4>
-                        <p>Kod HTML i JavaScript wymuszający jedną orientację:</p>
-                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="pl"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Aplikacja tylko w orientacji poziomej&lt;/title&gt;
-    &lt;style&gt;
-        /* Ukryj całą zawartość w orientacji pionowej */
-        @media screen and (orientation: portrait) {
-            .content {
-                display: none;
-            }
-            .orientation-warning {
-                display: block;
-            }
-        }
+/* Dostosowania dla orientacji poziomej */
+@media screen and (orientation: landscape) {
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+    }
+}</code></pre>
+                    </div>
+                    <div class="code-example">
+                        <pre><code>&lt;div class="app-content"&gt;
+    &lt;h1&gt;Panel główny&lt;/h1&gt;
+    
+    &lt;div class="dashboard-grid"&gt;
+        &lt;div class="dashboard-card"&gt;
+            &lt;h2&gt;Statystyki&lt;/h2&gt;
+            &lt;!-- Zawartość karty --&gt;
+        &lt;/div&gt;
         
-        @media screen and (orientation: landscape) {
-            .orientation-warning {
-                display: none;
-            }
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class="orientation-warning"&gt;
-        &lt;p&gt;Ta aplikacja działa tylko w orientacji poziomej.&lt;/p&gt;
-        &lt;p&gt;Obróć swoje urządzenie, aby uzyskać dostęp do zawartości.&lt;/p&gt;
+        &lt;div class="dashboard-card"&gt;
+            &lt;h2&gt;Nowe wiadomości&lt;/h2&gt;
+            &lt;!-- Zawartość karty --&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="dashboard-card"&gt;
+            &lt;h2&gt;Ostatnie aktywności&lt;/h2&gt;
+            &lt;!-- Zawartość karty --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                    </div>
+                    <p>W tym przykładzie strona używa responsywnego designu, aby dostosować układ w zależności od
+                        orientacji urządzenia. W orientacji poziomej karty są wyświetlane w trzech kolumnach, a w
+                        orientacji pionowej jedna pod drugą. Wszystkie treści są dostępne niezależnie od orientacji.</p>
+                </div>
+
+                <div class="example">
+                    <h3>Przykład wyjątku - aplikacja fortepianowa</h3>
+                    <p>Aplikacja do nauki gry na fortepianie, która sugeruje orientację poziomą, ale nadal umożliwia
+                        korzystanie w trybie pionowym:</p>
+                    <div class="code-example">
+                        <pre><code>/* Style dla obu orientacji */
+.piano-app {
+    display: block;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.orientation-suggestion {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    display: none;
+}
+
+/* W trybie pionowym pokaż sugestię i zmniejsz klawiaturę */
+@media screen and (orientation: portrait) {
+    .orientation-suggestion {
+        display: block;
+    }
+    
+    .piano-keyboard {
+        transform: scale(0.7);
+        transform-origin: left top;
+        overflow-x: auto;
+    }
+}
+
+/* W trybie poziomym ukryj sugestię i pokaż pełną klawiaturę */
+@media screen and (orientation: landscape) {
+    .piano-keyboard {
+        width: 100%;
+    }
+}</code></pre>
+                    </div>
+                    <div class="code-example">
+                        <pre><code>&lt;div class="piano-app"&gt;
+    &lt;div class="orientation-suggestion"&gt;
+        &lt;p&gt;&lt;strong&gt;Sugestia:&lt;/strong&gt; Aby zobaczyć pełną klawiaturę, obróć urządzenie do pozycji poziomej.&lt;/p&gt;
     &lt;/div&gt;
     
-    &lt;div class="content"&gt;
-        &lt;h1&gt;Witaj w aplikacji&lt;/h1&gt;
-        &lt;p&gt;Ta zawartość jest dostępna tylko w orientacji poziomej.&lt;/p&gt;
-        &lt;!-- Reszta zawartości aplikacji... --&gt;
-    &lt;/div&gt;
+    &lt;h1&gt;Wirtualny fortepian&lt;/h1&gt;
     
-    &lt;script&gt;
-        // Blokowanie orientacji przy użyciu Screen Orientation API
-        if (screen.orientation && screen.orientation.lock) {
-            screen.orientation.lock('landscape')
-                .catch(function(error) {
-                    console.error('Nie można zablokować orientacji:', error);
-                });
-        }
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-
-                        <div class="preview">
-                            <h5>Podgląd:</h5>
-                            <div class="preview-content">
-                                <div
-                                    style="background-color: #ffebee; padding: 20px; border-radius: 5px; border-left: 5px solid #f44336;">
-                                    <p style="font-weight: bold;">Ta aplikacja działa tylko w orientacji poziomej.</p>
-                                    <p>Obróć swoje urządzenie, aby uzyskać dostęp do zawartości.</p>
-                                </div>
-
-                                <div style="margin-top: 20px; display: none;">
-                                    <h1>Witaj w aplikacji</h1>
-                                    <p>Ta zawartość jest dostępna tylko w orientacji poziomej.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <p>Ten przykład jest problemem z dostępnością, ponieważ:</p>
-                        <ul>
-                            <li>Wymusza orientację poziomą, ukrywając zawartość w orientacji pionowej</li>
-                            <li>Próbuje zablokować orientację ekranu za pomocą API</li>
-                            <li>Użytkownicy z urządzeniami zamontowanymi w określonej orientacji nie mogą korzystać z
-                                aplikacji</li>
-                            <li>Osoby z niepełnosprawnościami fizycznymi, które mają problem z obracaniem urządzenia, są
-                                wykluczone</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="example-container">
-                    <div class="example good">
-                        <h4>Dobry przykład - responsywny projekt wspierający obie orientacje</h4>
-                        <p>Kod HTML z responsywnymi stylami dostosowującymi się do różnych orientacji:</p>
-                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="pl"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Aplikacja wspierająca obie orientacje&lt;/title&gt;
-    &lt;style&gt;
-        /* Podstawowe style dla wszystkich orientacji */
-        .app-container {
-            padding: 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .dashboard {
-            display: grid;
-            gap: 20px;
-        }
-        
-        .widget {
-            background-color: #f5f5f5;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        /* Style dla orientacji poziomej */
-        @media screen and (orientation: landscape) {
-            .dashboard {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .widget.large {
-                grid-column: span 2;
-            }
-        }
-        
-        /* Style dla orientacji pionowej */
-        @media screen and (orientation: portrait) {
-            .dashboard {
-                grid-template-columns: 1fr;
-            }
-            
-            /* W orientacji pionowej wszystkie widgety zajmują pełną szerokość */
-            .widget.large {
-                grid-column: auto;
-            }
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class="app-container"&gt;
-        &lt;h1&gt;Dashboard&lt;/h1&gt;
-        
-        &lt;div class="dashboard"&gt;
-            &lt;div class="widget large"&gt;
-                &lt;h2&gt;Podsumowanie&lt;/h2&gt;
-                &lt;p&gt;Główne wskaźniki i statystyki Twojego konta.&lt;/p&gt;
-                &lt;!-- Zawartość widgetu... --&gt;
-            &lt;/div&gt;
-            
-            &lt;div class="widget"&gt;
-                &lt;h2&gt;Aktywność&lt;/h2&gt;
-                &lt;p&gt;Ostatnie działania.&lt;/p&gt;
-                &lt;!-- Zawartość widgetu... --&gt;
-            &lt;/div&gt;
-            
-            &lt;div class="widget"&gt;
-                &lt;h2&gt;Powiadomienia&lt;/h2&gt;
-                &lt;p&gt;Ważne informacje.&lt;/p&gt;
-                &lt;!-- Zawartość widgetu... --&gt;
-            &lt;/div&gt;
-            
-            &lt;div class="widget"&gt;
-                &lt;h2&gt;Kalendarz&lt;/h2&gt;
-                &lt;p&gt;Nadchodzące wydarzenia.&lt;/p&gt;
-                &lt;!-- Zawartość widgetu... --&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
+    &lt;div class="piano-keyboard"&gt;
+        &lt;!-- Klawisze fortepianu --&gt;
     &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-
-                        <div class="preview">
-                            <h5>Podgląd (Orientacja pozioma):</h5>
-                            <div class="preview-content">
-                                <div style="padding: 20px; max-width: 100%; margin: 0 auto;">
-                                    <h1>Dashboard</h1>
-
-                                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
-                                        <div
-                                            style="background-color: #f5f5f5; border-radius: 8px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); grid-column: span 2;">
-                                            <h2>Podsumowanie</h2>
-                                            <p>Główne wskaźniki i statystyki Twojego konta.</p>
-                                        </div>
-
-                                        <div
-                                            style="background-color: #f5f5f5; border-radius: 8px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                                            <h2>Aktywność</h2>
-                                            <p>Ostatnie działania.</p>
-                                        </div>
-
-                                        <div
-                                            style="background-color: #f5f5f5; border-radius: 8px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                                            <h2>Powiadomienia</h2>
-                                            <p>Ważne informacje.</p>
-                                        </div>
-
-                                        <div
-                                            style="background-color: #f5f5f5; border-radius: 8px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                                            <h2>Kalendarz</h2>
-                                            <p>Nadchodzące wydarzenia.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h5>Podgląd (Orientacja pionowa):</h5>
-                            <div class="preview-content">
-                                <div style="padding: 20px; max-width: 100%; margin: 0 auto;">
-                                    <h1>Dashboard</h1>
-
-                                    <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
-                                        <div
-                                            style="background-color: #f5f5f5; border-radius: 8px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                                            <h2>Podsumowanie</h2>
-                                            <p>Główne wskaźniki i statystyki Twojego konta.</p>
-                                        </div>
-
-                                        <div
-                                            style="background-color: #f5f5f5; border-radius: 8px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                                            <h2>Aktywność</h2>
-                                            <p>Ostatnie działania.</p>
-                                        </div>
-
-                                        <div
-                                            style="background-color: #f5f5f5; border-radius: 8px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                                            <h2>Powiadomienia</h2>
-                                            <p>Ważne informacje.</p>
-                                        </div>
-
-                                        <div
-                                            style="background-color: #f5f5f5; border-radius: 8px; padding: 15px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-                                            <h2>Kalendarz</h2>
-                                            <p>Nadchodzące wydarzenia.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <p>Ten przykład jest dostępny, ponieważ:</p>
-                        <ul>
-                            <li>Interfejs dostosowuje się do obu orientacji ekranu - poziomej i pionowej</li>
-                            <li>Treść jest dostępna niezależnie od orientacji urządzenia</li>
-                            <li>Użyto Media Queries do zoptymalizowania układu dla różnych orientacji</li>
-                            <li>Nie ma żadnych ograniczeń ani blokad wymuszających konkretną orientację</li>
-                            <li>Osoby z urządzeniami zamontowanymi w określonej pozycji mogą korzystać z aplikacji</li>
-                        </ul>
+&lt;/div&gt;</code></pre>
                     </div>
+                    <p>Ten przykład przedstawia aplikację, której naturalnym układem jest orientacja pozioma (ze względu
+                        na kształt klawiatury fortepianu). Jednak zamiast całkowicie blokować dostęp w orientacji
+                        pionowej, aplikacja wyświetla sugestię i dostosowuje interfejs, aby był nadal użyteczny. Jest to
+                        zgodne z wytycznymi, ponieważ nie wymusza konkretnej orientacji, a jedynie sugeruje tę bardziej
+                        optymalną.</p>
                 </div>
+            </section>
 
-                <div class="example-container">
-                    <div class="example good">
-                        <h4>Wyjątkowy przypadek - aplikacja z uzasadnionym wymogiem orientacji</h4>
-                        <p>Czasami konkretna orientacja jest kluczowa dla funkcjonalności aplikacji:</p>
-                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang="pl"&gt;
-&lt;head&gt;
-    &lt;meta charset="UTF-8"&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-    &lt;title&gt;Aplikacja pianina&lt;/title&gt;
-    &lt;style&gt;
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
-        
-        .piano-container {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-        }
-        
-        .info-section {
-            padding: 10px;
-            background-color: #f5f5f5;
-        }
-        
-        .piano-keys {
-            display: flex;
-            flex: 1;
-            overflow-x: auto;
-        }
-        
-        .key {
-            height: 100%;
-            border: 1px solid #ccc;
-            flex: 1;
-            min-width: 40px;
-            position: relative;
-            background-color: white;
-        }
-        
-        .key.black {
-            background-color: #333;
-            height: 60%;
-            width: 30px;
-            min-width: 30px;
-            margin-left: -15px;
-            margin-right: -15px;
-            z-index: 1;
-        }
-        
-        /* Informacja o orientacji */
-        .orientation-info {
-            display: none;
-            padding: 15px;
-            background-color: #e8f5e9;
-            border-left: 5px solid #4caf50;
-            margin: 10px;
-        }
-        
-        @media screen and (orientation: portrait) {
-            .orientation-info {
-                display: block;
-            }
-        }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div class="piano-container"&gt;
-        &lt;div class="info-section"&gt;
-            &lt;h1&gt;Wirtualne pianino&lt;/h1&gt;
-            &lt;p&gt;Zagraj na wirtualnym pianinie używając klawiatury lub dotyku.&lt;/p&gt;
-            
-            &lt;div class="orientation-info"&gt;
-                &lt;h2&gt;Sugerowana orientacja: pozioma&lt;/h2&gt;
-                &lt;p&gt;To wirtualne pianino najlepiej działa w orientacji poziomej, aby wyświetlić więcej klawiszy. 
-                Możesz nadal korzystać z aplikacji w orientacji pionowej, ale zobaczysz mniej klawiszy jednocześnie.&lt;/p&gt;
-            &lt;/div&gt;
-        &lt;/div&gt;
-        
-        &lt;div class="piano-keys"&gt;
-            &lt;!-- Klawisze pianina... --&gt;
-            &lt;div class="key" data-note="C"&gt;&lt;/div&gt;
-            &lt;div class="key black" data-note="C#"&gt;&lt;/div&gt;
-            &lt;div class="key" data-note="D"&gt;&lt;/div&gt;
-            &lt;div class="key black" data-note="D#"&gt;&lt;/div&gt;
-            &lt;div class="key" data-note="E"&gt;&lt;/div&gt;
-            &lt;div class="key" data-note="F"&gt;&lt;/div&gt;
-            &lt;div class="key black" data-note="F#"&gt;&lt;/div&gt;
-            &lt;div class="key" data-note="G"&gt;&lt;/div&gt;
-            &lt;div class="key black" data-note="G#"&gt;&lt;/div&gt;
-            &lt;div class="key" data-note="A"&gt;&lt;/div&gt;
-            &lt;div class="key black" data-note="A#"&gt;&lt;/div&gt;
-            &lt;div class="key" data-note="B"&gt;&lt;/div&gt;
-            &lt;!-- Więcej klawiszy... --&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-
-                        <div class="preview">
-                            <h5>Podgląd (z informacją o rekomendowanej orientacji):</h5>
-                            <div class="preview-content">
-                                <div
-                                    style="padding: 15px; background-color: #e8f5e9; border-left: 5px solid #4caf50; margin: 10px;">
-                                    <h2>Sugerowana orientacja: pozioma</h2>
-                                    <p>To wirtualne pianino najlepiej działa w orientacji poziomej, aby wyświetlić
-                                        więcej klawiszy. Możesz nadal korzystać z aplikacji w orientacji pionowej, ale
-                                        zobaczysz mniej klawiszy jednocześnie.</p>
-                                </div>
-
-                                <div style="padding: 10px; background-color: #f5f5f5;">
-                                    <h1>Wirtualne pianino</h1>
-                                    <p>Zagraj na wirtualnym pianinie używając klawiatury lub dotyku.</p>
-                                </div>
-
-                                <div style="display: flex; height: 150px; overflow-x: auto;">
-                                    <div
-                                        style="height: 100%; border: 1px solid #ccc; flex: 1; min-width: 40px; background-color: white;">
-                                    </div>
-                                    <div
-                                        style="background-color: #333; height: 60%; width: 30px; min-width: 30px; margin-left: -15px; margin-right: -15px; z-index: 1;">
-                                    </div>
-                                    <div
-                                        style="height: 100%; border: 1px solid #ccc; flex: 1; min-width: 40px; background-color: white;">
-                                    </div>
-                                    <div
-                                        style="background-color: #333; height: 60%; width: 30px; min-width: 30px; margin-left: -15px; margin-right: -15px; z-index: 1;">
-                                    </div>
-                                    <div
-                                        style="height: 100%; border: 1px solid #ccc; flex: 1; min-width: 40px; background-color: white;">
-                                    </div>
-                                    <div
-                                        style="height: 100%; border: 1px solid #ccc; flex: 1; min-width: 40px; background-color: white;">
-                                    </div>
-                                    <div
-                                        style="background-color: #333; height: 60%; width: 30px; min-width: 30px; margin-left: -15px; margin-right: -15px; z-index: 1;">
-                                    </div>
-                                    <div
-                                        style="height: 100%; border: 1px solid #ccc; flex: 1; min-width: 40px; background-color: white;">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <p>Ten przykład stanowi wyjątek, w którym określona orientacja jest uzasadniona, ale nadal jest
-                            dostępny, ponieważ:</p>
-                        <ul>
-                            <li>Aplikacja pianina wymaga przestrzeni poziomej, aby prawidłowo wyświetlić klawiaturę</li>
-                            <li>Aplikacja <strong>nie blokuje</strong> orientacji pionowej - nadal można jej używać</li>
-                            <li>Zamiast blokowania, wyświetla informację sugerującą orientację poziomą</li>
-                            <li>W orientacji pionowej aplikacja nadal działa, choć z mniejszą liczbą widocznych klawiszy
-                            </li>
-                            <li>Ten przypadek podpada pod wyjątek "chyba że konkretna orientacja wyświetlania jest
-                                niezbędna" dla tego kryterium</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="challenges-tips">
-                <h3>Wyzwania i wskazówki</h3>
+            <section class="guideline-section">
+                <h2>Wyzwania i wskazówki</h2>
                 <ul>
-                    <li><strong>Nie blokuj orientacji za pomocą meta tagów</strong> - unikaj używania
-                        <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, orientation=landscape"&gt;</code>
-                    </li>
-                    <li><strong>Nie używaj JavaScript do wymuszania orientacji</strong> - np. poprzez Screen Orientation
-                        API</li>
-                    <li><strong>Używaj responsywnego projektowania</strong> - wykorzystuj media queries aby dostosować
-                        interfejs do różnych orientacji</li>
-                    <li><strong>Testuj w obu orientacjach</strong> - upewnij się, że aplikacja działa zarówno w trybie
-                        pionowym, jak i poziomym</li>
-                    <li><strong>Zachowaj spójność interfejsu</strong> - staraj się utrzymać spójne doświadczenie
-                        użytkownika niezależnie od orientacji</li>
-                    <li><strong>Sugeruj zamiast wymuszać</strong> - jeśli jedna orientacja jest preferowana, informuj o
-                        tym użytkownika, ale nie blokuj alternatywy</li>
-                    <li><strong>Stosuj wyjątki rozsądnie</strong> - tylko w przypadkach, gdy określona orientacja jest
-                        niezbędna dla podstawowej funkcjonalności (np. gry, emulatory, narzędzia specjalistyczne)</li>
+                    <li><strong>Unikaj blokowania orientacji</strong> - Nie używaj metaznaczników viewport, JavaScript
+                        ani CSS do blokowania orientacji wyświetlania.</li>
+                    <li><strong>Implementuj responsywny design</strong> - Zaprojektuj interfejs, który płynnie
+                        dostosowuje się do różnych orientacji i rozmiarów ekranów.</li>
+                    <li><strong>Testuj w obu orientacjach</strong> - Podczas testowania sprawdź, czy wszystkie funkcje i
+                        treści są dostępne zarówno w orientacji pionowej, jak i poziomej.</li>
+                    <li><strong>Sugeruj, nie wymuszaj</strong> - Jeśli pewna orientacja jest bardziej optymalna dla
+                        konkretnej treści, możesz zasugerować zmianę orientacji, ale zawsze zapewnij dostęp do treści
+                        niezależnie od orientacji.</li>
+                    <li><strong>Uwzględnij wyjątki</strong> - Pamiętaj, że są pewne przypadki, gdy konkretna orientacja
+                        może być niezbędna dla funkcjonalności (np. niektóre gry, specjalistyczne aplikacje), ale nawet
+                        wtedy staraj się zapewnić jak najwięcej dostępności.</li>
                 </ul>
+            </section>
 
-                <h4>Wyjątki od kryterium:</h4>
-                <p>Istnieją uzasadnione przypadki, w których określona orientacja wyświetlania może być niezbędna, na
-                    przykład:</p>
-                <ul>
-                    <li>Bankowość mobilna, która wymaga orientacji pionowej podczas skanowania czeków</li>
-                    <li>Fortepian lub aplikacja muzyczna, wymagająca orientacji poziomej do wyświetlenia pełnej
-                        klawiatury</li>
-                    <li>Aplikacje do projekcji na ekranach kinowych lub projektorach (wymuszenie poziome)</li>
-                    <li>Niektóre gry, które symulują fizyczne urządzenia o konkretnym kształcie</li>
-                </ul>
-            </div>
-
-            <div class="resources">
-                <h3>Dodatkowe zasoby</h3>
+            <div class="additional-resources">
+                <h2>Dodatkowe źródła</h2>
                 <ul>
                     <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/orientation.html" target="_blank"
-                            rel="noopener">Zrozumieć WCAG: Orientacja</a></li>
-                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model/Managing_screen_orientation"
-                            target="_blank" rel="noopener">MDN: Zarządzanie orientacją ekranu</a></li>
-                    <li><a href="https://www.w3.org/WAI/standards-guidelines/act/rules/b1aa56/" target="_blank"
-                            rel="noopener">ACT Rules: Orientacja zawartości</a></li>
-                    <li><a href="https://css-tricks.com/snippets/css/media-queries-for-standard-devices/"
-                            target="_blank" rel="noopener">CSS-Tricks: Media Queries dla różnych urządzeń</a></li>
+                            rel="noopener">Zrozumieć WCAG: Orientacja</a>
+                    </li>
+                    <li><a href="https://www.w3.org/TR/mobile-accessibility-mapping/#display-orientation"
+                            target="_blank" rel="noopener">Mapowanie Dostępności Mobilnej - Orientacja Wyświetlania</a>
+                    </li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries"
+                            target="_blank" rel="noopener">MDN Web Docs: Używanie Media Queries</a></li>
                 </ul>
             </div>
 
             <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
                 <ul>
                     <li><a href="1.3.3.html">Poprzedni: 1.3.3 Właściwości zmysłowe</a></li>
-                    <li><a href="1.3.5.html">Następny: 1.3.5 Określenie pożądanej wartości</a></li>
+                    <li><a href="1.3.5.html">Następny: 1.3.5 Określanie sposobu wprowadzania danych</a></li>
                 </ul>
             </nav>
         </article>
