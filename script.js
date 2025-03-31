@@ -387,7 +387,11 @@ function setupCriterionNavigation() {
 
 	// Dodaj wytyczną (np. 1.3 Możliwość adaptacji)
 	const guideline = document.createElement("li");
-	guideline.textContent = guidelinePrefix + " " + getGuidelineName(guidelinePrefix);
+	const guidelineLink = document.createElement("a");
+	guidelineLink.href = guidelinePrefix + ".html";
+	guidelineLink.textContent =
+		guidelinePrefix + " " + getGuidelineName(guidelinePrefix);
+	guideline.appendChild(guidelineLink);
 	breadcrumbsList.appendChild(guideline);
 
 	// Dodaj aktualne kryterium
