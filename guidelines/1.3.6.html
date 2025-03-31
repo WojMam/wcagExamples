@@ -15,16 +15,17 @@
     </header>
 
     <main>
-        <article class="guideline">
-            <h1>1.3.6 Określanie przeznaczenia <span class="level">Poziom AAA</span></h1>
-
-            <div class="page-intro">
-                <p>W treści zaimplementowanej przy użyciu języków znaczników cel komponentów interfejsu użytkownika,
-                    ikon i regionów może być określony programowo.</p>
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.3.6 Określanie przeznaczenia</h2>
+                <p class="level-tag">Poziom AAA</p>
             </div>
 
-            <section class="guideline-section">
-                <h2>Intencja</h2>
+            <div class="criterion-description">
+                <p>W treści zaimplementowanej przy użyciu języków znaczników cel komponentów interfejsu użytkownika,
+                    ikon i regionów może być określony programowo.</p>
+
+                <h3>Intencja</h3>
                 <p>Intencją tego kryterium jest zapewnienie, że wszystkie komponenty interfejsu użytkownika (nie tylko
                     pola formularzy, ale również ikony, przyciski, regiony strony i inne elementy) mają zdefiniowany
                     cel, który może być odczytany przez technologie wspomagające. Umożliwia to osobom korzystającym z
@@ -32,16 +33,17 @@
                     dostosowanie interfejsu do indywidualnych potrzeb.</p>
                 <p>Jest to rozszerzenie kryterium 1.3.5 (poziom AA), które dotyczyło tylko pól formularzy zbierających
                     dane użytkownika. Kryterium 1.3.6 obejmuje wszystkie elementy interfejsu.</p>
-            </section>
+            </div>
 
-            <section class="guideline-section">
+            <section class="examples">
                 <h2>Przykłady</h2>
 
-                <div class="example">
-                    <h3>Zły przykład - ikony bez określonego przeznaczenia</h3>
-                    <p>Strona z przyciskami-ikonami bez odpowiednich opisów:</p>
-                    <div class="code-example">
-                        <pre><code>&lt;button&gt;
+                <div class="example-container">
+                    <div class="example bad">
+                        <h3>Zły przykład - ikony bez określonego przeznaczenia</h3>
+                        <p>Strona z przyciskami-ikonami bez odpowiednich opisów:</p>
+                        <div class="code-example">
+                            <pre><code>&lt;button&gt;
     &lt;i class="icon icon-share"&gt;&lt;/i&gt;
 &lt;/button&gt;
 
@@ -52,17 +54,43 @@
 &lt;button&gt;
     &lt;i class="icon icon-print"&gt;&lt;/i&gt;
 &lt;/button&gt;</code></pre>
+                        </div>
+                        <div class="preview">
+                            <h5>Podgląd</h5>
+                            <div class="preview-content">
+                                <div class="button-container" style="display: flex; gap: 10px;">
+                                    <button
+                                        style="width: 40px; height: 40px; background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px;">
+                                        <span style="font-size: 18px;">↗</span>
+                                    </button>
+                                    <button
+                                        style="width: 40px; height: 40px; background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px;">
+                                        <span style="font-size: 18px;">💾</span>
+                                    </button>
+                                    <button
+                                        style="width: 40px; height: 40px; background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px;">
+                                        <span style="font-size: 18px;">🖨️</span>
+                                    </button>
+                                </div>
+                                <p style="margin-top: 10px; color: #d32f2f; font-style: italic;">Uwaga: Gdy najedziemy
+                                    na te przyciski czytnikiem ekranu, nie otrzymamy żadnej informacji o ich funkcji.
+                                </p>
+                            </div>
+                        </div>
+                        <p>W tym przykładzie przyciski zawierają tylko ikony bez żadnego tekstu ani atrybutów
+                            dostępności,
+                            które by określały ich przeznaczenie. Użytkownicy technologii wspomagających nie będą
+                            wiedzieli,
+                            jakie działanie wykonują te przyciski.</p>
                     </div>
-                    <p>W tym przykładzie przyciski zawierają tylko ikony bez żadnego tekstu ani atrybutów dostępności,
-                        które by określały ich przeznaczenie. Użytkownicy technologii wspomagających nie będą wiedzieli,
-                        jakie działanie wykonują te przyciski.</p>
                 </div>
 
-                <div class="example">
-                    <h3>Dobry przykład - ikony z określonym przeznaczeniem</h3>
-                    <p>Te same przyciski-ikony z prawidłowo określonym przeznaczeniem:</p>
-                    <div class="code-example">
-                        <pre><code>&lt;button aria-label="Udostępnij"&gt;
+                <div class="example-container">
+                    <div class="example good">
+                        <h3>Dobry przykład - ikony z określonym przeznaczeniem</h3>
+                        <p>Te same przyciski-ikony z prawidłowo określonym przeznaczeniem:</p>
+                        <div class="code-example">
+                            <pre><code>&lt;button aria-label="Udostępnij"&gt;
     &lt;i class="icon icon-share" aria-hidden="true"&gt;&lt;/i&gt;
     &lt;span class="sr-only"&gt;Udostępnij&lt;/span&gt;
 &lt;/button&gt;
@@ -76,18 +104,53 @@
     &lt;i class="icon icon-print" aria-hidden="true"&gt;&lt;/i&gt;
     &lt;span class="sr-only"&gt;Drukuj&lt;/span&gt;
 &lt;/button&gt;</code></pre>
+                        </div>
+                        <div class="preview">
+                            <h5>Podgląd</h5>
+                            <div class="preview-content">
+                                <div class="button-container" style="display: flex; gap: 10px;">
+                                    <button
+                                        style="width: 40px; height: 40px; background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; position: relative;"
+                                        aria-label="Udostępnij">
+                                        <span style="font-size: 18px;">↗</span>
+                                        <span
+                                            style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;">Udostępnij</span>
+                                    </button>
+                                    <button
+                                        style="width: 40px; height: 40px; background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; position: relative;"
+                                        aria-label="Zapisz dokument">
+                                        <span style="font-size: 18px;">💾</span>
+                                        <span
+                                            style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;">Zapisz
+                                            dokument</span>
+                                    </button>
+                                    <button
+                                        style="width: 40px; height: 40px; background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; position: relative;"
+                                        aria-label="Drukuj">
+                                        <span style="font-size: 18px;">🖨️</span>
+                                        <span
+                                            style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;">Drukuj</span>
+                                    </button>
+                                </div>
+                                <p style="margin-top: 10px; color: #4caf50; font-style: italic;">Te przyciski mają
+                                    atrybuty aria-label oraz ukryte etykiety tekstowe, dzięki czemu czytniki ekranu
+                                    odczytają ich funkcję.</p>
+                            </div>
+                        </div>
+                        <p>W tym przykładzie każdy przycisk z ikoną ma określone przeznaczenie za pomocą atrybutu
+                            <code>aria-label</code> oraz tekstu ukrytego dla czytników ekranu. Ikony mają atrybut
+                            <code>aria-hidden="true"</code>, aby technologie wspomagające je ignorowały i nie powodowały
+                            redundancji z etykietą.
+                        </p>
                     </div>
-                    <p>W tym przykładzie każdy przycisk z ikoną ma określone przeznaczenie za pomocą atrybutu
-                        <code>aria-label</code> oraz tekstu ukrytego dla czytników ekranu. Ikony mają atrybut
-                        <code>aria-hidden="true"</code>, aby technologie wspomagające je ignorowały i nie powodowały
-                        redundancji z etykietą.</p>
                 </div>
 
-                <div class="example">
-                    <h3>Zły przykład - regiony strony bez określonego przeznaczenia</h3>
-                    <p>Struktura strony bez odpowiednich znaczników:</p>
-                    <div class="code-example">
-                        <pre><code>&lt;div&gt;
+                <div class="example-container">
+                    <div class="example bad">
+                        <h3>Zły przykład - regiony strony bez określonego przeznaczenia</h3>
+                        <p>Struktura strony bez odpowiednich znaczników:</p>
+                        <div class="code-example">
+                            <pre><code>&lt;div&gt;
     &lt;h2&gt;Aktualności&lt;/h2&gt;
     &lt;!-- zawartość aktualności --&gt;
 &lt;/div&gt;
@@ -101,17 +164,43 @@
     &lt;h2&gt;Kontakt&lt;/h2&gt;
     &lt;!-- formularz kontaktowy --&gt;
 &lt;/div&gt;</code></pre>
+                        </div>
+                        <div class="preview">
+                            <h5>Podgląd</h5>
+                            <div class="preview-content">
+                                <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 15px;">
+                                    <h2 style="color: #333; margin-bottom: 10px;">Aktualności</h2>
+                                    <p style="color: #777;">[zawartość aktualności]</p>
+                                </div>
+
+                                <div style="border: 1px solid #ddd; padding: 15px; margin-bottom: 15px;">
+                                    <h2 style="color: #333; margin-bottom: 10px;">Powiązane artykuły</h2>
+                                    <p style="color: #777;">[lista artykułów]</p>
+                                </div>
+
+                                <div style="border: 1px solid #ddd; padding: 15px;">
+                                    <h2 style="color: #333; margin-bottom: 10px;">Kontakt</h2>
+                                    <p style="color: #777;">[formularz kontaktowy]</p>
+                                </div>
+
+                                <p style="margin-top: 15px; color: #d32f2f; font-style: italic;">Uwaga: Te sekcje
+                                    używają div bez semantycznych znaczników i atrybutów ARIA, co sprawia, że
+                                    technologie wspomagające nie rozpoznają ich roli i przeznaczenia.</p>
+                            </div>
+                        </div>
+                        <p>W tym przykładzie sekcje strony są oznaczone tylko jako generyczne <code>div</code> bez
+                            określenia ich przeznaczenia. Użytkownicy technologii wspomagających nie mogą łatwo
+                            nawigować
+                            między tymi sekcjami ani zrozumieć ich znaczenia w kontekście strony.</p>
                     </div>
-                    <p>W tym przykładzie sekcje strony są oznaczone tylko jako generyczne <code>div</code> bez
-                        określenia ich przeznaczenia. Użytkownicy technologii wspomagających nie mogą łatwo nawigować
-                        między tymi sekcjami ani zrozumieć ich znaczenia w kontekście strony.</p>
                 </div>
 
-                <div class="example">
-                    <h3>Dobry przykład - regiony strony z określonym przeznaczeniem</h3>
-                    <p>Struktura strony z odpowiednimi semantycznymi znacznikami:</p>
-                    <div class="code-example">
-                        <pre><code>&lt;section aria-labelledby="news-heading"&gt;
+                <div class="example-container">
+                    <div class="example good">
+                        <h3>Dobry przykład - regiony strony z określonym przeznaczeniem</h3>
+                        <p>Struktura strony z odpowiednimi semantycznymi znacznikami:</p>
+                        <div class="code-example">
+                            <pre><code>&lt;section aria-labelledby="news-heading"&gt;
     &lt;h2 id="news-heading"&gt;Aktualności&lt;/h2&gt;
     &lt;!-- zawartość aktualności --&gt;
 &lt;/section&gt;
@@ -125,16 +214,51 @@
     &lt;h2 id="contact-heading"&gt;Kontakt&lt;/h2&gt;
     &lt;!-- formularz kontaktowy --&gt;
 &lt;/section&gt;</code></pre>
+                        </div>
+                        <div class="preview">
+                            <h5>Podgląd</h5>
+                            <div class="preview-content">
+                                <section aria-labelledby="news-heading"
+                                    style="border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; position: relative;">
+                                    <span
+                                        style="position: absolute; top: -8px; left: 10px; background: white; padding: 0 5px; font-size: 0.7em; color: #666; font-family: monospace;">section[aria-labelledby="news-heading"]</span>
+                                    <h2 id="news-heading" style="color: #333; margin-bottom: 10px;">Aktualności</h2>
+                                    <p style="color: #777;">[zawartość aktualności]</p>
+                                </section>
+
+                                <aside aria-labelledby="related-heading"
+                                    style="border: 1px solid #ddd; padding: 15px; margin-bottom: 15px; position: relative; background-color: #f9f9f9;">
+                                    <span
+                                        style="position: absolute; top: -8px; left: 10px; background: white; padding: 0 5px; font-size: 0.7em; color: #666; font-family: monospace;">aside[aria-labelledby="related-heading"]</span>
+                                    <h2 id="related-heading" style="color: #333; margin-bottom: 10px;">Powiązane
+                                        artykuły</h2>
+                                    <p style="color: #777;">[lista artykułów]</p>
+                                </aside>
+
+                                <section aria-labelledby="contact-heading" role="form"
+                                    style="border: 1px solid #ddd; padding: 15px; position: relative;">
+                                    <span
+                                        style="position: absolute; top: -8px; left: 10px; background: white; padding: 0 5px; font-size: 0.7em; color: #666; font-family: monospace;">section[aria-labelledby="contact-heading"][role="form"]</span>
+                                    <h2 id="contact-heading" style="color: #333; margin-bottom: 10px;">Kontakt</h2>
+                                    <p style="color: #777;">[formularz kontaktowy]</p>
+                                </section>
+
+                                <p style="margin-top: 15px; color: #4caf50; font-style: italic;">Te sekcje używają
+                                    semantycznych znaczników (section, aside) i atrybutów ARIA (aria-labelledby, role),
+                                    które jasno określają ich przeznaczenie dla technologii wspomagających.</p>
+                            </div>
+                        </div>
+                        <p>W tym przykładzie sekcje strony są oznaczone semantycznymi znacznikami (<code>section</code>,
+                            <code>aside</code>), a ich przeznaczenie jest powiązane z nagłówkami za pomocą
+                            <code>aria-labelledby</code>. Dodatkowo sekcja formularza kontaktowego ma określoną rolę
+                            <code>form</code>. Dzięki temu użytkownicy technologii wspomagających mogą łatwo nawigować
+                            między sekcjami i rozumieć ich znaczenie.
+                        </p>
                     </div>
-                    <p>W tym przykładzie sekcje strony są oznaczone semantycznymi znacznikami (<code>section</code>,
-                        <code>aside</code>), a ich przeznaczenie jest powiązane z nagłówkami za pomocą
-                        <code>aria-labelledby</code>. Dodatkowo sekcja formularza kontaktowego ma określoną rolę
-                        <code>form</code>. Dzięki temu użytkownicy technologii wspomagających mogą łatwo nawigować
-                        między sekcjami i rozumieć ich znaczenie.</p>
                 </div>
             </section>
 
-            <section class="guideline-section">
+            <section class="benefits">
                 <h2>Korzyści</h2>
                 <ul>
                     <li>Osoby korzystające z technologii wspomagających mogą lepiej zrozumieć przeznaczenie różnych
@@ -147,7 +271,7 @@
                 </ul>
             </section>
 
-            <section class="guideline-section">
+            <section class="challenges-tips">
                 <h2>Techniki wdrożenia</h2>
                 <p>Istnieje wiele technik programistycznych, które pozwalają określić przeznaczenie komponentów
                     interfejsu:</p>
@@ -158,7 +282,8 @@
                         interaktywnych.</li>
                     <li>Używanie atrybutu <code>alt</code> dla obrazów pełniących funkcje przycisków.</li>
                     <li>Dodawanie ukrytego tekstu dla czytników ekranu (np. za pomocą klasy <code>.sr-only</code> lub
-                        <code>.visually-hidden</code>).</li>
+                        <code>.visually-hidden</code>).
+                    </li>
                     <li>Używanie atrybutu <code>title</code> jako dodatkowego źródła informacji (ale nie jako jedynego).
                     </li>
                 </ul>
@@ -167,7 +292,8 @@
                 <ul>
                     <li>Używanie semantycznych znaczników HTML5 (<code>header</code>, <code>footer</code>,
                         <code>nav</code>, <code>main</code>, <code>section</code>, <code>article</code>,
-                        <code>aside</code>).</li>
+                        <code>aside</code>).
+                    </li>
                     <li>Dodawanie atrybutów <code>role</code> zgodnych z ARIA dla określenia roli elementów.</li>
                     <li>Powiązanie regionów z ich nagłówkami za pomocą <code>aria-labelledby</code>.</li>
                     <li>Używanie <code>aria-label</code> dla regionów bez widocznych nagłówków.</li>
@@ -177,13 +303,15 @@
                 <ul>
                     <li>Implementacja poprawnej semantyki formularzy (etykiety, grupy pól, komunikaty o błędach).</li>
                     <li>Określanie stanów komponentów za pomocą odpowiednich atrybutów ARIA (np.
-                        <code>aria-expanded</code>, <code>aria-pressed</code>, <code>aria-selected</code>).</li>
+                        <code>aria-expanded</code>, <code>aria-pressed</code>, <code>aria-selected</code>).
+                    </li>
                     <li>Używanie odpowiednich ról ARIA dla niestandardowych komponentów (<code>role="dialog"</code>,
-                        <code>role="tab"</code>, itp.).</li>
+                        <code>role="tab"</code>, itp.).
+                    </li>
                 </ul>
             </section>
 
-            <div class="additional-resources">
+            <div class="resources">
                 <h2>Dodatkowe źródła</h2>
                 <ul>
                     <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/identify-purpose.html" target="_blank"
