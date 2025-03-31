@@ -108,6 +108,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	});
 
 	document.body.appendChild(contrastButton);
+
+	// Dodaj nawigację do stron z kryteriami
+	setupCriterionNavigation();
 });
 
 /**
@@ -283,4 +286,130 @@ function loadFooter() {
 			`;
 		}
 	}
+}
+
+/**
+ * Funkcja dodająca ścieżkę nawigacyjną (breadcrumbs) do stron z kryteriami
+ */
+function setupCriterionNavigation() {
+	// Sprawdź czy jesteśmy na stronie kryterium
+	const path = window.location.pathname;
+	const isGuidelinePage = path.includes("/guidelines/");
+
+	if (!isGuidelinePage) return;
+
+	const mainContent = document.querySelector("main");
+	if (!mainContent) return;
+
+	// Pobierz informacje o kryterium z URL
+	const pathParts = path.split("/");
+	const filename = pathParts[pathParts.length - 1];
+	const criterionId = filename.replace(".html", "");
+
+	// Znajdź element nawigacji kryteriów
+	const criterionNav = document.querySelector(".criterion-nav ul");
+	if (criterionNav) {
+		// Sprawdź, czy już mamy link do listy wytycznych
+		const hasReturnLink = Array.from(
+			criterionNav.querySelectorAll("li a")
+		).some(link => link.href.includes("wytyczne.html"));
+
+		// Jeśli nie ma linku powrotu, dodaj go
+		if (!hasReturnLink) {
+			const middleItem = document.createElement("li");
+			const returnLink = document.createElement("a");
+			returnLink.href = "../wytyczne.html";
+			returnLink.textContent = "Powrót do listy wytycznych";
+			middleItem.appendChild(returnLink);
+
+			// Jeśli mamy co najmniej dwa elementy (poprzedni, następny)
+			if (criterionNav.children.length >= 2) {
+				criterionNav.insertBefore(middleItem, criterionNav.children[1]);
+			} else {
+				criterionNav.appendChild(middleItem);
+			}
+		}
+	}
+
+	// Sprawdź czy już istnieje ścieżka nawigacyjna
+	if (document.querySelector(".breadcrumbs")) return;
+
+	// Parsuj ID kryterium, np. 1.3.4 -> wytyczna: 1.3, kryterium: 4
+	const parts = criterionId.split(".");
+	if (parts.length < 2) return;
+
+	const guidelinePrefix = parts[0] + "." + parts[1]; // np. 1.3
+
+	// Znajdź i pobierz tytuł kryterium
+	const criterionTitle =
+		document.querySelector("h1")?.textContent.trim() || criterionId;
+
+	// Utwórz ścieżkę nawigacyjną
+	const breadcrumbs = document.createElement("nav");
+	breadcrumbs.className = "breadcrumbs";
+	breadcrumbs.setAttribute("aria-label", "Ścieżka nawigacji");
+
+	const breadcrumbsList = document.createElement("ol");
+
+	// Dodaj link do strony głównej
+	const homeItem = document.createElement("li");
+	const homeLink = document.createElement("a");
+	homeLink.href = "../index.html";
+	homeLink.textContent = "Strona główna";
+	homeItem.appendChild(homeLink);
+	breadcrumbsList.appendChild(homeItem);
+
+	// Dodaj link do listy wytycznych
+	const guidelinesItem = document.createElement("li");
+	const guidelinesLink = document.createElement("a");
+	guidelinesLink.href = "../wytyczne.html";
+	guidelinesLink.textContent = "Lista wytycznych";
+	guidelinesItem.appendChild(guidelinesLink);
+	breadcrumbsList.appendChild(guidelinesItem);
+
+	// Dodaj link do wytycznej (np. 1.3)
+	const guidelineItem = document.createElement("li");
+	const guidelineLink = document.createElement("a");
+	guidelineLink.href = `${guidelinePrefix}.html`;
+	guidelineLink.textContent = `${guidelinePrefix} ${getGuidelineName(
+		guidelinePrefix
+	)}`;
+	guidelineItem.appendChild(guidelineLink);
+	breadcrumbsList.appendChild(guidelineItem);
+
+	// Dodaj aktualne kryterium (bez linku)
+	const criterionItem = document.createElement("li");
+	criterionItem.textContent = criterionTitle.split(" ")[0]; // Tylko ID, np. "1.3.4"
+	breadcrumbsList.appendChild(criterionItem);
+
+	breadcrumbs.appendChild(breadcrumbsList);
+
+	// Dodaj ścieżkę nawigacyjną na początku artykułu
+	const article = document.querySelector("article.guideline");
+	if (article) {
+		article.insertBefore(breadcrumbs, article.firstChild);
+	}
+}
+
+/**
+ * Pomocnicza funkcja zwracająca nazwę wytycznej na podstawie jej ID
+ */
+function getGuidelineName(guidelineId) {
+	const guidelines = {
+		1.1: "Alternatywa tekstowa",
+		1.2: "Media zsynchronizowane",
+		1.3: "Możliwość adaptacji",
+		1.4: "Możliwość rozróżnienia",
+		2.1: "Dostępność z klawiatury",
+		2.2: "Wystarczająca ilość czasu",
+		2.3: "Ataki padaczki",
+		2.4: "Możliwość nawigacji",
+		2.5: "Sposoby wprowadzania danych",
+		3.1: "Możliwość odczytania",
+		3.2: "Przewidywalność",
+		3.3: "Pomoc przy wprowadzaniu informacji",
+		4.1: "Kompatybilność",
+	};
+
+	return guidelines[guidelineId] || "";
 }

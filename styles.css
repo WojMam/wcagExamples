@@ -658,3 +658,74 @@ body.high-contrast a:focus {
 	text-align: center;
 	margin: 0 30px;
 }
+
+/* Ścieżka nawigacyjna (breadcrumbs) */
+.breadcrumbs {
+	margin-bottom: 20px;
+	font-size: 0.9em;
+}
+
+.breadcrumbs ol {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.breadcrumbs li {
+	display: flex;
+	align-items: center;
+}
+
+.breadcrumbs li:not(:last-child)::after {
+	content: "›";
+	margin: 0 8px;
+	color: #666;
+}
+
+.breadcrumbs a {
+	color: var(--secondary-color);
+	text-decoration: none;
+}
+
+.breadcrumbs a:hover,
+.breadcrumbs a:focus {
+	text-decoration: underline;
+}
+
+.breadcrumbs li:last-child {
+	color: #666;
+	font-weight: 500;
+}
+
+/* Rozszerzona nawigacja kryteriów */
+.criterion-nav ul {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	gap: 10px;
+}
+
+.criterion-nav li {
+	margin: 5px 0;
+}
+
+.criterion-nav a {
+	display: inline-block;
+	padding: 8px 15px;
+	background-color: #f5f5f5;
+	color: var(--secondary-color);
+	text-decoration: none;
+	border-radius: 4px;
+	transition: background-color 0.2s;
+}
+
+.criterion-nav a:hover,
+.criterion-nav a:focus {
+	background-color: #e0e0e0;
+	text-decoration: underline;
+}
