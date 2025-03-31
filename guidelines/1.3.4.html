@@ -4,8 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1.3.4 Orientacja (AA) - WCAG 2.1</title>
-    <meta name="description" content="Kryterium sukcesu 1.3.4 WCAG 2.1 - Orientacja">
+    <title>1.3.4 Orientacja - Nieoficjalny przewodnik WCAG 2.1</title>
     <link rel="stylesheet" href="../styles.css">
 </head>
 
@@ -17,32 +16,39 @@
     </header>
 
     <main id="main">
-        <article class="guideline">
-            <h1>1.3.4 Orientacja <span class="level">Poziom AA</span></h1>
-
-            <div class="page-intro">
-                <p>Wyświetlanie i obsługa treści nie jest ograniczona tylko do jednej orientacji wyświetlania, takiej
-                    jak pionowa lub pozioma, chyba że konkretna orientacja wyświetlania jest niezbędna.</p>
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.3.4 Orientacja</h2>
+                <p class="criterion-level">Poziom AA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#orientation" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
             </div>
 
-            <section class="guideline-section">
-                <h2>Intencja</h2>
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Wyświetlanie i obsługa treści nie jest ograniczona tylko do jednej orientacji wyświetlania, takiej
+                    jak pionowa lub pozioma, chyba że konkretna orientacja wyświetlania jest niezbędna.</p>
+
+                <h3>Intencja</h3>
                 <p>Celem tego kryterium jest zapewnienie, że treści mogą być obsługiwane i wyświetlane w orientacji
                     preferowanej przez użytkownika. Niektórzy użytkownicy mają swoje urządzenia zamontowane w stałej
                     orientacji (np. przymocowane do podłokietnika wózka inwalidzkiego), a inni mogą mieć trudności z
                     obracaniem urządzenia lub zmianą jego pozycji. Strony internetowe i aplikacje, które wymuszają
                     określoną orientację (np. tylko poziomą) mogą uniemożliwić tym osobom wygodne korzystanie z treści.
                 </p>
-            </section>
+            </div>
 
-            <section class="guideline-section">
-                <h2>Przykłady</h2>
+            <div class="examples">
+                <h3>Przykłady</h3>
 
-                <div class="example">
-                    <h3>Zły przykład - wymuszanie orientacji poziomej</h3>
-                    <p>Aplikacja lub strona internetowa, która blokuje wyświetlanie w orientacji pionowej i wyświetla
-                        komunikat nakazujący obrócenie urządzenia do pozycji poziomej:</p>
-                    <div class="code-example">
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - wymuszanie orientacji poziomej</h4>
+                        <p>Aplikacja lub strona internetowa, która blokuje wyświetlanie w orientacji pionowej i
+                            wyświetla
+                            komunikat nakazujący obrócenie urządzenia do pozycji poziomej:</p>
                         <pre><code>@media screen and (orientation: portrait) {
     .app-content {
         display: none;
@@ -67,8 +73,7 @@
         display: none;
     }
 }</code></pre>
-                    </div>
-                    <div class="code-example">
+
                         <pre><code>&lt;div class="rotate-message"&gt;
     &lt;div&gt;
         &lt;img src="../images/rotate-device.svg" alt="Ikona obracania urządzenia"&gt;
@@ -80,17 +85,16 @@
 &lt;div class="app-content"&gt;
     &lt;!-- Zawartość aplikacji widoczna tylko w trybie poziomym --&gt;
 &lt;/div&gt;</code></pre>
+                        <p>W tym przykładzie cała zawartość aplikacji jest ukryta, gdy urządzenie jest w orientacji
+                            pionowej. Zamiast tego wyświetlany jest komunikat nakazujący użytkownikowi obrócenie
+                            urządzenia.
+                            Jest to problem dla osób, które nie mogą zmienić orientacji swojego urządzenia.</p>
                     </div>
-                    <p>W tym przykładzie cała zawartość aplikacji jest ukryta, gdy urządzenie jest w orientacji
-                        pionowej. Zamiast tego wyświetlany jest komunikat nakazujący użytkownikowi obrócenie urządzenia.
-                        Jest to problem dla osób, które nie mogą zmienić orientacji swojego urządzenia.</p>
-                </div>
 
-                <div class="example">
-                    <h3>Dobry przykład - responsywny design obsługujący obie orientacje</h3>
-                    <p>Strona internetowa zaprojektowana tak, aby dostosowywała się do obu orientacji, używając
-                        responsywnego designu:</p>
-                    <div class="code-example">
+                    <div class="example good">
+                        <h4>Dobry przykład - responsywny design obsługujący obie orientacje</h4>
+                        <p>Strona internetowa zaprojektowana tak, aby dostosowywała się do obu orientacji, używając
+                            responsywnego designu:</p>
                         <pre><code>/* Style dla obu orientacji */
 .app-content {
     display: block;
@@ -116,8 +120,7 @@
         gap: 20px;
     }
 }</code></pre>
-                    </div>
-                    <div class="code-example">
+
                         <pre><code>&lt;div class="app-content"&gt;
     &lt;h1&gt;Panel główny&lt;/h1&gt;
     
@@ -138,17 +141,18 @@
         &lt;/div&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
+                        <p>W tym przykładzie strona używa responsywnego designu, aby dostosować układ w zależności od
+                            orientacji urządzenia. W orientacji poziomej karty są wyświetlane w trzech kolumnach, a w
+                            orientacji pionowej jedna pod drugą. Wszystkie treści są dostępne niezależnie od orientacji.
+                        </p>
                     </div>
-                    <p>W tym przykładzie strona używa responsywnego designu, aby dostosować układ w zależności od
-                        orientacji urządzenia. W orientacji poziomej karty są wyświetlane w trzech kolumnach, a w
-                        orientacji pionowej jedna pod drugą. Wszystkie treści są dostępne niezależnie od orientacji.</p>
                 </div>
 
-                <div class="example">
-                    <h3>Przykład wyjątku - aplikacja fortepianowa</h3>
-                    <p>Aplikacja do nauki gry na fortepianie, która sugeruje orientację poziomą, ale nadal umożliwia
-                        korzystanie w trybie pionowym:</p>
-                    <div class="code-example">
+                <div class="example-container">
+                    <div class="example exceptions">
+                        <h4>Przykład wyjątku - aplikacja fortepianowa</h4>
+                        <p>Aplikacja do nauki gry na fortepianie, która sugeruje orientację poziomą, ale nadal umożliwia
+                            korzystanie w trybie pionowym:</p>
                         <pre><code>/* Style dla obu orientacji */
 .piano-app {
     display: block;
@@ -185,8 +189,7 @@
         width: 100%;
     }
 }</code></pre>
-                    </div>
-                    <div class="code-example">
+
                         <pre><code>&lt;div class="piano-app"&gt;
     &lt;div class="orientation-suggestion"&gt;
         &lt;p&gt;&lt;strong&gt;Sugestia:&lt;/strong&gt; Aby zobaczyć pełną klawiaturę, obróć urządzenie do pozycji poziomej.&lt;/p&gt;
@@ -198,17 +201,20 @@
         &lt;!-- Klawisze fortepianu --&gt;
     &lt;/div&gt;
 &lt;/div&gt;</code></pre>
+                        <p>Ten przykład przedstawia aplikację, której naturalnym układem jest orientacja pozioma (ze
+                            względu
+                            na kształt klawiatury fortepianu). Jednak zamiast całkowicie blokować dostęp w orientacji
+                            pionowej, aplikacja wyświetla sugestię i dostosowuje interfejs, aby był nadal użyteczny.
+                            Jest to
+                            zgodne z wytycznymi, ponieważ nie wymusza konkretnej orientacji, a jedynie sugeruje tę
+                            bardziej
+                            optymalną.</p>
                     </div>
-                    <p>Ten przykład przedstawia aplikację, której naturalnym układem jest orientacja pozioma (ze względu
-                        na kształt klawiatury fortepianu). Jednak zamiast całkowicie blokować dostęp w orientacji
-                        pionowej, aplikacja wyświetla sugestię i dostosowuje interfejs, aby był nadal użyteczny. Jest to
-                        zgodne z wytycznymi, ponieważ nie wymusza konkretnej orientacji, a jedynie sugeruje tę bardziej
-                        optymalną.</p>
                 </div>
-            </section>
+            </div>
 
-            <section class="guideline-section">
-                <h2>Wyzwania i wskazówki</h2>
+            <div class="challenges-tips">
+                <h3>Wyzwania i wskazówki</h3>
                 <ul>
                     <li><strong>Unikaj blokowania orientacji</strong> - Nie używaj metaznaczników viewport, JavaScript
                         ani CSS do blokowania orientacji wyświetlania.</li>
@@ -223,10 +229,10 @@
                         może być niezbędna dla funkcjonalności (np. niektóre gry, specjalistyczne aplikacje), ale nawet
                         wtedy staraj się zapewnić jak najwięcej dostępności.</li>
                 </ul>
-            </section>
+            </div>
 
-            <div class="additional-resources">
-                <h2>Dodatkowe źródła</h2>
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
                 <ul>
                     <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/orientation.html" target="_blank"
                             rel="noopener">Zrozumieć WCAG: Orientacja</a>
