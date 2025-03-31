@@ -7,6 +7,12 @@
     <title>Symulator dysfunkcji wzroku - Nieoficjalny przewodnik dostępności</title>
     <link rel="stylesheet" href="styles.css">
     <style>
+        :root {
+            --tunnel-size: 60px;
+            --amd-size: 150px;
+            --amd-opacity: 0.8;
+        }
+
         .vision-simulator {
             max-width: 1000px;
             margin: 0 auto;
@@ -135,9 +141,9 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 150px;
-            height: 150px;
-            background: radial-gradient(circle, rgba(0, 0, 0, 0.8) 0%, transparent 70%);
+            width: var(--amd-size);
+            height: var(--amd-size);
+            background: radial-gradient(circle, rgba(0, 0, 0, var(--amd-opacity)) 0%, transparent 70%);
             pointer-events: none;
         }
 
@@ -152,7 +158,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            box-shadow: 0 0 0 60px rgba(0, 0, 0, 0.9) inset;
+            box-shadow: 0 0 0 var(--tunnel-size) rgba(0, 0, 0, 0.9) inset;
             pointer-events: none;
         }
 
@@ -262,6 +268,58 @@
             .preview-frame {
                 height: 400px;
             }
+        }
+
+        /* Style dla suwaków intensywności */
+        .intensity-controls {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 10px;
+            display: none;
+            /* Domyślnie ukryte */
+        }
+
+        .intensity-controls.visible {
+            display: block;
+        }
+
+        .intensity-control {
+            margin-bottom: 10px;
+        }
+
+        .intensity-control label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .intensity-slider {
+            width: 100%;
+            margin: 10px 0;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .slider-value {
+            min-width: 40px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Style dla trybu wysokiego kontrastu - suwaki */
+        body.high-contrast .intensity-controls {
+            background-color: #222;
+            border: 1px solid #fff;
+        }
+
+        body.high-contrast .intensity-slider {
+            background-color: #000;
+            border: 1px solid #fff;
         }
     </style>
 </head>
@@ -378,6 +436,63 @@
                         testowania osoby z dysfunkcjami wzroku.</li>
                 </ul>
             </div>
+
+            <!-- Sekcja z suwakami intensywności -->
+            <div id="intensity-controls" class="intensity-controls">
+                <h4>Dostosuj intensywność efektu</h4>
+
+                <!-- Suwak dla rozmazania (blur) -->
+                <div id="blur-intensity" class="intensity-control">
+                    <label for="blur-slider">Intensywność rozmazania:</label>
+                    <div class="slider-container">
+                        <input type="range" id="blur-slider" class="intensity-slider" min="1" max="10" value="2"
+                            step="0.5">
+                        <span id="blur-value" class="slider-value">2 px</span>
+                    </div>
+                </div>
+
+                <!-- Suwak dla zaćmy (cataract) -->
+                <div id="cataract-intensity" class="intensity-control">
+                    <label for="contrast-slider">Kontrast:</label>
+                    <div class="slider-container">
+                        <input type="range" id="contrast-slider" class="intensity-slider" min="40" max="100" value="70"
+                            step="5">
+                        <span id="contrast-value" class="slider-value">70%</span>
+                    </div>
+                    <label for="brightness-slider">Jasność:</label>
+                    <div class="slider-container">
+                        <input type="range" id="brightness-slider" class="intensity-slider" min="40" max="100"
+                            value="80" step="5">
+                        <span id="brightness-value" class="slider-value">80%</span>
+                    </div>
+                </div>
+
+                <!-- Suwak dla widzenia tunelowego (tunnel-vision) -->
+                <div id="tunnel-intensity" class="intensity-control">
+                    <label for="tunnel-slider">Szerokość pola widzenia:</label>
+                    <div class="slider-container">
+                        <input type="range" id="tunnel-slider" class="intensity-slider" min="20" max="100" value="60"
+                            step="5">
+                        <span id="tunnel-value" class="slider-value">60 px</span>
+                    </div>
+                </div>
+
+                <!-- Suwak dla AMD -->
+                <div id="amd-intensity" class="intensity-control">
+                    <label for="amd-size-slider">Rozmiar uszkodzenia:</label>
+                    <div class="slider-container">
+                        <input type="range" id="amd-size-slider" class="intensity-slider" min="50" max="300" value="150"
+                            step="10">
+                        <span id="amd-size-value" class="slider-value">150 px</span>
+                    </div>
+                    <label for="amd-opacity-slider">Nieprzezroczystość:</label>
+                    <div class="slider-container">
+                        <input type="range" id="amd-opacity-slider" class="intensity-slider" min="0.2" max="0.9"
+                            value="0.8" step="0.1">
+                        <span id="amd-opacity-value" class="slider-value">0.8</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
@@ -417,16 +532,40 @@
             const previewFrame = document.getElementById('preview-frame');
             const previewContainer = document.querySelector('.preview-container');
             const visionFilterButtons = document.querySelectorAll('#vision-filter .control-button');
+            const intensityControls = document.getElementById('intensity-controls');
 
-            // Przykładowa strona do testowania
-            const examplePage = 'https://www.w3.org/WAI/demos/bad/';
+            // Referencje do suwaków intensywności
+            const blurSlider = document.getElementById('blur-slider');
+            const blurValue = document.getElementById('blur-value');
+            const contrastSlider = document.getElementById('contrast-slider');
+            const contrastValue = document.getElementById('contrast-value');
+            const brightnessSlider = document.getElementById('brightness-slider');
+            const brightnessValue = document.getElementById('brightness-value');
+            const tunnelSlider = document.getElementById('tunnel-slider');
+            const tunnelValue = document.getElementById('tunnel-value');
+            const amdSizeSlider = document.getElementById('amd-size-slider');
+            const amdSizeValue = document.getElementById('amd-size-value');
+            const amdOpacitySlider = document.getElementById('amd-opacity-slider');
+            const amdOpacityValue = document.getElementById('amd-opacity-value');
+
+            // Elementy intensywności
+            const blurIntensity = document.getElementById('blur-intensity');
+            const catIntensity = document.getElementById('cataract-intensity');
+            const tunnelIntensity = document.getElementById('tunnel-intensity');
+            const amdIntensity = document.getElementById('amd-intensity');
+
+            // Przykładowa strona do testowania - nasza strona główna
+            const examplePage = window.location.origin + '/index.html';
+
+            // Aktualnie wybrany filtr
+            let currentFilter = 'normal';
 
             // Funkcja ładująca stronę do iframe
             function loadPage(url) {
                 if (!url) return;
 
                 // Sprawdzenie czy URL ma poprawny format
-                if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                if (!url.startsWith('http://') && !url.startsWith('https://') && !url.startsWith('/')) {
                     url = 'https://' + url;
                 }
 
@@ -438,6 +577,102 @@
                     console.error('Błąd wczytywania strony:', error);
                 }
             }
+
+            // Funkcja aktualizująca widok na podstawie wybranego filtru i wartości suwaków
+            function updateView() {
+                // Usuń wszystkie klasy filtrów
+                const filterClasses = ['protanopia', 'deuteranopia', 'tritanopia', 'achromatopsia',
+                    'cataract', 'amd', 'tunnel-vision', 'blur', 'high-blur'];
+
+                previewContainer.classList.remove(...filterClasses);
+
+                // Ukryj wszystkie kontrolki intensywności
+                intensityControls.classList.remove('visible');
+                blurIntensity.style.display = 'none';
+                catIntensity.style.display = 'none';
+                tunnelIntensity.style.display = 'none';
+                amdIntensity.style.display = 'none';
+
+                // Dodaj odpowiednią klasę filtru, jeśli nie jest to normalne widzenie
+                if (currentFilter !== 'normal') {
+                    previewContainer.classList.add(currentFilter);
+
+                    // Pokaż odpowiednie kontrolki intensywności dla wybranych filtrów
+                    if (currentFilter === 'blur' || currentFilter === 'high-blur') {
+                        intensityControls.classList.add('visible');
+                        blurIntensity.style.display = 'block';
+
+                        // Ustaw wartość intensywności rozmazania
+                        const blurAmount = blurSlider.value + 'px';
+                        previewContainer.style.filter = `blur(${blurAmount})`;
+                    }
+                    else if (currentFilter === 'cataract') {
+                        intensityControls.classList.add('visible');
+                        catIntensity.style.display = 'block';
+
+                        // Ustaw wartości kontrastu i jasności
+                        const contrastAmount = contrastSlider.value + '%';
+                        const brightnessAmount = brightnessSlider.value + '%';
+                        previewContainer.style.filter = `contrast(${contrastAmount}) brightness(${brightnessAmount}) blur(2px)`;
+                    }
+                    else if (currentFilter === 'tunnel-vision') {
+                        intensityControls.classList.add('visible');
+                        tunnelIntensity.style.display = 'block';
+
+                        // Ustaw rozmiar widzenia tunelowego
+                        const tunnelAmount = tunnelSlider.value + 'px';
+                        document.documentElement.style.setProperty('--tunnel-size', tunnelAmount);
+                    }
+                    else if (currentFilter === 'amd') {
+                        intensityControls.classList.add('visible');
+                        amdIntensity.style.display = 'block';
+
+                        // Ustaw rozmiar i nieprzezroczystość AMD
+                        const amdSize = amdSizeSlider.value + 'px';
+                        const amdOpacity = amdOpacitySlider.value;
+                        document.documentElement.style.setProperty('--amd-size', amdSize);
+                        document.documentElement.style.setProperty('--amd-opacity', amdOpacity);
+                    }
+                    else {
+                        // Dla pozostałych filtrów, usuń style
+                        previewContainer.style.filter = '';
+                    }
+                } else {
+                    // Dla normalnego widzenia, usuń wszystkie style
+                    previewContainer.style.filter = '';
+                }
+            }
+
+            // Obsługa suwaków intensywności
+            blurSlider.addEventListener('input', function () {
+                blurValue.textContent = this.value + ' px';
+                updateView();
+            });
+
+            contrastSlider.addEventListener('input', function () {
+                contrastValue.textContent = this.value + '%';
+                updateView();
+            });
+
+            brightnessSlider.addEventListener('input', function () {
+                brightnessValue.textContent = this.value + '%';
+                updateView();
+            });
+
+            tunnelSlider.addEventListener('input', function () {
+                tunnelValue.textContent = this.value + ' px';
+                updateView();
+            });
+
+            amdSizeSlider.addEventListener('input', function () {
+                amdSizeValue.textContent = this.value + ' px';
+                updateView();
+            });
+
+            amdOpacitySlider.addEventListener('input', function () {
+                amdOpacityValue.textContent = this.value;
+                updateView();
+            });
 
             // Obsługa przycisku wczytywania strony
             loadPageButton.addEventListener('click', function () {
@@ -468,22 +703,17 @@
                     button.classList.add('active');
 
                     // Ustaw odpowiedni filtr
-                    const filterType = button.getAttribute('data-filter');
+                    currentFilter = button.getAttribute('data-filter');
 
-                    // Usuń wszystkie klasy filtrów
-                    // Zapisujemy listę wszystkich możliwych klas filtrów
-                    const filterClasses = ['protanopia', 'deuteranopia', 'tritanopia', 'achromatopsia',
-                        'cataract', 'amd', 'tunnel-vision', 'blur', 'high-blur'];
-
-                    // Usuwamy wszystkie klasy filtrów z kontenera
-                    previewContainer.classList.remove(...filterClasses);
-
-                    // Dodaj odpowiednią klasę filtru, jeśli nie jest to normalne widzenie
-                    if (filterType !== 'normal') {
-                        previewContainer.classList.add(filterType);
-                    }
+                    // Aktualizuj widok
+                    updateView();
                 });
             });
+
+            // Dodaj zmienne CSS do dokumentu
+            document.documentElement.style.setProperty('--tunnel-size', '60px');
+            document.documentElement.style.setProperty('--amd-size', '150px');
+            document.documentElement.style.setProperty('--amd-opacity', '0.8');
 
             // Wczytaj przykładową stronę na starcie
             loadPage(examplePage);
