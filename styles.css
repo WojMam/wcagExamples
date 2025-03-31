@@ -393,6 +393,43 @@ body.high-contrast a:focus {
 	.example-container {
 		grid-template-columns: 1fr;
 	}
+
+	/* Poprawki dla fragmentów kodu i przykładów na urządzeniach mobilnych */
+	pre {
+		font-size: 14px;
+		padding: 10px;
+		margin: 10px 0;
+		white-space: pre-wrap;
+		word-wrap: break-word;
+	}
+
+	.example {
+		padding: 10px;
+		margin: 10px 0;
+	}
+
+	.good,
+	.average,
+	.bad {
+		border-left-width: 3px;
+	}
+
+	.explanation {
+		padding: 8px;
+		font-size: 14px;
+	}
+
+	/* Poprawki dla kontenera przykładów */
+	.example-container {
+		gap: 15px;
+		margin: 15px 0;
+	}
+
+	/* Poprawki dla kodu inline */
+	code {
+		font-size: 14px;
+		padding: 1px 3px;
+	}
 }
 
 /* Dostępność */
