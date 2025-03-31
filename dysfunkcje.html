@@ -166,10 +166,6 @@
             filter: blur(2px);
         }
 
-        .preview-container.high-blur {
-            filter: blur(4px);
-        }
-
         .info-section {
             margin-top: 40px;
             padding: 20px;
@@ -272,20 +268,26 @@
 
         /* Style dla suwaków intensywności */
         .intensity-controls {
+            flex: 100%;
             margin-top: 15px;
             padding: 15px;
-            background-color: #f5f5f5;
-            border-radius: 10px;
-            display: none;
-            /* Domyślnie ukryte */
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
         }
 
-        .intensity-controls.visible {
-            display: block;
+        .intensity-controls h4 {
+            margin-top: 0;
+            margin-bottom: 15px;
+            color: var(--primary-color);
         }
 
         .intensity-control {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .intensity-control:last-child {
+            margin-bottom: 0;
         }
 
         .intensity-control label {
@@ -359,8 +361,64 @@
                         <button class="control-button" data-filter="cataract">Zaćma</button>
                         <button class="control-button" data-filter="amd">AMD</button>
                         <button class="control-button" data-filter="tunnel-vision">Widzenie tunelowe</button>
-                        <button class="control-button" data-filter="blur">Lekkie rozmazanie</button>
-                        <button class="control-button" data-filter="high-blur">Silne rozmazanie</button>
+                        <button class="control-button" data-filter="blur">Rozmazanie</button>
+                    </div>
+                </div>
+
+                <!-- Sekcja z suwakami intensywności - przeniesiona tutaj -->
+                <div id="intensity-controls" class="intensity-controls">
+                    <h4>Dostosuj intensywność efektu</h4>
+
+                    <!-- Suwak dla rozmazania (blur) -->
+                    <div id="blur-intensity" class="intensity-control">
+                        <label for="blur-slider">Intensywność rozmazania:</label>
+                        <div class="slider-container">
+                            <input type="range" id="blur-slider" class="intensity-slider" min="1" max="10" value="2"
+                                step="0.5">
+                            <span id="blur-value" class="slider-value">2 px</span>
+                        </div>
+                    </div>
+
+                    <!-- Suwak dla zaćmy (cataract) -->
+                    <div id="cataract-intensity" class="intensity-control">
+                        <label for="contrast-slider">Kontrast:</label>
+                        <div class="slider-container">
+                            <input type="range" id="contrast-slider" class="intensity-slider" min="40" max="100"
+                                value="70" step="5">
+                            <span id="contrast-value" class="slider-value">70%</span>
+                        </div>
+                        <label for="brightness-slider">Jasność:</label>
+                        <div class="slider-container">
+                            <input type="range" id="brightness-slider" class="intensity-slider" min="40" max="100"
+                                value="80" step="5">
+                            <span id="brightness-value" class="slider-value">80%</span>
+                        </div>
+                    </div>
+
+                    <!-- Suwak dla widzenia tunelowego (tunnel-vision) -->
+                    <div id="tunnel-intensity" class="intensity-control">
+                        <label for="tunnel-slider">Szerokość pola widzenia:</label>
+                        <div class="slider-container">
+                            <input type="range" id="tunnel-slider" class="intensity-slider" min="20" max="100"
+                                value="60" step="5">
+                            <span id="tunnel-value" class="slider-value">60 px</span>
+                        </div>
+                    </div>
+
+                    <!-- Suwak dla AMD -->
+                    <div id="amd-intensity" class="intensity-control">
+                        <label for="amd-size-slider">Rozmiar uszkodzenia:</label>
+                        <div class="slider-container">
+                            <input type="range" id="amd-size-slider" class="intensity-slider" min="50" max="300"
+                                value="150" step="10">
+                            <span id="amd-size-value" class="slider-value">150 px</span>
+                        </div>
+                        <label for="amd-opacity-slider">Nieprzezroczystość:</label>
+                        <div class="slider-container">
+                            <input type="range" id="amd-opacity-slider" class="intensity-slider" min="0.2" max="0.9"
+                                value="0.8" step="0.1">
+                            <span id="amd-opacity-value" class="slider-value">0.8</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -435,63 +493,6 @@
                     <li><strong>Testuj z rzeczywistymi użytkownikami</strong> - jeśli to możliwe, włącz w proces
                         testowania osoby z dysfunkcjami wzroku.</li>
                 </ul>
-            </div>
-
-            <!-- Sekcja z suwakami intensywności -->
-            <div id="intensity-controls" class="intensity-controls">
-                <h4>Dostosuj intensywność efektu</h4>
-
-                <!-- Suwak dla rozmazania (blur) -->
-                <div id="blur-intensity" class="intensity-control">
-                    <label for="blur-slider">Intensywność rozmazania:</label>
-                    <div class="slider-container">
-                        <input type="range" id="blur-slider" class="intensity-slider" min="1" max="10" value="2"
-                            step="0.5">
-                        <span id="blur-value" class="slider-value">2 px</span>
-                    </div>
-                </div>
-
-                <!-- Suwak dla zaćmy (cataract) -->
-                <div id="cataract-intensity" class="intensity-control">
-                    <label for="contrast-slider">Kontrast:</label>
-                    <div class="slider-container">
-                        <input type="range" id="contrast-slider" class="intensity-slider" min="40" max="100" value="70"
-                            step="5">
-                        <span id="contrast-value" class="slider-value">70%</span>
-                    </div>
-                    <label for="brightness-slider">Jasność:</label>
-                    <div class="slider-container">
-                        <input type="range" id="brightness-slider" class="intensity-slider" min="40" max="100"
-                            value="80" step="5">
-                        <span id="brightness-value" class="slider-value">80%</span>
-                    </div>
-                </div>
-
-                <!-- Suwak dla widzenia tunelowego (tunnel-vision) -->
-                <div id="tunnel-intensity" class="intensity-control">
-                    <label for="tunnel-slider">Szerokość pola widzenia:</label>
-                    <div class="slider-container">
-                        <input type="range" id="tunnel-slider" class="intensity-slider" min="20" max="100" value="60"
-                            step="5">
-                        <span id="tunnel-value" class="slider-value">60 px</span>
-                    </div>
-                </div>
-
-                <!-- Suwak dla AMD -->
-                <div id="amd-intensity" class="intensity-control">
-                    <label for="amd-size-slider">Rozmiar uszkodzenia:</label>
-                    <div class="slider-container">
-                        <input type="range" id="amd-size-slider" class="intensity-slider" min="50" max="300" value="150"
-                            step="10">
-                        <span id="amd-size-value" class="slider-value">150 px</span>
-                    </div>
-                    <label for="amd-opacity-slider">Nieprzezroczystość:</label>
-                    <div class="slider-container">
-                        <input type="range" id="amd-opacity-slider" class="intensity-slider" min="0.2" max="0.9"
-                            value="0.8" step="0.1">
-                        <span id="amd-opacity-value" class="slider-value">0.8</span>
-                    </div>
-                </div>
             </div>
         </div>
     </main>
@@ -582,12 +583,11 @@
             function updateView() {
                 // Usuń wszystkie klasy filtrów
                 const filterClasses = ['protanopia', 'deuteranopia', 'tritanopia', 'achromatopsia',
-                    'cataract', 'amd', 'tunnel-vision', 'blur', 'high-blur'];
+                    'cataract', 'amd', 'tunnel-vision', 'blur'];
 
                 previewContainer.classList.remove(...filterClasses);
 
                 // Ukryj wszystkie kontrolki intensywności
-                intensityControls.classList.remove('visible');
                 blurIntensity.style.display = 'none';
                 catIntensity.style.display = 'none';
                 tunnelIntensity.style.display = 'none';
@@ -598,8 +598,7 @@
                     previewContainer.classList.add(currentFilter);
 
                     // Pokaż odpowiednie kontrolki intensywności dla wybranych filtrów
-                    if (currentFilter === 'blur' || currentFilter === 'high-blur') {
-                        intensityControls.classList.add('visible');
+                    if (currentFilter === 'blur') {
                         blurIntensity.style.display = 'block';
 
                         // Ustaw wartość intensywności rozmazania
@@ -607,7 +606,6 @@
                         previewContainer.style.filter = `blur(${blurAmount})`;
                     }
                     else if (currentFilter === 'cataract') {
-                        intensityControls.classList.add('visible');
                         catIntensity.style.display = 'block';
 
                         // Ustaw wartości kontrastu i jasności
@@ -616,7 +614,6 @@
                         previewContainer.style.filter = `contrast(${contrastAmount}) brightness(${brightnessAmount}) blur(2px)`;
                     }
                     else if (currentFilter === 'tunnel-vision') {
-                        intensityControls.classList.add('visible');
                         tunnelIntensity.style.display = 'block';
 
                         // Ustaw rozmiar widzenia tunelowego
@@ -624,7 +621,6 @@
                         document.documentElement.style.setProperty('--tunnel-size', tunnelAmount);
                     }
                     else if (currentFilter === 'amd') {
-                        intensityControls.classList.add('visible');
                         amdIntensity.style.display = 'block';
 
                         // Ustaw rozmiar i nieprzezroczystość AMD
