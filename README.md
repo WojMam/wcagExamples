@@ -12,13 +12,13 @@ Ten projekt ma charakter edukacyjny i służy do prezentacji dobrych praktyk w t
 
 Projekt zawiera przykłady implementacji dla następujących wytycznych:
 
-### 1. Postrzegalność
+### Zasada 1: Postrzegalność
 
 - **1.1 Alternatywa tekstowa**
 
   - 1.1.1 Treść nietekstowa (A)
 
-- **1.2 Media zsynchronizowane**
+- **1.2 Multimedia**
   - 1.2.1 Tylko audio lub tylko wideo (nagranie) (A)
   - 1.2.2 Napisy rozszerzone (nagranie) (A)
   - 1.2.3 Audiodeskrypcja lub alternatywa tekstowa (A)
