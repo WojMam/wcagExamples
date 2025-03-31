@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WCAG 2.1 - Nieoficjalny przewodnik dostępności</title>
+    <title>Narzędzia i zasoby - Nieoficjalny przewodnik dostępności</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         .dashboard {
@@ -82,28 +82,6 @@
             text-decoration: none;
         }
 
-        .hero {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 40px;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero h1 {
-            color: white;
-            font-size: 2.2em;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            font-size: 1.2em;
-            max-width: 800px;
-            line-height: 1.5;
-        }
-
         .page-intro {
             text-align: center;
             max-width: 800px;
@@ -116,55 +94,41 @@
             margin-bottom: 20px;
         }
 
-        .disclaimer-banner {
-            margin-top: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .dashboard {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                padding: 30px 20px;
-            }
-        }
-
         /* Style dla trybu wysokiego kontrastu */
         body.high-contrast .tile {
             background-color: #000;
             border: 2px solid #fff;
             box-shadow: none;
         }
-
+        
         body.high-contrast .tile-header {
             background-color: #000;
             color: #ffff00;
             border-bottom: 2px solid #fff;
         }
-
+        
         body.high-contrast .tile-content {
             color: #fff;
         }
-
+        
         body.high-contrast .tile-footer {
             background-color: #222;
             border-top: 2px solid #fff;
         }
-
+        
         body.high-contrast .tile-link {
             background-color: #000;
             color: #ffff00;
             border: 2px solid #ffff00;
             font-weight: bold;
         }
-
+        
         body.high-contrast .tile-link:hover,
         body.high-contrast .tile-link:focus {
             background-color: #ffff00;
             color: #000;
         }
-
+        
         body.high-contrast .note {
             color: #fff;
             border-left: 3px solid #ffff00;
@@ -181,33 +145,31 @@
 
     <main id="main">
         <div class="page-intro">
-            <h2>Wybierz narzędzie</h2>
-            <p>Poniżej znajdziesz dostępne narzędzia i zasoby dotyczące dostępności cyfrowej.</p>
+            <h2>Narzędzia i zasoby</h2>
+            <p>Poniżej znajdziesz narzędzia, które pomogą Ci tworzyć dostępne strony internetowe oraz weryfikować ich zgodność z wytycznymi WCAG 2.1.</p>
         </div>
 
         <div class="dashboard">
             <div class="tile">
                 <div class="tile-header">
-                    <span class="tile-icon">📋</span>
-                    Przykłady wytycznych
+                    <span class="tile-icon">🎨</span>
+                    Tester kontrastu kolorów
                 </div>
                 <div class="tile-content">
-                    <p class="tile-description">Przeglądaj przykłady implementacji wytycznych WCAG 2.1 z praktycznymi
-                        przykładami kodu i omówieniem każdego kryterium sukcesu.</p>
+                    <p class="tile-description">Sprawdź czy wybrane kolory spełniają wymagania dostępności pod względem kontrastu. Narzędzie weryfikuje zgodność z wytycznymi WCAG 2.1 dla poziomów AA i AAA.</p>
                 </div>
                 <div class="tile-footer">
-                    <a href="wytyczne.html" class="tile-link">Przejdź do wytycznych</a>
+                    <a href="kontrast.html" class="tile-link">Sprawdź kontrast</a>
                 </div>
             </div>
 
             <div class="tile">
                 <div class="tile-header">
-                    <span class="tile-icon">🔍</span>
-                    Tester dostępności
+                    <span class="tile-icon">📱</span>
+                    Symulator widoku mobilnego
                 </div>
                 <div class="tile-content">
-                    <p class="tile-description">Sprawdź dostępność swojej strony poprzez serię testów weryfikujących
-                        zgodność z wytycznymi WCAG 2.1.</p>
+                    <p class="tile-description">Sprawdź jak Twoja strona wygląda na urządzeniach mobilnych o różnych rozmiarach ekranu i gęstościach pikseli.</p>
                 </div>
                 <div class="tile-footer">
                     <p class="note"><em>Narzędzie w przygotowaniu</em></p>
@@ -216,29 +178,27 @@
 
             <div class="tile">
                 <div class="tile-header">
-                    <span class="tile-icon">📚</span>
-                    Poradniki i artykuły
+                    <span class="tile-icon">👓</span>
+                    Symulator dysfunkcji wzroku
                 </div>
                 <div class="tile-content">
-                    <p class="tile-description">Materiały edukacyjne dotyczące dostępności cyfrowej - artykuły,
-                        poradniki i najlepsze praktyki w projektowaniu uniwersalnym.</p>
+                    <p class="tile-description">Zobacz jak Twoja strona jest odbierana przez osoby z różnymi dysfunkcjami wzroku, takimi jak daltonizm, zaćma czy AMD.</p>
                 </div>
                 <div class="tile-footer">
-                    <p class="note"><em>Sekcja w przygotowaniu</em></p>
+                    <p class="note"><em>Narzędzie w przygotowaniu</em></p>
                 </div>
             </div>
 
             <div class="tile">
                 <div class="tile-header">
-                    <span class="tile-icon">🛠️</span>
-                    Narzędzia i zasoby
+                    <span class="tile-icon">🔍</span>
+                    Walidator dostępności
                 </div>
                 <div class="tile-content">
-                    <p class="tile-description">Zbiór narzędzi, bibliotek i zasobów wspomagających wdrażanie dostępności
-                        na stronach internetowych i w aplikacjach.</p>
+                    <p class="tile-description">Szybkie sprawdzenie dostępności przez podanie adresu URL. Narzędzie wykona automatyczną analizę zgodności z wytycznymi WCAG 2.1.</p>
                 </div>
                 <div class="tile-footer">
-                    <a href="narzedzia.html" class="tile-link">Przejdź do narzędzi</a>
+                    <p class="note"><em>Narzędzie w przygotowaniu</em></p>
                 </div>
             </div>
         </div>
@@ -251,4 +211,4 @@
     <script src="script.js"></script>
 </body>
 
-</html>
+</html> 
