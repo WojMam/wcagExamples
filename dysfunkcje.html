@@ -556,7 +556,7 @@
             const amdIntensity = document.getElementById('amd-intensity');
 
             // Przykładowa strona do testowania - nasza strona główna
-            const examplePage = window.location.origin + '/index.html';
+            const examplePage = 'https://wojmam.github.io/wcagExamples';
 
             // Aktualnie wybrany filtr
             let currentFilter = 'normal';
@@ -586,6 +586,12 @@
                     'cataract', 'amd', 'tunnel-vision', 'blur'];
 
                 previewContainer.classList.remove(...filterClasses);
+
+                // Resetuj wszystkie style niezależnie od wybranego filtru
+                previewContainer.style.filter = '';
+                document.documentElement.style.setProperty('--tunnel-size', '60px');
+                document.documentElement.style.setProperty('--amd-size', '150px');
+                document.documentElement.style.setProperty('--amd-opacity', '0.8');
 
                 // Ukryj wszystkie kontrolki intensywności
                 blurIntensity.style.display = 'none';
@@ -629,13 +635,6 @@
                         document.documentElement.style.setProperty('--amd-size', amdSize);
                         document.documentElement.style.setProperty('--amd-opacity', amdOpacity);
                     }
-                    else {
-                        // Dla pozostałych filtrów, usuń style
-                        previewContainer.style.filter = '';
-                    }
-                } else {
-                    // Dla normalnego widzenia, usuń wszystkie style
-                    previewContainer.style.filter = '';
                 }
             }
 
@@ -705,11 +704,6 @@
                     updateView();
                 });
             });
-
-            // Dodaj zmienne CSS do dokumentu
-            document.documentElement.style.setProperty('--tunnel-size', '60px');
-            document.documentElement.style.setProperty('--amd-size', '150px');
-            document.documentElement.style.setProperty('--amd-opacity', '0.8');
 
             // Wczytaj przykładową stronę na starcie
             loadPage(examplePage);
