@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.3.2 Zrozumiała kolejność - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.3.2 Zrozumiała kolejność</h2>
+                <p class="criterion-level">Poziom A</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#meaningful-sequence" target="_blank"
+                            rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Jeśli kolejność prezentacji treści ma znaczenie dla jej zrozumienia, to właściwa kolejność odczytu
+                    może być określona programowo.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest umożliwienie technologiom wspomagającym, takim jak czytniki ekranu,
+                    prezentacji treści w logicznej kolejności, która zachowuje znaczenie. Kolejność treści w kodzie
+                    źródłowym powinna odzwierciedlać logiczną kolejność odczytu. Ma to zapewnić, że użytkownicy
+                    korzystający z alternatywnych sposobów prezentacji (np. audio) otrzymają informacje w takim samym,
+                    sensownym porządku jak użytkownicy widzący.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - logiczna kolejność w kodzie</h4>
+                        <p>Struktura HTML, gdzie kolejność elementów w kodzie odpowiada logicznej kolejności odczytu:
+                        </p>
+                        <pre><code class="language-html">&lt;article&gt;
+    &lt;h2&gt;Jak upiec ciasto czekoladowe&lt;/h2&gt;
+    
+    &lt;section&gt;
+        &lt;h3&gt;Składniki&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;200g mąki&lt;/li&gt;
+            &lt;li&gt;150g cukru&lt;/li&gt;
+            &lt;li&gt;100g masła&lt;/li&gt;
+            &lt;li&gt;2 jajka&lt;/li&gt;
+            &lt;li&gt;50g kakao&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/section&gt;
+    
+    &lt;section&gt;
+        &lt;h3&gt;Instrukcja&lt;/h3&gt;
+        &lt;ol&gt;
+            &lt;li&gt;Wymieszaj składniki suche.&lt;/li&gt;
+            &lt;li&gt;Dodaj masło i jajka, wymieszaj.&lt;/li&gt;
+            &lt;li&gt;Piecz w 180°C przez 30 minut.&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/section&gt;
+&lt;/article&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <article>
+                                    <h2>Jak upiec ciasto czekoladowe</h2>
+
+                                    <section>
+                                        <h3>Składniki</h3>
+                                        <ul>
+                                            <li>200g mąki</li>
+                                            <li>150g cukru</li>
+                                            <li>100g masła</li>
+                                            <li>2 jajka</li>
+                                            <li>50g kakao</li>
+                                        </ul>
+                                    </section>
+
+                                    <section>
+                                        <h3>Instrukcja</h3>
+                                        <ol>
+                                            <li>Wymieszaj składniki suche.</li>
+                                            <li>Dodaj masło i jajka, wymieszaj.</li>
+                                            <li>Piecz w 180°C przez 30 minut.</li>
+                                        </ol>
+                                    </section>
+                                </article>
+                            </div>
+                        </div>
+
+                        <p>W tym przykładzie, kolejność elementów w kodzie HTML odzwierciedla logiczną kolejność
+                            informacji: nagłówek, składniki, a następnie instrukcje. Czytnik ekranu odczyta informacje w
+                            tej samej kolejności, co pozwoli użytkownikowi zrozumieć przepis.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - kolejność zaburzona przez pozycjonowanie CSS</h4>
+                        <p>Kod HTML, gdzie wizualna kolejność została zmieniona za pomocą CSS, ale kolejność w kodzie
+                            źródłowym pozostaje nieprawidłowa:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+    .recipe-container {
+        display: grid;
+        grid-template-areas:
+            "title title"
+            "instructions ingredients";
+    }
+    .title { grid-area: title; }
+    .ingredients { grid-area: ingredients; }
+    .instructions { grid-area: instructions; }
+&lt;/style&gt;
+
+&lt;div class="recipe-container"&gt;
+    &lt;h2 class="title"&gt;Jak upiec ciasto czekoladowe&lt;/h2&gt;
+    
+    &lt;section class="instructions"&gt;
+        &lt;h3&gt;Instrukcja&lt;/h3&gt;
+        &lt;ol&gt;
+            &lt;li&gt;Wymieszaj składniki suche.&lt;/li&gt;
+            &lt;li&gt;Dodaj masło i jajka, wymieszaj.&lt;/li&gt;
+            &lt;li&gt;Piecz w 180°C przez 30 minut.&lt;/li&gt;
+        &lt;/ol&gt;
+    &lt;/section&gt;
+    
+    &lt;section class="ingredients"&gt;
+        &lt;h3&gt;Składniki&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;200g mąki&lt;/li&gt;
+            &lt;li&gt;150g cukru&lt;/li&gt;
+            &lt;li&gt;100g masła&lt;/li&gt;
+            &lt;li&gt;2 jajka&lt;/li&gt;
+            &lt;li&gt;50g kakao&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/section&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="display: grid; grid-template-areas: 'title title' 'instructions ingredients';">
+                                    <h2 style="grid-area: title;">Jak upiec ciasto czekoladowe</h2>
+
+                                    <section style="grid-area: instructions;">
+                                        <h3>Instrukcja</h3>
+                                        <ol>
+                                            <li>Wymieszaj składniki suche.</li>
+                                            <li>Dodaj masło i jajka, wymieszaj.</li>
+                                            <li>Piecz w 180°C przez 30 minut.</li>
+                                        </ol>
+                                    </section>
+
+                                    <section style="grid-area: ingredients;">
+                                        <h3>Składniki</h3>
+                                        <ul>
+                                            <li>200g mąki</li>
+                                            <li>150g cukru</li>
+                                            <li>100g masła</li>
+                                            <li>2 jajka</li>
+                                            <li>50g kakao</li>
+                                        </ul>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>W tym przykładzie, w kodzie HTML instrukcje pojawiają się przed składnikami, ale CSS zmienia
+                            ich wizualną kolejność. Czytnik ekranu odczyta instrukcje przed składnikami, co jest
+                            nielogiczne i utrudnia zrozumienie przepisu. Prawidłowe podejście to dostosowanie kolejności
+                            elementów w kodzie HTML do logicznego porządku, a następnie użycie CSS tylko do stylizacji,
+                            a nie do zmiany kolejności treści.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - wielokolumnowy układ z zachowaniem logicznej kolejności</h4>
+                        <p>Strona z wielokolumnowym układem, gdzie kolejność w kodzie zapewnia logiczny odczyt:</p>
+                        <pre><code class="language-html">&lt;div class="article-wrapper"&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Dostępność cyfrowa&lt;/h1&gt;
+        &lt;p class="intro"&gt;Wprowadzenie do zasad dostępności treści internetowych...&lt;/p&gt;
+    &lt;/header&gt;
+    
+    &lt;main class="columns-layout"&gt;
+        &lt;section&gt;
+            &lt;h2&gt;Dlaczego dostępność jest ważna?&lt;/h2&gt;
+            &lt;p&gt;Dostępność cyfrowa zapewnia, że treści internetowe są dostępne dla wszystkich użytkowników...&lt;/p&gt;
+            
+            &lt;h2&gt;Kluczowe zasady dostępności&lt;/h2&gt;
+            &lt;p&gt;Zasady dostępności opierają się na czterech głównych filarach...&lt;/p&gt;
+        &lt;/section&gt;
+        
+        &lt;aside&gt;
+            &lt;h3&gt;Przydatne linki&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Dokumentacja WCAG&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;Narzędzia do testowania&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+    .columns-layout {
+        display: flex;
+    }
+    section {
+        flex: 3;
+        padding-right: 20px;
+    }
+    aside {
+        flex: 1;
+    }
+&lt;/style&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div>
+                                    <header>
+                                        <h1>Dostępność cyfrowa</h1>
+                                        <p>Wprowadzenie do zasad dostępności treści internetowych...</p>
+                                    </header>
+
+                                    <div style="display: flex;">
+                                        <section style="flex: 3; padding-right: 20px;">
+                                            <h2>Dlaczego dostępność jest ważna?</h2>
+                                            <p>Dostępność cyfrowa zapewnia, że treści internetowe są dostępne dla
+                                                wszystkich użytkowników...</p>
+
+                                            <h2>Kluczowe zasady dostępności</h2>
+                                            <p>Zasady dostępności opierają się na czterech głównych filarach...</p>
+                                        </section>
+
+                                        <aside style="flex: 1;">
+                                            <h3>Przydatne linki</h3>
+                                            <ul>
+                                                <li><a href="#">Dokumentacja WCAG</a></li>
+                                                <li><a href="#">Narzędzia do testowania</a></li>
+                                            </ul>
+                                        </aside>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>W tym przykładzie, tekst główny oraz boczny panel są wyświetlane obok siebie dzięki układowi
+                            flex, ale logiczna kolejność w HTML jest zachowana: najpierw nagłówek, potem treść główna, a
+                            na końcu informacje dodatkowe. Czytnik ekranu odczyta tekst w logicznej kolejności,
+                            niezależnie od układu wizualnego.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="challenges-tips">
+                <h3>Wyzwania i wskazówki</h3>
+                <ul>
+                    <li><strong>Układy wielokolumnowe</strong> - upewnij się, że kolejność treści w kodzie HTML jest
+                        logiczna, nawet jeśli wizualnie treść jest prezentowana w wielu kolumnach</li>
+                    <li><strong>Tabele danych</strong> - używaj tabel tylko do prezentacji danych tabelarycznych, nie do
+                        układu strony</li>
+                    <li><strong>Float i pozycjonowanie absolutne</strong> - bądź ostrożny przy używaniu tych właściwości
+                        CSS, gdyż mogą zaburzyć kolejność odczytu</li>
+                    <li><strong>Flexbox i Grid</strong> - używaj tych nowoczesnych layoutów CSS, ale upewnij się, że
+                        kolejność elementów w HTML pozostaje logiczna</li>
+                    <li><strong>Testuj z wyłączonym CSS</strong> - sprawdź, czy treść nadal ma sens, gdy style są
+                        wyłączone</li>
+                    <li><strong>Użyj czytnika ekranu</strong> - testuj swoją stronę za pomocą czytnika ekranu, aby
+                        sprawdzić, czy treść jest odczytywana w logicznej kolejności</li>
+                    <li><strong>Atrybut tabindex</strong> - unikaj używania wartości dodatnich dla tabindex, ponieważ
+                        mogą one zaburzyć naturalną kolejność nawigacji klawiaturą</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/meaningful-sequence.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG: Zrozumiała kolejność</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/CSS_grid_layout_and_accessibility"
+                            target="_blank" rel="noopener">MDN: CSS Grid Layout i dostępność</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/page-structure/" target="_blank" rel="noopener">WAI:
+                            Samouczek struktury strony</a></li>
+                    <li><a href="https://webaim.org/techniques/screenreader/" target="_blank" rel="noopener">WebAIM:
+                            Techniki dla czytników ekranu</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.3.1.html">Poprzedni: 1.3.1 Informacje i relacje</a></li>
+                    <li><a href="1.3.3.html">Następny: 1.3.3 Właściwości zmysłowe</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
