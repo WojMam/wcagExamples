@@ -294,25 +294,33 @@ function loadFooter() {
 function setupCriterionNavigation() {
 	// Sprawdź czy jesteśmy na stronie kryterium
 	const path = window.location.pathname;
+	console.log("setupCriterionNavigation - ścieżka:", path);
 	const isGuidelinePage = path.includes("/guidelines/");
+	console.log("Jest to strona wytycznych:", isGuidelinePage);
 
 	if (!isGuidelinePage) return;
 
 	const mainContent = document.querySelector("main");
-	if (!mainContent) return;
+	if (!mainContent) {
+		console.log("Nie znaleziono elementu main");
+		return;
+	}
 
 	// Pobierz informacje o kryterium z URL
 	const pathParts = path.split("/");
 	const filename = pathParts[pathParts.length - 1];
 	const criterionId = filename.replace(".html", "");
+	console.log("ID kryterium:", criterionId);
 
 	// Znajdź element nawigacji kryteriów
 	const criterionNav = document.querySelector(".criterion-nav ul");
 	if (criterionNav) {
+		console.log("Znaleziono nawigację kryteriów");
 		// Sprawdź, czy już mamy link do listy wytycznych
 		const hasReturnLink = Array.from(
 			criterionNav.querySelectorAll("li a")
 		).some(link => link.href.includes("wytyczne.html"));
+		console.log("Czy jest już link powrotu:", hasReturnLink);
 
 		// Jeśli nie ma linku powrotu, dodaj go
 		if (!hasReturnLink) {
@@ -328,28 +336,38 @@ function setupCriterionNavigation() {
 			} else {
 				criterionNav.appendChild(middleItem);
 			}
+			console.log("Dodano link powrotu do nawigacji");
 		}
+	} else {
+		console.log("Nie znaleziono nawigacji kryteriów");
 	}
 
 	// Sprawdź czy już istnieje ścieżka nawigacyjna
-	if (document.querySelector(".breadcrumbs")) return;
+	if (document.querySelector(".breadcrumbs")) {
+		console.log("Breadcrumbs już istnieje - pomijam");
+		return;
+	}
 
 	// Parsuj ID kryterium, np. 1.3.4 -> wytyczna: 1.3, kryterium: 4
 	const parts = criterionId.split(".");
-	if (parts.length < 2) return;
+	if (parts.length < 2) {
+		console.log("Nieprawidłowy format ID kryterium");
+		return;
+	}
 
 	const guidelinePrefix = parts[0] + "." + parts[1]; // np. 1.3
+	console.log("Prefiks wytycznej:", guidelinePrefix);
 
 	// Znajdź i pobierz tytuł kryterium
 	const criterionTitle =
 		document.querySelector("h1")?.textContent.trim() || criterionId;
+	console.log("Tytuł kryterium:", criterionTitle);
 
-	// Utwórz ścieżkę nawigacyjną
-	const breadcrumbs = document.createElement("nav");
+	// Utwórz breadcrumbs
+	const breadcrumbs = document.createElement("div");
 	breadcrumbs.className = "breadcrumbs";
-	breadcrumbs.setAttribute("aria-label", "Ścieżka nawigacji");
 
-	const breadcrumbsList = document.createElement("ol");
+	const breadcrumbsList = document.createElement("ul");
 
 	// Dodaj link do strony głównej
 	const homeItem = document.createElement("li");
@@ -367,28 +385,21 @@ function setupCriterionNavigation() {
 	guidelinesItem.appendChild(guidelinesLink);
 	breadcrumbsList.appendChild(guidelinesItem);
 
-	// Dodaj link do wytycznej (np. 1.3)
-	const guidelineItem = document.createElement("li");
-	const guidelineLink = document.createElement("a");
-	guidelineLink.href = `${guidelinePrefix}.html`;
-	guidelineLink.textContent = `${guidelinePrefix} ${getGuidelineName(
-		guidelinePrefix
-	)}`;
-	guidelineItem.appendChild(guidelineLink);
-	breadcrumbsList.appendChild(guidelineItem);
+	// Dodaj wytyczną (np. 1.3 Możliwość adaptacji)
+	const guideline = document.createElement("li");
+	guideline.textContent = guidelinePrefix + " Możliwość adaptacji";
+	breadcrumbsList.appendChild(guideline);
 
-	// Dodaj aktualne kryterium (bez linku)
+	// Dodaj aktualne kryterium
 	const criterionItem = document.createElement("li");
-	criterionItem.textContent = criterionTitle.split(" ")[0]; // Tylko ID, np. "1.3.4"
+	criterionItem.textContent = criterionId;
 	breadcrumbsList.appendChild(criterionItem);
 
 	breadcrumbs.appendChild(breadcrumbsList);
 
-	// Dodaj ścieżkę nawigacyjną na początku artykułu
-	const article = document.querySelector("article.guideline");
-	if (article) {
-		article.insertBefore(breadcrumbs, article.firstChild);
-	}
+	// Dodaj nawigację na początku treści
+	mainContent.insertBefore(breadcrumbs, mainContent.firstChild);
+	console.log("Dodano breadcrumbs");
 }
 
 /**

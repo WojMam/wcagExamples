@@ -662,10 +662,11 @@ body.high-contrast a:focus {
 /* Ścieżka nawigacyjna (breadcrumbs) */
 .breadcrumbs {
 	margin-bottom: 20px;
-	font-size: 0.9em;
+	padding: 10px 0;
+	border-bottom: 1px solid #ddd;
 }
 
-.breadcrumbs ol {
+.breadcrumbs ul {
 	display: flex;
 	flex-wrap: wrap;
 	list-style: none;
@@ -674,29 +675,23 @@ body.high-contrast a:focus {
 }
 
 .breadcrumbs li {
-	display: flex;
-	align-items: center;
+	font-size: 0.9em;
+	color: #666;
 }
 
 .breadcrumbs li:not(:last-child)::after {
 	content: "›";
 	margin: 0 8px;
-	color: #666;
+	color: #aaa;
 }
 
 .breadcrumbs a {
-	color: var(--secondary-color);
+	color: #0066cc;
 	text-decoration: none;
 }
 
-.breadcrumbs a:hover,
-.breadcrumbs a:focus {
+.breadcrumbs a:hover {
 	text-decoration: underline;
-}
-
-.breadcrumbs li:last-child {
-	color: #666;
-	font-weight: 500;
 }
 
 /* Rozszerzona nawigacja kryteriów */
