@@ -387,7 +387,7 @@ function setupCriterionNavigation() {
 
 	// Dodaj wytyczną (np. 1.3 Możliwość adaptacji)
 	const guideline = document.createElement("li");
-	guideline.textContent = guidelinePrefix + " Możliwość adaptacji";
+	guideline.textContent = guidelinePrefix + " " + getGuidelineName(guidelinePrefix);
 	breadcrumbsList.appendChild(guideline);
 
 	// Dodaj aktualne kryterium
@@ -403,12 +403,12 @@ function setupCriterionNavigation() {
 }
 
 /**
- * Pomocnicza funkcja zwracająca nazwę wytycznej na podstawie jej ID
+ * Funkcja zwracająca nazwę wytycznej na podstawie prefiksu (np. 1.3)
  */
-function getGuidelineName(guidelineId) {
-	const guidelines = {
-		1.1: "Alternatywa tekstowa",
-		1.2: "Media zsynchronizowane",
+function getGuidelineName(prefix) {
+	const guidelineNames = {
+		1.1: "Alternatywy tekstowe",
+		1.2: "Media oparte na czasie",
 		1.3: "Możliwość adaptacji",
 		1.4: "Możliwość rozróżnienia",
 		2.1: "Dostępność z klawiatury",
@@ -422,5 +422,5 @@ function getGuidelineName(guidelineId) {
 		4.1: "Kompatybilność",
 	};
 
-	return guidelines[guidelineId] || "";
+	return guidelineNames[prefix] || "Nieznana wytyczna";
 }
