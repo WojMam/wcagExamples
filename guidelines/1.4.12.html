@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.4.12 Odstępy w tekście - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści</a>
+    <header>
+        <h1>Nieoficjalny przewodnik WCAG 2.1</h1>
+        <nav aria-label="Główna">
+            <ul>
+                <li><a href="../index.html">Strona główna</a></li>
+                <li><a href="../wytyczne.html">Wytyczne</a></li>
+                <li><a href="../o-projekcie.html">O projekcie</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <article>
+            <h2>1.4.12 Odstępy w tekście (AA)</h2>
+            <p class="official-link">
+                <a href="https://www.w3.org/TR/WCAG21/#text-spacing" target="_blank">
+                    Zobacz oficjalną wytyczną W3C (w języku angielskim)
+                </a>
+            </p>
+
+            <section>
+                <h3>Kryterium</h3>
+                <p>W treści zaimplementowanej przy użyciu języków znaczników, które obsługują następujące <a
+                        href="https://www.w3.org/TR/WCAG21/#dfn-style-property" target="_blank">właściwości stylu</a>
+                    tekstu, nie występuje utrata treści lub funkcjonalności gdy ustawione są wszystkie następujące
+                    wartości oraz nie zmieniono żadnej innej właściwości stylu:</p>
+                <ul>
+                    <li>Odstępy między wierszami (interlinia) co najmniej 1,5 razy większe niż rozmiar czcionki</li>
+                    <li>Odstępy między akapitami co najmniej 2 razy większe niż rozmiar czcionki</li>
+                    <li>Odstępy między literami (tracking) co najmniej 0,12 razy większe niż rozmiar czcionki</li>
+                    <li>Odstępy między wyrazami co najmniej 0,16 razy większe niż rozmiar czcionki</li>
+                </ul>
+                <p>Wyjątek: Języki naturalne i skrypty, które nie korzystają z jednej lub więcej z tych właściwości
+                    tekstu w tekście pisanym, mogą być zgodne z użyciem tylko tych właściwości, które istnieją dla tej
+                    kombinacji języka i skryptu.</p>
+            </section>
+
+            <section>
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest zapewnienie, że osoby z trudnościami w czytaniu, dysleksją lub
+                    ograniczeniami widzenia mogą dostosować odstępy w tekście bez utraty treści czy funkcjonalności.
+                    Zwiększenie odstępów ułatwia czytanie, ponieważ:</p>
+                <ul>
+                    <li>Pomaga osobom z trudnościami w śledzeniu linii tekstu</li>
+                    <li>Ułatwia rozpoznawanie wyrazów i liter osobom z dysleksją</li>
+                    <li>Wspiera osoby używające powiększenia ekranu lub wysokiego kontrastu</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Przykłady</h3>
+
+                <h4>Przykład źle zaprojektowanego tekstu</h4>
+                <div class="example">
+                    <h5>Problem: Tekst z ustalonymi odstępami, który łamie się przy próbie zwiększenia odstępów</h5>
+                    <div class="code-example">
+                        <pre><code>.rigidText {
+    line-height: 1.2; 
+    letter-spacing: normal;
+    word-spacing: normal;
+    margin: 0.5em 0;
+    max-width: 300px;
+    overflow: hidden; /* Powoduje utratę treści przy zwiększeniu odstępów */
+    white-space: nowrap; /* Zapobiega zawijaniu tekstu */
+}</code></pre>
+                    </div>
+                    <div class="preview">
+                        <p
+                            style="line-height: 1.2; letter-spacing: normal; word-spacing: normal; margin: 0.5em 0; max-width: 300px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; border: 1px solid #ddd; padding: 10px;">
+                            Ten przykład pokazuje tekst z ustalonymi odstępami, który ucina treść gdy użytkownik próbuje
+                            zwiększyć odstępy między literami lub wyrazami. Jest to problem dla osób potrzebujących
+                            większych odstępów do efektywnego czytania.</p>
+                    </div>
+                </div>
+
+                <h4>Przykład dobrze zaprojektowanego tekstu</h4>
+                <div class="example">
+                    <h5>Rozwiązanie: Elastyczny tekst, który dostosowuje się do zwiększonych odstępów</h5>
+                    <div class="code-example">
+                        <pre><code>.flexibleText {
+    /* Brak ustalonej wysokości linii - pozwala na dostosowanie przez użytkownika */
+    /* Brak ustalonego odstępu między literami i wyrazami */
+    max-width: 100%; /* Zamiast stałej szerokości */
+    overflow: visible; /* Pozwala na "wylanie się" tekstu */
+    white-space: normal; /* Pozwala na zawijanie tekstu */
+}</code></pre>
+                    </div>
+                    <div class="preview">
+                        <p
+                            style="max-width: 100%; overflow: visible; white-space: normal; border: 1px solid #ddd; padding: 10px;">
+                            Ten przykład pokazuje tekst, który zachowuje się elastycznie i może być dostosowany przez
+                            użytkownika bez utraty treści czy funkcjonalności. Tekst zawija się poprawnie i dostosowuje
+                            do zwiększonych odstępów między literami, wyrazami i wierszami.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h3>Porady i techniki</h3>
+                <ul>
+                    <li>Unikaj ustawiania sztywnych wartości dla właściwości takich jak <code>line-height</code>,
+                        <code>letter-spacing</code>, <code>word-spacing</code> i <code>margin</code> dla elementów
+                        tekstowych.</li>
+                    <li>Jeśli musisz określić odstępy, używaj względnych jednostek (em, rem) zamiast wartości
+                        bezwzględnych (px).</li>
+                    <li>Testuj swoją stronę z użyciem stylów, które implementują wszystkie minimalne wymagania odstępów
+                        jednocześnie.</li>
+                    <li>Upewnij się, że kontenery na tekst są elastyczne i dostosowują się do większych odstępów.</li>
+                    <li>Unikaj używania <code>overflow: hidden</code> bez mechanizmu przewijania dla elementów
+                        zawierających tekst.</li>
+                    <li>Pamiętaj, że niektórzy użytkownicy korzystają z rozszerzeń przeglądarki lub własnych arkuszy
+                        stylów, które wymuszają większe odstępy w tekście.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/text-spacing.html"
+                            target="_blank">Understanding SC 1.4.12: Text Spacing</a> (W3C)</li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/css/C36" target="_blank">C36: Allowing for
+                            text spacing override</a> (W3C)</li>
+                    <li><a href="https://github.com/stevefaulkner/TEXT-SPACING" target="_blank">TEXT-SPACING
+                            bookmarklet</a> - narzędzie do testowania odstępów w tekście</li>
+                    <li><a href="https://cdpn.io/stevef/debug/YLMqbo" target="_blank">Text Spacing Demonstration</a> -
+                        interaktywna demonstracja efektów odstępów w tekście</li>
+                </ul>
+            </section>
+
+            <nav aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.4.11.html">Poprzedni: 1.4.11 Kontrast elementów nietekstowych</a></li>
+                    <li><a href="1.4.13.html">Następny: 1.4.13 Treść spod kursora lub fokusu</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Nieoficjalny przewodnik WCAG 2.1 | <a href="../kontakt.html">Kontakt</a></p>
+    </footer>
+</body>
+
+</html>

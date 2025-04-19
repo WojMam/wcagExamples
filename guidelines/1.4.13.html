@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.4.13 Treść spod kursora lub fokusu - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści</a>
+    <header>
+        <h1>Nieoficjalny przewodnik WCAG 2.1</h1>
+        <nav aria-label="Główna">
+            <ul>
+                <li><a href="../index.html">Strona główna</a></li>
+                <li><a href="../wytyczne.html">Wytyczne</a></li>
+                <li><a href="../o-projekcie.html">O projekcie</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main">
+        <article>
+            <h2>1.4.13 Treść spod kursora lub fokusu (AA)</h2>
+            <p class="official-link">
+                <a href="https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus" target="_blank">
+                    Zobacz oficjalną wytyczną W3C (w języku angielskim)
+                </a>
+            </p>
+
+            <section>
+                <h3>Kryterium</h3>
+                <p>W przypadku gdy najechanie wskaźnikiem (kursorem) lub fokus klawiatury powoduje wyświetlenie
+                    dodatkowej treści, a następnie ukrycie jej, spełnione są następujące warunki:</p>
+                <ul>
+                    <li><strong>Odwoływalność:</strong> Dostępny jest mechanizm pozwalający odwołać (schować) dodatkową
+                        treść bez przesuwania wskaźnika myszy lub fokusu klawiatury, chyba że dodatkowa treść komunikuje
+                        błąd wprowadzania danych lub nie przesłania ani nie zastępuje innej treści;</li>
+                    <li><strong>Wskazywanie:</strong> Jeśli najechanie wskaźnikiem może wywołać dodatkową treść, to
+                        wskaźnik może zostać przemieszczony nad dodatkową treść bez znikania tej treści;</li>
+                    <li><strong>Trwałość:</strong> Dodatkowa treść pozostaje widoczna do momentu, gdy najechanie
+                        wskaźnikiem lub fokus zostanie usunięty, użytkownik ją odwoła (ukryje) lub informacja przestanie
+                        być aktualna.</li>
+                </ul>
+                <p>Wyjątek: Prezentacja wizualna dodatkowej treści jest kontrolowana przez oprogramowanie użytkownika i
+                    nie jest modyfikowana przez autora.</p>
+            </section>
+
+            <section>
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest zapewnienie, że użytkownicy mogą uzyskać dostęp do treści, która pojawia
+                    się po najechaniu kursorem lub otrzymaniu fokusu, bez przypadkowej utraty tej treści. Dotyczy to
+                    osób z:</p>
+                <ul>
+                    <li>Ograniczoną precyzją ruchu, które mogą mieć trudności z utrzymaniem kursora nad elementem</li>
+                    <li>Problemami poznawczymi, które potrzebują więcej czasu na przeczytanie lub zrozumienie treści
+                    </li>
+                    <li>Problemami ze wzrokiem, które mogą używać powiększenia ekranu, co zmniejsza widoczny obszar,
+                        utrudniając nawigację</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Przykłady</h3>
+
+                <h4>Przykład źle zaprojektowanej podpowiedzi (tooltip)</h4>
+                <div class="example">
+                    <h5>Problem: Podpowiedź, która znika gdy kursor porusza się w jej kierunku</h5>
+                    <div class="code-example">
+                        <pre><code>.bad-tooltip {
+    position: relative;
+}
+
+.bad-tooltip .tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.bad-tooltip:hover .tooltip-text {
+    visibility: visible;
+}</code></pre>
+                    </div>
+                    <div class="preview">
+                        <div
+                            style="position: relative; display: inline-block; border-bottom: 1px dotted black; padding: 5px; background-color: #eee;">
+                            Najedź na mnie
+                            <span
+                                style="visibility: hidden; width: 120px; background-color: #555; color: #fff; text-align: center; border-radius: 6px; padding: 5px; position: absolute; z-index: 1; bottom: 125%; left: 50%; margin-left: -60px;">To
+                                jest podpowiedź, która zniknie przy próbie najechania na nią kursorem</span>
+                        </div>
+                        <p>(W rzeczywistości podpowiedź pojawia się po najechaniu kursorem i znika natychmiast, gdy
+                            kursor zostanie przesunięty w jej kierunku)</p>
+                    </div>
+                </div>
+
+                <h4>Przykład dobrze zaprojektowanej podpowiedzi</h4>
+                <div class="example">
+                    <h5>Rozwiązanie: Podpowiedź z możliwością poruszania kursorem nad jej treścią</h5>
+                    <div class="code-example">
+                        <pre><code>.good-tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.good-tooltip .tooltip-text {
+    visibility: hidden;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+/* Dodajemy przezroczysty region dla płynnego przejścia */
+.good-tooltip .tooltip-region {
+    position: absolute;
+    height: 30px; /* Przestrzeń dla kursora */
+    width: 200px;
+    bottom: 100%;
+    left: 0;
+}
+
+.good-tooltip:hover .tooltip-text,
+.good-tooltip .tooltip-region:hover ~ .tooltip-text,
+.good-tooltip .tooltip-text:hover {
+    visibility: visible;
+}
+
+/* Przycisk zamknięcia */
+.good-tooltip .close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+}</code></pre>
+                    </div>
+                    <div class="preview">
+                        <p>W działającym przykładzie podpowiedź pozostaje widoczna, gdy kursor porusza się nad nią, oraz
+                            zawiera przycisk zamknięcia, umożliwiający użytkownikowi jej odwołanie.</p>
+                    </div>
+                </div>
+
+                <h4>Przykład menu wysuwanego (dropdown)</h4>
+                <div class="example">
+                    <h5>Rozwiązanie: Menu z możliwością zamknięcia przez klawisz Escape</h5>
+                    <div class="code-example">
+                        <pre><code>/* Kod JavaScript obsługujący menu */
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdownButton = document.getElementById('dropdown-button');
+    const dropdownMenu = document.getElementById('dropdown-menu');
+    
+    // Pokazanie menu po najechaniu lub fokusie
+    dropdownButton.addEventListener('mouseenter', showMenu);
+    dropdownButton.addEventListener('focus', showMenu);
+    
+    // Obsługa klawisza Escape do zamknięcia menu
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && dropdownMenu.classList.contains('show')) {
+            hideMenu();
+        }
+    });
+    
+    // Funkcje pomocnicze
+    function showMenu() {
+        dropdownMenu.classList.add('show');
+    }
+    
+    function hideMenu() {
+        dropdownMenu.classList.remove('show');
+    }
+});</code></pre>
+                    </div>
+                    <div class="preview">
+                        <p>W działającym przykładzie menu wysuwane pozostaje otwarte po najechaniu kursorem, a
+                            użytkownik może je zamknąć za pomocą klawisza Escape.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h3>Porady i techniki</h3>
+                <ul>
+                    <li>Zawsze zapewnij sposób zamknięcia (odwołania) treści pojawiającej się po najechaniu kursorem lub
+                        fokusie, np. przycisk zamknięcia lub reakcję na klawisz Escape.</li>
+                    <li>Projektuj podpowiedzi i wyskakujące okna tak, aby użytkownik mógł przesunąć kursor nad ich
+                        treścią bez jej znikania.</li>
+                    <li>Unikaj automatycznego ukrywania treści po ustalonym czasie - pozwól użytkownikowi zdecydować,
+                        kiedy jest gotowy, aby treść zniknęła.</li>
+                    <li>Dodaj "bezpieczną strefę" (korytarz) między elementem wyzwalającym a treścią, która się pojawia,
+                        aby ułatwić nawigację kursorem.</li>
+                    <li>Testuj swoje interfejsy z użytkownikami korzystającymi z powiększenia ekranu i użytkownikami
+                        używającymi klawiatury do nawigacji.</li>
+                    <li>Pamiętaj, że ta wytyczna nie ma zastosowania do treści kontrolowanych przez przeglądarkę (jak
+                        standardowe dymki title), ale odnosi się do własnych implementacji podpowiedzi i wyskakujących
+                        treści.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h3>Zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html"
+                            target="_blank">Understanding SC 1.4.13: Content on Hover or Focus</a> (W3C)</li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/client-side-script/SCR39"
+                            target="_blank">SCR39: Making content on focus or hover hoverable, dismissible, and
+                            persistent</a> (W3C)</li>
+                    <li><a href="https://inclusive-components.design/tooltips-toggletips/" target="_blank">Inclusive
+                            Components: Tooltips & Toggletips</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:hover" target="_blank">CSS :hover
+                            Pseudo-class</a> (MDN)</li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus" target="_blank">CSS :focus
+                            Pseudo-class</a> (MDN)</li>
+                </ul>
+            </section>
+
+            <nav aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.4.12.html">Poprzedni: 1.4.12 Odstępy w tekście</a></li>
+                    <li><a href="2.1.html">Następny: 2.1 Dostępność z klawiatury</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Nieoficjalny przewodnik WCAG 2.1 | <a href="../kontakt.html">Kontakt</a></p>
+    </footer>
+</body>
+
+</html>

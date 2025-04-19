@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.4.2 Kontrola odtwarzania dźwięku - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.4.2 Kontrola odtwarzania dźwięku</h2>
+                <p class="criterion-level">Poziom A</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#audio-control" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Jeśli jakikolwiek dźwięk na stronie internetowej jest odtwarzany automatycznie przez dłużej niż 3
+                    sekundy, dostępny jest albo mechanizm umożliwiający przerwanie lub wyłączenie dźwięku, albo
+                    mechanizm kontrolujący głośność dźwięku niezależnie od poziomu głośności całego systemu.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest zapewnienie, że użytkownicy mogą kontrolować dźwięk, który odtwarza się
+                    automatycznie po wejściu na stronę. Automatycznie odtwarzany dźwięk może być bardzo problematyczny,
+                    ponieważ:</p>
+                <ul>
+                    <li>Może zakłócać korzystanie z czytników ekranu, uniemożliwiając osobom niewidomym zrozumienie
+                        treści odczytywanych przez technologie wspomagające</li>
+                    <li>Może być niepożądany w miejscach publicznych lub w środowisku pracy</li>
+                    <li>Może rozpraszać użytkowników z trudnościami poznawczymi lub zaburzeniami uwagi</li>
+                    <li>Może powodować dyskomfort u osób z niektórymi zaburzeniami słuchu</li>
+                </ul>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - automatycznie odtwarzane audio bez kontroli</h4>
+                        <p>Strona internetowa z automatycznie odtwarzaną muzyką w tle bez możliwości jej zatrzymania:
+                        </p>
+                        <pre><code class="language-html">&lt;!-- Automatycznie odtwarzane audio bez kontroli --&gt;
+&lt;audio autoplay loop&gt;
+    &lt;source src="background-music.mp3" type="audio/mpeg"&gt;
+    Twoja przeglądarka nie wspiera elementu audio.
+&lt;/audio&gt;
+
+&lt;h1&gt;Witamy na naszej stronie!&lt;/h1&gt;
+&lt;p&gt;Treść strony...&lt;/p&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="padding: 15px; background-color: #ffebee; border: 1px solid #f44336; border-radius: 4px;">
+                                    <p style="margin: 0; color: #d32f2f;">
+                                        <strong>Uwaga:</strong> Ten element audio odtwarza się automatycznie po
+                                        załadowaniu strony i nie daje użytkownikowi możliwości zatrzymania go. Muzyka
+                                        będzie odtwarzana w pętli bez kontroli użytkownika.
+                                    </p>
+                                </div>
+                                <div style="margin-top: 15px;">
+                                    <h1>Witamy na naszej stronie!</h1>
+                                    <p>Treść strony...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Problem: Strona automatycznie odtwarza muzykę w tle bez zapewnienia mechanizmu do jej
+                            zatrzymania lub kontroli głośności. Jest to niezgodne z WCAG 2.1 i utrudnia korzystanie ze
+                            strony wielu użytkownikom, szczególnie osobom korzystającym z czytników ekranu.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - kontrola odtwarzania dźwięku</h4>
+                        <p>Strona z mechanizmem kontroli dźwięku, który pozwala użytkownikowi zatrzymać odtwarzanie:</p>
+                        <pre><code class="language-html">&lt;!-- Audio jest wyciszone i daje kontrolę użytkownikowi --&gt;
+&lt;div class="audio-player"&gt;
+    &lt;audio id="background-music" autoplay muted&gt;
+        &lt;source src="background-music.mp3" type="audio/mpeg"&gt;
+        Twoja przeglądarka nie wspiera elementu audio.
+    &lt;/audio&gt;
+    
+    &lt;div class="audio-controls"&gt;
+        &lt;button id="play-pause-btn" aria-label="Odtwórz dźwięk"&gt;
+            &lt;span class="icon-play"&gt;▶&lt;/span&gt;
+        &lt;/button&gt;
+        
+        &lt;label for="volume-control" class="sr-only"&gt;Głośność&lt;/label&gt;
+        &lt;input type="range" id="volume-control" min="0" max="1" step="0.1" value="0" 
+               aria-label="Kontrola głośności"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h1&gt;Witamy na naszej stronie!&lt;/h1&gt;
+&lt;p&gt;Treść strony...&lt;/p&gt;
+
+&lt;script&gt;
+// Skrypt obsługujący kontrolki audio
+document.addEventListener('DOMContentLoaded', function() {
+    const audio = document.getElementById('background-music');
+    const playPauseBtn = document.getElementById('play-pause-btn');
+    const volumeControl = document.getElementById('volume-control');
+    
+    // Obsługa przycisku odtwórz/pauza
+    playPauseBtn.addEventListener('click', function() {
+        if (audio.paused) {
+            audio.play();
+            audio.muted = false;
+            playPauseBtn.innerHTML = '&lt;span class="icon-pause"&gt;⏸&lt;/span&gt;';
+            playPauseBtn.setAttribute('aria-label', 'Zatrzymaj dźwięk');
+        } else {
+            audio.pause();
+            playPauseBtn.innerHTML = '&lt;span class="icon-play"&gt;▶&lt;/span&gt;';
+            playPauseBtn.setAttribute('aria-label', 'Odtwórz dźwięk');
+        }
+    });
+    
+    // Obsługa kontroli głośności
+    volumeControl.addEventListener('input', function() {
+        audio.volume = this.value;
+        if (this.value > 0 && audio.muted) {
+            audio.muted = false;
+        }
+    });
+});
+&lt;/script&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div class="audio-player"
+                                    style="display: flex; align-items: center; padding: 10px; background-color: #f5f5f5; border-radius: 4px; margin-bottom: 15px;">
+                                    <button
+                                        style="background: #3f51b5; color: white; border: none; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; margin-right: 10px; cursor: pointer;">
+                                        <span>▶</span>
+                                    </button>
+                                    <input type="range"
+                                        style="flex-grow: 1; height: 5px; appearance: none; background: #ddd; border-radius: 2px; outline: none;">
+                                </div>
+                                <div>
+                                    <h1>Witamy na naszej stronie!</h1>
+                                    <p>Treść strony...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Ten przykład pokazuje prawidłową implementację kontroli odtwarzania dźwięku:</p>
+                        <ul>
+                            <li>Audio jest początkowo wyciszone (<code>muted</code>), co jest zgodne z wytycznymi</li>
+                            <li>Użytkownik ma przycisk do odtwarzania/zatrzymywania dźwięku</li>
+                            <li>Dostępna jest kontrola głośności niezależna od systemowej</li>
+                            <li>Przyciski mają odpowiednie etykiety dostępności (<code>aria-label</code>)</li>
+                            <li>JavaScript zapewnia pełną funkcjonalność kontrolek</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Alternatywne dobre rozwiązanie - brak automatycznego odtwarzania</h4>
+                        <p>Najprostszym i najlepszym rozwiązaniem jest całkowite unikanie automatycznego odtwarzania
+                            dźwięku:</p>
+                        <pre><code class="language-html">&lt;!-- Audio bez automatycznego odtwarzania, z pełną kontrolą użytkownika --&gt;
+&lt;div class="audio-player"&gt;
+    &lt;h3&gt;Posłuchaj naszej muzyki&lt;/h3&gt;
+    
+    &lt;audio id="background-music" controls&gt;
+        &lt;source src="background-music.mp3" type="audio/mpeg"&gt;
+        Twoja przeglądarka nie wspiera elementu audio.
+    &lt;/audio&gt;
+    &lt;p&gt;&lt;small&gt;Kliknij przycisk play, aby posłuchać muzyki.&lt;/small&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;h1&gt;Witamy na naszej stronie!&lt;/h1&gt;
+&lt;p&gt;Treść strony...&lt;/p&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div class="audio-player"
+                                    style="padding: 15px; background-color: #f5f5f5; border-radius: 4px; margin-bottom: 15px;">
+                                    <h3>Posłuchaj naszej muzyki</h3>
+                                    <audio controls style="width: 100%; max-width: 300px;">
+                                        <source src="#" type="audio/mpeg">
+                                    </audio>
+                                    <p><small>Kliknij przycisk play, aby posłuchać muzyki.</small></p>
+                                </div>
+                                <div>
+                                    <h1>Witamy na naszej stronie!</h1>
+                                    <p>Treść strony...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: To rozwiązanie jest jeszcze lepsze, ponieważ:</p>
+                        <ul>
+                            <li>Całkowicie unika automatycznego odtwarzania dźwięku</li>
+                            <li>Wykorzystuje standardowy element <code>&lt;audio controls&gt;</code>, który zapewnia
+                                pełny zestaw kontrolek (odtwarzanie/pauza, głośność, pasek postępu)</li>
+                            <li>Jest jasno opisane, czego użytkownik może się spodziewać po kliknięciu przycisku play
+                            </li>
+                            <li>Zapewnia pełną kontrolę i najlepsze doświadczenie dla wszystkich użytkowników</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - wideo z automatycznym odtwarzaniem dźwięku</h4>
+                        <p>Strona z automatycznie odtwarzanym filmem wideo z dźwiękiem:</p>
+                        <pre><code class="language-html">&lt;!-- Automatycznie odtwarzane wideo z dźwiękiem --&gt;
+&lt;video autoplay&gt;
+    &lt;source src="promo-video.mp4" type="video/mp4"&gt;
+    Twoja przeglądarka nie wspiera elementu wideo.
+&lt;/video&gt;
+
+&lt;h1&gt;Poznaj nasz produkt&lt;/h1&gt;
+&lt;p&gt;Opis produktu...&lt;/p&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="padding: 15px; background-color: #ffebee; border: 1px solid #f44336; border-radius: 4px;">
+                                    <p style="margin: 0; color: #d32f2f;">
+                                        <strong>Uwaga:</strong> Ten element wideo odtwarza się automatycznie po
+                                        załadowaniu strony, włącznie z ścieżką dźwiękową, bez możliwości zatrzymania.
+                                    </p>
+                                </div>
+                                <div
+                                    style="margin-top: 15px; background-color: #eee; height: 200px; display: flex; align-items: center; justify-content: center;">
+                                    [Automatycznie odtwarzane wideo]
+                                </div>
+                                <div style="margin-top: 15px;">
+                                    <h1>Poznaj nasz produkt</h1>
+                                    <p>Opis produktu...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Problem: Wideo automatycznie odtwarza się z dźwiękiem po wejściu na stronę, bez możliwości
+                            zatrzymania lub kontroli głośności. Narusza to to samo kryterium dostępności, co
+                            automatycznie odtwarzane audio.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - wideo z wyciszonym dźwiękiem i kontrolkami</h4>
+                        <p>Strona z automatycznie odtwarzanym filmem wideo, ale z wyciszonym dźwiękiem i pełnymi
+                            kontrolkami:</p>
+                        <pre><code class="language-html">&lt;!-- Automatycznie odtwarzane wideo, ale wyciszone i z kontrolkami --&gt;
+&lt;video autoplay muted controls&gt;
+    &lt;source src="promo-video.mp4" type="video/mp4"&gt;
+    &lt;track src="promo-video-captions.vtt" kind="subtitles" srclang="pl" label="Polski"&gt;
+    Twoja przeglądarka nie wspiera elementu wideo.
+&lt;/video&gt;
+
+&lt;h1&gt;Poznaj nasz produkt&lt;/h1&gt;
+&lt;p&gt;Opis produktu...&lt;/p&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="margin-bottom: 15px; background-color: #eee; height: 200px; display: flex; align-items: center; justify-content: center; position: relative;">
+                                    <div style="text-align: center;">
+                                        [Automatycznie odtwarzane wideo - wyciszone]
+                                    </div>
+                                    <div
+                                        style="position: absolute; bottom: 0; left: 0; right: 0; background-color: rgba(0,0,0,0.5); height: 30px; display: flex; align-items: center; padding: 0 10px;">
+                                        <button
+                                            style="background: transparent; border: none; color: white; margin-right: 10px;">▶</button>
+                                        <div style="background: #555; height: 5px; flex-grow: 1; border-radius: 5px;">
+                                            <div
+                                                style="background: white; height: 5px; width: 20%; border-radius: 5px;">
+                                            </div>
+                                        </div>
+                                        <button
+                                            style="background: transparent; border: none; color: white; margin-left: 10px;">🔇</button>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h1>Poznaj nasz produkt</h1>
+                                    <p>Opis produktu...</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Ten przykład pokazuje prawidłową implementację automatycznie odtwarzanego wideo:
+                        </p>
+                        <ul>
+                            <li>Wideo jest automatycznie odtwarzane, ale z wyciszonym dźwiękiem
+                                (<code>autoplay muted</code>)</li>
+                            <li>Dostępne są standardowe kontrolki wideo (<code>controls</code>), które pozwalają
+                                użytkownikowi włączyć dźwięk, jeśli chce</li>
+                            <li>Dodano napisy (<code>&lt;track&gt;</code>), co zwiększa dostępność treści wideo</li>
+                            <li>Użytkownik ma pełną kontrolę nad odtwarzaniem</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips">
+                <h3>Wskazówki i techniki</h3>
+                <ul>
+                    <li><strong>Unikaj automatycznego odtwarzania</strong> - najlepszym rozwiązaniem jest całkowite
+                        unikanie automatycznego odtwarzania dźwięku</li>
+                    <li><strong>Wyciszaj domyślnie</strong> - jeśli musisz używać automatycznego odtwarzania, zawsze
+                        domyślnie wyciszaj dźwięk</li>
+                    <li><strong>Zapewnij wyraźne kontrolki</strong> - kontrolki do zatrzymania, wyciszenia lub
+                        dostosowania głośności powinny być wyraźne i łatwo dostępne</li>
+                    <li><strong>Umieść kontrolki na początku strony</strong> - kontrolki dźwięku powinny być widoczne
+                        bez konieczności przewijania strony</li>
+                    <li><strong>Używaj standardowych kontrolek</strong> - gdy to możliwe, używaj atrybutu
+                        <code>controls</code> dla elementów <code>&lt;audio&gt;</code> i <code>&lt;video&gt;</code></li>
+                    <li><strong>Dodaj skróty klawiaturowe</strong> - rozważ dodanie skrótów klawiaturowych do kontroli
+                        dźwięku</li>
+                    <li><strong>Pamiętaj o preferencjach użytkownika</strong> - jeśli użytkownik wyłączył dźwięk,
+                        zapamiętaj to ustawienie w kolejnych wizytach na stronie</li>
+                    <li><strong>Testuj z czytnikami ekranu</strong> - sprawdź, czy automatycznie odtwarzany dźwięk nie
+                        zakłóca działania czytników ekranu</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/audio-control.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG: Kontrola odtwarzania dźwięku</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio" target="_blank"
+                            rel="noopener">MDN Web Docs: Element audio</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/video" target="_blank"
+                            rel="noopener">MDN Web Docs: Element video</a></li>
+                    <li><a href="https://www.w3.org/WAI/media/av/" target="_blank" rel="noopener">W3C WAI: Dostępne
+                            Media</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.4.1.html">Poprzedni: 1.4.1 Użycie koloru</a></li>
+                    <li><a href="1.4.3.html">Następny: 1.4.3 Kontrast (minimalny)</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.4.5 Obrazy tekstu - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.4.5 Obrazy tekstu</h2>
+                <p class="criterion-level">Poziom AA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#images-of-text" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Jeśli wykorzystywane technologie mogą przedstawiać treść wizualnie, do przekazywania informacji
+                    wykorzystuje się tekst, a nie obrazy tekstu, z wyjątkiem następujących przypadków:</p>
+                <ul>
+                    <li><strong>Możliwość dostosowania:</strong> Obraz tekstu może być dostosowany wizualnie do wymagań
+                        użytkownika;</li>
+                    <li><strong>Istotność:</strong> Konkretna prezentacja tekstu jest niezbędna dla przekazania
+                        informacji.</li>
+                </ul>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest zachęcenie do używania tekstu zamiast obrazów tekstu, kiedy technologia na
+                    to pozwala. Tekst może być przedstawiany w sposób, który spełnia potrzeby większości użytkowników
+                    bez konieczności stosowania obrazów.</p>
+                <p>Rzeczywisty tekst HTML (w przeciwieństwie do obrazów zawierających tekst) ma wiele zalet:</p>
+                <ul>
+                    <li>Może być łatwo skalowany bez utraty jakości</li>
+                    <li>Wygląd może być dostosowany do potrzeb użytkownika</li>
+                    <li>Kontrast między tekstem a tłem może być dostosowany</li>
+                    <li>Jest dostępny dla technologii wspomagających</li>
+                    <li>Może być wyszukiwany, zaznaczany i kopiowany</li>
+                </ul>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - Nagłówek jako obraz tekstu</h4>
+                        <p>Strona używająca obrazu do wyświetlenia nagłówka, zamiast użycia tekstu HTML:</p>
+                        <pre><code class="language-html">&lt;!-- Nagłówek jako obraz bez możliwości dostosowania --&gt;
+&lt;header&gt;
+    &lt;img src="header-title.png" alt="Nowoczesne Rozwiązania IT" width="400" height="80"&gt;
+    &lt;p&gt;Profesjonalne usługi informatyczne dla firm&lt;/p&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+    &lt;h2&gt;Nasza oferta&lt;/h2&gt;
+    &lt;p&gt;Treść strony...&lt;/p&gt;
+&lt;/main&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <div
+                                        style="display: inline-block; background-color: #3f51b5; padding: 15px 30px; color: white; font-size: 24px; font-weight: bold; border-radius: 4px;">
+                                        [Obraz: Nowoczesne Rozwiązania IT]
+                                    </div>
+                                    <p>Profesjonalne usługi informatyczne dla firm</p>
+                                </div>
+                                <div>
+                                    <h2>Nasza oferta</h2>
+                                    <p>Treść strony...</p>
+                                </div>
+                                <p style="margin-top: 10px; color: #d32f2f;">Problem: Nagłówek jest obrazem, który nie
+                                    może być dostosowany do preferencji użytkownika. Nie można zmienić jego rozmiaru,
+                                    kontrastu czy kroju pisma.</p>
+                            </div>
+                        </div>
+
+                        <p>Problem: Użycie obrazu do wyświetlenia nagłówka strony powoduje następujące problemy:</p>
+                        <ul>
+                            <li>Tekst na obrazie nie może być powiększony niezależnie od reszty strony</li>
+                            <li>Użytkownicy nie mogą dostosować kroju pisma ani innych aspektów wizualnych</li>
+                            <li>Tekst na obrazie nie zmienia się przy zmianie kontrastu czy kolorów przez użytkownika
+                            </li>
+                            <li>Obraz może tracić jakość przy powiększaniu strony</li>
+                            <li>Może wyglądać rozmazany na ekranach o wysokiej gęstości pikseli</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Nagłówek jako tekst HTML</h4>
+                        <p>Ta sama strona, ale z nagłówkiem jako tekst HTML, który może być dostosowany:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.site-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #3f51b5;
+    margin-bottom: 0.5rem;
+}
+
+.site-subtitle {
+    font-size: 1.2rem;
+    color: #555;
+}
+&lt;/style&gt;
+
+&lt;header&gt;
+    &lt;h1 class="site-title"&gt;Nowoczesne Rozwiązania IT&lt;/h1&gt;
+    &lt;p class="site-subtitle"&gt;Profesjonalne usługi informatyczne dla firm&lt;/p&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+    &lt;h2&gt;Nasza oferta&lt;/h2&gt;
+    &lt;p&gt;Treść strony...&lt;/p&gt;
+&lt;/main&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd - Normalny:</h5>
+                            <div class="preview-content">
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <h1
+                                        style="font-size: 2.5rem; font-weight: bold; color: #3f51b5; margin-bottom: 0.5rem;">
+                                        Nowoczesne Rozwiązania IT</h1>
+                                    <p style="font-size: 1.2rem; color: #555;">Profesjonalne usługi informatyczne dla
+                                        firm</p>
+                                </div>
+                                <div>
+                                    <h2>Nasza oferta</h2>
+                                    <p>Treść strony...</p>
+                                </div>
+                            </div>
+
+                            <h5>Podgląd - Dostosowany (Większa czcionka, inny kolor):</h5>
+                            <div class="preview-content">
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <h1
+                                        style="font-size: 3.5rem; font-weight: bold; color: #b5533f; margin-bottom: 0.5rem;">
+                                        Nowoczesne Rozwiązania IT</h1>
+                                    <p style="font-size: 1.8rem; color: #333;">Profesjonalne usługi informatyczne dla
+                                        firm</p>
+                                </div>
+                                <div>
+                                    <h2 style="font-size: 2.3rem;">Nasza oferta</h2>
+                                    <p style="font-size: 1.5rem;">Treść strony...</p>
+                                </div>
+                                <p style="color: #4caf50;">Rozwiązanie: Tekst HTML może być dostosowany przez
+                                    użytkownika - powiększony, zmieniony kolorystycznie i sformatowany według
+                                    preferencji.</p>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Użycie prawdziwego tekstu HTML zamiast obrazu przynosi wiele korzyści:</p>
+                        <ul>
+                            <li>Tekst może być powiększony razem z resztą strony</li>
+                            <li>Użytkownicy mogą zmienić krój pisma, kolor i inne właściwości za pomocą swoich
+                                preferencji</li>
+                            <li>Czytniki ekranu mogą poprawnie odczytać tekst</li>
+                            <li>Tekst jest ostry i czytelny na wszystkich urządzeniach, w tym na ekranach o wysokiej
+                                gęstości pikseli</li>
+                            <li>Zmniejsza rozmiar pliku strony (tekst HTML jest mniejszy niż obrazy)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - Cytat jako obraz</h4>
+                        <p>Strona wyświetlająca cytat jako obraz, bez możliwości dostosowania:</p>
+                        <pre><code class="language-html">&lt;!-- Cytat jako obraz --&gt;
+&lt;div class="testimonial"&gt;
+    &lt;img src="quote.png" alt="Korzystanie z usług tej firmy to najlepsza decyzja biznesowa, jaką podjęliśmy w tym roku. - Jan Kowalski, Dyrektor Marketingu" width="600" height="150"&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="background-color: #f5f5f5; padding: 20px; border-radius: 5px; margin-bottom: 20px; text-align: center;">
+                                    <div
+                                        style="font-style: italic; font-size: 18px; color: #333; background: url('quote-bg.jpg') no-repeat; padding: 30px 20px; border-radius: 5px;">
+                                        "Korzystanie z usług tej firmy to najlepsza decyzja biznesowa, jaką podjęliśmy w
+                                        tym roku."<br>
+                                        <span
+                                            style="font-weight: bold; font-style: normal; font-size: 16px; margin-top: 10px; display: block;">-
+                                            Jan Kowalski, Dyrektor Marketingu</span>
+                                    </div>
+                                    <p style="margin-top: 10px; color: #d32f2f; font-style: normal;">Problem: Ten cytat
+                                        jest obrazem, więc użytkownicy nie mogą dostosować jego tekstu ani wyglądu.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Problem: Umieszczenie cytatu jako obrazu ogranicza dostępność treści, ponieważ:</p>
+                        <ul>
+                            <li>Użytkownicy nie mogą dostosować rozmiaru, koloru czy kroju pisma tekstu</li>
+                            <li>Cytowany tekst nie może być wyszukiwany</li>
+                            <li>Cytat nie może być zaznaczony i skopiowany</li>
+                            <li>Technologie wspomagające mogą mieć problem z prawidłowym odczytaniem długiego tekstu
+                                alternatywnego</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Cytat jako tekst HTML</h4>
+                        <p>Ten sam cytat, ale przedstawiony jako tekst HTML z formatowaniem CSS:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.testimonial {
+    background-color: #f5f5f5;
+    padding: 30px;
+    border-radius: 5px;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.testimonial blockquote {
+    font-style: italic;
+    font-size: 1.2rem;
+    color: #333;
+    margin: 0 0 1rem 0;
+    padding: 0 2rem;
+    position: relative;
+}
+
+.testimonial blockquote::before,
+.testimonial blockquote::after {
+    content: '"';
+    font-size: 3rem;
+    color: #ddd;
+    position: absolute;
+}
+
+.testimonial blockquote::before {
+    left: 0;
+    top: -10px;
+}
+
+.testimonial blockquote::after {
+    right: 0;
+    bottom: -30px;
+}
+
+.testimonial cite {
+    font-style: normal;
+    font-weight: bold;
+    display: block;
+    text-align: right;
+}
+&lt;/style&gt;
+
+&lt;div class="testimonial"&gt;
+    &lt;blockquote&gt;
+        Korzystanie z usług tej firmy to najlepsza decyzja biznesowa, jaką podjęliśmy w tym roku.
+        &lt;cite&gt;Jan Kowalski, Dyrektor Marketingu&lt;/cite&gt;
+    &lt;/blockquote&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd - Normalny:</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="background-color: #f5f5f5; padding: 30px; border-radius: 5px; margin-bottom: 20px; position: relative;">
+                                    <blockquote
+                                        style="font-style: italic; font-size: 1.2rem; color: #333; margin: 0 0 1rem 0; padding: 0 2rem; position: relative;">
+                                        <span
+                                            style="font-size: 3rem; color: #ddd; position: absolute; left: 0; top: -10px;">"</span>
+                                        Korzystanie z usług tej firmy to najlepsza decyzja biznesowa, jaką podjęliśmy w
+                                        tym roku.
+                                        <span
+                                            style="font-size: 3rem; color: #ddd; position: absolute; right: 0; bottom: -30px;">"</span>
+                                        <cite
+                                            style="font-style: normal; font-weight: bold; display: block; text-align: right;">Jan
+                                            Kowalski, Dyrektor Marketingu</cite>
+                                    </blockquote>
+                                </div>
+                            </div>
+
+                            <h5>Podgląd - Dostosowany (Większa czcionka, inny kontrast):</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="background-color: #f5f5f5; padding: 30px; border-radius: 5px; margin-bottom: 20px; position: relative;">
+                                    <blockquote
+                                        style="font-style: italic; font-size: 1.8rem; color: #000; margin: 0 0 1rem 0; padding: 0 2rem; position: relative;">
+                                        <span
+                                            style="font-size: 4rem; color: #999; position: absolute; left: 0; top: -10px;">"</span>
+                                        Korzystanie z usług tej firmy to najlepsza decyzja biznesowa, jaką podjęliśmy w
+                                        tym roku.
+                                        <span
+                                            style="font-size: 4rem; color: #999; position: absolute; right: 0; bottom: -30px;">"</span>
+                                        <cite
+                                            style="font-style: normal; font-weight: bold; display: block; text-align: right; font-size: 1.5rem;">Jan
+                                            Kowalski, Dyrektor Marketingu</cite>
+                                    </blockquote>
+                                </div>
+                                <p style="color: #4caf50;">Rozwiązanie: Cytat jako tekst HTML może być dostosowany przez
+                                    użytkownika - powiększony, zmieniony kolorystycznie i sformatowany według
+                                    preferencji.</p>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Użycie znaczników HTML (blockquote, cite) z formatowaniem CSS zamiast obrazu z
+                            cytatem:</p>
+                        <ul>
+                            <li>Pozwala użytkownikom na dostosowanie wyglądu tekstu</li>
+                            <li>Umożliwia powiększanie i zmianę kontrastu zgodnie z preferencjami</li>
+                            <li>Używa semantycznych znaczników HTML, co poprawia dostępność</li>
+                            <li>Pozwala na wyszukiwanie i kopiowanie tekstu</li>
+                            <li>Używa efektów CSS do uzyskania atrakcyjnego wyglądu bez ograniczania dostępności</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dopuszczalny przykład - Logo i znaki towarowe</h4>
+                        <p>Zgodnie z wyjątkiem "istotności", logo i znaki towarowe mogą być przedstawiane jako obrazy
+                            tekstu:</p>
+                        <pre><code class="language-html">&lt;!-- Logo i znak towarowy mogą być obrazami tekstu --&gt;
+&lt;header&gt;
+    &lt;img src="company-logo.png" alt="Firma XYZ" width="200" height="80"&gt;
+    
+    &lt;nav&gt;
+        &lt;!-- Menu nawigacyjne jako tekst HTML --&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;O nas&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid #ddd; margin-bottom: 20px;">
+                                    <div
+                                        style="background-color: #3f51b5; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; font-size: 24px;">
+                                        [Logo Firma XYZ]
+                                    </div>
+                                    <nav>
+                                        <ul style="list-style: none; display: flex; margin: 0; padding: 0;">
+                                            <li style="margin-right: 15px;"><a href="#">Strona główna</a></li>
+                                            <li style="margin-right: 15px;"><a href="#">O nas</a></li>
+                                            <li><a href="#">Kontakt</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <p style="color: #4caf50;">Akceptowalne: Logo firmy może być obrazem tekstu, ponieważ
+                                    konkretna prezentacja wizualna jest istotna dla identyfikacji marki.</p>
+                            </div>
+                        </div>
+
+                        <p>Wyjaśnienie: Logo i znaki towarowe są objęte wyjątkiem "istotności" z następujących powodów:
+                        </p>
+                        <ul>
+                            <li>Konkretna prezentacja wizualna jest niezbędna dla identyfikacji marki</li>
+                            <li>Logo często zawiera specjalnie zaprojektowane kroje pisma i elementy graficzne, które są
+                                częścią tożsamości marki</li>
+                            <li>Zgodnie z WCAG, prezentacja tekstu jest "istotna", gdy zmiana jej wizualnych aspektów
+                                zmieniłaby znaczenie przekazu</li>
+                        </ul>
+                        <p>Ważne jest jednak, aby reszta strony (nawigacja, treść) używała rzeczywistego tekstu HTML,
+                            który może być dostosowany.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips">
+                <h3>Wskazówki i techniki</h3>
+                <ul>
+                    <li><strong>Używaj tekstu HTML</strong> - Zawsze kiedy to możliwe, używaj tekstu HTML zamiast
+                        umieszczać tekst na obrazach</li>
+                    <li><strong>Wykorzystuj CSS</strong> - Nowoczesne możliwości CSS (web fonts, text-shadow, gradients)
+                        pozwalają na tworzenie atrakcyjnych wizualnie tekstów</li>
+                    <li><strong>SVG dla tekstu graficznego</strong> - Jeśli potrzebujesz graficznego tekstu, rozważ
+                        użycie SVG, który jest skalowany bez utraty jakości</li>
+                    <li><strong>Ogranicz użycie obrazów tekstu</strong> - Używaj ich tylko w sytuacjach, gdy konkretna
+                        prezentacja wizualna jest niezbędna</li>
+                    <li><strong>Zapewnij alternatywy</strong> - Jeśli musisz użyć obrazu tekstu, zapewnij odpowiedni
+                        tekst alternatywny</li>
+                    <li><strong>Używaj modern web fonts</strong> - Dzięki nim możesz używać niestandardowych fontów bez
+                        konieczności tworzenia obrazów tekstowych</li>
+                    <li><strong>Testuj responsywność</strong> - Upewnij się, że tekst dobrze wygląda na różnych
+                        urządzeniach i przy różnych rozmiarach ekranu</li>
+                    <li><strong>Unikaj tekstu na złożonych tłach</strong> - Jeśli tekst musi być na złożonym tle, użyj
+                        raczej HTML+CSS z tłem, a nie obrazu z tekstem</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/images-of-text.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG: Obrazy tekstu</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Web_fonts"
+                            target="_blank" rel="noopener">MDN Web Docs: Web Fonts</a></li>
+                    <li><a href="https://web.dev/learn/css/typography/" target="_blank" rel="noopener">Web.dev:
+                            Typografia w CSS</a></li>
+                    <li><a href="https://fonts.google.com/" target="_blank" rel="noopener">Google Fonts - biblioteka
+                            fontów internetowych</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.4.4.html">Poprzedni: 1.4.4 Zmiana rozmiaru tekstu</a></li>
+                    <li><a href="1.4.6.html">Następny: 1.4.6 Kontrast (rozszerzony)</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

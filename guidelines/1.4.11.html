@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.4.11 Kontrast elementów nietekstowych - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.4.11 Kontrast elementów nietekstowych</h2>
+                <p class="criterion-level">Poziom AA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#non-text-contrast" target="_blank"
+                            rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Prezentacja wizualna następujących elementów ma współczynnik kontrastu wynoszący co najmniej 3:1 w
+                    stosunku do sąsiadujących kolorów:</p>
+                <ul>
+                    <li><strong>Komponenty interfejsu użytkownika</strong>: Informacje wizualne wymagane do
+                        identyfikacji komponentów interfejsu użytkownika i stanów, z wyjątkiem nieaktywnych komponentów
+                        lub gdy wygląd komponentu jest określony przez przeglądarkę użytkownika i nie jest modyfikowany
+                        przez autora;</li>
+                    <li><strong>Obiekty graficzne</strong>: Części grafiki wymagane do zrozumienia treści, z wyjątkiem
+                        sytuacji, gdy konkretna prezentacja grafiki jest niezbędna do przekazania informacji.</li>
+                </ul>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest zapewnienie, że wszystkie ważne elementy nietekstowe (takie jak ikony,
+                    przyciski, pola formularzy, wykresy) są widoczne dla osób z obniżoną zdolnością widzenia, bez
+                    konieczności polegania na dodatkowych technologiach wspomagających.</p>
+                <p>Odpowiedni kontrast elementów nietekstowych jest kluczowy dla użytkowników z różnymi typami zaburzeń
+                    widzenia, w tym daltonizmem, osłabioną percepcją kontrastu lub innymi wadami wzroku. Dotyczy to
+                    zarówno komponentów interfejsu (przyciski, pola formularzy, przełączniki) jak i elementów
+                    graficznych przekazujących informacje (wykresy, diagramy, ikony informacyjne).</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - Przyciski o niskim kontraście</h4>
+                        <p>Przyciski z obramowaniem o niskim kontraście w stosunku do tła:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.button-container {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.outline-button {
+    padding: 10px 20px;
+    background: transparent;
+    border: 2px solid #e0e0e0; /* Bardzo jasny szary, słaby kontrast z tłem #f8f8f8 */
+    border-radius: 4px;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 10px;
+}
+&lt;/style&gt;
+
+&lt;div class="button-container"&gt;
+    &lt;button class="outline-button"&gt;Anuluj&lt;/button&gt;
+    &lt;button class="outline-button"&gt;Zapisz&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div style="background-color: #f8f8f8; padding: 20px; border-radius: 5px;">
+                                    <button
+                                        style="padding: 10px 20px; background: transparent; border: 2px solid #e0e0e0; border-radius: 4px; color: #333; font-weight: bold; cursor: pointer; margin-right: 10px;">Anuluj</button>
+                                    <button
+                                        style="padding: 10px 20px; background: transparent; border: 2px solid #e0e0e0; border-radius: 4px; color: #333; font-weight: bold; cursor: pointer;">Zapisz</button>
+                                </div>
+                                <p style="color: #d32f2f; margin-top: 10px;">Problem: Obramowanie przycisków (#e0e0e0)
+                                    ma zbyt niski kontrast w stosunku do tła (#f8f8f8). Współczynnik kontrastu wynosi
+                                    tylko około 1.1:1, znacznie poniżej wymaganego 3:1.</p>
+                            </div>
+                        </div>
+
+                        <p>Problemy w tym przykładzie:</p>
+                        <ul>
+                            <li>Obramowanie przycisków jest bardzo słabo widoczne ze względu na niski kontrast</li>
+                            <li>Użytkownicy z osłabioną percepcją kontrastu mogą mieć trudności z rozpoznaniem granic
+                                przycisków</li>
+                            <li>Brakuje wyraźnego odróżnienia elementów interaktywnych od tła</li>
+                            <li>Granica między przyciskami a tłem jest prawie niewidoczna przy niektórych ustawieniach
+                                ekranu lub w różnych warunkach oświetleniowych</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Przyciski o odpowiednim kontraście</h4>
+                        <p>Przyciski z obramowaniem o wystarczającym kontraście:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.button-container {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.outline-button {
+    padding: 10px 20px;
+    background: transparent;
+    border: 2px solid #767676; /* Ciemniejszy szary, kontrast 4.5:1 z tłem #f8f8f8 */
+    border-radius: 4px;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.filled-button {
+    padding: 10px 20px;
+    background-color: #0056b3; /* Niebieski z kontrastem >3:1 z tłem */
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+&lt;/style&gt;
+
+&lt;div class="button-container"&gt;
+    &lt;button class="outline-button"&gt;Anuluj&lt;/button&gt;
+    &lt;button class="filled-button"&gt;Zapisz&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div style="background-color: #f8f8f8; padding: 20px; border-radius: 5px;">
+                                    <button
+                                        style="padding: 10px 20px; background: transparent; border: 2px solid #767676; border-radius: 4px; color: #333; font-weight: bold; cursor: pointer; margin-right: 10px;">Anuluj</button>
+                                    <button
+                                        style="padding: 10px 20px; background-color: #0056b3; border: none; border-radius: 4px; color: white; font-weight: bold; cursor: pointer;">Zapisz</button>
+                                </div>
+                                <p style="color: #4caf50; margin-top: 10px;">Rozwiązanie: Obramowanie pierwszego
+                                    przycisku (#767676) ma odpowiedni kontrast z tłem (#f8f8f8). Drugi przycisk używa
+                                    wypełnienia o wysokim kontraście, co dodatkowo ułatwia jego rozpoznanie.</p>
+                            </div>
+                        </div>
+
+                        <p>Zalety tego rozwiązania:</p>
+                        <ul>
+                            <li>Obramowanie przycisku "Anuluj" ma współczynnik kontrastu około 4.5:1 w stosunku do tła,
+                                co przekracza wymagane minimum 3:1</li>
+                            <li>Przycisk "Zapisz" używa koloru wypełnienia (#0056b3), który ma wysoki kontrast z tłem
+                            </li>
+                            <li>Elementy interaktywne są wyraźnie odróżnione od tła, co ułatwia ich identyfikację</li>
+                            <li>Przyciski pozostają widoczne nawet dla użytkowników z osłabioną percepcją kontrastu</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - Wykres z elementami o niskim kontraście</h4>
+                        <p>Wykres kołowy z segmentami o zbyt małym kontraście:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.chart-container {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.pie-chart {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-image: conic-gradient(
+        #e6e6e6 0% 25%, /* Bardzo jasny szary */
+        #d9d9d9 25% 55%, /* Jasny szary - niski kontrast z poprzednim */
+        #cccccc 55% 80%, /* Inny jasny szary - słaby kontrast */
+        #f2f2f2 80% 100% /* Jeszcze jaśniejszy szary */
+    );
+}
+
+.chart-legend {
+    margin-top: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+&lt;/style&gt;
+
+&lt;div class="chart-container"&gt;
+    &lt;div class="pie-chart"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="chart-legend"&gt;
+    &lt;div class="legend-item"&gt;
+        &lt;div class="legend-color" style="background-color: #e6e6e6;"&gt;&lt;/div&gt;
+        &lt;span&gt;Produkt A (25%)&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="legend-item"&gt;
+        &lt;div class="legend-color" style="background-color: #d9d9d9;"&gt;&lt;/div&gt;
+        &lt;span&gt;Produkt B (30%)&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="legend-item"&gt;
+        &lt;div class="legend-color" style="background-color: #cccccc;"&gt;&lt;/div&gt;
+        &lt;span&gt;Produkt C (25%)&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="legend-item"&gt;
+        &lt;div class="legend-color" style="background-color: #f2f2f2;"&gt;&lt;/div&gt;
+        &lt;span&gt;Produkt D (20%)&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <!-- Symulacja wykresu kołowego -->
+                                <div style="width: 200px; height: 200px; position: relative; margin: 0 auto;">
+                                    <div
+                                        style="width: 100%; height: 100%; border-radius: 50%; background-image: conic-gradient(#e6e6e6 0% 25%, #d9d9d9 25% 55%, #cccccc 55% 80%, #f2f2f2 80% 100%);">
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 20px;">
+                                    <div style="display: flex; align-items: center; margin-bottom: 5px;">
+                                        <div
+                                            style="width: 20px; height: 20px; margin-right: 10px; background-color: #e6e6e6;">
+                                        </div>
+                                        <span>Produkt A (25%)</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; margin-bottom: 5px;">
+                                        <div
+                                            style="width: 20px; height: 20px; margin-right: 10px; background-color: #d9d9d9;">
+                                        </div>
+                                        <span>Produkt B (30%)</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; margin-bottom: 5px;">
+                                        <div
+                                            style="width: 20px; height: 20px; margin-right: 10px; background-color: #cccccc;">
+                                        </div>
+                                        <span>Produkt C (25%)</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <div
+                                            style="width: 20px; height: 20px; margin-right: 10px; background-color: #f2f2f2;">
+                                        </div>
+                                        <span>Produkt D (20%)</span>
+                                    </div>
+                                </div>
+
+                                <p style="color: #d32f2f; margin-top: 15px;">Problem: Segmenty wykresu mają zbyt podobne
+                                    kolory i niski kontrast między sobą. Różnice między segmentami są trudne do
+                                    zauważenia, zwłaszcza dla osób z daltonizmem lub osłabioną percepcją kontrastu.</p>
+                            </div>
+                        </div>
+
+                        <p>Problemy w tym przykładzie:</p>
+                        <ul>
+                            <li>Kolory segmentów są zbyt podobne do siebie (wszystkie są odcieniami jasnego szarego)
+                            </li>
+                            <li>Brak wystarczającego kontrastu między sąsiadującymi segmentami wykresu</li>
+                            <li>Użytkownicy z daltonizmem lub osłabioną percepcją kontrastu mogą mieć trudności z
+                                rozróżnieniem segmentów</li>
+                            <li>Wykres nie przekazuje skutecznie informacji, ponieważ segmenty są trudne do rozróżnienia
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Dostępny wykres z odpowiednim kontrastem</h4>
+                        <p>Wykres kołowy z wyraźnie zróżnicowanymi segmentami i dodatkowym oznaczeniem:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.chart-container {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.pie-chart {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-image: conic-gradient(
+        #0056b3 0% 25%, /* Ciemny niebieski */
+        #e63946 25% 55%, /* Czerwony */
+        #2a9d8f 55% 80%, /* Turkusowy */
+        #f4a261 80% 100% /* Pomarańczowy */
+    );
+}
+
+.segment-pattern {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    mix-blend-mode: overlay;
+}
+
+.chart-legend {
+    margin-top: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.legend-color {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    border: 1px solid #333;
+}
+
+.legend-pattern {
+    position: relative;
+}
+
+.legend-pattern::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 5px 5px;
+}
+&lt;/style&gt;
+
+&lt;div class="chart-container"&gt;
+    &lt;div class="pie-chart"&gt;&lt;/div&gt;
+    &lt;!-- Dodatkowe wzory można by dodać tutaj jako nakładki --&gt;
+&lt;/div&gt;
+
+&lt;div class="chart-legend"&gt;
+    &lt;div class="legend-item"&gt;
+        &lt;div class="legend-color" style="background-color: #0056b3;"&gt;&lt;/div&gt;
+        &lt;span&gt;Produkt A (25%)&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="legend-item"&gt;
+        &lt;div class="legend-color" style="background-color: #e63946;"&gt;&lt;/div&gt;
+        &lt;span&gt;Produkt B (30%)&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="legend-item"&gt;
+        &lt;div class="legend-color" style="background-color: #2a9d8f;"&gt;&lt;/div&gt;
+        &lt;span&gt;Produkt C (25%)&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="legend-item"&gt;
+        &lt;div class="legend-color" style="background-color: #f4a261;"&gt;&lt;/div&gt;
+        &lt;span&gt;Produkt D (20%)&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <!-- Symulacja wykresu kołowego z kontrastowymi kolorami -->
+                                <div style="width: 200px; height: 200px; position: relative; margin: 0 auto;">
+                                    <div
+                                        style="width: 100%; height: 100%; border-radius: 50%; background-image: conic-gradient(#0056b3 0% 25%, #e63946 25% 55%, #2a9d8f 55% 80%, #f4a261 80% 100%);">
+                                    </div>
+                                </div>
+
+                                <div style="margin-top: 20px;">
+                                    <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <div
+                                            style="width: 20px; height: 20px; margin-right: 10px; background-color: #0056b3; border: 1px solid #333;">
+                                        </div>
+                                        <span>Produkt A (25%)</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <div
+                                            style="width: 20px; height: 20px; margin-right: 10px; background-color: #e63946; border: 1px solid #333;">
+                                        </div>
+                                        <span>Produkt B (30%)</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                                        <div
+                                            style="width: 20px; height: 20px; margin-right: 10px; background-color: #2a9d8f; border: 1px solid #333;">
+                                        </div>
+                                        <span>Produkt C (25%)</span>
+                                    </div>
+                                    <div style="display: flex; align-items: center;">
+                                        <div
+                                            style="width: 20px; height: 20px; margin-right: 10px; background-color: #f4a261; border: 1px solid #333;">
+                                        </div>
+                                        <span>Produkt D (20%)</span>
+                                    </div>
+                                </div>
+
+                                <p style="color: #4caf50; margin-top: 15px;">Rozwiązanie: Wykres używa kolorów o wysokim
+                                    kontraście między sąsiadującymi segmentami. Dodatkowe obramowanie wokół próbek
+                                    kolorów w legendzie poprawia ich widoczność.</p>
+                            </div>
+                        </div>
+
+                        <p>Zalety tego rozwiązania:</p>
+                        <ul>
+                            <li>Segmenty wykresu mają wyraźnie kontrastujące kolory, które łatwo odróżnić</li>
+                            <li>Kolory sąsiadujących segmentów mają współczynnik kontrastu powyżej 3:1</li>
+                            <li>Dodatkowe obramowanie wokół elementów legendy poprawia ich widoczność</li>
+                            <li>Wykres skutecznie przekazuje informacje nawet użytkownikom z zaburzeniami widzenia
+                                kolorów</li>
+                            <li>Dla jeszcze lepszej dostępności można dodać różne wzory/tekstury do segmentów (np.
+                                kropki, paski) jako dodatkowe rozróżnienie</li>
+                        </ul>
+                        <p>Pamiętaj, że oprócz kontrastu kolorów, dobrą praktyką jest używanie również innych metod
+                            rozróżniania (np. wzory, etykiety), aby zapewnić dostępność dla osób z daltonizmem.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips">
+                <h3>Wskazówki i techniki</h3>
+                <ul>
+                    <li><strong>Testuj kontrast</strong> - Używaj narzędzi do sprawdzania kontrastu elementów
+                        nietekstowych, np. <a href="https://webaim.org/resources/contrastchecker/" target="_blank"
+                            rel="noopener">WebAIM Contrast Checker</a> lub <a
+                            href="https://contrast-finder.tanaguru.com/" target="_blank" rel="noopener">Tanaguru
+                            Contrast Finder</a></li>
+                    <li><strong>Wyraźne granice komponentów</strong> - Zapewnij wyraźne obramowanie lub wypełnienie
+                        komponentów interfejsu w kontrastowym kolorze</li>
+                    <li><strong>Fokus i hover</strong> - Dodawaj wyraźne wskaźniki stanu :focus i :hover z kontrastem co
+                        najmniej 3:1</li>
+                    <li><strong>Nie polegaj tylko na kolorze</strong> - Oprócz kontrastu kolorów, używaj innych metod
+                        rozróżnienia elementów (wzory, ikony, kształty)</li>
+                    <li><strong>Grafiki i wykresy</strong> - Zapewnij odpowiedni kontrast kluczowych elementów wykresów
+                        i grafik</li>
+                    <li><strong>Testuj w skali szarości</strong> - Sprawdzaj, czy elementy są rozróżnialne po konwersji
+                        do skali szarości</li>
+                    <li><strong>Ikony i przyciski</strong> - Upewnij się, że ikony i przyciski mają odpowiedni kontrast
+                        z tłem</li>
+                    <li><strong>Pola formularza</strong> - Granice pól formularza powinny być wyraźnie widoczne poprzez
+                        odpowiedni kontrast z tłem</li>
+                    <li><strong>Kontrola użytkownika</strong> - Rozważ dodanie opcji zwiększania kontrastu dla
+                        użytkowników z wadami wzroku</li>
+                    <li><strong>Testuj z różnymi typami daltonizmu</strong> - Używaj symulatorów daltonizmu, aby
+                        sprawdzić, czy elementy są rozróżnialne dla osób z różnymi zaburzeniami widzenia kolorów</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/non-text-contrast.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG: Kontrast elementów nietekstowych</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/forms/custom-controls/" target="_blank"
+                            rel="noopener">W3C WAI: Dostępne niestandardowe kontrolki</a></li>
+                    <li><a href="https://webaim.org/articles/contrast/" target="_blank" rel="noopener">WebAIM: Kontrast
+                            i kolor</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/images/informative/" target="_blank"
+                            rel="noopener">W3C WAI: Informacyjne obrazy</a></li>
+                    <li><a href="https://www.w3.org/WAI/tips/designing/" target="_blank" rel="noopener">W3C WAI:
+                            Wskazówki dotyczące projektowania</a></li>
+                    <li><a href="https://contrastchecker.com/" target="_blank" rel="noopener">Contrast Checker -
+                            narzędzie online</a></li>
+                    <li><a href="https://colororacle.org/" target="_blank" rel="noopener">Color Oracle - symulator
+                            daltonizmu</a></li>
+                </ul>
+            </div>
+
+            <nav class="guidelines-nav" aria-label="Nawigacja między wytycznymi">
+                <ul>
+                    <li><a href="1.4.10.html">Poprzedni: 1.4.10 Zawijanie tekstu</a></li>
+                    <li><a href="1.4.12.html">Następny: 1.4.12 Odstępy w tekście</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

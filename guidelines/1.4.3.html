@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.4.3 Kontrast (minimalny) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.4.3 Kontrast (minimalny)</h2>
+                <p class="criterion-level">Poziom AA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#contrast-minimum" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Wizualna prezentacja tekstu lub obrazów tekstu posiada współczynnik kontrastu wynoszący przynajmniej
+                    4,5:1, z wyjątkiem następujących przypadków:</p>
+                <ul>
+                    <li><strong>Duży tekst:</strong> Tekst o dużym rozmiarze oraz obrazy tekstu o dużym rozmiarze mają
+                        współczynnik kontrastu przynajmniej 3:1.</li>
+                    <li><strong>Tekst incydentalny:</strong> Tekst lub obrazy tekstu będące częścią nieaktywnego
+                        komponentu interfejsu użytkownika, które są czysto dekoracyjne, nie są widoczne lub są częścią
+                        obrazu zawierającego inne istotne treści wizualne, nie wymagają współczynnika kontrastu.</li>
+                    <li><strong>Logotypy:</strong> Tekst będący częścią logo lub nazwy marki nie wymaga minimalnego
+                        współczynnika kontrastu.</li>
+                </ul>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest zapewnienie wystarczającego kontrastu między tekstem a jego tłem, aby osoby
+                    ze słabym wzrokiem mogły go odczytać. Niedostateczny kontrast może sprawić, że tekst będzie trudny
+                    lub niemożliwy do odczytania, szczególnie dla osób z zaburzeniami widzenia kolorów, wadami wzroku
+                    lub osób starszych, których zdolność widzenia kontrastu zmniejsza się z wiekiem.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - Tekst z niewystarczającym kontrastem</h4>
+                        <p>Strona z tekstem, który ma niewystarczający kontrast z tłem:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.low-contrast {
+    color: #8a8a8a;
+    background-color: #ffffff; /* Współczynnik kontrastu: około 2.1:1 */
+}
+&lt;/style&gt;
+
+&lt;div class="low-contrast"&gt;
+    &lt;h2&gt;Nasza oferta&lt;/h2&gt;
+    &lt;p&gt;Zapoznaj się z naszą ofertą produktów i usług, które 
+    pomogą Ci rozwijać Twój biznes w sposób zrównoważony 
+    i efektywny.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="color: #8a8a8a; background-color: #ffffff; padding: 15px; border-radius: 4px;">
+                                    <h2 style="color: #8a8a8a;">Nasza oferta</h2>
+                                    <p>Zapoznaj się z naszą ofertą produktów i usług, które pomogą Ci rozwijać Twój
+                                        biznes w sposób zrównoważony i efektywny.</p>
+                                </div>
+                                <p style="margin-top: 10px; color: #d32f2f; font-style: italic;">Uwaga: Współczynnik
+                                    kontrastu tekstu wynosi około 2.1:1, co jest poniżej minimalnego wymogu 4.5:1.</p>
+                            </div>
+                        </div>
+
+                        <p>Problem: Szary tekst (#8a8a8a) na białym tle (#ffffff) ma współczynnik kontrastu około 2.1:1,
+                            co jest znacznie poniżej minimalnego wymogu 4.5:1 dla normalnego tekstu. Ten tekst będzie
+                            trudny do odczytania dla osób z zaburzeniami widzenia.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Tekst z odpowiednim kontrastem</h4>
+                        <p>Ten sam tekst, ale z odpowiednim kontrastem:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.good-contrast {
+    color: #595959;
+    background-color: #ffffff; /* Współczynnik kontrastu: około 4.5:1 */
+}
+&lt;/style&gt;
+
+&lt;div class="good-contrast"&gt;
+    &lt;h2&gt;Nasza oferta&lt;/h2&gt;
+    &lt;p&gt;Zapoznaj się z naszą ofertą produktów i usług, które 
+    pomogą Ci rozwijać Twój biznes w sposób zrównoważony 
+    i efektywny.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="color: #595959; background-color: #ffffff; padding: 15px; border-radius: 4px;">
+                                    <h2 style="color: #595959;">Nasza oferta</h2>
+                                    <p>Zapoznaj się z naszą ofertą produktów i usług, które pomogą Ci rozwijać Twój
+                                        biznes w sposób zrównoważony i efektywny.</p>
+                                </div>
+                                <p style="margin-top: 10px; color: #4caf50; font-style: italic;">Ten tekst ma
+                                    współczynnik kontrastu około 4.5:1, co spełnia minimalne wymagania WCAG 2.1 AA.</p>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Ciemniejszy szary tekst (#595959) na białym tle (#ffffff) ma współczynnik
+                            kontrastu 4.5:1, co dokładnie spełnia minimalne wymagania. Ten tekst będzie czytelny dla
+                            większości użytkowników, w tym dla osób z umiarkowanymi zaburzeniami widzenia.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - Tekst na gradientowym tle</h4>
+                        <p>Tekst na gradientowym tle, który w niektórych miejscach nie spełnia wymagań kontrastu:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.gradient-background {
+    background: linear-gradient(to right, #ffffff, #3366cc);
+    padding: 20px;
+    color: #000000;
+}
+&lt;/style&gt;
+
+&lt;div class="gradient-background"&gt;
+    &lt;h2&gt;Nasze usługi&lt;/h2&gt;
+    &lt;p&gt;Oferujemy kompleksowe wsparcie w zakresie projektowania 
+    stron internetowych, aplikacji mobilnych oraz systemów 
+    zarządzania treścią.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="background: linear-gradient(to right, #ffffff, #3366cc); padding: 20px; color: #000000; border-radius: 4px;">
+                                    <h2>Nasze usługi</h2>
+                                    <p>Oferujemy kompleksowe wsparcie w zakresie projektowania stron internetowych,
+                                        aplikacji mobilnych oraz systemów zarządzania treścią.</p>
+                                </div>
+                                <p style="margin-top: 10px; color: #d32f2f; font-style: italic;">Uwaga: Czarny tekst
+                                    (#000000) na gradiencie od białego do niebieskiego ma zmienny współczynnik kontrastu
+                                    - na prawej stronie (ciemniejszej) kontrast jest niewystarczający.</p>
+                            </div>
+                        </div>
+
+                        <p>Problem: Czarny tekst na tle z gradientem od białego do niebieskiego ma różny współczynnik
+                            kontrastu w różnych częściach tła. Po lewej stronie (białe tło) kontrast jest odpowiedni,
+                            ale po prawej stronie (ciemniejsze tło) kontrast jest znacznie niższy i nie spełnia wymagań.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Tekst na gradientowym tle z cieniem</h4>
+                        <p>Tekst na gradientowym tle z dodanym cieniem, aby zapewnić odpowiedni kontrast w każdym
+                            miejscu:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.gradient-with-shadow {
+    background: linear-gradient(to right, #ffffff, #3366cc);
+    padding: 20px;
+    color: #ffffff;
+}
+
+.gradient-with-shadow h2,
+.gradient-with-shadow p {
+    text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);
+}
+&lt;/style&gt;
+
+&lt;div class="gradient-with-shadow"&gt;
+    &lt;h2&gt;Nasze usługi&lt;/h2&gt;
+    &lt;p&gt;Oferujemy kompleksowe wsparcie w zakresie projektowania 
+    stron internetowych, aplikacji mobilnych oraz systemów 
+    zarządzania treścią.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="background: linear-gradient(to right, #ffffff, #3366cc); padding: 20px; color: #ffffff; border-radius: 4px;">
+                                    <h2 style="text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);">Nasze usługi</h2>
+                                    <p style="text-shadow: 0 0 3px rgba(0, 0, 0, 0.8);">Oferujemy kompleksowe wsparcie w
+                                        zakresie projektowania stron internetowych, aplikacji mobilnych oraz systemów
+                                        zarządzania treścią.</p>
+                                </div>
+                                <p style="margin-top: 10px; color: #4caf50; font-style: italic;">Rozwiązanie: Biały
+                                    tekst z cieniem na gradientowym tle zapewnia wystarczający kontrast na całej
+                                    szerokości elementu.</p>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: W tym przykładzie użyto białego tekstu zamiast czarnego, a dodatkowo zastosowano
+                            cień tekstu, aby poprawić kontrast na jaśniejszej części gradientu. Dzięki temu tekst jest
+                            czytelny na całej szerokości elementu, niezależnie od koloru tła.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - Przyciski z niskim kontrastem</h4>
+                        <p>Przyciski z tekstem, który ma niewystarczający kontrast z tłem przycisku:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.button-low-contrast {
+    background-color: #007bff;
+    color: #99c2ff; /* Współczynnik kontrastu około 2:1 */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button-low-contrast.secondary {
+    background-color: #f8f9fa; 
+    color: #c0c0c0; /* Współczynnik kontrastu około 1.5:1 */
+}
+&lt;/style&gt;
+
+&lt;button class="button-low-contrast"&gt;Wyślij formularz&lt;/button&gt;
+&lt;button class="button-low-contrast secondary"&gt;Anuluj&lt;/button&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <button
+                                    style="background-color: #007bff; color: #99c2ff; padding: 10px 20px; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; margin: 5px;">Wyślij
+                                    formularz</button>
+                                <button
+                                    style="background-color: #f8f9fa; color: #c0c0c0; padding: 10px 20px; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; margin: 5px;">Anuluj</button>
+                                <p style="margin-top: 10px; color: #d32f2f; font-style: italic;">Oba przyciski mają
+                                    niewystarczający kontrast między tekstem a tłem, co utrudnia odczytanie ich etykiet.
+                                </p>
+                            </div>
+                        </div>
+
+                        <p>Problem: Oba przyciski mają niewystarczający kontrast między tekstem a tłem:</p>
+                        <ul>
+                            <li>Jasnoniebieski tekst (#99c2ff) na niebieskim tle (#007bff) ma współczynnik kontrastu
+                                około 2:1</li>
+                            <li>Jasnoszary tekst (#c0c0c0) na bardzo jasnym szarym tle (#f8f9fa) ma współczynnik
+                                kontrastu około 1.5:1</li>
+                        </ul>
+                        <p>Oba są znacznie poniżej wymaganego minimum 4.5:1 dla normalnego tekstu.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Przyciski z odpowiednim kontrastem</h4>
+                        <p>Te same przyciski, ale z odpowiednim kontrastem między tekstem a tłem:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.button-good-contrast {
+    background-color: #007bff;
+    color: #ffffff; /* Współczynnik kontrastu około 4.5:1 */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.button-good-contrast.secondary {
+    background-color: #f8f9fa;
+    color: #5a5a5a; /* Współczynnik kontrastu około 4.5:1 */
+}
+&lt;/style&gt;
+
+&lt;button class="button-good-contrast"&gt;Wyślij formularz&lt;/button&gt;
+&lt;button class="button-good-contrast secondary"&gt;Anuluj&lt;/button&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <button
+                                    style="background-color: #007bff; color: #ffffff; padding: 10px 20px; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; margin: 5px;">Wyślij
+                                    formularz</button>
+                                <button
+                                    style="background-color: #f8f9fa; color: #5a5a5a; padding: 10px 20px; border: none; border-radius: 4px; font-size: 16px; cursor: pointer; margin: 5px;">Anuluj</button>
+                                <p style="margin-top: 10px; color: #4caf50; font-style: italic;">Oba przyciski mają
+                                    teraz odpowiedni kontrast między tekstem a tłem, co czyni je czytelnymi dla
+                                    większości użytkowników.</p>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Przyciski mają teraz odpowiedni kontrast:</p>
+                        <ul>
+                            <li>Biały tekst (#ffffff) na niebieskim tle (#007bff) ma współczynnik kontrastu około 4.5:1
+                            </li>
+                            <li>Ciemnoszary tekst (#5a5a5a) na jasnym szarym tle (#f8f9fa) ma również współczynnik
+                                kontrastu około 4.5:1</li>
+                        </ul>
+                        <p>Oba spełniają minimalne wymagania kontrastu, dzięki czemu są czytelne dla większości
+                            użytkowników.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Poprawny przykład - Duży tekst z kontrastem 3:1</h4>
+                        <p>Przykład dużego tekstu (ponad 18pt lub 14pt pogrubionego), który wymaga mniejszego
+                            współczynnika kontrastu:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.large-text {
+    color: #767676;
+    background-color: #ffffff; /* Współczynnik kontrastu: 3:1 */
+    font-size: 24px; /* 18pt */
+    font-weight: normal;
+}
+
+.large-bold-text {
+    color: #767676;
+    background-color: #ffffff; /* Współczynnik kontrastu: 3:1 */
+    font-size: 18px; /* 14pt */
+    font-weight: bold;
+}
+&lt;/style&gt;
+
+&lt;h1 class="large-text"&gt;Nagłówek strony (24px)&lt;/h1&gt;
+&lt;h2 class="large-bold-text"&gt;Podtytuł strony (18px pogrubiony)&lt;/h2&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <h1
+                                    style="color: #767676; background-color: #ffffff; font-size: 24px; font-weight: normal;">
+                                    Nagłówek strony (24px)</h1>
+                                <h2
+                                    style="color: #767676; background-color: #ffffff; font-size: 18px; font-weight: bold;">
+                                    Podtytuł strony (18px pogrubiony)</h2>
+                                <p style="margin-top: 10px; color: #4caf50; font-style: italic;">Te przykłady "dużego
+                                    tekstu" spełniają wymóg współczynnika kontrastu 3:1 (zamiast 4.5:1 wymaganego dla
+                                    normalnego tekstu).</p>
+                            </div>
+                        </div>
+
+                        <p>Wyjaśnienie: Zgodnie z WCAG 2.1, duży tekst (co najmniej 18pt lub 14pt pogrubiony) wymaga
+                            mniejszego współczynnika kontrastu - tylko 3:1 zamiast 4.5:1. W tym przykładzie:</p>
+                        <ul>
+                            <li>Kolor tekstu #767676 na białym tle ma współczynnik kontrastu około 3:1</li>
+                            <li>Pierwszy tekst ma rozmiar 24px (około 18pt), więc wymaga kontrastu tylko 3:1</li>
+                            <li>Drugi tekst ma rozmiar 18px (około 14pt) i jest pogrubiony, więc również wymaga
+                                kontrastu tylko 3:1</li>
+                        </ul>
+                        <p>Oba przykłady spełniają wymagania WCAG 2.1 AA dla dużego tekstu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips">
+                <h3>Wskazówki i techniki</h3>
+                <ul>
+                    <li><strong>Używaj narzędzi do sprawdzania kontrastu</strong> - istnieje wiele narzędzi online i
+                        wtyczek do przeglądarek, które mogą pomóc sprawdzić współczynnik kontrastu kolorów</li>
+                    <li><strong>Unikaj jasnych kolorów tekstu na jasnym tle</strong> - kombinacje takie jak jasnoszary
+                        na białym prawie zawsze będą miały niewystarczający kontrast</li>
+                    <li><strong>Unikaj ciemnych kolorów tekstu na ciemnym tle</strong> - analogicznie, kombinacje takie
+                        jak granatowy na czarnym również będą miały niewystarczający kontrast</li>
+                    <li><strong>Pamiętaj o różnicy w wymaganiach dla dużego tekstu</strong> - dla tekstu o rozmiarze co
+                        najmniej 18pt (lub 14pt pogrubionego) wystarczy kontrast 3:1</li>
+                    <li><strong>Zwracaj uwagę na tekst na obrazach i gradientach</strong> - upewnij się, że tekst ma
+                        wystarczający kontrast z każdą częścią tła, na którym się znajduje</li>
+                    <li><strong>Testuj stronę w trybie monochromatycznym</strong> - pomaga to zauważyć problemy z
+                        kontrastem, które mogą nie być oczywiste w trybie kolorowym</li>
+                    <li><strong>Projektuj z myślą o wysokim kontraście</strong> - łatwiej jest zacząć od wysokiego
+                        kontrastu i ewentualnie go zmniejszyć, niż odwrotnie</li>
+                    <li><strong>Pamiętaj o stanach elementów</strong> - elementy interaktywne, takie jak linki czy
+                        przyciski, powinny mieć odpowiedni kontrast w każdym stanie (normalnym, najechanie, aktywnym,
+                        itp.)</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-minimum.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG: Kontrast (minimalny)</a></li>
+                    <li><a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener">WebAIM:
+                            Narzędzie do sprawdzania kontrastu</a></li>
+                    <li><a href="https://contrast-ratio.com/" target="_blank" rel="noopener">Contrast Ratio - proste
+                            narzędzie online</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Perceivable/Color_contrast"
+                            target="_blank" rel="noopener">MDN Web Docs: Zrozumienie kontrastu kolorów</a></li>
+                    <li><a href="https://www.w3.org/WAI/perspective-videos/contrast/" target="_blank" rel="noopener">W3C
+                            WAI: Film o znaczeniu kontrastu</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.4.2.html">Poprzedni: 1.4.2 Kontrola odtwarzania dźwięku</a></li>
+                    <li><a href="1.4.4.html">Następny: 1.4.4 Zmiana rozmiaru tekstu</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.4.1 Użycie koloru - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.4.1 Użycie koloru</h2>
+                <p class="criterion-level">Poziom A</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#use-of-color" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Kolor nie jest wykorzystywany jako jedyny wizualny sposób przekazywania informacji, wskazywania
+                    czynności do wykonania, podpowiedzi, wyróżnienia elementu wizualnego lub sygnalizowania odpowiedzi.
+                </p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest zapewnienie, że wszyscy użytkownicy mogą uzyskać dostęp do informacji,
+                    które są przekazywane za pomocą koloru. Jeśli informacje są przekazywane tylko za pomocą koloru,
+                    osoby, które nie mogą rozróżniać kolorów lub korzystają z technologii nieprzekazujących informacji o
+                    kolorze (np. czytniki ekranu, wyświetlacze monochromatyczne) nie będą mogły uzyskać tych informacji.
+                </p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - tylko kolor wskazuje wymagane pola</h4>
+                        <p>Formularz, w którym wymagane pola są oznaczone tylko czerwoną obwódką, bez żadnych
+                            dodatkowych wskazań:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.required {
+    border: 2px solid red;
+}
+&lt;/style&gt;
+
+&lt;form&gt;
+    &lt;div&gt;
+        &lt;label for="name"&gt;Imię i nazwisko&lt;/label&gt;
+        &lt;input id="name" class="required" type="text"&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;label for="email"&gt;Email&lt;/label&gt;
+        &lt;input id="email" class="required" type="email"&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;label for="phone"&gt;Telefon&lt;/label&gt;
+        &lt;input id="phone" type="tel"&gt;
+    &lt;/div&gt;
+    &lt;button type="submit"&gt;Wyślij&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <form>
+                                    <div>
+                                        <label for="bad-name">Imię i nazwisko</label>
+                                        <input id="bad-name" style="border: 2px solid red;" type="text">
+                                    </div>
+                                    <div>
+                                        <label for="bad-email">Email</label>
+                                        <input id="bad-email" style="border: 2px solid red;" type="email">
+                                    </div>
+                                    <div>
+                                        <label for="bad-phone">Telefon</label>
+                                        <input id="bad-phone" type="tel">
+                                    </div>
+                                    <button type="button">Wyślij</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <p>Problem: Osoba z daltonizmem lub korzystająca z czytnika ekranu nie rozpozna, które pola są
+                            wymagane, ponieważ informacja ta jest przekazywana tylko za pomocą koloru (czerwonej
+                            obwódki).</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - oznaczenie wymaganych pól za pomocą symbolu i koloru</h4>
+                        <p>Formularz, w którym wymagane pola są oznaczone zarówno kolorem, jak i symbolem gwiazdki, a
+                            dodatkowo w atrybucie aria-required:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.required {
+    border: 2px solid red;
+}
+.required-label::after {
+    content: " *";
+    color: red;
+}
+&lt;/style&gt;
+
+&lt;form&gt;
+    &lt;div&gt;
+        &lt;label for="name" class="required-label"&gt;Imię i nazwisko&lt;/label&gt;
+        &lt;input id="name" class="required" type="text" aria-required="true"&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;label for="email" class="required-label"&gt;Email&lt;/label&gt;
+        &lt;input id="email" class="required" type="email" aria-required="true"&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;label for="phone"&gt;Telefon&lt;/label&gt;
+        &lt;input id="phone" type="tel"&gt;
+    &lt;/div&gt;
+    &lt;p&gt;&lt;small&gt;Pola oznaczone * są wymagane&lt;/small&gt;&lt;/p&gt;
+    &lt;button type="submit"&gt;Wyślij&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <form>
+                                    <div>
+                                        <label for="good-name">Imię i nazwisko *</label>
+                                        <input id="good-name" style="border: 2px solid red;" type="text">
+                                    </div>
+                                    <div>
+                                        <label for="good-email">Email *</label>
+                                        <input id="good-email" style="border: 2px solid red;" type="email">
+                                    </div>
+                                    <div>
+                                        <label for="good-phone">Telefon</label>
+                                        <input id="good-phone" type="tel">
+                                    </div>
+                                    <p><small>Pola oznaczone * są wymagane</small></p>
+                                    <button type="button">Wyślij</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Ten formularz jest dostępny dla wszystkich, ponieważ wymagane pola są oznaczone
+                            nie tylko kolorem, ale również symbolem gwiazdki (*). Dodatkowo, atrybut
+                            aria-required="true" pomaga technologiom wspomagającym przekazać tę informację użytkownikom.
+                            Na końcu formularza znajduje się również informacja, co oznaczają gwiazdki.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - odnośniki wyróżnione tylko kolorem</h4>
+                        <p>Tekst z linkami, które są odróżnione od zwykłego tekstu wyłącznie kolorem:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+a {
+    color: blue;
+    text-decoration: none;
+}
+&lt;/style&gt;
+
+&lt;p&gt;Więcej informacji o dostępności można znaleźć na stronach 
+&lt;a href="https://www.w3.org/WAI/"&gt;Web Accessibility Initiative&lt;/a&gt;.
+Sprawdź również &lt;a href="https://www.w3.org/TR/WCAG21/"&gt;oficjalną dokumentację WCAG 2.1&lt;/a&gt;.&lt;/p&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <p>Więcej informacji o dostępności można znaleźć na stronach <a href="#"
+                                        style="color: blue; text-decoration: none;">Web Accessibility Initiative</a>.
+                                    Sprawdź również <a href="#" style="color: blue; text-decoration: none;">oficjalną
+                                        dokumentację WCAG 2.1</a>.</p>
+                            </div>
+                        </div>
+
+                        <p>Problem: Linki są wyróżnione tylko kolorem, bez podkreślenia czy innego wizualnego wskaźnika.
+                            Osoby z daltonizmem mogą mieć trudność z rozpoznaniem, które fragmenty tekstu są
+                            odnośnikami.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - odnośniki z podkreśleniem</h4>
+                        <p>Tekst z linkami, które są odróżnione od zwykłego tekstu zarówno kolorem, jak i podkreśleniem:
+                        </p>
+                        <pre><code class="language-html">&lt;style&gt;
+a {
+    color: blue;
+    text-decoration: underline;
+}
+&lt;/style&gt;
+
+&lt;p&gt;Więcej informacji o dostępności można znaleźć na stronach 
+&lt;a href="https://www.w3.org/WAI/"&gt;Web Accessibility Initiative&lt;/a&gt;.
+Sprawdź również &lt;a href="https://www.w3.org/TR/WCAG21/"&gt;oficjalną dokumentację WCAG 2.1&lt;/a&gt;.&lt;/p&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <p>Więcej informacji o dostępności można znaleźć na stronach <a href="#"
+                                        style="color: blue; text-decoration: underline;">Web Accessibility
+                                        Initiative</a>. Sprawdź również <a href="#"
+                                        style="color: blue; text-decoration: underline;">oficjalną dokumentację WCAG
+                                        2.1</a>.</p>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Linki są teraz wyróżnione zarówno kolorem, jak i podkreśleniem. Nawet osoby,
+                            które nie mogą rozróżniać kolorów, będą w stanie zidentyfikować odnośniki w tekście dzięki
+                            podkreśleniu.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - wykres wykorzystujący tylko kolory do rozróżnienia danych</h4>
+                        <p>Legenda do wykresu, która wykorzystuje tylko kolory do rozróżnienia kategorii danych:</p>
+                        <pre><code class="language-html">&lt;div class="chart-legend"&gt;
+    &lt;div&gt;
+        &lt;span class="color-box" style="background-color: red;"&gt;&lt;/span&gt; Sprzedaż 2021
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;span class="color-box" style="background-color: green;"&gt;&lt;/span&gt; Sprzedaż 2022
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;span class="color-box" style="background-color: blue;"&gt;&lt;/span&gt; Sprzedaż 2023
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Tu byłby wykres z danymi oznaczonymi tylko kolorami --&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div class="chart-legend">
+                                    <div>
+                                        <span
+                                            style="display: inline-block; width: 20px; height: 20px; background-color: red; margin-right: 5px;"></span>
+                                        Sprzedaż 2021
+                                    </div>
+                                    <div>
+                                        <span
+                                            style="display: inline-block; width: 20px; height: 20px; background-color: green; margin-right: 5px;"></span>
+                                        Sprzedaż 2022
+                                    </div>
+                                    <div>
+                                        <span
+                                            style="display: inline-block; width: 20px; height: 20px; background-color: blue; margin-right: 5px;"></span>
+                                        Sprzedaż 2023
+                                    </div>
+                                </div>
+                                <div
+                                    style="margin-top: 10px; height: 150px; background-color: #f0f0f0; text-align: center; line-height: 150px;">
+                                    [Wykres z danymi oznaczonymi tylko kolorami]
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Problem: Dane na wykresie są rozróżniane tylko za pomocą kolorów. Osoby z daltonizmem mogą
+                            mieć trudność z interpretacją wykresu, a użytkownicy technologii wspomagających nie będą
+                            mieli dostępu do informacji przedstawionych wizualnie.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - wykres z różnymi wzorami i kolorami</h4>
+                        <p>Legenda do wykresu, która wykorzystuje zarówno kolory jak i różne wzory wypełnienia do
+                            rozróżnienia kategorii danych:</p>
+                        <pre><code class="language-html">&lt;div class="chart-legend"&gt;
+    &lt;div&gt;
+        &lt;span class="color-box" style="background-color: red; background-image: linear-gradient(45deg, transparent 45%, #000 45%, #000 55%, transparent 55%);"&gt;&lt;/span&gt; Sprzedaż 2021
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;span class="color-box" style="background-color: green; background-image: linear-gradient(to right, transparent 0%, transparent 50%, #000 50%, #000 100%);"&gt;&lt;/span&gt; Sprzedaż 2022
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;span class="color-box" style="background-color: blue; background-image: radial-gradient(circle, #000 25%, transparent 25%);"&gt;&lt;/span&gt; Sprzedaż 2023
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Tu byłby wykres z danymi oznaczonymi kolorami i wzorami --&gt;
+
+&lt;!-- Dodatkowo, alternatywna wersja w formie tabeli --&gt;
+&lt;table class="visually-hidden"&gt;
+    &lt;caption&gt;Dane sprzedażowe 2021-2023&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Miesiąc&lt;/th&gt;
+            &lt;th&gt;2021&lt;/th&gt;
+            &lt;th&gt;2022&lt;/th&gt;
+            &lt;th&gt;2023&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;!-- Tu byłyby dane w formie tabeli --&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div class="chart-legend">
+                                    <div>
+                                        <span
+                                            style="display: inline-block; width: 20px; height: 20px; background-color: red; background-image: linear-gradient(45deg, transparent 45%, #000 45%, #000 55%, transparent 55%); margin-right: 5px;"></span>
+                                        Sprzedaż 2021
+                                    </div>
+                                    <div>
+                                        <span
+                                            style="display: inline-block; width: 20px; height: 20px; background-color: green; background-image: linear-gradient(to right, transparent 0%, transparent 50%, #000 50%, #000 100%); margin-right: 5px;"></span>
+                                        Sprzedaż 2022
+                                    </div>
+                                    <div>
+                                        <span
+                                            style="display: inline-block; width: 20px; height: 20px; background-color: blue; background-image: radial-gradient(circle, #000 25%, transparent 25%); margin-right: 5px;"></span>
+                                        Sprzedaż 2023
+                                    </div>
+                                </div>
+                                <div
+                                    style="margin-top: 10px; height: 150px; background-color: #f0f0f0; text-align: center; line-height: 150px;">
+                                    [Wykres z danymi oznaczonymi kolorami i wzorami]
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Dane na wykresie są rozróżniane zarówno za pomocą kolorów, jak i różnych wzorów
+                            (ukośne linie, pionowe paski, kropki). Dodatkowo, te same informacje są dostępne w formie
+                            tabeli dla użytkowników technologii wspomagających. Dzięki temu wykres jest dostępny dla
+                            wszystkich użytkowników, niezależnie od ich zdolności rozróżniania kolorów.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips">
+                <h3>Wskazówki i techniki</h3>
+                <ul>
+                    <li>Zawsze używaj dodatkowego środka (oprócz koloru) do przekazywania informacji, np. symboli,
+                        wzorów, podkreśleń, obramowań, etykiet tekstowych.</li>
+                    <li>Dla wykresów i grafik zapewnij alternatywne sposoby rozróżniania danych, takie jak wzory
+                        wypełnienia, kształty, etykiety.</li>
+                    <li>Dla formularzy dodawaj symbole (np. gwiazdki), tekst lub inne wskaźniki, aby oznaczyć pola
+                        wymagane czy stany błędów.</li>
+                    <li>Upewnij się, że odnośniki są rozpoznawalne nie tylko przez kolor, ale także przez podkreślenie
+                        lub inny wizualny wskaźnik.</li>
+                    <li>W przypadku komunikatów o błędach, dodawaj ikony lub opisowe teksty, nie polegaj wyłącznie na
+                        czerwonym kolorze.</li>
+                    <li>Testuj swoją stronę w trybie monochromatycznym, aby upewnić się, że wszystkie informacje są
+                        nadal dostępne.</li>
+                    <li>Korzystaj z narzędzi symulujących różne rodzaje daltonizmu, aby sprawdzić, jak wygląda Twoja
+                        strona dla osób z zaburzeniami widzenia kolorów.</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/use-of-color.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG: Użycie koloru</a></li>
+                    <li><a href="https://webaim.org/articles/visual/colorblind" target="_blank" rel="noopener">WebAIM:
+                            Projektowanie dla daltonistów</a></li>
+                    <li><a href="https://www.color-blindness.com/coblis-color-blindness-simulator/" target="_blank"
+                            rel="noopener">COBLIS - Symulator daltonizmu</a></li>
+                    <li><a href="https://axesslab.com/colorblind-accessibility/" target="_blank"
+                            rel="noopener">Axesslab: Dostępność dla daltonistów</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.4.html">Poprzedni: 1.4 Możliwość rozróżnienia</a></li>
+                    <li><a href="1.4.2.html">Następny: 1.4.2 Kontrola odtwarzania dźwięku</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.4.8 Prezentacja wizualna - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.4.8 Prezentacja wizualna</h2>
+                <p class="criterion-level">Poziom AAA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#visual-presentation" target="_blank"
+                            rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Dla wizualnego formatowania bloków tekstu dostępne są następujące mechanizmy, które pomagają
+                    użytkownikowi czytać tekst:</p>
+                <ul>
+                    <li>Kolory pierwszego planu i tła mogą być wybrane przez użytkownika.</li>
+                    <li>Szerokość nie przekracza 80 znaków lub glifów (40 w przypadku alfabetów CJK).</li>
+                    <li>Tekst nie jest wyjustowany (wyrównany do lewego i prawego marginesu jednocześnie).</li>
+                    <li>Odstęp między wierszami w akapitach wynosi co najmniej 1,5 (w tekście), a odstęp między
+                        akapitami jest co najmniej 1,5 razy większy niż odstęp między wierszami.</li>
+                    <li>Rozmiar tekstu może zostać zmieniony bez konieczności użycia technologii wspomagających do 200%
+                        w taki sposób, że użytkownik nie musi przewijać tekstu w poziomie przy wyświetlaniu
+                        pełnoekranowym.</li>
+                </ul>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest zapewnienie, że wizualna prezentacja tekstu ułatwia jego czytanie. Osoby z
+                    niektórymi zaburzeniami poznawczymi, językowymi i trudnościami w nauce, a także niektórzy
+                    użytkownicy z wadami wzroku, mogą napotykać trudności podczas czytania tekstu, który nie spełnia
+                    tych wytycznych.</p>
+                <p>Możliwość dostosowania prezentacji tekstu jest kluczowa dla osób z różnymi rodzajami
+                    niepełnosprawności. Niektórzy potrzebują konkretnych kombinacji kolorów, inni lepiej czytają tekst z
+                    większymi odstępami między wierszami lub preferują określoną szerokość tekstu.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - Trudna do odczytania prezentacja tekstu</h4>
+                        <p>Strona z wieloma problemami dotyczącymi prezentacji tekstu:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.difficult-to-read {
+    color: #333;
+    background-color: #f8f8f8;
+    width: 100%;
+    text-align: justify;
+    line-height: 1.2;
+    font-size: 14px;
+}
+
+.difficult-to-read p {
+    margin-bottom: 5px;
+}
+&lt;/style&gt;
+
+&lt;div class="difficult-to-read"&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel sapien ac magna facilisis dignissim. Mauris pharetra urna nec erat commodo, in posuere metus ultrices. Vivamus imperdiet enim id neque blandit, at efficitur dui posuere. Duis condimentum eget justo vel feugiat. Donec lacinia semper neque, eu eleifend eros vulputate sit amet. Nunc auctor velit vel enim lacinia, id varius eros tempus. Nullam venenatis imperdiet maximus.&lt;/p&gt;
+    &lt;p&gt;Sed dapibus, lacus non placerat condimentum, dui lectus iaculis ligula, non congue risus magna a nisl. Integer ultrices mi nec neque luctus fermentum. Vivamus nec purus vitae lacus dictum hendrerit ac at arcu. Donec tincidunt libero non tempus ultricies. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="color: #333; background-color: #f8f8f8; width: 100%; text-align: justify; line-height: 1.2; font-size: 14px; padding: 10px; border-radius: 4px;">
+                                    <p style="margin-bottom: 5px;">Lorem ipsum dolor sit amet, consectetur adipiscing
+                                        elit. Nullam vel sapien ac magna facilisis dignissim. Mauris pharetra urna nec
+                                        erat commodo, in posuere metus ultrices. Vivamus imperdiet enim id neque
+                                        blandit, at efficitur dui posuere. Duis condimentum eget justo vel feugiat.
+                                        Donec lacinia semper neque, eu eleifend eros vulputate sit amet. Nunc auctor
+                                        velit vel enim lacinia, id varius eros tempus. Nullam venenatis imperdiet
+                                        maximus.</p>
+                                    <p style="margin-bottom: 5px;">Sed dapibus, lacus non placerat condimentum, dui
+                                        lectus iaculis ligula, non congue risus magna a nisl. Integer ultrices mi nec
+                                        neque luctus fermentum. Vivamus nec purus vitae lacus dictum hendrerit ac at
+                                        arcu. Donec tincidunt libero non tempus ultricies. Pellentesque habitant morbi
+                                        tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+                                </div>
+                                <p style="margin-top: 10px; color: #d32f2f;">Problemy z prezentacją tekstu: tekst
+                                    wyjustowany, zbyt mała interliia (1.2), zbyt małe odstępy między akapitami, zbyt
+                                    szeroka linia tekstu (więcej niż 80 znaków). Kolory nie są konfigurowalne.</p>
+                            </div>
+                        </div>
+
+                        <p>Problemy w tym przykładzie:</p>
+                        <ul>
+                            <li>Tekst jest wyjustowany (wyrównany do obu marginesów), co może powodować nierówne odstępy
+                                między słowami i utrudniać czytanie</li>
+                            <li>Odstęp między wierszami (line-height) wynosi tylko 1.2, co jest mniejsze niż zalecane
+                                1.5</li>
+                            <li>Odstępy między akapitami są zbyt małe (5px) i nie są 1.5 razy większe niż odstępy między
+                                wierszami</li>
+                            <li>Tekst zajmuje 100% szerokości, co często przekracza limit 80 znaków, zwłaszcza na
+                                większych ekranach</li>
+                            <li>Nie ma możliwości zmiany kolorów pierwszego planu i tła przez użytkownika</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Czytelna prezentacja tekstu</h4>
+                        <p>Ta sama treść z poprawioną prezentacją wizualną:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.readable-text {
+    max-width: 60ch; /* około 80 znaków dla większości fontów */
+    text-align: left;
+    line-height: 1.5;
+    font-size: 16px;
+    background-color: var(--background-color, #fff);
+    color: var(--text-color, #333);
+}
+
+.readable-text p {
+    margin-bottom: calc(1.5 * 1.5em); /* 1.5 razy większy odstęp niż między liniami */
+}
+
+/* Style dla obsługi preferencji kolorystycznych użytkownika */
+.color-scheme-controls {
+    margin-bottom: 20px;
+}
+
+/* Klasy dla różnych schematów kolorów */
+.high-contrast {
+    --text-color: #fff;
+    --background-color: #000;
+}
+
+.soft-contrast {
+    --text-color: #333;
+    --background-color: #f5f5dc; /* beżowe tło */
+}
+
+.blue-tint {
+    --text-color: #003366;
+    --background-color: #e6f2ff;
+}
+&lt;/style&gt;
+
+&lt;div class="color-scheme-controls"&gt;
+    &lt;p&gt;Wybierz schemat kolorów:&lt;/p&gt;
+    &lt;button onclick="document.getElementById('text-content').className='readable-text'"&gt;Domyślny&lt;/button&gt;
+    &lt;button onclick="document.getElementById('text-content').className='readable-text high-contrast'"&gt;Wysoki kontrast&lt;/button&gt;
+    &lt;button onclick="document.getElementById('text-content').className='readable-text soft-contrast'"&gt;Łagodny kontrast&lt;/button&gt;
+    &lt;button onclick="document.getElementById('text-content').className='readable-text blue-tint'"&gt;Niebieski odcień&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div id="text-content" class="readable-text"&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vel sapien ac magna facilisis dignissim. Mauris pharetra urna nec erat commodo, in posuere metus ultrices. Vivamus imperdiet enim id neque blandit, at efficitur dui posuere.&lt;/p&gt;
+    &lt;p&gt;Sed dapibus, lacus non placerat condimentum, dui lectus iaculis ligula, non congue risus magna a nisl. Integer ultrices mi nec neque luctus fermentum. Vivamus nec purus vitae lacus dictum hendrerit ac at arcu.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div style="margin-bottom: 20px;">
+                                    <p>Wybierz schemat kolorów:</p>
+                                    <button
+                                        style="margin-right: 5px; padding: 5px 10px; background-color: #f5f5f5; border: 1px solid #ccc; border-radius: 3px; cursor: pointer;">Domyślny</button>
+                                    <button
+                                        style="margin-right: 5px; padding: 5px 10px; background-color: #000; color: #fff; border: 1px solid #000; border-radius: 3px; cursor: pointer;">Wysoki
+                                        kontrast</button>
+                                    <button
+                                        style="margin-right: 5px; padding: 5px 10px; background-color: #f5f5dc; color: #333; border: 1px solid #d5d5c2; border-radius: 3px; cursor: pointer;">Łagodny
+                                        kontrast</button>
+                                    <button
+                                        style="margin-right: 5px; padding: 5px 10px; background-color: #e6f2ff; color: #003366; border: 1px solid #cce0ff; border-radius: 3px; cursor: pointer;">Niebieski
+                                        odcień</button>
+                                </div>
+                                <div
+                                    style="max-width: 60ch; text-align: left; line-height: 1.5; font-size: 16px; background-color: #fff; color: #333; padding: 15px; border-radius: 4px;">
+                                    <p style="margin-bottom: calc(1.5 * 1.5em);">Lorem ipsum dolor sit amet, consectetur
+                                        adipiscing elit. Nullam vel sapien ac magna facilisis dignissim. Mauris pharetra
+                                        urna nec erat commodo, in posuere metus ultrices. Vivamus imperdiet enim id
+                                        neque blandit, at efficitur dui posuere.</p>
+                                    <p style="margin-bottom: calc(1.5 * 1.5em);">Sed dapibus, lacus non placerat
+                                        condimentum, dui lectus iaculis ligula, non congue risus magna a nisl. Integer
+                                        ultrices mi nec neque luctus fermentum. Vivamus nec purus vitae lacus dictum
+                                        hendrerit ac at arcu.</p>
+                                </div>
+                                <p style="margin-top: 10px; color: #4caf50;">Poprawione: ograniczona szerokość tekstu
+                                    (około 80 znaków), wyrównanie do lewej, odpowiednie odstępy między wierszami (1.5) i
+                                    akapitami, możliwość zmiany kolorów przez użytkownika.</p>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązania zastosowane w tym przykładzie:</p>
+                        <ul>
+                            <li>Szerokość tekstu ograniczono do 60ch, co odpowiada około 80 znakom dla większości fontów
+                            </li>
+                            <li>Tekst jest wyrównany tylko do lewej strony (nie jest wyjustowany)</li>
+                            <li>Odstęp między wierszami (line-height) wynosi 1.5, zgodnie z zaleceniami</li>
+                            <li>Odstępy między akapitami są 1.5 razy większe niż odstępy między wierszami</li>
+                            <li>Dodano kontrolki umożliwiające użytkownikowi wybór różnych schematów kolorystycznych
+                            </li>
+                            <li>Użyto zmiennych CSS (custom properties) do łatwej zmiany kolorów</li>
+                            <li>Zwiększono rozmiar czcionki do 16px dla lepszej czytelności</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - Brak możliwości skalowania tekstu bez poziomego przewijania</h4>
+                        <p>Tekst, który przy powiększeniu do 200% wymaga poziomego przewijania:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.fixed-width-container {
+    width: 500px;
+    border: 1px solid #ccc;
+    padding: 15px;
+    overflow: auto;
+}
+
+.fixed-width-text {
+    font-size: 16px;
+    line-height: 1.5;
+}
+&lt;/style&gt;
+
+&lt;div class="fixed-width-container"&gt;
+    &lt;div class="fixed-width-text"&gt;
+        &lt;p&gt;Ten tekst znajduje się w kontenerze o stałej szerokości. Przy powiększeniu strony do 200%, użytkownik będzie musiał przewijać poziomo, aby przeczytać cały tekst, co utrudnia czytanie i nawigację.&lt;/p&gt;
+        &lt;p&gt;Dla osób z wadami wzroku, które potrzebują powiększać tekst, takie rozwiązanie jest uciążliwe i może znacząco utrudniać korzystanie ze strony.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd (symulacja powiększenia 200%):</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="width: 250px; border: 1px solid #ccc; padding: 15px; overflow: auto; margin-bottom: 10px; position: relative;">
+                                    <div style="font-size: 32px; line-height: 1.5;">
+                                        <p>Ten tekst znajduje się w kontenerze o stałej szerokości. Przy powiększeniu
+                                            strony do 200%, użytkownik będzie musiał przewijać poziomo, aby przeczytać
+                                            cały tekst, co utrudnia czytanie i nawigację.</p>
+                                        <p>Dla osób z wadami wzroku, które potrzebują powiększać tekst, takie
+                                            rozwiązanie jest uciążliwe i może znacząco utrudniać korzystanie ze strony.
+                                        </p>
+                                    </div>
+                                    <div
+                                        style="position: absolute; bottom: 0; right: 0; background-color: rgba(255,255,255,0.8); padding: 5px; font-size: 12px; color: #666;">
+                                        ← przewiń poziomo →</div>
+                                </div>
+                                <p style="margin-top: 10px; color: #d32f2f;">Problem: Przy powiększeniu do 200%, tekst
+                                    wymaga poziomego przewijania, co utrudnia czytanie.</p>
+                            </div>
+                        </div>
+
+                        <p>Problemy w tym przykładzie:</p>
+                        <ul>
+                            <li>Kontener ma stałą szerokość (500px), co powoduje, że przy powiększeniu do 200% tekst nie
+                                mieści się w widocznym obszarze</li>
+                            <li>Użytkownik musi przewijać poziomo, aby przeczytać cały tekst, co jest męczące i utrudnia
+                                śledzenie treści</li>
+                            <li>Szczególnie trudne jest to dla osób z zaburzeniami motorycznymi lub osób używających
+                                technologii wspomagających</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Responsywny tekst</h4>
+                        <p>Tekst, który dostosowuje się do szerokości widoku i nie wymaga poziomego przewijania przy
+                            powiększeniu:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.responsive-container {
+    max-width: 100%;
+    width: auto;
+    border: 1px solid #ccc;
+    padding: 15px;
+}
+
+.responsive-text {
+    font-size: 16px;
+    line-height: 1.5;
+    max-width: 70ch;
+}
+
+@media screen and (max-width: 600px) {
+    .responsive-text {
+        font-size: 18px; /* Większa czcionka na małych ekranach */
+    }
+}
+&lt;/style&gt;
+
+&lt;div class="responsive-container"&gt;
+    &lt;div class="responsive-text"&gt;
+        &lt;p&gt;Ten tekst znajduje się w kontenerze o responsywnej szerokości. Nawet przy powiększeniu strony do 200%, tekst będzie zawijał się i dostosowywał do szerokości ekranu, eliminując potrzebę poziomego przewijania.&lt;/p&gt;
+        &lt;p&gt;Takie podejście znacznie ułatwia czytanie osobom z wadami wzroku, które potrzebują powiększać tekst, a także użytkownikom urządzeń mobilnych.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd (symulacja powiększenia 200%):</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="max-width: 100%; width: auto; border: 1px solid #ccc; padding: 15px; margin-bottom: 10px;">
+                                    <div style="font-size: 32px; line-height: 1.5; max-width: 100%;">
+                                        <p>Ten tekst znajduje się w kontenerze o responsywnej szerokości. Nawet przy
+                                            powiększeniu strony do 200%, tekst będzie zawijał się i dostosowywał do
+                                            szerokości ekranu, eliminując potrzebę poziomego przewijania.</p>
+                                        <p>Takie podejście znacznie ułatwia czytanie osobom z wadami wzroku, które
+                                            potrzebują powiększać tekst, a także użytkownikom urządzeń mobilnych.</p>
+                                    </div>
+                                </div>
+                                <p style="margin-top: 10px; color: #4caf50;">Rozwiązanie: Responsywny kontener
+                                    dopasowuje się do szerokości ekranu, eliminując potrzebę poziomego przewijania przy
+                                    powiększeniu.</p>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązania zastosowane w tym przykładzie:</p>
+                        <ul>
+                            <li>Kontener ma szerokość maksymalną 100%, co pozwala mu dostosować się do szerokości okna
+                                przeglądarki</li>
+                            <li>Tekst ma ograniczoną maksymalną szerokość (70ch), co zapewnia dobrą czytelność na dużych
+                                ekranach</li>
+                            <li>Przy powiększeniu do 200%, tekst automatycznie zawija się i nie wymaga poziomego
+                                przewijania</li>
+                            <li>Dodano media query, które zwiększa rozmiar czcionki na małych ekranach dla lepszej
+                                czytelności</li>
+                            <li>Takie podejście jest zgodne nie tylko z kryterium 1.4.8, ale także z zasadami
+                                responsywnego projektowania stron</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips">
+                <h3>Wskazówki i techniki</h3>
+                <ul>
+                    <li><strong>Używaj jednostek relatywnych</strong> - Stosuj em, rem, % lub ch zamiast pikseli dla
+                        wymiarów tekstu i kontenerów</li>
+                    <li><strong>Ograniczaj szerokość tekstu</strong> - Używaj max-width w jednostkach ch (około 60-70ch)
+                        dla optymalnej czytelności</li>
+                    <li><strong>Wystarczające odstępy</strong> - Stosuj line-height co najmniej 1.5 dla tekstu i
+                        odpowiednio większe odstępy między akapitami</li>
+                    <li><strong>Unikaj justowania tekstu</strong> - Wyrównuj tekst do lewej strony, co zapewnia
+                        równomierne odstępy między słowami</li>
+                    <li><strong>Zapewnij mechanizmy zmiany kolorów</strong> - Dodaj przyciski lub ustawienia
+                        umożliwiające zmianę kolorów tekstu i tła</li>
+                    <li><strong>Testuj powiększenie</strong> - Sprawdzaj, jak strona wygląda przy powiększeniu 200% i
+                        upewnij się, że nie wymaga poziomego przewijania</li>
+                    <li><strong>Stosuj responsywne podejście</strong> - Projektuj strony tak, aby dostosowywały się do
+                        różnych rozmiarów ekranów i preferencji użytkownika</li>
+                    <li><strong>Unikaj stałych szerokości</strong> - Zamiast ustalania sztywnych szerokości w pikselach,
+                        używaj wartości procentowych lub relatywnych</li>
+                    <li><strong>Obsługuj tryby wysokiego kontrastu</strong> - Upewnij się, że strona działa poprawnie w
+                        trybach wysokiego kontrastu przeglądarki</li>
+                    <li><strong>Testuj z użytkownikami</strong> - Zbieraj opinie od osób z różnymi rodzajami
+                        niepełnosprawności</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/visual-presentation.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG: Prezentacja wizualna</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/line-height" target="_blank"
+                            rel="noopener">MDN Web Docs: line-height</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/page-structure/responsive/" target="_blank"
+                            rel="noopener">W3C WAI: Responsive Design</a></li>
+                    <li><a href="https://webaim.org/techniques/textlayout/" target="_blank" rel="noopener">WebAIM:
+                            Techniki układu tekstu</a></li>
+                    <li><a href="https://alistapart.com/article/how-to-learn-css/" target="_blank" rel="noopener">A List
+                            Apart: Jak uczyć się CSS - dobre praktyki prezentacji tekstu</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.4.7.html">Poprzedni: 1.4.7 Dźwięk w tle (cichy lub brak)</a></li>
+                    <li><a href="1.4.9.html">Następny: 1.4.9 Obrazy tekstu (bez wyjątków)</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.4.7 Dźwięk w tle (cichy lub brak) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.4.7 Dźwięk w tle (cichy lub brak)</h2>
+                <p class="criterion-level">Poziom AAA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#low-or-no-background-audio" target="_blank"
+                            rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Dla nagrań zawierających tylko audio, które (1) zawierają głównie mowę na pierwszym planie, (2) nie
+                    są dźwiękowymi CAPTCHA lub logo dźwiękowymi oraz (3) nie są wokalizacją, taką jak śpiew czy rap,
+                    spełnione jest co najmniej jedno z poniższych założeń:</p>
+                <ul>
+                    <li><strong>Brak tła</strong>: Dźwięk w tle nie występuje;</li>
+                    <li><strong>Wyłączanie</strong>: Dźwięk w tle może zostać wyłączony;</li>
+                    <li><strong>20 dB</strong>: Dźwięk w tle jest przynajmniej o 20 decybeli cichszy niż mowa na
+                        pierwszym planie, z wyjątkiem okazjonalnych dźwięków trwających tylko 1-2 sekundy.</li>
+                </ul>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest zapewnienie, aby osoby z problemami słuchowymi mogły wyraźnie oddzielić
+                    dźwięk na pierwszym planie od dźwięków tła w nagraniach audio. Dla osób z wadami słuchu lub
+                    zaburzeniami poznawczymi, słyszenie i przetwarzanie mowy może być trudne, gdy obecne są dźwięki tła.
+                </p>
+                <p>Różnica 20 decybeli oznacza, że dźwięk na pierwszym planie jest około cztery razy głośniejszy niż
+                    dźwięk tła. To duża różnica, która zapewnia wyraźną separację między najważniejszym dźwiękiem
+                    (zazwyczaj mową) a dźwiękami tła.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - Nagranie z głośnym dźwiękiem tła</h4>
+                        <p>Nagranie podcastu z muzyką w tle, która jest zbyt głośna i konkuruje z głosem prowadzącego:
+                        </p>
+                        <pre><code class="language-html">&lt;!-- Nagranie z głośnym tłem muzycznym bez opcji wyłączenia --&gt;
+&lt;audio controls&gt;
+    &lt;source src="podcast-with-loud-background.mp3" type="audio/mpeg"&gt;
+    Twoja przeglądarka nie obsługuje elementu audio.
+&lt;/audio&gt;
+&lt;p&gt;Wysłuchaj naszego najnowszego podcastu o dostępności cyfrowej.&lt;/p&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Problemy:</h5>
+                            <ul>
+                                <li>Muzyka w tle jest tylko o 5-10 dB cichsza niż głos prowadzącego</li>
+                                <li>Nie ma opcji wyłączenia lub kontrolowania poziomu dźwięku tła</li>
+                                <li>Osoby z problemami słuchowymi mają trudności ze zrozumieniem treści</li>
+                                <li>Odbiór treści wymaga zwiększonego wysiłku poznawczego</li>
+                            </ul>
+                            <p style="color: #d32f2f;">Problem: Zbyt głośna muzyka w tle utrudnia zrozumienie mowy,
+                                szczególnie osobom z wadami słuchu lub zaburzeniami przetwarzania dźwięku.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Nagranie z cichym dźwiękiem tła</h4>
+                        <p>Nagranie podcastu z muzyką w tle, która jest wystarczająco cicha, aby nie zakłócać mowy:</p>
+                        <pre><code class="language-html">&lt;!-- Nagranie z cichym tłem muzycznym (różnica >20dB) --&gt;
+&lt;figure&gt;
+    &lt;audio controls&gt;
+        &lt;source src="podcast-with-quiet-background.mp3" type="audio/mpeg"&gt;
+        Twoja przeglądarka nie obsługuje elementu audio.
+    &lt;/audio&gt;
+    &lt;figcaption&gt;
+        Podcast o dostępności cyfrowej - dźwięk w tle jest o ponad 20dB cichszy niż głos prowadzącego.
+    &lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Cechy poprawnego nagrania:</h5>
+                            <ul>
+                                <li>Dźwięk tła jest o co najmniej 20 dB cichszy niż głos prowadzącego</li>
+                                <li>Mowa jest wyraźna i łatwa do zrozumienia</li>
+                                <li>Tło dźwiękowe nie rozprasza uwagi odbiorcy</li>
+                                <li>Nagranie jest dostępne dla szerszego grona odbiorców, w tym osób z wadami słuchu
+                                </li>
+                            </ul>
+                            <p style="color: #4caf50;">Rozwiązanie: Odpowiednio zbalansowane poziomy głośności
+                                zapewniają dostępność nagrania dla osób z problemami słuchowymi.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Nagranie bez dźwięku tła</h4>
+                        <p>Nagranie podcastu bez żadnych dźwięków tła:</p>
+                        <pre><code class="language-html">&lt;!-- Nagranie bez dźwięku tła --&gt;
+&lt;figure&gt;
+    &lt;audio controls&gt;
+        &lt;source src="podcast-no-background.mp3" type="audio/mpeg"&gt;
+        Twoja przeglądarka nie obsługuje elementu audio.
+    &lt;/audio&gt;
+    &lt;figcaption&gt;
+        Podcast o dostępności cyfrowej - nagranie bez dźwięku tła dla maksymalnej klarowności.
+    &lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Cechy poprawnego nagrania:</h5>
+                            <ul>
+                                <li>Całkowity brak dźwięku tła</li>
+                                <li>Maksymalna klarowność i zrozumiałość treści</li>
+                                <li>Optymalna dostępność dla osób z różnymi stopniami utraty słuchu</li>
+                                <li>Zmniejszone obciążenie poznawcze podczas słuchania</li>
+                            </ul>
+                            <p style="color: #4caf50;">Rozwiązanie: Całkowity brak dźwięku tła jest najlepszym
+                                rozwiązaniem dla maksymalnej dostępności.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Kontrola dźwięku tła</h4>
+                        <p>Nagranie podcastu z możliwością wyłączenia lub kontrolowania poziomu dźwięku tła:</p>
+                        <pre><code class="language-html">&lt;!-- Nagranie z kontrolą dźwięku tła --&gt;
+&lt;div class="audio-player"&gt;
+    &lt;audio id="podcast" controls&gt;
+        &lt;source src="podcast-with-background.mp3" type="audio/mpeg"&gt;
+        Twoja przeglądarka nie obsługuje elementu audio.
+    &lt;/audio&gt;
+    
+    &lt;div class="audio-controls"&gt;
+        &lt;label for="bg-toggle"&gt;Dźwięk tła:&lt;/label&gt;
+        &lt;button id="bg-toggle" onclick="toggleBackground()"&gt;Wyłącz dźwięk tła&lt;/button&gt;
+        
+        &lt;div&gt;
+            &lt;label for="bg-volume"&gt;Głośność tła:&lt;/label&gt;
+            &lt;input type="range" id="bg-volume" min="0" max="100" value="20" 
+                  onchange="adjustBackgroundVolume(this.value)"&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;script&gt;
+        // Funkcja przełączająca dźwięk tła
+        function toggleBackground() {
+            // Kod JavaScript do przełączania dźwięku tła
+            // W rzeczywistej implementacji wymaga zaawansowanego 
+            // przetwarzania audio lub alternatywnego pliku bez tła
+        }
+        
+        // Funkcja dostosowująca głośność tła
+        function adjustBackgroundVolume(value) {
+            // Kod JavaScript do dostosowania głośności tła
+            // W rzeczywistej implementacji wymaga zaawansowanego
+            // przetwarzania audio
+        }
+    &lt;/script&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Cechy poprawnego rozwiązania:</h5>
+                            <div
+                                style="border: 1px solid #ddd; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                <div
+                                    style="background-color: #f5f5f5; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                                    <div
+                                        style="width: 100%; height: 36px; background-color: #ddd; border-radius: 18px; display: flex; align-items: center; padding: 0 10px;">
+                                        <div
+                                            style="width: 20px; height: 20px; background-color: #666; border-radius: 50%;">
+                                        </div>
+                                        <div
+                                            style="margin-left: 5px; margin-right: 5px; flex-grow: 1; height: 4px; background-color: #999; border-radius: 2px;">
+                                        </div>
+                                        <span>03:45 / 12:20</span>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 10px;">
+                                    <div style="margin-bottom: 10px;">
+                                        <label style="display: inline-block; width: 100px;">Dźwięk tła:</label>
+                                        <button
+                                            style="padding: 5px 10px; background-color: #4caf50; color: white; border: none; border-radius: 3px; cursor: pointer;">Wyłącz
+                                            dźwięk tła</button>
+                                    </div>
+                                    <div>
+                                        <label style="display: inline-block; width: 100px;">Głośność tła:</label>
+                                        <input type="range" min="0" max="100" value="20"
+                                            style="width: 200px; vertical-align: middle;">
+                                    </div>
+                                </div>
+                            </div>
+                            <ul>
+                                <li>Użytkownik może całkowicie wyłączyć dźwięk tła</li>
+                                <li>Dostępna jest kontrola głośności specjalnie dla dźwięku tła</li>
+                                <li>Domyślne ustawienie zapewnia dobrą słyszalność treści głównej</li>
+                                <li>Interfejs kontroli jest dostępny i łatwy w użyciu</li>
+                            </ul>
+                            <p style="color: #4caf50;">Rozwiązanie: Zapewnienie użytkownikowi kontroli nad dźwiękiem tła
+                                pozwala na dostosowanie nagrania do indywidualnych potrzeb.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips">
+                <h3>Wskazówki i techniki</h3>
+                <ul>
+                    <li><strong>Monitoruj poziomy dźwięku</strong> - Podczas produkcji nagrań audio używaj mierników
+                        poziomów dźwięku, aby zapewnić odpowiednią różnicę między głosem a tłem</li>
+                    <li><strong>Testuj różne urządzenia</strong> - Sprawdzaj, jak nagranie brzmi na różnych
+                        urządzeniach, w tym na głośnikach smartfonów i tabletów</li>
+                    <li><strong>Stosuj kompresję dynamiki</strong> - Używaj kompresji na głosie, aby zapewnić jego
+                        stały, wyraźny poziom</li>
+                    <li><strong>Korzystaj z filtrów</strong> - Stosuj filtry częstotliwości, aby głos i dźwięk tła nie
+                        konkurowały w tym samym zakresie częstotliwości</li>
+                    <li><strong>Zapewnij alternatywy</strong> - Oferuj różne wersje nagrania, w tym wersję bez dźwięku
+                        tła</li>
+                    <li><strong>Testuj z użytkownikami</strong> - Sprawdzaj, czy osoby z problemami słuchowymi mogą
+                        komfortowo korzystać z twoich nagrań</li>
+                    <li><strong>Unikaj nagłych zmian</strong> - Unikaj nagłych zmian głośności dźwięku tła, które mogą
+                        rozpraszać uwagę</li>
+                    <li><strong>Dodawaj transkrypcje</strong> - Dla maksymalnej dostępności, zawsze dołączaj
+                        transkrypcje tekstowe nagrań</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/low-or-no-background-audio.html"
+                            target="_blank" rel="noopener">Zrozumieć WCAG: Dźwięk w tle (cichy lub brak)</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio" target="_blank"
+                            rel="noopener">MDN Web Docs: Element audio HTML</a></li>
+                    <li><a href="https://www.w3.org/WAI/media/av/" target="_blank" rel="noopener">W3C WAI: Making Audio
+                            and Video Media Accessible</a></li>
+                    <li><a href="https://www.nngroup.com/articles/podcast-accessibility/" target="_blank"
+                            rel="noopener">Nielsen Norman Group: Accessibility for Podcasts</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.4.6.html">Poprzedni: 1.4.6 Kontrast (rozszerzony)</a></li>
+                    <li><a href="1.4.8.html">Następny: 1.4.8 Prezentacja wizualna</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

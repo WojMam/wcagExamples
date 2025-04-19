@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.4.10 Zawijanie tekstu - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.4.10 Zawijanie tekstu</h2>
+                <p class="criterion-level">Poziom AA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#reflow" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Treść może być prezentowana bez utraty informacji lub funkcjonalności oraz bez konieczności
+                    przewijania w dwóch wymiarach dla:</p>
+                <ul>
+                    <li>Treści przewijanej w pionie przy szerokości równoważnej 320 CSS pikseli;</li>
+                    <li>Treści przewijanej w poziomie przy wysokości równoważnej 256 CSS pikseli.</li>
+                </ul>
+                <p>Z wyjątkiem części treści, które wymagają układu dwuwymiarowego ze względu na sposób użytkowania lub
+                    znaczenie.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest zapewnienie, że treść może być oglądana i obsługiwana na małych ekranach
+                    lub przez użytkowników, którzy potrzebują powiększać tekst. Kryterium "Zawijanie tekstu" gwarantuje,
+                    że treść strony dostosuje się do dostępnej przestrzeni, bez konieczności przewijania w poziomie, co
+                    znacznie utrudnia czytanie i nawigację.</p>
+                <p>To kryterium jest szczególnie istotne dla użytkowników:
+                <ul>
+                    <li>korzystających z urządzeń mobilnych</li>
+                    <li>z wadami wzroku, którzy muszą powiększać treść</li>
+                    <li>z zaburzeniami poznawczymi, dla których przewijanie w dwóch wymiarach może być dezorientujące
+                    </li>
+                </ul>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - Strona z ustaloną szerokością</h4>
+                        <p>Strona zaprojektowana z ustaloną szerokością, która wymaga przewijania poziomego na wąskich
+                            ekranach:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.fixed-width-layout {
+    width: 900px; /* Stała szerokość */
+    margin: 0 auto;
+}
+
+.content-column {
+    width: 600px;
+    float: left;
+}
+
+.sidebar {
+    width: 280px;
+    float: right;
+}
+
+table {
+    width: 580px;
+    border-collapse: collapse;
+}
+&lt;/style&gt;
+
+&lt;div class="fixed-width-layout"&gt;
+    &lt;div class="content-column"&gt;
+        &lt;h1&gt;Nasza oferta&lt;/h1&gt;
+        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at purus a quam dignissim condimentum.&lt;/p&gt;
+        
+        &lt;table border="1"&gt;
+            &lt;tr&gt;
+                &lt;th&gt;Usługa&lt;/th&gt;
+                &lt;th&gt;Opis&lt;/th&gt;
+                &lt;th&gt;Cena&lt;/th&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Usługa 1&lt;/td&gt;
+                &lt;td&gt;Szczegółowy opis usługi 1&lt;/td&gt;
+                &lt;td&gt;100 zł&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+                &lt;td&gt;Usługa 2&lt;/td&gt;
+                &lt;td&gt;Szczegółowy opis usługi 2&lt;/td&gt;
+                &lt;td&gt;200 zł&lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/table&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="sidebar"&gt;
+        &lt;h2&gt;Aktualności&lt;/h2&gt;
+        &lt;p&gt;Najnowsze informacje o naszej firmie.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd (wizualizacja tego, jak strona wygląda na wąskim ekranie):</h5>
+                            <div class="preview-content"
+                                style="position: relative; overflow-x: auto; border: 2px dashed #ddd; max-width: 320px; padding: 0;">
+                                <div
+                                    style="width: 900px; background-color: #f8f9fa; padding: 10px; position: relative;">
+                                    <div
+                                        style="width: 600px; float: left; background-color: white; padding: 10px; box-sizing: border-box;">
+                                        <h1 style="margin-top: 0;">Nasza oferta</h1>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at purus a quam
+                                            dignissim condimentum.</p>
+
+                                        <table style="width: 580px; border-collapse: collapse; border: 1px solid #ddd;">
+                                            <tr style="background-color: #f2f2f2;">
+                                                <th style="padding: 8px; border: 1px solid #ddd;">Usługa</th>
+                                                <th style="padding: 8px; border: 1px solid #ddd;">Opis</th>
+                                                <th style="padding: 8px; border: 1px solid #ddd;">Cena</th>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 8px; border: 1px solid #ddd;">Usługa 1</td>
+                                                <td style="padding: 8px; border: 1px solid #ddd;">Szczegółowy opis
+                                                    usługi 1</td>
+                                                <td style="padding: 8px; border: 1px solid #ddd;">100 zł</td>
+                                            </tr>
+                                            <tr>
+                                                <td style="padding: 8px; border: 1px solid #ddd;">Usługa 2</td>
+                                                <td style="padding: 8px; border: 1px solid #ddd;">Szczegółowy opis
+                                                    usługi 2</td>
+                                                <td style="padding: 8px; border: 1px solid #ddd;">200 zł</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                    <div
+                                        style="width: 280px; float: right; background-color: #e9ecef; padding: 10px; box-sizing: border-box;">
+                                        <h2 style="margin-top: 0;">Aktualności</h2>
+                                        <p>Najnowsze informacje o naszej firmie.</p>
+                                    </div>
+                                    <div style="clear: both;"></div>
+                                </div>
+                                <div
+                                    style="position: absolute; bottom: 5px; right: 5px; background-color: rgba(255, 255, 255, 0.8); padding: 5px; font-size: 12px; color: #666; border-radius: 3px;">
+                                    ← przewiń poziomo →
+                                </div>
+                            </div>
+                            <p style="color: #d32f2f; margin-top: 10px;">Problem: Układ o stałej szerokości 900px nie
+                                dostosuje się do małych ekranów (np. 320px). Użytkownik musi przewijać poziomo, aby
+                                zobaczyć całą zawartość, co znacznie utrudnia korzystanie ze strony.</p>
+                        </div>
+
+                        <p>Problemy w tym przykładzie:</p>
+                        <ul>
+                            <li>Układ strony ma ustaloną szerokość 900px, która nie dostosowuje się do mniejszych
+                                ekranów</li>
+                            <li>Dwukolumnowy układ z ustalonymi szerokościami nie zawijają się na wąskich ekranach</li>
+                            <li>Tabela z ustaloną szerokością wychodzi poza granice ekranu mobilnego</li>
+                            <li>Użytkownik musi przewijać w poziomie, aby zobaczyć całą zawartość</li>
+                            <li>Osoby powiększające treść (np. ze względu na problemy ze wzrokiem) będą miały trudności
+                                z korzystaniem ze strony</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Responsywny układ strony</h4>
+                        <p>Responsywny układ, który dostosowuje się do szerokości ekranu:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.responsive-layout {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0 15px;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.content-column {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.sidebar {
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+th, td {
+    word-wrap: break-word;
+}
+
+/* Dla większych ekranów - układ dwukolumnowy */
+@media (min-width: 768px) {
+    .content-column {
+        width: 65%;
+        float: left;
+        padding-right: 15px;
+    }
+    
+    .sidebar {
+        width: 35%;
+        float: right;
+        padding-left: 15px;
+        margin-top: 0;
+    }
+}
+
+/* Na bardzo małych ekranach upraszczamy tabelę */
+@media (max-width: 480px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    
+    tr {
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+    }
+    
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+    
+    td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+    }
+    
+    td:nth-of-type(1):before { content: "Usługa"; }
+    td:nth-of-type(2):before { content: "Opis"; }
+    td:nth-of-type(3):before { content: "Cena"; }
+}
+&lt;/style&gt;
+
+&lt;div class="responsive-layout"&gt;
+    &lt;div class="row"&gt;
+        &lt;div class="content-column"&gt;
+            &lt;h1&gt;Nasza oferta&lt;/h1&gt;
+            &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at purus a quam dignissim condimentum.&lt;/p&gt;
+            
+            &lt;table border="1"&gt;
+                &lt;thead&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;Usługa&lt;/th&gt;
+                        &lt;th&gt;Opis&lt;/th&gt;
+                        &lt;th&gt;Cena&lt;/th&gt;
+                    &lt;/tr&gt;
+                &lt;/thead&gt;
+                &lt;tbody&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Usługa 1&lt;/td&gt;
+                        &lt;td&gt;Szczegółowy opis usługi 1&lt;/td&gt;
+                        &lt;td&gt;100 zł&lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;td&gt;Usługa 2&lt;/td&gt;
+                        &lt;td&gt;Szczegółowy opis usługi 2&lt;/td&gt;
+                        &lt;td&gt;200 zł&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/tbody&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="sidebar"&gt;
+            &lt;h2&gt;Aktualności&lt;/h2&gt;
+            &lt;p&gt;Najnowsze informacje o naszej firmie.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd (wizualizacja na wąskim ekranie):</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="max-width: 320px; margin: 0 auto; background-color: #f8f9fa; padding: 10px; box-sizing: border-box;">
+                                    <div
+                                        style="width: 100%; background-color: white; padding: 10px; box-sizing: border-box;">
+                                        <h1 style="margin-top: 0; font-size: 24px;">Nasza oferta</h1>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at purus a quam
+                                            dignissim condimentum.</p>
+
+                                        <!-- Responsywna tabela przekształcona w widok mobilny -->
+                                        <div style="margin-bottom: 15px;">
+                                            <div style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px;">
+                                                <div style="font-weight: bold; margin-bottom: 5px;">Usługa:</div>
+                                                <div>Usługa 1</div>
+                                                <div style="font-weight: bold; margin: 5px 0;">Opis:</div>
+                                                <div>Szczegółowy opis usługi 1</div>
+                                                <div style="font-weight: bold; margin: 5px 0;">Cena:</div>
+                                                <div>100 zł</div>
+                                            </div>
+                                            <div style="border: 1px solid #ddd; padding: 10px;">
+                                                <div style="font-weight: bold; margin-bottom: 5px;">Usługa:</div>
+                                                <div>Usługa 2</div>
+                                                <div style="font-weight: bold; margin: 5px 0;">Opis:</div>
+                                                <div>Szczegółowy opis usługi 2</div>
+                                                <div style="font-weight: bold; margin: 5px 0;">Cena:</div>
+                                                <div>200 zł</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="width: 100%; background-color: #e9ecef; padding: 10px; box-sizing: border-box; margin-top: 15px;">
+                                        <h2 style="margin-top: 0; font-size: 20px;">Aktualności</h2>
+                                        <p>Najnowsze informacje o naszej firmie.</p>
+                                    </div>
+                                </div>
+                                <p style="color: #4caf50; margin-top: 10px;">Rozwiązanie: Responsywny układ dostosowuje
+                                    się do szerokości ekranu. Na wąskich ekranach kolumny układają się jedna pod drugą,
+                                    a tabela jest przekształcana w format bardziej przyjazny dla urządzeń mobilnych,
+                                    eliminując potrzebę przewijania poziomego.</p>
+                            </div>
+                        </div>
+
+                        <p>Zalety tego rozwiązania:</p>
+                        <ul>
+                            <li>Układ stosuje szerokość względną (100%) i dostosowuje się do dostępnej przestrzeni</li>
+                            <li>Media queries są używane do zmiany układu w zależności od rozmiaru ekranu</li>
+                            <li>Na mniejszych ekranach dwukolumnowy układ zmienia się w jednokolumnowy (kolumny układają
+                                się jedna pod drugą)</li>
+                            <li>Tabela jest przekształcana na wąskich ekranach, aby zapobiec przewijaniu poziomemu</li>
+                            <li>Zawartość można łatwo powiększyć do 200% bez potrzeby przewijania poziomego</li>
+                            <li>Model pudełkowy (box-sizing: border-box) gwarantuje, że padding i border są wliczane w
+                                całkowitą szerokość elementów</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - Obrazy o stałych wymiarach</h4>
+                        <p>Strona z dużym obrazem o ustalonej szerokości, który nie dopasowuje się do ekranu:</p>
+                        <pre><code class="language-html">&lt;div class="content"&gt;
+    &lt;h1&gt;Nasza galeria&lt;/h1&gt;
+    &lt;p&gt;Zobacz zdjęcia z naszego ostatniego wydarzenia:&lt;/p&gt;
+    
+    &lt;!-- Obraz o ustalonej szerokości --&gt;
+    &lt;img src="event-photo.jpg" width="800" height="500" alt="Zdjęcie z wydarzenia"&gt;
+    
+    &lt;p&gt;Powyższe zdjęcie przedstawia uczestników naszego ostatniego spotkania branżowego.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd (wizualizacja na wąskim ekranie):</h5>
+                            <div class="preview-content"
+                                style="position: relative; overflow-x: auto; border: 2px dashed #ddd; max-width: 320px; padding: 10px 0;">
+                                <div style="width: 800px;">
+                                    <h1 style="margin-top: 0; font-size: 24px; padding: 0 10px;">Nasza galeria</h1>
+                                    <p style="padding: 0 10px;">Zobacz zdjęcia z naszego ostatniego wydarzenia:</p>
+
+                                    <div
+                                        style="width: 800px; height: 200px; background-color: #e9e9e9; display: flex; justify-content: center; align-items: center; color: #666;">
+                                        [Obraz: Zdjęcie z wydarzenia - 800×500px]
+                                    </div>
+
+                                    <p style="padding: 0 10px;">Powyższe zdjęcie przedstawia uczestników naszego
+                                        ostatniego spotkania branżowego.</p>
+                                </div>
+                                <div
+                                    style="position: absolute; bottom: 5px; right: 5px; background-color: rgba(255, 255, 255, 0.8); padding: 5px; font-size: 12px; color: #666; border-radius: 3px;">
+                                    ← przewiń poziomo →
+                                </div>
+                            </div>
+                            <p style="color: #d32f2f; margin-top: 10px;">Problem: Obraz o stałej szerokości 800px
+                                wymusza przewijanie poziome na wąskich ekranach (np. 320px). Użytkownik musi przewijać,
+                                aby zobaczyć cały obraz i tekst.</p>
+                        </div>
+
+                        <p>Problemy w tym przykładzie:</p>
+                        <ul>
+                            <li>Obraz ma ustawione sztywne wymiary (width="800" height="500"), które nie dopasowują się
+                                do szerokości ekranu</li>
+                            <li>Na urządzeniach mobilnych lub przy dużym powiększeniu, obraz wymusza przewijanie poziome
+                            </li>
+                            <li>Brak technik responsywnego wyświetlania obrazów</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Responsywne obrazy</h4>
+                        <p>Strona z obrazem, który dostosowuje się do szerokości ekranu:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.responsive-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Opcjonalnie: Zastosowanie art direction dla różnych rozmiarów ekranu */
+.image-container {
+    width: 100%;
+    margin: 20px 0;
+}
+
+figure {
+    margin: 0;
+}
+
+figcaption {
+    font-style: italic;
+    margin-top: 8px;
+    font-size: 0.9em;
+}
+&lt;/style&gt;
+
+&lt;div class="responsive-content"&gt;
+    &lt;h1&gt;Nasza galeria&lt;/h1&gt;
+    &lt;p&gt;Zobacz zdjęcia z naszego ostatniego wydarzenia:&lt;/p&gt;
+    
+    &lt;div class="image-container"&gt;
+        &lt;figure&gt;
+            &lt;!-- Responsywny obraz --&gt;
+            &lt;picture&gt;
+                &lt;source media="(max-width: 480px)" srcset="event-photo-mobile.jpg"&gt;
+                &lt;source media="(max-width: 768px)" srcset="event-photo-tablet.jpg"&gt;
+                &lt;img src="event-photo.jpg" alt="Zdjęcie z wydarzenia" class="responsive-image"&gt;
+            &lt;/picture&gt;
+            &lt;figcaption&gt;Uczestnicy naszego ostatniego spotkania branżowego.&lt;/figcaption&gt;
+        &lt;/figure&gt;
+    &lt;/div&gt;
+    
+    &lt;p&gt;Spotkanie odbyło się w dniach 10-12 maja i wzięło w nim udział ponad 100 specjalistów z branży.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd (wizualizacja na wąskim ekranie):</h5>
+                            <div class="preview-content">
+                                <div style="max-width: 320px; margin: 0 auto; padding: 10px; box-sizing: border-box;">
+                                    <h1 style="margin-top: 0; font-size: 24px;">Nasza galeria</h1>
+                                    <p>Zobacz zdjęcia z naszego ostatniego wydarzenia:</p>
+
+                                    <div style="width: 100%; margin: 20px 0;">
+                                        <figure style="margin: 0;">
+                                            <div
+                                                style="width: 100%; height: 160px; background-color: #e9e9e9; display: flex; justify-content: center; align-items: center; color: #666;">
+                                                [Responsywny obraz dopasowany do ekranu]
+                                            </div>
+                                            <figcaption style="font-style: italic; margin-top: 8px; font-size: 0.9em;">
+                                                Uczestnicy naszego ostatniego spotkania branżowego.</figcaption>
+                                        </figure>
+                                    </div>
+
+                                    <p>Spotkanie odbyło się w dniach 10-12 maja i wzięło w nim udział ponad 100
+                                        specjalistów z branży.</p>
+                                </div>
+                                <p style="color: #4caf50; margin-top: 10px;">Rozwiązanie: Obraz automatycznie
+                                    dostosowuje się do szerokości ekranu dzięki właściwości max-width: 100%. Dodatkowo,
+                                    element picture pozwala na dostarczenie różnych wersji obrazu w zależności od
+                                    rozmiaru ekranu.</p>
+                            </div>
+                        </div>
+
+                        <p>Zalety tego rozwiązania:</p>
+                        <ul>
+                            <li>Obraz dostosowuje się do szerokości kontenera dzięki właściwości
+                                <code>max-width: 100%; height: auto;</code></li>
+                            <li>Element <code>&lt;picture&gt;</code> umożliwia zastosowanie różnych wersji obrazu dla
+                                różnych rozmiarów ekranu (art direction)</li>
+                            <li>Na małych ekranach można dostarczyć mniejsze, bardziej przycięte wersje obrazów, co
+                                poprawia użyteczność i wydajność</li>
+                            <li>Obraz nie wymusza przewijania poziomego, nawet na bardzo wąskich ekranach</li>
+                            <li>Strona zachowuje czytelność przy dowolnym poziomie powiększenia, co jest kluczowe dla
+                                użytkowników z wadami wzroku</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips">
+                <h3>Wskazówki i techniki</h3>
+                <ul>
+                    <li><strong>Wykorzystuj responsywny design</strong> - Projektuj strony z myślą o różnych rozmiarach
+                        ekranów, stosując podejście "mobile first"</li>
+                    <li><strong>Używaj względnych jednostek</strong> - Stosuj procentowe szerokości, jednostki em, rem
+                        zamiast stałych pikseli</li>
+                    <li><strong>Dodawaj metatag viewport</strong> -
+                        <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code>
+                        zapewnia prawidłowe skalowanie na urządzeniach mobilnych</li>
+                    <li><strong>Używaj Media Queries</strong> - Dostosowuj układ strony do różnych szerokości ekranów za
+                        pomocą CSS Media Queries</li>
+                    <li><strong>Stosuj elastyczne obrazy</strong> - Używaj <code>max-width: 100%; height: auto;</code>
+                        dla obrazów, aby automatycznie dopasowywały się do szerokości kontenera</li>
+                    <li><strong>Responsywne tabele</strong> - Przekształcaj tabele na wąskich ekranach (np. zmieniając
+                        je w karty lub listy) lub implementuj poziome przewijanie tylko dla tabeli, nie dla całej strony
+                    </li>
+                    <li><strong>Zapewniaj odpowiednie odstępy dotykowe</strong> - Elementy klikalne powinny mieć
+                        wystarczającą wielkość (min. 44x44px) i odpowiednie odstępy na ekranach dotykowych</li>
+                    <li><strong>Testuj na różnych urządzeniach</strong> - Sprawdzaj swoją stronę na różnych rozmiarach
+                        ekranów i poziomach powiększenia</li>
+                    <li><strong>Używaj CSS Flexbox i Grid</strong> - Te nowoczesne techniki CSS ułatwiają tworzenie
+                        elastycznych układów</li>
+                    <li><strong>Uwzględniaj wyjątki</strong> - Pamiętaj, że niektóre elementy, jak mapy czy
+                        skomplikowane wykresy, mogą wymagać dwuwymiarowego układu</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/reflow.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG: Zawijanie tekstu</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design"
+                            target="_blank" rel="noopener">MDN Web Docs: Responsive Design</a></li>
+                    <li><a href="https://web.dev/responsive-web-design-basics/" target="_blank" rel="noopener">web.dev:
+                            Podstawy responsywnego projektowania stron</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/page-structure/responsive/" target="_blank"
+                            rel="noopener">W3C WAI: Responsive Design</a></li>
+                    <li><a href="https://developers.google.com/web/fundamentals/design-and-ux/responsive/"
+                            target="_blank" rel="noopener">Google Developers: Responsywne projektowanie stron</a></li>
+                    <li><a href="https://caniuse.com/" target="_blank" rel="noopener">Can I Use - sprawdź wsparcie
+                            przeglądarek dla funkcji responsywnych</a></li>
+                </ul>
+            </div>
+
+            <nav class="guidelines-nav" aria-label="Nawigacja między wytycznymi">
+                <ul>
+                    <li><a href="1.4.9.html">Poprzedni: 1.4.9 Obrazy tekstu (bez wyjątków)</a></li>
+                    <li><a href="1.4.11.html">Następny: 1.4.11 Kontrast elementów nietekstowych</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

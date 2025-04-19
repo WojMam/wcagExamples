@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.4.6 Kontrast (rozszerzony) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.4.6 Kontrast (rozszerzony)</h2>
+                <p class="criterion-level">Poziom AAA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#contrast-enhanced" target="_blank"
+                            rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Kontrast wizualny pomiędzy tekstem a tłem jest przynajmniej na poziomie 7:1, z wyjątkiem
+                    następujących przypadków:</p>
+                <ul>
+                    <li><strong>Duży tekst:</strong> Tekst w dużym rozmiarze i obrazy dużego tekstu mają kontrast
+                        przynajmniej 4,5:1</li>
+                    <li><strong>Tekst incydentalny:</strong> Dla tekstu lub obrazów tekstu, które są częścią
+                        nieaktywnego komponentu interfejsu, które są czysto dekoracyjne, nie są widoczne dla nikogo lub
+                        są częścią obrazu zawierającego inne istotne treści wizualne - nie określa się wymagań
+                        dotyczących kontrastu</li>
+                    <li><strong>Logotypy:</strong> Dla tekstu, który jest częścią logo lub nazwy marki - nie określa się
+                        wymagań dotyczących kontrastu</li>
+                </ul>
+
+                <h3>Intencja</h3>
+                <p>Kryterium to rozszerza wymagania dotyczące kontrastu z kryterium 1.4.3 (poziom AA) do wyższego
+                    poziomu, zapewniając większą dostępność dla osób z poważnymi wadami wzroku, które nie korzystają z
+                    technologii wspomagających. Wyższy współczynnik kontrastu (7:1) pozwala osobom z umiarkowaną utratą
+                    czułości na kontrast (około 40 dB) na odróżnienie kolorów i czytanie tekstu.</p>
+                <p>Jest to kryterium poziomu AAA, więc nie jest wymagane do zgodności z podstawowymi standardami WCAG
+                    2.1, ale zapewnia wyższy poziom dostępności i lepsze doświadczenie użytkownika dla osób z wadami
+                    wzroku.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - Niewystarczający kontrast tekstu</h4>
+                        <p>Strona używająca kolorów, które spełniają minimalny kontrast (poziom AA - 4,5:1), ale nie
+                            spełniają wymagań dla kontrastu rozszerzonego (poziom AAA - 7:1):</p>
+                        <pre><code class="language-html">&lt;style&gt;
+body {
+    background-color: #f5f5f5;
+    color: #767676; /* Kontrast około 4,6:1 względem tła - spełnia AA, ale nie AAA */
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #3a7ab8; /* Kontrast około 4,8:1 względem tła - spełnia AA, ale nie AAA */
+}
+
+.note {
+    font-size: 14px;
+    color: #5a5a5a; /* Kontrast około 6:1 względem tła - lepszy, ale wciąż poniżej 7:1 */
+}
+&lt;/style&gt;
+
+&lt;div class="content"&gt;
+    &lt;h1&gt;Witamy na naszej stronie&lt;/h1&gt;
+    &lt;p&gt;To jest przykładowy tekst z kontrastem, który spełnia poziom AA, ale nie AAA.&lt;/p&gt;
+    &lt;p class="note"&gt;Ważna informacja dla użytkowników naszej platformy.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content"
+                                style="background-color: #f5f5f5; padding: 20px; border-radius: 5px;">
+                                <h1 style="color: #3a7ab8; margin-top: 0;">Witamy na naszej stronie</h1>
+                                <p style="color: #767676;">To jest przykładowy tekst z kontrastem, który spełnia poziom
+                                    AA, ale nie AAA.</p>
+                                <p style="font-size: 14px; color: #5a5a5a;">Ważna informacja dla użytkowników naszej
+                                    platformy.</p>
+                                <p style="color: #d32f2f; margin-top: 20px;">Problem: Kolory tekstu mają kontrast
+                                    poniżej 7:1 względem tła. Tekst nagłówka (niebieski) i tekst główny (szary) nie
+                                    spełniają wymagań kontrastu rozszerzonego.</p>
+                            </div>
+                        </div>
+
+                        <p>Problem: Użyte kolory zapewniają kontrast w zakresie 4,5:1 - 6:1, co jest wystarczające dla
+                            poziomu AA, ale niewystarczające dla poziomu AAA, który wymaga kontrastu 7:1. Osoby z
+                            poważniejszymi wadami wzroku lub utratą czułości na kontrast mogą mieć trudności z
+                            odczytaniem tekstu.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Poprawiony kontrast tekstu</h4>
+                        <p>Ta sama strona z kolorami zapewniającymi wysoki kontrast 7:1 lub wyższy:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+body {
+    background-color: #f5f5f5;
+    color: #595959; /* Kontrast około 7:1 względem tła - spełnia AAA */
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #2d62a3; /* Kontrast około 7,1:1 względem tła - spełnia AAA */
+}
+
+.note {
+    font-size: 14px;
+    color: #4c4c4c; /* Kontrast około 8:1 względem tła - spełnia AAA */
+    font-weight: bold;
+}
+&lt;/style&gt;
+
+&lt;div class="content"&gt;
+    &lt;h1&gt;Witamy na naszej stronie&lt;/h1&gt;
+    &lt;p&gt;To jest przykładowy tekst z kontrastem, który spełnia poziom AAA.&lt;/p&gt;
+    &lt;p class="note"&gt;Ważna informacja dla użytkowników naszej platformy.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content"
+                                style="background-color: #f5f5f5; padding: 20px; border-radius: 5px;">
+                                <h1 style="color: #2d62a3; margin-top: 0;">Witamy na naszej stronie</h1>
+                                <p style="color: #595959;">To jest przykładowy tekst z kontrastem, który spełnia poziom
+                                    AAA.</p>
+                                <p style="font-size: 14px; color: #4c4c4c; font-weight: bold;">Ważna informacja dla
+                                    użytkowników naszej platformy.</p>
+                                <p style="color: #4caf50; margin-top: 20px;">Rozwiązanie: Kolory tekstu zostały
+                                    dostosowane, aby zapewnić kontrast co najmniej 7:1 względem tła. Zarówno nagłówek,
+                                    jak i tekst główny spełniają wymagania kontrastu rozszerzonego.</p>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Użyte kolory zapewniają kontrast 7:1 lub wyższy, spełniając wymagania poziomu
+                            AAA:</p>
+                        <ul>
+                            <li>Kolor tekstu głównego został zmieniony na ciemniejszy odcień szarości (#595959),
+                                zapewniając kontrast 7:1</li>
+                            <li>Kolor nagłówka zmieniono na ciemniejszy niebieski (#2d62a3), zapewniając kontrast 7,1:1
+                            </li>
+                            <li>Kolor tekstu notatki zmieniono na jeszcze ciemniejszy (#4c4c4c) i dodano pogrubienie, co
+                                znacznie poprawia czytelność</li>
+                            <li>Wszystkie teksty są teraz dostępne dla osób z poważniejszymi wadami wzroku</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - Teksty na obrazach tła</h4>
+                        <p>Sekcja nagłówkowa z tekstem na obrazie tła, który nie zapewnia wystarczającego kontrastu:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.hero {
+    background-image: url('background-image.jpg'); /* Jasny, kolorowy obraz */
+    background-size: cover;
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.hero h2 {
+    color: #ffffff; /* Biały tekst na zróżnicowanym tle obrazu */
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #f0f0f0; /* Jasny tekst na zróżnicowanym tle obrazu */
+    font-size: 18px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+&lt;/style&gt;
+
+&lt;div class="hero"&gt;
+    &lt;h2&gt;Innowacyjne rozwiązania&lt;/h2&gt;
+    &lt;p&gt;Oferujemy najnowocześniejsze usługi dostosowane do Twoich potrzeb.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="background-image: linear-gradient(to right, rgba(120, 180, 255, 0.7), rgba(70, 130, 200, 0.6)), url('https://via.placeholder.com/800x200'); background-size: cover; padding: 50px 20px; text-align: center; border-radius: 5px;">
+                                    <h2 style="color: #ffffff; font-size: 32px; margin-bottom: 20px;">Innowacyjne
+                                        rozwiązania</h2>
+                                    <p style="color: #f0f0f0; font-size: 18px; max-width: 800px; margin: 0 auto;">
+                                        Oferujemy najnowocześniejsze usługi dostosowane do Twoich potrzeb.</p>
+                                </div>
+                                <p style="color: #d32f2f; margin-top: 10px;">Problem: Biały tekst na kolorowym tle
+                                    obrazu ma niewystarczający kontrast w niektórych miejscach. Kontrast zmienia się w
+                                    zależności od części obrazu tła.</p>
+                            </div>
+                        </div>
+
+                        <p>Problem: Umieszczenie jasnego tekstu bezpośrednio na obrazie tła stwarza następujące
+                            problemy:</p>
+                        <ul>
+                            <li>Kontrast jest nierównomierny i zależy od różnych części obrazu tła</li>
+                            <li>W niektórych miejscach kontrast może być znacznie poniżej wymaganego poziomu 7:1</li>
+                            <li>Trudno jest zapewnić spójny kontrast na całym obrazie</li>
+                            <li>Osoby z wadami wzroku mogą nie być w stanie odczytać tekstu w obszarach o niskim
+                                kontraście</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Teksty na przejrzystym tle</h4>
+                        <p>Poprawiona sekcja nagłówkowa z tekstem na półprzezroczystym tle zapewniającym wysoki
+                            kontrast:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.hero {
+    background-image: url('background-image.jpg');
+    background-size: cover;
+    padding: 50px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.text-container {
+    background-color: rgba(0, 0, 0, 0.8); /* Półprzezroczyste ciemne tło za tekstem */
+    padding: 30px;
+    border-radius: 5px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.hero h2 {
+    color: #ffffff; /* Biały tekst na ciemnym tle - kontrast ponad 16:1 */
+    font-size: 32px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #ffffff; /* Biały tekst na ciemnym tle - kontrast ponad 16:1 */
+    font-size: 18px;
+    margin: 0;
+}
+&lt;/style&gt;
+
+&lt;div class="hero"&gt;
+    &lt;div class="text-container"&gt;
+        &lt;h2&gt;Innowacyjne rozwiązania&lt;/h2&gt;
+        &lt;p&gt;Oferujemy najnowocześniejsze usługi dostosowane do Twoich potrzeb.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="background-image: linear-gradient(to right, rgba(120, 180, 255, 0.7), rgba(70, 130, 200, 0.6)), url('https://via.placeholder.com/800x200'); background-size: cover; padding: 50px 20px; text-align: center; border-radius: 5px;">
+                                    <div
+                                        style="background-color: rgba(0, 0, 0, 0.8); padding: 30px; border-radius: 5px; max-width: 800px; margin: 0 auto;">
+                                        <h2
+                                            style="color: #ffffff; font-size: 32px; margin-top: 0; margin-bottom: 20px;">
+                                            Innowacyjne rozwiązania</h2>
+                                        <p style="color: #ffffff; font-size: 18px; margin: 0;">Oferujemy
+                                            najnowocześniejsze usługi dostosowane do Twoich potrzeb.</p>
+                                    </div>
+                                </div>
+                                <p style="color: #4caf50; margin-top: 10px;">Rozwiązanie: Półprzezroczyste ciemne tło za
+                                    tekstem zapewnia jednolity kontrast znacznie przekraczający 7:1 niezależnie od
+                                    obrazu tła.</p>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Dodanie półprzezroczystego ciemnego tła za tekstem rozwiązuje problemy z
+                            kontrastem:</p>
+                        <ul>
+                            <li>Ciemne tło o dużej nieprzezroczystości (0.8) zapewnia wysoki kontrast dla białego tekstu
+                            </li>
+                            <li>Kontrast białego tekstu na ciemnym tle wynosi ponad 16:1, znacznie przekraczając
+                                wymagane 7:1</li>
+                            <li>Kontrast jest jednolity i niezależny od zmienności obrazu tła</li>
+                            <li>Tekst jest wyraźnie czytelny dla wszystkich użytkowników, w tym osób z poważnymi wadami
+                                wzroku</li>
+                            <li>Estetyka obrazu tła jest zachowana, ale dostępność jest znacznie poprawiona</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Duży tekst</h4>
+                        <p>Przykład wykorzystujący wyjątek dla dużego tekstu, który ma niższe wymagania dotyczące
+                            kontrastu (4,5:1):</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.banner {
+    background-color: #e8f4ff;
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.banner h1 {
+    color: #2056a6; /* Kontrast około 5:1 względem tła - spełnia AAA dla dużego tekstu */
+    font-size: 48px; /* Duży tekst - ponad 24px */
+    margin: 0;
+}
+
+.banner .tagline {
+    color: #444444; /* Kontrast ponad 7:1 - spełnia AAA dla normalnego tekstu */
+    font-size: 18px;
+    margin-top: 10px;
+}
+&lt;/style&gt;
+
+&lt;div class="banner"&gt;
+    &lt;h1&gt;Pomożemy Ci Osiągnąć Sukces&lt;/h1&gt;
+    &lt;p class="tagline"&gt;Profesjonalne wsparcie na każdym etapie rozwoju Twojej firmy&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="background-color: #e8f4ff; padding: 30px; text-align: center; margin-bottom: 10px; border-radius: 5px;">
+                                    <h1 style="color: #2056a6; font-size: 48px; margin: 0;">Pomożemy Ci Osiągnąć Sukces
+                                    </h1>
+                                    <p style="color: #444444; font-size: 18px; margin-top: 10px;">Profesjonalne wsparcie
+                                        na każdym etapie rozwoju Twojej firmy</p>
+                                </div>
+                                <p style="color: #4caf50;">Poprawne: Duży nagłówek (48px) ma kontrast 5:1, co spełnia
+                                    wymagania AAA dla dużego tekstu (minimum 4,5:1). Mniejszy tekst (18px) ma kontrast
+                                    ponad 7:1, spełniając standardowe wymagania AAA.</p>
+                            </div>
+                        </div>
+
+                        <p>Wyjaśnienie: Ten przykład prawidłowo wykorzystuje wyjątek dla dużego tekstu:</p>
+                        <ul>
+                            <li>Duży nagłówek (48px) wymaga minimalnego kontrastu 4,5:1 nawet dla poziomu AAA</li>
+                            <li>Zastosowany niebieski kolor (#2056a6) na jasnoniebieskim tle (#e8f4ff) zapewnia kontrast
+                                około 5:1</li>
+                            <li>Mniejszy tekst (tagline) ma kontrast ponad 7:1, zgodnie z wymaganiami AAA dla normalnego
+                                tekstu</li>
+                            <li>To podejście jest zgodne z WCAG 2.1 i zapewnia dobrą czytelność, jednocześnie pozwalając
+                                na pewną elastyczność projektową dla dużych nagłówków</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips">
+                <h3>Wskazówki i techniki</h3>
+                <ul>
+                    <li><strong>Używaj narzędzi do sprawdzania kontrastu</strong> - Korzystaj z narzędzi takich jak
+                        WebAIM Contrast Checker, które pomogą ci ocenić, czy twoje kolory spełniają wymagania poziomu
+                        AAA</li>
+                    <li><strong>Wybieraj ciemniejsze kolory tekstu</strong> - Dla światłych teł wybieraj ciemniejsze
+                        odcienie tekstu niż byś używał dla spełnienia minimalnego kontrastu (AA)</li>
+                    <li><strong>Unikaj szarości</strong> - Szare kolory są trudniejsze w zapewnieniu wystarczającego
+                        kontrastu; często lepiej użyć głębokich, nasyconych kolorów</li>
+                    <li><strong>Dodawaj półprzezroczyste tła</strong> - Dla tekstu na obrazach lub złożonych tłach,
+                        dodaj półprzezroczyste tło za tekstem</li>
+                    <li><strong>Zwiększaj grubość czcionki</strong> - Pogrubienie tekstu może zwiększyć jego czytelność,
+                        nawet przy tym samym poziomie kontrastu</li>
+                    <li><strong>Testuj w skrajnych warunkach</strong> - Sprawdzaj czytelność przy słabym oświetleniu lub
+                        na ekranach o niskiej jakości</li>
+                    <li><strong>Unikaj gradientów pod tekstem</strong> - Jeśli używasz gradientów jako tła, upewnij się,
+                        że kontrast jest wystarczający w każdym miejscu tekstu</li>
+                    <li><strong>Pamiętaj o dysleksji</strong> - Wysoki kontrast nie zawsze jest najlepszy dla osób z
+                        dysleksją, dlatego rozważ możliwość przełączania kontrastów</li>
+                    <li><strong>Planuj projekt z myślą o kontraście</strong> - Zamiast dostosowywać kolory później,
+                        wybieraj paletę kolorów, która od początku spełnia wymagania AAA</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/contrast-enhanced.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG: Kontrast (rozszerzony)</a></li>
+                    <li><a href="https://webaim.org/resources/contrastchecker/" target="_blank" rel="noopener">WebAIM:
+                            Contrast Checker</a></li>
+                    <li><a href="https://contrast-ratio.com/" target="_blank" rel="noopener">Contrast Ratio
+                            Calculator</a></li>
+                    <li><a href="https://color.a11y.com/" target="_blank" rel="noopener">Color Contrast Accessibility
+                            Validator</a></li>
+                    <li><a href="https://www.w3.org/WAI/tips/designing/#provide-sufficient-contrast-between-foreground-and-background"
+                            target="_blank" rel="noopener">W3C WAI: Tips for Designing - Provide sufficient contrast</a>
+                    </li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="1.4.5.html">Poprzedni: 1.4.5 Obrazy tekstu</a></li>
+                    <li><a href="1.4.7.html">Następny: 1.4.7 Dźwięk w tle (cichy lub brak)</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

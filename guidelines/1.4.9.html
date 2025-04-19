@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1.4.9 Obrazy tekstu (bez wyjątków) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.4.9 Obrazy tekstu (bez wyjątków)</h2>
+                <p class="criterion-level">Poziom AAA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#images-of-text-no-exception" target="_blank"
+                            rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Obrazy tekstu są używane tylko jako czysta dekoracja lub gdy określona prezentacja tekstu jest
+                    niezbędna dla przekazywanej informacji.</p>
+
+                <p><strong>Uwaga:</strong> Logotypy (tekst, który jest częścią logo lub nazwy własnej marki) są uznawane
+                    za niezbędne.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest wyeliminowanie obrazów tekstu w sytuacjach, gdy ta sama prezentacja
+                    wizualna może zostać osiągnięta za pomocą zwykłego tekstu HTML z CSS. W przeciwieństwie do kryterium
+                    1.4.5 Obrazy tekstu (poziom AA), które dopuszcza obrazy tekstu, jeśli mogą być dostosowane
+                    wizualnie, to kryterium (poziom AAA) ogranicza użycie obrazów tekstu tylko do specyficznych
+                    sytuacji.</p>
+
+                <p>Prawdziwy tekst HTML (w przeciwieństwie do obrazów tekstu) zapewnia wiele korzyści:</p>
+                <ul>
+                    <li>Może być skalowany bez utraty jakości</li>
+                    <li>Można dostosować jego wygląd do potrzeb użytkownika</li>
+                    <li>Jest dostępny dla technologii wspomagających</li>
+                    <li>Można go wyszukiwać i kopiować</li>
+                    <li>Lepiej się renderuje na różnych urządzeniach i przy różnych ustawieniach</li>
+                </ul>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - Niepotrzebne użycie obrazu tekstu</h4>
+                        <p>Nagłówek zaprojektowany jako obraz, mimo że mógłby być zwykłym tekstem:</p>
+                        <pre><code class="language-html">&lt;!-- Nagłówek sekcji jako obraz tekstu --&gt;
+&lt;div class="section-header"&gt;
+    &lt;img src="header-our-services.png" alt="Nasze usługi" width="300" height="60"&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Oferujemy szeroki zakres usług w dziedzinie marketingu cyfrowego, 
+w tym optymalizację dla wyszukiwarek, marketing w mediach 
+społecznościowych oraz kampanie reklamowe.&lt;/p&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <div
+                                        style="display: inline-block; background-color: #3f51b5; padding: 15px 30px; color: white; font-size: 24px; font-weight: bold; border-radius: 4px; box-shadow: 0 3px 5px rgba(0,0,0,0.2);">
+                                        [Obraz: Nasze usługi]
+                                    </div>
+                                </div>
+                                <p style="margin-bottom: 20px;">Oferujemy szeroki zakres usług w dziedzinie marketingu
+                                    cyfrowego, w tym optymalizację dla wyszukiwarek, marketing w mediach
+                                    społecznościowych oraz kampanie reklamowe.</p>
+                                <p style="color: #d32f2f;">Problem: Nagłówek "Nasze usługi" jest obrazem, mimo że ten
+                                    sam efekt wizualny można osiągnąć za pomocą zwykłego tekstu HTML z formatowaniem
+                                    CSS.</p>
+                            </div>
+                        </div>
+
+                        <p>Problemy w tym przykładzie:</p>
+                        <ul>
+                            <li>Nagłówek jako obraz tekstu nie jest niezbędny do przekazania informacji</li>
+                            <li>Ten sam efekt wizualny można łatwo osiągnąć za pomocą HTML i CSS</li>
+                            <li>Obraz tekstu nie może być dostosowany do potrzeb użytkownika (np. zmiana rozmiaru,
+                                kontrastu)</li>
+                            <li>Obraz może tracić na jakości przy powiększeniu strony</li>
+                            <li>Tekst na obrazie nie może być wyszukiwany ani kopiowany</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Użycie HTML i CSS zamiast obrazu tekstu</h4>
+                        <p>Ten sam nagłówek zaimplementowany jako tekst HTML z formatowaniem CSS:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.section-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-title {
+    display: inline-block;
+    background-color: #3f51b5;
+    padding: 15px 30px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 4px;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.2);
+    margin: 0;
+}
+&lt;/style&gt;
+
+&lt;div class="section-header"&gt;
+    &lt;h2 class="section-title"&gt;Nasze usługi&lt;/h2&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Oferujemy szeroki zakres usług w dziedzinie marketingu cyfrowego, 
+w tym optymalizację dla wyszukiwarek, marketing w mediach 
+społecznościowych oraz kampanie reklamowe.&lt;/p&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div style="text-align: center; margin-bottom: 20px;">
+                                    <h2
+                                        style="display: inline-block; background-color: #3f51b5; padding: 15px 30px; color: white; font-size: 24px; font-weight: bold; border-radius: 4px; box-shadow: 0 3px 5px rgba(0,0,0,0.2); margin: 0;">
+                                        Nasze usługi</h2>
+                                </div>
+                                <p style="margin-bottom: 20px;">Oferujemy szeroki zakres usług w dziedzinie marketingu
+                                    cyfrowego, w tym optymalizację dla wyszukiwarek, marketing w mediach
+                                    społecznościowych oraz kampanie reklamowe.</p>
+                                <p style="color: #4caf50;">Rozwiązanie: Nagłówek jest teraz tekstem HTML, który można
+                                    sformatować za pomocą CSS, aby wyglądał tak samo jak obraz, ale z zachowaniem
+                                    wszystkich zalet prawdziwego tekstu.</p>
+                            </div>
+                        </div>
+
+                        <p>Zalety tego rozwiązania:</p>
+                        <ul>
+                            <li>Nagłówek jest teraz pełnoprawnym tekstem HTML, który zachowuje się jak każdy inny tekst
+                                na stronie</li>
+                            <li>Użytkownik może skalować stronę bez utraty jakości nagłówka</li>
+                            <li>Tekst może być dostosowany przez użytkownika (np. poprzez własne arkusze stylów)</li>
+                            <li>Technologie wspomagające mogą go odczytać bez polegania na tekście alternatywnym</li>
+                            <li>Wygląd można łatwo zmienić, modyfikując CSS, bez konieczności tworzenia nowego obrazu
+                            </li>
+                            <li>Wizualna prezentacja jest praktycznie identyczna z wersją obrazkową</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dopuszczalny przykład - Logo jako obraz tekstu</h4>
+                        <p>Zgodnie ze standardem, logo firmy może być obrazem tekstu:</p>
+                        <pre><code class="language-html">&lt;header&gt;
+    &lt;div class="logo"&gt;
+        &lt;img src="company-logo.png" alt="TechFirm - Innowacyjne rozwiązania technologiczne" width="200" height="60"&gt;
+    &lt;/div&gt;
+    &lt;nav&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;O nas&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Usługi&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="#"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <header
+                                    style="display: flex; justify-content: space-between; align-items: center; padding: 15px; border-bottom: 1px solid #eee; margin-bottom: 20px;">
+                                    <div class="logo">
+                                        <div
+                                            style="background-color: #2c3e50; color: white; padding: 10px 20px; display: inline-block; font-weight: bold; font-size: 20px; letter-spacing: 1px; border-radius: 4px;">
+                                            [Logo: TechFirm]
+                                        </div>
+                                    </div>
+                                    <nav>
+                                        <ul style="list-style: none; display: flex; margin: 0; padding: 0;">
+                                            <li style="margin-right: 20px;"><a href="#"
+                                                    style="text-decoration: none; color: #2c3e50;">Strona główna</a>
+                                            </li>
+                                            <li style="margin-right: 20px;"><a href="#"
+                                                    style="text-decoration: none; color: #2c3e50;">O nas</a></li>
+                                            <li style="margin-right: 20px;"><a href="#"
+                                                    style="text-decoration: none; color: #2c3e50;">Usługi</a></li>
+                                            <li><a href="#" style="text-decoration: none; color: #2c3e50;">Kontakt</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </header>
+                                <p style="color: #4caf50;">Dopuszczalne: Logo firmy jest uznawane za niezbędną
+                                    prezentację tekstu, więc może być obrazem nawet według kryterium 1.4.9.</p>
+                            </div>
+                        </div>
+
+                        <p>Wyjaśnienie:</p>
+                        <ul>
+                            <li>Logo firmy zawiera tekst, który jest częścią identyfikacji wizualnej marki</li>
+                            <li>Standard WCAG 2.1 wyraźnie wymienia logotypy jako wyjątek od zasady unikania obrazów
+                                tekstu</li>
+                            <li>Specyficzna prezentacja wizualna logo (krój pisma, układ, efekty) jest uznawana za
+                                niezbędną dla przekazania informacji o marce</li>
+                            <li>Ważne jest jednak, aby logo miało odpowiedni tekst alternatywny dla technologii
+                                wspomagających</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - Tekstura na tekście jako obraz</h4>
+                        <p>Użycie obrazu tekstu tylko dla efektu tekstury:</p>
+                        <pre><code class="language-html">&lt;!-- Nagłówek z efektem tekstury jako obraz --&gt;
+&lt;div class="textured-heading"&gt;
+    &lt;img src="textured-heading.png" alt="Nasze projekty" width="400" height="80"&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div style="text-align: center; margin: 20px 0;">
+                                    <div style="display: inline-block; position: relative;">
+                                        <div
+                                            style="font-size: 36px; font-weight: bold; background: url('https://via.placeholder.com/400x80/ffffff/333333?text=Tekstura') center; background-clip: text; -webkit-background-clip: text; color: transparent; text-shadow: 2px 2px 3px rgba(0,0,0,0.3);">
+                                            [Obraz: Nasze projekty]
+                                        </div>
+                                    </div>
+                                </div>
+                                <p style="color: #d32f2f;">Problem: Użyto obrazu tekstu tylko dla uzyskania efektu
+                                    tekstury na tekście, mimo że podobny efekt można osiągnąć za pomocą CSS.</p>
+                            </div>
+                        </div>
+
+                        <p>Problemy w tym przykładzie:</p>
+                        <ul>
+                            <li>Obraz tekstu został użyty wyłącznie w celu dodania efektu tekstury do tekstu</li>
+                            <li>Podobny efekt można uzyskać za pomocą nowszych technik CSS, takich jak background-clip:
+                                text</li>
+                            <li>Taki obraz nie jest niezbędny do przekazania informacji - sama treść "Nasze projekty"
+                                mogłaby być przekazana jako zwykły tekst</li>
+                            <li>Obraz tekstu ogranicza dostępność i możliwość dostosowania przez użytkownika</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Tekstura na tekście za pomocą CSS</h4>
+                        <p>Osiągnięcie podobnego efektu za pomocą nowszych technik CSS:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.textured-heading {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.textured-text {
+    font-size: 36px;
+    font-weight: bold;
+    background: url('texture.jpg') center;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.3);
+    padding: 10px;
+}
+&lt;/style&gt;
+
+&lt;div class="textured-heading"&gt;
+    &lt;h2 class="textured-text"&gt;Nasze projekty&lt;/h2&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div style="text-align: center; margin: 20px 0;">
+                                    <h2
+                                        style="font-size: 36px; font-weight: bold; background: url('https://via.placeholder.com/400x80/ffffff/333333?text=Tekstura') center; background-clip: text; -webkit-background-clip: text; color: transparent; text-shadow: 2px 2px 3px rgba(0,0,0,0.3); padding: 10px; display: inline-block;">
+                                        Nasze projekty</h2>
+                                </div>
+                                <p style="color: #4caf50;">Rozwiązanie: Uzyskano podobny efekt tekstury za pomocą
+                                    właściwości CSS background-clip: text, zachowując zalety prawdziwego tekstu HTML.
+                                </p>
+                            </div>
+                        </div>
+
+                        <p>Zalety tego rozwiązania:</p>
+                        <ul>
+                            <li>Zastosowano właściwość CSS background-clip: text, aby nadać teksturę tekstowi</li>
+                            <li>Tekst pozostaje prawdziwym tekstem HTML, a nie obrazem</li>
+                            <li>Użytkownik może skalować stronę bez utraty jakości tekstu</li>
+                            <li>Technologie wspomagające mogą odczytać tekst bezpośrednio</li>
+                            <li>Wygląd można łatwo zmodyfikować, zmieniając CSS</li>
+                            <li>Podobny efekt wizualny, ale z zachowaniem dostępności</li>
+                        </ul>
+                        <p><strong>Uwaga:</strong> Właściwość background-clip: text może wymagać prefiksu -webkit- dla
+                            maksymalnej zgodności z przeglądarkami.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips">
+                <h3>Wskazówki i techniki</h3>
+                <ul>
+                    <li><strong>Używaj tekstu HTML z CSS</strong> - Zawsze, gdy to możliwe, stosuj rzeczywisty tekst
+                        HTML z formatowaniem CSS zamiast obrazów tekstu</li>
+                    <li><strong>Web Fonts</strong> - Wykorzystuj czcionki internetowe (Google Fonts, Adobe Fonts itp.)
+                        dla specjalnych krojów pisma zamiast obrazów</li>
+                    <li><strong>Nowoczesne techniki CSS</strong> - Stosuj zaawansowane techniki CSS (text-shadow,
+                        gradients, transforms, filters) do uzyskania efektów specjalnych na tekście</li>
+                    <li><strong>Obrazy tekstu tylko gdy konieczne</strong> - Używaj obrazów tekstu tylko dla logo lub
+                        gdy jest to absolutnie niezbędne</li>
+                    <li><strong>SVG dla tekstów</strong> - Rozważ użycie SVG dla tekstów, które wymagają specjalnego
+                        formatowania - SVG jest skalowalne i może być dostępne</li>
+                    <li><strong>Alternatywy dla obrazów tekstu</strong> - Jeśli musisz użyć obrazu tekstu, zawsze
+                        zapewnij odpowiedni tekst alternatywny</li>
+                    <li><strong>Testuj dostępność</strong> - Sprawdzaj, czy strona pozostaje dostępna dla technologii
+                        wspomagających</li>
+                    <li><strong>Dbaj o responsywność</strong> - Upewnij się, że rozwiązanie działa dobrze na różnych
+                        urządzeniach i przy różnych rozmiarach ekranu</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/images-of-text-no-exception.html"
+                            target="_blank" rel="noopener">Zrozumieć WCAG: Obrazy tekstu (bez wyjątków)</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background-clip" target="_blank"
+                            rel="noopener">MDN Web Docs: background-clip</a></li>
+                    <li><a href="https://css-tricks.com/almanac/properties/b/background-clip/" target="_blank"
+                            rel="noopener">CSS-Tricks: background-clip</a></li>
+                    <li><a href="https://fonts.google.com/" target="_blank" rel="noopener">Google Fonts - darmowe
+                            czcionki internetowe</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/images/textual/" target="_blank" rel="noopener">W3C
+                            WAI: Obrazy tekstowe</a></li>
+                </ul>
+            </div>
+
+            <nav class="guidelines-nav" aria-label="Nawigacja między wytycznymi">
+                <ul>
+                    <li><a href="1.4.8.html">Poprzedni: 1.4.8 Prezentacja wizualna</a></li>
+                    <li><a href="1.4.10.html">Następny: 1.4.10 Zawijanie tekstu</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
