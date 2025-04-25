@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.1.2 Brak pułapki na klawiaturę - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.1.2 Brak pułapki na klawiaturę</h2>
+                <p class="criterion-level">Poziom A</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#no-keyboard-trap" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Jeśli fokus klawiatury może zostać przeniesiony do danego komponentu strony za pomocą interfejsu
+                    klawiatury, to może on być również przeniesiony poza ten komponent przy użyciu wyłącznie interfejsu
+                    klawiatury. Jeśli do tego celu wymagane jest użycie czegoś więcej niż zwykłych klawiszy strzałek,
+                    tabulatora lub innych standardowych metod wyjścia, użytkownik otrzymuje informację na temat metody
+                    przeniesienia fokusu.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest zapewnienie, że użytkownicy korzystający z klawiatury nie zostaną
+                    "uwięzieni" w części strony lub aplikacji. Pułapka na klawiaturę występuje, gdy użytkownik może
+                    nawigować do elementu za pomocą klawiatury, ale nie może opuścić tego elementu i przejść dalej -
+                    jest to poważna bariera dla osób korzystających wyłącznie z klawiatury.</p>
+                <p>Jeśli do opuszczenia elementu wymagane są niestandardowe skróty klawiaturowe, wówczas użytkownik musi
+                    zostać o tym poinformowany.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - modal bez możliwości zamknięcia klawiaturą</h4>
+                        <p>Okno modalne, które można otworzyć klawiaturą, ale zamknąć tylko kliknięciem myszy:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    width: 70%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+&lt;/style&gt;
+
+&lt;button onclick="openModal()"&gt;Otwórz modal&lt;/button&gt;
+
+&lt;div id="myModal" class="modal"&gt;
+    &lt;div class="modal-content"&gt;
+        &lt;span class="close" onclick="closeModal()"&gt;&times;&lt;/span&gt;
+        &lt;h2&gt;Tytuł okna modalnego&lt;/h2&gt;
+        &lt;p&gt;Treść okna modalnego...&lt;/p&gt;
+        &lt;input type="text" placeholder="Wprowadź dane"&gt;
+        &lt;button&gt;Zatwierdź&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function openModal() {
+    document.getElementById("myModal").style.display = "block";
+    // Przenosimy fokus do okna modalnego
+    document.querySelector(".modal-content input").focus();
+}
+
+function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+}
+&lt;/script&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <button>Otwórz modal</button>
+                                <p><em>Nie można przedstawić pełnej funkcjonalności w statycznym przykładzie, ale
+                                        problem polega na tym, że modal nie ma obsługi klawiatury do zamknięcia.</em>
+                                </p>
+                            </div>
+                        </div>
+
+                        <p>Problem: To okno modalne stanowi pułapkę na klawiaturę. Użytkownik może otworzyć je z
+                            klawiatury i fokus jest przenoszony do jego wnętrza, ale jedynym sposobem zamknięcia jest
+                            kliknięcie przycisku zamknięcia myszą - brak obsługi klawisza Escape lub innej metody
+                            zamknięcia z klawiatury.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - modal z pełną obsługą klawiatury</h4>
+                        <p>Okno modalne, które można otworzyć i zamknąć klawiaturą:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    width: 70%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:focus {
+    outline: 2px solid blue;
+}
+&lt;/style&gt;
+
+&lt;button onclick="openModal()"&gt;Otwórz modal&lt;/button&gt;
+
+&lt;div id="myModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-modal="true"&gt;
+    &lt;div class="modal-content"&gt;
+        &lt;span class="close" onclick="closeModal()" tabindex="0" role="button" aria-label="Zamknij"&gt;&times;&lt;/span&gt;
+        &lt;h2 id="modalTitle"&gt;Tytuł okna modalnego&lt;/h2&gt;
+        &lt;p&gt;Treść okna modalnego...&lt;/p&gt;
+        &lt;p&gt;Naciśnij ESC, aby zamknąć to okno.&lt;/p&gt;
+        &lt;input type="text" placeholder="Wprowadź dane"&gt;
+        &lt;button&gt;Zatwierdź&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+var modal = document.getElementById("myModal");
+var lastFocusedElement;
+
+function openModal() {
+    // Zapamiętaj element, który miał fokus przed otwarciem modala
+    lastFocusedElement = document.activeElement;
+    
+    modal.style.display = "block";
+    
+    // Przenosimy fokus do pierwszego elementu w modalu
+    var closeButton = document.querySelector(".close");
+    closeButton.focus();
+    
+    // Dodaj obsługę klawisza Escape
+    document.addEventListener("keydown", handleEscapeKey);
+    
+    // Ogranicz fokus do modalu (zapętlenie focus trap)
+    setupFocusTrap();
+}
+
+function closeModal() {
+    modal.style.display = "none";
+    
+    // Przywróć fokus do elementu, który miał go przed otwarciem modala
+    if (lastFocusedElement) {
+        lastFocusedElement.focus();
+    }
+    
+    // Usuń obsługę klawisza Escape
+    document.removeEventListener("keydown", handleEscapeKey);
+}
+
+function handleEscapeKey(event) {
+    if (event.key === "Escape") {
+        closeModal();
+    }
+}
+
+function setupFocusTrap() {
+    // Znajdź wszystkie fokusowalne elementy w modalu
+    var focusableElements = modal.querySelectorAll("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])");
+    var firstElement = focusableElements[0];
+    var lastElement = focusableElements[focusableElements.length - 1];
+    
+    // Ogranicz fokus do modalu
+    modal.addEventListener("keydown", function(e) {
+        if (e.key === "Tab") {
+            // Shift+Tab na pierwszym elemencie
+            if (e.shiftKey && document.activeElement === firstElement) {
+                e.preventDefault();
+                lastElement.focus();
+            } 
+            // Tab na ostatnim elemencie
+            else if (!e.shiftKey && document.activeElement === lastElement) {
+                e.preventDefault();
+                firstElement.focus();
+            }
+        }
+    });
+}
+&lt;/script&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <button>Otwórz modal</button>
+                                <p><em>W podglądzie nie widać pełnej funkcjonalności, ale ten modal można zamknąć
+                                        klawiszem ESC i przycisk zamknięcia jest dostępny z klawiatury.</em></p>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Ten modal jest w pełni dostępny z klawiatury. Można go zamknąć naciskając
+                            klawisz Escape lub aktywując przycisk zamknięcia (x) za pomocą klawisza Enter. Fokus jest
+                            "uwięziony" wewnątrz modalu, ale w sposób kontrolowany - można poruszać się między
+                            elementami, a po dojściu do ostatniego elementu, Tab przenosi fokus z powrotem do pierwszego
+                            elementu. Po zamknięciu modalu, fokus wraca do elementu, który miał go przed otwarciem.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - zagnieżdżone menu bez możliwości wyjścia</h4>
+                        <p>Zagnieżdżone menu, które przechwytuje wszystkie zdarzenia klawiatury:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.menu {
+    position: relative;
+    display: inline-block;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    min-width: 160px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.menu-item:hover .submenu,
+.menu-item:focus .submenu {
+    display: block;
+}
+&lt;/style&gt;
+
+&lt;div class="menu"&gt;
+    &lt;div class="menu-item" tabindex="0"&gt;
+        Menu główne
+        &lt;div class="submenu"&gt;
+            &lt;div class="menu-item" tabindex="0"&gt;
+                Podmenu 1
+                &lt;div class="submenu"&gt;
+                    &lt;div class="menu-item" tabindex="0"&gt;Pozycja 1&lt;/div&gt;
+                    &lt;div class="menu-item" tabindex="0"&gt;Pozycja 2&lt;/div&gt;
+                    &lt;div class="menu-item" tabindex="0"&gt;Pozycja 3&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="menu-item" tabindex="0"&gt;Podmenu 2&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// Przechwytywanie wszystkich zdarzeń klawiatury w podmenu
+var menuItems = document.querySelectorAll('.submenu .menu-item');
+menuItems.forEach(function(item) {
+    item.addEventListener('keydown', function(e) {
+        // Zapobieganie przeniesieniu fokusu poza podmenu
+        e.stopPropagation();
+        e.preventDefault();
+        
+        // Niestandardowa obsługa nawigacji w menu
+        if (e.key === 'ArrowDown') {
+            // Przejdź do następnego elementu
+            // ...
+        }
+    });
+});
+&lt;/script&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <p><em>W podglądzie nie można pokazać problemu - zagnieżdżone menu przechwytuje
+                                        wszystkie zdarzenia klawiatury, uniemożliwiając opuszczenie menu.</em></p>
+                            </div>
+                        </div>
+
+                        <p>Problem: Ten kod tworzy pułapkę na klawiaturę w zagnieżdżonym menu. Wszystkie zdarzenia
+                            klawiatury są przechwytywane wewnątrz podmenu (e.preventDefault() i e.stopPropagation()), co
+                            uniemożliwia użytkownikowi opuszczenie menu za pomocą klawiatury, np. za pomocą klawisza Tab
+                            lub Escape.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - menu z możliwością wyjścia</h4>
+                        <p>Menu zagnieżdżone z obsługą klawiatury i możliwością wyjścia:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.menu {
+    position: relative;
+    display: inline-block;
+}
+
+.submenu {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    min-width: 160px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.menu-item.active .submenu {
+    display: block;
+}
+&lt;/style&gt;
+
+&lt;div class="menu"&gt;
+    &lt;div class="menu-item" tabindex="0" aria-haspopup="true" aria-expanded="false"&gt;
+        Menu główne
+        &lt;div class="submenu" role="menu"&gt;
+            &lt;div class="menu-item" tabindex="-1" role="menuitem" aria-haspopup="true" aria-expanded="false"&gt;
+                Podmenu 1
+                &lt;div class="submenu" role="menu"&gt;
+                    &lt;div class="menu-item" tabindex="-1" role="menuitem"&gt;Pozycja 1&lt;/div&gt;
+                    &lt;div class="menu-item" tabindex="-1" role="menuitem"&gt;Pozycja 2&lt;/div&gt;
+                    &lt;div class="menu-item" tabindex="-1" role="menuitem"&gt;Pozycja 3&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="menu-item" tabindex="-1" role="menuitem"&gt;Podmenu 2&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// Obsługa zdarzeń klawiatury w menu
+document.querySelectorAll('.menu-item').forEach(function(item) {
+    item.addEventListener('keydown', function(e) {
+        var hasSubmenu = item.getAttribute('aria-haspopup') === 'true';
+        
+        if (e.key === 'Enter' || e.key === ' ') {
+            // Aktywacja menu/podmenu
+            e.preventDefault();
+            toggleSubmenu(item);
+        } 
+        else if (e.key === 'Escape') {
+            // Wyjście z podmenu
+            e.preventDefault();
+            closeSubmenu(item);
+            // Przywróć fokus do elementu nadrzędnego
+            var parent = item.parentElement.closest('.menu-item');
+            if (parent) {
+                parent.focus();
+            }
+        }
+        else if (e.key === 'ArrowDown' && hasSubmenu && item.getAttribute('aria-expanded') === 'true') {
+            // Nawigacja w dół w otwartym podmenu
+            e.preventDefault();
+            var submenu = item.querySelector('.submenu');
+            var firstItem = submenu.querySelector('.menu-item');
+            if (firstItem) {
+                firstItem.focus();
+            }
+        }
+        // Inne obsługi klawiszy...
+    });
+});
+
+function toggleSubmenu(item) {
+    var isExpanded = item.getAttribute('aria-expanded') === 'true';
+    item.setAttribute('aria-expanded', !isExpanded);
+    item.classList.toggle('active');
+    
+    if (!isExpanded) {
+        // Ustaw tabindex na 0 dla elementów podmenu, gdy jest otwarte
+        var submenuItems = item.querySelectorAll('.submenu .menu-item');
+        submenuItems.forEach(function(subItem) {
+            subItem.setAttribute('tabindex', '0');
+        });
+    }
+}
+
+function closeSubmenu(item) {
+    item.setAttribute('aria-expanded', 'false');
+    item.classList.remove('active');
+}
+&lt;/script&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <p><em>W podglądzie nie można pokazać pełnej funkcjonalności, ale to menu można
+                                        obsługiwać z klawiatury i opuścić za pomocą klawisza Escape.</em></p>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: To menu zapewnia pełną obsługę klawiatury, ale nie tworzy pułapki. Użytkownik
+                            może opuścić menu i podmenu za pomocą klawisza Escape. Menu wykorzystuje odpowiednie
+                            atrybuty ARIA, aby informować technologie wspomagające o swojej strukturze i stanie.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example note">
+                        <h4>Informacja o niestandardowym wyjściu z komponentu</h4>
+                        <p>Jeśli komponent wymaga niestandardowego sposobu wyjścia (innego niż Tab, Shift+Tab lub
+                            Escape), użytkownik musi być o tym poinformowany:</p>
+                        <pre><code class="language-html">&lt;div class="fullscreen-editor" tabindex="0"&gt;
+    &lt;p class="editor-instructions"&gt;
+        Naciśnij klawisz F10, aby wyjść z edytora i powrócić do głównej treści.
+    &lt;/p&gt;
+    &lt;textarea id="editor"&gt;&lt;/textarea&gt;
+&lt;/div&gt;</code></pre>
+                        <p>W tym przykładzie użytkownik jest wyraźnie poinformowany, że musi nacisnąć klawisz F10, aby
+                            opuścić edytor pełnoekranowy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/no-keyboard-trap.html" target="_blank"
+                            rel="noopener">Understanding Success Criterion 2.1.2: No Keyboard Trap</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G21" target="_blank"
+                            rel="noopener">G21: Ensuring that users are not trapped in content</a></li>
+                    <li><a href="https://www.w3.org/TR/wai-aria-practices/#dialog_modal" target="_blank"
+                            rel="noopener">WAI-ARIA Authoring Practices - Modal Dialog Example</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.1.1.html">Poprzedni: 2.1.1 Klawiatura</a></li>
+                    <li><a href="2.1.3.html">Następny: 2.1.3 Klawiatura (bez wyjątków)</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
