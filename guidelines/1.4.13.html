@@ -5,33 +5,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1.4.13 Treść spod kursora lub fokusu - Nieoficjalny przewodnik WCAG 2.1</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../styles.css">
 </head>
 
 <body>
-    <a href="#main" class="skip-link">Przejdź do treści</a>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
     <header>
-        <h1>Nieoficjalny przewodnik WCAG 2.1</h1>
-        <nav aria-label="Główna">
-            <ul>
-                <li><a href="../index.html">Strona główna</a></li>
-                <li><a href="../wytyczne.html">Wytyczne</a></li>
-                <li><a href="../o-projekcie.html">O projekcie</a></li>
-            </ul>
-        </nav>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
     </header>
 
     <main id="main">
-        <article>
-            <h2>1.4.13 Treść spod kursora lub fokusu (AA)</h2>
-            <p class="official-link">
-                <a href="https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus" target="_blank">
-                    Zobacz oficjalną wytyczną W3C (w języku angielskim)
-                </a>
-            </p>
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>1.4.13 Treść spod kursora lub fokusu</h2>
+                <p class="criterion-level">Poziom AA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#content-on-hover-or-focus" target="_blank"
+                            rel="noopener">Oficjalna dokumentacja W3C</a></p>
+                </div>
+            </div>
 
-            <section>
-                <h3>Kryterium</h3>
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
                 <p>W przypadku gdy najechanie wskaźnikiem (kursorem) lub fokus klawiatury powoduje wyświetlenie
                     dodatkowej treści, a następnie ukrycie jej, spełnione są następujące warunki:</p>
                 <ul>
@@ -46,9 +42,9 @@
                 </ul>
                 <p>Wyjątek: Prezentacja wizualna dodatkowej treści jest kontrolowana przez oprogramowanie użytkownika i
                     nie jest modyfikowana przez autora.</p>
-            </section>
+            </div>
 
-            <section>
+            <div class="criterion-description">
                 <h3>Intencja</h3>
                 <p>Celem tego kryterium jest zapewnienie, że użytkownicy mogą uzyskać dostęp do treści, która pojawia
                     się po najechaniu kursorem lub otrzymaniu fokusu, bez przypadkowej utraty tej treści. Dotyczy to
@@ -60,16 +56,16 @@
                     <li>Problemami ze wzrokiem, które mogą używać powiększenia ekranu, co zmniejsza widoczny obszar,
                         utrudniając nawigację</li>
                 </ul>
-            </section>
+            </div>
 
-            <section>
+            <div class="examples">
                 <h3>Przykłady</h3>
 
-                <h4>Przykład źle zaprojektowanej podpowiedzi (tooltip)</h4>
-                <div class="example">
-                    <h5>Problem: Podpowiedź, która znika gdy kursor porusza się w jej kierunku</h5>
-                    <div class="code-example">
-                        <pre><code>.bad-tooltip {
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - Podpowiedź, która znika zbyt szybko</h4>
+                        <p>Podpowiedź, która znika gdy kursor porusza się w jej kierunku:</p>
+                        <pre><code class="language-css">.bad-tooltip {
     position: relative;
 }
 
@@ -90,25 +86,38 @@
 .bad-tooltip:hover .tooltip-text {
     visibility: visible;
 }</code></pre>
-                    </div>
-                    <div class="preview">
-                        <div
-                            style="position: relative; display: inline-block; border-bottom: 1px dotted black; padding: 5px; background-color: #eee;">
-                            Najedź na mnie
-                            <span
-                                style="visibility: hidden; width: 120px; background-color: #555; color: #fff; text-align: center; border-radius: 6px; padding: 5px; position: absolute; z-index: 1; bottom: 125%; left: 50%; margin-left: -60px;">To
-                                jest podpowiedź, która zniknie przy próbie najechania na nią kursorem</span>
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="position: relative; display: inline-block; border-bottom: 1px dotted black; padding: 5px; background-color: #eee;">
+                                    Najedź na mnie
+                                    <span
+                                        style="visibility: hidden; width: 120px; background-color: #555; color: #fff; text-align: center; border-radius: 6px; padding: 5px; position: absolute; z-index: 1; bottom: 125%; left: 50%; margin-left: -60px;">To
+                                        jest podpowiedź, która zniknie przy próbie najechania na nią kursorem</span>
+                                </div>
+                                <p style="color: #d32f2f; margin-top: 10px;">Problem: Podpowiedź pojawia się po
+                                    najechaniu kursorem i znika natychmiast, gdy kursor zostanie przesunięty w jej
+                                    kierunku, co uniemożliwia interakcję z nią.</p>
+                            </div>
                         </div>
-                        <p>(W rzeczywistości podpowiedź pojawia się po najechaniu kursorem i znika natychmiast, gdy
-                            kursor zostanie przesunięty w jej kierunku)</p>
+
+                        <p>Problemy w tym przykładzie:</p>
+                        <ul>
+                            <li>Podpowiedź jest widoczna tylko gdy kursor znajduje się nad elementem wywołującym</li>
+                            <li>Użytkownik nie może przesunąć kursora na podpowiedź, aby ją przeczytać</li>
+                            <li>Brak możliwości zamknięcia podpowiedzi przez klawiaturę (np. klawisz Escape)</li>
+                            <li>Osoby z ograniczoną precyzją ruchu mają trudności w korzystaniu z takiej podpowiedzi
+                            </li>
+                        </ul>
                     </div>
                 </div>
 
-                <h4>Przykład dobrze zaprojektowanej podpowiedzi</h4>
-                <div class="example">
-                    <h5>Rozwiązanie: Podpowiedź z możliwością poruszania kursorem nad jej treścią</h5>
-                    <div class="code-example">
-                        <pre><code>.good-tooltip {
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Dostępna podpowiedź</h4>
+                        <p>Podpowiedź z możliwością poruszania kursorem nad jej treścią i przyciskiem zamknięcia:</p>
+                        <pre><code class="language-css">.good-tooltip {
     position: relative;
     display: inline-block;
 }
@@ -149,18 +158,35 @@
     right: 5px;
     cursor: pointer;
 }</code></pre>
-                    </div>
-                    <div class="preview">
-                        <p>W działającym przykładzie podpowiedź pozostaje widoczna, gdy kursor porusza się nad nią, oraz
-                            zawiera przycisk zamknięcia, umożliwiający użytkownikowi jej odwołanie.</p>
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <p>W działającym przykładzie podpowiedź pozostaje widoczna, gdy kursor porusza się nad
+                                    nią, oraz
+                                    zawiera przycisk zamknięcia, umożliwiający użytkownikowi jej odwołanie.</p>
+                                <p style="color: #4caf50; margin-top: 10px;">Rozwiązanie: Podpowiedź pozostaje widoczna
+                                    podczas przesuwania nad nią kursora i można ją zamknąć przyciskiem.</p>
+                            </div>
+                        </div>
+
+                        <p>Zalety tego rozwiązania:</p>
+                        <ul>
+                            <li>Przezroczysty region (.tooltip-region) tworzy "korytarz" dla płynnego przejścia kursora
+                                na podpowiedź</li>
+                            <li>Podpowiedź pozostaje widoczna gdy kursor jest nad nią, co ułatwia czytanie dłuższych
+                                treści</li>
+                            <li>Przycisk zamknięcia pozwala użytkownikowi schować podpowiedź bez przesuwania kursora
+                            </li>
+                            <li>Osoby z ograniczoną precyzją ruchu mogą swobodnie przeczytać treść podpowiedzi</li>
+                        </ul>
                     </div>
                 </div>
 
-                <h4>Przykład menu wysuwanego (dropdown)</h4>
-                <div class="example">
-                    <h5>Rozwiązanie: Menu z możliwością zamknięcia przez klawisz Escape</h5>
-                    <div class="code-example">
-                        <pre><code>/* Kod JavaScript obsługujący menu */
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - Menu z zamknięciem klawiszem</h4>
+                        <p>Menu z możliwością zamknięcia przez klawisz Escape:</p>
+                        <pre><code class="language-javascript">/* Kod JavaScript obsługujący menu */
 document.addEventListener('DOMContentLoaded', function() {
     const dropdownButton = document.getElementById('dropdown-button');
     const dropdownMenu = document.getElementById('dropdown-menu');
@@ -185,16 +211,30 @@ document.addEventListener('DOMContentLoaded', function() {
         dropdownMenu.classList.remove('show');
     }
 });</code></pre>
-                    </div>
-                    <div class="preview">
-                        <p>W działającym przykładzie menu wysuwane pozostaje otwarte po najechaniu kursorem, a
-                            użytkownik może je zamknąć za pomocą klawisza Escape.</p>
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <p>W działającym przykładzie menu wysuwane pozostaje otwarte po najechaniu kursorem, a
+                                    użytkownik może je zamknąć za pomocą klawisza Escape.</p>
+                                <p style="color: #4caf50; margin-top: 10px;">Rozwiązanie: Menu można łatwo zamknąć
+                                    klawiszem Escape, co jest szczególnie ważne dla użytkowników klawiatury.</p>
+                            </div>
+                        </div>
+
+                        <p>Zalety tego rozwiązania:</p>
+                        <ul>
+                            <li>Obsługa klawisza Escape pozwala użytkownikom klawiatury łatwo zamknąć menu</li>
+                            <li>Menu nie znika automatycznie, co daje użytkownikowi kontrolę nad czasem wyświetlania
+                            </li>
+                            <li>Wsparcie zarówno dla nawigacji myszą jak i klawiaturą</li>
+                            <li>Zgodność z wytycznymi WCAG dotyczącymi obsługi klawiatury</li>
+                        </ul>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <section>
-                <h3>Porady i techniki</h3>
+            <div class="tips">
+                <h3>Wskazówki i techniki</h3>
                 <ul>
                     <li>Zawsze zapewnij sposób zamknięcia (odwołania) treści pojawiającej się po najechaniu kursorem lub
                         fokusie, np. przycisk zamknięcia lub reakcję na klawisz Escape.</li>
@@ -210,10 +250,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         standardowe dymki title), ale odnosi się do własnych implementacji podpowiedzi i wyskakujących
                         treści.</li>
                 </ul>
-            </section>
+            </div>
 
-            <section>
-                <h3>Zasoby</h3>
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
                 <ul>
                     <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/content-on-hover-or-focus.html"
                             target="_blank">Understanding SC 1.4.13: Content on Hover or Focus</a> (W3C)</li>
@@ -227,9 +267,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus" target="_blank">CSS :focus
                             Pseudo-class</a> (MDN)</li>
                 </ul>
-            </section>
+            </div>
 
-            <nav aria-label="Nawigacja kryteriów">
+            <nav class="criterion-nav" aria-label="Nawigacja między wytycznymi">
                 <ul>
                     <li><a href="1.4.12.html">Poprzedni: 1.4.12 Odstępy w tekście</a></li>
                     <li><a href="2.1.html">Następny: 2.1 Dostępność z klawiatury</a></li>
@@ -239,8 +279,10 @@ document.addEventListener('DOMContentLoaded', function() {
     </main>
 
     <footer>
-        <p>&copy; 2023 Nieoficjalny przewodnik WCAG 2.1 | <a href="../kontakt.html">Kontakt</a></p>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
     </footer>
+
+    <script src="../script.js"></script>
 </body>
 
 </html>
