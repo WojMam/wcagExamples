@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.1.3 Klawiatura (bez wyjątków) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.1.3 Klawiatura (bez wyjątków)</h2>
+                <p class="criterion-level">Poziom AAA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#keyboard-no-exception" target="_blank"
+                            rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Cała funkcjonalność treści jest dostępna przy użyciu interfejsu klawiatury bez wyjątków.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest zapewnienie, że absolutnie wszystkie funkcjonalności mogą być uruchomione z
+                    klawiatury. Jest to bardziej rygorystyczna wersja kryterium 2.1.1, która nie dopuszcza żadnych
+                    wyjątków, nawet dla funkcji wymagających wprowadzenia informacji opartych na ścieżce ruchu
+                    użytkownika.</p>
+                <p>Kryterium to wymaga, aby nawet dla funkcji, które wydają się nierozerwalnie związane z konkretnym
+                    urządzeniem wejściowym (np. rysowanie odręczne), istniała alternatywna metoda obsługi z klawiatury.
+                </p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - aplikacja do rysowania bez alternatywy klawiaturowej</h4>
+                        <p>Aplikacja do rysowania odręcznego, która działa tylko z myszą lub ekranem dotykowym:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+#canvas {
+    border: 1px solid #000;
+    cursor: crosshair;
+}
+&lt;/style&gt;
+
+&lt;h2&gt;Narzędzie do rysowania&lt;/h2&gt;
+&lt;canvas id="canvas" width="500" height="300"&gt;&lt;/canvas&gt;
+
+&lt;script&gt;
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+let isDrawing = false;
+
+// Obsługa myszy
+canvas.addEventListener('mousedown', startDrawing);
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('mouseup', stopDrawing);
+canvas.addEventListener('mouseout', stopDrawing);
+
+function startDrawing(e) {
+    isDrawing = true;
+    draw(e);
+}
+
+function draw(e) {
+    if (!isDrawing) return;
+    
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = '#000';
+    
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(e.offsetX, e.offsetY);
+}
+
+function stopDrawing() {
+    isDrawing = false;
+    ctx.beginPath();
+}
+&lt;/script&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <p><em>W podglądzie nie można pokazać pełnej funkcjonalności, ale aplikacja do rysowania
+                                        wymaga myszy i nie oferuje alternatywy dla użytkowników klawiatury.</em></p>
+                            </div>
+                        </div>
+
+                        <p>Problem: Ta aplikacja do rysowania jest dostępna tylko dla użytkowników myszy lub ekranu
+                            dotykowego. Osoby korzystające wyłącznie z klawiatury nie mogą korzystać z tej
+                            funkcjonalności, co narusza kryterium 2.1.3.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - aplikacja do rysowania z alternatywą klawiaturową</h4>
+                        <p>Aplikacja do rysowania odręcznego z alternatywnym trybem rysowania za pomocą klawiatury:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+#canvas {
+    border: 1px solid #000;
+    cursor: crosshair;
+}
+
+.canvas-wrapper {
+    position: relative;
+}
+
+.canvas-cursor {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    display: none;
+}
+&lt;/style&gt;
+
+&lt;h2&gt;Narzędzie do rysowania&lt;/h2&gt;
+&lt;p&gt;
+    &lt;button id="keyboardModeBtn"&gt;Włącz tryb klawiatury&lt;/button&gt;
+    &lt;button id="clearBtn"&gt;Wyczyść&lt;/button&gt;
+&lt;/p&gt;
+&lt;div class="canvas-wrapper"&gt;
+    &lt;canvas id="canvas" width="500" height="300" tabindex="0"&gt;&lt;/canvas&gt;
+    &lt;div id="cursor" class="canvas-cursor"&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div id="keyboardInstructions" aria-live="polite"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+const cursor = document.getElementById('cursor');
+const keyboardInstructions = document.getElementById('keyboardInstructions');
+const keyboardModeBtn = document.getElementById('keyboardModeBtn');
+const clearBtn = document.getElementById('clearBtn');
+
+let isDrawing = false;
+let keyboardMode = false;
+let cursorX = 250;
+let cursorY = 150;
+const step = 5;
+
+// Obsługa myszy
+canvas.addEventListener('mousedown', startDrawing);
+canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('mouseup', stopDrawing);
+canvas.addEventListener('mouseout', stopDrawing);
+
+// Obsługa klawiatury
+keyboardModeBtn.addEventListener('click', toggleKeyboardMode);
+clearBtn.addEventListener('click', clearCanvas);
+
+function toggleKeyboardMode() {
+    keyboardMode = !keyboardMode;
+    
+    if (keyboardMode) {
+        keyboardModeBtn.textContent = 'Wyłącz tryb klawiatury';
+        cursor.style.display = 'block';
+        cursor.style.left = cursorX + 'px';
+        cursor.style.top = cursorY + 'px';
+        canvas.focus();
+        
+        keyboardInstructions.innerHTML = `
+            <h3>Instrukcje trybu klawiatury:</h3>
+            <ul>
+                <li>Użyj klawiszy strzałek, aby przesuwać kursor</li>
+                <li>Naciśnij spację, aby rozpocząć/zakończyć rysowanie</li>
+                <li>Naciśnij Escape, aby zakończyć tryb klawiatury</li>
+            </ul>
+        `;
+        
+        // Dodaj obsługę zdarzeń klawiatury
+        canvas.addEventListener('keydown', handleKeyDown);
+    } else {
+        keyboardModeBtn.textContent = 'Włącz tryb klawiatury';
+        cursor.style.display = 'none';
+        keyboardInstructions.innerHTML = '';
+        
+        // Usuń obsługę zdarzeń klawiatury
+        canvas.removeEventListener('keydown', handleKeyDown);
+    }
+}
+
+function handleKeyDown(e) {
+    switch (e.key) {
+        case 'ArrowUp':
+            e.preventDefault();
+            moveCursor(0, -step);
+            break;
+        case 'ArrowDown':
+            e.preventDefault();
+            moveCursor(0, step);
+            break;
+        case 'ArrowLeft':
+            e.preventDefault();
+            moveCursor(-step, 0);
+            break;
+        case 'ArrowRight':
+            e.preventDefault();
+            moveCursor(step, 0);
+            break;
+        case ' ':
+            e.preventDefault();
+            toggleDrawing();
+            break;
+        case 'Escape':
+            toggleKeyboardMode();
+            break;
+    }
+}
+
+function moveCursor(deltaX, deltaY) {
+    cursorX = Math.max(0, Math.min(canvas.width, cursorX + deltaX));
+    cursorY = Math.max(0, Math.min(canvas.height, cursorY + deltaY));
+    
+    cursor.style.left = cursorX + 'px';
+    cursor.style.top = cursorY + 'px';
+    
+    if (isDrawing) {
+        ctx.lineTo(cursorX, cursorY);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(cursorX, cursorY);
+    }
+}
+
+function toggleDrawing() {
+    isDrawing = !isDrawing;
+    
+    if (isDrawing) {
+        ctx.beginPath();
+        ctx.moveTo(cursorX, cursorY);
+    }
+}
+
+function startDrawing(e) {
+    if (keyboardMode) return;
+    
+    isDrawing = true;
+    ctx.beginPath();
+    ctx.moveTo(e.offsetX, e.offsetY);
+}
+
+function draw(e) {
+    if (!isDrawing || keyboardMode) return;
+    
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = '#000';
+    
+    ctx.lineTo(e.offsetX, e.offsetY);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(e.offsetX, e.offsetY);
+}
+
+function stopDrawing() {
+    if (keyboardMode) return;
+    isDrawing = false;
+}
+
+function clearCanvas() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+&lt;/script&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <p><em>W podglądzie nie można pokazać pełnej funkcjonalności, ale aplikacja oferuje tryb
+                                        rysowania za pomocą klawiatury, gdzie użytkownik może przesuwać kursor
+                                        strzałkami i rozpoczynać/kończyć rysowanie spacją.</em></p>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Ta aplikacja do rysowania oferuje alternatywny tryb klawiatury, który umożliwia
+                            korzystanie z funkcji rysowania bez myszy. Użytkownicy mogą przesuwać kursor za pomocą
+                            klawiszy strzałek i kontrolować rysowanie za pomocą spacji. Instrukcje są wyraźnie
+                            przedstawione, a tryb można łatwo włączyć i wyłączyć. To podejście realizuje wymagania
+                            kryterium 2.1.3, zapewniając pełną dostępność z klawiatury dla funkcji, które tradycyjnie
+                            wymagałyby urządzenia wskazującego.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example note">
+                        <h4>Alternatywne podejście dla złożonych funkcji</h4>
+                        <p>W niektórych przypadkach zapewnienie dokładnego odpowiednika z klawiatury dla złożonych
+                            funkcji wskazywania jest trudne. Alternatywnym podejściem jest oferowanie innego sposobu
+                            osiągnięcia tego samego celu:</p>
+                        <pre><code class="language-html">&lt;h2&gt;Edytor graficzny&lt;/h2&gt;
+&lt;div class="editor-container"&gt;
+    &lt;canvas id="graphicEditor" width="600" height="400"&gt;&lt;/canvas&gt;
+    
+    &lt;fieldset&gt;
+        &lt;legend&gt;Alternatywny interfejs dostępny z klawiatury&lt;/legend&gt;
+        &lt;label&gt;
+            Wybierz kształt:
+            &lt;select id="shapeSelect"&gt;
+                &lt;option value="rectangle"&gt;Prostokąt&lt;/option&gt;
+                &lt;option value="circle"&gt;Koło&lt;/option&gt;
+                &lt;option value="line"&gt;Linia&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/label&gt;
+        &lt;div id="shapeOptions"&gt;
+            &lt;label&gt;
+                Pozycja X:
+                &lt;input type="number" id="posX" value="100"&gt;
+            &lt;/label&gt;
+            &lt;label&gt;
+                Pozycja Y:
+                &lt;input type="number" id="posY" value="100"&gt;
+            &lt;/label&gt;
+            &lt;label&gt;
+                Szerokość:
+                &lt;input type="number" id="width" value="100"&gt;
+            &lt;/label&gt;
+            &lt;label&gt;
+                Wysokość:
+                &lt;input type="number" id="height" value="100"&gt;
+            &lt;/label&gt;
+        &lt;/div&gt;
+        &lt;button id="addShape"&gt;Dodaj kształt&lt;/button&gt;
+    &lt;/fieldset&gt;
+&lt;/div&gt;</code></pre>
+                        <p>W tym przykładzie, zamiast bezpośredniego rysowania za pomocą klawiatury, użytkownik ma
+                            dostęp do formularza, w którym może określić typ kształtu i jego parametry, a następnie
+                            dodać go do płótna za pomocą przycisku. To alternatywne podejście realizuje ten sam cel -
+                            tworzenie grafiki - ale w sposób bardziej przyjazny dla klawiatury.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard-no-exception.html" target="_blank"
+                            rel="noopener">Understanding Success Criterion 2.1.3: Keyboard (No Exception)</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G202" target="_blank"
+                            rel="noopener">G202: Ensuring keyboard control for all functionality</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/client-side-script/SCR29" target="_blank"
+                            rel="noopener">SCR29: Adding keyboard-accessible actions to static HTML elements</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.1.2.html">Poprzedni: 2.1.2 Brak pułapki na klawiaturę</a></li>
+                    <li><a href="2.1.4.html">Następny: 2.1.4 Jednoznakowe skróty klawiaturowe</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

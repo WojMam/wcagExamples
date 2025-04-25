@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.1.1 Klawiatura - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.1.1 Klawiatura</h2>
+                <p class="criterion-level">Poziom A</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#keyboard" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Cała funkcjonalność treści jest dostępna przy użyciu interfejsu klawiatury, bez wymogu określonego
+                    czasu użycia poszczególnych klawiszy, z wyjątkiem sytuacji, gdy dana funkcja wymaga wprowadzenia
+                    informacji przez użytkownika w oparciu o ścieżkę ruchów, a nie tylko punkty końcowe.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest zapewnienie, że wszystkie funkcjonalności mogą być uruchomione z
+                    klawiatury, bez konieczności użycia myszy czy innego urządzenia wskazującego. Wielu użytkowników z
+                    niepełnosprawnością ruchową korzysta wyłącznie z klawiatury, a użytkownicy technologii
+                    wspomagających często także polegają na funkcjach klawiatury.</p>
+                <p>Wyjątkiem są sytuacje, w których funkcja wymaga wprowadzenia informacji opartych na ścieżce ruchu
+                    użytkownika, jak na przykład w aplikacjach do rysowania odręcznego czy symulacjach fizyki.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - menu z obsługą tylko przez mysz</h4>
+                        <p>Menu rozwijane, które aktywuje się tylko po najechaniu myszą (hover), bez możliwości obsługi
+                            z klawiatury:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+&lt;/style&gt;
+
+&lt;div class="dropdown"&gt;
+    &lt;button&gt;Menu&lt;/button&gt;
+    &lt;div class="dropdown-content"&gt;
+        &lt;a href="#"&gt;Opcja 1&lt;/a&gt;
+        &lt;a href="#"&gt;Opcja 2&lt;/a&gt;
+        &lt;a href="#"&gt;Opcja 3&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div style="position: relative; display: inline-block;">
+                                    <button>Menu</button>
+                                    <div
+                                        style="position: absolute; background-color: #f9f9f9; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; display: none;">
+                                        <a href="#" style="display: block; padding: 10px;">Opcja 1</a>
+                                        <a href="#" style="display: block; padding: 10px;">Opcja 2</a>
+                                        <a href="#" style="display: block; padding: 10px;">Opcja 3</a>
+                                    </div>
+                                </div>
+                                <p><em>W podglądzie nie widać problemu - menu rozwijane jest aktywowane tylko przez
+                                        hover myszy.</em></p>
+                            </div>
+                        </div>
+
+                        <p>Problem: To menu nie jest dostępne z klawiatury. Użytkownicy korzystający tylko z klawiatury
+                            nie mają możliwości rozwinięcia menu i dostępu do jego opcji, ponieważ aktywacja następuje
+                            wyłącznie po najechaniu myszą.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - menu dostępne z klawiatury</h4>
+                        <p>Menu rozwijane, które można obsługiwać zarówno myszą, jak i klawiaturą:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown.active .dropdown-content {
+    display: block;
+}
+&lt;/style&gt;
+
+&lt;div class="dropdown" id="menu-dropdown"&gt;
+    &lt;button id="menuButton" aria-haspopup="true" aria-expanded="false" onclick="toggleMenu()"&gt;Menu&lt;/button&gt;
+    &lt;div class="dropdown-content" role="menu" aria-labelledby="menuButton"&gt;
+        &lt;a href="#" role="menuitem" tabindex="-1"&gt;Opcja 1&lt;/a&gt;
+        &lt;a href="#" role="menuitem" tabindex="-1"&gt;Opcja 2&lt;/a&gt;
+        &lt;a href="#" role="menuitem" tabindex="-1"&gt;Opcja 3&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function toggleMenu() {
+    const dropdown = document.getElementById('menu-dropdown');
+    const button = document.getElementById('menuButton');
+    const isExpanded = button.getAttribute('aria-expanded') === 'true';
+    
+    dropdown.classList.toggle('active');
+    button.setAttribute('aria-expanded', !isExpanded);
+    
+    if (!isExpanded) {
+        const menuItems = dropdown.querySelectorAll('[role="menuitem"]');
+        menuItems.forEach(item => item.setAttribute('tabindex', '0'));
+        menuItems[0].focus();
+    }
+}
+
+// Obsługa klawiatury
+document.getElementById('menuButton').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleMenu();
+    }
+});
+&lt;/script&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div style="position: relative; display: inline-block;">
+                                    <button id="previewMenuButton">Menu</button>
+                                    <div
+                                        style="position: absolute; background-color: #f9f9f9; min-width: 160px; box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); z-index: 1; display: none;">
+                                        <a href="#" style="display: block; padding: 10px;">Opcja 1</a>
+                                        <a href="#" style="display: block; padding: 10px;">Opcja 2</a>
+                                        <a href="#" style="display: block; padding: 10px;">Opcja 3</a>
+                                    </div>
+                                </div>
+                                <p><em>W podglądzie nie widać pełnej funkcjonalności - przycisk można obsługiwać
+                                        klawiaturą.</em></p>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: To menu jest dostępne zarówno dla użytkowników myszy, jak i klawiatury. Przycisk
+                            menu można aktywować za pomocą klawisza Enter lub spacji, a elementy menu otrzymują fokus po
+                            otwarciu. Dodano również odpowiednie atrybuty ARIA dla technologii wspomagających.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - niestandardowy element klikalny bez obsługi klawiatury</h4>
+                        <p>Niestandardowy element klikalny, który reaguje tylko na kliknięcie myszą:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.custom-button {
+    padding: 10px 20px;
+    background-color: #0078d4;
+    color: white;
+    display: inline-block;
+    cursor: pointer;
+}
+&lt;/style&gt;
+
+&lt;div class="custom-button" onclick="performAction()"&gt;Kliknij mnie&lt;/div&gt;
+
+&lt;script&gt;
+function performAction() {
+    alert('Akcja wykonana!');
+}
+&lt;/script&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div
+                                    style="padding: 10px 20px; background-color: #0078d4; color: white; display: inline-block; cursor: pointer;">
+                                    Kliknij mnie</div>
+                            </div>
+                        </div>
+
+                        <p>Problem: Ten element wygląda jak przycisk, ale nie jest prawdziwym buttonem HTML. Nie może
+                            otrzymać fokusu z klawiatury (brak atrybutu tabindex) i nie ma obsługi zdarzeń klawiatury.
+                            Użytkownicy korzystający tylko z klawiatury nie będą mogli aktywować tego elementu.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - dostępny niestandardowy element klikalny</h4>
+                        <p>Niestandardowy element klikalny z pełną obsługą klawiatury:</p>
+                        <pre><code class="language-html">&lt;style&gt;
+.custom-button {
+    padding: 10px 20px;
+    background-color: #0078d4;
+    color: white;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.custom-button:focus {
+    outline: 2px solid #000;
+    outline-offset: 2px;
+}
+&lt;/style&gt;
+
+&lt;div class="custom-button" 
+     tabindex="0" 
+     role="button"
+     onclick="performAction()" 
+     onkeydown="handleKeyPress(event)"&gt;Kliknij mnie&lt;/div&gt;
+
+&lt;script&gt;
+function performAction() {
+    alert('Akcja wykonana!');
+}
+
+function handleKeyPress(event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        performAction();
+    }
+}
+&lt;/script&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div style="padding: 10px 20px; background-color: #0078d4; color: white; display: inline-block; cursor: pointer;"
+                                    tabindex="0" role="button">Kliknij mnie</div>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Ten element jest teraz dostępny z klawiatury. Dodano atrybut tabindex="0", który
+                            umożliwia otrzymanie fokusu, oraz obsługę zdarzeń klawiatury (Enter i spacja). Dodano
+                            również atrybut role="button", który informuje technologie wspomagające o przeznaczeniu tego
+                            elementu, oraz style dla stanu focus, aby był widoczny dla użytkowników klawiatury.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example note">
+                        <h4>Wskazówka: Użyj natywnych elementów HTML</h4>
+                        <p>Najlepszym rozwiązaniem jest korzystanie z natywnych elementów HTML, które mają wbudowaną
+                            obsługę klawiatury:</p>
+                        <pre><code class="language-html">&lt;button onclick="performAction()"&gt;Kliknij mnie&lt;/button&gt;</code></pre>
+                        <p>Elementy takie jak &lt;button&gt;, &lt;a&gt;, &lt;input&gt;, &lt;select&gt; i inne formularze
+                            HTML mają wbudowaną obsługę klawiatury i nie wymagają dodatkowej implementacji zdarzeń
+                            klawiatury.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/keyboard.html" target="_blank"
+                            rel="noopener">Understanding Success Criterion 2.1.1: Keyboard</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G202" target="_blank"
+                            rel="noopener">G202: Ensuring keyboard control for all functionality</a></li>
+                    <li><a href="https://www.w3.org/TR/wai-aria-practices/" target="_blank" rel="noopener">WAI-ARIA
+                            Authoring Practices - wzorce projektowe dla interaktywnych komponentów</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.1.html">Poprzedni: 2.1 Dostępność z klawiatury</a></li>
+                    <li><a href="2.1.2.html">Następny: 2.1.2 Brak pułapki na klawiaturę</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

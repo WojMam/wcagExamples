@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.1.4 Jednoznakowe skróty klawiaturowe - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.1.4 Jednoznakowe skróty klawiaturowe</h2>
+                <p class="criterion-level">Poziom A</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#character-key-shortcuts" target="_blank"
+                            rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Jeśli w treści zaimplementowany jest skrót klawiaturowy korzystający tylko z liter (w tym wielkich i
+                    małych), znaków interpunkcyjnych, cyfr lub symboli, to przynajmniej jedno z poniższych stwierdzeń
+                    jest prawdziwe:</p>
+                <ul>
+                    <li><strong>Wyłącz</strong>: Istnieje mechanizm pozwalający na wyłączenie skrótu;</li>
+                    <li><strong>Zmień</strong>: Istnieje mechanizm pozwalający na zmianę skrótu, aby korzystał z co
+                        najmniej jednego klawisza modyfikującego (np. Ctrl, Alt);</li>
+                    <li><strong>Aktywny tylko przy fokusie</strong>: Skrót klawiaturowy dla komponentu interfejsu
+                        użytkownika jest aktywny tylko wtedy, gdy ten komponent ma fokus.</li>
+                </ul>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest zminimalizowanie przypadkowych i niepożądanych aktywacji funkcji poprzez
+                    jednoznakowe skróty klawiaturowe. Jest to szczególnie ważne dla użytkowników technologii
+                    wspomagających, takich jak czytniki ekranu lub oprogramowanie do sterowania głosem, gdzie
+                    przypadkowe aktywacje mogą zakłócać korzystanie z treści.</p>
+                <p>Użytkownicy technologii wspomagających mogą przypadkowo aktywować skróty klawiaturowe podczas
+                    dyktowania tekstu lub nawigowania po stronie. Na przykład, użytkownik dyktujący tekst może wymówić
+                    literę "p", która mogłaby uruchomić funkcję "drukuj" w aplikacji, jeśli "p" jest jednoznakowym
+                    skrótem.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - jednoznakowe skróty bez możliwości modyfikacji</h4>
+                        <p>Odtwarzacz wideo z jednoznakowymi skrótami klawiaturowymi, które nie mogą być wyłączone ani
+                            zmienione:</p>
+                        <pre><code class="language-html">&lt;div class="video-player"&gt;
+    &lt;video id="myVideo" controls width="640" height="360"&gt;
+        &lt;source src="video.mp4" type="video/mp4"&gt;
+        &lt;track kind="captions" src="captions.vtt" srclang="pl" label="Polski"&gt;
+    &lt;/video&gt;
+    &lt;div class="controls"&gt;
+        &lt;button id="playBtn"&gt;Odtwórz/Pauza&lt;/button&gt;
+        &lt;button id="rewindBtn"&gt;Przewiń do tyłu&lt;/button&gt;
+        &lt;button id="forwardBtn"&gt;Przewiń do przodu&lt;/button&gt;
+        &lt;button id="volumeUpBtn"&gt;Głośniej&lt;/button&gt;
+        &lt;button id="volumeDownBtn"&gt;Ciszej&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+const video = document.getElementById('myVideo');
+
+// Jednoznakowe skróty klawiaturowe
+document.addEventListener('keydown', function(e) {
+    switch(e.key) {
+        case 'p':
+        case 'P':
+            // Odtwórz/Pauza
+            if (video.paused) {
+                video.play();
+            } else {
+                video.pause();
+            }
+            break;
+        case 'r':
+        case 'R':
+            // Przewiń do tyłu o 10 sekund
+            video.currentTime = Math.max(0, video.currentTime - 10);
+            break;
+        case 'f':
+        case 'F':
+            // Przewiń do przodu o 10 sekund
+            video.currentTime = Math.min(video.duration, video.currentTime + 10);
+            break;
+        case 'm':
+        case 'M':
+            // Wycisz/Włącz dźwięk
+            video.muted = !video.muted;
+            break;
+        case '+':
+            // Zwiększ głośność
+            video.volume = Math.min(1, video.volume + 0.1);
+            break;
+        case '-':
+            // Zmniejsz głośność
+            video.volume = Math.max(0, video.volume - 0.1);
+            break;
+    }
+});
+&lt;/script&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <p><em>W podglądzie nie można pokazać pełnej funkcjonalności, ale odtwarzacz używa
+                                        jednoznakowych skrótów (p, r, f, m, +, -) bez możliwości ich wyłączenia lub
+                                        zmiany.</em></p>
+                            </div>
+                        </div>
+
+                        <p>Problem: Ten odtwarzacz wideo używa jednoznakowych skrótów klawiaturowych (p, r, f, m, +, -)
+                            dla różnych funkcji odtwarzacza. Skróty te są aktywne w całym dokumencie, niezależnie od
+                            fokusu, i nie mogą być wyłączone ani zmienione. Osoba używająca technologii wspomagających
+                            mogłaby przypadkowo aktywować te funkcje podczas dyktowania tekstu lub nawigowania po
+                            stronie.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - skróty z modyfikatorami i opcją wyłączenia</h4>
+                        <p>Odtwarzacz wideo z skrótami klawiaturowymi wykorzystującymi klawisze modyfikujące oraz
+                            możliwością ich wyłączenia:</p>
+                        <pre><code class="language-html">&lt;div class="video-player"&gt;
+    &lt;video id="myVideo" controls width="640" height="360"&gt;
+        &lt;source src="video.mp4" type="video/mp4"&gt;
+        &lt;track kind="captions" src="captions.vtt" srclang="pl" label="Polski"&gt;
+    &lt;/video&gt;
+    &lt;div class="controls"&gt;
+        &lt;button id="playBtn"&gt;Odtwórz/Pauza&lt;/button&gt;
+        &lt;button id="rewindBtn"&gt;Przewiń do tyłu&lt;/button&gt;
+        &lt;button id="forwardBtn"&gt;Przewiń do przodu&lt;/button&gt;
+        &lt;button id="volumeUpBtn"&gt;Głośniej&lt;/button&gt;
+        &lt;button id="volumeDownBtn"&gt;Ciszej&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="settings"&gt;
+        &lt;label&gt;
+            &lt;input type="checkbox" id="enableShortcuts" checked&gt;
+            Włącz skróty klawiaturowe
+        &lt;/label&gt;
+        &lt;button id="showShortcuts"&gt;Pokaż skróty klawiaturowe&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="shortcutsModal" class="modal" hidden&gt;
+    &lt;div class="modal-content"&gt;
+        &lt;h2&gt;Skróty klawiaturowe&lt;/h2&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;strong&gt;Alt+P&lt;/strong&gt;: Odtwórz/Pauza&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Alt+R&lt;/strong&gt;: Przewiń do tyłu o 10 sekund&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Alt+F&lt;/strong&gt;: Przewiń do przodu o 10 sekund&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Alt+M&lt;/strong&gt;: Wycisz/Włącz dźwięk&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Alt++&lt;/strong&gt;: Zwiększ głośność&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Alt+-&lt;/strong&gt;: Zmniejsz głośność&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;button id="closeShortcuts"&gt;Zamknij&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+const video = document.getElementById('myVideo');
+const enableShortcutsCheckbox = document.getElementById('enableShortcuts');
+const shortcutsModal = document.getElementById('shortcutsModal');
+const showShortcutsBtn = document.getElementById('showShortcuts');
+const closeShortcutsBtn = document.getElementById('closeShortcuts');
+
+// Pokaż/ukryj modal ze skrótami
+showShortcutsBtn.addEventListener('click', function() {
+    shortcutsModal.hidden = false;
+});
+closeShortcutsBtn.addEventListener('click', function() {
+    shortcutsModal.hidden = true;
+});
+
+// Skróty klawiaturowe z modyfikatorem Alt
+document.addEventListener('keydown', function(e) {
+    // Sprawdź, czy skróty są włączone
+    if (!enableShortcutsCheckbox.checked) {
+        return;
+    }
+    
+    // Wymagaj klawisza Alt jako modyfikatora
+    if (e.altKey) {
+        switch(e.key) {
+            case 'p':
+            case 'P':
+                e.preventDefault();
+                // Odtwórz/Pauza
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+                break;
+            case 'r':
+            case 'R':
+                e.preventDefault();
+                // Przewiń do tyłu o 10 sekund
+                video.currentTime = Math.max(0, video.currentTime - 10);
+                break;
+            case 'f':
+            case 'F':
+                e.preventDefault();
+                // Przewiń do przodu o 10 sekund
+                video.currentTime = Math.min(video.duration, video.currentTime + 10);
+                break;
+            case 'm':
+            case 'M':
+                e.preventDefault();
+                // Wycisz/Włącz dźwięk
+                video.muted = !video.muted;
+                break;
+            case '+':
+                e.preventDefault();
+                // Zwiększ głośność
+                video.volume = Math.min(1, video.volume + 0.1);
+                break;
+            case '-':
+                e.preventDefault();
+                // Zmniejsz głośność
+                video.volume = Math.max(0, video.volume - 0.1);
+                break;
+        }
+    }
+});
+&lt;/script&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <p><em>W podglądzie nie można pokazać pełnej funkcjonalności, ale odtwarzacz używa
+                                        skrótów z modyfikatorem Alt (Alt+P, Alt+R, itp.) oraz oferuje możliwość
+                                        wyłączenia skrótów.</em></p>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Ten odtwarzacz spełnia kryterium 2.1.4 na dwa sposoby: po pierwsze, wszystkie
+                            skróty klawiaturowe wymagają klawisza modyfikującego Alt, więc nie są to jednoznakowe
+                            skróty; po drugie, użytkownik ma możliwość całkowitego wyłączenia skrótów klawiaturowych za
+                            pomocą opcji w interfejsie. Dodatkowo, dostępna jest lista wszystkich skrótów, co zwiększa
+                            użyteczność.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - skróty aktywne tylko przy fokusie</h4>
+                        <p>Edytor tekstu z jednoznakowymi skrótami aktywnymi tylko wtedy, gdy edytor ma fokus:</p>
+                        <pre><code class="language-html">&lt;div class="text-editor-container"&gt;
+    &lt;h2&gt;Edytor tekstu&lt;/h2&gt;
+    &lt;p&gt;Użyj poniższych skrótów klawiaturowych, gdy edytor ma fokus:&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;strong&gt;B&lt;/strong&gt;: Pogrubienie zaznaczonego tekstu&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;I&lt;/strong&gt;: Kursywa zaznaczonego tekstu&lt;/li&gt;
+        &lt;li&gt;&lt;strong&gt;U&lt;/strong&gt;: Podkreślenie zaznaczonego tekstu&lt;/li&gt;
+    &lt;/ul&gt;
+    
+    &lt;div id="editor" contenteditable="true" class="editor" tabindex="0"&gt;
+        Ten tekst możesz edytować. Zaznacz fragment i użyj skrótów klawiaturowych, aby sformatować tekst.
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+const editor = document.getElementById('editor');
+
+// Skróty aktywne tylko wtedy, gdy edytor ma fokus
+editor.addEventListener('keydown', function(e) {
+    // Sprawdź, czy jest coś zaznaczone
+    if (window.getSelection().toString().length === 0) {
+        return;
+    }
+    
+    switch(e.key) {
+        case 'b':
+        case 'B':
+            e.preventDefault();
+            document.execCommand('bold');
+            break;
+        case 'i':
+        case 'I':
+            e.preventDefault();
+            document.execCommand('italic');
+            break;
+        case 'u':
+        case 'U':
+            e.preventDefault();
+            document.execCommand('underline');
+            break;
+    }
+});
+&lt;/script&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div style="border: 1px solid #ccc; padding: 10px; min-height: 100px;">
+                                    Ten tekst możesz edytować. Zaznacz fragment i użyj skrótów klawiaturowych, aby
+                                    sformatować tekst.
+                                </div>
+                                <p><em>W podglądzie nie można pokazać pełnej funkcjonalności, ale skróty (B, I, U) są
+                                        aktywne tylko wtedy, gdy edytor ma fokus.</em></p>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: W tym przykładzie jednoznakowe skróty klawiaturowe (B, I, U) są zgodne z
+                            kryterium 2.1.4, ponieważ są aktywne tylko wtedy, gdy komponent interfejsu (edytor tekstu)
+                            ma fokus. Dzięki temu użytkownicy nie ryzykują przypadkowej aktywacji tych skrótów podczas
+                            nawigacji po innych częściach strony.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example note">
+                        <h4>Wskazówka: Preferencje skrótów klawiaturowych</h4>
+                        <p>Najlepszą praktyką jest oferowanie użytkownikom pełnej kontroli nad skrótami klawiaturowymi:
+                        </p>
+                        <pre><code class="language-html">&lt;div class="keyboard-shortcuts-settings"&gt;
+    &lt;h2&gt;Ustawienia skrótów klawiaturowych&lt;/h2&gt;
+    
+    &lt;div&gt;
+        &lt;label&gt;
+            &lt;input type="checkbox" id="enableShortcuts" checked&gt;
+            Włącz skróty klawiaturowe
+        &lt;/label&gt;
+    &lt;/div&gt;
+    
+    &lt;div&gt;
+        &lt;label&gt;
+            &lt;input type="radio" name="shortcutType" value="character" id="characterShortcuts"&gt;
+            Używaj jednoznakowych skrótów (p, r, f, m, +, -)
+        &lt;/label&gt;
+    &lt;/div&gt;
+    
+    &lt;div&gt;
+        &lt;label&gt;
+            &lt;input type="radio" name="shortcutType" value="modifier" id="modifierShortcuts" checked&gt;
+            Używaj skrótów z modyfikatorem (Alt+P, Alt+R, Alt+F, Alt+M, Alt++, Alt+-)
+        &lt;/label&gt;
+    &lt;/div&gt;
+    
+    &lt;div&gt;
+        &lt;label&gt;Wybierz modyfikator:&lt;/label&gt;
+        &lt;select id="modifierKey"&gt;
+            &lt;option value="alt"&gt;Alt&lt;/option&gt;
+            &lt;option value="ctrl"&gt;Ctrl&lt;/option&gt;
+            &lt;option value="shift"&gt;Shift&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                        <p>Takie ustawienia umożliwiają użytkownikom wybór preferowanego sposobu działania skrótów
+                            klawiaturowych, w tym ich całkowite wyłączenie lub dostosowanie do własnych potrzeb.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/character-key-shortcuts.html"
+                            target="_blank" rel="noopener">Understanding Success Criterion 2.1.4: Character Key
+                            Shortcuts</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G217" target="_blank"
+                            rel="noopener">G217: Providing a mechanism to allow users to remap or turn off character key
+                            shortcuts</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/client-side-script/SCR35" target="_blank"
+                            rel="noopener">SCR35: Making actions keyboard accessible by using the onclick event of
+                            anchors and buttons</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.1.3.html">Poprzedni: 2.1.3 Klawiatura (bez wyjątków)</a></li>
+                    <li><a href="2.2.html">Następny: 2.2 Wystarczająca ilość czasu</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
