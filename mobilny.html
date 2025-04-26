@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testowanie widoku mobilnego - Nieoficjalny przewodnik dostępności</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .guide-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .browser-tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 30px;
+        }
+
+        .browser-tab {
+            padding: 10px 20px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            border-radius: 5px 5px 0 0;
+            margin-right: 5px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .browser-tab.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .step {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .step:last-child {
+            border-bottom: none;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .step h3 {
+            display: inline-block;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .instruction-image {
+            max-width: 100%;
+            height: auto;
+            margin: 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .tip {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .tip h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .device-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .device-table th,
+        .device-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .device-table th {
+            background-color: #f5f5f5;
+        }
+
+        .device-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .shortcut {
+            display: inline-block;
+            padding: 3px 7px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            font-family: monospace;
+            font-weight: bold;
+            margin: 0 2px;
+        }
+
+        /* Style dla trybu wysokiego kontrastu */
+        body.high-contrast .browser-tab {
+            background-color: #000;
+            color: #ffff00;
+            border-color: #ffff00;
+        }
+
+        body.high-contrast .browser-tab.active {
+            background-color: #ffff00;
+            color: #000;
+        }
+
+        body.high-contrast .step-number {
+            background-color: #ffff00;
+            color: #000;
+        }
+
+        body.high-contrast .step h3 {
+            color: #ffff00;
+        }
+
+        body.high-contrast .tip {
+            background-color: #000;
+            border-left: 4px solid #ffff00;
+        }
+
+        body.high-contrast .tip h4 {
+            color: #ffff00;
+        }
+
+        body.high-contrast .device-table th {
+            background-color: #222;
+            color: #ffff00;
+        }
+
+        body.high-contrast .device-table td {
+            border-color: #fff;
+        }
+
+        body.high-contrast .device-table tr:nth-child(even) {
+            background-color: #222;
+        }
+
+        body.high-contrast .shortcut {
+            background-color: #333;
+            color: #ffff00;
+            border-color: #ffff00;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main" class="guide-container">
+        <div class="page-intro">
+            <h2>Testowanie widoku mobilnego</h2>
+            <p>Poniżej znajdziesz instrukcję, jak wykorzystać narzędzia deweloperskie (DevTools) najpopularniejszych
+                przeglądarek do testowania responsywności swoich stron na urządzeniach mobilnych.
+                Nauczysz się sprawdzać, jak Twoja strona wygląda na różnych urządzeniach mobilnych bez konieczności
+                posiadania tych urządzeń.</p>
+        </div>
+
+        <div class="browser-tabs">
+            <div class="browser-tab active" data-tab="chrome">Google Chrome</div>
+            <div class="browser-tab" data-tab="firefox">Mozilla Firefox</div>
+            <div class="browser-tab" data-tab="edge">Microsoft Edge</div>
+            <div class="browser-tab" data-tab="safari">Safari</div>
+        </div>
+
+        <div id="chrome-content" class="tab-content active">
+            <div class="step">
+                <span class="step-number">1</span>
+                <h3>Otwórz DevTools w Google Chrome</h3>
+                <p>Możesz to zrobić na kilka sposobów:</p>
+                <ul>
+                    <li>Naciśnij <span class="shortcut">F12</span> na klawiaturze</li>
+                    <li>Naciśnij <span class="shortcut">Ctrl</span> + <span class="shortcut">Shift</span> + <span
+                            class="shortcut">I</span> (Windows/Linux) lub <span class="shortcut">Cmd</span> + <span
+                            class="shortcut">Option</span> + <span class="shortcut">I</span> (Mac)</li>
+                    <li>Kliknij prawym przyciskiem myszy na stronie i wybierz "Zbadaj" lub "Inspect"</li>
+                </ul>
+                <p>Narzędzia deweloperskie pojawią się zazwyczaj na dole lub po prawej stronie przeglądarki.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <h3>Aktywuj tryb urządzenia (Device Mode)</h3>
+                <p>W górnym pasku DevTools kliknij ikonę urządzenia mobilnego (Toggle device toolbar) lub użyj skrótu
+                    <span class="shortcut">Ctrl</span> + <span class="shortcut">Shift</span> + <span
+                        class="shortcut">M</span> (Windows/Linux) lub <span class="shortcut">Cmd</span> + <span
+                        class="shortcut">Shift</span> + <span class="shortcut">M</span> (Mac).</p>
+                <p>Strona zostanie wyświetlona w symulowanym widoku mobilnym, a na górze pojawi się pasek narzędzi z
+                    dodatkowymi opcjami.</p>
+                <!-- Tutaj można dodać zdjęcie po utworzeniu katalogu z grafikami -->
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <h3>Wybierz typ urządzenia</h3>
+                <p>Na górnym pasku w trybie urządzenia możesz:</p>
+                <ul>
+                    <li>Wybrać predefiniowane urządzenie z rozwijanej listy (np. iPhone 12, Samsung Galaxy S20)</li>
+                    <li>Ustawić własne wymiary, wpisując szerokość i wysokość (w pikselach)</li>
+                    <li>Wybrać skalę wyświetlania (np. 75%, 100%)</li>
+                    <li>Zmienić orientację między pionową a poziomą</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                <h3>Testowanie z różnymi ustawieniami</h3>
+                <p>Chrome DevTools oferują dodatkowe opcje testowania:</p>
+                <ul>
+                    <li><strong>Typ sieci</strong> - symuluj różne typy połączeń internetowych (3G, 4G, offline)</li>
+                    <li><strong>User Agent</strong> - zmień user agent przeglądarki, aby symulować różne systemy
+                        operacyjne</li>
+                    <li><strong>DPR (Device Pixel Ratio)</strong> - testuj dla różnych gęstości pikseli</li>
+                </ul>
+                <p>Te opcje znajdziesz w dodatkowych ustawieniach dostępnych po kliknięciu "⋮" na pasku trybu
+                    urządzenia.</p>
+            </div>
+
+            <div class="tip">
+                <h4>Wskazówka</h4>
+                <p>Chrome DevTools zawiera również narzędzie "Lighthouse", które może analizować responsywność i
+                    dostępność Twojej strony. Znajdziesz je w zakładce "Lighthouse" w DevTools.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">5</span>
+                <h3>Testowanie interakcji dotykowych</h3>
+                <p>W trybie urządzenia Chrome symuluje również interakcje dotykowe:</p>
+                <ul>
+                    <li>Możesz emulować dotknięcia zamiast kliknięć myszy</li>
+                    <li>Testować gesty (przesuwanie palcem) używając myszy</li>
+                    <li>W menu "⋮" znajdziesz opcję "Show touch points", która pokazuje punkty dotyku</li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="firefox-content" class="tab-content">
+            <div class="step">
+                <span class="step-number">1</span>
+                <h3>Otwórz DevTools w Mozilla Firefox</h3>
+                <p>Możesz to zrobić na kilka sposobów:</p>
+                <ul>
+                    <li>Naciśnij <span class="shortcut">F12</span> na klawiaturze</li>
+                    <li>Naciśnij <span class="shortcut">Ctrl</span> + <span class="shortcut">Shift</span> + <span
+                            class="shortcut">I</span> (Windows/Linux) lub <span class="shortcut">Cmd</span> + <span
+                            class="shortcut">Option</span> + <span class="shortcut">I</span> (Mac)</li>
+                    <li>Kliknij prawym przyciskiem myszy na stronie i wybierz "Zbadaj element" (Inspect Element)</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <h3>Aktywuj widok responsywny</h3>
+                <p>W górnym pasku DevTools kliknij ikonę "Responsive Design Mode" (wygląda jak dwa małe urządzenia) lub
+                    użyj skrótu <span class="shortcut">Ctrl</span> + <span class="shortcut">Shift</span> + <span
+                        class="shortcut">M</span> (Windows/Linux) lub <span class="shortcut">Cmd</span> + <span
+                        class="shortcut">Option</span> + <span class="shortcut">M</span> (Mac).</p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <h3>Wybierz typ urządzenia</h3>
+                <p>Na górnym pasku w trybie responsywnym możesz:</p>
+                <ul>
+                    <li>Wybrać predefiniowane urządzenie z rozwijanej listy</li>
+                    <li>Ustawić własne wymiary, wpisując szerokość i wysokość</li>
+                    <li>Zmienić orientację między pionową a poziomą</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                <h3>Dodatkowe opcje testowania</h3>
+                <p>Firefox oferuje również:</p>
+                <ul>
+                    <li><strong>Dławienie sieci (Network Throttling)</strong> - symuluj wolniejsze połączenia</li>
+                    <li><strong>Zrzuty ekranu (Screenshots)</strong> - możesz robić zrzuty ekranu responsywnego widoku
+                    </li>
+                    <li><strong>Touch Simulation</strong> - symulowanie zdarzeń dotykowych</li>
+                </ul>
+            </div>
+
+            <div class="tip">
+                <h4>Wskazówka</h4>
+                <p>Firefox ma również zakładkę "Responsiveness" w panelu Inspektora, która pokazuje, jakie reguły media
+                    queries są aktywne dla bieżącego rozmiaru ekranu.</p>
+            </div>
+        </div>
+
+        <div id="edge-content" class="tab-content">
+            <div class="step">
+                <span class="step-number">1</span>
+                <h3>Otwórz DevTools w Microsoft Edge</h3>
+                <p>Ponieważ Microsoft Edge jest teraz oparty na Chromium, proces jest praktycznie identyczny jak w
+                    Google Chrome:</p>
+                <ul>
+                    <li>Naciśnij <span class="shortcut">F12</span> na klawiaturze</li>
+                    <li>Naciśnij <span class="shortcut">Ctrl</span> + <span class="shortcut">Shift</span> + <span
+                            class="shortcut">I</span> lub <span class="shortcut">F12</span></li>
+                    <li>Kliknij prawym przyciskiem myszy na stronie i wybierz "Zbadaj" (Inspect)</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <h3>Aktywuj tryb urządzenia</h3>
+                <p>Kliknij ikonę urządzenia mobilnego (Toggle device emulation) w górnym pasku DevTools lub użyj skrótu
+                    <span class="shortcut">Ctrl</span> + <span class="shortcut">Shift</span> + <span
+                        class="shortcut">M</span>.</p>
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <h3>Funkcje testowania mobilnego</h3>
+                <p>Microsoft Edge oferuje te same funkcje co Google Chrome, w tym:</p>
+                <ul>
+                    <li>Predefiniowane urządzenia</li>
+                    <li>Kontrola orientacji</li>
+                    <li>Dławienie sieci</li>
+                    <li>Symulacja user agent</li>
+                </ul>
+            </div>
+
+            <div class="tip">
+                <h4>Wskazówka</h4>
+                <p>Edge może również oferować dodatkowe narzędzia do testowania dostępności w zakładce "Accessibility" w
+                    DevTools, które mogą pomóc w zapewnieniu, że Twoja mobilna strona jest dostępna dla wszystkich
+                    użytkowników.</p>
+            </div>
+        </div>
+
+        <div id="safari-content" class="tab-content">
+            <div class="step">
+                <span class="step-number">1</span>
+                <h3>Włącz menu deweloperskie w Safari</h3>
+                <p>Najpierw musisz włączyć menu deweloperskie:</p>
+                <ol>
+                    <li>Otwórz Safari, przejdź do "Safari" > "Preferencje" (lub "Ustawienia")</li>
+                    <li>Przejdź do zakładki "Zaawansowane"</li>
+                    <li>Zaznacz opcję "Pokaż menu Programiści w pasku menu"</li>
+                </ol>
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <h3>Otwórz Web Inspector</h3>
+                <p>Możesz to zrobić na kilka sposobów:</p>
+                <ul>
+                    <li>Naciśnij <span class="shortcut">Cmd</span> + <span class="shortcut">Option</span> + <span
+                            class="shortcut">I</span></li>
+                    <li>Kliknij menu "Programiści" w pasku menu, a następnie wybierz "Pokaż Web Inspector"</li>
+                    <li>Kliknij prawym przyciskiem myszy na stronie i wybierz "Zbadaj element"</li>
+                </ul>
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <h3>Użyj opcji responsywnego testowania</h3>
+                <p>W Safari:</p>
+                <ol>
+                    <li>Otwórz Web Inspector</li>
+                    <li>Kliknij ikonę "Responsive Design Mode" (wygląda jak dwa nakładające się prostokąty) na górze Web
+                        Inspectora</li>
+                    <li>Wybierz urządzenie z rozwijanej listy lub ustaw niestandardowe wymiary</li>
+                </ol>
+            </div>
+
+            <div class="step">
+                <span class="step-number">4</span>
+                <h3>Dostosuj ustawienia</h3>
+                <p>W trybie responsywnym Safari możesz:</p>
+                <ul>
+                    <li>Wybrać różne urządzenia iOS</li>
+                    <li>Zmienić orientację</li>
+                    <li>Dostosować współczynnik skalowania</li>
+                    <li>Ograniczać prędkość sieci</li>
+                </ul>
+            </div>
+
+            <div class="tip">
+                <h4>Wskazówka</h4>
+                <p>Safari na macOS jest szczególnie przydatny do testowania, jak strona będzie wyglądać na urządzeniach
+                    iOS (iPhone i iPad), ponieważ używa tego samego silnika renderowania WebKit.</p>
+            </div>
+        </div>
+
+        <section>
+            <h3>Popularne urządzenia do testowania</h3>
+            <p>Poniżej znajduje się lista popularnych urządzeń, które warto uwzględnić podczas testowania widoku
+                mobilnego:</p>
+
+            <table class="device-table">
+                <thead>
+                    <tr>
+                        <th>Urządzenie</th>
+                        <th>Rozdzielczość (px)</th>
+                        <th>Współczynnik pikseli (DPR)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>iPhone 13/14</td>
+                        <td>390 × 844</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>iPhone 13/14 Pro Max</td>
+                        <td>428 × 926</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>iPhone SE</td>
+                        <td>375 × 667</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>iPad</td>
+                        <td>810 × 1080</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Samsung Galaxy S21/S22</td>
+                        <td>360 × 800</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Google Pixel 6</td>
+                        <td>412 × 915</td>
+                        <td>2.6</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section>
+            <h3>Najlepsze praktyki testowania mobilnego</h3>
+            <ul>
+                <li><strong>Testuj na różnych urządzeniach</strong> - nie ograniczaj się tylko do iPhone'a lub jednego
+                    urządzenia z Androidem</li>
+                <li><strong>Sprawdzaj obie orientacje</strong> - zarówno pionową, jak i poziomą</li>
+                <li><strong>Testuj z różnymi prędkościami sieci</strong> - nie wszyscy użytkownicy mają szybkie
+                    połączenie</li>
+                <li><strong>Sprawdź interakcje dotykowe</strong> - przyciski i elementy interaktywne powinny być
+                    wystarczająco duże (min. 44×44px)</li>
+                <li><strong>Weryfikuj tekst</strong> - czy jest czytelny bez powiększania</li>
+                <li><strong>Oceniaj wydajność</strong> - strony powinny ładować się szybko nawet na urządzeniach
+                    mobilnych</li>
+            </ul>
+        </section>
+
+        <div class="tip">
+            <h4>Pamiętaj!</h4>
+            <p>Choć symulatory w DevTools są bardzo przydatne, nic nie zastąpi testowania na prawdziwych urządzeniach
+                mobilnych. Jeśli to możliwe, staraj się sprawdzać swoje strony również na fizycznych telefonach i
+                tabletach.</p>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Obsługa przełączania zakładek
+        document.addEventListener('DOMContentLoaded', function () {
+            const tabs = document.querySelectorAll('.browser-tab');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    // Usuń klasę active ze wszystkich zakładek i zawartości
+                    document.querySelectorAll('.browser-tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+                    // Dodaj klasę active do klikniętej zakładki
+                    this.classList.add('active');
+
+                    // Pokaż odpowiednią zawartość
+                    const tabContent = document.getElementById(this.dataset.tab + '-content');
+                    if (tabContent) {
+                        tabContent.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
