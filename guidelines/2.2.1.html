@@ -360,6 +360,407 @@ window.onload = startSessionTimeout;</code></pre>
                         </ul>
                     </div>
                 </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - slider zdjęć bez kontroli prędkości</h4>
+                        <p>Slider zdjęć na stronie głównej, który automatycznie przesuwa zdjęcia co 3 sekundy bez
+                            możliwości kontroli tempa:</p>
+                        <pre><code class="language-javascript">// Kod JavaScript realizujący automatyczne przesuwanie slajdów
+const slider = document.getElementById('image-slider');
+const slides = slider.querySelectorAll('.slide');
+let currentSlide = 0;
+
+function nextSlide() {
+    slides[currentSlide].classList.remove('active');
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add('active');
+}
+
+// Automatyczne przejście do następnego slajdu co 3 sekundy
+setInterval(nextSlide, 3000);
+</code></pre>
+
+                        <p>Problem: Slider automatycznie przesuwa zdjęcia co 3 sekundy bez możliwości zatrzymania,
+                            spowolnienia lub dostosowania tempa. Osoby z niepełnosprawnościami poznawczymi, osoby z
+                            trudnościami w czytaniu lub użytkownicy korzystający z technologii wspomagających mogą nie
+                            zdążyć przeczytać informacji lub obejrzeć obrazu przed przejściem do następnego slajdu.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - slider zdjęć z kontrolą prędkości</h4>
+                        <p>Slider zdjęć z możliwością zatrzymania, dostosowania prędkości i ręcznej nawigacji:</p>
+                        <pre><code class="language-html">&lt;div class="slider-container"&gt;
+    &lt;div id="image-slider"&gt;
+        &lt;div class="slide active"&gt;
+            &lt;img src="image1.jpg" alt="Opis pierwszego zdjęcia"&gt;
+            &lt;div class="caption"&gt;Podpis pod pierwszym zdjęciem&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="slide"&gt;
+            &lt;img src="image2.jpg" alt="Opis drugiego zdjęcia"&gt;
+            &lt;div class="caption"&gt;Podpis pod drugim zdjęciem&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="slide"&gt;
+            &lt;img src="image3.jpg" alt="Opis trzeciego zdjęcia"&gt;
+            &lt;div class="caption"&gt;Podpis pod trzecim zdjęciem&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="slider-controls"&gt;
+        &lt;button id="prev-slide" aria-label="Poprzednie zdjęcie"&gt;&lt;span aria-hidden="true"&gt;&amp;laquo;&lt;/span&gt;&lt;/button&gt;
+        &lt;button id="play-pause" aria-label="Zatrzymaj automatyczne przewijanie" aria-pressed="false"&gt;
+            &lt;span class="play-icon" aria-hidden="true"&gt;▶&lt;/span&gt;
+            &lt;span class="pause-icon" aria-hidden="true"&gt;⏸&lt;/span&gt;
+        &lt;/button&gt;
+        &lt;button id="next-slide" aria-label="Następne zdjęcie"&gt;&lt;span aria-hidden="true"&gt;&amp;raquo;&lt;/span&gt;&lt;/button&gt;
+        
+        &lt;div class="speed-control"&gt;
+            &lt;label for="slide-speed"&gt;Prędkość przewijania:&lt;/label&gt;
+            &lt;select id="slide-speed"&gt;
+                &lt;option value="10000"&gt;Bardzo wolno (10s)&lt;/option&gt;
+                &lt;option value="7000"&gt;Wolno (7s)&lt;/option&gt;
+                &lt;option value="5000" selected&gt;Średnio (5s)&lt;/option&gt;
+                &lt;option value="3000"&gt;Szybko (3s)&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                        <pre><code class="language-javascript">// Kod JavaScript z pełną kontrolą nad sliderem
+const slider = document.getElementById('image-slider');
+const slides = slider.querySelectorAll('.slide');
+const prevBtn = document.getElementById('prev-slide');
+const nextBtn = document.getElementById('next-slide');
+const playPauseBtn = document.getElementById('play-pause');
+const speedSelect = document.getElementById('slide-speed');
+
+let currentSlide = 0;
+let slideInterval;
+let isPaused = false;
+let slideSpeed = parseInt(speedSelect.value);
+
+function showSlide(n) {
+    // Ukryj aktualny slajd
+    slides[currentSlide].classList.remove('active');
+    
+    // Oblicz indeks nowego slajdu
+    currentSlide = (n + slides.length) % slides.length;
+    
+    // Pokaż nowy slajd
+    slides[currentSlide].classList.add('active');
+}
+
+function nextSlide() {
+    showSlide(currentSlide + 1);
+}
+
+function prevSlide() {
+    showSlide(currentSlide - 1);
+}
+
+function togglePlayPause() {
+    if (isPaused) {
+        // Wznów automatyczne przewijanie
+        playPauseBtn.setAttribute('aria-pressed', 'false');
+        playPauseBtn.setAttribute('aria-label', 'Zatrzymaj automatyczne przewijanie');
+        slideInterval = setInterval(nextSlide, slideSpeed);
+        isPaused = false;
+    } else {
+        // Zatrzymaj automatyczne przewijanie
+        playPauseBtn.setAttribute('aria-pressed', 'true');
+        playPauseBtn.setAttribute('aria-label', 'Wznów automatyczne przewijanie');
+        clearInterval(slideInterval);
+        isPaused = true;
+    }
+}
+
+function changeSpeed() {
+    slideSpeed = parseInt(this.value);
+    
+    // Jeśli slider jest aktywny, zaktualizuj interwał
+    if (!isPaused) {
+        clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, slideSpeed);
+    }
+}
+
+// Obsługa zdarzeń
+prevBtn.addEventListener('click', function() {
+    prevSlide();
+    // Zatrzymaj automatyczne przewijanie po ręcznej nawigacji
+    if (!isPaused) {
+        togglePlayPause();
+    }
+});
+
+nextBtn.addEventListener('click', function() {
+    nextSlide();
+    // Zatrzymaj automatyczne przewijanie po ręcznej nawigacji
+    if (!isPaused) {
+        togglePlayPause();
+    }
+});
+
+playPauseBtn.addEventListener('click', togglePlayPause);
+speedSelect.addEventListener('change', changeSpeed);
+
+// Zatrzymaj przewijanie, gdy użytkownik najedzie na slider
+slider.addEventListener('mouseenter', function() {
+    if (!isPaused) {
+        clearInterval(slideInterval);
+    }
+});
+
+// Wznów przewijanie, gdy użytkownik opuści obszar slidera
+slider.addEventListener('mouseleave', function() {
+    if (!isPaused) {
+        slideInterval = setInterval(nextSlide, slideSpeed);
+    }
+});
+
+// Inicjalizacja slidera
+slideInterval = setInterval(nextSlide, slideSpeed);</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content"
+                                style="border: 1px solid #ddd; padding: 15px; border-radius: 5px;">
+                                <div
+                                    style="position: relative; width: 100%; height: 150px; overflow: hidden; margin-bottom: 10px; background-color: #f0f0f0;">
+                                    <div
+                                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+                                        <p>Przykładowe zdjęcie 1</p>
+                                    </div>
+                                </div>
+                                <div class="slider-controls" style="display: flex; align-items: center; gap: 10px;">
+                                    <button style="padding: 5px 10px;">&laquo;</button>
+                                    <button style="padding: 5px 10px;">⏸</button>
+                                    <button style="padding: 5px 10px;">&raquo;</button>
+
+                                    <div style="margin-left: 20px;">
+                                        <label>Prędkość przewijania:
+                                            <select style="padding: 5px;">
+                                                <option>Bardzo wolno (10s)</option>
+                                                <option>Wolno (7s)</option>
+                                                <option selected>Średnio (5s)</option>
+                                                <option>Szybko (3s)</option>
+                                            </select>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Ten slider zapewnia pełną kontrolę nad tempem przeglądania zawartości poprzez:
+                        </p>
+                        <ul>
+                            <li>Możliwość zatrzymania i wznowienia automatycznego przewijania</li>
+                            <li>Wybór prędkości przewijania, w tym bardzo wolne ustawienie, które jest co najmniej
+                                dziesięciokrotnie dłuższe niż najszybsze</li>
+                            <li>Ręczną nawigację między slajdami, która automatycznie zatrzymuje automatyczne
+                                przewijanie</li>
+                            <li>Automatyczne zatrzymanie podczas najechania kursorem, co pomaga użytkownikom z
+                                trudnościami w koordynacji ruchowej</li>
+                            <li>Poprawnie oznaczone przyciski z etykietami ARIA, co ułatwia korzystanie osobom
+                                używającym czytnika ekranu</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - slider zdjęć bez automatycznego przewijania</h4>
+                        <p>Slider zdjęć, który domyślnie nie przesuwa się automatycznie, dając użytkownikowi pełną
+                            kontrolę nad tempem przeglądania zawartości:</p>
+                        <pre><code class="language-html">&lt;div class="manual-slider-container"&gt;
+    &lt;div id="manual-image-slider"&gt;
+        &lt;div class="slide active"&gt;
+            &lt;img src="image1.jpg" alt="Opis pierwszego zdjęcia"&gt;
+            &lt;div class="caption"&gt;Podpis pod pierwszym zdjęciem&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="slide"&gt;
+            &lt;img src="image2.jpg" alt="Opis drugiego zdjęcia"&gt;
+            &lt;div class="caption"&gt;Podpis pod drugim zdjęciem&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class="slide"&gt;
+            &lt;img src="image3.jpg" alt="Opis trzeciego zdjęcia"&gt;
+            &lt;div class="caption"&gt;Podpis pod trzecim zdjęciem&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="slider-navigation"&gt;
+        &lt;button id="prev-slide" aria-label="Poprzednie zdjęcie"&gt;&lt;span aria-hidden="true"&gt;&amp;laquo;&lt;/span&gt;&lt;/button&gt;
+        
+        &lt;div class="slide-indicators" role="tablist"&gt;
+            &lt;button id="slide1" class="indicator active" aria-selected="true" aria-label="Slajd 1" role="tab"&gt;1&lt;/button&gt;
+            &lt;button id="slide2" class="indicator" aria-selected="false" aria-label="Slajd 2" role="tab"&gt;2&lt;/button&gt;
+            &lt;button id="slide3" class="indicator" aria-selected="false" aria-label="Slajd 3" role="tab"&gt;3&lt;/button&gt;
+        &lt;/div&gt;
+        
+        &lt;button id="next-slide" aria-label="Następne zdjęcie"&gt;&lt;span aria-hidden="true"&gt;&amp;raquo;&lt;/span&gt;&lt;/button&gt;
+        
+        &lt;div class="auto-play-option"&gt;
+            &lt;label&gt;
+                &lt;input type="checkbox" id="auto-play-toggle"&gt;
+                Włącz automatyczne przewijanie
+            &lt;/label&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                        <pre><code class="language-javascript">// Kod JavaScript dla slidera z manualną kontrolą
+const manualSlider = document.getElementById('manual-image-slider');
+const slides = manualSlider.querySelectorAll('.slide');
+const prevBtn = document.getElementById('prev-slide');
+const nextBtn = document.getElementById('next-slide');
+const indicators = document.querySelectorAll('.indicator');
+const autoPlayToggle = document.getElementById('auto-play-toggle');
+
+let currentSlide = 0;
+let slideInterval;
+let isAutoPlaying = false;
+
+function showSlide(n) {
+    // Ukryj aktualny slajd
+    slides[currentSlide].classList.remove('active');
+    indicators[currentSlide].classList.remove('active');
+    indicators[currentSlide].setAttribute('aria-selected', 'false');
+    
+    // Oblicz indeks nowego slajdu
+    currentSlide = (n + slides.length) % slides.length;
+    
+    // Pokaż nowy slajd
+    slides[currentSlide].classList.add('active');
+    indicators[currentSlide].classList.add('active');
+    indicators[currentSlide].setAttribute('aria-selected', 'true');
+    
+    // Aktualizuj dostępność - powiadom o zmianie slajdu
+    const announcement = document.getElementById('slide-announcement');
+    if (announcement) {
+        announcement.textContent = `Przejście do slajdu ${currentSlide + 1} z ${slides.length}`;
+    }
+}
+
+function nextSlide() {
+    showSlide(currentSlide + 1);
+}
+
+function prevSlide() {
+    showSlide(currentSlide - 1);
+}
+
+function toggleAutoPlay() {
+    isAutoPlaying = autoPlayToggle.checked;
+    
+    if (isAutoPlaying) {
+        // Włącz automatyczne przewijanie
+        slideInterval = setInterval(nextSlide, 5000); // Co 5 sekund
+    } else {
+        // Wyłącz automatyczne przewijanie
+        clearInterval(slideInterval);
+    }
+}
+
+// Obsługa zdarzeń
+prevBtn.addEventListener('click', prevSlide);
+nextBtn.addEventListener('click', nextSlide);
+
+// Obsługa klawiszy strzałek dla łatwiejszej nawigacji
+manualSlider.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowLeft') {
+        prevSlide();
+    } else if (e.key === 'ArrowRight') {
+        nextSlide();
+    }
+});
+
+// Obsługa wskaźników slajdów
+indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', function() {
+        showSlide(index);
+    });
+});
+
+// Obsługa przełącznika automatycznego odtwarzania
+autoPlayToggle.addEventListener('change', toggleAutoPlay);
+
+// Dodaj element dla komunikatów dostępności (niewidoczny wizualnie)
+const announcement = document.createElement('div');
+announcement.id = 'slide-announcement';
+announcement.className = 'visually-hidden';
+announcement.setAttribute('aria-live', 'polite');
+document.body.appendChild(announcement);</code></pre>
+
+                        <pre><code class="language-css">/* Style CSS dla wizualnie ukrytych elementów */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content"
+                                style="border: 1px solid #ddd; padding: 15px; border-radius: 5px;">
+                                <div
+                                    style="position: relative; width: 100%; height: 150px; overflow: hidden; margin-bottom: 10px; background-color: #f0f0f0;">
+                                    <div
+                                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+                                        <p>Przykładowe zdjęcie 1</p>
+                                    </div>
+                                </div>
+                                <div
+                                    style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                    <button style="padding: 5px 10px;">&laquo;</button>
+
+                                    <div style="display: flex; gap: 5px;">
+                                        <button
+                                            style="width: 30px; height: 30px; border-radius: 50%; background-color: #0066cc; color: white; border: none;">1</button>
+                                        <button
+                                            style="width: 30px; height: 30px; border-radius: 50%; background-color: #ddd; border: none;">2</button>
+                                        <button
+                                            style="width: 30px; height: 30px; border-radius: 50%; background-color: #ddd; border: none;">3</button>
+                                    </div>
+
+                                    <button style="padding: 5px 10px;">&raquo;</button>
+                                </div>
+
+                                <div style="text-align: center;">
+                                    <label>
+                                        <input type="checkbox">
+                                        Włącz automatyczne przewijanie
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Ten slider jest domyślnie ręczny i zapewnia pełną kontrolę nad nawigacją
+                            poprzez:</p>
+                        <ul>
+                            <li>Brak automatycznego przewijania treści - użytkownik sam decyduje, kiedy chce przejść do
+                                kolejnego slajdu</li>
+                            <li>Intuicyjne przyciski nawigacyjne (poprzedni/następny) oraz wskaźniki numeryczne dla
+                                bezpośredniego dostępu do konkretnego slajdu</li>
+                            <li>Obsługę nawigacji za pomocą klawiatury (strzałki lewo/prawo), co zwiększa dostępność dla
+                                osób korzystających z klawiatury</li>
+                            <li>Opcjonalną możliwość włączenia automatycznego przewijania jako dodatkową funkcję, a nie
+                                domyślne zachowanie</li>
+                            <li>Prawidłowe oznaczenia ARIA dla elementów interaktywnych, co poprawia doświadczenie dla
+                                użytkowników czytników ekranu</li>
+                            <li>Komunikaty dostępności informujące o zmianie slajdu dla technologii wspomagających</li>
+                        </ul>
+                        <p>Ten przykład jest bardziej dostępny niż poprzednie, ponieważ nie wymaga od użytkownika
+                            podejmowania akcji w celu zatrzymania automatycznego ruchu - domyślnie nic się nie dzieje
+                            bez interakcji użytkownika.</p>
+                    </div>
+                </div>
             </div>
 
             <div class="resources">
