@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.2.1 Możliwość dostosowania czasu (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.2.1 Możliwość dostosowania czasu</h2>
+                <p class="criterion-level">Poziom A</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#timing-adjustable" target="_blank"
+                            rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Dla każdego limitu czasowego, który jest ustawiony przez treść, spełnione jest przynajmniej jedno z
+                    poniższych założeń:</p>
+                <ul>
+                    <li><strong>Wyłączenie:</strong> Użytkownik może wyłączyć limit czasu przed jego napotkaniem; lub
+                    </li>
+                    <li><strong>Dostosowanie:</strong> Użytkownik może dostosować limit czasu przed jego napotkaniem w
+                        szerokim zakresie, który jest co najmniej dziesięciokrotnie większy od domyślnego ustawienia;
+                        lub</li>
+                    <li><strong>Wydłużenie:</strong> Użytkownik jest ostrzegany przed upływem czasu i ma co najmniej 20
+                        sekund na wydłużenie limitu czasu za pomocą prostej czynności (np. "naciśnij spację"), a
+                        użytkownik może wydłużyć limit czasu co najmniej dziesięciokrotnie; lub</li>
+                    <li><strong>Wyjątek czasu rzeczywistego:</strong> Limit czasu jest wymaganą częścią wydarzenia
+                        odbywającego się w czasie rzeczywistym (np. aukcji) i nie ma możliwości zapewnienia alternatywy
+                        dla limitu czasu; lub</li>
+                    <li><strong>Wyjątek istotności:</strong> Limit czasu jest niezbędny, a jego wydłużenie unieważniłoby
+                        daną czynność; lub</li>
+                    <li><strong>Wyjątek 20 godzin:</strong> Limit czasu jest dłuższy niż 20 godzin.</li>
+                </ul>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest zapewnienie, że użytkownicy z niepełnosprawnościami mają wystarczająco dużo
+                    czasu na interakcję z treścią internetową. Osoby z niepełnosprawnościami takimi jak ślepota, słaby
+                    wzrok, upośledzenia zręczności i ograniczenia poznawcze mogą potrzebować więcej czasu na
+                    przeczytanie treści lub wykonanie funkcji, takich jak wypełnianie formularzy online.</p>
+                <p>Jeśli funkcje są zależne od czasu, trudno będzie niektórym użytkownikom wykonać wymagane działanie
+                    przed upływem limitu czasu. Może to sprawić, że usługa będzie dla nich niedostępna. Projektowanie
+                    funkcji, które nie są zależne od czasu, pomoże osobom z niepełnosprawnościami w pomyślnym
+                    wykonywaniu tych funkcji.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - sesja wygasająca bez ostrzeżenia</h4>
+                        <p>Formularz logowania do systemu bankowego, który automatycznie wylogowuje użytkownika po 5
+                            minutach nieaktywności bez ostrzeżenia:</p>
+                        <pre><code class="language-javascript">// Kod JavaScript ustawiający automatyczne wylogowanie po 5 minutach
+let timeoutId;
+
+function startSessionTimeout() {
+    timeoutId = setTimeout(function() {
+        // Automatyczne wylogowanie bez ostrzeżenia
+        window.location.href = 'logout.php';
+    }, 5 * 60 * 1000); // 5 minut
+}
+
+function resetSessionTimeout() {
+    clearTimeout(timeoutId);
+    startSessionTimeout();
+}
+
+// Nasłuchiwanie aktywności użytkownika
+document.addEventListener('click', resetSessionTimeout);
+document.addEventListener('keypress', resetSessionTimeout);
+
+// Uruchomienie licznika po załadowaniu strony
+window.onload = startSessionTimeout;</code></pre>
+
+                        <p>Problem: System automatycznie wylogowuje użytkownika po określonym czasie bez ostrzeżenia i
+                            bez możliwości wydłużenia sesji. Użytkownicy, którzy potrzebują więcej czasu na wypełnienie
+                            formularza (np. osoby z niepełnosprawnościami ruchowymi lub poznawczymi), mogą zostać
+                            wylogowani przed zakończeniem zadania, tracąc wprowadzone dane.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - możliwość wydłużenia sesji</h4>
+                        <p>System bankowości internetowej, który ostrzega użytkownika przed wygaśnięciem sesji i pozwala
+                            ją przedłużyć:</p>
+                        <pre><code class="language-javascript">// Kod JavaScript z ostrzeżeniem i możliwością przedłużenia sesji
+let sessionTimeoutId;
+let warningTimeoutId;
+
+function startSessionTimeout() {
+    // Ustaw timer ostrzeżenia na 4 minuty i 30 sekund
+    warningTimeoutId = setTimeout(function() {
+        showTimeoutWarning();
+    }, 4 * 60 * 1000 + 30 * 1000);
+    
+    // Ustaw timer wylogowania na 5 minut
+    sessionTimeoutId = setTimeout(function() {
+        logout();
+    }, 5 * 60 * 1000);
+}
+
+function showTimeoutWarning() {
+    // Pokaż ostrzeżenie z możliwością przedłużenia sesji
+    const warningElement = document.getElementById('session-warning');
+    warningElement.style.display = 'block';
+    
+    // Odliczanie 30 sekund
+    let secondsLeft = 30;
+    const timerElement = document.getElementById('seconds-left');
+    
+    const countdownInterval = setInterval(function() {
+        secondsLeft--;
+        timerElement.textContent = secondsLeft;
+        
+        if (secondsLeft <= 0) {
+            clearInterval(countdownInterval);
+        }
+    }, 1000);
+}
+
+function extendSession() {
+    // Ukryj ostrzeżenie
+    document.getElementById('session-warning').style.display = 'none';
+    
+    // Wyczyść istniejące timery
+    clearTimeout(warningTimeoutId);
+    clearTimeout(sessionTimeoutId);
+    
+    // Rozpocznij nową sesję
+    startSessionTimeout();
+}
+
+function logout() {
+    // Zapisz dane formularza w lokalnym magazynie
+    saveFormData();
+    
+    // Przekieruj do strony logowania
+    window.location.href = 'logout.php';
+}
+
+// Nasłuchiwanie aktywności użytkownika
+document.addEventListener('click', function() {
+    if (document.getElementById('session-warning').style.display !== 'block') {
+        extendSession();
+    }
+});
+document.addEventListener('keypress', function() {
+    if (document.getElementById('session-warning').style.display !== 'block') {
+        extendSession();
+    }
+});
+
+// Przycisk do przedłużenia sesji
+document.getElementById('extend-session').addEventListener('click', extendSession);
+
+// Uruchomienie licznika po załadowaniu strony
+window.onload = startSessionTimeout;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd ostrzeżenia o wygaśnięciu sesji:</h5>
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 15px; border-radius: 5px; background-color: #f9f9f9;">
+                                <div id="session-warning">
+                                    <h4 style="margin-top: 0;">Twoja sesja wkrótce wygaśnie</h4>
+                                    <p>Ze względów bezpieczeństwa, Twoja sesja wygaśnie za <strong
+                                            id="seconds-left">30</strong> sekund.</p>
+                                    <p>Czy chcesz kontynuować pracę?</p>
+                                    <button id="extend-session"
+                                        style="background-color: #0066cc; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Przedłuż
+                                        sesję</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: System ostrzega użytkownika przed wygaśnięciem sesji i daje mu co najmniej 20
+                            sekund na podjęcie prostej akcji (kliknięcie przycisku), aby przedłużyć sesję. Użytkownik
+                            może wielokrotnie przedłużać sesję, co daje wystarczająco dużo czasu nawet osobom z
+                            niepełnosprawnościami na dokończenie zadania.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - opcja wyłączenia automatycznych aktualizacji</h4>
+                        <p>Strona z aktualnymi notowaniami giełdowymi, która pozwala użytkownikowi wyłączyć automatyczne
+                            odświeżanie:</p>
+                        <pre><code class="language-html">&lt;div class="stock-ticker"&gt;
+    &lt;div class="controls"&gt;
+        &lt;label&gt;
+            &lt;input type="checkbox" id="auto-refresh-toggle" checked&gt;
+            Automatyczne odświeżanie notowań (co 30 sekund)
+        &lt;/label&gt;
+        &lt;button id="manual-refresh"&gt;Odśwież teraz&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div id="stock-data"&gt;
+        &lt;!-- Dane giełdowe --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    let autoRefreshInterval;
+    const toggleCheckbox = document.getElementById('auto-refresh-toggle');
+    const manualRefreshBtn = document.getElementById('manual-refresh');
+    
+    function startAutoRefresh() {
+        autoRefreshInterval = setInterval(function() {
+            refreshStockData();
+        }, 30000); // Co 30 sekund
+    }
+    
+    function stopAutoRefresh() {
+        clearInterval(autoRefreshInterval);
+    }
+    
+    function refreshStockData() {
+        // Kod odświeżający dane
+        fetch('/api/stocks')
+            .then(response => response.json())
+            .then(data => {
+                // Aktualizacja danych na stronie
+                updateStockDisplay(data);
+            });
+    }
+    
+    toggleCheckbox.addEventListener('change', function() {
+        if (this.checked) {
+            startAutoRefresh();
+        } else {
+            stopAutoRefresh();
+        }
+    });
+    
+    manualRefreshBtn.addEventListener('click', refreshStockData);
+    
+    // Inicjalizacja
+    if (toggleCheckbox.checked) {
+        startAutoRefresh();
+    }
+&lt;/script&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content"
+                                style="border: 1px solid #ddd; padding: 15px; border-radius: 5px;">
+                                <div class="controls">
+                                    <label>
+                                        <input type="checkbox" checked>
+                                        Automatyczne odświeżanie notowań (co 30 sekund)
+                                    </label>
+                                    <button style="margin-left: 10px; padding: 5px 10px;">Odśwież teraz</button>
+                                </div>
+                                <div id="stock-data" style="margin-top: 15px;">
+                                    <table style="width: 100%; border-collapse: collapse;">
+                                        <tr style="background-color: #f2f2f2;">
+                                            <th style="text-align: left; padding: 8px; border: 1px solid #ddd;">Spółka
+                                            </th>
+                                            <th style="text-align: right; padding: 8px; border: 1px solid #ddd;">Kurs
+                                            </th>
+                                            <th style="text-align: right; padding: 8px; border: 1px solid #ddd;">Zmiana
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left; padding: 8px; border: 1px solid #ddd;">ABC Corp
+                                            </td>
+                                            <td style="text-align: right; padding: 8px; border: 1px solid #ddd;">245,67
+                                                zł</td>
+                                            <td
+                                                style="text-align: right; padding: 8px; border: 1px solid #ddd; color: green;">
+                                                +1,2%</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: left; padding: 8px; border: 1px solid #ddd;">XYZ S.A.
+                                            </td>
+                                            <td style="text-align: right; padding: 8px; border: 1px solid #ddd;">78,30
+                                                zł</td>
+                                            <td
+                                                style="text-align: right; padding: 8px; border: 1px solid #ddd; color: red;">
+                                                -0,5%</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Użytkownik ma możliwość wyłączenia automatycznego odświeżania danych, co pozwala
+                            mu kontrolować tempo zmian na stronie. Jest to szczególnie ważne dla osób, które potrzebują
+                            więcej czasu na przeczytanie i zrozumienie informacji, np. użytkowników z zaburzeniami
+                            poznawczymi lub korzystających z technologii wspomagających.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example average">
+                        <h4>Średni przykład - aukcja z limitem czasowym (wyjątek czasu rzeczywistego)</h4>
+                        <p>System aukcyjny z odliczaniem czasu:</p>
+                        <pre><code class="language-html">&lt;div class="auction-item"&gt;
+    &lt;h3&gt;Antyczny zegar ścienny&lt;/h3&gt;
+    &lt;p&gt;Aktualnie najwyższa oferta: &lt;strong&gt;1250 zł&lt;/strong&gt;&lt;/p&gt;
+    &lt;p&gt;Pozostały czas: &lt;span id="countdown"&gt;00:05:30&lt;/span&gt;&lt;/p&gt;
+    
+    &lt;div class="bid-form"&gt;
+        &lt;label for="bid-amount"&gt;Twoja oferta (min. 1300 zł):&lt;/label&gt;
+        &lt;input type="number" id="bid-amount" min="1300" step="50" value="1300"&gt;
+        &lt;button id="place-bid"&gt;Złóż ofertę&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content"
+                                style="border: 1px solid #ddd; padding: 15px; border-radius: 5px; background-color: #f9f9f9;">
+                                <h3 style="margin-top: 0;">Antyczny zegar ścienny</h3>
+                                <img src="../images/placeholder-image.png" alt="Antyczny zegar ścienny"
+                                    style="max-width: 200px; margin: 10px 0;">
+                                <p>Aktualnie najwyższa oferta: <strong>1250 zł</strong></p>
+                                <p>Pozostały czas: <span
+                                        style="font-family: monospace; font-weight: bold; color: #cc0000;">00:05:30</span>
+                                </p>
+
+                                <div style="margin-top: 15px;">
+                                    <label for="bid-amount">Twoja oferta (min. 1300 zł):</label>
+                                    <input type="number" id="bid-amount" min="1300" step="50" value="1300"
+                                        style="margin: 0 10px; padding: 5px;">
+                                    <button
+                                        style="padding: 5px 10px; background-color: #0066cc; color: white; border: none; border-radius: 3px;">Złóż
+                                        ofertę</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Wyjaśnienie: W tym przypadku limit czasowy jest nieodłącznym elementem aukcji i nie może być
+                            wyłączony ani przedłużony, ponieważ stanowi istotną część procesu licytacji. Jest to zgodne
+                            z wytycznymi WCAG 2.1 jako wyjątek czasu rzeczywistego.</p>
+                        <p>Warto jednak zaznaczyć, że nawet w takim przypadku można poprawić dostępność systemu, np.
+                            poprzez:</p>
+                        <ul>
+                            <li>Zapewnienie wyraźnych, kontrastowych wskaźników czasu</li>
+                            <li>Oferowanie powiadomień dźwiękowych lub wizualnych na minutę przed zakończeniem aukcji
+                            </li>
+                            <li>Przeniesienie jak największej części procesu poza okres krytyczny czasowo (np.
+                                umożliwienie wprowadzenia danych płatności i wysyłki przed rozpoczęciem licytacji)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/timing-adjustable.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG: Możliwość dostosowania czasu</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G198" target="_blank"
+                            rel="noopener">G198: Zapewnienie sposobu wyłączenia limitu czasu</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G180" target="_blank"
+                            rel="noopener">G180: Zapewnienie użytkownikowi możliwości ustawienia limitu czasu na co
+                            najmniej 10 razy dłuższy niż domyślny</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/client-side-script/SCR16" target="_blank"
+                            rel="noopener">SCR16: Zapewnienie skryptu ostrzegającego użytkownika o zbliżającym się
+                            wygaśnięciu limitu czasu</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.2.html">Poprzedni: 2.2 Wystarczająca ilość czasu</a></li>
+                    <li><a href="2.2.2.html">Następny: 2.2.2 Wstrzymywanie (pauza), zatrzymywanie, ukrywanie</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

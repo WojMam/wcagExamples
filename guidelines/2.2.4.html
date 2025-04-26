@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.2.4 Zakłócenia (AAA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.2.4 Zakłócenia</h2>
+                <p class="criterion-level">Poziom AAA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#interruptions" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Zakłócenia mogą być odłożone w czasie lub wyłączone przez użytkownika, z wyjątkiem zakłóceń
+                    związanych z sytuacjami awaryjnymi.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest umożliwienie użytkownikom wyłączenia aktualizacji pochodzących od autora
+                    lub serwera, z wyjątkiem sytuacji awaryjnych. Sytuacje awaryjne to m.in. komunikaty o zagrożeniach
+                    cywilnych lub inne wiadomości ostrzegające o niebezpieczeństwie dla zdrowia, bezpieczeństwa lub
+                    mienia, w tym o utracie danych, utracie połączenia itp.</p>
+                <p>Kryterium to pomaga osobom z ograniczeniami poznawczymi lub zaburzeniami uwagi, umożliwiając im
+                    skupienie się na treści. Pozwala również użytkownikom niewidomym lub słabowidzącym utrzymać "fokus"
+                    na treści, którą aktualnie czytają bez niespodziewanych zmian.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - wyskakujące powiadomienia bez kontroli</h4>
+                        <p>Serwis informacyjny z automatycznie pojawiającymi się powiadomieniami o nowych artykułach:
+                        </p>
+                        <pre><code class="language-html">&lt;div id="news-container"&gt;
+    &lt;h2&gt;Najnowsze wiadomości&lt;/h2&gt;
+    &lt;div id="article-list"&gt;
+        &lt;!-- Lista artykułów --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="notification-popup" class="popup"&gt;
+    &lt;div class="popup-content"&gt;
+        &lt;h3&gt;Nowy artykuł!&lt;/h3&gt;
+        &lt;p&gt;Właśnie opublikowaliśmy najnowszy artykuł: &lt;span id="new-article-title"&gt;Tytuł artykułu&lt;/span&gt;&lt;/p&gt;
+        &lt;button onclick="viewArticle()"&gt;Zobacz teraz&lt;/button&gt;
+        &lt;button onclick="closePopup()"&gt;Zamknij&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    // Funkcja sprawdzająca nowe artykuły co 30 sekund
+    setInterval(function() {
+        checkForNewArticles();
+    }, 30000);
+    
+    function checkForNewArticles() {
+        // Symulacja sprawdzania nowych artykułów
+        fetch('/api/new-articles')
+            .then(response => response.json())
+            .then(data => {
+                if (data.hasNew) {
+                    // Wyświetl powiadomienie bez względu na to, co robi użytkownik
+                    document.getElementById('new-article-title').textContent = data.title;
+                    document.getElementById('notification-popup').style.display = 'block';
+                }
+            });
+    }
+    
+    function closePopup() {
+        document.getElementById('notification-popup').style.display = 'none';
+    }
+    
+    function viewArticle() {
+        // Kod przekierowujący do nowego artykułu
+        window.location.href = '/article/new';
+    }
+&lt;/script&gt;
+
+&lt;style&gt;
+    .popup {
+        display: none;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        z-index: 1000;
+        padding: 15px;
+        width: 300px;
+    }
+&lt;/style&gt;</code></pre>
+
+                        <p>Problem: Powiadomienia o nowych artykułach pojawiają się automatycznie bez możliwości ich
+                            wyłączenia przez użytkownika. Takie niespodziewane zakłócenia mogą rozpraszać użytkowników,
+                            szczególnie tych z zaburzeniami poznawczymi lub ograniczeniami uwagi. Dodatkowo, mogą
+                            zaburzać czytanie treści przez osoby korzystające z czytników ekranu, powodując
+                            dezorientację
+                            i utratę miejsca w tekście.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - ustawienia powiadomień</h4>
+                        <p>Ten sam serwis informacyjny z możliwością kontrolowania powiadomień przez użytkownika:</p>
+                        <pre><code class="language-html">&lt;div id="news-container"&gt;
+    &lt;h2&gt;Najnowsze wiadomości&lt;/h2&gt;
+    &lt;div class="notification-settings"&gt;
+        &lt;button id="notification-settings-btn" aria-expanded="false" aria-controls="notification-options"&gt;
+            Ustawienia powiadomień
+        &lt;/button&gt;
+        &lt;div id="notification-options" class="hidden"&gt;
+            &lt;h3&gt;Powiadomienia o nowych artykułach&lt;/h3&gt;
+            &lt;div&gt;
+                &lt;input type="radio" id="notify-all" name="notification-pref" value="all"&gt;
+                &lt;label for="notify-all"&gt;Pokazuj wszystkie powiadomienia&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+                &lt;input type="radio" id="notify-important" name="notification-pref" value="important" checked&gt;
+                &lt;label for="notify-important"&gt;Pokazuj tylko ważne powiadomienia&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+                &lt;input type="radio" id="notify-none" name="notification-pref" value="none"&gt;
+                &lt;label for="notify-none"&gt;Wyłącz wszystkie powiadomienia (z wyjątkiem komunikatów awaryjnych)&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+                &lt;input type="checkbox" id="notification-sound" name="notification-sound"&gt;
+                &lt;label for="notification-sound"&gt;Dźwięk powiadomień&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;button id="save-notification-settings"&gt;Zapisz ustawienia&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id="article-list"&gt;
+        &lt;!-- Lista artykułów --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div id="notification-popup" class="popup"&gt;
+    &lt;div class="popup-content"&gt;
+        &lt;h3&gt;Nowy artykuł!&lt;/h3&gt;
+        &lt;p&gt;Właśnie opublikowaliśmy najnowszy artykuł: &lt;span id="new-article-title"&gt;Tytuł artykułu&lt;/span&gt;&lt;/p&gt;
+        &lt;button onclick="viewArticle()"&gt;Zobacz teraz&lt;/button&gt;
+        &lt;button onclick="closePopup()"&gt;Zamknij&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    // Inicjalizacja ustawień z localStorage lub wartości domyślnych
+    let notificationPreference = localStorage.getItem('notificationPref') || 'important';
+    let notificationSound = localStorage.getItem('notificationSound') === 'true';
+    
+    // Aktualizacja formularza zgodnie z zapisanymi ustawieniami
+    document.querySelector(`input[name="notification-pref"][value="${notificationPreference}"]`).checked = true;
+    document.getElementById('notification-sound').checked = notificationSound;
+    
+    // Obsługa przycisku ustawień powiadomień
+    document.getElementById('notification-settings-btn').addEventListener('click', function() {
+        const options = document.getElementById('notification-options');
+        const isHidden = options.classList.contains('hidden');
+        
+        if (isHidden) {
+            options.classList.remove('hidden');
+            this.setAttribute('aria-expanded', 'true');
+        } else {
+            options.classList.add('hidden');
+            this.setAttribute('aria-expanded', 'false');
+        }
+    });
+    
+    // Zapisywanie ustawień
+    document.getElementById('save-notification-settings').addEventListener('click', function() {
+        notificationPreference = document.querySelector('input[name="notification-pref"]:checked').value;
+        notificationSound = document.getElementById('notification-sound').checked;
+        
+        localStorage.setItem('notificationPref', notificationPreference);
+        localStorage.setItem('notificationSound', notificationSound.toString());
+        
+        document.getElementById('notification-options').classList.add('hidden');
+        document.getElementById('notification-settings-btn').setAttribute('aria-expanded', 'false');
+        
+        alert('Ustawienia powiadomień zostały zapisane.');
+    });
+    
+    // Funkcja sprawdzająca nowe artykuły
+    setInterval(function() {
+        checkForNewArticles();
+    }, 30000);
+    
+    function checkForNewArticles() {
+        // Nie pokazuj powiadomień, jeśli użytkownik wyłączył je
+        if (notificationPreference === 'none') {
+            return;
+        }
+        
+        // Symulacja sprawdzania nowych artykułów
+        fetch('/api/new-articles')
+            .then(response => response.json())
+            .then(data => {
+                if (data.hasNew) {
+                    // Sprawdź, czy artykuł jest "ważny" i pokaż tylko jeśli ustawienia na to pozwalają
+                    if (notificationPreference === 'all' || (notificationPreference === 'important' && data.isImportant)) {
+                        document.getElementById('new-article-title').textContent = data.title;
+                        document.getElementById('notification-popup').style.display = 'block';
+                        
+                        // Odtwórz dźwięk, jeśli włączony
+                        if (notificationSound) {
+                            playNotificationSound();
+                        }
+                    }
+                }
+            });
+    }
+    
+    function playNotificationSound() {
+        // Kod odtwarzający dźwięk powiadomienia
+    }
+    
+    function closePopup() {
+        document.getElementById('notification-popup').style.display = 'none';
+    }
+    
+    function viewArticle() {
+        // Kod przekierowujący do nowego artykułu
+        window.location.href = '/article/new';
+    }
+&lt;/script&gt;
+
+&lt;style&gt;
+    .popup {
+        display: none;
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        z-index: 1000;
+        padding: 15px;
+        width: 300px;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    
+    .notification-settings {
+        margin-bottom: 20px;
+    }
+&lt;/style&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div style="border: 1px solid #ddd; padding: 20px; border-radius: 5px;">
+                                    <h2 style="margin-top: 0;">Najnowsze wiadomości</h2>
+                                    <div style="margin-bottom: 20px;">
+                                        <button
+                                            style="padding: 8px 12px; background-color: #f0f0f0; border: 1px solid #ddd; border-radius: 4px;">
+                                            Ustawienia powiadomień
+                                        </button>
+                                        <div
+                                            style="display: block; border: 1px solid #ddd; margin-top: 10px; padding: 15px; background-color: #f9f9f9; border-radius: 4px;">
+                                            <h3 style="margin-top: 0;">Powiadomienia o nowych artykułach</h3>
+                                            <div style="margin: 8px 0;">
+                                                <input type="radio" id="preview-notify-all" name="preview-pref">
+                                                <label for="preview-notify-all">Pokazuj wszystkie powiadomienia</label>
+                                            </div>
+                                            <div style="margin: 8px 0;">
+                                                <input type="radio" id="preview-notify-important" name="preview-pref"
+                                                    checked>
+                                                <label for="preview-notify-important">Pokazuj tylko ważne
+                                                    powiadomienia</label>
+                                            </div>
+                                            <div style="margin: 8px 0;">
+                                                <input type="radio" id="preview-notify-none" name="preview-pref">
+                                                <label for="preview-notify-none">Wyłącz wszystkie powiadomienia (z
+                                                    wyjątkiem komunikatów awaryjnych)</label>
+                                            </div>
+                                            <div style="margin: 8px 0;">
+                                                <input type="checkbox" id="preview-sound">
+                                                <label for="preview-sound">Dźwięk powiadomień</label>
+                                            </div>
+                                            <button
+                                                style="padding: 8px 12px; background-color: #0077cc; color: white; border: none; border-radius: 4px; margin-top: 10px;">
+                                                Zapisz ustawienia
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div style="padding: 10px; border: 1px solid #eee; margin-bottom: 10px;">
+                                            <h3 style="margin-top: 0;">Nowe przepisy dotyczące dostępności cyfrowej</h3>
+                                            <p>Opublikowano: 10:30, dziś</p>
+                                        </div>
+                                        <div style="padding: 10px; border: 1px solid #eee; margin-bottom: 10px;">
+                                            <h3 style="margin-top: 0;">Konferencja na temat WCAG 2.2 już w przyszłym
+                                                miesiącu</h3>
+                                            <p>Opublikowano: 09:15, dziś</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Strona umożliwia użytkownikom kontrolę nad powiadomieniami poprzez:</p>
+                        <ul>
+                            <li>Możliwość całkowitego wyłączenia powiadomień (z wyjątkiem komunikatów awaryjnych)</li>
+                            <li>Wybór rodzaju wyświetlanych powiadomień (wszystkie lub tylko ważne)</li>
+                            <li>Włączenie lub wyłączenie dźwięków powiadomień</li>
+                            <li>Zapisanie preferencji, które zostaną zapamiętane na przyszłe sesje</li>
+                        </ul>
+                        <p>Dzięki temu użytkownicy mogą kontrolować sposób, w jaki są informowani o aktualizacjach
+                            treści, co jest szczególnie ważne dla osób z zaburzeniami poznawczymi lub korzystających z
+                            technologii wspomagających.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - automatyczne przekierowanie</h4>
+                        <p>Strona z automatycznym przekierowaniem po określonym czasie:</p>
+                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Strona przeniesiona&lt;/title&gt;
+    &lt;meta http-equiv="refresh" content="10;url=https://nowa-strona.pl"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Strona została przeniesiona&lt;/h1&gt;
+    &lt;p&gt;Nasza strona została przeniesiona pod nowy adres. Za 10 sekund zostaniesz automatycznie przekierowany.&lt;/p&gt;
+    &lt;p&gt;Jeśli nie chcesz czekać, kliknij &lt;a href="https://nowa-strona.pl"&gt;tutaj&lt;/a&gt;.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                        <p>Problem: Strona wykorzystuje meta tag refresh do automatycznego przekierowania użytkownika
+                            po 10 sekundach. Takie zachowanie jest uznawane za naruszenie kryterium 2.2.4 (a także
+                            2.2.1 i 3.2.5), ponieważ użytkownik nie ma możliwości wyłączenia tego automatycznego
+                            przekierowania. Osoby, które czytają wolniej lub korzystają z technologii wspomagających,
+                            mogą nie zdążyć przeczytać informacji przed przekierowaniem.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - przekierowanie na żądanie</h4>
+                        <p>Lepsza wersja strony informującej o zmianie adresu:</p>
+                        <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Strona przeniesiona&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;main&gt;
+        &lt;h1&gt;Strona została przeniesiona&lt;/h1&gt;
+        &lt;p&gt;Nasza strona została przeniesiona pod nowy adres.&lt;/p&gt;
+        &lt;p&gt;Możesz odwiedzić nową stronę klikając przycisk poniżej:&lt;/p&gt;
+        &lt;a href="https://nowa-strona.pl" class="button"&gt;Przejdź do nowej strony&lt;/a&gt;
+        
+        &lt;div class="info-box"&gt;
+            &lt;h2&gt;Dlaczego strona została przeniesiona?&lt;/h2&gt;
+            &lt;p&gt;Przenieśliśmy naszą stronę, aby zapewnić lepszą wydajność i bezpieczeństwo. 
+            Nowa strona oferuje również ulepszoną dostępność i responsywny design.&lt;/p&gt;
+            
+            &lt;h2&gt;Co powinienem zrobić?&lt;/h2&gt;
+            &lt;p&gt;Zaktualizuj swoje zakładki i linki do naszej nowej strony. Stary adres będzie 
+            przekierowywał do tej strony informacyjnej, ale w przyszłości może przestać działać.&lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/main&gt;
+    
+    &lt;style&gt;
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0077cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .info-box {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 4px;
+        }
+    &lt;/style&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div style="padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
+                                    <h1 style="margin-top: 0;">Strona została przeniesiona</h1>
+                                    <p>Nasza strona została przeniesiona pod nowy adres.</p>
+                                    <p>Możesz odwiedzić nową stronę klikając przycisk poniżej:</p>
+                                    <a href="#"
+                                        style="display: inline-block; padding: 10px 20px; background-color: #0077cc; color: white; text-decoration: none; border-radius: 4px; font-weight: bold; margin: 20px 0;">Przejdź
+                                        do nowej strony</a>
+
+                                    <div
+                                        style="margin-top: 30px; padding: 20px; background-color: #f5f5f5; border-radius: 4px;">
+                                        <h2 style="margin-top: 0;">Dlaczego strona została przeniesiona?</h2>
+                                        <p>Przenieśliśmy naszą stronę, aby zapewnić lepszą wydajność i bezpieczeństwo.
+                                            Nowa strona oferuje również ulepszoną dostępność i responsywny design.</p>
+
+                                        <h2>Co powinienem zrobić?</h2>
+                                        <p>Zaktualizuj swoje zakładki i linki do naszej nowej strony. Stary adres będzie
+                                            przekierowywał do tej strony informacyjnej, ale w przyszłości może przestać
+                                            działać.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Ta wersja strony nie używa automatycznego przekierowania, lecz
+                            pozwala użytkownikowi samodzielnie zdecydować, kiedy chce przejść do nowej
+                            strony. Dodatkowo:</p>
+                        <ul>
+                            <li>Użytkownik ma pełną kontrolę nad momentem przejścia do nowej strony</li>
+                            <li>Strona zawiera więcej informacji, które użytkownik może przeczytać we własnym tempie
+                            </li>
+                            <li>Przycisk przekierowania jest wyraźnie oznaczony i łatwy do znalezienia</li>
+                            <li>Strona jest dostępna dla osób korzystających z technologii wspomagających</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example average">
+                        <h4>Wyjątek - komunikat alarmowy</h4>
+                        <p>Portal informacyjny z komunikatem o sytuacji awaryjnej:</p>
+                        <pre><code class="language-html">&lt;div id="emergency-alert" class="emergency-alert" role="alert" aria-live="assertive"&gt;
+    &lt;div class="emergency-content"&gt;
+        &lt;h2&gt;ALERT: Ostrzeżenie meteorologiczne&lt;/h2&gt;
+        &lt;p&gt;Instytut Meteorologii i Gospodarki Wodnej wydał ostrzeżenie 3 stopnia przed silnym wiatrem 
+        dla województwa pomorskiego. Prognozuje się wystąpienie wiatru o średniej prędkości od 30 km/h 
+        do 45 km/h, w porywach do 120 km/h.&lt;/p&gt;
+        &lt;p&gt;Zaleca się pozostanie w domach i unikanie przebywania w pobliżu drzew, rusztowań 
+        i tymczasowych konstrukcji.&lt;/p&gt;
+        &lt;p&gt;Ważność: od 2023-10-15 20:00 do 2023-10-16 10:00&lt;/p&gt;
+        &lt;button class="alert-btn acknowledge-btn"&gt;Rozumiem&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+    .emergency-alert {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #ff3b30;
+        color: white;
+        z-index: 9999;
+        padding: 15px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    
+    .emergency-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 10px;
+    }
+    
+    .emergency-content h2 {
+        margin-top: 0;
+    }
+    
+    .alert-btn {
+        padding: 8px 16px;
+        background-color: white;
+        color: #ff3b30;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+&lt;/style&gt;
+
+&lt;script&gt;
+    document.querySelector('.acknowledge-btn').addEventListener('click', function() {
+        // Zapamiętaj, że użytkownik widział alert, ale nie usuwaj go całkowicie
+        document.getElementById('emergency-alert').style.height = 'auto';
+        document.getElementById('emergency-alert').innerHTML = 
+            '&lt;div class="emergency-content"&gt;' +
+            '&lt;p&gt;&lt;strong&gt;ALERT POGODOWY&lt;/strong&gt; - Kliknij, aby rozwinąć&lt;/p&gt;' + 
+            '&lt;/div&gt;';
+            
+        // Dodaj funkcję ponownego rozwinięcia alertu
+        document.getElementById('emergency-alert').addEventListener('click', function() {
+            location.reload(); // Odświeżenie strony w celu pokazania pełnego alertu
+        });
+    });
+&lt;/script&gt;</code></pre>
+
+                        <p>Wyjaśnienie: Ten przykład przedstawia sytuację awaryjną, która jest
+                            wyraźnie wymieniona jako wyjątek w kryterium 2.2.4. Komunikaty ostrzegające
+                            o zagrożeniu zdrowia, bezpieczeństwa lub mienia mogą przerywać doświadczenie
+                            użytkownika. Niemniej jednak, przykład ten zawiera kilka dobrych praktyk:</p>
+                        <ul>
+                            <li>Komunikat jest wyraźnie oznaczony jako alert</li>
+                            <li>Używa atrybutów ARIA (role="alert", aria-live="assertive") dla właściwego
+                                ogłoszenia przez czytniki ekranu</li>
+                            <li>Pozwala użytkownikowi na zminimalizowanie komunikatu po przeczytaniu,
+                                choć nie na całkowite jego usunięcie ze względu na krytyczną naturę</li>
+                            <li>Zawiera wszystkie niezbędne informacje, w tym czas obowiązywania
+                                ostrzeżenia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="technical-details">
+                <h3>Szczegóły techniczne</h3>
+                <h4>Techniki wystarczające do spełnienia kryterium:</h4>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G75" target="_blank">G75: Zapewnienie
+                            mechanizmu do odłożenia w czasie aktualizacji treści</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G76" target="_blank">G76: Zapewnienie
+                            mechanizmu do żądania aktualizacji treści zamiast automatycznej aktualizacji</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/client-side-script/SCR14"
+                            target="_blank">SCR14:
+                            Użycie skryptów do uczynienia nieistotnych alertów opcjonalnymi</a></li>
+                </ul>
+
+                <h4>Typowe błędy:</h4>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/failures/F40" target="_blank">F40: Błąd
+                            polegający
+                            na użyciu meta redirect z limitem czasowym</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/failures/F41" target="_blank">F41: Błąd
+                            polegający
+                            na użyciu meta refresh do przeładowania strony</a></li>
+                </ul>
+
+                <h4>Korzyści</h4>
+                <ul>
+                    <li>Osoby z zaburzeniami uwagi mogą skupić się na treści bez rozpraszania</li>
+                    <li>Osoby słabowidzące lub korzystające z czytników ekranu nie będą miały aktualizowanych treści
+                        podczas
+                        ich przeglądania (co może prowadzić do nieciągłości i nieporozumień, jeśli zaczną czytać w
+                        jednym
+                        temacie, a skończą w innym)</li>
+                    <li>Użytkownicy z zaburzeniami poznawczymi nie będą dezorientowani przez niespodziewane zmiany w
+                        treści
+                    </li>
+                    <li>Wszystkim użytkownikom łatwiej będzie skupić się na zadaniu, które wykonują na stronie</li>
+                </ul>
+            </div>
+
+            <div class="additional-resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/interruptions.html" target="_blank"
+                            rel="noopener">Understanding Success Criterion 2.2.4: Interruptions</a></li>
+                    <li><a href="https://www.w3.org/TR/WCAG20-TECHS/G75.html" target="_blank" rel="noopener">G75:
+                            Providing
+                            a mechanism to postpone any updating of content</a></li>
+                    <li><a href="https://www.w3.org/TR/WCAG20-TECHS/G76.html" target="_blank" rel="noopener">G76:
+                            Providing
+                            a mechanism to request an update of the content instead of updating automatically</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.2.3.html">Poprzedni: 2.2.3 Bez ograniczeń czasowych</a></li>
+                    <li><a href="2.2.5.html">Następny: 2.2.5 Ponowne potwierdzenie autentyczności</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

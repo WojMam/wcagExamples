@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.2.5 Ponowne uwierzytelnianie (AA) - WCAG 2.1</title>
+    <meta name="description" content="Kryterium sukcesu 2.2.5 WCAG 2.1 - Ponowne uwierzytelnianie">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.2.5 Ponowne uwierzytelnianie</h2>
+                <p class="level-tag">Poziom AA</p>
+            </div>
+
+            <div class="criterion-description">
+                <p>Gdy sesja uwierzytelnionej osoby wygaśnie, użytkownik może kontynuować swoją aktywność bez utraty
+                    danych po ponownym uwierzytelnieniu.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium jest zapewnienie, że użytkownicy mogą kontynuować swoją aktywność po ponownym
+                    zalogowaniu się bez utraty danych, które wprowadzili przed wygaśnięciem sesji. Jest to szczególnie
+                    ważne dla osób z niepełnosprawnościami, które mogą potrzebować więcej czasu na wprowadzanie danych
+                    lub nawigowanie po stronie, co może prowadzić do częstszego wygasania sesji.</p>
+                <p>Wygaśnięcie sesji jest często konieczne ze względów bezpieczeństwa, ale gdy użytkownik ponownie się
+                    loguje, system powinien przywrócić go dokładnie do tego samego miejsca, w którym był, zachowując
+                    wszystkie wprowadzone wcześniej dane.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - utrata danych po ponownym uwierzytelnieniu</h4>
+                        <p>System rezerwacji biletów, który traci wszystkie wprowadzone wcześniej dane po wygaśnięciu
+                            sesji:</p>
+                        <pre><code class="language-javascript">// Kod JavaScript dla systemu rezerwacji biletów
+function handleSessionTimeout() {
+    // Przekierowanie na stronę logowania bez zapisywania danych
+    window.location.href = 'login.html?timeout=true';
+}
+
+// Po zalogowaniu, zawsze rozpoczynamy od pustego formularza
+function initializeBookingForm() {
+    // Czyszczenie wszystkich pól formularza
+    document.getElementById('booking-form').reset();
+    
+    // Ustawienie domyślnych wartości
+    document.getElementById('adults').value = 1;
+    document.getElementById('children').value = 0;
+    document.getElementById('departure-date').value = '';
+    document.getElementById('return-date').value = '';
+    document.getElementById('destination').value = '';
+}
+
+// Inicjalizacja formularza po załadowaniu strony
+window.onload = initializeBookingForm;</code></pre>
+
+                        <p>Problem: Użytkownik, który częściowo wypełnił formularz rezerwacji, po wygaśnięciu sesji i
+                            ponownym zalogowaniu traci wszystkie wprowadzone dane. Musi rozpocząć całą rezerwację od
+                            początku, co może być szczególnie uciążliwe dla osób z niepełnosprawnościami, które
+                            potrzebują więcej czasu na wprowadzanie danych.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - zachowanie danych po ponownym uwierzytelnieniu</h4>
+                        <p>System rezerwacji biletów, który zapisuje dane formularza w lokalnym magazynie i przywraca je
+                            po ponownym zalogowaniu:</p>
+                        <pre><code class="language-javascript">// Kod JavaScript zachowujący dane formularza
+// Funkcja zapisująca dane formularza
+function saveFormData() {
+    const formData = {
+        adults: document.getElementById('adults').value,
+        children: document.getElementById('children').value,
+        departureDate: document.getElementById('departure-date').value,
+        returnDate: document.getElementById('return-date').value,
+        destination: document.getElementById('destination').value,
+        // Inne pola formularza...
+    };
+    
+    // Zapisz dane w localStorage
+    localStorage.setItem('bookingFormData', JSON.stringify(formData));
+}
+
+// Nasłuchiwanie zmian w formularzu
+document.getElementById('booking-form').addEventListener('input', function() {
+    saveFormData();
+});
+
+// Funkcja obsługująca wygaśnięcie sesji
+function handleSessionTimeout() {
+    // Zapisz dane formularza przed przekierowaniem
+    saveFormData();
+    
+    // Zapisz aktualny URL dla przekierowania po zalogowaniu
+    localStorage.setItem('redirectAfterLogin', window.location.href);
+    
+    // Przekieruj na stronę logowania
+    window.location.href = 'login.html?timeout=true';
+}
+
+// Funkcja przywracająca dane formularza po zalogowaniu
+function restoreFormData() {
+    const savedData = localStorage.getItem('bookingFormData');
+    
+    if (savedData) {
+        const formData = JSON.parse(savedData);
+        
+        // Przywróć dane do formularza
+        document.getElementById('adults').value = formData.adults;
+        document.getElementById('children').value = formData.children;
+        document.getElementById('departure-date').value = formData.departureDate;
+        document.getElementById('return-date').value = formData.returnDate;
+        document.getElementById('destination').value = formData.destination;
+        // Przywracanie innych pól...
+    }
+}
+
+// Po zalogowaniu, sprawdź czy należy przywrócić dane formularza
+window.onload = function() {
+    // Sprawdź, czy użytkownik właśnie się zalogował
+    const justLoggedIn = new URLSearchParams(window.location.search).get('loggedIn') === 'true';
+    
+    if (justLoggedIn) {
+        // Przywróć dane formularza
+        restoreFormData();
+        
+        // Usuń parametr z URL, aby uniknąć ponownego przywrócenia przy odświeżeniu
+        history.replaceState(null, '', window.location.pathname);
+    }
+};</code></pre>
+
+                        <p>Rozwiązanie: System zapisuje dane wprowadzone przez użytkownika w lokalnym magazynie
+                            przeglądarki. Po wygaśnięciu sesji i ponownym zalogowaniu, dane są automatycznie przywracane
+                            do formularza, dzięki czemu użytkownik może kontynuować proces rezerwacji od miejsca, w
+                            którym przerwał. Takie rozwiązanie jest zgodne z kryterium 2.2.5 i zapewnia lepsze
+                            doświadczenie użytkownika, szczególnie dla osób z niepełnosprawnościami.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - sesja serwerowa z zachowaniem danych</h4>
+                        <p>System e-commerce przechowujący dane formularza zamówienia po stronie serwera:</p>
+                        <pre><code class="language-javascript">// Kod po stronie klienta (JavaScript)
+// Funkcja automatycznie zapisująca stan formularza na serwerze
+function autoSaveFormToServer() {
+    const formData = new FormData(document.getElementById('checkout-form'));
+    
+    // Wysyłanie danych AJAX do serwera
+    fetch('/api/save-checkout-state', {
+        method: 'POST',
+        body: formData,
+        credentials: 'same-origin' // Wysyłaj ciasteczka sesji
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Formularz zapisany pomyślnie');
+    })
+    .catch(error => {
+        console.error('Błąd zapisywania formularza:', error);
+    });
+}
+
+// Zapisywanie stanu formularza co 30 sekund
+setInterval(autoSaveFormToServer, 30000);
+
+// Dodatkowo zapisuj przy każdej większej zmianie
+document.getElementById('checkout-form').addEventListener('change', function() {
+    autoSaveFormToServer();
+});</code></pre>
+
+                        <pre><code class="language-php">// Kod po stronie serwera (PHP)
+<?php
+// Endpoint API do zapisywania stanu formularza
+function saveCheckoutState() {
+    // Sprawdź, czy użytkownik jest zalogowany
+    if (!isLoggedIn()) {
+        http_response_code(401);
+        echo json_encode(['error' => 'Nie jesteś zalogowany']);
+        return;
+    }
+    
+    $userId = getCurrentUserId();
+    $formData = $_POST;
+    
+    // Zapisz dane w bazie danych
+    $success = saveCheckoutData($userId, $formData);
+    
+    if ($success) {
+        echo json_encode(['status' => 'success']);
+    } else {
+        http_response_code(500);
+        echo json_encode(['error' => 'Błąd zapisywania danych']);
+    }
+}
+
+// Po ponownym uwierzytelnieniu, przywracamy zapisany stan zamówienia
+function restoreCheckoutState() {
+    $userId = getCurrentUserId();
+    
+    // Pobierz zapisane dane z bazy danych
+    $savedData = getCheckoutData($userId);
+    
+    if ($savedData) {
+        // Przekieruj do strony zamówienia z parametrem restore
+        header('Location: /checkout.php?restore=true');
+    } else {
+        // Brak zapisanych danych, przekieruj do normalnej strony zamówienia
+        header('Location: /checkout.php');
+    }
+}
+?></code></pre>
+
+                        <p>Rozwiązanie: System automatycznie zapisuje dane formularza na serwerze podczas wypełniania
+                            przez użytkownika. Po wygaśnięciu sesji i ponownym zalogowaniu, system przywraca zapisany
+                            stan formularza, umożliwiając użytkownikowi kontynuację procesu zamówienia bez utraty
+                            danych.
+                            Jest to bardziej bezpieczne rozwiązanie niż przechowywanie danych po stronie klienta i
+                            zapewnia zgodność z kryterium 2.2.5.</p>
+                    </div>
+                </div>
+            </div>
+
+            <section class="challenges-tips">
+                <h2>Wskazówki implementacyjne</h2>
+                <h3>Metody zachowania danych podczas wygaśnięcia sesji:</h3>
+                <ul>
+                    <li><strong>Przechowywanie po stronie klienta</strong> - zapisywanie danych formularza w
+                        localStorage lub sessionStorage przeglądarki.</li>
+                    <li><strong>Przechowywanie po stronie serwera</strong> - zapisywanie danych powiązanych z
+                        identyfikatorem użytkownika w sesji serwera lub bazie danych.</li>
+                    <li><strong>Automatyczne zapisywanie</strong> - regularne zapisywanie danych formularza w trakcie
+                        ich wprowadzania.</li>
+                    <li><strong>Mechanizm tokena przywracania</strong> - użycie tymczasowego tokena, który pozwala na
+                        przywrócenie sesji po ponownym zalogowaniu.</li>
+                </ul>
+
+                <h3>Dobre praktyki:</h3>
+                <ul>
+                    <li>Informuj użytkownika o tym, że sesja wygaśnie (zgodnie z kryterium 2.2.1).</li>
+                    <li>Zapisuj dane formularza przed wygaśnięciem sesji.</li>
+                    <li>Po ponownym uwierzytelnieniu, przekieruj użytkownika do strony, na której był wcześniej.</li>
+                    <li>Przywracaj wszystkie dane formularza automatycznie, bez konieczności ponownego ich
+                        wprowadzania.</li>
+                    <li>Zadbaj o bezpieczeństwo danych, szczególnie w przypadku danych wrażliwych.</li>
+                    <li>Rozważ użycie bezpiecznych mechanizmów przechowywania danych zamiast prostego localStorage dla
+                        danych wrażliwych.</li>
+                </ul>
+            </section>
+
+            <div class="additional-resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/re-authenticating.html" target="_blank"
+                            rel="noopener">Understanding Success Criterion 2.2.5: Re-authenticating</a></li>
+                    <li><a href="https://www.w3.org/TR/WCAG20-TECHS/G105.html" target="_blank" rel="noopener">G105:
+                            Saving data so that it can be used after a user re-authenticates</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage" target="_blank"
+                            rel="noopener">MDN Web Docs: localStorage</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.2.4.html">Poprzedni: 2.2.4 Przerywanie</a></li>
+                    <li><a href="2.3.html">Następny: 2.3 Ataki padaczki</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

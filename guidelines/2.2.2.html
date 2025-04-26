@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.2.2 Wstrzymywanie (pauza), zatrzymywanie, ukrywanie (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.2.2 Wstrzymywanie (pauza), zatrzymywanie, ukrywanie</h2>
+                <p class="criterion-level">Poziom A</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#pause-stop-hide" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Dla ruchomych, migających, przewijanych lub automatycznie aktualizujących się informacji spełnione są
+                    wszystkie
+                    poniższe warunki:</p>
+                <ul>
+                    <li><strong>Ruch, miganie, przewijanie:</strong> Dla każdej ruchomej, migającej lub przewijanej
+                        informacji, która (1) uruchamia się automatycznie, (2) trwa dłużej niż pięć sekund i (3) jest
+                        prezentowana równolegle z inną treścią, istnieje mechanizm umożliwiający użytkownikowi
+                        wstrzymanie, zatrzymanie lub ukrycie tej informacji, chyba że ruch, miganie lub przewijanie jest
+                        częścią aktywności, gdzie jest to niezbędne;</li>
+                    <li><strong>Automatyczna aktualizacja:</strong> Dla każdej automatycznie aktualizującej się
+                        informacji, która (1) uruchamia się automatycznie i (2) jest prezentowana równolegle z inną
+                        treścią, istnieje mechanizm umożliwiający użytkownikowi wstrzymanie, zatrzymanie lub ukrycie tej
+                        informacji albo kontrolowanie częstotliwości aktualizacji, chyba że automatyczna aktualizacja
+                        jest częścią aktywności, gdzie jest to niezbędne.</li>
+                </ul>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest uniknięcie rozpraszania użytkowników podczas ich interakcji z
+                    treścią internetową.
+                    Ruchoma treść może stanowić poważne rozproszenie dla niektórych osób, w szczególności dla tych z
+                    zaburzeniami uwagi.</p>
+                <p>Treść, która się porusza lub automatycznie aktualizuje, może stanowić barierę dla każdego, kto ma
+                    trudności
+                    z szybkim czytaniem tekstu stacjonarnego oraz dla osób, które mają problemy ze śledzeniem
+                    poruszających się obiektów.
+                    Może to również powodować problemy dla osób korzystających z czytników ekranu.</p>
+                <p>Pięć sekund wybrano, ponieważ jest to czas wystarczająco długi, aby zwrócić uwagę użytkownika, ale
+                    nie na tyle długi,
+                    aby użytkownik nie mógł poczekać na zakończenie rozpraszającego elementu, jeśli jest to konieczne do
+                    korzystania ze strony.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - karuzelowy baner bez kontrolek</h4>
+                        <p>Strona główna witryny zawiera animowany baner z automatycznie zmieniającymi się obrazami co
+                            10 sekund:</p>
+                        <pre><code class="language-html">&lt;div class="carousel"&gt;
+    &lt;img src="banner1.jpg" alt="Promocja letnia: 20% rabatu na wszystkie produkty"&gt;
+    &lt;!-- Kolejne obrazy będą pokazywane automatycznie --&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    // Kod JavaScript automatycznie zmieniający obrazy co 10 sekund
+    const images = ["banner1.jpg", "banner2.jpg", "banner3.jpg"];
+    let currentIndex = 0;
+    const carouselImg = document.querySelector('.carousel img');
+    
+    setInterval(function() {
+        currentIndex = (currentIndex + 1) % images.length;
+        carouselImg.src = images[currentIndex];
+        // Tutaj można również zmieniać atrybut alt w zależności od obrazu
+    }, 10000); // 10 sekund
+&lt;/script&gt;</code></pre>
+
+                        <p>Problem: Treść automatycznie się zmienia, trwa dłużej niż 5 sekund i nie ma mechanizmu
+                            umożliwiającego użytkownikowi zatrzymanie lub wstrzymanie karuzeli. Osoby z zaburzeniami
+                            poznawczymi lub wolno czytające mogą nie zdążyć przeczytać informacji przed zmianą obrazu.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - karuzelowy baner z kontrolkami</h4>
+                        <p>Ta sama karuzela z dodanymi elementami sterującymi:</p>
+                        <pre><code class="language-html">&lt;div class="carousel-container"&gt;
+    &lt;div class="carousel"&gt;
+        &lt;img src="banner1.jpg" alt="Promocja letnia: 20% rabatu na wszystkie produkty"&gt;
+        &lt;!-- Kolejne obrazy będą pokazywane automatycznie --&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="carousel-controls"&gt;
+        &lt;button id="carousel-pause" aria-label="Wstrzymaj karuzelę"&gt;⏸️ Pauza&lt;/button&gt;
+        &lt;button id="carousel-play" aria-label="Wznów karuzelę" style="display: none;"&gt;▶️ Odtwórz&lt;/button&gt;
+        &lt;button id="carousel-prev" aria-label="Poprzedni slajd"&gt;&lt; Poprzedni&lt;/button&gt;
+        &lt;button id="carousel-next" aria-label="Następny slajd"&gt;Następny &gt;&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    const images = ["banner1.jpg", "banner2.jpg", "banner3.jpg"];
+    const altTexts = [
+        "Promocja letnia: 20% rabatu na wszystkie produkty", 
+        "Nowa kolekcja jesień 2023 już dostępna", 
+        "Darmowa dostawa dla zamówień powyżej 200 zł"
+    ];
+    let currentIndex = 0;
+    const carouselImg = document.querySelector('.carousel img');
+    const pauseBtn = document.getElementById('carousel-pause');
+    const playBtn = document.getElementById('carousel-play');
+    const prevBtn = document.getElementById('carousel-prev');
+    const nextBtn = document.getElementById('carousel-next');
+    
+    let intervalId = startCarousel();
+    
+    function startCarousel() {
+        return setInterval(function() {
+            showNextSlide();
+        }, 10000); // 10 sekund
+    }
+    
+    function showNextSlide() {
+        currentIndex = (currentIndex + 1) % images.length;
+        updateSlide();
+    }
+    
+    function showPrevSlide() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        updateSlide();
+    }
+    
+    function updateSlide() {
+        carouselImg.src = images[currentIndex];
+        carouselImg.alt = altTexts[currentIndex];
+    }
+    
+    pauseBtn.addEventListener('click', function() {
+        clearInterval(intervalId);
+        pauseBtn.style.display = 'none';
+        playBtn.style.display = 'inline-block';
+    });
+    
+    playBtn.addEventListener('click', function() {
+        intervalId = startCarousel();
+        playBtn.style.display = 'none';
+        pauseBtn.style.display = 'inline-block';
+    });
+    
+    prevBtn.addEventListener('click', function() {
+        clearInterval(intervalId);
+        showPrevSlide();
+        intervalId = startCarousel();
+    });
+    
+    nextBtn.addEventListener('click', function() {
+        clearInterval(intervalId);
+        showNextSlide();
+        intervalId = startCarousel();
+    });
+&lt;/script&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div style="margin-bottom: 15px; border: 1px solid #ccc; padding: 10px;">
+                                    <div
+                                        style="height: 150px; background-color: #f0f0f0; display: flex; justify-content: center; align-items: center;">
+                                        [Obraz karuzeli]
+                                    </div>
+                                    <div style="margin-top: 10px; display: flex; gap: 10px;">
+                                        <button style="padding: 5px 10px;">⏸️ Pauza</button>
+                                        <button style="padding: 5px 10px; display: none;">▶️ Odtwórz</button>
+                                        <button style="padding: 5px 10px;">&lt; Poprzedni</button>
+                                        <button style="padding: 5px 10px;">Następny &gt;</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Karuzela zawiera przyciski umożliwiające użytkownikowi wstrzymanie, wznowienie
+                            oraz ręczną nawigację między slajdami. Dzięki temu użytkownicy mają pełną kontrolę nad
+                            tempem zmiany treści i mogą ją dostosować do swoich potrzeb, co jest szczególnie ważne dla
+                            osób z zaburzeniami poznawczymi, wolno czytających lub korzystających z technologii
+                            wspomagających.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - automatycznie odświeżająca się lista wiadomości</h4>
+                        <p>Strona z listą aktualności, która odświeża się automatycznie co minutę:</p>
+                        <pre><code class="language-html">&lt;div id="news-feed"&gt;
+    &lt;h3&gt;Najnowsze wiadomości&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;14:35 - Nowe rozporządzenie w sprawie dostępności cyfrowej&lt;/li&gt;
+        &lt;li&gt;14:28 - Ministerstwo ogłasza konkurs dla startupów&lt;/li&gt;
+        &lt;li&gt;14:15 - Konferencja na temat sztucznej inteligencji już jutro&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    // Automatyczne odświeżanie co minutę
+    setInterval(function() {
+        fetch('/api/najnowsze-wiadomosci')
+            .then(response => response.json())
+            .then(data => {
+                const newsList = document.querySelector('#news-feed ul');
+                newsList.innerHTML = ''; // Usuń istniejące wiadomości
+                
+                // Dodaj nowe wiadomości
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = `${item.time} - ${item.title}`;
+                    newsList.appendChild(li);
+                });
+            });
+    }, 60000); // 60 sekund
+&lt;/script&gt;</code></pre>
+
+                        <p>Problem: Lista wiadomości odświeża się automatycznie bez możliwości kontroli przez
+                            użytkownika. Użytkownik może właśnie czytać wiadomość, która nagle zniknie i zostanie
+                            zastąpiona nową treścią, co może być dezorientujące i uciążliwe, szczególnie dla osób z
+                            niepełnosprawnościami poznawczymi.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - lista wiadomości z kontrolą aktualizacji</h4>
+                        <p>Ta sama lista wiadomości z dodanymi elementami sterującymi:</p>
+                        <pre><code class="language-html">&lt;div id="news-feed"&gt;
+    &lt;div class="news-header"&gt;
+        &lt;h3&gt;Najnowsze wiadomości&lt;/h3&gt;
+        &lt;div class="news-controls"&gt;
+            &lt;button id="auto-update-toggle" aria-pressed="true"&gt;Automatyczne odświeżanie: Włączone&lt;/button&gt;
+            &lt;button id="manual-update"&gt;Odśwież teraz&lt;/button&gt;
+            &lt;div class="update-frequency"&gt;
+                &lt;label for="update-interval"&gt;Częstotliwość odświeżania:&lt;/label&gt;
+                &lt;select id="update-interval"&gt;
+                    &lt;option value="30000"&gt;30 sekund&lt;/option&gt;
+                    &lt;option value="60000" selected&gt;1 minuta&lt;/option&gt;
+                    &lt;option value="300000"&gt;5 minut&lt;/option&gt;
+                    &lt;option value="600000"&gt;10 minut&lt;/option&gt;
+                &lt;/select&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;ul&gt;
+        &lt;li&gt;14:35 - Nowe rozporządzenie w sprawie dostępności cyfrowej&lt;/li&gt;
+        &lt;li&gt;14:28 - Ministerstwo ogłasza konkurs dla startupów&lt;/li&gt;
+        &lt;li&gt;14:15 - Konferencja na temat sztucznej inteligencji już jutro&lt;/li&gt;
+    &lt;/ul&gt;
+    
+    &lt;div class="news-footer"&gt;
+        &lt;p&gt;Ostatnia aktualizacja: &lt;span id="last-update-time"&gt;14:35&lt;/span&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+    let updateIntervalId;
+    const toggleBtn = document.getElementById('auto-update-toggle');
+    const manualBtn = document.getElementById('manual-update');
+    const intervalSelect = document.getElementById('update-interval');
+    const lastUpdateSpan = document.getElementById('last-update-time');
+    
+    // Początkowe ustawienie interwału
+    let updateInterval = parseInt(intervalSelect.value);
+    
+    // Funkcja odświeżająca wiadomości
+    function updateNews() {
+        fetch('/api/najnowsze-wiadomosci')
+            .then(response => response.json())
+            .then(data => {
+                const newsList = document.querySelector('#news-feed ul');
+                newsList.innerHTML = ''; // Usuń istniejące wiadomości
+                
+                // Dodaj nowe wiadomości
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    li.textContent = `${item.time} - ${item.title}`;
+                    newsList.appendChild(li);
+                });
+                
+                // Aktualizuj czas ostatniej aktualizacji
+                const now = new Date();
+                lastUpdateSpan.textContent = `${now.getHours()}:${String(now.getMinutes()).padStart(2, '0')}`;
+            });
+    }
+    
+    // Funkcja włączająca automatyczne odświeżanie
+    function startAutoUpdate() {
+        updateIntervalId = setInterval(updateNews, updateInterval);
+        toggleBtn.setAttribute('aria-pressed', 'true');
+        toggleBtn.textContent = 'Automatyczne odświeżanie: Włączone';
+    }
+    
+    // Funkcja wyłączająca automatyczne odświeżanie
+    function stopAutoUpdate() {
+        clearInterval(updateIntervalId);
+        toggleBtn.setAttribute('aria-pressed', 'false');
+        toggleBtn.textContent = 'Automatyczne odświeżanie: Wyłączone';
+    }
+    
+    // Inicjalizacja automatycznego odświeżania
+    startAutoUpdate();
+    
+    // Obsługa przełączania automatycznego odświeżania
+    toggleBtn.addEventListener('click', function() {
+        if (toggleBtn.getAttribute('aria-pressed') === 'true') {
+            stopAutoUpdate();
+        } else {
+            startAutoUpdate();
+        }
+    });
+    
+    // Obsługa ręcznego odświeżania
+    manualBtn.addEventListener('click', updateNews);
+    
+    // Obsługa zmiany częstotliwości odświeżania
+    intervalSelect.addEventListener('change', function() {
+        updateInterval = parseInt(this.value);
+        
+        if (toggleBtn.getAttribute('aria-pressed') === 'true') {
+            stopAutoUpdate();
+            startAutoUpdate();
+        }
+    });
+&lt;/script&gt;</code></pre>
+
+                        <div class="preview">
+                            <h5>Podgląd:</h5>
+                            <div class="preview-content">
+                                <div style="border: 1px solid #ddd; padding: 15px; border-radius: 4px;">
+                                    <div
+                                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                                        <h3 style="margin: 0;">Najnowsze wiadomości</h3>
+                                        <div style="display: flex; gap: 10px; align-items: center;">
+                                            <button style="padding: 5px 10px;">Automatyczne odświeżanie:
+                                                Włączone</button>
+                                            <button style="padding: 5px 10px;">Odśwież teraz</button>
+                                            <div>
+                                                <label for="update-preview">Częstotliwość odświeżania:</label>
+                                                <select id="update-preview" style="padding: 5px;">
+                                                    <option>30 sekund</option>
+                                                    <option selected>1 minuta</option>
+                                                    <option>5 minut</option>
+                                                    <option>10 minut</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <ul style="list-style-type: none; padding-left: 0;">
+                                        <li style="padding: 5px 0;">14:35 - Nowe rozporządzenie w sprawie dostępności
+                                            cyfrowej</li>
+                                        <li style="padding: 5px 0;">14:28 - Ministerstwo ogłasza konkurs dla startupów
+                                        </li>
+                                        <li style="padding: 5px 0;">14:15 - Konferencja na temat sztucznej inteligencji
+                                            już jutro</li>
+                                    </ul>
+
+                                    <p style="font-size: 0.9em; color: #666; margin-top: 15px;">Ostatnia aktualizacja:
+                                        <span>14:35</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>Rozwiązanie: Strona zawiera kontrolki umożliwiające użytkownikowi:</p>
+                        <ul>
+                            <li>Włączanie/wyłączanie automatycznego odświeżania</li>
+                            <li>Ręczne odświeżanie treści</li>
+                            <li>Ustawienie częstotliwości aktualizacji</li>
+                        </ul>
+                        <p>Dodatkowo, informacja o ostatniej aktualizacji pomaga użytkownikowi zorientować się, kiedy
+                            treść została zmieniona. Dzięki tym funkcjom użytkownicy mają pełną kontrolę nad tempem
+                            prezentowania nowych informacji.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example average">
+                        <h4>Dopuszczalny przykład - animacja ładowania</h4>
+                        <p>Strona z animacją ładowania, która jest niezbędnym elementem:</p>
+                        <pre><code class="language-html">&lt;div class="loading-screen"&gt;
+    &lt;div class="spinner"&gt;&lt;/div&gt;
+    &lt;p&gt;Trwa ładowanie aplikacji. Proszę czekać...&lt;/p&gt;
+    &lt;p&gt;To może potrwać do 30 sekund przy wolnym połączeniu.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+    .loading-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+    
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin-bottom: 20px;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+&lt;/style&gt;
+
+&lt;script&gt;
+    // Kod inicjujący ładowanie aplikacji
+    window.addEventListener('load', function() {
+        // Symulacja ładowania zasobów
+        setTimeout(function() {
+            document.querySelector('.loading-screen').style.display = 'none';
+            // Tutaj pokazałoby się właściwe UI aplikacji
+        }, 3000); // Symulacja 3-sekundowego ładowania
+    });
+&lt;/script&gt;</code></pre>
+
+                        <p>Wyjaśnienie: Animacja ładowania jest uważana za niezbędną, ponieważ:</p>
+                        <ul>
+                            <li>Jest jedyną treścią na ekranie (nie jest prezentowana równolegle z inną treścią)</li>
+                            <li>Informuje użytkownika o postępie ładowania aplikacji</li>
+                            <li>Zapobiega dezorientacji użytkownika, który mógłby w przeciwnym razie pomyśleć, że strona
+                                zawiesiła się lub nie działa</li>
+                            <li>Znika automatycznie po zakończeniu ładowania</li>
+                        </ul>
+                        <p>W tym przypadku, zgodnie z "Uwagą 4" z oficjalnej dokumentacji WCAG, animacja ładowania może
+                            być uznana za niezbędną i nie wymaga dostarczenia mechanizmu do jej zatrzymania.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/pause-stop-hide.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG: Wstrzymywanie (pauza), zatrzymywanie, ukrywanie</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G4" target="_blank" rel="noopener">G4:
+                            Umożliwienie wstrzymania i ponownego uruchomienia treści</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G11" target="_blank"
+                            rel="noopener">G11: Tworzenie treści, która miga przez mniej niż 5 sekund</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G186" target="_blank"
+                            rel="noopener">G186: Używanie elementu sterującego zatrzymującego poruszającą się, migającą
+                            lub automatycznie aktualizującą się treść</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/failures/F16" target="_blank"
+                            rel="noopener">F16: Błąd polegający na braku mechanizmu wstrzymania i wznowienia przewijanej
+                            treści</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.2.1.html">Poprzedni: 2.2.1 Możliwość dostosowania czasu</a></li>
+                    <li><a href="2.2.3.html">Następny: 2.2.3 Brak ograniczeń czasowych</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
