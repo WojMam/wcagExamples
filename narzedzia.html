@@ -77,6 +77,10 @@
             color: #000;
         }
 
+        .tool-type-item.screenreader {
+            background-color: #9C27B0;
+        }
+
         .tile:hover,
         .tile:focus-within {
             transform: translateY(-5px);
@@ -238,7 +242,8 @@
         body.high-contrast .tool-type-item.app,
         body.high-contrast .tool-type-item.repo,
         body.high-contrast .tool-type-item.online,
-        body.high-contrast .tool-type-item.library {
+        body.high-contrast .tool-type-item.library,
+        body.high-contrast .tool-type-item.screenreader {
             background-color: #000;
             border: 1px solid #fff;
             color: #ffff00;
@@ -358,6 +363,7 @@
                 <div class="tile">
                     <div class="tool-type">
                         <span class="tool-type-item app">Aplikacja</span>
+                        <span class="tool-type-item screenreader">Screen Reader</span>
                     </div>
                     <div class="tile-header">
                         <span class="tile-icon"><i class="fa-solid fa-universal-access"></i></span>
@@ -369,6 +375,50 @@
                     </div>
                     <div class="tile-footer">
                         <a href="https://www.nvaccess.org/" class="tile-link" target="_blank" rel="noopener">Strona
+                            narzędzia</a>
+                        <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                    </div>
+                </div>
+
+                <div class="tile">
+                    <div class="tool-type">
+                        <span class="tool-type-item app">Aplikacja</span>
+                        <span class="tool-type-item screenreader">Screen Reader</span>
+                    </div>
+                    <div class="tile-header">
+                        <span class="tile-icon"><i class="fa-solid fa-universal-access"></i></span>
+                        JAWS Screen Reader
+                    </div>
+                    <div class="tile-content">
+                        <p class="tile-description">Profesjonalny czytnik ekranu dla systemu Windows, szeroko
+                            wykorzystywany przez osoby niewidome. Pozwala na zaawansowane testowanie dostępności stron
+                            i aplikacji internetowych w warunkach zbliżonych do rzeczywistych.</p>
+                    </div>
+                    <div class="tile-footer">
+                        <a href="https://www.freedomscientific.com/products/software/jaws/" class="tile-link"
+                            target="_blank" rel="noopener">Strona
+                            narzędzia</a>
+                        <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                    </div>
+                </div>
+
+                <div class="tile">
+                    <div class="tool-type">
+                        <span class="tool-type-item app">Aplikacja</span>
+                        <span class="tool-type-item screenreader">Screen Reader</span>
+                    </div>
+                    <div class="tile-header">
+                        <span class="tile-icon"><i class="fa-brands fa-apple"></i></span>
+                        VoiceOver
+                    </div>
+                    <div class="tile-content">
+                        <p class="tile-description">Wbudowany czytnik ekranu w systemie macOS i iOS. Doskonałe narzędzie
+                            do testowania dostępności stron na urządzeniach Apple, szczególnie ważne ze względu na dużą
+                            popularność wśród użytkowników niewidomych i słabowidzących.</p>
+                    </div>
+                    <div class="tile-footer">
+                        <a href="https://www.apple.com/accessibility/mac/vision/" class="tile-link" target="_blank"
+                            rel="noopener">Strona
                             narzędzia</a>
                         <a href="#" class="tile-link disabled">Dodatkowy opis</a>
                     </div>
@@ -478,6 +528,26 @@
 
                 <div class="tile">
                     <div class="tool-type">
+                        <span class="tool-type-item extension">Wtyczka</span>
+                    </div>
+                    <div class="tile-header">
+                        <span class="tile-icon"><i class="fa-solid fa-code"></i></span>
+                        Web Developer
+                    </div>
+                    <div class="tile-content">
+                        <p class="tile-description">Rozszerzenie dodające pasek narzędzi do przeglądarki z różnymi
+                            narzędziami dla programistów stron internetowych. Umożliwia m.in. wyłączanie stylów CSS,
+                            JavaScript, sprawdzanie formularzy, obrazów oraz inspekcję elementów HTML.</p>
+                    </div>
+                    <div class="tile-footer">
+                        <a href="https://chromewebstore.google.com/detail/web-developer/bfbameneiokkgbdmiekhjnmfkcnldhhm"
+                            class="tile-link" target="_blank" rel="noopener">Strona narzędzia</a>
+                        <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                    </div>
+                </div>
+
+                <div class="tile">
+                    <div class="tool-type">
                         <span class="tool-type-item online">Skrypt</span>
                     </div>
                     <div class="tile-header">
@@ -553,6 +623,27 @@
                     <div class="tile-footer">
                         <a href="https://a11yaudit.up.railway.app/" class="tile-link" target="_blank"
                             rel="noopener">Strona narzędzia</a>
+                        <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                    </div>
+                </div>
+
+                <div class="tile">
+                    <div class="tool-type">
+                        <span class="tool-type-item extension">Wtyczka</span>
+                    </div>
+                    <div class="tile-header">
+                        <span class="tile-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+                        Hoverify
+                    </div>
+                    <div class="tile-content">
+                        <p class="tile-description">Wszechstronne rozszerzenie dla twórców stron internetowych oferujące
+                            szereg narzędzi w jednym miejscu. Umożliwia inspekcję elementów poprzez najechanie kursorem,
+                            testowanie responsywności na wielu urządzeniach, wyodrębnianie zasobów, analizę stosów
+                            technologicznych oraz narzędzia SEO - wszystko bez konieczności otwierania DevTools.</p>
+                    </div>
+                    <div class="tile-footer">
+                        <a href="https://tryhoverify.com/" class="tile-link" target="_blank" rel="noopener">Strona
+                            narzędzia</a>
                         <a href="#" class="tile-link disabled">Dodatkowy opis</a>
                     </div>
                 </div>
