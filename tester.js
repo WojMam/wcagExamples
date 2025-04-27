@@ -204,13 +204,42 @@ function resetAuditState() {
  */
 function updateGuidelinesBasedOnLevel() {
 	const selectedLevel = document.getElementById("audit-level").value;
+	const previousLevel = auditState.level;
 	auditState.level = selectedLevel;
+
+	// Save current guidelines status before updating
+	const savedStatuses = {};
+	for (const category in auditState.guidelines) {
+		for (const section in auditState.guidelines[category]) {
+			for (const guideline of auditState.guidelines[category][section]) {
+				savedStatuses[guideline.id] = {
+					status: guideline.status,
+					errorDescription: guideline.errorDescription,
+					recommendation: guideline.recommendation,
+				};
+			}
+		}
+	}
 
 	// Reset guidelines
 	auditState.guidelines = {};
 
 	// Generate guidelines for selected level
 	generateGuidelinesForLevel(selectedLevel);
+
+	// Restore previously saved statuses
+	for (const category in auditState.guidelines) {
+		for (const section in auditState.guidelines[category]) {
+			for (const guideline of auditState.guidelines[category][section]) {
+				if (savedStatuses[guideline.id]) {
+					guideline.status = savedStatuses[guideline.id].status;
+					guideline.errorDescription =
+						savedStatuses[guideline.id].errorDescription;
+					guideline.recommendation = savedStatuses[guideline.id].recommendation;
+				}
+			}
+		}
+	}
 
 	// Render guidelines
 	renderGuidelines();
