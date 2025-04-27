@@ -1,0 +1,504 @@
+{
+	"1. Postrzegalność": {
+		"1.1 Alternatywa w postaci tekstu": [
+			{
+				"id": "1.1.1",
+				"level": "A",
+				"name": "Treść nietekstowa",
+				"description": "Wszystkie treści nietekstowe przedstawione użytkownikowi mają alternatywę tekstową, która służy równoważnemu celowi."
+			}
+		],
+		"1.2 Media zmienne w czasie": [
+			{
+				"id": "1.2.1",
+				"level": "A",
+				"name": "Tylko audio lub tylko wideo (nagranie)",
+				"description": "Dla mediów nagranych w systemie tylko audio lub tylko wideo dostępna jest alternatywa."
+			},
+			{
+				"id": "1.2.2",
+				"level": "A",
+				"name": "Napisy rozszerzone (nagranie)",
+				"description": "Napisy rozszerzone dołączone są do wszystkich nagrań audio w multimediach zsynchronizowanych."
+			},
+			{
+				"id": "1.2.3",
+				"level": "A",
+				"name": "Audiodeskrypcja lub alternatywa dla mediów (nagranie)",
+				"description": "Zapewniona jest alternatywa dla mediów zmiennych w czasie lub audiodeskrypcja dla nagrania wideo w multimediach zsynchronizowanych."
+			},
+			{
+				"id": "1.2.4",
+				"level": "AA",
+				"name": "Napisy rozszerzone (na żywo)",
+				"description": "Napisy rozszerzone dołączone są do wszystkich treści audio na żywo w multimediach zsynchronizowanych."
+			},
+			{
+				"id": "1.2.5",
+				"level": "AA",
+				"name": "Audiodeskrypcja (nagranie)",
+				"description": "Zapewniona jest audiodeskrypcja dla wszystkich nagrań wideo w multimediach zsynchronizowanych."
+			},
+			{
+				"id": "1.2.6",
+				"level": "AAA",
+				"name": "Język migowy (nagranie)",
+				"description": "Tłumaczenie na język migowy zapewnione jest dla wszystkich nagrań audio w multimediach zsynchronizowanych."
+			},
+			{
+				"id": "1.2.7",
+				"level": "AAA",
+				"name": "Rozszerzona audiodeskrypcja (nagranie)",
+				"description": "W przypadku, gdy przerwy w ścieżce dźwiękowej nie są wystarczające, aby przekazać sens filmu za pomocą audiodeskrypcji, zapewniona jest rozszerzona audiodeskrypcja dla wszystkich nagrań wideo."
+			},
+			{
+				"id": "1.2.8",
+				"level": "AAA",
+				"name": "Alternatywa dla mediów (nagranie)",
+				"description": "Zapewniona jest alternatywa dla wszystkich mediów zmiennych w czasie oraz dla wszystkich nagrań w multimediach zsynchronizowanych."
+			},
+			{
+				"id": "1.2.9",
+				"level": "AAA",
+				"name": "Tylko audio (na żywo)",
+				"description": "Zapewniona jest alternatywa dla mediów zmiennych w czasie, przedstawiająca równoważne informacje dla treści tylko audio na żywo."
+			}
+		],
+		"1.3 Możliwość adaptacji": [
+			{
+				"id": "1.3.1",
+				"level": "A",
+				"name": "Informacje i relacje",
+				"description": "Informacje, struktura oraz relacje przekazywane poprzez prezentację mogą być odczytane przez program komputerowy lub są dostępne w postaci tekstu."
+			},
+			{
+				"id": "1.3.2",
+				"level": "A",
+				"name": "Zrozumiała kolejność",
+				"description": "Gdy kolejność, w jakiej przedstawiona jest treść, ma znaczenie dla zrozumienia treści, prawidłowa kolejność odczytywania treści może być określona programowo."
+			},
+			{
+				"id": "1.3.3",
+				"level": "A",
+				"name": "Właściwości zmysłowe",
+				"description": "Instrukcje co do zrozumienia i operowania treścią nie opierają się wyłącznie na właściwościach zmysłowych komponentów, takich jak kształt, rozmiar, wzrokowa lokalizacja, orientacja w przestrzeni lub dźwięk."
+			},
+			{
+				"id": "1.3.4",
+				"level": "AA",
+				"name": "Orientacja",
+				"description": "Treść nie ogranicza swojego widoku i działania do jednej orientacji wyświetlania, takiej jak pionowa czy pozioma."
+			},
+			{
+				"id": "1.3.5",
+				"level": "AA",
+				"name": "Określenie pożądanej wartości",
+				"description": "Przeznaczenie pól formularza zbierających informacje o użytkowniku może być programowo określone."
+			},
+			{
+				"id": "1.3.6",
+				"level": "AAA",
+				"name": "Określenie przeznaczenia",
+				"description": "W treści wdrożonej przy użyciu języków znaczników, przeznaczenie komponentów interfejsu użytkownika, ikon i regionów może być programowo określone."
+			}
+		],
+		"1.4 Możliwość rozróżnienia": [
+			{
+				"id": "1.4.1",
+				"level": "A",
+				"name": "Użycie koloru",
+				"description": "Kolor nie jest wykorzystywany jako jedyny wizualny sposób przekazywania informacji, wskazywania czynności do wykonania lub oczekiwania odpowiedzi, czy też wyróżniania elementów wizualnych."
+			},
+			{
+				"id": "1.4.2",
+				"level": "A",
+				"name": "Kontrola odtwarzania dźwięku",
+				"description": "Jeśli jakieś nagranie audio włącza się automatycznie na danej stronie i jest odtwarzane przez okres dłuższy niż 3 sekundy, dostępny jest albo mechanizm umożliwiający przerwanie lub wyłączenie nagrania, albo mechanizm kontrolujący poziom głośności."
+			},
+			{
+				"id": "1.4.3",
+				"level": "AA",
+				"name": "Kontrast (minimalny)",
+				"description": "Wizualna prezentacja tekstu lub obrazu tekstu posiada współczynnik kontrastu wynoszący przynajmniej 4,5:1."
+			},
+			{
+				"id": "1.4.4",
+				"level": "AA",
+				"name": "Zmiana rozmiaru tekstu",
+				"description": "Rozmiar tekstu może zostać powiększony do 200% bez użycia technologii wspomagających oraz bez utraty treści lub funkcjonalności."
+			},
+			{
+				"id": "1.4.5",
+				"level": "AA",
+				"name": "Obrazy tekstu",
+				"description": "Jeśli wykorzystywane technologie mogą przedstawiać treść wizualnie, do przekazywania informacji wykorzystuje się tekst, a nie obraz tekstu."
+			},
+			{
+				"id": "1.4.6",
+				"level": "AAA",
+				"name": "Kontrast (rozszerzony)",
+				"description": "Wizualna prezentacja tekstu lub obrazu tekstu posiada współczynnik kontrastu wynoszący przynajmniej 7:1."
+			},
+			{
+				"id": "1.4.7",
+				"level": "AAA",
+				"name": "Niska głośność lub brak tła dźwiękowego",
+				"description": "Dla nagrań zawierających głównie mowę, które nie są audiodeskrypcją lub mediami uzupełniającymi, dźwięki w tle są co najmniej o 20 decybeli cichsze niż główna treść dźwiękowa."
+			},
+			{
+				"id": "1.4.8",
+				"level": "AAA",
+				"name": "Prezentacja wizualna",
+				"description": "Dla wizualnej prezentacji bloków tekstu dostępny jest mechanizm umożliwiający osiągnięcie określonych wymagań formatowania."
+			},
+			{
+				"id": "1.4.9",
+				"level": "AAA",
+				"name": "Obrazy tekstu (bez wyjątków)",
+				"description": "Obrazy tekstu są wykorzystywane wyłącznie w celach dekoracyjnych lub gdy określona prezentacja tekstu jest niezbędna dla przekazywanej informacji."
+			},
+			{
+				"id": "1.4.10",
+				"level": "AA",
+				"name": "Dopasowanie do ekranu",
+				"description": "Treść może być prezentowana bez utraty informacji lub funkcjonalności oraz bez konieczności przewijania w dwóch wymiarach."
+			},
+			{
+				"id": "1.4.11",
+				"level": "AA",
+				"name": "Kontrast elementów nietekstowych",
+				"description": "Prezentacja wizualna komponentów interfejsu użytkownika i elementów graficznych posiada współczynnik kontrastu co najmniej 3:1 w stosunku do sąsiednich kolorów."
+			},
+			{
+				"id": "1.4.12",
+				"level": "AA",
+				"name": "Odstępy w tekście",
+				"description": "W treści wdrożonej przy użyciu języków znaczników, które obsługują poniższe właściwości, nie występuje utrata treści lub funkcjonalności przy ustawieniu odstępów w tekście."
+			},
+			{
+				"id": "1.4.13",
+				"level": "AA",
+				"name": "Treść spod kursora lub fokusu",
+				"description": "Jeśli najechanie kursorem lub ustawienie fokusu uwidacznia dodatkową treść, a następnie ją ukrywa, spełnione są określone warunki."
+			}
+		]
+	},
+	"2. Funkcjonalność": {
+		"2.1 Dostępność z klawiatury": [
+			{
+				"id": "2.1.1",
+				"level": "A",
+				"name": "Klawiatura",
+				"description": "Cała funkcjonalność treści jest dostępna przy użyciu interfejsu klawiatury bez wymogu określonego czasu użycia poszczególnych klawiszy."
+			},
+			{
+				"id": "2.1.2",
+				"level": "A",
+				"name": "Brak pułapki na klawiaturę",
+				"description": "Jeśli fokus klawiatury można przemieścić do danego komponentu strony za pomocą interfejsu klawiatury, to może on być z niego przesunięty za pomocą interfejsu klawiatury."
+			},
+			{
+				"id": "2.1.3",
+				"level": "AAA",
+				"name": "Klawiatura (bez wyjątków)",
+				"description": "Cała funkcjonalność treści jest dostępna przy użyciu interfejsu klawiatury bez żadnych wyjątków."
+			},
+			{
+				"id": "2.1.4",
+				"level": "A",
+				"name": "Jednoznakowe skróty klawiaturowe",
+				"description": "Jeśli skrót klawiaturowy składa się z pojedynczego znaku, to może być uruchomiony tylko wtedy, gdy fokus jest na komponencie kontrolnym."
+			}
+		],
+		"2.2 Wystarczająca ilość czasu": [
+			{
+				"id": "2.2.1",
+				"level": "A",
+				"name": "Możliwość dostosowania czasu",
+				"description": "Dla każdego limitu czasowego, który jest ustawiony w treści, spełniony jest co najmniej jeden z poniższych warunków."
+			},
+			{
+				"id": "2.2.2",
+				"level": "A",
+				"name": "Wstrzymywanie (pauza), zatrzymywanie, ukrywanie",
+				"description": "Dla każdej poruszającej się, migającej, przewijanej lub automatycznie aktualizującej się informacji spełnione są wszystkie warunki."
+			},
+			{
+				"id": "2.2.3",
+				"level": "AAA",
+				"name": "Brak ograniczeń czasowych",
+				"description": "Ograniczenia czasowe nie są istotną częścią wydarzenia lub czynności prezentowanej w ramach treści, z wyjątkiem multimediów zsynchronizowanych oraz wydarzeń odbywających się w czasie rzeczywistym."
+			},
+			{
+				"id": "2.2.4",
+				"level": "AAA",
+				"name": "Zakłócenia",
+				"description": "Zakłócenia mogą być odłożone lub zablokowane przez użytkownika, z wyjątkiem zakłóceń spowodowanych sytuacją awaryjną."
+			},
+			{
+				"id": "2.2.5",
+				"level": "AAA",
+				"name": "Ponowne potwierdzenie autentyczności",
+				"description": "Kiedy sesja uwierzytelniona wygasa, użytkownik po ponownym uwierzytelnieniu może kontynuować swoją czynność bez utraty danych."
+			},
+			{
+				"id": "2.2.6",
+				"level": "AAA",
+				"name": "Ostrzeżenie o limicie czasu",
+				"description": "Użytkownicy są ostrzegani o czasie trwania braku aktywności, który może skutkować utratą danych, chyba że dane są przechowywane dłużej niż 20 godzin."
+			}
+		],
+		"2.3 Ataki padaczki i reakcje fizyczne": [
+			{
+				"id": "2.3.1",
+				"level": "A",
+				"name": "Trzy błyski lub wartości poniżej progu",
+				"description": "Strony internetowe nie zawierają w swojej treści niczego, co błyska częściej niż trzy razy w ciągu jednej sekundy, lub błysk nie przekracza wartości granicznych dla błysków ogólnych i czerwonych."
+			},
+			{
+				"id": "2.3.2",
+				"level": "AAA",
+				"name": "Trzy błyski",
+				"description": "Strony internetowe nie zawierają w swojej treści niczego, co błyskałoby częściej niż trzy razy w ciągu jednej sekundy."
+			},
+			{
+				"id": "2.3.3",
+				"level": "AAA",
+				"name": "Animacja po interakcji",
+				"description": "Animacja ruchu wywołana przez interakcję może być wyłączona, chyba że jest ona niezbędna dla funkcjonalności lub przekazywanej informacji."
+			}
+		],
+		"2.4 Możliwość nawigacji": [
+			{
+				"id": "2.4.1",
+				"level": "A",
+				"name": "Możliwość pominięcia bloków",
+				"description": "Istnieje mechanizm, który umożliwia pominięcie bloków treści powtarzanych na wielu stronach internetowych."
+			},
+			{
+				"id": "2.4.2",
+				"level": "A",
+				"name": "Tytuły stron",
+				"description": "Strony internetowe posiadają tytuły, które opisują ich cel lub przedstawiają ich temat."
+			},
+			{
+				"id": "2.4.3",
+				"level": "A",
+				"name": "Kolejność fokusu",
+				"description": "Jeśli strona internetowa może być nawigowana sekwencyjnie, a kolejność nawigacji wpływa na zrozumienie lub funkcjonalność, komponenty otrzymujące fokus zachowują kolejność, dzięki której zachowany jest sens i funkcjonalność treści."
+			},
+			{
+				"id": "2.4.4",
+				"level": "A",
+				"name": "Cel linku (w kontekście)",
+				"description": "Cel każdego linku może być określony na podstawie samej treści linku lub treści linku wraz z programowo określonym kontekstem linku, z wyjątkiem sytuacji, w których cel linku może być niejasny dla użytkowników."
+			},
+			{
+				"id": "2.4.5",
+				"level": "AA",
+				"name": "Wiele sposobów nawigacji",
+				"description": "Istnieje więcej niż jeden sposób umożliwiający znalezienie każdej strony w serwisie internetowym, z wyjątkiem sytuacji, kiedy strona internetowa jest wynikiem jakiejś procedury lub procesu."
+			},
+			{
+				"id": "2.4.6",
+				"level": "AA",
+				"name": "Nagłówki i etykiety",
+				"description": "Nagłówki i etykiety opisują temat lub cel treści."
+			},
+			{
+				"id": "2.4.7",
+				"level": "AA",
+				"name": "Widoczny fokus",
+				"description": "Każdy interfejs obsługiwany klawiaturą posiada tryb obsługi, w którym fokus klawiatury jest widoczny."
+			},
+			{
+				"id": "2.4.8",
+				"level": "AAA",
+				"name": "Lokalizacja",
+				"description": "Dostępna jest informacja o lokalizacji użytkownika w zbiorze stron internetowych."
+			},
+			{
+				"id": "2.4.9",
+				"level": "AAA",
+				"name": "Cel linku (z samego linku)",
+				"description": "Dostępny jest mechanizm, który pozwala na zidentyfikowanie celu linku wykorzystując wyłącznie treść linku."
+			},
+			{
+				"id": "2.4.10",
+				"level": "AAA",
+				"name": "Nagłówki sekcji",
+				"description": "Nagłówki sekcji są używane do organizowania treści."
+			}
+		],
+		"2.5 Sposoby wprowadzania danych": [
+			{
+				"id": "2.5.1",
+				"level": "A",
+				"name": "Gesty punktowe",
+				"description": "Wszystkie funkcje wykorzystujące do obsługi gesty wielopunktowe lub bazujące na ścieżce mogą być obsługiwane za pomocą pojedynczego wskaźnika bez gestu opartego na ścieżce."
+			},
+			{
+				"id": "2.5.2",
+				"level": "A",
+				"name": "Anulowanie kliknięcia",
+				"description": "W przypadku funkcji, które mogą być obsługiwane za pomocą pojedynczego wskaźnika, spełniony jest co najmniej jeden z warunków."
+			},
+			{
+				"id": "2.5.3",
+				"level": "A",
+				"name": "Etykieta w nazwie",
+				"description": "W przypadku komponentów interfejsu użytkownika z etykietami zawierającymi tekst lub obrazy tekstu, nazwa zawiera tekst, który jest prezentowany wizualnie."
+			},
+			{
+				"id": "2.5.4",
+				"level": "A",
+				"name": "Aktywowanie ruchem",
+				"description": "Funkcje, które mogą być obsługiwane za pomocą ruchu urządzenia lub ruchu użytkownika, mogą być również obsługiwane za pomocą komponentów interfejsu użytkownika, a reagowanie na ruch może być wyłączone."
+			},
+			{
+				"id": "2.5.5",
+				"level": "AAA",
+				"name": "Rozmiar obszaru kliknięcia",
+				"description": "Rozmiar obszaru kliknięcia dla wejść wprowadzanych za pomocą wskaźnika wynosi co najmniej 44 na 44 piksele CSS."
+			},
+			{
+				"id": "2.5.6",
+				"level": "AAA",
+				"name": "Mechanizmy wprowadzania danych równoczesnych",
+				"description": "Treść internetowa nie ogranicza możliwości używania modalności wejścia dostępnych na platformie z wyjątkiem sytuacji, gdy to ograniczenie jest istotne ze względów bezpieczeństwa lub konieczne do realizacji treści."
+			}
+		]
+	},
+	"3. Zrozumiałość": {
+		"3.1 Możliwość odczytania": [
+			{
+				"id": "3.1.1",
+				"level": "A",
+				"name": "Język strony",
+				"description": "Domyślny język naturalny każdej strony internetowej może być odczytany przez program komputerowy."
+			},
+			{
+				"id": "3.1.2",
+				"level": "AA",
+				"name": "Język części",
+				"description": "Język naturalny każdej części lub frazy zawartej w treści może być odczytany przez program komputerowy, z wyjątkiem nazw własnych, wyrażeń technicznych, słów w nieokreślonym języku oraz słów lub fraz, które stały się częścią języka potocznego w najbliższym otoczeniu."
+			},
+			{
+				"id": "3.1.3",
+				"level": "AAA",
+				"name": "Nietypowe słowa",
+				"description": "Dostępny jest mechanizm, za pomocą którego można sprawdzić definicje słów użytych w nietypowy lub ograniczony sposób, w tym wyrażeń idiomatycznych i żargonu."
+			},
+			{
+				"id": "3.1.4",
+				"level": "AAA",
+				"name": "Skróty",
+				"description": "Dostępny jest mechanizm rozwinięcia lub wyjaśnienia skrótów."
+			},
+			{
+				"id": "3.1.5",
+				"level": "AAA",
+				"name": "Poziom wykształcenia",
+				"description": "Jeśli tekst wymaga umiejętności czytania na poziomie wyższym niż poziom gimnazjalny, dostępna jest dodatkowa treść lub wersja, która nie wymaga umiejętności czytania na poziomie wyższym niż gimnazjalny."
+			},
+			{
+				"id": "3.1.6",
+				"level": "AAA",
+				"name": "Wymowa",
+				"description": "Dostępny jest mechanizm sprawdzenia wymowy wyrazów, których znaczenie w kontekście jest niejednoznaczne bez znajomości wymowy."
+			}
+		],
+		"3.2 Przewidywalność": [
+			{
+				"id": "3.2.1",
+				"level": "A",
+				"name": "Po oznaczeniu fokusem",
+				"description": "Gdy dowolny komponent otrzyma fokus, nie powoduje to zmiany kontekstu."
+			},
+			{
+				"id": "3.2.2",
+				"level": "A",
+				"name": "Podczas wprowadzania danych",
+				"description": "Zmiana ustawień jakiegokolwiek komponentu interfejsu użytkownika nie powoduje automatycznej zmiany kontekstu, chyba że użytkownik został poinformowany o takim działaniu przed skorzystaniem z komponentu."
+			},
+			{
+				"id": "3.2.3",
+				"level": "AA",
+				"name": "Spójna nawigacja",
+				"description": "Mechanizmy nawigacji, które powtarzają się na wielu stronach internetowych w ramach jednego zestawu stron internetowych, występują w tej samej względnej kolejności za każdym razem, gdy są powtarzane, chyba że zmiana jest inicjowana przez użytkownika."
+			},
+			{
+				"id": "3.2.4",
+				"level": "AA",
+				"name": "Spójna identyfikacja",
+				"description": "Komponenty, które mają tę samą funkcjonalność w ramach jednego zestawu stron internetowych, są identyfikowane w taki sam sposób."
+			},
+			{
+				"id": "3.2.5",
+				"level": "AAA",
+				"name": "Zmiana na żądanie",
+				"description": "Zmiany kontekstu następują tylko na żądanie użytkownika lub dostępny jest mechanizm wyłączenia takich zmian."
+			}
+		],
+		"3.3 Pomoc przy wprowadzaniu informacji": [
+			{
+				"id": "3.3.1",
+				"level": "A",
+				"name": "Identyfikacja błędu",
+				"description": "Jeśli automatycznie zostanie wykryty błąd wprowadzania danych, system wskazuje błędny element, a użytkownik otrzymuje opis błędu w postaci tekstu."
+			},
+			{
+				"id": "3.3.2",
+				"level": "A",
+				"name": "Etykiety lub instrukcje",
+				"description": "Etykiety lub instrukcje są dostarczone, gdy treść wymaga wprowadzenia danych przez użytkownika."
+			},
+			{
+				"id": "3.3.3",
+				"level": "AA",
+				"name": "Sugestie korekty błędów",
+				"description": "Jeśli automatycznie zostanie wykryty błąd wprowadzania danych i znane są sugestie korekty, wtedy użytkownik otrzymuje takie sugestie, chyba że stanowiłoby to zagrożenie dla bezpieczeństwa lub celu treści."
+			},
+			{
+				"id": "3.3.4",
+				"level": "AA",
+				"name": "Zapobieganie błędom (prawnym, finansowym, w danych)",
+				"description": "Dla stron internetowych, które powodują zobowiązania prawne lub transakcje finansowe, które modyfikują lub usuwają dane kontrolowane przez użytkownika, spełniony jest co najmniej jeden z warunków."
+			},
+			{
+				"id": "3.3.5",
+				"level": "AAA",
+				"name": "Pomoc",
+				"description": "Dostępna jest pomoc kontekstowa."
+			},
+			{
+				"id": "3.3.6",
+				"level": "AAA",
+				"name": "Zapobieganie błędom (wszystkim)",
+				"description": "Dla stron internetowych, które wymagają wprowadzania informacji przez użytkownika, spełniony jest co najmniej jeden z warunków."
+			}
+		]
+	},
+	"4. Solidność": {
+		"4.1 Kompatybilność": [
+			{
+				"id": "4.1.1",
+				"level": "A",
+				"name": "Poprawność kodu",
+				"description": "W treści wprowadzonej przy użyciu języka znaczników, elementy posiadają kompletne znaczniki początkowe i końcowe, elementy są zagnieżdżane według swoich specyfikacji, nie zawierają zduplikowanych atrybutów, a wszystkie ID są unikalne."
+			},
+			{
+				"id": "4.1.2",
+				"level": "A",
+				"name": "Nazwa, rola, wartość",
+				"description": "Dla wszystkich komponentów interfejsu użytkownika nazwa oraz rola mogą być odczytane przez program komputerowy; stan, właściwości oraz wartości, które mogą być ustawione przez użytkownika, również mogą być ustawione przez program komputerowy."
+			},
+			{
+				"id": "4.1.3",
+				"level": "AA",
+				"name": "Komunikaty o stanie",
+				"description": "W treści wprowadzonej przy użyciu języka znaczników, komunikaty o stanie mogą być programowo określone za pomocą roli lub właściwości."
+			}
+		]
+	}
+}

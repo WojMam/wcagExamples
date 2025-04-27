@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", function () {
 	// Set current date by default
 	document.getElementById("audit-date").valueAsDate = new Date();
 
+	// Load language selector
+	setupLanguageSelector();
+
 	// Event listeners
 	document.getElementById("new-audit-btn").addEventListener("click", newAudit);
 	document.getElementById("load-audit-btn").addEventListener("click", () => {
@@ -29,694 +32,83 @@ document.addEventListener("DOMContentLoaded", function () {
 		.addEventListener("change", updateGuidelinesBasedOnLevel);
 });
 
-// WCAG Guideline data
-const wcagGuidelines = {
-	"1. Perceivable": {
-		"1.1 Text Alternatives": [
-			{
-				id: "1.1.1",
-				level: "A",
-				name: "Non-text Content",
-				description:
-					"All non-text content that is presented to the user has a text alternative that serves the equivalent purpose.",
-			},
-		],
-		"1.2 Time-based Media": [
-			{
-				id: "1.2.1",
-				level: "A",
-				name: "Audio-only and Video-only (Prerecorded)",
-				description:
-					"For prerecorded audio-only and prerecorded video-only media, an alternative is provided.",
-			},
-			{
-				id: "1.2.2",
-				level: "A",
-				name: "Captions (Prerecorded)",
-				description:
-					"Captions are provided for all prerecorded audio content in synchronized media.",
-			},
-			{
-				id: "1.2.3",
-				level: "A",
-				name: "Audio Description or Media Alternative (Prerecorded)",
-				description:
-					"An alternative for time-based media or audio description of the prerecorded video content is provided.",
-			},
-			{
-				id: "1.2.4",
-				level: "AA",
-				name: "Captions (Live)",
-				description:
-					"Captions are provided for all live audio content in synchronized media.",
-			},
-			{
-				id: "1.2.5",
-				level: "AA",
-				name: "Audio Description (Prerecorded)",
-				description:
-					"Audio description is provided for all prerecorded video content in synchronized media.",
-			},
-			{
-				id: "1.2.6",
-				level: "AAA",
-				name: "Sign Language (Prerecorded)",
-				description:
-					"Sign language interpretation is provided for all prerecorded audio content in synchronized media.",
-			},
-			{
-				id: "1.2.7",
-				level: "AAA",
-				name: "Extended Audio Description (Prerecorded)",
-				description:
-					"Where pauses in foreground audio are insufficient to allow audio descriptions to convey the sense of the video, extended audio description is provided.",
-			},
-			{
-				id: "1.2.8",
-				level: "AAA",
-				name: "Media Alternative (Prerecorded)",
-				description:
-					"An alternative for time-based media is provided for all prerecorded synchronized media and for all prerecorded video-only media.",
-			},
-			{
-				id: "1.2.9",
-				level: "AAA",
-				name: "Audio-only (Live)",
-				description:
-					"An alternative for time-based media that presents equivalent information for live audio-only content is provided.",
-			},
-		],
-		"1.3 Adaptable": [
-			{
-				id: "1.3.1",
-				level: "A",
-				name: "Info and Relationships",
-				description:
-					"Information, structure, and relationships conveyed through presentation can be programmatically determined or are available in text.",
-			},
-			{
-				id: "1.3.2",
-				level: "A",
-				name: "Meaningful Sequence",
-				description:
-					"When the sequence in which content is presented affects its meaning, a correct reading sequence can be programmatically determined.",
-			},
-			{
-				id: "1.3.3",
-				level: "A",
-				name: "Sensory Characteristics",
-				description:
-					"Instructions provided for understanding and operating content do not rely solely on sensory characteristics of components.",
-			},
-			{
-				id: "1.3.4",
-				level: "AA",
-				name: "Orientation",
-				description:
-					"Content does not restrict its view and operation to a single display orientation.",
-			},
-			{
-				id: "1.3.5",
-				level: "AA",
-				name: "Identify Input Purpose",
-				description:
-					"The purpose of each input field collecting information about the user can be programmatically determined.",
-			},
-			{
-				id: "1.3.6",
-				level: "AAA",
-				name: "Identify Purpose",
-				description:
-					"In content implemented using markup languages, the purpose of User Interface Components, icons, and regions can be programmatically determined.",
-			},
-		],
-		"1.4 Distinguishable": [
-			{
-				id: "1.4.1",
-				level: "A",
-				name: "Use of Color",
-				description:
-					"Color is not used as the only visual means of conveying information, indicating an action, prompting a response, or distinguishing a visual element.",
-			},
-			{
-				id: "1.4.2",
-				level: "A",
-				name: "Audio Control",
-				description:
-					"If any audio on a Web page plays automatically for more than 3 seconds, either a mechanism is available to pause or stop the audio, or a mechanism is available to control audio volume.",
-			},
-			{
-				id: "1.4.3",
-				level: "AA",
-				name: "Contrast (Minimum)",
-				description:
-					"The visual presentation of text and images of text has a contrast ratio of at least 4.5:1.",
-			},
-			{
-				id: "1.4.4",
-				level: "AA",
-				name: "Resize Text",
-				description:
-					"Except for captions and images of text, text can be resized without assistive technology up to 200 percent without loss of content or functionality.",
-			},
-			{
-				id: "1.4.5",
-				level: "AA",
-				name: "Images of Text",
-				description:
-					"If the technologies being used can achieve the visual presentation, text is used to convey information rather than images of text.",
-			},
-			{
-				id: "1.4.6",
-				level: "AAA",
-				name: "Contrast (Enhanced)",
-				description:
-					"The visual presentation of text and images of text has a contrast ratio of at least 7:1.",
-			},
-			{
-				id: "1.4.7",
-				level: "AAA",
-				name: "Low or No Background Audio",
-				description:
-					"For prerecorded audio-only content that contains primarily speech in the foreground, background sounds are at least 20 decibels lower than the foreground speech content.",
-			},
-			{
-				id: "1.4.8",
-				level: "AAA",
-				name: "Visual Presentation",
-				description:
-					"For the visual presentation of blocks of text, a mechanism is available for specific formatting requirements.",
-			},
-			{
-				id: "1.4.9",
-				level: "AAA",
-				name: "Images of Text (No Exception)",
-				description:
-					"Images of text are only used for pure decoration or where a particular presentation of text is essential to the information being conveyed.",
-			},
-			{
-				id: "1.4.10",
-				level: "AA",
-				name: "Reflow",
-				description:
-					"Content can be presented without loss of information or functionality, and without requiring scrolling in two dimensions.",
-			},
-			{
-				id: "1.4.11",
-				level: "AA",
-				name: "Non-Text Contrast",
-				description:
-					"The visual presentation of User Interface Components and graphical objects has a contrast ratio of at least 3:1 against adjacent color(s).",
-			},
-			{
-				id: "1.4.12",
-				level: "AA",
-				name: "Text Spacing",
-				description:
-					"In content implemented using markup languages, specific line/character spacing can be set without loss of content or functionality.",
-			},
-			{
-				id: "1.4.13",
-				level: "AA",
-				name: "Content on Hover or Focus",
-				description:
-					"Where receiving and then removing pointer hover or keyboard focus triggers additional content to become visible and then hidden, specific conditions are met.",
-			},
-		],
-	},
-	"2. Operable": {
-		"2.1 Keyboard Accessible": [
-			{
-				id: "2.1.1",
-				level: "A",
-				name: "Keyboard",
-				description:
-					"All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes.",
-			},
-			{
-				id: "2.1.2",
-				level: "A",
-				name: "No Keyboard Trap",
-				description:
-					"If keyboard focus can be moved to a component using a keyboard interface, then focus can be moved away from that component using only a keyboard interface.",
-			},
-			{
-				id: "2.1.3",
-				level: "AAA",
-				name: "Keyboard (No Exception)",
-				description:
-					"All functionality of the content is operable through a keyboard interface without requiring specific timings for individual keystrokes.",
-			},
-			{
-				id: "2.1.4",
-				level: "A",
-				name: "Character Key Shortcuts",
-				description:
-					"If a keyboard shortcut is implemented in content using only letter, punctuation, number, or symbol characters, then various ways to turn it off or remap are available.",
-			},
-		],
-		"2.2 Enough Time": [
-			{
-				id: "2.2.1",
-				level: "A",
-				name: "Timing Adjustable",
-				description:
-					"For each time limit that is set by the content, at least one of the specific conditions is met.",
-			},
-			{
-				id: "2.2.2",
-				level: "A",
-				name: "Pause, Stop, Hide",
-				description:
-					"For moving, blinking, scrolling, or auto-updating information, all of the following are true.",
-			},
-			{
-				id: "2.2.3",
-				level: "AAA",
-				name: "No Timing",
-				description:
-					"Timing is not an essential part of the event or activity presented by the content, except for non-interactive synchronized media and real-time events.",
-			},
-			{
-				id: "2.2.4",
-				level: "AAA",
-				name: "Interruptions",
-				description:
-					"Interruptions can be postponed or suppressed by the user, except interruptions involving an emergency.",
-			},
-			{
-				id: "2.2.5",
-				level: "AAA",
-				name: "Re-authenticating",
-				description:
-					"When an authenticated session expires, the user can continue the activity without loss of data after re-authenticating.",
-			},
-			{
-				id: "2.2.6",
-				level: "AAA",
-				name: "Timeouts",
-				description:
-					"Users are warned of the duration of any user inactivity that could cause data loss, unless the data is preserved for more than 20 hours when the user does not take any actions.",
-			},
-		],
-		"2.3 Seizures and Physical Reactions": [
-			{
-				id: "2.3.1",
-				level: "A",
-				name: "Three Flashes or Below Threshold",
-				description:
-					"Web pages do not contain anything that flashes more than three times in any one second period, or the flash is below the general flash and red flash thresholds.",
-			},
-			{
-				id: "2.3.2",
-				level: "AAA",
-				name: "Three Flashes",
-				description:
-					"Web pages do not contain anything that flashes more than three times in any one second period.",
-			},
-			{
-				id: "2.3.3",
-				level: "AAA",
-				name: "Animation from Interactions",
-				description:
-					"Motion animation triggered by interaction can be disabled, unless the animation is essential to the functionality or the information being conveyed.",
-			},
-		],
-		"2.4 Input": [
-			{
-				id: "2.4.1",
-				level: "A",
-				name: "Bypass Blocks",
-				description:
-					"A mechanism is available to bypass blocks of content that are repeated on multiple Web pages.",
-			},
-			{
-				id: "2.4.2",
-				level: "A",
-				name: "Page Titled",
-				description: "Web pages have titles that describe topic or purpose.",
-			},
-			{
-				id: "2.4.3",
-				level: "A",
-				name: "Focus Order",
-				description:
-					"If a Web page can be navigated sequentially and the navigation sequences affect meaning or operation, focusable components receive focus in an order that preserves meaning and operability.",
-			},
-			{
-				id: "2.4.4",
-				level: "A",
-				name: "Link Purpose (In Context)",
-				description:
-					"The purpose of each link can be determined from the link text alone or from the link text together with its programmatically determined link context.",
-			},
-			{
-				id: "2.4.5",
-				level: "AA",
-				name: "Multiple Ways",
-				description:
-					"More than one way is available to locate a Web page within a set of Web pages except where the Web Page is the result of, or a step in, a process.",
-			},
-			{
-				id: "2.4.6",
-				level: "AA",
-				name: "Headings and Labels",
-				description: "Headings and labels describe topic or purpose.",
-			},
-			{
-				id: "2.4.7",
-				level: "AA",
-				name: "Focus Visible",
-				description:
-					"Any keyboard operable user interface has a mode of operation where the keyboard focus indicator is visible.",
-			},
-			{
-				id: "2.4.8",
-				level: "AAA",
-				name: "Location",
-				description:
-					"Information about the user's location within a set of Web pages is available.",
-			},
-			{
-				id: "2.4.9",
-				level: "AAA",
-				name: "Link Purpose (Link Only)",
-				description:
-					"A mechanism is available to allow the purpose of each link to be identified from link text alone.",
-			},
-			{
-				id: "2.4.10",
-				level: "AAA",
-				name: "Section Headings",
-				description: "Section headings are used to organize the content.",
-			},
-		],
-		"2.5 Input Modalities": [
-			{
-				id: "2.5.1",
-				level: "A",
-				name: "Pointer Gestures",
-				description:
-					"All functionality that uses multipoint or path-based gestures for operation can be operated with a single pointer without a path-based gesture.",
-			},
-			{
-				id: "2.5.2",
-				level: "A",
-				name: "Pointer Cancellation",
-				description:
-					"For functionality that can be operated using a single pointer, specific conditions for preventing accidental activation are met.",
-			},
-			{
-				id: "2.5.3",
-				level: "A",
-				name: "Label in Name",
-				description:
-					"For user interface components with labels that include text or images of text, the name contains the text that is presented visually.",
-			},
-			{
-				id: "2.5.4",
-				level: "A",
-				name: "Motion Actuation",
-				description:
-					"Functionality that can be operated by device motion or user motion can also be operated by user interface components and responding to the motion can be disabled.",
-			},
-			{
-				id: "2.5.5",
-				level: "AAA",
-				name: "Target Size",
-				description:
-					"The size of the target for pointer inputs is at least 44 by 44 CSS pixels.",
-			},
-			{
-				id: "2.5.6",
-				level: "AAA",
-				name: "Concurrent Input Mechanisms",
-				description:
-					"Web content does not restrict use of input modalities available on a platform except where the restriction is essential.",
-			},
-		],
-	},
-	"3. Understandable": {
-		"3.1 Readable": [
-			{
-				id: "3.1.1",
-				level: "A",
-				name: "Language of Page",
-				description:
-					"The default human language of each Web page can be programmatically determined.",
-			},
-			{
-				id: "3.1.2",
-				level: "AA",
-				name: "Language of Parts",
-				description:
-					"The human language of each passage or phrase in the content can be programmatically determined.",
-			},
-			{
-				id: "3.1.3",
-				level: "AAA",
-				name: "Unusual Words",
-				description:
-					"A mechanism is available for identifying specific definitions of words or phrases used in an unusual or restricted way.",
-			},
-			{
-				id: "3.1.4",
-				level: "AAA",
-				name: "Abbreviations",
-				description:
-					"A mechanism for identifying the expanded form or meaning of abbreviations is available.",
-			},
-			{
-				id: "3.1.5",
-				level: "AAA",
-				name: "Reading Level",
-				description:
-					"When text requires reading ability more advanced than the lower secondary education level, supplemental content is available.",
-			},
-			{
-				id: "3.1.6",
-				level: "AAA",
-				name: "Pronunciation",
-				description:
-					"A mechanism is available for identifying specific pronunciation of words where meaning is ambiguous without knowing the pronunciation.",
-			},
-		],
-		"3.2 Predictable": [
-			{
-				id: "3.2.1",
-				level: "A",
-				name: "On Focus",
-				description:
-					"When any user interface component receives focus, it does not initiate a change of context.",
-			},
-			{
-				id: "3.2.2",
-				level: "A",
-				name: "On Input",
-				description:
-					"Changing the setting of any user interface component does not automatically cause a change of context unless the user has been advised of the behavior before using the component.",
-			},
-			{
-				id: "3.2.3",
-				level: "AA",
-				name: "Consistent Navigation",
-				description:
-					"Navigational mechanisms that are repeated on multiple Web pages within a set of Web pages occur in the same relative order each time they are repeated.",
-			},
-			{
-				id: "3.2.4",
-				level: "AA",
-				name: "Consistent Identification",
-				description:
-					"Components that have the same functionality within a set of Web pages are identified consistently.",
-			},
-			{
-				id: "3.2.5",
-				level: "AAA",
-				name: "Change on Request",
-				description:
-					"Changes of context are initiated only by user request or a mechanism is available to turn off such changes.",
-			},
-		],
-		"3.3 Input Assistance": [
-			{
-				id: "3.3.1",
-				level: "A",
-				name: "Error Identification",
-				description:
-					"If an input error is automatically detected, the item that is in error is identified and the error is described to the user in text.",
-			},
-			{
-				id: "3.3.2",
-				level: "A",
-				name: "Labels or Instructions",
-				description:
-					"Labels or instructions are provided when content requires user input.",
-			},
-			{
-				id: "3.3.3",
-				level: "AA",
-				name: "Error Suggestion",
-				description:
-					"If an input error is automatically detected and suggestions for correction are known, then the suggestions are provided to the user.",
-			},
-			{
-				id: "3.3.4",
-				level: "AA",
-				name: "Error Prevention (Legal, Financial, Data)",
-				description:
-					"For Web pages that cause legal commitments or financial transactions for the user to occur, that modify or delete user-controllable data in data storage systems, or that submit user test responses, specific conditions are met.",
-			},
-			{
-				id: "3.3.5",
-				level: "AAA",
-				name: "Help",
-				description: "Context-sensitive help is available.",
-			},
-			{
-				id: "3.3.6",
-				level: "AAA",
-				name: "Error Prevention (All)",
-				description:
-					"For Web pages that require the user to submit information, specific conditions are met.",
-			},
-		],
-	},
-	"4. Robust": {
-		"4.1 Compatible": [
-			{
-				id: "4.1.1",
-				level: "A",
-				name: "Parsing",
-				description:
-					"In content implemented using markup languages, elements have complete start and end tags, elements are nested according to their specifications, elements do not contain duplicate attributes, and any IDs are unique.",
-			},
-			{
-				id: "4.1.2",
-				level: "A",
-				name: "Name, Role, Value",
-				description:
-					"For all user interface components, the name and role can be programmatically determined; states, properties, and values can be programmatically set; and notification of changes to these items is available to user agents.",
-			},
-			{
-				id: "4.1.3",
-				level: "AA",
-				name: "Status Messages",
-				description:
-					"In content implemented using markup languages, status messages can be programmatically determined through role or properties.",
-			},
-		],
-		"4.2 Enough": [
-			{
-				id: "4.2.1",
-				level: "A",
-				name: "Time-based Media",
-				description:
-					"All time-based media can be programmatically controlled or are replaced with Web-based alternatives.",
-			},
-			{
-				id: "4.2.2",
-				level: "A",
-				name: "Live Captions",
-				description:
-					"Live captions are provided for all prerecorded audio content in synchronized media.",
-			},
-			{
-				id: "4.2.3",
-				level: "A",
-				name: "Sign Language",
-				description:
-					"Sign language interpretation is provided for all prerecorded audio content in synchronized media.",
-			},
-			{
-				id: "4.2.4",
-				level: "A",
-				name: "Audio Description",
-				description:
-					"Audio description is provided for all prerecorded video content in synchronized media.",
-			},
-			{
-				id: "4.2.5",
-				level: "AA",
-				name: "Extended Audio Description",
-				description:
-					"Extended audio description is provided for all prerecorded video content in synchronized media.",
-			},
-			{
-				id: "4.2.6",
-				level: "AAA",
-				name: "Media Alternative",
-				description:
-					"An alternative for time-based media is provided for all prerecorded synchronized media and for all prerecorded video-only media.",
-			},
-			{
-				id: "4.2.7",
-				level: "AAA",
-				name: "Audio Description",
-				description:
-					"Audio description is provided for all prerecorded video content in synchronized media.",
-			},
-		],
-		"4.3 Input Assistance": [
-			{
-				id: "4.3.1",
-				level: "A",
-				name: "Pointer Gestures",
-				description:
-					"A mechanism is available to interact with content using pointer gestures.",
-			},
-			{
-				id: "4.3.2",
-				level: "A",
-				name: "Keyboard Gestures",
-				description:
-					"A mechanism is available to interact with content using keyboard gestures.",
-			},
-			{
-				id: "4.3.3",
-				level: "A",
-				name: "Character Key Shortcuts",
-				description:
-					"A mechanism is available to interact with content using character key shortcuts.",
-			},
-			{
-				id: "4.3.4",
-				level: "AA",
-				name: "Pointer Cancellation",
-				description:
-					"A mechanism is available to cancel a pointer action, except where the pointer action would cause harm.",
-			},
-			{
-				id: "4.3.5",
-				level: "AA",
-				name: "Keyboard Cancellation",
-				description:
-					"A mechanism is available to cancel a keyboard action, except where the keyboard action would cause harm.",
-			},
-			{
-				id: "4.3.6",
-				level: "AAA",
-				name: "Dragging",
-				description:
-					"A mechanism is available to cancel a dragging action, except where the dragging action would cause harm.",
-			},
-			{
-				id: "4.3.7",
-				level: "AAA",
-				name: "Target Size",
-				description:
-					"The size of the target for pointer input is at least 44 by 44 CSS pixels.",
-			},
-			{
-				id: "4.3.8",
-				level: "AAA",
-				name: "Input Assistance",
-				description:
-					"A mechanism is available to help users with disabilities understand, use, and navigate Web pages or to access Web content in ways that are as equivalent as possible to the ways users without disabilities access the same content.",
-			},
-		],
-	},
-};
+// Current language
+let currentLanguage = "pl";
+
+// WCAG Guideline data (default Polish)
+let wcagGuidelines = {};
+
+// Load guidelines based on language
+function loadGuidelinesForLanguage(language) {
+	currentLanguage = language;
+	fetch(`wcag-guidelines-${language}.json`)
+		.then(response => response.json())
+		.then(data => {
+			wcagGuidelines = data;
+			// Update guidelines with new language
+			updateGuidelinesBasedOnLevel();
+		})
+		.catch(error => {
+			console.error("Error loading guidelines:", error);
+		});
+}
+
+// Setup language selector
+function setupLanguageSelector() {
+	// Add language selector to the audit form
+	const auditForm = document.querySelector(".audit-form");
+	const langSelectorDiv = document.createElement("div");
+	langSelectorDiv.className = "form-group language-form-group";
+	langSelectorDiv.innerHTML = `
+		<label for="language-select">Język / Language</label>
+		<div class="language-controls">
+			<select id="language-select" class="language-select">
+				<option value="en">English</option>
+				<option value="pl" selected>Polski</option>
+			</select>
+			<div class="language-buttons">
+				<button type="button" data-lang="pl" class="lang-btn lang-btn-active">PL</button>
+				<button type="button" data-lang="en" class="lang-btn">EN</button>
+			</div>
+		</div>
+	`;
+	auditForm.appendChild(langSelectorDiv);
+
+	// Add event listener for select
+	document
+		.getElementById("language-select")
+		.addEventListener("change", function (e) {
+			loadGuidelinesForLanguage(e.target.value);
+			updateLanguageButtons(e.target.value);
+		});
+
+	// Add event listeners for buttons
+	document.querySelectorAll(".lang-btn").forEach(btn => {
+		btn.addEventListener("click", function () {
+			const lang = this.getAttribute("data-lang");
+			loadGuidelinesForLanguage(lang);
+			document.getElementById("language-select").value = lang;
+			updateLanguageButtons(lang);
+		});
+	});
+
+	// Function to update active button
+	function updateLanguageButtons(lang) {
+		document.querySelectorAll(".lang-btn").forEach(btn => {
+			if (btn.getAttribute("data-lang") === lang) {
+				btn.classList.add("lang-btn-active");
+			} else {
+				btn.classList.remove("lang-btn-active");
+			}
+		});
+	}
+
+	// Load default language
+	loadGuidelinesForLanguage("pl");
+}
+
+// Initialization for wcagGuidelines before JSON is loaded
+// WCAG Guideline data placeholder
 
 // Application state
 let auditState = {
@@ -737,6 +129,54 @@ function initApp() {
 
 	// Generate guidelines based on selected level
 	updateGuidelinesBasedOnLevel();
+
+	// Add CSS for language selector
+	const style = document.createElement("style");
+	style.textContent = `
+		.language-form-group {
+			grid-column: 1 / -1;
+		}
+		.language-controls {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+		}
+		.language-select {
+			padding: 0.75rem;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+			font-size: 1rem;
+			transition: border-color 0.3s;
+			flex: 1;
+		}
+		.language-select:focus {
+			border-color: var(--primary-color);
+			outline: none;
+			box-shadow: 0 0 0 2px rgba(0, 90, 156, 0.2);
+		}
+		.language-buttons {
+			display: flex;
+			gap: 0.5rem;
+		}
+		.lang-btn {
+			padding: 0.5rem 1rem;
+			border: 1px solid #ddd;
+			border-radius: 4px;
+			background-color: #f5f5f5;
+			cursor: pointer;
+			font-weight: bold;
+			transition: all 0.2s;
+		}
+		.lang-btn:hover {
+			background-color: #e9e9e9;
+		}
+		.lang-btn-active {
+			border-color: var(--primary-color);
+			background-color: rgba(0, 90, 156, 0.1);
+			color: var(--primary-color);
+		}
+	`;
+	document.head.appendChild(style);
 }
 
 /**
