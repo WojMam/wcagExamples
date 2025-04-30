@@ -752,3 +752,31 @@ body.high-contrast a:focus {
 	white-space: nowrap;
 	padding: 0.5rem 1rem;
 }
+
+.info-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 24px;
+	height: 24px;
+	margin-left: 8px;
+	color: var(--primary-color);
+	text-decoration: none;
+	border-radius: 50%;
+	transition: all 0.2s ease;
+}
+
+.info-icon:hover {
+	background-color: rgba(0, 90, 156, 0.1);
+	transform: scale(1.1);
+}
+
+.info-icon:focus {
+	outline: 2px solid var(--primary-color);
+	outline-offset: 2px;
+}
+
+.info-icon svg {
+	width: 16px;
+	height: 16px;
+}

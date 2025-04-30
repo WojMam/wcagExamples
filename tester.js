@@ -35,16 +35,22 @@ document.addEventListener("DOMContentLoaded", function () {
 // Current language
 let currentLanguage = "pl";
 
-// WCAG Guideline data (default Polish)
+// WCAG Guideline data
 let wcagGuidelines = {};
+let wcagGuidelinesEn = {};
 
 // Load guidelines based on language
 function loadGuidelinesForLanguage(language) {
 	currentLanguage = language;
-	fetch(`wcag-guidelines-${language}.json`)
-		.then(response => response.json())
-		.then(data => {
-			wcagGuidelines = data;
+
+	// Load both English and Polish guidelines
+	Promise.all([
+		fetch("wcag-guidelines-en.json").then(response => response.json()),
+		fetch(`wcag-guidelines-${language}.json`).then(response => response.json()),
+	])
+		.then(([enData, langData]) => {
+			wcagGuidelinesEn = enData;
+			wcagGuidelines = langData;
 			// Update guidelines with new language
 			updateGuidelinesBasedOnLevel();
 		})
@@ -416,12 +422,10 @@ function renderGuidelines() {
 	const container = document.querySelector(".guidelines-container");
 	container.innerHTML = "";
 
-	// Iterate through categories
 	for (const category in auditState.guidelines) {
 		const categoryElement = document.createElement("div");
 		categoryElement.className = "guideline-category animate-in";
 
-		// Create category header
 		const categoryHeader = document.createElement("div");
 		categoryHeader.className = "category-header";
 		categoryHeader.innerHTML = `
@@ -430,37 +434,58 @@ function renderGuidelines() {
 		`;
 		categoryElement.appendChild(categoryHeader);
 
-		// Create category content
 		const categoryContent = document.createElement("div");
 		categoryContent.className = "category-content";
 
-		// Iterate through sections
 		for (const section in auditState.guidelines[category]) {
 			const sectionElement = document.createElement("div");
 			sectionElement.className = "guideline-section";
 
-			// Add section title
 			const sectionTitle = document.createElement("h4");
 			sectionTitle.textContent = section;
 			sectionElement.appendChild(sectionTitle);
 
-			// Iterate through guidelines
 			for (const guideline of auditState.guidelines[category][section]) {
 				const guidelineElement = document.createElement("div");
 				guidelineElement.className = "guideline-item";
 				guidelineElement.setAttribute("data-id", guideline.id);
 
-				// Create guideline header
 				const guidelineHeader = document.createElement("div");
 				guidelineHeader.className = "guideline-header";
 
-				// Add guideline title and level
 				const titleContainer = document.createElement("div");
 				titleContainer.className = "guideline-title";
+
+				// Create info link with correct URL based on language
+				const infoLink = document.createElement("a");
+				// Find the English name for this guideline
+				const englishGuideline = Object.values(wcagGuidelinesEn)
+					.flatMap(cat => Object.values(cat).flat())
+					.find(g => g.id === guideline.id);
+				const guidelineName = englishGuideline.name
+					.toLowerCase()
+					.replace(/[^a-z0-9]+/g, "-")
+					.replace(/-+$/, "");
+				infoLink.href =
+					currentLanguage === "pl"
+						? `https://wcag.lepszyweb.pl/#${guidelineName}`
+						: `https://www.w3.org/TR/WCAG21/#${guidelineName}`;
+				infoLink.target = "_blank";
+				infoLink.rel = "noopener noreferrer";
+				infoLink.className = "info-icon";
+				infoLink.setAttribute(
+					"aria-label",
+					currentLanguage === "pl"
+						? `Informacje o wytycznej ${guideline.id}`
+						: `Information about ${guideline.id} guideline`
+				);
+				infoLink.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>`;
+
 				titleContainer.innerHTML = `
 					<span>${guideline.id} ${guideline.name}</span>
 					<span class="wcag-level ${guideline.level}">${guideline.level}</span>
 				`;
+				titleContainer.appendChild(infoLink);
 				guidelineHeader.appendChild(titleContainer);
 
 				// Add status selectors
