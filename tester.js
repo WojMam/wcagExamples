@@ -116,6 +116,8 @@ let auditState = {
 	url: "",
 	date: "",
 	level: "AA",
+	os: "",
+	browser: "",
 	guidelines: {},
 	detailedView: false,
 };
@@ -129,6 +131,12 @@ function initApp() {
 
 	// Generate guidelines based on selected level
 	updateGuidelinesBasedOnLevel();
+
+	// Add event listeners for OS and browser detection
+	document.getElementById("detect-os-btn").addEventListener("click", detectOS);
+	document
+		.getElementById("detect-browser-btn")
+		.addEventListener("click", detectBrowser);
 
 	// Add CSS for language selector
 	const style = document.createElement("style");
@@ -180,6 +188,123 @@ function initApp() {
 }
 
 /**
+ * Detect and fill in the operating system
+ */
+function detectOS() {
+	const osInput = document.getElementById("audit-os");
+	let os = "Nieznany system operacyjny";
+	let version = "";
+
+	const userAgent = navigator.userAgent;
+
+	if (userAgent.indexOf("Windows") !== -1) {
+		os = "Windows";
+		const versionMatch = userAgent.match(/Windows NT (\d+\.\d+)/);
+		if (versionMatch) {
+			const versionNumber = parseFloat(versionMatch[1]);
+			switch (versionNumber) {
+				case 10.0:
+					version = "10";
+					break;
+				case 6.3:
+					version = "8.1";
+					break;
+				case 6.2:
+					version = "8";
+					break;
+				case 6.1:
+					version = "7";
+					break;
+				case 6.0:
+					version = "Vista";
+					break;
+				case 5.1:
+					version = "XP";
+					break;
+				case 5.0:
+					version = "2000";
+					break;
+				default:
+					version = versionNumber.toString();
+			}
+		}
+	} else if (userAgent.indexOf("Mac") !== -1) {
+		os = "macOS";
+		const versionMatch = userAgent.match(/Mac OS X (\d+[._]\d+)/);
+		if (versionMatch) {
+			version = versionMatch[1].replace("_", ".");
+		}
+	} else if (userAgent.indexOf("Linux") !== -1) {
+		os = "Linux";
+		// Większość przeglądarek nie podaje dokładnej wersji Linuxa
+	} else if (userAgent.indexOf("Android") !== -1) {
+		os = "Android";
+		const versionMatch = userAgent.match(/Android (\d+\.\d+)/);
+		if (versionMatch) {
+			version = versionMatch[1];
+		}
+	} else if (userAgent.indexOf("iOS") !== -1) {
+		os = "iOS";
+		const versionMatch = userAgent.match(/OS (\d+[._]\d+)/);
+		if (versionMatch) {
+			version = versionMatch[1].replace("_", ".");
+		}
+	}
+
+	osInput.value = version ? `${os} ${version}` : os;
+	auditState.os = osInput.value;
+}
+
+/**
+ * Detect and fill in the browser
+ */
+function detectBrowser() {
+	const browserInput = document.getElementById("audit-browser");
+	let browser = "Nieznana przeglądarka";
+	let version = "";
+
+	const userAgent = navigator.userAgent;
+
+	if (userAgent.indexOf("Chrome") !== -1 && userAgent.indexOf("Edg") === -1) {
+		browser = "Chrome";
+		const versionMatch = userAgent.match(/Chrome\/(\d+\.\d+)/);
+		if (versionMatch) {
+			version = versionMatch[1];
+		}
+	} else if (userAgent.indexOf("Firefox") !== -1) {
+		browser = "Firefox";
+		const versionMatch = userAgent.match(/Firefox\/(\d+\.\d+)/);
+		if (versionMatch) {
+			version = versionMatch[1];
+		}
+	} else if (userAgent.indexOf("Safari") !== -1) {
+		browser = "Safari";
+		const versionMatch = userAgent.match(/Version\/(\d+\.\d+)/);
+		if (versionMatch) {
+			version = versionMatch[1];
+		}
+	} else if (userAgent.indexOf("Edg") !== -1) {
+		browser = "Edge";
+		const versionMatch = userAgent.match(/Edg\/(\d+\.\d+)/);
+		if (versionMatch) {
+			version = versionMatch[1];
+		}
+	} else if (
+		userAgent.indexOf("Opera") !== -1 ||
+		userAgent.indexOf("OPR") !== -1
+	) {
+		browser = "Opera";
+		const versionMatch = userAgent.match(/(?:Opera|OPR)\/(\d+\.\d+)/);
+		if (versionMatch) {
+			version = versionMatch[1];
+		}
+	}
+
+	browserInput.value = version ? `${browser} ${version}` : browser;
+	auditState.browser = browserInput.value;
+}
+
+/**
  * Reset audit state to default values
  */
 function resetAuditState() {
@@ -188,6 +313,8 @@ function resetAuditState() {
 		url: "",
 		date: new Date().toISOString().split("T")[0],
 		level: "AA",
+		os: "",
+		browser: "",
 		guidelines: {},
 		detailedView: false,
 	};
@@ -197,6 +324,8 @@ function resetAuditState() {
 	document.getElementById("audit-url").value = "";
 	document.getElementById("audit-date").value = auditState.date;
 	document.getElementById("audit-level").value = auditState.level;
+	document.getElementById("audit-os").value = "";
+	document.getElementById("audit-browser").value = "";
 }
 
 /**
@@ -537,6 +666,8 @@ function saveAudit() {
 	const name = document.getElementById("audit-name").value;
 	const url = document.getElementById("audit-url").value;
 	const date = document.getElementById("audit-date").value;
+	const os = document.getElementById("audit-os").value;
+	const browser = document.getElementById("audit-browser").value;
 
 	if (!name || !url || !date) {
 		alert("Proszę wypełnić wszystkie wymagane pola formularza.");
@@ -547,6 +678,8 @@ function saveAudit() {
 	auditState.name = name;
 	auditState.url = url;
 	auditState.date = date;
+	auditState.os = os;
+	auditState.browser = browser;
 
 	// Create a JSON blob
 	const jsonData = JSON.stringify(auditState, null, 2);
@@ -596,6 +729,8 @@ function loadAudit(event) {
 			document.getElementById("audit-url").value = auditState.url;
 			document.getElementById("audit-date").value = auditState.date;
 			document.getElementById("audit-level").value = auditState.level;
+			document.getElementById("audit-os").value = auditState.os || "";
+			document.getElementById("audit-browser").value = auditState.browser || "";
 
 			// Render guidelines
 			renderGuidelines();

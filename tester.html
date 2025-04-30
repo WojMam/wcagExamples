@@ -345,23 +345,38 @@
             <div class="audit-form">
                 <div class="form-group">
                     <label for="audit-name">Nazwa audytu</label>
-                    <input type="text" id="audit-name" placeholder="Wprowadź nazwę audytu" required>
+                    <input type="text" id="audit-name" required>
                 </div>
                 <div class="form-group">
                     <label for="audit-url">URL strony</label>
-                    <input type="url" id="audit-url" placeholder="https://example.com" required>
+                    <input type="url" id="audit-url" required>
                 </div>
                 <div class="form-group">
                     <label for="audit-date">Data audytu</label>
                     <input type="date" id="audit-date" required>
                 </div>
                 <div class="form-group">
-                    <label for="audit-level">Poziom dostępności</label>
+                    <label for="audit-level">Poziom WCAG</label>
                     <select id="audit-level" required>
-                        <option value="A">Poziom A</option>
-                        <option value="AA" selected>Poziom AA</option>
-                        <option value="AAA">Poziom AAA</option>
+                        <option value="A">A</option>
+                        <option value="AA" selected>AA</option>
+                        <option value="AAA">AAA</option>
                     </select>
+                </div>
+                <div class="form-group">
+                    <label for="audit-os">System operacyjny</label>
+                    <div class="input-with-button">
+                        <input type="text" id="audit-os">
+                        <button type="button" class="btn btn-secondary" id="detect-os-btn">Wykryj automatycznie</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="audit-browser">Przeglądarka</label>
+                    <div class="input-with-button">
+                        <input type="text" id="audit-browser">
+                        <button type="button" class="btn btn-secondary" id="detect-browser-btn">Wykryj
+                            automatycznie</button>
+                    </div>
                 </div>
             </div>
 
