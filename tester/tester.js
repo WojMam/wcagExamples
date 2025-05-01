@@ -1188,56 +1188,20 @@ function generateReport() {
  * Funkcja ładująca zawartość nagłówka z pliku header.html
  */
 function loadHeader() {
-	const headerElement = document.querySelector("header");
-
-	if (headerElement) {
-		const xhr = new XMLHttpRequest();
-		xhr.open("GET", "header.html", true);
-		xhr.onreadystatechange = function () {
-			if (xhr.readyState === 4) {
-				if (xhr.status === 200) {
-					headerElement.innerHTML = xhr.responseText;
-				} else {
-					// W przypadku błędu, wstaw bezpośrednio uproszczoną zawartość nagłówka
-					headerElement.innerHTML = `
-					<h1>WCAG 2.1 - Nieoficjalny przewodnik dostępności</h1>
-					<p class="subtitle">Praktyczne przykłady implementacji wytycznych WCAG 2.1</p>
-					<nav aria-label="Główna nawigacja">
-						<ul class="main-nav">
-							<li><a href="index.html">Strona główna</a></li>
-							<li><a href="wytyczne.html">Wytyczne WCAG 2.1</a></li>
-							<li><a href="tester.html" aria-current="page">Tester dostępności</a></li>
-						</ul>
-					</nav>
-					`;
-				}
-			}
-		};
-		xhr.send();
-	}
+	fetch("header.html")
+		.then(response => response.text())
+		.then(html => {
+			document.querySelector("header").innerHTML = html;
+		});
 }
 
 /**
  * Funkcja ładująca zawartość stopki z pliku footer.html
  */
 function loadFooter() {
-	const footerElement = document.querySelector("footer");
-
-	if (footerElement) {
-		const xhr = new XMLHttpRequest();
-		xhr.open("GET", "footer.html", true);
-		xhr.onreadystatechange = function () {
-			if (xhr.readyState === 4) {
-				if (xhr.status === 200) {
-					footerElement.innerHTML = xhr.responseText;
-				} else {
-					// W przypadku błędu, wstaw bezpośrednio uproszczoną zawartość stopki
-					footerElement.innerHTML = `
-					<p>&copy; ${new Date().getFullYear()} WCAG 2.1 - Nieoficjalny przewodnik dostępności</p>
-					`;
-				}
-			}
-		};
-		xhr.send();
-	}
+	fetch("../footer.html")
+		.then(response => response.text())
+		.then(html => {
+			document.querySelector("footer").innerHTML = html;
+		});
 }
