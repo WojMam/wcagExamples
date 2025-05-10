@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator wielkości czcionek - Nieoficjalny przewodnik dostępności</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .calculator-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .calculator-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .calculator-header h1 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .calculator-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .input-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .input-group label {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .input-group input,
+        .input-group select {
+            padding: 10px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .result-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-label {
+            font-weight: 500;
+            color: #666;
+        }
+
+        .result-value {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .info-box {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #e8f4fd;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .info-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 600px) {
+            .input-group {
+                grid-template-columns: 1fr;
+            }
+
+            .calculator-container {
+                margin: 20px;
+                padding: 20px;
+            }
+        }
+
+        /* High contrast mode styles */
+        body.high-contrast .calculator-container {
+            background-color: #000;
+            border: 2px solid #fff;
+        }
+
+        body.high-contrast .input-group input,
+        body.high-contrast .input-group select {
+            background-color: #000;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        body.high-contrast .results {
+            background-color: #000;
+            border: 2px solid #fff;
+        }
+
+        body.high-contrast .result-item {
+            border-bottom-color: #fff;
+        }
+
+        body.high-contrast .result-label {
+            color: #fff;
+        }
+
+        body.high-contrast .result-value {
+            color: #ffff00;
+        }
+
+        body.high-contrast .info-box {
+            background-color: #000;
+            border-left-color: #ffff00;
+        }
+
+        body.high-contrast .info-box h3 {
+            color: #ffff00;
+        }
+
+        body.high-contrast .info-box p {
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Header content will be loaded here -->
+    </header>
+
+    <main id="main">
+        <div class="calculator-container">
+            <div class="calculator-header">
+                <h1><i class="fas fa-calculator"></i> Kalkulator wielkości czcionek</h1>
+                <p>Przeliczaj wielkości czcionek między różnymi jednostkami miary</p>
+            </div>
+
+            <div class="calculator-form">
+                <div class="input-group">
+                    <label for="fontSize">Wartość:</label>
+                    <input type="number" id="fontSize" step="0.1" placeholder="Wprowadź wartość">
+                </div>
+
+                <div class="input-group">
+                    <label for="fromUnit">Z jednostki:</label>
+                    <select id="fromUnit">
+                        <option value="px">Piksele (px)</option>
+                        <option value="pt">Punkty (pt)</option>
+                        <option value="em">Em (em)</option>
+                        <option value="rem">Rem (rem)</option>
+                        <option value="%">Procenty (%)</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="toUnit">Na jednostkę:</label>
+                    <select id="toUnit">
+                        <option value="px">Piksele (px)</option>
+                        <option value="pt">Punkty (pt)</option>
+                        <option value="em">Em (em)</option>
+                        <option value="rem">Rem (rem)</option>
+                        <option value="%">Procenty (%)</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="baseRem">Wartość bazowa 1rem (px):</label>
+                    <input type="number" id="baseRem" value="16" min="1" step="1" placeholder="Wprowadź wartość bazową">
+                </div>
+            </div>
+
+            <div class="results">
+                <h2>Wyniki przeliczenia:</h2>
+                <div id="conversionResults">
+                    <!-- Results will be inserted here by JavaScript -->
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3><i class="fas fa-info-circle"></i> Informacje o jednostkach</h3>
+                <p><strong>px (piksele):</strong> Podstawowa jednostka w CSS, 1px = 1/96 cala</p>
+                <p><strong>pt (punkty):</strong> Tradycyjna jednostka typograficzna, 1pt = 1/72 cala</p>
+                <p><strong>em:</strong> Jednostka względna, bazująca na rozmiarze czcionki elementu rodzica</p>
+                <p><strong>rem:</strong> Jednostka względna, bazująca na rozmiarze czcionki elementu root (html).
+                    Domyślnie 1rem = 16px, ale możesz to zmienić.</p>
+                <p><strong>%:</strong> Procentowa wartość względem rozmiaru czcionki elementu rodzica</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Footer content will be loaded here -->
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Load header and footer
+        document.addEventListener('DOMContentLoaded', function () {
+            // Load header
+            fetch('header.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.querySelector('header').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading header:', error));
+
+            // Load footer
+            fetch('footer.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.querySelector('footer').innerHTML = data;
+                })
+                .catch(error => console.error('Error loading footer:', error));
+        });
+
+        // Font size conversion logic
+        const fontSizeInput = document.getElementById('fontSize');
+        const fromUnitSelect = document.getElementById('fromUnit');
+        const toUnitSelect = document.getElementById('toUnit');
+        const baseRemInput = document.getElementById('baseRem');
+        const resultsDiv = document.getElementById('conversionResults');
+
+        function updateBaseRemField() {
+            const fromUnit = fromUnitSelect.value;
+            const toUnit = toUnitSelect.value;
+            const isRemUsed = fromUnit === 'rem' || toUnit === 'rem';
+
+            baseRemInput.disabled = !isRemUsed;
+            if (!isRemUsed) {
+                baseRemInput.value = '16';
+            }
+        }
+
+        function convertFontSize() {
+            const value = parseFloat(fontSizeInput.value);
+            const fromUnit = fromUnitSelect.value;
+            const toUnit = toUnitSelect.value;
+            const baseRem = parseFloat(baseRemInput.value) || 16;
+
+            if (isNaN(value)) {
+                resultsDiv.innerHTML = '<p>Wprowadź poprawną wartość</p>';
+                return;
+            }
+
+            // Convert to pixels first (as base unit)
+            let pixels;
+            switch (fromUnit) {
+                case 'px':
+                    pixels = value;
+                    break;
+                case 'pt':
+                    pixels = value * 1.33333; // 1pt = 1.33333px
+                    break;
+                case 'em':
+                    pixels = value * baseRem; // Using custom base value
+                    break;
+                case 'rem':
+                    pixels = value * baseRem; // Using custom base value
+                    break;
+                case '%':
+                    pixels = value * (baseRem / 100); // Using custom base value
+                    break;
+            }
+
+            // Convert from pixels to target unit
+            let result;
+            switch (toUnit) {
+                case 'px':
+                    result = pixels;
+                    break;
+                case 'pt':
+                    result = pixels / 1.33333;
+                    break;
+                case 'em':
+                    result = pixels / baseRem;
+                    break;
+                case 'rem':
+                    result = pixels / baseRem;
+                    break;
+                case '%':
+                    result = pixels * (100 / baseRem);
+                    break;
+            }
+
+            // Display results
+            let resultsHTML = `
+                <div class="result-item">
+                    <span class="result-label">Wartość początkowa:</span>
+                    <span class="result-value">${value} ${fromUnit}</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Wartość po przeliczeniu:</span>
+                    <span class="result-value">${result.toFixed(2)} ${toUnit}</span>
+                </div>
+            `;
+
+            // Only show base value if REM is used
+            if (fromUnit === 'rem' || toUnit === 'rem') {
+                resultsHTML += `
+                    <div class="result-item">
+                        <span class="result-label">Użyta wartość bazowa:</span>
+                        <span class="result-value">${baseRem}px</span>
+                    </div>
+                `;
+            }
+
+            resultsDiv.innerHTML = resultsHTML;
+        }
+
+        // Add event listeners
+        fontSizeInput.addEventListener('input', convertFontSize);
+        fromUnitSelect.addEventListener('change', () => {
+            updateBaseRemField();
+            convertFontSize();
+        });
+        toUnitSelect.addEventListener('change', () => {
+            updateBaseRemField();
+            convertFontSize();
+        });
+        baseRemInput.addEventListener('input', convertFontSize);
+
+        // Initialize the base REM field state
+        updateBaseRemField();
+    </script>
+</body>
+
+</html>
