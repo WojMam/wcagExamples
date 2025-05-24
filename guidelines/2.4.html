@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.4 Możliwość nawigacji - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>2.4 Możliwość nawigacji</h1>
+            <p>Wytyczna ta zapewnia, że użytkownicy mogą skutecznie nawigować po stronach internetowych i znajdować
+                potrzebne treści.</p>
+        </div>
+
+        <section class="guideline-description">
+            <h2>Opis wytycznej</h2>
+            <p>Skuteczna nawigacja jest kluczowa dla dostępności stron internetowych. Użytkownicy muszą być w stanie:
+            </p>
+            <ul>
+                <li><strong>Pomijać powtarzające się treści</strong> - jak nawigacja główna czy menu boczne</li>
+                <li><strong>Orientować się w strukturze strony</strong> - dzięki właściwym tytułom i nagłówkom</li>
+                <li><strong>Zrozumieć gdzie się znajdują</strong> - w kontekście całej witryny</li>
+                <li><strong>Przewidywać rezultaty działań</strong> - wiedzieć dokąd prowadzą linki</li>
+                <li><strong>Używać różnych metod nawigacji</strong> - wyszukiwanie, menu, mapa strony</li>
+            </ul>
+
+            <p>Te elementy są szczególnie istotne dla osób korzystających z:</p>
+            <ul>
+                <li><strong>Czytników ekranu</strong> - które czytają stronę sekwencyjnie</li>
+                <li><strong>Nawigacji klawiaturowej</strong> - gdzie sekwencja fokusa ma kluczowe znaczenie</li>
+                <li><strong>Technologii wspomagających</strong> - które polegają na prawidłowej strukturze</li>
+                <li><strong>Ograniczonych funkcjach poznawczych</strong> - którzy potrzebują jasnych wskazówek</li>
+            </ul>
+        </section>
+
+        <section class="criteria-overview">
+            <h2>Kryteria sukcesu</h2>
+
+            <div class="criteria-level-section">
+                <h3>Poziom A (podstawowy)</h3>
+                <ul class="criteria-list">
+                    <li><a href="2.4.1.html">2.4.1 Pomijanie bloków (A)</a> - mechanizmy pomijania powtarzających się
+                        treści</li>
+                    <li><a href="2.4.2.html">2.4.2 Tytuł strony (A)</a> - opisowe tytuły stron</li>
+                    <li><a href="2.4.3.html">2.4.3 Kolejność fokusa (A)</a> - logiczna sekwencja przemieszczania fokusa
+                    </li>
+                    <li><a href="2.4.4.html">2.4.4 Cel linku (w kontekście) (A)</a> - zrozumiały cel linków w kontekście
+                    </li>
+                </ul>
+            </div>
+
+            <div class="criteria-level-section">
+                <h3>Poziom AA (rozszerzony)</h3>
+                <ul class="criteria-list">
+                    <li><a href="2.4.5.html">2.4.5 Wiele sposobów (AA)</a> - różne metody znajdowania stron</li>
+                    <li><a href="2.4.6.html">2.4.6 Nagłówki i etykiety (AA)</a> - opisowe nagłówki i etykiety</li>
+                    <li><a href="2.4.7.html">2.4.7 Widoczny fokus (AA)</a> - wyraźny wskaźnik fokusa klawiatury</li>
+                </ul>
+            </div>
+
+            <div class="criteria-level-section">
+                <h3>Poziom AAA (zaawansowany)</h3>
+                <ul class="criteria-list">
+                    <li><a href="2.4.8.html">2.4.8 Lokalizacja (AAA)</a> - informacje o lokalizacji w witrynie</li>
+                    <li><a href="2.4.9.html">2.4.9 Cel linku (tylko link) (AAA)</a> - zrozumiały cel linków bez
+                        kontekstu</li>
+                    <li><a href="2.4.10.html">2.4.10 Nagłówki sekcji (AAA)</a> - nagłówki organizujące treść</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="navigation-principles">
+            <h2>Kluczowe zasady nawigacji</h2>
+
+            <div class="principle-card"
+                style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 20px; border-radius: 5px; margin: 15px 0;">
+                <h3 style="color: #004085; margin-top: 0;">🧭 Orientacja przestrzenna</h3>
+                <p style="color: #004085;">Użytkownicy muszą wiedzieć:</p>
+                <ul style="color: #004085;">
+                    <li>Gdzie się obecnie znajdują</li>
+                    <li>Jak dotarli do tego miejsca</li>
+                    <li>Dokąd mogą się udać</li>
+                    <li>Jak wrócić do punktu wyjścia</li>
+                </ul>
+            </div>
+
+            <div class="principle-card"
+                style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 20px; border-radius: 5px; margin: 15px 0;">
+                <h3 style="color: #155724; margin-top: 0;">⚡ Efektywność</h3>
+                <p style="color: #155724;">Nawigacja powinna być:</p>
+                <ul style="color: #155724;">
+                    <li>Szybka - minimalna liczba kroków do celu</li>
+                    <li>Intuicyjna - zgodna z oczekiwaniami użytkowników</li>
+                    <li>Spójna - podobna na całej stronie</li>
+                    <li>Elastyczna - oferująca różne ścieżki</li>
+                </ul>
+            </div>
+
+            <div class="principle-card"
+                style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 20px; border-radius: 5px; margin: 15px 0;">
+                <h3 style="color: #856404; margin-top: 0;">🔍 Przewidywalność</h3>
+                <p style="color: #856404;">Elementy nawigacyjne powinny:</p>
+                <ul style="color: #856404;">
+                    <li>Jasno komunikować swoje przeznaczenie</li>
+                    <li>Działać zgodnie z oczekiwaniami</li>
+                    <li>Zachowywać się konsekwentnie</li>
+                    <li>Oferować jednoznaczne komunikaty</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="common-navigation-patterns">
+            <h2>Popularne wzorce nawigacji</h2>
+
+            <h3>1. Nawigacja główna</h3>
+            <ul>
+                <li><strong>Menu poziome</strong> - w nagłówku strony</li>
+                <li><strong>Menu pionowe</strong> - w pasku bocznym</li>
+                <li><strong>Menu hamburger</strong> - zwijane na urządzeniach mobilnych</li>
+                <li><strong>Mega menu</strong> - rozszerzone menu z wieloma opcjami</li>
+            </ul>
+
+            <h3>2. Nawigacja kontekstowa</h3>
+            <ul>
+                <li><strong>Breadcrumbs</strong> - ścieżka nawigacyjna</li>
+                <li><strong>Menu sekcji</strong> - nawigacja w obrębie działu</li>
+                <li><strong>Paginacja</strong> - nawigacja między stronami listy</li>
+                <li><strong>Linki powiązane</strong> - "następny/poprzedni"</li>
+            </ul>
+
+            <h3>3. Narzędzia nawigacyjne</h3>
+            <ul>
+                <li><strong>Wyszukiwarka</strong> - znajdowanie treści przez słowa kluczowe</li>
+                <li><strong>Mapa strony</strong> - hierarchiczna lista wszystkich stron</li>
+                <li><strong>Indeks A-Z</strong> - alfabetyczna lista tematów</li>
+                <li><strong>Filtry i sortowanie</strong> - organizowanie wyników</li>
+            </ul>
+        </section>
+
+        <section class="accessibility-features">
+            <h2>Funkcje dostępności w nawigacji</h2>
+
+            <h3>Mechanizmy pomijania</h3>
+            <pre><code class="language-html">&lt;!-- Link pomijający do treści głównej --&gt;
+&lt;a href="#main" class="skip-link"&gt;Przejdź do treści głównej&lt;/a&gt;
+
+&lt;!-- Linki pomijające do różnych sekcji --&gt;
+&lt;nav aria-label="Linki pomijające"&gt;
+    &lt;a href="#main"&gt;Treść główna&lt;/a&gt;
+    &lt;a href="#sidebar"&gt;Menu boczne&lt;/a&gt;
+    &lt;a href="#search"&gt;Wyszukiwarka&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+
+            <h3>Struktura nagłówków</h3>
+            <pre><code class="language-html">&lt;!-- Logiczna hierarchia nagłówków --&gt;
+&lt;h1&gt;Tytuł strony&lt;/h1&gt;
+    &lt;h2&gt;Sekcja główna&lt;/h2&gt;
+        &lt;h3&gt;Podsekcja&lt;/h3&gt;
+        &lt;h3&gt;Inna podsekcja&lt;/h3&gt;
+    &lt;h2&gt;Kolejna sekcja&lt;/h2&gt;</code></pre>
+
+            <h3>Oznaczenia ARIA dla nawigacji</h3>
+            <pre><code class="language-html">&lt;!-- Główna nawigacja --&gt;
+&lt;nav aria-label="Nawigacja główna"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/" aria-current="page"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/produkty"&gt;Produkty&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- Breadcrumbs --&gt;
+&lt;nav aria-label="Ścieżka nawigacyjna"&gt;
+    &lt;ol&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/kategoria"&gt;Kategoria&lt;/a&gt;&lt;/li&gt;
+        &lt;li aria-current="page"&gt;Bieżąca strona&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/nav&gt;</code></pre>
+        </section>
+
+        <section class="testing-navigation">
+            <h2>Testowanie nawigacji</h2>
+
+            <h3>Testy manualne</h3>
+            <ul>
+                <li><strong>Tylko klawiatura</strong> - spróbuj poruszać się wyłącznie Tabem i Enter</li>
+                <li><strong>Czytnik ekranu</strong> - użyj NVDA, JAWS lub VoiceOver</li>
+                <li><strong>Wyłącz CSS</strong> - sprawdź czy struktura ma sens</li>
+                <li><strong>Wyłącz JavaScript</strong> - czy podstawowa nawigacja działa?</li>
+            </ul>
+
+            <h3>Narzędzia automatyczne</h3>
+            <ul>
+                <li><strong>axe-core</strong> - automatyczne testy dostępności</li>
+                <li><strong>WAVE</strong> - analiza struktury i nawigacji</li>
+                <li><strong>Lighthouse</strong> - audit dostępności w DevTools</li>
+                <li><strong>Accessibility Insights</strong> - narzędzie Microsoftu</li>
+            </ul>
+
+            <h3>Checklist nawigacji</h3>
+            <div
+                style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                <h4>✅ Sprawdź czy:</h4>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ Są dostępne linki pomijające</li>
+                    <li>☐ Kolejność fokusa jest logiczna</li>
+                    <li>☐ Wszystkie linki mają zrozumiały tekst</li>
+                    <li>☐ Nagłówki tworzą logiczną hierarchię</li>
+                    <li>☐ Jest dostępnych wiele sposobów nawigacji</li>
+                    <li>☐ Aktywny fokus jest wyraźnie widoczny</li>
+                    <li>☐ Strony mają opisowe tytuły</li>
+                    <li>☐ Użytkownik wie gdzie się znajduje</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="additional-resources">
+            <h2>Dodatkowe zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/navigable" target="_blank"
+                        rel="noopener">Understanding Guideline 2.4: Navigable (W3C)</a></li>
+                <li><a href="https://webaim.org/techniques/skipnav/" target="_blank" rel="noopener">WebAIM: Skip
+                        Navigation Links</a></li>
+                <li><a href="https://www.w3.org/WAI/tutorials/menus/" target="_blank" rel="noopener">W3C: Menu
+                        Tutorial</a></li>
+                <li><a href="https://inclusive-components.design/menus-menu-buttons/" target="_blank"
+                        rel="noopener">Inclusive Components: Menus & Menu Buttons</a></li>
+                <li><a href="https://www.nngroup.com/articles/navigation-cognitive-disability/" target="_blank"
+                        rel="noopener">Nielsen Norman Group: Navigation for Cognitive Disabilities</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

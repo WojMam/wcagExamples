@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.4.8 Lokalizacja (AAA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.4.8 Lokalizacja</h2>
+                <p class="criterion-level">Poziom AAA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#location" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Dostępne są informacje o lokalizacji użytkownika w ramach zestawu stron internetowych.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest zapewnienie użytkownikom sposobu na zorientowanie się gdzie
+                    znajdują się w ramach zestawu powiązanych stron internetowych. Użytkownicy powinni być w stanie
+                    łatwo określić swoją obecną pozycję i zrozumieć kontekst w ramach całej struktury witryny.</p>
+
+                <p>Informacje o lokalizacji są szczególnie ważne dla:</p>
+                <ul>
+                    <li><strong>Użytkowników z ograniczeniami poznawczymi</strong> - pomagają w orientacji i zrozumieniu
+                        struktury</li>
+                    <li><strong>Osób korzystających z czytników ekranu</strong> - umożliwiają szybkie zrozumienie
+                        kontekstu</li>
+                    <li><strong>Użytkowników z problemami z pamięcią</strong> - przypominają gdzie się znajdują</li>
+                    <li><strong>Osób nawigujących klawiaturą</strong> - ułatwiają planowanie dalszej nawigacji</li>
+                    <li><strong>Wszystkich użytkowników</strong> - poprawiają ogólną użyteczność i orientację</li>
+                </ul>
+
+                <p>Kryterium obejmuje różne mechanizmy lokalizacji:</p>
+                <ul>
+                    <li><strong>Breadcrumbs (ścieżka nawigacyjna)</strong> - hierarchiczna ścieżka do aktualnej strony
+                    </li>
+                    <li><strong>Wskaźniki w nawigacji</strong> - wyróżnienie aktywnej pozycji w menu</li>
+                    <li><strong>Mapy witryny</strong> - z oznaczeniem aktualnej lokalizacji</li>
+                    <li><strong>Wskaźniki postępu</strong> - w procesach wieloetapowych</li>
+                    <li><strong>Tytuły stron</strong> - opisujące pozycję w hierarchii</li>
+                    <li><strong>Kontekstowe informacje</strong> - opisujące miejsce w procesie lub strukturze</li>
+                </ul>
+
+                <p><strong>Uwaga:</strong> To kryterium dotyczy zestawów powiązanych stron internetowych, a nie
+                    pojedynczych, niezależnych stron. Informacje o lokalizacji muszą być konsekwentnie dostępne na
+                    wszystkich stronach w zestawie.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - brak informacji o lokalizacji</h4>
+                        <p>Strony bez wskaźników lokalizacji, które utrudniają orientację użytkowników:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #721c24; margin-top: 0;">❌ Problematyczne wskaźniki lokalizacji:
+                                    </h5>
+
+                                    <div
+                                        style="background-color: rgba(255,255,255,0.8); padding: 15px; border-radius: 4px; margin: 10px 0;">
+                                        <div
+                                            style="border-bottom: 1px solid #dee2e6; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #721c24; margin-top: 0;">Brak ścieżki nawigacyjnej:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px dashed #dc3545; border-radius: 4px;">
+                                                <div
+                                                    style="background: #f8f9fa; border-bottom: 1px solid #dee2e6; padding: 10px; margin-bottom: 15px;">
+                                                    <div
+                                                        style="display: flex; justify-content: space-between; align-items: center;">
+                                                        <div style="font-weight: bold; color: #721c24;">Sklep Online
+                                                        </div>
+                                                        <div style="display: flex; gap: 15px;">
+                                                            <span style="color: #6c757d;">Produkty</span>
+                                                            <span style="color: #6c757d;">Kategorie</span>
+                                                            <span style="color: #6c757d;">Kontakt</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="padding: 20px; text-align: center;">
+                                                    <h6 style="color: #721c24; margin-bottom: 15px;">Szczegóły produktu
+                                                    </h6>
+                                                    <p style="color: #6c757d; margin-bottom: 0;">Użytkownik nie wie jak
+                                                        dotarł na tę stronę ani jak wrócić do kategorii</p>
+                                                </div>
+                                                <div style="color: #dc3545; font-size: 0.9em; margin-top: 10px;">
+                                                    ❌ Brak breadcrumbs - nie wiadomo gdzie jesteśmy w hierarchii
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="border-bottom: 1px solid #dee2e6; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #721c24; margin-top: 0;">Nieoznaczona aktywna strona:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px dashed #dc3545; border-radius: 4px;">
+                                                <div
+                                                    style="background: #f8f9fa; border-bottom: 1px solid #dee2e6; padding: 10px; margin-bottom: 15px;">
+                                                    <nav style="display: flex; gap: 20px;">
+                                                        <a href="#" onclick="return false;"
+                                                            style="color: #007bff; text-decoration: none; padding: 8px 12px;">Strona
+                                                            główna</a>
+                                                        <a href="#" onclick="return false;"
+                                                            style="color: #007bff; text-decoration: none; padding: 8px 12px;">O
+                                                            nas</a>
+                                                        <a href="#" onclick="return false;"
+                                                            style="color: #007bff; text-decoration: none; padding: 8px 12px;">Usługi</a>
+                                                        <a href="#" onclick="return false;"
+                                                            style="color: #007bff; text-decoration: none; padding: 8px 12px;">Kontakt</a>
+                                                    </nav>
+                                                </div>
+                                                <div style="padding: 20px;">
+                                                    <h6 style="color: #721c24; margin-bottom: 15px;">Nasza oferta usług
+                                                    </h6>
+                                                    <p style="color: #6c757d; margin-bottom: 0;">Wszystkie linki w
+                                                        nawigacji wyglądają tak samo</p>
+                                                </div>
+                                                <div style="color: #dc3545; font-size: 0.9em; margin-top: 10px;">
+                                                    ❌ Nie wiadomo na której stronie aktualnie się znajdujemy
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="border-bottom: 1px solid #dee2e6; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #721c24; margin-top: 0;">Brak wskaźników postępu:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px dashed #dc3545; border-radius: 4px;">
+                                                <div style="background: #f8f9fa; padding: 15px; border-radius: 3px;">
+                                                    <h6 style="color: #721c24; margin-top: 0; margin-bottom: 15px;">
+                                                        Formularz zamówienia</h6>
+                                                    <form style="display: grid; gap: 15px;">
+                                                        <div>
+                                                            <label
+                                                                style="display: block; margin-bottom: 5px; color: #495057;">Adres
+                                                                email:</label>
+                                                            <input type="email"
+                                                                style="width: 100%; max-width: 300px; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                        </div>
+                                                        <div>
+                                                            <label
+                                                                style="display: block; margin-bottom: 5px; color: #495057;">Hasło:</label>
+                                                            <input type="password"
+                                                                style="width: 100%; max-width: 300px; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                        </div>
+                                                        <button type="button"
+                                                            style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer; width: fit-content;">
+                                                            Dalej
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                                <div style="color: #dc3545; font-size: 0.9em; margin-top: 10px;">
+                                                    ❌ Nie wiadomo na którym etapie jesteśmy ani ile kroków zostało
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h6 style="color: #721c24; margin-top: 0;">Mylące informacje o lokalizacji:
+                                            </h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px dashed #dc3545; border-radius: 4px;">
+                                                <div
+                                                    style="background: #f8f9fa; border-bottom: 1px solid #dee2e6; padding: 10px; margin-bottom: 15px;">
+                                                    <div style="color: #007bff; font-size: 0.9em;">
+                                                        <span onclick="testMisleadingNavigation()"
+                                                            style="cursor: pointer; text-decoration: underline;">Strona
+                                                            główna</span>
+                                                        <span style="margin: 0 8px; color: #6c757d;">&gt;</span>
+                                                        <span onclick="testMisleadingNavigation()"
+                                                            style="cursor: pointer; text-decoration: underline;">Kategoria
+                                                            A</span>
+                                                        <span style="margin: 0 8px; color: #6c757d;">&gt;</span>
+                                                        <span style="color: #6c757d;">Aktualnie</span>
+                                                    </div>
+                                                </div>
+                                                <div style="padding: 20px;">
+                                                    <h6 style="color: #721c24; margin-bottom: 15px;">Treść z kategorii B
+                                                    </h6>
+                                                    <p style="color: #6c757d; margin-bottom: 0;">Breadcrumbs wskazują
+                                                        kategorię A, ale treść dotyczy kategorii B</p>
+                                                </div>
+                                                <div style="color: #dc3545; font-size: 0.9em; margin-top: 10px;">
+                                                    ❌ Wprowadzające w błąd informacje o lokalizacji
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #fff3cd; padding: 10px; border-radius: 3px; border-left: 4px solid #ffc107; margin-top: 15px;">
+                                        <p style="color: #856404; margin: 0; font-size: 0.9em;">
+                                            <strong>Test orientacji:</strong> <span id="location-test-feedback">Kliknij
+                                                przycisk aby przetestować jak trudno jest się zorientować bez wskaźników
+                                                lokalizacji</span>
+                                        </p>
+                                        <button onclick="startLocationTest()"
+                                            style="margin-top: 10px; padding: 8px 16px; background: #ffc107; color: #212529; border: none; border-radius: 3px; cursor: pointer;">
+                                            🧭 Test orientacji
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #856404; margin-top: 0;">Dlaczego to problematyczne?</h6>
+                                    <ul style="color: #856404; margin-bottom: 0;">
+                                        <li><strong>Utrata orientacji</strong> - użytkownicy nie wiedzą gdzie się
+                                            znajdują</li>
+                                        <li><strong>Trudności w nawigacji</strong> - nie można planować dalszych kroków
+                                        </li>
+                                        <li><strong>Cognitive load</strong> - zwiększone obciążenie mentalne</li>
+                                        <li><strong>Frustracja</strong> - niemożność powrotu do poprzednich sekcji</li>
+                                        <li><strong>Porzucanie zadań</strong> - użytkownicy rezygnują z dalszego
+                                            korzystania</li>
+                                        <li><strong>Problemy z dostępnością</strong> - szczególnie dla osób z
+                                            ograniczeniami poznawczymi</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- ZŁY PRZYKŁAD - brak informacji o lokalizacji --&gt;
+
+&lt;!-- 1. Brak breadcrumbs --&gt;
+&lt;header&gt;
+    &lt;nav&gt;
+        &lt;!-- Tylko główne menu bez wskaźnika lokalizacji --&gt;
+        &lt;a href="/"&gt;Strona główna&lt;/a&gt;
+        &lt;a href="/produkty"&gt;Produkty&lt;/a&gt;
+        &lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+    &lt;!-- Brak informacji gdzie jesteśmy --&gt;
+    &lt;h1&gt;Szczegóły produktu&lt;/h1&gt;
+    &lt;!-- Treść bez kontekstu lokalizacji --&gt;
+&lt;/main&gt;
+
+&lt;!-- 2. Nieoznaczona aktywna strona --&gt;
+&lt;nav&gt;
+    &lt;!-- Wszystkie linki wyglądają tak samo --&gt;
+    &lt;a href="/"&gt;Home&lt;/a&gt;
+    &lt;a href="/about"&gt;About&lt;/a&gt;
+    &lt;a href="/services"&gt;Services&lt;/a&gt; &lt;!-- Aktualna strona --&gt;
+    &lt;a href="/contact"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;!-- 3. Formularz bez wskaźników postępu --&gt;
+&lt;form&gt;
+    &lt;!-- Brak informacji o etapie --&gt;
+    &lt;h2&gt;Dane osobowe&lt;/h2&gt; &lt;!-- Który to krok? --&gt;
+    &lt;input type="text" name="name"&gt;
+    &lt;input type="email" name="email"&gt;
+    &lt;button type="submit"&gt;Dalej&lt;/button&gt; &lt;!-- Dokąd dalej? --&gt;
+&lt;/form&gt;
+
+&lt;!-- 4. Mylące breadcrumbs --&gt;
+&lt;nav aria-label="breadcrumb"&gt;
+    &lt;a href="/"&gt;Home&lt;/a&gt; &gt;
+    &lt;a href="/category-a"&gt;Category A&lt;/a&gt; &gt;
+    &lt;span&gt;Current Page&lt;/span&gt;
+&lt;/nav&gt;
+&lt;!-- Ale treść dotyczy Category B --&gt;
+&lt;main&gt;
+    &lt;h1&gt;Product from Category B&lt;/h1&gt;
+&lt;/main&gt;</code></pre>
+
+                        <p class="explanation">Problem: Użytkownicy nie mają informacji o swojej lokalizacji w
+                            strukturze witryny. Brak breadcrumbs, nieoznaczone aktywne strony, brak wskaźników postępu i
+                            mylące informacje utrudniają orientację i skuteczną nawigację.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - jasne wskaźniki lokalizacji</h4>
+                        <p>Różne metody informowania użytkowników o ich lokalizacji w strukturze witryny:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #155724; margin-top: 0;">✅ Prawidłowe wskaźniki lokalizacji:</h5>
+
+                                    <div
+                                        style="background-color: rgba(255,255,255,0.9); padding: 15px; border-radius: 4px; margin: 10px 0;">
+                                        <div
+                                            style="border-bottom: 1px solid #c3e6cb; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #155724; margin-top: 0;">Breadcrumbs (ścieżka
+                                                nawigacyjna):</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px solid #28a745; border-radius: 4px;">
+                                                <div
+                                                    style="background: #f8f9fa; border-bottom: 1px solid #c3e6cb; padding: 10px; margin-bottom: 15px;">
+                                                    <nav aria-label="Ścieżka nawigacyjna" style="font-size: 0.9em;">
+                                                        <a href="#" onclick="return false;"
+                                                            style="color: #007bff; text-decoration: none;">Strona
+                                                            główna</a>
+                                                        <span style="margin: 0 8px; color: #6c757d;">></span>
+                                                        <a href="#" onclick="return false;"
+                                                            style="color: #007bff; text-decoration: none;">Elektronika</a>
+                                                        <span style="margin: 0 8px; color: #6c757d;">></span>
+                                                        <a href="#" onclick="return false;"
+                                                            style="color: #007bff; text-decoration: none;">Smartfony</a>
+                                                        <span style="margin: 0 8px; color: #6c757d;">></span>
+                                                        <span style="color: #6c757d;" aria-current="page">iPhone 15
+                                                            Pro</span>
+                                                    </nav>
+                                                </div>
+                                                <div style="padding: 20px;">
+                                                    <h6 style="color: #155724; margin-bottom: 15px;">iPhone 15 Pro -
+                                                        Szczegóły produktu</h6>
+                                                    <p style="color: #495057; margin-bottom: 0;">Jasna ścieżka pokazuje
+                                                        hierarchię: Strona główna → Elektronika → Smartfony → Aktualny
+                                                        produkt</p>
+                                                </div>
+                                                <div style="color: #28a745; font-size: 0.9em; margin-top: 10px;">
+                                                    ✅ Użytkownik wie dokładnie gdzie się znajduje i może łatwo wrócić do
+                                                    każdego poziomu
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="border-bottom: 1px solid #c3e6cb; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #155724; margin-top: 0;">Oznaczona aktywna strona w
+                                                nawigacji:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px solid #28a745; border-radius: 4px;">
+                                                <div
+                                                    style="background: #f8f9fa; border-bottom: 1px solid #c3e6cb; padding: 10px; margin-bottom: 15px;">
+                                                    <nav style="display: flex; gap: 5px;">
+                                                        <a href="#" onclick="return false;"
+                                                            style="color: #007bff; text-decoration: none; padding: 8px 12px; border-radius: 3px;">Strona
+                                                            główna</a>
+                                                        <a href="#" onclick="return false;"
+                                                            style="color: #007bff; text-decoration: none; padding: 8px 12px; border-radius: 3px;">O
+                                                            nas</a>
+                                                        <span
+                                                            style="background: #007bff; color: white; padding: 8px 12px; border-radius: 3px; font-weight: 500;"
+                                                            aria-current="page">Usługi</span>
+                                                        <a href="#" onclick="return false;"
+                                                            style="color: #007bff; text-decoration: none; padding: 8px 12px; border-radius: 3px;">Portfolio</a>
+                                                        <a href="#" onclick="return false;"
+                                                            style="color: #007bff; text-decoration: none; padding: 8px 12px; border-radius: 3px;">Kontakt</a>
+                                                    </nav>
+                                                </div>
+                                                <div style="padding: 20px;">
+                                                    <h6 style="color: #155724; margin-bottom: 15px;">Nasza oferta usług
+                                                    </h6>
+                                                    <p style="color: #495057; margin-bottom: 0;">Aktywna strona jest
+                                                        wyraźnie oznaczona w nawigacji</p>
+                                                </div>
+                                                <div style="color: #28a745; font-size: 0.9em; margin-top: 10px;">
+                                                    ✅ Jasne oznaczenie aktualnej lokalizacji w nawigacji głównej
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="border-bottom: 1px solid #c3e6cb; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #155724; margin-top: 0;">Wskaźnik postępu w procesie:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px solid #28a745; border-radius: 4px;">
+                                                <div
+                                                    style="background: #f8f9fa; padding: 15px; border-radius: 3px; margin-bottom: 15px;">
+                                                    <div style="margin-bottom: 15px;">
+                                                        <h6 style="color: #155724; margin: 0 0 10px 0;">Proces
+                                                            rejestracji</h6>
+                                                        <div
+                                                            style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                                            <div class="step completed"
+                                                                style="width: 30px; height: 30px; border-radius: 50%; background: #28a745; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8em;">
+                                                                ✓</div>
+                                                            <div style="flex: 1; height: 2px; background: #28a745;">
+                                                            </div>
+                                                            <div class="step active"
+                                                                style="width: 30px; height: 30px; border-radius: 50%; background: #007bff; color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8em;">
+                                                                2</div>
+                                                            <div style="flex: 1; height: 2px; background: #dee2e6;">
+                                                            </div>
+                                                            <div class="step"
+                                                                style="width: 30px; height: 30px; border-radius: 50%; background: #dee2e6; color: #6c757d; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8em;">
+                                                                3</div>
+                                                            <div style="flex: 1; height: 2px; background: #dee2e6;">
+                                                            </div>
+                                                            <div class="step"
+                                                                style="width: 30px; height: 30px; border-radius: 50%; background: #dee2e6; color: #6c757d; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8em;">
+                                                                4</div>
+                                                        </div>
+                                                        <div
+                                                            style="display: flex; justify-content: space-between; font-size: 0.8em; color: #6c757d;">
+                                                            <span style="color: #28a745; font-weight: 500;">Dane
+                                                                podstawowe</span>
+                                                            <span style="color: #007bff; font-weight: 500;">Adres</span>
+                                                            <span>Płatność</span>
+                                                            <span>Potwierdzenie</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <form style="display: grid; gap: 15px;">
+                                                        <h6 style="color: #155724; margin: 0;">Krok 2 z 4: Adres dostawy
+                                                        </h6>
+                                                        <div>
+                                                            <label
+                                                                style="display: block; margin-bottom: 5px; color: #495057;">Ulica
+                                                                i numer:</label>
+                                                            <input type="text"
+                                                                style="width: 100%; max-width: 300px; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                        </div>
+                                                        <div>
+                                                            <label
+                                                                style="display: block; margin-bottom: 5px; color: #495057;">Kod
+                                                                pocztowy:</label>
+                                                            <input type="text"
+                                                                style="width: 100%; max-width: 150px; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                        </div>
+                                                        <div style="display: flex; gap: 10px;">
+                                                            <button type="button"
+                                                                style="padding: 10px 20px; background: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                                Wstecz
+                                                            </button>
+                                                            <button type="button"
+                                                                style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                                Dalej do płatności
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div style="color: #28a745; font-size: 0.9em; margin-top: 10px;">
+                                                    ✅ Jasny wskaźnik postępu pokazuje aktualny krok i pozostałe etapy
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h6 style="color: #155724; margin-top: 0;">Mapa witryny z oznaczeniem
+                                                lokalizacji:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px solid #28a745; border-radius: 4px;">
+                                                <div style="background: #f8f9fa; padding: 15px; border-radius: 3px;">
+                                                    <h6 style="color: #155724; margin-top: 0; margin-bottom: 15px;">Mapa
+                                                        witryny</h6>
+                                                    <div id="sitemap-demo"
+                                                        style="font-family: monospace; font-size: 0.9em; line-height: 1.6;">
+                                                        <div style="margin-bottom: 5px;">
+                                                            <span style="color: #007bff; cursor: pointer;"
+                                                                onclick="toggleSitemapSection('home')">📄 Strona
+                                                                główna</span>
+                                                        </div>
+                                                        <div style="margin-left: 20px;">
+                                                            <div style="margin-bottom: 5px;">
+                                                                <span style="color: #007bff; cursor: pointer;"
+                                                                    onclick="toggleSitemapSection('products')">📁
+                                                                    Produkty</span>
+                                                            </div>
+                                                            <div id="products-section" style="margin-left: 20px;">
+                                                                <div style="margin-bottom: 5px;">
+                                                                    <span style="color: #007bff; cursor: pointer;">📁
+                                                                        Elektronika</span>
+                                                                </div>
+                                                                <div style="margin-left: 20px;">
+                                                                    <div style="margin-bottom: 5px;">
+                                                                        <span
+                                                                            style="color: #007bff; cursor: pointer;">📁
+                                                                            Smartfony</span>
+                                                                    </div>
+                                                                    <div
+                                                                        style="margin-left: 20px; background: #fff3cd; padding: 3px 8px; border-radius: 3px; display: inline-block;">
+                                                                        <span
+                                                                            style="color: #856404; font-weight: bold;">📍
+                                                                            iPhone 15 Pro (Tu jesteś)</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div style="margin-bottom: 5px; margin-left: 20px;">
+                                                                    <span style="color: #007bff; cursor: pointer;">📄
+                                                                        Laptopy</span>
+                                                                </div>
+                                                            </div>
+                                                            <div style="margin-bottom: 5px;">
+                                                                <span style="color: #007bff; cursor: pointer;">📄
+                                                                    Ubrania</span>
+                                                            </div>
+                                                        </div>
+                                                        <div style="margin-bottom: 5px;">
+                                                            <span style="color: #007bff; cursor: pointer;">📄 O
+                                                                nas</span>
+                                                        </div>
+                                                        <div style="margin-bottom: 5px;">
+                                                            <span style="color: #007bff; cursor: pointer;">📄
+                                                                Kontakt</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="color: #28a745; font-size: 0.9em; margin-top: 10px;">
+                                                    ✅ Mapa witryny z wyraźnie oznaczoną aktualną lokalizacją
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #e7f3ff; padding: 10px; border-radius: 3px; border-left: 4px solid #007bff; margin-top: 15px;">
+                                        <p style="color: #004085; margin: 0; font-size: 0.9em;">
+                                            <strong>Demo interaktywne:</strong> <span
+                                                id="location-demo-feedback">Przetestuj różne metody wskazywania
+                                                lokalizacji</span>
+                                        </p>
+                                        <button onclick="demonstrateLocationMethods()"
+                                            style="margin-top: 10px; padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                            🗺️ Demonstracja metod lokalizacji
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #004085; margin-top: 0;">Zalety jasnych wskaźników lokalizacji:
+                                    </h6>
+                                    <ul style="color: #004085; margin-bottom: 0; font-size: 0.95em;">
+                                        <li><strong>Lepsza orientacja</strong> - użytkownicy zawsze wiedzą gdzie są</li>
+                                        <li><strong>Ułatwiona nawigacja</strong> - można planować dalsze kroki</li>
+                                        <li><strong>Zmniejszony cognitive load</strong> - mniejsze obciążenie mentalne
+                                        </li>
+                                        <li><strong>Większa pewność</strong> - komfort korzystania z witryny</li>
+                                        <li><strong>Lepsza dostępność</strong> - szczególnie dla osób z ograniczeniami
+                                        </li>
+                                        <li><strong>Wyższa konwersja</strong> - użytkownicy częściej kończą zadania</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - jasne wskaźniki lokalizacji --&gt;
+
+&lt;!-- 1. Breadcrumbs z proper markup --&gt;
+&lt;nav aria-label="Ścieżka nawigacyjna"&gt;
+    &lt;ol style="list-style: none; display: flex; gap: 0.5rem;"&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&amp;gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/elektronika"&gt;Elektronika&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&amp;gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/smartfony"&gt;Smartfony&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&amp;gt;&lt;/li&gt;
+        &lt;li aria-current="page"&gt;iPhone 15 Pro&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/nav&gt;
+
+&lt;!-- 2. Oznaczona aktywna strona --&gt;
+&lt;nav aria-label="Nawigacja główna"&gt;
+    &lt;a href="/"&gt;Strona główna&lt;/a&gt;
+    &lt;a href="/about"&gt;O nas&lt;/a&gt;
+    &lt;a href="/services" aria-current="page"&gt;Usługi&lt;/a&gt;
+    &lt;a href="/contact"&gt;Kontakt&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;!-- 3. Wskaźnik postępu --&gt;
+&lt;div role="progressbar" aria-valuenow="2" aria-valuemin="1" aria-valuemax="4" 
+     aria-label="Krok 2 z 4: Adres dostawy"&gt;
+    &lt;ol&gt;
+        &lt;li class="completed"&gt;Personal Info&lt;/li&gt;
+        &lt;li class="current" aria-current="step"&gt;Address&lt;/li&gt;
+        &lt;li&gt;Payment&lt;/li&gt;
+        &lt;li&gt;Confirmation&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/div&gt;
+
+&lt;!-- 4. Tytuł strony z hierarchią --&gt;
+&lt;title&gt;iPhone 15 Pro - Smartfony - Elektronika - Sklep Online&lt;/title&gt;
+
+&lt;!-- 5. Heading z kontekstem --&gt;
+&lt;h1&gt;iPhone 15 Pro&lt;/h1&gt;
+&lt;p&gt;Jesteś w: Elektronika &amp;gt; Smartfony&lt;/p&gt;
+
+&lt;!-- 6. Sidebar z kontekstem sekcji --&gt;
+&lt;aside&gt;
+    &lt;h2&gt;Przeglądasz: Smartfony&lt;/h2&gt;
+    &lt;nav aria-label="Podkategorie"&gt;
+        &lt;a href="/smartfony/apple"&gt;Apple&lt;/a&gt;
+        &lt;a href="/smartfony/samsung"&gt;Samsung&lt;/a&gt;
+    &lt;/nav&gt;
+&lt;/aside&gt;</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Użytkownicy mają dostęp do różnych metod określenia swojej
+                            lokalizacji - breadcrumbs, oznaczone aktywne strony, wskaźniki postępu, mapy witryny i
+                            kontekstowe informacje. Wszystkie metody są semantycznie poprawne i dostępne dla technologii
+                            wspomagających.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - narzędzia do projektowania lokalizacji</h4>
+                        <p>Interaktywne narzędzia do tworzenia i testowania systemów lokalizacji:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #856404; margin-top: 0;">🛠️ Narzędzia projektowania lokalizacji:
+                                    </h5>
+
+                                    <div style="margin: 15px 0;">
+                                        <!-- Przełącznik narzędzi -->
+                                        <div style="margin-bottom: 20px;">
+                                            <strong style="color: #856404;">Wybierz narzędzie:</strong>
+                                            <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 10px;">
+                                                <button onclick="showLocationTool('breadcrumb-generator')"
+                                                    class="location-tool-btn active" data-tool="breadcrumb-generator"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: #ffc107; color: #212529; border-radius: 4px; cursor: pointer; font-weight: 500;">🗂️
+                                                    Generator breadcrumbs</button>
+                                                <button onclick="showLocationTool('navigation-analyzer')"
+                                                    class="location-tool-btn" data-tool="navigation-analyzer"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: transparent; color: #856404; border-radius: 4px; cursor: pointer;">🔍
+                                                    Analizator nawigacji</button>
+                                                <button onclick="showLocationTool('progress-designer')"
+                                                    class="location-tool-btn" data-tool="progress-designer"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: transparent; color: #856404; border-radius: 4px; cursor: pointer;">📊
+                                                    Projektant wskaźników</button>
+                                                <button onclick="showLocationTool('orientation-tester')"
+                                                    class="location-tool-btn" data-tool="orientation-tester"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: transparent; color: #856404; border-radius: 4px; cursor: pointer;">🧭
+                                                    Tester orientacji</button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Generator breadcrumbs -->
+                                        <div id="location-tool-breadcrumb-generator" class="location-tool-content"
+                                            style="border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">🗂️ Generator breadcrumbs</h6>
+                                            <p style="color: #6c757d; font-size: 0.9em; margin-bottom: 15px;">Utwórz
+                                                semantyczne ścieżki nawigacyjne:</p>
+
+                                            <div
+                                                style="background-color: #f8f9fa; padding: 15px; border-radius: 3px; margin-bottom: 15px;">
+                                                <div style="margin-bottom: 15px;">
+                                                    <label for="breadcrumb-structure"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Struktura
+                                                        ścieżki (oddziel / ):</label>
+                                                    <input type="text" id="breadcrumb-structure"
+                                                        value="Strona główna/Produkty/Elektronika/Smartfony/iPhone 15"
+                                                        style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;"
+                                                        placeholder="np. Home/Products/Electronics/Phones">
+                                                </div>
+                                                <div style="margin-bottom: 15px;">
+                                                    <label for="breadcrumb-separator"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Separator:</label>
+                                                    <select id="breadcrumb-separator"
+                                                        style="width: 200px; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                        <option value=">">&gt;</option>
+                                                        <option value="/">/</option>
+                                                        <option value="→">→</option>
+                                                        <option value="•">•</option>
+                                                    </select>
+                                                </div>
+                                                <div style="margin-bottom: 15px;">
+                                                    <label style="display: flex; align-items: center; gap: 8px;">
+                                                        <input type="checkbox" id="breadcrumb-links" checked>
+                                                        <span>Elementy jako linki (oprócz ostatniego)</span>
+                                                    </label>
+                                                </div>
+                                                <button onclick="generateBreadcrumb()"
+                                                    style="padding: 8px 16px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                    ✨ Generuj breadcrumb
+                                                </button>
+                                            </div>
+
+                                            <div id="breadcrumb-results"
+                                                style="margin-top: 15px; padding: 15px; background-color: #f8f9fa; border-radius: 3px; display: none;">
+                                                <h6 style="margin-top: 0; color: #495057;">Wygenerowany breadcrumb:</h6>
+                                                <div id="breadcrumb-preview"
+                                                    style="background: white; padding: 15px; border: 1px solid #dee2e6; border-radius: 3px; margin-bottom: 15px;">
+                                                </div>
+                                                <div style="margin-bottom: 15px;">
+                                                    <strong>Kod HTML:</strong>
+                                                    <pre id="breadcrumb-html"
+                                                        style="background: #ffffff; padding: 10px; border: 1px solid #dee2e6; border-radius: 3px; overflow-x: auto; font-family: monospace; font-size: 0.8em; white-space: pre-wrap;"></pre>
+                                                </div>
+                                                <button onclick="copyBreadcrumbCode()"
+                                                    style="padding: 8px 16px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                    📋 Skopiuj kod
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Analizator nawigacji -->
+                                        <div id="location-tool-navigation-analyzer" class="location-tool-content"
+                                            style="display: none; border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">🔍 Analizator nawigacji</h6>
+                                            <div style="margin-bottom: 15px;">
+                                                <label for="nav-html"
+                                                    style="display: block; font-weight: 500; margin-bottom: 5px;">Kod
+                                                    HTML nawigacji:</label>
+                                                <textarea id="nav-html" rows="8"
+                                                    style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 3px; font-family: monospace; font-size: 0.9em;"
+                                                    placeholder="&lt;nav&gt;&#10;  &lt;a href='/'&gt;Home&lt;/a&gt;&#10;  &lt;a href='/about'&gt;About&lt;/a&gt;&#10;  &lt;a href='/services'&gt;Services&lt;/a&gt;&#10;&lt;/nav&gt;"></textarea>
+                                            </div>
+                                            <div style="margin-bottom: 15px;">
+                                                <label for="current-page"
+                                                    style="display: block; font-weight: 500; margin-bottom: 5px;">Aktualna
+                                                    strona:</label>
+                                                <input type="text" id="current-page" placeholder="np. /services"
+                                                    style="width: 100%; max-width: 300px; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                            </div>
+                                            <button onclick="analyzeNavigation()"
+                                                style="padding: 10px 20px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer; font-weight: 500;">
+                                                🔍 Analizuj nawigację
+                                            </button>
+
+                                            <div id="navigation-analysis"
+                                                style="margin-top: 15px; padding: 15px; background-color: #f8f9fa; border-radius: 3px; display: none;">
+                                                <h6 style="margin-top: 0; color: #495057;">Wyniki analizy:</h6>
+                                                <div id="navigation-output"></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Projektant wskaźników postępu -->
+                                        <div id="location-tool-progress-designer" class="location-tool-content"
+                                            style="display: none; border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">📊 Projektant wskaźników postępu
+                                            </h6>
+                                            <div style="display: grid; gap: 15px; margin-bottom: 15px;">
+                                                <div>
+                                                    <label for="progress-steps"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Kroki
+                                                        (oddziel przecinkami):</label>
+                                                    <input type="text" id="progress-steps"
+                                                        value="Dane osobowe,Adres,Płatność,Potwierdzenie"
+                                                        style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                </div>
+                                                <div>
+                                                    <label for="current-step"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Aktualny
+                                                        krok (numer):</label>
+                                                    <input type="number" id="current-step" value="2" min="1"
+                                                        style="width: 100px; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                </div>
+                                                <div>
+                                                    <label for="progress-style"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Styl
+                                                        wskaźnika:</label>
+                                                    <select id="progress-style"
+                                                        style="width: 200px; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                        <option value="circles">Koła z numerami</option>
+                                                        <option value="dots">Kropki</option>
+                                                        <option value="bars">Paski</option>
+                                                        <option value="steps">Kroki</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button onclick="designProgress()"
+                                                style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer; font-weight: 500;">
+                                                🎨 Zaprojektuj wskaźnik
+                                            </button>
+
+                                            <div id="progress-results"
+                                                style="margin-top: 15px; padding: 15px; background-color: #f8f9fa; border-radius: 3px; display: none;">
+                                                <h6 style="margin-top: 0; color: #495057;">Zaprojektowany wskaźnik:</h6>
+                                                <div id="progress-preview"
+                                                    style="background: white; padding: 20px; border: 1px solid #dee2e6; border-radius: 3px; margin-bottom: 15px;">
+                                                </div>
+                                                <div style="margin-bottom: 15px;">
+                                                    <strong>Kod HTML/CSS:</strong>
+                                                    <pre id="progress-code"
+                                                        style="background: #ffffff; padding: 10px; border: 1px solid #dee2e6; border-radius: 3px; overflow-x: auto; font-family: monospace; font-size: 0.8em; white-space: pre-wrap;"></pre>
+                                                </div>
+                                                <button onclick="copyProgressCode()"
+                                                    style="padding: 8px 16px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                    📋 Skopiuj kod
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Tester orientacji -->
+                                        <div id="location-tool-orientation-tester" class="location-tool-content"
+                                            style="display: none; border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">🧭 Tester orientacji użytkownika
+                                            </h6>
+                                            <p style="color: #6c757d; font-size: 0.9em; margin-bottom: 15px;">Symuluj
+                                                nawigację użytkownika i sprawdź jak łatwo może się zorientować:</p>
+
+                                            <div
+                                                style="background-color: #f8f9fa; padding: 15px; border-radius: 3px; margin-bottom: 15px;">
+                                                <div style="margin-bottom: 15px;">
+                                                    <strong>Scenario testowy:</strong>
+                                                    <div
+                                                        style="margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap;">
+                                                        <button onclick="startOrientationTest('ecommerce')"
+                                                            style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                            🛒 Sklep online
+                                                        </button>
+                                                        <button onclick="startOrientationTest('corporate')"
+                                                            style="padding: 8px 16px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                            🏢 Strona firmowa
+                                                        </button>
+                                                        <button onclick="startOrientationTest('documentation')"
+                                                            style="padding: 8px 16px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                            📚 Dokumentacja
+                                                        </button>
+                                                        <button onclick="startOrientationTest('form')"
+                                                            style="padding: 8px 16px; background: #ffc107; color: #212529; border: none; border-radius: 3px; cursor: pointer;">
+                                                            📝 Formularz
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div id="orientation-scenario"
+                                                    style="border: 2px solid #007bff; border-radius: 3px; padding: 15px; background: white; min-height: 200px; display: none;">
+                                                    <div id="scenario-content"></div>
+                                                </div>
+
+                                                <div id="orientation-questions"
+                                                    style="margin-top: 15px; display: none;">
+                                                    <h6>Pytania testowe:</h6>
+                                                    <div id="test-questions"></div>
+                                                    <button onclick="checkOrientationAnswers()"
+                                                        style="margin-top: 10px; padding: 8px 16px; background: #dc3545; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                        ✓ Sprawdź odpowiedzi
+                                                    </button>
+                                                </div>
+
+                                                <div id="orientation-results"
+                                                    style="margin-top: 15px; padding: 15px; background-color: #e9ecef; border-radius: 3px; display: none;">
+                                                    <h6 style="margin-top: 0;">Wyniki testu orientacji:</h6>
+                                                    <div id="orientation-score"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #d1ecf1; padding: 10px; border-radius: 3px; border-left: 4px solid #17a2b8; margin-top: 15px;">
+                                        <p style="color: #0c5460; margin: 0; font-size: 0.9em;">
+                                            <strong>Aktywne narzędzie:</strong> <span
+                                                id="location-tool-description">Generator breadcrumbs - tworzy
+                                                semantyczne ścieżki nawigacyjne zgodne z WCAG</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #155724; margin-top: 0;">🎯 Korzyści z narzędzi projektowania
+                                        lokalizacji:</h6>
+                                    <ul style="color: #155724; margin-bottom: 0; font-size: 0.95em;">
+                                        <li><strong>Szybkie prototypowanie</strong> - natychmiastowy podgląd różnych
+                                            rozwiązań</li>
+                                        <li><strong>Analiza istniejących rozwiązań</strong> - wykrywanie problemów z
+                                            orientacją</li>
+                                        <li><strong>Generowanie kodu</strong> - gotowe snippety zgodne z WCAG</li>
+                                        <li><strong>Testowanie UX</strong> - symulacja doświadczenia użytkowników</li>
+                                        <li><strong>Edukacja zespołu</strong> - nauka przez praktyczne przykłady</li>
+                                        <li><strong>Optymalizacja dostępności</strong> - poprawa orientacji dla
+                                            wszystkich użytkowników</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="explanation">Rozwiązanie: Narzędzia interaktywne umożliwiają projektowanie i
+                            testowanie różnych metod wskazywania lokalizacji. Generator breadcrumbs tworzy semantyczne
+                            ścieżki, analizator sprawdza nawigację, projektant wskaźników pomaga w tworzeniu progress
+                            indicators, a tester orientacji weryfikuje skuteczność rozwiązań.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie zgodności z 2.4.8</h3>
+
+                <h4>Procedura testowa</h4>
+                <ol>
+                    <li><strong>Audit informacji o lokalizacji</strong>
+                        <ul>
+                            <li>Sprawdź czy użytkownicy mogą określić swoją pozycję w strukturze</li>
+                            <li>Zidentyfikuj dostępne mechanizmy lokalizacji</li>
+                            <li>Oceń spójność wskaźników na wszystkich stronach</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test breadcrumbs i ścieżek nawigacyjnych</strong>
+                        <ul>
+                            <li>Sprawdź czy breadcrumbs odzwierciedlają rzeczywistą hierarchię</li>
+                            <li>Zweryfikuj funkcjonalność linków w breadcrumbs</li>
+                            <li>Oceń semantic markup (aria-label, aria-current)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Analiza wskaźników postępu</strong>
+                        <ul>
+                            <li>Przetestuj wskaźniki w procesach wieloetapowych</li>
+                            <li>Sprawdź czy użytkownik wie ile kroków zostało</li>
+                            <li>Zweryfikuj możliwość nawigacji między etapami</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test orientacji użytkownika</strong>
+                        <ul>
+                            <li>Symuluj scenariusze użytkowania witryny</li>
+                            <li>Sprawdź czy użytkownicy mogą się zorientować bez dodatkowych wskazówek</li>
+                            <li>Oceń skuteczność różnych metod wskazywania lokalizacji</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Narzędzia testowe</h4>
+                <ul>
+                    <li><strong>Manual testing</strong> - symulacja nawigacji użytkownika</li>
+                    <li><strong>Screen readers</strong> - test z NVDA, JAWS, VoiceOver</li>
+                    <li><strong>User testing</strong> - obserwacja rzeczywistych użytkowników</li>
+                    <li><strong>Navigation analyzers</strong> - automatyczna analiza struktury</li>
+                    <li><strong>Cognitive walkthroughs</strong> - ocena cognitive load</li>
+                </ul>
+
+                <h4>Checklist zgodności</h4>
+                <div
+                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <h5>✅ Kryteria do spełnienia:</h5>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>☐ Dostępne są breadcrumbs lub inne wskaźniki hierarchii</li>
+                        <li>☐ Aktywna strona jest oznaczona w nawigacji</li>
+                        <li>☐ Procesy wieloetapowe mają wskaźniki postępu</li>
+                        <li>☐ Tytuły stron odzwierciedlają pozycję w strukturze</li>
+                        <li>☐ Dostępne są mapy witryny z oznaczeniem lokalizacji</li>
+                        <li>☐ Wskaźniki lokalizacji są semantycznie poprawne</li>
+                        <li>☐ Informacje o lokalizacji są spójne na wszystkich stronach</li>
+                        <li>☐ Użytkownicy mogą łatwo wrócić do poprzednich poziomów</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="implementation-guidelines">
+                <h3>Wytyczne implementacyjne</h3>
+
+                <h4>Najlepsze praktyki dla wskaźników lokalizacji:</h4>
+                <ul>
+                    <li><strong>Konsekwencja</strong> - używaj spójnych metod na wszystkich stronach</li>
+                    <li><strong>Hierarchia</strong> - odzwierciedlaj rzeczywistą strukturę witryny</li>
+                    <li><strong>Semantic markup</strong> - używaj właściwych elementów i atrybutów ARIA</li>
+                    <li><strong>Widoczność</strong> - umieść wskaźniki w łatwych do znalezienia miejscach</li>
+                    <li><strong>Funkcjonalność</strong> - zapewnij working links do wszystkich poziomów</li>
+                    <li><strong>Dostępność</strong> - testuj z technologiami wspomagającymi</li>
+                </ul>
+
+                <h4>Wzorce implementacji breadcrumbs:</h4>
+                <div
+                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #004085; margin-top: 0;">1. Podstawowy breadcrumb</h5>
+                    <pre style="color: #004085;"><code>&lt;nav aria-label="Breadcrumb"&gt;
+  &lt;ol&gt;
+    &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/products"&gt;Products&lt;/a&gt;&lt;/li&gt;
+    &lt;li aria-current="page"&gt;Current Page&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #155724; margin-top: 0;">2. Wskaźnik postępu</h5>
+                    <pre style="color: #155724;"><code>&lt;div role="progressbar" aria-valuenow="2" aria-valuemin="1" 
+     aria-valuemax="4" aria-label="Step 2 of 4"&gt;
+  &lt;ol&gt;
+    &lt;li class="completed"&gt;Personal Info&lt;/li&gt;
+    &lt;li class="current" aria-current="step"&gt;Address&lt;/li&gt;
+    &lt;li&gt;Payment&lt;/li&gt;
+    &lt;li&gt;Confirmation&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #856404; margin-top: 0;">3. Oznaczona aktywna strona</h5>
+                    <pre style="color: #856404;"><code>&lt;nav aria-label="Main navigation"&gt;
+  &lt;a href="/"&gt;Home&lt;/a&gt;
+  &lt;a href="/about"&gt;About&lt;/a&gt;
+  &lt;a href="/services" aria-current="page"&gt;Services&lt;/a&gt;
+  &lt;a href="/contact"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+                </div>
+
+                <h4>Różne metody wskazywania lokalizacji:</h4>
+                <div
+                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #721c24; margin-top: 0;">Wybór odpowiedniej metody</h5>
+                    <ul style="color: #721c24;">
+                        <li><strong>Breadcrumbs</strong> - dla głębokich hierarchii (e-commerce, dokumentacja)</li>
+                        <li><strong>Wskaźniki postępu</strong> - dla procesów wieloetapowych (formularze, onboarding)
+                        </li>
+                        <li><strong>Aktywne menu</strong> - dla płaskich struktur (strony firmowe)</li>
+                        <li><strong>Sidebar navigation</strong> - dla sekcji z podstronami</li>
+                        <li><strong>Tytuły z kontekstem</strong> - dla wszystkich typów witryn</li>
+                        <li><strong>Mapy witryny</strong> - jako dodatkowa orientacja</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/location.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG 2.1: Lokalizacja</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/menus/structure/" target="_blank" rel="noopener">W3C:
+                            Menu Structure Tutorial</a></li>
+                    <li><a href="https://www.nngroup.com/articles/breadcrumbs/" target="_blank" rel="noopener">Nielsen
+                            Norman Group: Breadcrumbs</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav" target="_blank"
+                            rel="noopener">MDN: Navigation element</a></li>
+                    <li><a href="https://inclusive-components.design/menus-menu-buttons/" target="_blank"
+                            rel="noopener">Inclusive Components: Menus</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.4.7.html">Poprzedni: 2.4.7 Widoczny fokus</a></li>
+                    <li><a href="2.4.9.html">Następny: 2.4.9 Cel linku (tylko link)</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+
+    <script>
+        // Demo funkcjonalność dla przykładów lokalizacji
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // === TEST ORIENTACJI ===
+            let orientationTestActive = false;
+            let currentTestScenario = null;
+
+            window.startLocationTest = function () {
+                const feedback = document.getElementById('location-test-feedback');
+
+                if (!orientationTestActive) {
+                    orientationTestActive = true;
+                    feedback.textContent = 'Symulacja aktywna: Spróbuj określić swoją lokalizację w przykładach powyżej';
+                    feedback.style.fontWeight = 'bold';
+                    feedback.style.color = '#dc3545';
+
+                    const btn = event.target;
+                    btn.textContent = '⏹️ Zatrzymaj test';
+                    btn.style.background = '#dc3545';
+
+                    setTimeout(() => {
+                        feedback.textContent = 'Czy potrafisz określić gdzie jesteś w każdym z przykładów? Trudno bez wskaźników!';
+                    }, 3000);
+                } else {
+                    orientationTestActive = false;
+                    feedback.textContent = 'Kliknij przycisk aby przetestować jak trudno jest się zorientować bez wskaźników lokalizacji';
+                    feedback.style.fontWeight = 'normal';
+                    feedback.style.color = '#856404';
+
+                    const btn = event.target;
+                    btn.textContent = '🧭 Test orientacji';
+                    btn.style.background = '#ffc107';
+                }
+            };
+
+            window.testMisleadingNavigation = function () {
+                showNotification('Ten breadcrumb wprowadza w błąd - wskazuje kategorię A, ale treść dotyczy kategorii B!', 'error');
+            };
+
+            // === DEMONSTRACJA METOD LOKALIZACJI ===
+            window.demonstrateLocationMethods = function () {
+                const feedback = document.getElementById('location-demo-feedback');
+                const methods = [
+                    'Breadcrumbs - hierarchiczna ścieżka',
+                    'Oznaczona aktywna strona w menu',
+                    'Wskaźniki postępu w procesach',
+                    'Mapa witryny z lokalizacją'
+                ];
+
+                let index = 0;
+                feedback.textContent = 'Demonstracja w toku - obserwuj różne metody wskazywania lokalizacji...';
+                feedback.style.fontWeight = 'bold';
+                feedback.style.color = '#007bff';
+
+                function highlightNext() {
+                    if (index < methods.length) {
+                        feedback.textContent = `Metoda ${index + 1}: ${methods[index]}`;
+
+                        // Highlight odpowiedniej sekcji
+                        const sections = document.querySelectorAll('.good .border-bottom');
+                        if (sections[index]) {
+                            sections[index].style.background = '#e7f3ff';
+                            setTimeout(() => {
+                                sections[index].style.background = 'transparent';
+                            }, 1500);
+                        }
+
+                        setTimeout(() => {
+                            index++;
+                            highlightNext();
+                        }, 2000);
+                    } else {
+                        feedback.textContent = 'Demonstracja zakończona. Każda metoda pomaga użytkownikom w orientacji';
+                        feedback.style.fontWeight = 'normal';
+                        feedback.style.color = '#004085';
+                    }
+                }
+
+                highlightNext();
+            };
+
+            // === NARZĘDZIA LOKALIZACJI ===
+            window.showLocationTool = function (toolType) {
+                // Ukryj wszystkie narzędzia
+                document.querySelectorAll('.location-tool-content').forEach(tool => {
+                    tool.style.display = 'none';
+                });
+
+                // Pokaż wybrane narzędzie
+                const selectedTool = document.getElementById(`location-tool-${toolType}`);
+                if (selectedTool) {
+                    selectedTool.style.display = 'block';
+                }
+
+                // Zaktualizuj przyciski
+                document.querySelectorAll('.location-tool-btn').forEach(btn => {
+                    btn.style.background = 'transparent';
+                    btn.style.color = '#856404';
+                });
+
+                const activeBtn = document.querySelector(`.location-tool-btn[data-tool="${toolType}"]`);
+                if (activeBtn) {
+                    activeBtn.style.background = '#ffc107';
+                    activeBtn.style.color = '#212529';
+                }
+
+                // Zaktualizuj opis
+                const descriptions = {
+                    'breadcrumb-generator': 'Generator breadcrumbs - tworzy semantyczne ścieżki nawigacyjne zgodne z WCAG',
+                    'navigation-analyzer': 'Analizator nawigacji - sprawdza czy użytkownicy mogą określić swoją lokalizację',
+                    'progress-designer': 'Projektant wskaźników - tworzy wskaźniki postępu dla procesów wieloetapowych',
+                    'orientation-tester': 'Tester orientacji - symuluje scenariusze nawigacji i sprawdza orientację użytkownika'
+                };
+
+                const description = descriptions[toolType] || 'Narzędzie do projektowania lokalizacji';
+                document.getElementById('location-tool-description').textContent = description;
+            };
+
+            // === GENERATOR BREADCRUMBS ===
+            window.generateBreadcrumb = function () {
+                const structure = document.getElementById('breadcrumb-structure').value;
+                const separator = document.getElementById('breadcrumb-separator').value;
+                const withLinks = document.getElementById('breadcrumb-links').checked;
+
+                if (!structure.trim()) {
+                    showNotification('Wprowadź strukturę ścieżki', 'warning');
+                    return;
+                }
+
+                const steps = structure.split('/').map(s => s.trim()).filter(s => s);
+                const preview = document.getElementById('breadcrumb-preview');
+                const htmlOutput = document.getElementById('breadcrumb-html');
+                const results = document.getElementById('breadcrumb-results');
+
+                // Generuj podgląd
+                let previewHTML = '<nav aria-label="Ścieżka nawigacyjna" style="font-size: 0.9em;">';
+                let codeHTML = '<nav aria-label="Breadcrumb">\n  <ol style="list-style: none; display: flex; gap: 0.5rem; margin: 0; padding: 0;">\n';
+
+                steps.forEach((step, index) => {
+                    const isLast = index === steps.length - 1;
+
+                    if (isLast) {
+                        previewHTML += `<span style="color: #6c757d;" aria-current="page">${step}</span>`;
+                        codeHTML += `    <li aria-current="page">${step}</li>\n`;
+                    } else {
+                        if (withLinks) {
+                            previewHTML += `<a href="#" onclick="return false;" style="color: #007bff; text-decoration: none;">${step}</a>`;
+                            codeHTML += `    <li><a href="/${step.toLowerCase().replace(/\s+/g, '-')}">${step}</a></li>\n`;
+                        } else {
+                            previewHTML += `<span style="color: #007bff;">${step}</span>`;
+                            codeHTML += `    <li>${step}</li>\n`;
+                        }
+
+                        if (index < steps.length - 1) {
+                            previewHTML += `<span style="margin: 0 8px; color: #6c757d;">${separator}</span>`;
+                            codeHTML += `    <li>${separator}</li>\n`;
+                        }
+                    }
+                });
+
+                previewHTML += '</nav>';
+                codeHTML += '  </ol>\n</nav>';
+
+                preview.innerHTML = previewHTML;
+                htmlOutput.textContent = codeHTML;
+                results.style.display = 'block';
+            };
+
+            window.copyBreadcrumbCode = function () {
+                const code = document.getElementById('breadcrumb-html').textContent;
+                navigator.clipboard.writeText(code).then(() => {
+                    showNotification('Kod breadcrumb skopiowany do schowka!', 'success');
+                });
+            };
+
+            // === ANALIZATOR NAWIGACJI ===
+            window.analyzeNavigation = function () {
+                const html = document.getElementById('nav-html').value;
+                const currentPage = document.getElementById('current-page').value;
+                const output = document.getElementById('navigation-output');
+                const results = document.getElementById('navigation-analysis');
+
+                if (!html.trim()) {
+                    showNotification('Wprowadź kod HTML nawigacji', 'warning');
+                    return;
+                }
+
+                let analysis = '';
+                let problems = [];
+                let suggestions = [];
+
+                // Prosta analiza HTML
+                const hasAriaLabel = html.includes('aria-label');
+                const hasAriaCurrent = html.includes('aria-current');
+                const hasNavElement = html.includes('<nav');
+                const linkCount = (html.match(/<a /g) || []).length;
+
+                analysis += '<div style="margin-bottom: 15px;"><strong>Analiza struktury nawigacji:</strong></div>';
+
+                // Sprawdź semantic markup
+                if (hasNavElement) {
+                    analysis += '<div style="color: #28a745; margin: 5px 0;">✅ Używa elementu &lt;nav&gt;</div>';
+                } else {
+                    problems.push('Brak elementu <nav> - użyj semantycznego znacznika');
+                }
+
+                if (hasAriaLabel) {
+                    analysis += '<div style="color: #28a745; margin: 5px 0;">✅ Ma aria-label dla dostępności</div>';
+                } else {
+                    suggestions.push('Dodaj aria-label do elementu <nav>');
+                }
+
+                // Sprawdź oznaczenie aktywnej strony
+                if (currentPage && hasAriaCurrent) {
+                    analysis += '<div style="color: #28a745; margin: 5px 0;">✅ Używa aria-current dla aktywnej strony</div>';
+                } else if (currentPage) {
+                    problems.push('Brak aria-current="page" dla aktywnej strony');
+                }
+
+                analysis += `<div style="margin: 10px 0;">Znaleziono: ${linkCount} linków nawigacyjnych</div>`;
+
+                if (problems.length > 0) {
+                    analysis += '<div style="margin-top: 15px;"><strong style="color: #dc3545;">🚫 Problemy:</strong></div>';
+                    problems.forEach(problem => {
+                        analysis += `<div style="color: #dc3545; margin: 5px 0;">• ${problem}</div>`;
+                    });
+                }
+
+                if (suggestions.length > 0) {
+                    analysis += '<div style="margin-top: 15px;"><strong style="color: #ffc107;">💡 Sugestie:</strong></div>';
+                    suggestions.forEach(suggestion => {
+                        analysis += `<div style="color: #856404; margin: 5px 0;">• ${suggestion}</div>`;
+                    });
+                }
+
+                if (problems.length === 0) {
+                    analysis += '<div style="color: #28a745; margin-top: 15px;"><strong>🎉 Nawigacja wygląda dobrze!</strong></div>';
+                }
+
+                output.innerHTML = analysis;
+                results.style.display = 'block';
+            };
+
+            // === PROJEKTANT WSKAŹNIKÓW POSTĘPU ===
+            window.designProgress = function () {
+                const stepsText = document.getElementById('progress-steps').value;
+                const currentStep = parseInt(document.getElementById('current-step').value);
+                const style = document.getElementById('progress-style').value;
+
+                if (!stepsText.trim()) {
+                    showNotification('Wprowadź kroki procesu', 'warning');
+                    return;
+                }
+
+                const steps = stepsText.split(',').map(s => s.trim()).filter(s => s);
+                const preview = document.getElementById('progress-preview');
+                const codeOutput = document.getElementById('progress-code');
+                const results = document.getElementById('progress-results');
+
+                let previewHTML = '';
+                let cssCode = '';
+
+                switch (style) {
+                    case 'circles':
+                        previewHTML = generateCircleProgress(steps, currentStep);
+                        cssCode = getCircleProgressCSS();
+                        break;
+                    case 'dots':
+                        previewHTML = generateDotProgress(steps, currentStep);
+                        cssCode = getDotProgressCSS();
+                        break;
+                    case 'bars':
+                        previewHTML = generateBarProgress(steps, currentStep);
+                        cssCode = getBarProgressCSS();
+                        break;
+                    case 'steps':
+                        previewHTML = generateStepProgress(steps, currentStep);
+                        cssCode = getStepProgressCSS();
+                        break;
+                }
+
+                preview.innerHTML = previewHTML;
+                codeOutput.textContent = cssCode;
+                results.style.display = 'block';
+            };
+
+            function generateCircleProgress(steps, current) {
+                let html = '<div class="progress-circles" style="display: flex; align-items: center; gap: 10px;">';
+
+                steps.forEach((step, index) => {
+                    const stepNum = index + 1;
+                    const isCompleted = stepNum < current;
+                    const isCurrent = stepNum === current;
+
+                    let circleClass = 'step';
+                    let circleStyle = 'width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: white;';
+
+                    if (isCompleted) {
+                        circleStyle += ' background: #28a745;';
+                        html += `<div style="${circleStyle}">✓</div>`;
+                    } else if (isCurrent) {
+                        circleStyle += ' background: #007bff;';
+                        html += `<div style="${circleStyle}">${stepNum}</div>`;
+                    } else {
+                        circleStyle += ' background: #dee2e6; color: #6c757d;';
+                        html += `<div style="${circleStyle}">${stepNum}</div>`;
+                    }
+
+                    if (index < steps.length - 1) {
+                        const lineColor = stepNum < current ? '#28a745' : '#dee2e6';
+                        html += `<div style="flex: 1; height: 2px; background: ${lineColor};"></div>`;
+                    }
+                });
+
+                html += '</div>';
+                html += '<div style="display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.8em;">';
+                steps.forEach((step, index) => {
+                    const stepNum = index + 1;
+                    const color = stepNum === current ? '#007bff' : stepNum < current ? '#28a745' : '#6c757d';
+                    html += `<span style="color: ${color}; font-weight: ${stepNum === current ? '500' : 'normal'};">${step}</span>`;
+                });
+                html += '</div>';
+
+                return html;
+            }
+
+            function generateDotProgress(steps, current) {
+                let html = '<div style="display: flex; align-items: center; gap: 15px;">';
+
+                steps.forEach((step, index) => {
+                    const stepNum = index + 1;
+                    const isCompleted = stepNum < current;
+                    const isCurrent = stepNum === current;
+
+                    let dotStyle = 'width: 12px; height: 12px; border-radius: 50%;';
+
+                    if (isCompleted) {
+                        dotStyle += ' background: #28a745;';
+                    } else if (isCurrent) {
+                        dotStyle += ' background: #007bff;';
+                    } else {
+                        dotStyle += ' background: #dee2e6;';
+                    }
+
+                    html += `<div title="${step}" style="${dotStyle}"></div>`;
+                });
+
+                html += '</div>';
+                html += `<div style="margin-top: 10px; color: #495057;">Krok ${current} z ${steps.length}: ${steps[current - 1]}</div>`;
+
+                return html;
+            }
+
+            function generateBarProgress(steps, current) {
+                const progress = (current / steps.length) * 100;
+                let html = `
+                    <div style="background: #dee2e6; height: 8px; border-radius: 4px; overflow: hidden;">
+                        <div style="background: #007bff; height: 100%; width: ${progress}%; transition: width 0.3s ease;"></div>
+                    </div>
+                    <div style="margin-top: 10px; text-align: center; color: #495057;">
+                        ${current} z ${steps.length} kroków ukończone (${Math.round(progress)}%)
+                    </div>
+                    <div style="margin-top: 5px; text-align: center; font-weight: 500;">
+                        Aktualny krok: ${steps[current - 1]}
+                    </div>
+                `;
+
+                return html;
+            }
+
+            function generateStepProgress(steps, current) {
+                let html = '<div style="display: flex; flex-direction: column; gap: 10px;">';
+
+                steps.forEach((step, index) => {
+                    const stepNum = index + 1;
+                    const isCompleted = stepNum < current;
+                    const isCurrent = stepNum === current;
+
+                    let stepStyle = 'padding: 10px 15px; border-radius: 5px; display: flex; align-items: center; gap: 10px;';
+
+                    if (isCompleted) {
+                        stepStyle += ' background: #d4edda; border-left: 4px solid #28a745;';
+                        html += `<div style="${stepStyle}"><span style="color: #28a745;">✓</span> ${step}</div>`;
+                    } else if (isCurrent) {
+                        stepStyle += ' background: #e7f3ff; border-left: 4px solid #007bff;';
+                        html += `<div style="${stepStyle}"><span style="color: #007bff;">→</span> ${step}</div>`;
+                    } else {
+                        stepStyle += ' background: #f8f9fa; border-left: 4px solid #dee2e6;';
+                        html += `<div style="${stepStyle}"><span style="color: #6c757d;">${stepNum}</span> ${step}</div>`;
+                    }
+                });
+
+                html += '</div>';
+                return html;
+            }
+
+            function getCircleProgressCSS() {
+                return `/* Circle Progress Indicator */
+.progress-circles {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-circles .step {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+}
+
+.progress-circles .step.completed {
+    background: #28a745;
+}
+
+.progress-circles .step.current {
+    background: #007bff;
+}
+
+.progress-circles .step.pending {
+    background: #dee2e6;
+    color: #6c757d;
+}
+
+.progress-circles .line {
+    flex: 1;
+    height: 2px;
+}
+
+.progress-circles .line.completed {
+    background: #28a745;
+}
+
+.progress-circles .line.pending {
+    background: #dee2e6;
+}`;
+            }
+
+            function getDotProgressCSS() {
+                return `/* Dot Progress Indicator */
+.progress-dots {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.progress-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.progress-dots .dot.completed {
+    background: #28a745;
+}
+
+.progress-dots .dot.current {
+    background: #007bff;
+}
+
+.progress-dots .dot.pending {
+    background: #dee2e6;
+}`;
+            }
+
+            function getBarProgressCSS() {
+                return `/* Bar Progress Indicator */
+.progress-bar-container {
+    background: #dee2e6;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: #007bff;
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    margin-top: 10px;
+    text-align: center;
+    color: #495057;
+}`;
+            }
+
+            function getStepProgressCSS() {
+                return `/* Step Progress Indicator */
+.progress-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.progress-steps .step {
+    padding: 10px 15px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-steps .step.completed {
+    background: #d4edda;
+    border-left: 4px solid #28a745;
+}
+
+.progress-steps .step.current {
+    background: #e7f3ff;
+    border-left: 4px solid #007bff;
+}
+
+.progress-steps .step.pending {
+    background: #f8f9fa;
+    border-left: 4px solid #dee2e6;
+}`;
+            }
+
+            window.copyProgressCode = function () {
+                const code = document.getElementById('progress-code').textContent;
+                navigator.clipboard.writeText(code).then(() => {
+                    showNotification('Kod wskaźnika postępu skopiowany!', 'success');
+                });
+            };
+
+            // === TESTER ORIENTACJI ===
+            window.startOrientationTest = function (scenario) {
+                const scenarioElement = document.getElementById('orientation-scenario');
+                const contentElement = document.getElementById('scenario-content');
+                const questionsElement = document.getElementById('orientation-questions');
+                const testQuestions = document.getElementById('test-questions');
+
+                currentTestScenario = scenario;
+
+                // Generuj treść scenariusza
+                const scenarios = {
+                    'ecommerce': {
+                        title: 'Sklep internetowy - Szczegóły produktu',
+                        content: generateEcommerceScenario(),
+                        questions: [
+                            'W której kategorii znajduje się ten produkt?',
+                            'Jak można wrócić do poprzedniej kategorii?',
+                            'Na jakim etapie procesu zakupowego się znajdujesz?'
+                        ]
+                    },
+                    'corporate': {
+                        title: 'Strona firmowa - Podstrona usług',
+                        content: generateCorporateScenario(),
+                        questions: [
+                            'W której sekcji witryny się znajdujesz?',
+                            'Która strona jest aktualnie aktywna w menu?',
+                            'Jak można przejść do strony głównej?'
+                        ]
+                    },
+                    'documentation': {
+                        title: 'Dokumentacja techniczna',
+                        content: generateDocumentationScenario(),
+                        questions: [
+                            'W którym rozdziale dokumentacji się znajdujesz?',
+                            'Ile jest poziomów w hierarchii tej strony?',
+                            'Jakie są poprzedni i następny artykuł?'
+                        ]
+                    },
+                    'form': {
+                        title: 'Formularz wieloetapowy',
+                        content: generateFormScenario(),
+                        questions: [
+                            'Na którym kroku procesu się znajdujesz?',
+                            'Ile kroków zostało do zakończenia?',
+                            'Czy można wrócić do poprzedniego kroku?'
+                        ]
+                    }
+                };
+
+                const selectedScenario = scenarios[scenario];
+                contentElement.innerHTML = `
+                    <h6>${selectedScenario.title}</h6>
+                    ${selectedScenario.content}
+                `;
+
+                // Generuj pytania
+                let questionsHTML = '';
+                selectedScenario.questions.forEach((question, index) => {
+                    questionsHTML += `
+                        <div style="margin: 10px 0;">
+                            <label style="display: block; margin-bottom: 5px; font-weight: 500;">${index + 1}. ${question}</label>
+                            <input type="text" id="answer-${index}" style="width: 100%; max-width: 400px; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                        </div>
+                    `;
+                });
+
+                testQuestions.innerHTML = questionsHTML;
+
+                scenarioElement.style.display = 'block';
+                questionsElement.style.display = 'block';
+            };
+
+            function generateEcommerceScenario() {
+                return `
+                    <div style="border-bottom: 1px solid #dee2e6; padding-bottom: 10px; margin-bottom: 15px;">
+                        <nav style="display: flex; gap: 20px; font-size: 0.9em;">
+                            <a href="#" style="color: #007bff;">Kategorie</a>
+                            <a href="#" style="color: #007bff;">Marki</a>
+                            <a href="#" style="color: #007bff;">Promocje</a>
+                        </nav>
+                    </div>
+                    <div style="padding: 20px;">
+                        <h6>Samsung Galaxy S24 Ultra</h6>
+                        <p style="color: #6c757d;">Najnowszy flagowy smartfon Samsung</p>
+                        <div style="margin-top: 15px;">
+                            <button style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 3px;">
+                                Dodaj do koszyka
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            function generateCorporateScenario() {
+                return `
+                    <div style="border-bottom: 1px solid #dee2e6; padding-bottom: 10px; margin-bottom: 15px;">
+                        <nav style="display: flex; gap: 20px;">
+                            <a href="#" style="color: #007bff;">Start</a>
+                            <a href="#" style="color: #007bff;">O nas</a>
+                            <a href="#" style="color: #007bff;">Usługi</a>
+                            <a href="#" style="color: #007bff;">Kontakt</a>
+                        </nav>
+                    </div>
+                    <div style="padding: 20px;">
+                        <h6>Nasze usługi informatyczne</h6>
+                        <p style="color: #6c757d;">Oferujemy kompleksowe rozwiązania IT dla firm</p>
+                        <ul style="color: #495057; margin-top: 10px;">
+                            <li>Tworzenie stron internetowych</li>
+                            <li>Aplikacje mobilne</li>
+                            <li>Konsultacje IT</li>
+                        </ul>
+                    </div>
+                `;
+            }
+
+            function generateDocumentationScenario() {
+                return `
+                    <div style="display: flex; gap: 20px;">
+                        <div style="width: 200px; background: #f8f9fa; padding: 15px; border-radius: 3px;">
+                            <h6 style="margin-top: 0;">Spis treści</h6>
+                            <div style="font-size: 0.9em; line-height: 1.6;">
+                                <div>1. Wprowadzenie</div>
+                                <div>2. Instalacja</div>
+                                <div>3. API Reference</div>
+                                <div>4. Przykłady</div>
+                            </div>
+                        </div>
+                        <div style="flex: 1; padding: 15px;">
+                            <h6>Konfiguracja API</h6>
+                            <p style="color: #6c757d;">W tym rozdziale opisujemy jak skonfigurować połączenie z API...</p>
+                            <pre style="background: #f8f9fa; padding: 10px; border-radius: 3px; font-size: 0.8em;">
+const api = new API({
+  key: 'your-api-key',
+  endpoint: 'https://api.example.com'
+});
+                            </pre>
+                        </div>
+                    </div>
+                `;
+            }
+
+            function generateFormScenario() {
+                return `
+                    <div style="padding: 20px;">
+                        <h6>Rejestracja konta</h6>
+                        <form style="display: grid; gap: 15px; margin-top: 15px;">
+                            <div>
+                                <label style="display: block; margin-bottom: 5px;">Hasło:</label>
+                                <input type="password" style="width: 100%; max-width: 300px; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 5px;">Potwierdź hasło:</label>
+                                <input type="password" style="width: 100%; max-width: 300px; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                            </div>
+                            <div style="display: flex; gap: 10px; margin-top: 15px;">
+                                <button type="button" style="padding: 10px 20px; background: #6c757d; color: white; border: none; border-radius: 3px;">
+                                    Wstecz
+                                </button>
+                                <button type="button" style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 3px;">
+                                    Dalej
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                `;
+            }
+
+            window.checkOrientationAnswers = function () {
+                const results = document.getElementById('orientation-results');
+                const scoreElement = document.getElementById('orientation-score');
+
+                // Przykładowa ocena - w rzeczywistości byłaby bardziej zaawansowana
+                let score = 0;
+                const totalQuestions = 3;
+
+                for (let i = 0; i < totalQuestions; i++) {
+                    const answer = document.getElementById(`answer-${i}`);
+                    if (answer && answer.value.trim().length > 0) {
+                        score++;
+                    }
+                }
+
+                const percentage = Math.round((score / totalQuestions) * 100);
+                let feedback = '';
+
+                if (percentage >= 80) {
+                    feedback = '<div style="color: #28a745;">✅ Bardzo dobra orientacja! Użytkownik łatwo może określić swoją lokalizację.</div>';
+                } else if (percentage >= 60) {
+                    feedback = '<div style="color: #ffc107;">⚠️ Umiarkowana orientacja. Niektóre wskaźniki lokalizacji mogą być niejasne.</div>';
+                } else {
+                    feedback = '<div style="color: #dc3545;">❌ Słaba orientacja. Brak jasnych wskaźników lokalizacji utrudnia nawigację.</div>';
+                }
+
+                scoreElement.innerHTML = `
+                    <div style="margin-bottom: 10px;"><strong>Wynik: ${score}/${totalQuestions} (${percentage}%)</strong></div>
+                    ${feedback}
+                    <div style="margin-top: 10px; font-size: 0.9em; color: #6c757d;">
+                        Ten test symuluje trudności jakie mogą mieć użytkownicy w określeniu swojej lokalizacji.
+                    </div>
+                `;
+
+                results.style.display = 'block';
+            };
+
+            // === INTERAKTYWNA MAPA WITRYNY ===
+            window.toggleSitemapSection = function (section) {
+                const sectionElement = document.getElementById(`${section}-section`);
+                if (sectionElement) {
+                    sectionElement.style.display = sectionElement.style.display === 'none' ? 'block' : 'none';
+                }
+            };
+
+            function showNotification(message, type) {
+                const notification = document.createElement('div');
+                const colors = {
+                    'success': '#d4edda',
+                    'error': '#f8d7da',
+                    'info': '#e7f3ff',
+                    'warning': '#fff3cd'
+                };
+
+                const borderColors = {
+                    'success': '#28a745',
+                    'error': '#dc3545',
+                    'info': '#007bff',
+                    'warning': '#ffc107'
+                };
+
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: ${colors[type] || colors.info};
+                    color: #495057;
+                    padding: 12px 20px;
+                    border-radius: 4px;
+                    border-left: 4px solid ${borderColors[type] || borderColors.info};
+                    z-index: 1000;
+                    max-width: 400px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    font-size: 14px;
+                    line-height: 1.4;
+                `;
+                notification.textContent = message;
+
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    notification.style.transition = 'opacity 0.3s';
+                    setTimeout(() => {
+                        if (document.body.contains(notification)) {
+                            document.body.removeChild(notification);
+                        }
+                    }, 300);
+                }, 4000);
+            }
+        });
+    </script>
+</body>
+
+</html>

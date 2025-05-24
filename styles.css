@@ -780,3 +780,17 @@ body.high-contrast a:focus {
 	width: 16px;
 	height: 16px;
 }
+
+/* Style dla elementów placeholder */
+.criteria-placeholder {
+	color: #6c757d;
+	font-style: italic;
+	cursor: default;
+	padding: 4px 0;
+	display: block;
+}
+
+.criteria-placeholder::before {
+	content: "📝 ";
+	margin-right: 4px;
+}

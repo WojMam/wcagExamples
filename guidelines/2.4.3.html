@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.4.3 Kolejność fokusa (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.4.3 Kolejność fokusa</h2>
+                <p class="criterion-level">Poziom A</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#focus-order" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Jeżeli strona internetowa może być nawigowana sekwencyjnie i sekwencje nawigacji wpływają na
+                    znaczenie lub działanie, to komponenty focusable otrzymują fokus w kolejności, która zachowuje
+                    znaczenie i możliwość obsługi.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest zapewnienie, że gdy użytkownicy nawigują sekwencyjnie po treści,
+                    napotykają informacje w kolejności, która jest spójna ze znaczeniem treści i może być obsługiwana z
+                    klawiatury.</p>
+
+                <p>Logiczna kolejność fokusa jest kluczowa dla:</p>
+                <ul>
+                    <li><strong>Użytkowników korzystających tylko z klawiatury</strong> - muszą móc przewidzieć gdzie
+                        znajdzie się fokus</li>
+                    <li><strong>Użytkowników czytników ekranu</strong> - sekwencyjna nawigacja musi mieć sens
+                        kontekstowy</li>
+                    <li><strong>Osób z ograniczeniami poznawczymi</strong> - nieprzewidywalna kolejność może być
+                        dezorientująca</li>
+                    <li><strong>Użytkowników technologii wspomagających</strong> - które polegają na DOM order</li>
+                </ul>
+
+                <p>Kolejność fokusa powinna:</p>
+                <ul>
+                    <li><strong>Następować naturalną kolejność czytania</strong> - zwykle od lewej do prawej, od góry do
+                        dołu</li>
+                    <li><strong>Być logiczna i przewidywalna</strong> - użytkownik powinien móc przewidzieć następny
+                        element</li>
+                    <li><strong>Zachowywać relacje między elementami</strong> - powiązane elementy powinny być blisko
+                        siebie</li>
+                    <li><strong>Umożliwiać wykonanie wszystkich zadań</strong> - nie blokować funkcjonalności</li>
+                </ul>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - nieprawidłowa kolejność fokusa</h4>
+                        <p>Przykłady nieprawidłowej kolejności tabulacji, która dezorientuje użytkowników:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #721c24; margin-top: 0;">❌ Problematyczna kolejność fokusa:</h5>
+
+                                    <div
+                                        style="border: 2px dashed #dc3545; padding: 15px; background-color: rgba(255,255,255,0.8); margin: 10px 0;">
+                                        <p style="color: #721c24; margin-bottom: 10px;"><strong>Demo problemu:</strong>
+                                            Naciśnij Tab aby zobaczyć chaotyczną kolejność</p>
+
+                                        <div style="position: relative;">
+                                            <!-- Elementy w HTML w złej kolejności, ale pozycjonowane CSS -->
+                                            <button class="bad-focus-demo" data-step="4" tabindex="0"
+                                                style="position: absolute; top: 0; right: 0; background: #dc3545; color: white; border: none; padding: 8px; border-radius: 3px;">4.
+                                                Przycisk w prawym górnym rogu</button>
+
+                                            <div style="margin-top: 40px;">
+                                                <input class="bad-focus-demo" data-step="1" type="text"
+                                                    placeholder="1. Pierwsze pole"
+                                                    style="display: block; margin: 5px 0; padding: 8px; width: 200px;">
+
+                                                <button class="bad-focus-demo" data-step="6" tabindex="0"
+                                                    style="float: right; background: #ffc107; border: none; padding: 8px; border-radius: 3px; margin: 5px;">6.
+                                                    Przycisk po prawej</button>
+
+                                                <input class="bad-focus-demo" data-step="2" type="text"
+                                                    placeholder="2. Drugie pole"
+                                                    style="display: block; margin: 5px 0; padding: 8px; width: 200px; clear: both;">
+
+                                                <button class="bad-focus-demo" data-step="5" tabindex="0"
+                                                    style="position: absolute; bottom: 0; left: 0; background: #6f42c1; color: white; border: none; padding: 8px; border-radius: 3px;">5.
+                                                    Przycisk na dole</button>
+
+                                                <input class="bad-focus-demo" data-step="3" type="text"
+                                                    placeholder="3. Trzecie pole"
+                                                    style="display: block; margin: 5px 0; padding: 8px; width: 200px;">
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="margin-top: 60px; background-color: #fff3cd; padding: 10px; border-radius: 3px; border-left: 4px solid #ffc107;">
+                                            <p style="color: #856404; margin: 0; font-size: 0.9em;">
+                                                <strong>Aktualny fokus:</strong> <span id="bad-focus-indicator">Kliknij
+                                                    w obszarze i naciśnij Tab</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #856404; margin-top: 0;">Dlaczego to problematyczne?</h6>
+                                    <ul style="color: #856404; margin-bottom: 0;">
+                                        <li><strong>Nieprzewidywalność</strong> - użytkownik nie wie gdzie pojawi się
+                                            fokus</li>
+                                        <li><strong>Dezorientacja</strong> - fokus "skacze" po ekranie w nielogiczny
+                                            sposób</li>
+                                        <li><strong>Utrudniona nawigacja</strong> - trudno wrócić do wcześniejszych
+                                            elementów</li>
+                                        <li><strong>Problemy z formułami</strong> - niewłaściwa kolejność może
+                                            uniemożliwić wypełnienie</li>
+                                        <li><strong>Złe UX</strong> - frustrujące doświadczenie dla wszystkich
+                                            użytkowników</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- ZŁY PRZYKŁAD - nieprawidłowa kolejność DOM --&gt;
+&lt;form&gt;
+    &lt;!-- CSS position: absolute zmienia wizualną kolejność --&gt;
+    &lt;button style="position: absolute; top: 0; right: 0;" tabindex="0"&gt;
+        Przycisk w prawym górnym rogu (fokus 4.)
+    &lt;/button&gt;
+    
+    &lt;div&gt;
+        &lt;input type="text" placeholder="Pierwsze pole"&gt; &lt;!-- Fokus 1. --&gt;
+        
+        &lt;!-- Float: right zmienia kolejność wizualną --&gt;
+        &lt;button style="float: right;"&gt;Po prawej (fokus 3.)&lt;/button&gt;
+        
+        &lt;input type="text" placeholder="Drugie pole"&gt; &lt;!-- Fokus 2. --&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- Kolejny element z position: absolute --&gt;
+    &lt;button style="position: absolute; bottom: 0;" tabindex="0"&gt;
+        Na dole (fokus 5.)
+    &lt;/button&gt;
+&lt;/form&gt;</code></pre>
+
+                        <pre><code class="language-css">/* ZŁY PRZYKŁAD - CSS niszczący logiczną kolejność */
+
+/* Float zmienia kolejność wizualną, ale nie DOM */
+.form-button {
+    float: right; /* Przycisk pojawi się po prawej, ale fokus będzie wcześniej */
+}
+
+/* Position absolute całkowicie wyrwuje element z flow */
+.popup-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    /* Element będzie gdzie indziej wizualnie, ale w DOM na swoim miejscu */
+}
+
+/* Flexbox order bez dbania o DOM order */
+.flex-container {
+    display: flex;
+}
+
+.flex-item-1 { order: 3; } /* Wizualnie ostatni, ale pierwszy w DOM */
+.flex-item-2 { order: 1; } /* Wizualnie pierwszy, ale drugi w DOM */
+.flex-item-3 { order: 2; } /* Wizualnie drugi, ale trzeci w DOM */</code></pre>
+
+                        <p class="explanation">Problem: Kolejność fokusa nie odpowiada wizualnej kolejności elementów.
+                            CSS position, float i flexbox order zmieniają wygląd, ale nie wpływają na kolejność
+                            tabulacji, która nadal następuje według DOM order. To powoduje chaotyczną nawigację.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - logiczna kolejność fokusa</h4>
+                        <p>Prawidłowa implementacja gdzie kolejność DOM odpowiada wizualnej kolejności:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #155724; margin-top: 0;">✅ Prawidłowa kolejność fokusa:</h5>
+
+                                    <div
+                                        style="border: 2px solid #28a745; padding: 15px; background-color: rgba(255,255,255,0.9); margin: 10px 0;">
+                                        <p style="color: #155724; margin-bottom: 15px;"><strong>Demo:</strong> Naciśnij
+                                            Tab aby zobaczyć logiczną kolejność</p>
+
+                                        <form style="max-width: 400px;">
+                                            <div style="margin-bottom: 15px;">
+                                                <label for="good-name"
+                                                    style="display: block; font-weight: bold; margin-bottom: 5px;">1.
+                                                    Imię i nazwisko:</label>
+                                                <input class="good-focus-demo" data-step="1" type="text" id="good-name"
+                                                    style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px;">
+                                            </div>
+
+                                            <div style="margin-bottom: 15px;">
+                                                <label for="good-email"
+                                                    style="display: block; font-weight: bold; margin-bottom: 5px;">2.
+                                                    Email:</label>
+                                                <input class="good-focus-demo" data-step="2" type="email"
+                                                    id="good-email"
+                                                    style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px;">
+                                            </div>
+
+                                            <div style="margin-bottom: 15px;">
+                                                <label for="good-phone"
+                                                    style="display: block; font-weight: bold; margin-bottom: 5px;">3.
+                                                    Telefon:</label>
+                                                <input class="good-focus-demo" data-step="3" type="tel" id="good-phone"
+                                                    style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px;">
+                                            </div>
+
+                                            <div style="margin-bottom: 15px;">
+                                                <fieldset
+                                                    style="border: 1px solid #ced4da; border-radius: 4px; padding: 10px;">
+                                                    <legend style="font-weight: bold;">4. Preferowany kontakt:</legend>
+                                                    <label style="display: block; margin: 5px 0;">
+                                                        <input class="good-focus-demo" data-step="4" type="radio"
+                                                            name="contact" value="email" style="margin-right: 8px;">
+                                                        Email
+                                                    </label>
+                                                    <label style="display: block; margin: 5px 0;">
+                                                        <input class="good-focus-demo" data-step="5" type="radio"
+                                                            name="contact" value="phone" style="margin-right: 8px;">
+                                                        Telefon
+                                                    </label>
+                                                </fieldset>
+                                            </div>
+
+                                            <div style="margin-bottom: 15px;">
+                                                <label style="display: block; margin: 10px 0;">
+                                                    <input class="good-focus-demo" data-step="6" type="checkbox"
+                                                        style="margin-right: 8px;">
+                                                    6. Zgoda na przetwarzanie danych
+                                                </label>
+                                            </div>
+
+                                            <div style="text-align: left;">
+                                                <button class="good-focus-demo" data-step="7" type="submit"
+                                                    style="background: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 4px; margin-right: 10px;">7.
+                                                    Wyślij</button>
+                                                <button class="good-focus-demo" data-step="8" type="reset"
+                                                    style="background: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 4px;">8.
+                                                    Wyczyść</button>
+                                            </div>
+                                        </form>
+
+                                        <div
+                                            style="margin-top: 15px; background-color: #e7f3ff; padding: 10px; border-radius: 3px; border-left: 4px solid #007bff;">
+                                            <p style="color: #004085; margin: 0; font-size: 0.9em;">
+                                                <strong>Aktualny fokus:</strong> <span id="good-focus-indicator">Kliknij
+                                                    w formularzu i naciśnij Tab</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #004085; margin-top: 0;">Zalety prawidłowej kolejności:</h6>
+                                    <ul style="color: #004085; margin-bottom: 0;">
+                                        <li><strong>Przewidywalność</strong> - użytkownik wie gdzie będzie następny
+                                            fokus</li>
+                                        <li><strong>Naturalny flow</strong> - fokus przesuwa się zgodnie z oczekiwaniami
+                                        </li>
+                                        <li><strong>Łatwość nawigacji</strong> - można bez problemu wypełnić cały
+                                            formularz</li>
+                                        <li><strong>Spójność z wizualnością</strong> - to co widać = kolejność fokusa
+                                        </li>
+                                        <li><strong>Dostępność</strong> - działa dla wszystkich metod nawigacji</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - logiczna kolejność DOM --&gt;
+&lt;form&gt;
+    &lt;!-- Elementy w HTML w tej samej kolejności co wizualnie --&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label for="name"&gt;Imię i nazwisko:&lt;/label&gt;
+        &lt;input type="text" id="name"&gt; &lt;!-- Fokus 1. --&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="form-group"&gt;
+        &lt;label for="email"&gt;Email:&lt;/label&gt;
+        &lt;input type="email" id="email"&gt; &lt;!-- Fokus 2. --&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="form-group"&gt;
+        &lt;label for="phone"&gt;Telefon:&lt;/label&gt;
+        &lt;input type="tel" id="phone"&gt; &lt;!-- Fokus 3. --&gt;
+    &lt;/div&gt;
+    
+    &lt;fieldset&gt;
+        &lt;legend&gt;Preferowany kontakt:&lt;/legend&gt;
+        &lt;label&gt;
+            &lt;input type="radio" name="contact" value="email"&gt; &lt;!-- Fokus 4. --&gt;
+            Email
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type="radio" name="contact" value="phone"&gt; &lt;!-- Fokus 5. --&gt;
+            Telefon
+        &lt;/label&gt;
+    &lt;/fieldset&gt;
+    
+    &lt;label&gt;
+        &lt;input type="checkbox"&gt; &lt;!-- Fokus 6. --&gt;
+        Zgoda na przetwarzanie danych
+    &lt;/label&gt;
+    
+    &lt;div class="form-actions"&gt;
+        &lt;button type="submit"&gt;Wyślij&lt;/button&gt; &lt;!-- Fokus 7. --&gt;
+        &lt;button type="reset"&gt;Wyczyść&lt;/button&gt; &lt;!-- Fokus 8. --&gt;
+    &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+
+                        <pre><code class="language-css">/* DOBRY PRZYKŁAD - CSS nie narusza kolejności fokusa */
+
+.form-group {
+    margin-bottom: 1rem;
+    /* Używaj margin/padding zamiast position */
+}
+
+.form-actions {
+    margin-top: 1rem;
+    /* Flexbox bez zmiany order */
+    display: flex;
+    gap: 10px;
+}
+
+/* Jeśli musisz użyć flexbox order, upewnij się że DOM order też się zgadza */
+.responsive-layout {
+    display: flex;
+}
+
+/* Na dużych ekranach */
+@media (min-width: 768px) {
+    .responsive-layout {
+        flex-direction: row; /* Bez zmiany order */
+    }
+}
+
+/* Na małych ekranach */
+@media (max-width: 767px) {
+    .responsive-layout {
+        flex-direction: column; /* DOM order naturalny */
+    }
+}</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Kolejność elementów w HTML dokładnie odpowiada wizualnej
+                            kolejności. Formularz można wypełnić naturalnie od góry do dołu, bez niespodzianek. CSS nie
+                            zmienia kolejności fokusa, tylko wygląd elementów.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - zarządzanie fokusem w modalach</h4>
+                        <p>Prawidłowe zarządzanie fokusem przy otwieraniu i zamykaniu okien modalnych:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #856404; margin-top: 0;">🔄 Demo zarządzania fokusem w modalu:
+                                    </h5>
+
+                                    <div style="margin: 15px 0;">
+                                        <p style="color: #856404; margin-bottom: 10px;">
+                                            <strong>Instrukcje:</strong> Otwórz modal i testuj nawigację Tab/Shift+Tab.
+                                            Zwróć uwagę jak fokus jest "uwięziony" w modalu.
+                                        </p>
+
+                                        <button id="open-modal-btn"
+                                            style="background: #007bff; color: white; border: none; padding: 10px 16px; border-radius: 4px; cursor: pointer;">
+                                            Otwórz modal
+                                        </button>
+
+                                        <div style="margin: 10px 0;">
+                                            <input type="text" placeholder="Pole przed modalem"
+                                                style="padding: 8px; margin: 5px;">
+                                            <button
+                                                style="background: #28a745; color: white; border: none; padding: 8px 16px; border-radius: 4px;">Przycisk
+                                                przed modalem</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Modal -->
+                                <div id="demo-modal"
+                                    style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1000;">
+                                    <div
+                                        style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 20px; border-radius: 8px; max-width: 400px; width: 90%;">
+                                        <h3 style="margin-top: 0; color: #495057;">Okno modalne</h3>
+
+                                        <p style="color: #6c757d;">To jest przykład prawidłowego zarządzania fokusem w
+                                            oknie modalnym.</p>
+
+                                        <form>
+                                            <div style="margin-bottom: 15px;">
+                                                <label for="modal-input1"
+                                                    style="display: block; font-weight: bold; margin-bottom: 5px;">Pierwsze
+                                                    pole:</label>
+                                                <input type="text" id="modal-input1"
+                                                    style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px;">
+                                            </div>
+
+                                            <div style="margin-bottom: 15px;">
+                                                <label for="modal-input2"
+                                                    style="display: block; font-weight: bold; margin-bottom: 5px;">Drugie
+                                                    pole:</label>
+                                                <input type="text" id="modal-input2"
+                                                    style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px;">
+                                            </div>
+
+                                            <div style="text-align: right; margin-top: 20px;">
+                                                <button type="button" id="modal-cancel-btn"
+                                                    style="background: #6c757d; color: white; border: none; padding: 8px 16px; border-radius: 4px; margin-right: 10px;">
+                                                    Anuluj
+                                                </button>
+                                                <button type="submit" id="modal-save-btn"
+                                                    style="background: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px;">
+                                                    Zapisz
+                                                </button>
+                                            </div>
+                                        </form>
+
+                                        <button id="modal-close-btn"
+                                            style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 24px; cursor: pointer; color: #6c757d;"
+                                            aria-label="Zamknij modal">
+                                            ×
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #d1ecf1; border: 1px solid #bee5eb; padding: 15px; border-radius: 5px; margin-top: 15px;">
+                                    <h6 style="color: #0c5460; margin-top: 0;">🎯 Kluczowe aspekty zarządzania fokusem:
+                                    </h6>
+                                    <ul style="color: #0c5460; margin-bottom: 0; font-size: 0.95em;">
+                                        <li><strong>Focus trap</strong> - fokus pozostaje w modalu (Tab/Shift+Tab)</li>
+                                        <li><strong>Początkowy fokus</strong> - fokus idzie na pierwszy element w modalu
+                                        </li>
+                                        <li><strong>Przywracanie fokusa</strong> - po zamknięciu fokus wraca do triggera
+                                        </li>
+                                        <li><strong>Escape handling</strong> - ESC zamyka modal i przywraca fokus</li>
+                                        <li><strong>Aria attributes</strong> - modal jest proper accessibility announced
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - modal z zarządzaniem fokusem --&gt;
+&lt;button id="open-modal"&gt;Otwórz modal&lt;/button&gt;
+
+&lt;div id="modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true" hidden&gt;
+    &lt;div class="modal-backdrop"&gt;&lt;/div&gt;
+    &lt;div class="modal-content"&gt;
+        &lt;h2 id="modal-title"&gt;Tytuł modala&lt;/h2&gt;
+        
+        &lt;form&gt;
+            &lt;label for="modal-input1"&gt;Pole 1:&lt;/label&gt;
+            &lt;input type="text" id="modal-input1"&gt;
+            
+            &lt;label for="modal-input2"&gt;Pole 2:&lt;/label&gt;
+            &lt;input type="text" id="modal-input2"&gt;
+            
+            &lt;div class="modal-actions"&gt;
+                &lt;button type="button" class="modal-cancel"&gt;Anuluj&lt;/button&gt;
+                &lt;button type="submit" class="modal-save"&gt;Zapisz&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/form&gt;
+        
+        &lt;button class="modal-close" aria-label="Zamknij modal"&gt;×&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                        <pre><code class="language-javascript">// DOBRY PRZYKŁAD - JavaScript do zarządzania fokusem w modalu
+
+class FocusManager {
+    constructor() {
+        this.previousFocus = null;
+        this.focusableElements = [];
+        this.firstFocusable = null;
+        this.lastFocusable = null;
+    }
+
+    // Otwórz modal i ustaw focus trap
+    openModal(modalElement) {
+        // Zapisz aktualnie fokusowany element
+        this.previousFocus = document.activeElement;
+        
+        // Pokaż modal
+        modalElement.removeAttribute('hidden');
+        modalElement.style.display = 'block';
+        
+        // Znajdź wszystkie focusable elementy w modalu
+        this.updateFocusableElements(modalElement);
+        
+        // Ustaw fokus na pierwszy element
+        if (this.firstFocusable) {
+            this.firstFocusable.focus();
+        }
+        
+        // Dodaj event listenery
+        document.addEventListener('keydown', this.handleKeydown.bind(this));
+        modalElement.addEventListener('keydown', this.trapFocus.bind(this));
+    }
+
+    // Zamknij modal i przywróć fokus
+    closeModal(modalElement) {
+        // Ukryj modal
+        modalElement.setAttribute('hidden', '');
+        modalElement.style.display = 'none';
+        
+        // Przywróć fokus do elementu, który otworzył modal
+        if (this.previousFocus) {
+            this.previousFocus.focus();
+        }
+        
+        // Usuń event listenery
+        document.removeEventListener('keydown', this.handleKeydown.bind(this));
+        modalElement.removeEventListener('keydown', this.trapFocus.bind(this));
+    }
+
+    // Znajdź wszystkie focusable elementy
+    updateFocusableElements(container) {
+        const focusableSelectors = [
+            'button:not([disabled])',
+            'input:not([disabled])',
+            'select:not([disabled])',
+            'textarea:not([disabled])',
+            'a[href]',
+            '[tabindex]:not([tabindex="-1"])'
+        ];
+        
+        this.focusableElements = container.querySelectorAll(focusableSelectors.join(', '));
+        this.firstFocusable = this.focusableElements[0];
+        this.lastFocusable = this.focusableElements[this.focusableElements.length - 1];
+    }
+
+    // Ogranicz fokus do wnętrza modala (focus trap)
+    trapFocus(event) {
+        if (event.key === 'Tab') {
+            if (event.shiftKey) {
+                // Shift + Tab - fokus do poprzedniego elementu
+                if (document.activeElement === this.firstFocusable) {
+                    event.preventDefault();
+                    this.lastFocusable.focus();
+                }
+            } else {
+                // Tab - fokus do następnego elementu
+                if (document.activeElement === this.lastFocusable) {
+                    event.preventDefault();
+                    this.firstFocusable.focus();
+                }
+            }
+        }
+    }
+
+    // Obsłuż klawisze globalne (np. Escape)
+    handleKeydown(event) {
+        if (event.key === 'Escape') {
+            const openModal = document.querySelector('.modal:not([hidden])');
+            if (openModal) {
+                this.closeModal(openModal);
+            }
+        }
+    }
+}
+
+// Użycie
+const focusManager = new FocusManager();
+const openModalBtn = document.getElementById('open-modal-btn');
+const modal = document.getElementById('demo-modal');
+const closeModalBtns = modal.querySelectorAll('.modal-close, .modal-cancel');
+
+// Otwieranie modala
+openModalBtn.addEventListener('click', () => {
+    focusManager.openModal(modal);
+});
+
+// Zamykanie modala
+closeModalBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        focusManager.closeModal(modal);
+    });
+});
+
+// Zamknij modal przy kliknięciu tła
+modal.querySelector('.modal-backdrop').addEventListener('click', () => {
+    focusManager.closeModal(modal);
+});</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Modal implementuje kompletne zarządzanie fokusem - "uwięża"
+                            fokus wewnątrz, przywraca go po zamknięciu i obsługuje klawisze ESC. Użytkownik nie może
+                            przypadkowo opuścić modala Tabem i zawsze wie gdzie się znajduje.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - dynamiczne treści i zarządzanie fokusem</h4>
+                        <p>Prawidłowe zarządzanie fokusem przy dynamicznie dodawanych treściach:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #004085; margin-top: 0;">🔄 Demo dynamicznych treści:</h5>
+
+                                    <div style="margin: 15px 0;">
+                                        <button id="add-item-btn"
+                                            style="background: #28a745; color: white; border: none; padding: 10px 16px; border-radius: 4px; cursor: pointer; margin-right: 10px;">
+                                            Dodaj element
+                                        </button>
+
+                                        <button id="show-message-btn"
+                                            style="background: #007bff; color: white; border: none; padding: 10px 16px; border-radius: 4px; cursor: pointer;">
+                                            Pokaż wiadomość
+                                        </button>
+                                    </div>
+
+                                    <div id="dynamic-content"
+                                        style="margin: 15px 0; min-height: 50px; border: 1px dashed #6c757d; padding: 15px; border-radius: 4px;">
+                                        <p style="color: #6c757d; margin: 0; font-style: italic;">Tutaj pojawią się
+                                            dynamiczne treści...</p>
+                                    </div>
+
+                                    <div id="message-area" role="status" aria-live="polite"
+                                        style="margin: 15px 0; min-height: 30px; background-color: #f8f9fa; padding: 10px; border-radius: 4px; border-left: 4px solid #007bff;">
+                                        <span id="message-text" style="color: #495057;">Status: Gotowy do
+                                            działania</span>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #155724; margin-top: 0;">✨ Kluczowe aspekty dynamicznego
+                                        zarządzania fokusem:</h6>
+                                    <ul style="color: #155724; margin-bottom: 0; font-size: 0.95em;">
+                                        <li><strong>Fokus na nowe treści</strong> - fokus przenosi się do dodanych
+                                            elementów</li>
+                                        <li><strong>Aria-live regions</strong> - zmiany są ogłaszane czytnikowi ekranu
+                                        </li>
+                                        <li><strong>Logical insertion</strong> - nowe elementy w logicznym miejscu DOM
+                                        </li>
+                                        <li><strong>Focus announcement</strong> - jasne komunikowanie zmian</li>
+                                        <li><strong>Keyboard accessibility</strong> - wszystkie akcje dostępne z
+                                            klawiatury</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - dynamiczne treści z zarządzaniem fokusem --&gt;
+&lt;div class="dynamic-interface"&gt;
+    &lt;button id="add-item"&gt;Dodaj element&lt;/button&gt;
+    &lt;button id="show-notification"&gt;Pokaż powiadomienie&lt;/button&gt;
+    
+    &lt;!-- Kontener na dynamiczne treści --&gt;
+    &lt;div id="content-container" role="group" aria-label="Dynamiczne treści"&gt;
+        &lt;!-- Nowe elementy będą dodawane tutaj --&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- Live region dla powiadomień --&gt;
+    &lt;div id="status" role="status" aria-live="polite" aria-atomic="true"&gt;&lt;/div&gt;
+    &lt;div id="alerts" role="alert" aria-live="assertive"&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                        <pre><code class="language-javascript">// DOBRY PRZYKŁAD - zarządzanie fokusem w dynamicznych treściach
+
+class DynamicFocusManager {
+    constructor() {
+        this.itemCounter = 0;
+        this.setupEventListeners();
+    }
+
+    setupEventListeners() {
+        document.getElementById('add-item').addEventListener('click', () => {
+            this.addNewItem();
+        });
+        
+        document.getElementById('show-notification').addEventListener('click', () => {
+            this.showNotification();
+        });
+    }
+
+    // Dodaj nowy element i ustaw na nim fokus
+    addNewItem() {
+        this.itemCounter++;
+        const container = document.getElementById('content-container');
+        
+        // Utwórz nowy element
+        const newItem = this.createNewItem(this.itemCounter);
+        
+        // Dodaj do DOM w logicznym miejscu
+        container.appendChild(newItem);
+        
+        // Ustaw fokus na nowym elemencie
+        const focusTarget = newItem.querySelector('.item-input');
+        if (focusTarget) {
+            focusTarget.focus();
+            
+            // Ogłoś zmianę dla czytników ekranu
+            this.announceChange(`Dodano nowy element ${this.itemCounter}. Fokus przeniesiony do pola tekstowego.`);
+        }
+    }
+
+    // Utwórz nowy element z prawidłową strukturą
+    createNewItem(id) {
+        const item = document.createElement('div');
+        item.className = 'dynamic-item';
+        item.setAttribute('role', 'group');
+        item.setAttribute('aria-label', `Element ${id}`);
+        
+        item.innerHTML = `
+            &lt;div class="item-header"&gt;
+                &lt;h3&gt;Element ${id}&lt;/h3&gt;
+                &lt;button class="remove-item" data-item="${id}" aria-label="Usuń element ${id}"&gt;
+                    Usuń
+                &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div class="item-content"&gt;
+                &lt;label for="item-input-${id}"&gt;Wartość:&lt;/label&gt;
+                &lt;input type="text" id="item-input-${id}" class="item-input" placeholder="Wprowadź wartość"&gt;
+                &lt;button class="item-action" data-item="${id}"&gt;Zapisz&lt;/button&gt;
+            &lt;/div&gt;
+        `;
+        
+        // Dodaj event listenery dla nowego elementu
+        this.attachItemListeners(item, id);
+        
+        return item;
+    }
+
+    // Dodaj event listenery do nowego elementu
+    attachItemListeners(item, id) {
+        // Usuwanie elementu
+        const removeBtn = item.querySelector('.remove-item');
+        removeBtn.addEventListener('click', () => {
+            this.removeItem(item, id);
+        });
+        
+        // Akcja zapisu
+        const actionBtn = item.querySelector('.item-action');
+        actionBtn.addEventListener('click', () => {
+            this.saveItem(item, id);
+        });
+        
+        // Enter w polu tekstowym = zapisz
+        const input = item.querySelector('.item-input');
+        input.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                this.saveItem(item, id);
+            }
+        });
+    }
+
+    // Usuń element z zarządzaniem fokusem
+    removeItem(item, id) {
+        // Znajdź element do przeniesienia fokusa
+        const nextFocusTarget = this.findNextFocusTarget(item);
+        
+        // Usuń element
+        item.remove();
+        
+        // Ustaw fokus na odpowiednim elemencie
+        if (nextFocusTarget) {
+            nextFocusTarget.focus();
+        }
+        
+        // Ogłoś zmianę
+        this.announceChange(`Element ${id} został usunięty.`);
+    }
+
+    // Znajdź następny element do fokusa po usunięciu
+    findNextFocusTarget(removedItem) {
+        // Spróbuj znaleźć następny element tego samego typu
+        let nextItem = removedItem.nextElementSibling;
+        if (nextItem && nextItem.classList.contains('dynamic-item')) {
+            return nextItem.querySelector('.item-input');
+        }
+        
+        // Jeśli nie ma następnego, znajdź poprzedni
+        let prevItem = removedItem.previousElementSibling;
+        if (prevItem && prevItem.classList.contains('dynamic-item')) {
+            return prevItem.querySelector('.item-input');
+        }
+        
+        // Jeśli to był ostatni element, wróć do przycisku "Dodaj"
+        return document.getElementById('add-item');
+    }
+
+    // Zapisz wartość elementu
+    saveItem(item, id) {
+        const input = item.querySelector('.item-input');
+        const value = input.value.trim();
+        
+        if (value) {
+            // Symuluj zapisywanie
+            this.announceChange(`Element ${id} zapisany: "${value}"`);
+            
+            // Wizualne potwierdzenie
+            input.style.borderColor = '#28a745';
+            setTimeout(() => {
+                input.style.borderColor = '';
+            }, 1000);
+        } else {
+            // Błąd walidacji
+            this.announceError(`Pole w elemencie ${id} nie może być puste`);
+            input.focus(); // Przywróć fokus do pustego pola
+        }
+    }
+
+    // Pokaż powiadomienie
+    showNotification() {
+        const notifications = [
+            'Operacja zakończona pomyślnie',
+            'Dane zostały zapisane',
+            'Synchronizacja ukończona',
+            'Nowe aktualizacje dostępne'
+        ];
+        
+        const randomNotification = notifications[Math.floor(Math.random() * notifications.length)];
+        this.announceChange(randomNotification);
+    }
+
+    // Ogłoś zmianę (dla pozytywnych informacji)
+    announceChange(message) {
+        const status = document.getElementById('status');
+        status.textContent = message;
+        
+        // Wyczyść po kilku sekundach
+        setTimeout(() => {
+            status.textContent = '';
+        }, 5000);
+    }
+
+    // Ogłoś błąd (dla alertów)
+    announceError(message) {
+        const alerts = document.getElementById('alerts');
+        alerts.textContent = message;
+        
+        // Wyczyść po kilku sekundach
+        setTimeout(() => {
+            alerts.textContent = '';
+        }, 5000);
+    }
+}
+
+// Inicjalizacja
+document.addEventListener('DOMContentLoaded', () => {
+    new DynamicFocusManager();
+});</code></pre>
+
+                        <pre><code class="language-css">/* CSS dla dynamicznych elementów */
+.dynamic-item {
+    border: 1px solid #dee2e6;
+    border-radius: 6px;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.item-content {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.item-input {
+    padding: 6px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: border-color 0.2s;
+}
+
+.item-input:focus {
+    border-color: #007bff;
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* Oznaczenie nowo dodanych elementów */
+.dynamic-item.newly-added {
+    animation: highlightNew 0.5s ease-out;
+}
+
+@keyframes highlightNew {
+    0% {
+        background-color: #fff3cd;
+        transform: scale(1.02);
+    }
+    100% {
+        background-color: #f8f9fa;
+        transform: scale(1);
+    }
+}</code></pre>
+
+                        <p class="explanation">Rozwiązanie: System dynamicznie zarządza fokusem przy dodawaniu/usuwaniu
+                            elementów. Fokus zawsze idzie w logiczne miejsce (nowy element, następny istniejący, lub
+                            przycisk dodawania). Wszystkie zmiany są ogłaszane przez aria-live regions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie zgodności z 2.4.3</h3>
+
+                <h4>Procedura testowa</h4>
+                <ol>
+                    <li><strong>Test tylko klawiaturowy</strong>
+                        <ul>
+                            <li>Odłącz mysz lub nie używaj jej wcale</li>
+                            <li>Nawiguj po stronie używając tylko Tab i Shift+Tab</li>
+                            <li>Sprawdź czy kolejność jest logiczna i przewidywalna</li>
+                            <li>Upewnij się, że można wykonać wszystkie zadania</li>
+                        </ul>
+                    </li>
+                    <li><strong>Porównanie z wizualną kolejnością</strong>
+                        <ul>
+                            <li>Porównaj kolejność fokusa z wizualnym układem</li>
+                            <li>Sprawdź czy fokus nie "skacze" po ekranie</li>
+                            <li>Oceń czy kolejność jest zgodna z oczekiwaniami użytkownika</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test z czytnikiem ekranu</strong>
+                        <ul>
+                            <li>Użyj NVDA, JAWS lub VoiceOver</li>
+                            <li>Sprawdź czy sekwencyjna nawigacja ma sens kontekstowy</li>
+                            <li>Oceń czy powiązane elementy są blisko siebie</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test modalów i dynamicznych treści</strong>
+                        <ul>
+                            <li>Sprawdź czy fokus jest "uwięziony" w modalach</li>
+                            <li>Przetestuj zarządzanie fokusem przy dodawaniu treści</li>
+                            <li>Oceń przywracanie fokusa po zamknięciu modalów</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Narzędzia testowe</h4>
+                <ul>
+                    <li><strong>Keyboard Navigation Tester</strong> - sprawdza kolejność fokusa</li>
+                    <li><strong>axe DevTools</strong> - wykrywa problemy z fokusem</li>
+                    <li><strong>WAVE</strong> - analizuje strukturę nawigacji</li>
+                    <li><strong>Tab order overlay</strong> - wizualizuje kolejność tabulacji</li>
+                    <li><strong>Focus indicator tools</strong> - sprawdzają widoczność fokusa</li>
+                </ul>
+
+                <h4>Checklist zgodności</h4>
+                <div
+                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <h5>✅ Kryteria do spełnienia:</h5>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>☐ Kolejność fokusa odpowiada wizualnej kolejności</li>
+                        <li>☐ Fokus przesuwa się logicznie i przewidywalnie</li>
+                        <li>☐ Wszystkie interaktywne elementy są dostępne z klawiatury</li>
+                        <li>☐ Powiązane elementy są blisko siebie w kolejności</li>
+                        <li>☐ Modały implementują focus trap</li>
+                        <li>☐ Fokus jest prawidłowo przywracany po zamknięciu modalów</li>
+                        <li>☐ Dynamiczne treści zarządzają fokusem</li>
+                        <li>☐ Można wykonać wszystkie zadania używając tylko klawiatury</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="implementation-guidelines">
+                <h3>Wytyczne implementacyjne</h3>
+
+                <h4>Najlepsze praktyki:</h4>
+                <ul>
+                    <li><strong>DOM order = visual order</strong> - upewnij się, że kolejność HTML odpowiada wizualnej
+                    </li>
+                    <li><strong>Unikaj tabindex > 0</strong> - używaj tylko tabindex="-1" i "0"</li>
+                    <li><strong>Testuj z klawiaturą</strong> - regularnie sprawdzaj nawigację Tab/Shift+Tab</li>
+                    <li><strong>Implementuj focus trap w modalach</strong> - fokus nie może "uciec" z modala</li>
+                    <li><strong>Zarządzaj fokusem dynamicznie</strong> - przenoś fokus do nowych treści</li>
+                    <li><strong>Przywracaj fokus</strong> - wracaj do poprzedniego elementu po zamknięciu</li>
+                </ul>
+
+                <h4>Wzorce implementacji:</h4>
+                <div
+                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #004085; margin-top: 0;">1. Podstawowa kolejność</h5>
+                    <pre style="color: #004085;"><code><!-- HTML w naturalnej kolejności czytania -->
+<header>Navigation</header>
+<main>Content</main>
+<aside>Sidebar</aside>
+<footer>Footer</footer></code></pre>
+                </div>
+
+                <div
+                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #155724; margin-top: 0;">2. Focus trap w modalu</h5>
+                    <pre style="color: #155724;"><code>// Focus trap implementation
+if (isFirstElement && shiftKey) {
+    lastElement.focus();
+    event.preventDefault();
+} else if (isLastElement && !shiftKey) {
+    firstElement.focus();
+    event.preventDefault();
+}</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #856404; margin-top: 0;">3. Dynamiczne treści</h5>
+                    <pre style="color: #856404;"><code>// Przenieś fokus do nowego elementu
+const newElement = createNewElement();
+container.appendChild(newElement);
+newElement.querySelector('input').focus();</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #721c24; margin-top: 0;">4. Przywracanie fokusa</h5>
+                    <pre style="color: #721c24;"><code>// Zapisz i przywróć fokus
+const previousFocus = document.activeElement;
+openModal();
+// Po zamknięciu:
+previousFocus.focus();</code></pre>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/focus-order.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG 2.1: Kolejność fokusa</a></li>
+                    <li><a href="https://webaim.org/techniques/keyboard/taborder" target="_blank" rel="noopener">WebAIM:
+                            Keyboard Accessibility - Tab Order</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Keyboard-navigable_JavaScript_widgets"
+                            target="_blank" rel="noopener">MDN: Keyboard-navigable JavaScript widgets</a></li>
+                    <li><a href="https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/" target="_blank"
+                            rel="noopener">W3C: Keyboard Interface Design Patterns</a></li>
+                    <li><a href="https://hiddedevries.nl/en/blog/2017-01-29-using-javascript-to-trap-focus-in-an-element"
+                            target="_blank" rel="noopener">Focus trap implementation guide</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.4.2.html">Poprzedni: 2.4.2 Tytuł strony</a></li>
+                    <li><a href="2.4.4.html">Następny: 2.4.4 Cel linku (w kontekście)</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+
+    <script>
+        // Demo funkcjonalność dla przykładów fokusa
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // === DEMO ZŁEJ KOLEJNOŚCI FOKUSA ===
+            const badFocusElements = document.querySelectorAll('.bad-focus-demo');
+            const badFocusIndicator = document.getElementById('bad-focus-indicator');
+
+            badFocusElements.forEach(element => {
+                element.addEventListener('focus', function () {
+                    const step = this.getAttribute('data-step');
+                    badFocusIndicator.textContent = `Fokus na elemencie ${step} (chaotyczna kolejność!)`;
+
+                    // Highlight focused element
+                    badFocusElements.forEach(el => el.style.outline = '');
+                    this.style.outline = '3px solid #dc3545';
+                });
+
+                element.addEventListener('blur', function () {
+                    this.style.outline = '';
+                });
+            });
+
+            // === DEMO DOBREJ KOLEJNOŚCI FOKUSA ===
+            const goodFocusElements = document.querySelectorAll('.good-focus-demo');
+            const goodFocusIndicator = document.getElementById('good-focus-indicator');
+
+            goodFocusElements.forEach(element => {
+                element.addEventListener('focus', function () {
+                    const step = this.getAttribute('data-step');
+                    const label = this.previousElementSibling ? this.previousElementSibling.textContent : this.textContent;
+                    goodFocusIndicator.textContent = `Fokus na: ${step}. ${label.replace(':', '')}`;
+
+                    // Highlight focused element
+                    goodFocusElements.forEach(el => el.style.outline = '');
+                    this.style.outline = '3px solid #28a745';
+                });
+
+                element.addEventListener('blur', function () {
+                    this.style.outline = '';
+                });
+            });
+
+            // === DEMO MODALA Z FOCUS TRAPEM ===
+            const openModalBtn = document.getElementById('open-modal-btn');
+            const modal = document.getElementById('demo-modal');
+            const closeModalBtns = modal.querySelectorAll('#modal-close-btn, #modal-cancel-btn');
+            let previousFocus = null;
+
+            // Lista focusable elementów w modalu
+            function getFocusableElements(container) {
+                return container.querySelectorAll(
+                    'button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])'
+                );
+            }
+
+            // Otwórz modal
+            if (openModalBtn) {
+                openModalBtn.addEventListener('click', function () {
+                    previousFocus = document.activeElement;
+                    modal.style.display = 'block';
+
+                    const focusableElements = getFocusableElements(modal);
+                    if (focusableElements.length > 0) {
+                        focusableElements[0].focus();
+                    }
+
+                    // Event listener dla focus trap
+                    modal.addEventListener('keydown', trapFocus);
+                    document.addEventListener('keydown', handleEscape);
+                });
+            }
+
+            // Zamknij modal
+            closeModalBtns.forEach(btn => {
+                btn.addEventListener('click', closeModal);
+            });
+
+            // Focus trap
+            function trapFocus(event) {
+                if (event.key !== 'Tab') return;
+
+                const focusableElements = getFocusableElements(modal);
+                const firstElement = focusableElements[0];
+                const lastElement = focusableElements[focusableElements.length - 1];
+
+                if (event.shiftKey) {
+                    if (document.activeElement === firstElement) {
+                        event.preventDefault();
+                        lastElement.focus();
+                    }
+                } else {
+                    if (document.activeElement === lastElement) {
+                        event.preventDefault();
+                        firstElement.focus();
+                    }
+                }
+            }
+
+            // Handle Escape key
+            function handleEscape(event) {
+                if (event.key === 'Escape' && modal.style.display === 'block') {
+                    closeModal();
+                }
+            }
+
+            // Close modal function
+            function closeModal() {
+                modal.style.display = 'none';
+                modal.removeEventListener('keydown', trapFocus);
+                document.removeEventListener('keydown', handleEscape);
+
+                if (previousFocus) {
+                    previousFocus.focus();
+                }
+            }
+
+            // === DEMO DYNAMICZNYCH TREŚCI ===
+            let itemCounter = 0;
+            const addItemBtn = document.getElementById('add-item-btn');
+            const showMessageBtn = document.getElementById('show-message-btn');
+            const dynamicContent = document.getElementById('dynamic-content');
+            const messageText = document.getElementById('message-text');
+
+            if (addItemBtn) {
+                addItemBtn.addEventListener('click', function () {
+                    itemCounter++;
+
+                    const newItem = document.createElement('div');
+                    newItem.className = 'dynamic-item';
+                    newItem.style.cssText = 'border: 1px solid #dee2e6; border-radius: 4px; padding: 10px; margin: 5px 0; background-color: #f8f9fa;';
+
+                    newItem.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                            <strong>Element ${itemCounter}</strong>
+                            <button onclick="this.closest('.dynamic-item').remove(); updateMessage('Element ${itemCounter} usunięty');" 
+                                    style="background: #dc3545; color: white; border: none; padding: 4px 8px; border-radius: 3px; cursor: pointer;">
+                                Usuń
+                            </button>
+                        </div>
+                        <input type="text" placeholder="Wprowadź wartość..." 
+                               style="width: 100%; padding: 6px; border: 1px solid #ced4da; border-radius: 3px;">
+                    `;
+
+                    // Wyczyść placeholder jeśli to pierwszy element
+                    if (itemCounter === 1) {
+                        dynamicContent.innerHTML = '';
+                    }
+
+                    dynamicContent.appendChild(newItem);
+
+                    // Ustaw fokus na nowym polu input
+                    const newInput = newItem.querySelector('input');
+                    newInput.focus();
+
+                    updateMessage(`Dodano element ${itemCounter}. Fokus przeniesiony do pola tekstowego.`);
+                });
+            }
+
+            if (showMessageBtn) {
+                showMessageBtn.addEventListener('click', function () {
+                    const messages = [
+                        'Operacja zakończona pomyślnie',
+                        'Dane zostały zapisane',
+                        'Synchronizacja ukończona',
+                        'Nowe aktualizacje dostępne'
+                    ];
+                    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+                    updateMessage(randomMessage);
+                });
+            }
+
+            function updateMessage(text) {
+                messageText.textContent = `Status: ${text}`;
+            }
+
+            // Global function for dynamic item removal
+            window.updateMessage = updateMessage;
+        });
+    </script>
+</body>
+
+</html>

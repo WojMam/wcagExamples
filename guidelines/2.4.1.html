@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.4.1 Pomijanie bloków (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.4.1 Pomijanie bloków</h2>
+                <p class="criterion-level">Poziom A</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#bypass-blocks" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Dostępny jest mechanizm pomijania bloków treści, które są powtarzane na wielu stronach internetowych.
+                </p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest umożliwienie osobom nawigującym sekwencyjnie treścią szybszego
+                    dostępu do głównej treści strony internetowej. Strony i aplikacje często zawierają treści, które
+                    pojawiają się na wielu stronach lub ekranach. Przykłady takich powtarzających się bloków treści to:
+                </p>
+
+                <ul>
+                    <li><strong>Linki nawigacyjne</strong> - główne menu strony</li>
+                    <li><strong>Bannery i reklamy</strong> - powtarzające się na każdej stronie</li>
+                    <li><strong>Menu boczne</strong> - nawigacja sekcji</li>
+                    <li><strong>Formularze wyszukiwania</strong> - obecne w nagłówku</li>
+                    <li><strong>Stopki</strong> - informacje kontaktowe i linki</li>
+                </ul>
+
+                <p>Dla osób korzystających z czytników ekranu lub nawigacji klawiaturą przechodzenie przez te same
+                    elementy na każdej stronie może być męczące i czasochłonne.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - brak mechanizmów pomijania</h4>
+                        <p>Strona bez linków pomijających ani właściwej struktury nagłówków:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #f8f9fa; padding: 15px; border-bottom: 1px solid #dee2e6;">
+                                    <h4 style="margin: 0 0 10px 0;">Logo Strony</h4>
+                                    <nav style="margin: 10px 0;">
+                                        <a href="#" style="margin-right: 15px;">Strona główna</a>
+                                        <a href="#" style="margin-right: 15px;">O nas</a>
+                                        <a href="#" style="margin-right: 15px;">Produkty</a>
+                                        <a href="#" style="margin-right: 15px;">Usługi</a>
+                                        <a href="#" style="margin-right: 15px;">Blog</a>
+                                        <a href="#" style="margin-right: 15px;">Kontakt</a>
+                                    </nav>
+                                    <div style="margin: 10px 0;">
+                                        <input type="search" placeholder="Szukaj..." style="padding: 5px;">
+                                        <button style="padding: 5px 10px;">Szukaj</button>
+                                    </div>
+                                </div>
+
+                                <div style="padding: 20px;">
+                                    <p><strong>Problem:</strong> Użytkownik musi przejść przez 6 linków nawigacji +
+                                        formularz wyszukiwania na każdej stronie, zanim dotrze do treści głównej.</p>
+                                    <p>Dla osoby korzystającej z klawiatury oznacza to minimum 8 naciśnięć Tab na każdej
+                                        stronie!</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- ZŁY PRZYKŁAD - brak mechanizmów pomijania --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;Strona bez dostępności&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Brak linku pomijającego --&gt;
+    
+    &lt;header&gt;
+        &lt;h1&gt;Logo Strony&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href="/"&gt;Strona główna&lt;/a&gt;
+            &lt;a href="/o-nas"&gt;O nas&lt;/a&gt;
+            &lt;a href="/produkty"&gt;Produkty&lt;/a&gt;
+            &lt;a href="/uslugi"&gt;Usługi&lt;/a&gt;
+            &lt;a href="/blog"&gt;Blog&lt;/a&gt;
+            &lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;
+        &lt;/nav&gt;
+        &lt;form&gt;
+            &lt;input type="search" placeholder="Szukaj..."&gt;
+            &lt;button type="submit"&gt;Szukaj&lt;/button&gt;
+        &lt;/form&gt;
+    &lt;/header&gt;
+    
+    &lt;!-- Brak oznaczenia treści głównej --&gt;
+    &lt;div&gt;
+        &lt;p&gt;Tutaj jest treść główna...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                        <p class="explanation">Problem: Użytkownicy muszą przechodzić przez te same elementy nawigacyjne
+                            na każdej stronie. Brak jest mechanizmu pozwalającego pominąć powtarzające się treści i
+                            przejść bezpośrednio do głównej zawartości.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - link pomijający do treści głównej</h4>
+                        <p>Implementacja podstawowego linku pomijającego:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+                                    <p style="margin: 0; color: #155724;">
+                                        <strong>Demo:</strong> Kliknij w tym obszarze i naciśnij Tab, aby zobaczyć link
+                                        pomijający
+                                    </p>
+                                </div>
+
+                                <div class="skip-demo" tabindex="0"
+                                    style="border: 2px dashed #007bff; padding: 15px; background-color: #f8f9fa;">
+                                    <a href="#main-content-demo" class="skip-link-demo"
+                                        style="position: absolute; left: -9999px; color: #007bff; background: white; padding: 8px; text-decoration: none; border: 2px solid #007bff;">
+                                        Przejdź do treści głównej
+                                    </a>
+
+                                    <div
+                                        style="background-color: #e7f3ff; padding: 10px; border-bottom: 1px solid #b8daff;">
+                                        <h5 style="margin: 0 0 10px 0;">Logo Strony</h5>
+                                        <nav>
+                                            <a href="#" style="margin-right: 10px;">Home</a>
+                                            <a href="#" style="margin-right: 10px;">About</a>
+                                            <a href="#" style="margin-right: 10px;">Products</a>
+                                            <a href="#" style="margin-right: 10px;">Contact</a>
+                                        </nav>
+                                    </div>
+
+                                    <div id="main-content-demo"
+                                        style="padding: 15px; background-color: #fff; border: 2px solid #28a745; border-radius: 5px; margin-top: 10px;">
+                                        <h6 style="color: #28a745; margin-top: 0;">✅ Treść główna (można od razu tutaj
+                                            przeskoczyć!)</h6>
+                                        <p style="margin-bottom: 0;">Tu jest główna zawartość strony, do której
+                                            użytkownik może przejść bezpośrednio.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - podstawowy link pomijający --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;title&gt;Dostępna strona&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Link pomijający - pierwszy element focusable --&gt;
+    &lt;a href="#main" class="skip-link"&gt;Przejdź do treści głównej&lt;/a&gt;
+    
+    &lt;header&gt;
+        &lt;h1&gt;Logo Strony&lt;/h1&gt;
+        &lt;nav aria-label="Nawigacja główna"&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="/"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/o-nas"&gt;O nas&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/produkty"&gt;Produkty&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+        &lt;form role="search"&gt;
+            &lt;label for="search"&gt;Szukaj&lt;/label&gt;
+            &lt;input type="search" id="search" name="search"&gt;
+            &lt;button type="submit"&gt;Szukaj&lt;/button&gt;
+        &lt;/form&gt;
+    &lt;/header&gt;
+    
+    &lt;!-- Oznaczona treść główna --&gt;
+    &lt;main id="main"&gt;
+        &lt;h1&gt;Tytuł strony&lt;/h1&gt;
+        &lt;p&gt;Tutaj jest treść główna strony...&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                        <pre><code class="language-css">/* CSS dla linku pomijającego */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 0 0 4px 4px;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Alternatywnie - zawsze widoczny link */
+.skip-link-visible {
+    display: block;
+    background: #007bff;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.skip-link-visible:hover,
+.skip-link-visible:focus {
+    background: #0056b3;
+}</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Link pomijający pozwala użytkownikom pominąć powtarzające
+                            się elementy nawigacyjne i przejść bezpośrednio do głównej treści. Jest to szczególnie ważne
+                            dla osób korzystających z czytników ekranu i nawigacji klawiaturowej.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - wielokrotne linki pomijające</h4>
+                        <p>Zaawansowany system linków pomijających do różnych sekcji:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="margin-top: 0; color: #004085;">Zaawansowane linki pomijające</h5>
+                                    <div class="multiple-skip-links">
+                                        <a href="#main-content"
+                                            style="display: inline-block; background: #007bff; color: white; padding: 6px 12px; margin: 4px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Treść
+                                            główna</a>
+                                        <a href="#sidebar-content"
+                                            style="display: inline-block; background: #28a745; color: white; padding: 6px 12px; margin: 4px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Menu
+                                            boczne</a>
+                                        <a href="#search-section"
+                                            style="display: inline-block; background: #ffc107; color: #212529; padding: 6px 12px; margin: 4px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Wyszukiwarka</a>
+                                        <a href="#footer-content"
+                                            style="display: inline-block; background: #6c757d; color: white; padding: 6px 12px; margin: 4px; text-decoration: none; border-radius: 4px; font-size: 0.9em;">Stopka</a>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px; margin-top: 15px;">
+                                    <div id="main-content"
+                                        style="padding: 15px; background-color: #d4edda; border: 2px solid #c3e6cb; border-radius: 5px;">
+                                        <h6 style="color: #155724; margin-top: 0;">📄 Treść główna</h6>
+                                        <p style="color: #155724; margin-bottom: 0;">Tu jest główna zawartość artykułu
+                                            lub strony.</p>
+                                    </div>
+
+                                    <div id="sidebar-content"
+                                        style="padding: 15px; background-color: #d1ecf1; border: 2px solid #bee5eb; border-radius: 5px;">
+                                        <h6 style="color: #0c5460; margin-top: 0;">📋 Menu boczne</h6>
+                                        <p style="color: #0c5460; margin-bottom: 0; font-size: 0.9em;">Dodatkowe linki i
+                                            nawigacja sekcji.</p>
+                                    </div>
+                                </div>
+
+                                <div id="search-section"
+                                    style="padding: 15px; background-color: #fff3cd; border: 2px solid #ffeaa7; border-radius: 5px; margin: 15px 0;">
+                                    <h6 style="color: #856404; margin-top: 0;">🔍 Sekcja wyszukiwania</h6>
+                                    <p style="color: #856404; margin-bottom: 0;">Zaawansowane opcje wyszukiwania i
+                                        filtry.</p>
+                                </div>
+
+                                <div id="footer-content"
+                                    style="padding: 15px; background-color: #f8d7da; border: 2px solid #f5c6cb; border-radius: 5px;">
+                                    <h6 style="color: #721c24; margin-top: 0;">📞 Stopka</h6>
+                                    <p style="color: #721c24; margin-bottom: 0;">Informacje kontaktowe i dodatkowe
+                                        linki.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - wielokrotne linki pomijające --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;title&gt;Zaawansowane pomijanie bloków&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Panel linków pomijających --&gt;
+    &lt;nav aria-label="Linki pomijające" class="skip-links"&gt;
+        &lt;a href="#main"&gt;Przejdź do treści głównej&lt;/a&gt;
+        &lt;a href="#sidebar"&gt;Przejdź do menu bocznego&lt;/a&gt;
+        &lt;a href="#search"&gt;Przejdź do wyszukiwarki&lt;/a&gt;
+        &lt;a href="#footer"&gt;Przejdź do stopki&lt;/a&gt;
+    &lt;/nav&gt;
+    
+    &lt;header&gt;
+        &lt;h1&gt;Logo Witryny&lt;/h1&gt;
+        &lt;nav aria-label="Nawigacja główna"&gt;
+            &lt;!-- Główne menu --&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;div class="layout"&gt;
+        &lt;main id="main"&gt;
+            &lt;h1&gt;Główna treść strony&lt;/h1&gt;
+            &lt;!-- Zawartość główna --&gt;
+        &lt;/main&gt;
+        
+        &lt;aside id="sidebar" aria-label="Menu boczne"&gt;
+            &lt;h2&gt;Dodatkowe opcje&lt;/h2&gt;
+            &lt;!-- Menu boczne --&gt;
+        &lt;/aside&gt;
+    &lt;/div&gt;
+    
+    &lt;section id="search" aria-label="Wyszukiwanie"&gt;
+        &lt;h2&gt;Zaawansowane wyszukiwanie&lt;/h2&gt;
+        &lt;!-- Formularz wyszukiwania --&gt;
+    &lt;/section&gt;
+    
+    &lt;footer id="footer"&gt;
+        &lt;h2&gt;Informacje kontaktowe&lt;/h2&gt;
+        &lt;!-- Treść stopki --&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                        <pre><code class="language-css">/* CSS dla zaawansowanych linków pomijających */
+.skip-links {
+    background: #000;
+    padding: 10px;
+    text-align: center;
+}
+
+.skip-links a {
+    display: inline-block;
+    background: #007bff;
+    color: white;
+    padding: 6px 12px;
+    margin: 0 4px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+}
+
+.skip-links a:hover,
+.skip-links a:focus {
+    background: #0056b3;
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+/* Ukryj panel na małych ekranach jeśli nie jest potrzebny */
+@media (max-width: 768px) {
+    .skip-links {
+        padding: 5px;
+    }
+    
+    .skip-links a {
+        font-size: 0.8em;
+        padding: 4px 8px;
+        margin: 0 2px;
+    }
+}</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Zaawansowany system linków pomijających pozwala użytkownikom
+                            przejść bezpośrednio do różnych sekcji strony. Jest to szczególnie przydatne na złożonych
+                            stronach z wieloma obszarami treści.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - struktura nagłówków jako mechanizm pomijania</h4>
+                        <p>Wykorzystanie prawidłowej hierarchii nagłówków do nawigacji:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="margin-top: 0; color: #495057;">Struktura nagłówków pozwala czytnikowi
+                                        ekranu:</h5>
+                                    <ul style="color: #495057; margin-bottom: 0;">
+                                        <li>Przeskakiwać między sekcjami (H key w NVDA/JAWS)</li>
+                                        <li>Nawigować po poziomach nagłówków (1-6 keys)</li>
+                                        <li>Generować spis treści (Elements List)</li>
+                                        <li>Orientować się w strukturze dokumentu</li>
+                                    </ul>
+                                </div>
+
+                                <div class="heading-structure-demo">
+                                    <div style="border-left: 4px solid #007bff; padding-left: 15px; margin: 10px 0;">
+                                        <h3 style="color: #007bff; margin: 5px 0; font-size: 1.2em;">H1: Tytuł główny
+                                            strony</h3>
+                                    </div>
+
+                                    <div style="border-left: 4px solid #28a745; padding-left: 25px; margin: 10px 0;">
+                                        <h4 style="color: #28a745; margin: 5px 0; font-size: 1.1em;">H2: Nawigacja
+                                            główna</h4>
+                                        <p style="margin: 5px 0; color: #666; font-size: 0.9em;">Użytkownik może pominąć
+                                            tę sekcję</p>
+                                    </div>
+
+                                    <div style="border-left: 4px solid #dc3545; padding-left: 25px; margin: 10px 0;">
+                                        <h4 style="color: #dc3545; margin: 5px 0; font-size: 1.1em;">H2: Treść główna
+                                        </h4>
+                                        <p style="margin: 5px 0; color: #666; font-size: 0.9em;">Użytkownik może skoczyć
+                                            tutaj z H2</p>
+
+                                        <div
+                                            style="border-left: 4px solid #ffc107; padding-left: 15px; margin: 10px 0;">
+                                            <h5 style="color: #856404; margin: 5px 0; font-size: 1em;">H3: Podsekcja
+                                            </h5>
+                                            <p style="margin: 5px 0; color: #666; font-size: 0.9em;">Dalsze sekcje</p>
+                                        </div>
+                                    </div>
+
+                                    <div style="border-left: 4px solid #6f42c1; padding-left: 25px; margin: 10px 0;">
+                                        <h4 style="color: #6f42c1; margin: 5px 0; font-size: 1.1em;">H2: Menu boczne
+                                        </h4>
+                                        <p style="margin: 5px 0; color: #666; font-size: 0.9em;">Osobna sekcja - łatwa
+                                            do pominięcia</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - struktura nagłówków --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;title&gt;Strona z dobrą strukturą nagłówków&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- H1 - jeden na stronę, opisuje główny temat --&gt;
+    &lt;h1&gt;Przewodnik po dostępności stron internetowych&lt;/h1&gt;
+    
+    &lt;header&gt;
+        &lt;!-- H2 dla głównych sekcji strony --&gt;
+        &lt;h2&gt;Nawigacja główna&lt;/h2&gt;
+        &lt;nav aria-label="Nawigacja główna"&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="/"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/wcag"&gt;WCAG 2.1&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/narzedzia"&gt;Narzędzia&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;main&gt;
+        &lt;h2&gt;Wprowadzenie do WCAG 2.1&lt;/h2&gt;
+        &lt;p&gt;Podstawowe informacje o wytycznych dostępności...&lt;/p&gt;
+        
+        &lt;!-- H3 dla podsekcji --&gt;
+        &lt;h3&gt;Cztery główne zasady&lt;/h3&gt;
+        &lt;p&gt;WCAG 2.1 opiera się na czterech zasadach...&lt;/p&gt;
+        
+        &lt;h4&gt;1. Postrzegalność&lt;/h4&gt;
+        &lt;p&gt;Informacje muszą być przedstawione w sposób...&lt;/p&gt;
+        
+        &lt;h4&gt;2. Funkcjonalność&lt;/h4&gt;
+        &lt;p&gt;Komponenty interfejsu muszą być możliwe do użycia...&lt;/p&gt;
+        
+        &lt;h3&gt;Poziomy zgodności&lt;/h3&gt;
+        &lt;p&gt;WCAG definiuje trzy poziomy...&lt;/p&gt;
+    &lt;/main&gt;
+    
+    &lt;aside&gt;
+        &lt;h2&gt;Przydatne linki&lt;/h2&gt;
+        &lt;nav aria-label="Linki dodatkowe"&gt;
+            &lt;h3&gt;Narzędzia testujące&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;axe DevTools&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;WAVE&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            
+            &lt;h3&gt;Dokumentacja&lt;/h3&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="#"&gt;W3C WCAG 2.1&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#"&gt;WebAIM&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/aside&gt;
+    
+    &lt;footer&gt;
+        &lt;h2&gt;Informacje kontaktowe&lt;/h2&gt;
+        &lt;p&gt;Email: kontakt@example.com&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                        <pre><code class="language-css">/* CSS dla czytelnej struktury nagłówków */
+
+/* Zapewnij logiczną hierarchię wizualną */
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 2em;
+    color: #007bff;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.2em;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: #28a745;
+    margin-top: 1.2em;
+    margin-bottom: 0.4em;
+}
+
+h4 {
+    font-size: 1.2em;
+    color: #dc3545;
+    margin-top: 1em;
+    margin-bottom: 0.3em;
+}
+
+/* Dodaj ikony dla łatwiejszej identyfikacji */
+h2::before {
+    content: "📋 ";
+    margin-right: 0.5em;
+}
+
+h3::before {
+    content: "📄 ";
+    margin-right: 0.5em;
+}
+
+/* Ułatw nawigację przez podkreślenia focusa */
+h1:focus,
+h2:focus,
+h3:focus,
+h4:focus,
+h5:focus,
+h6:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Prawidłowa struktura nagłówków (H1-H6) tworzy naturalny
+                            mechanizm pomijania bloków. Użytkownicy czytników ekranu mogą nawigować między sekcjami
+                            używając skrótów klawiaturowych i pomijać nieistotne części.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - rozwijane sekcje (collapsible)</h4>
+                        <p>Mechanizm zwijania/rozwijania jako sposób na pomijanie bloków:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div class="collapsible-demo">
+                                    <div style="margin: 10px 0;">
+                                        <button class="collapsible-trigger" type="button" aria-expanded="false"
+                                            aria-controls="nav-content"
+                                            style="background: #007bff; color: white; border: none; padding: 10px 15px; width: 100%; text-align: left; cursor: pointer; border-radius: 5px;">
+                                            <span style="font-weight: bold;">🔽 Nawigacja główna</span>
+                                            <span style="float: right;" aria-hidden="true">▼</span>
+                                        </button>
+                                        <div id="nav-content" class="collapsible-content"
+                                            style="display: none; background: #f8f9fa; padding: 15px; border: 1px solid #dee2e6; border-top: none;">
+                                            <nav>
+                                                <a href="#" style="display: block; padding: 5px 0;">Strona główna</a>
+                                                <a href="#" style="display: block; padding: 5px 0;">O nas</a>
+                                                <a href="#" style="display: block; padding: 5px 0;">Produkty</a>
+                                                <a href="#" style="display: block; padding: 5px 0;">Kontakt</a>
+                                            </nav>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin: 10px 0;">
+                                        <button class="collapsible-trigger" type="button" aria-expanded="false"
+                                            aria-controls="search-content"
+                                            style="background: #28a745; color: white; border: none; padding: 10px 15px; width: 100%; text-align: left; cursor: pointer; border-radius: 5px;">
+                                            <span style="font-weight: bold;">🔽 Zaawansowane wyszukiwanie</span>
+                                            <span style="float: right;" aria-hidden="true">▼</span>
+                                        </button>
+                                        <div id="search-content" class="collapsible-content"
+                                            style="display: none; background: #f8f9fa; padding: 15px; border: 1px solid #dee2e6; border-top: none;">
+                                            <form>
+                                                <label for="search-term">Wyszukiwana fraza:</label>
+                                                <input type="search" id="search-term"
+                                                    style="width: 100%; padding: 5px; margin: 5px 0;">
+                                                <label for="category">Kategoria:</label>
+                                                <select id="category" style="width: 100%; padding: 5px; margin: 5px 0;">
+                                                    <option>Wszystkie</option>
+                                                    <option>Artykuły</option>
+                                                    <option>Produkty</option>
+                                                </select>
+                                                <button type="submit"
+                                                    style="background: #007bff; color: white; border: none; padding: 8px 16px; margin-top: 10px;">Szukaj</button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin: 10px 0;">
+                                        <h5 style="color: #155724; margin-top: 0;">📄 Treść główna</h5>
+                                        <p style="color: #155724; margin-bottom: 0;">Użytkownik może od razu przejść do
+                                            tej sekcji, pomijając zwinięte bloki powyżej.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - rozwijane sekcje --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;title&gt;Strona z rozwijalnymi sekcjami&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Logo Strony&lt;/h1&gt;
+        
+        &lt;!-- Rozwijalna nawigacja --&gt;
+        &lt;div class="collapsible-section"&gt;
+            &lt;button type="button" 
+                    aria-expanded="false" 
+                    aria-controls="main-nav"
+                    class="collapsible-trigger"&gt;
+                Nawigacja główna
+                &lt;span aria-hidden="true"&gt;▼&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;nav id="main-nav" class="collapsible-content" hidden&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a href="/"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="/o-nas"&gt;O nas&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="/produkty"&gt;Produkty&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/nav&gt;
+        &lt;/div&gt;
+        
+        &lt;!-- Rozwijalne wyszukiwanie --&gt;
+        &lt;div class="collapsible-section"&gt;
+            &lt;button type="button" 
+                    aria-expanded="false" 
+                    aria-controls="search-form"
+                    class="collapsible-trigger"&gt;
+                Zaawansowane wyszukiwanie
+                &lt;span aria-hidden="true"&gt;▼&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;div id="search-form" class="collapsible-content" hidden&gt;
+                &lt;form role="search"&gt;
+                    &lt;label for="search-query"&gt;Wyszukiwana fraza:&lt;/label&gt;
+                    &lt;input type="search" id="search-query" name="q"&gt;
+                    
+                    &lt;label for="search-category"&gt;Kategoria:&lt;/label&gt;
+                    &lt;select id="search-category" name="category"&gt;
+                        &lt;option value=""&gt;Wszystkie&lt;/option&gt;
+                        &lt;option value="articles"&gt;Artykuły&lt;/option&gt;
+                        &lt;option value="products"&gt;Produkty&lt;/option&gt;
+                    &lt;/select&gt;
+                    
+                    &lt;button type="submit"&gt;Szukaj&lt;/button&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/header&gt;
+    
+    &lt;main&gt;
+        &lt;h1&gt;Główna treść strony&lt;/h1&gt;
+        &lt;p&gt;Ta treść jest od razu dostępna, użytkownik nie musi 
+           rozwijać powyższych sekcji aby do niej dotrzeć.&lt;/p&gt;
+    &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                        <pre><code class="language-css">/* CSS dla rozwijanych sekcji */
+.collapsible-trigger {
+    width: 100%;
+    padding: 12px 16px;
+    background: #007bff;
+    color: white;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 4px;
+    margin-bottom: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.collapsible-trigger:hover,
+.collapsible-trigger:focus {
+    background: #0056b3;
+    outline: 2px solid #fff;
+    outline-offset: -2px;
+}
+
+.collapsible-trigger[aria-expanded="true"] {
+    border-radius: 4px 4px 0 0;
+}
+
+.collapsible-trigger[aria-expanded="true"] span[aria-hidden] {
+    transform: rotate(180deg);
+}
+
+.collapsible-content {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-top: none;
+    border-radius: 0 0 4px 4px;
+    padding: 16px;
+}
+
+.collapsible-content[hidden] {
+    display: none;
+}
+
+/* Animacja rozwijania (opcjonalna) */
+.collapsible-content {
+    transition: max-height 0.3s ease;
+    overflow: hidden;
+}
+
+/* Wskaźnik stanu */
+.collapsible-trigger span[aria-hidden] {
+    transition: transform 0.2s ease;
+    font-size: 0.8em;
+}</code></pre>
+
+                        <pre><code class="language-javascript">// JavaScript dla rozwijanych sekcji
+document.addEventListener('DOMContentLoaded', function() {
+    const triggers = document.querySelectorAll('.collapsible-trigger');
+    
+    triggers.forEach(trigger => {
+        trigger.addEventListener('click', function() {
+            const isExpanded = this.getAttribute('aria-expanded') === 'true';
+            const targetId = this.getAttribute('aria-controls');
+            const targetContent = document.getElementById(targetId);
+            
+            // Przełącz stan
+            this.setAttribute('aria-expanded', !isExpanded);
+            
+            if (isExpanded) {
+                targetContent.setAttribute('hidden', '');
+            } else {
+                targetContent.removeAttribute('hidden');
+            }
+            
+            // Zaktualizuj tekst przycisku dla czytników ekranu
+            const statusText = isExpanded ? 'zwinięte' : 'rozwinięte';
+            this.setAttribute('aria-label', 
+                this.textContent.trim() + ' - ' + statusText);
+        });
+    });
+    
+    // Dodaj obsługę klawiatury
+    triggers.forEach(trigger => {
+        trigger.addEventListener('keydown', function(event) {
+            // Enter i Space działają jak click
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                this.click();
+            }
+        });
+    });
+});</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Rozwijane sekcje pozwalają użytkownikom pomijać niepotrzebne
+                            bloki treści poprzez pozostawienie ich w stanie zwiniętym. Wszystkie elementy są dostępne z
+                            klawiatury i właściwie komunikują swój stan czytnikowi ekranu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie zgodności z 2.4.1</h3>
+
+                <h4>Procedura testowa</h4>
+                <ol>
+                    <li><strong>Identyfikacja powtarzających się bloków</strong>
+                        <ul>
+                            <li>Znajdź elementy powtarzające się na wielu stronach</li>
+                            <li>Oceń czy stanowią przeszkodę w dotarciu do głównej treści</li>
+                            <li>Sprawdź czy są to pierwsze elementy w kolejności tabulacji</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test nawigacji klawiaturowej</strong>
+                        <ul>
+                            <li>Rozpocznij nawigację od początku strony (Tab)</li>
+                            <li>Sprawdź czy dostępne są mechanizmy pomijania</li>
+                            <li>Przetestuj czy linki pomijające działają poprawnie</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test z czytnikiem ekranu</strong>
+                        <ul>
+                            <li>Użyj NVDA, JAWS lub VoiceOver</li>
+                            <li>Sprawdź nawigację po nagłówkach (H key)</li>
+                            <li>Przetestuj linki pomijające</li>
+                            <li>Oceń strukturę dokumentu (Elements List)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Weryfikacja skuteczności</strong>
+                        <ul>
+                            <li>Zmierz liczbę kroków do głównej treści</li>
+                            <li>Porównaj z i bez mechanizmów pomijania</li>
+                            <li>Sprawdź różne ścieżki nawigacji</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Narzędzia testowe</h4>
+                <ul>
+                    <li><strong>axe DevTools</strong> - wykrywa brakujące mechanizmy pomijania</li>
+                    <li><strong>WAVE</strong> - analizuje strukturę nagłówków</li>
+                    <li><strong>HeadingsMap</strong> - wizualizuje hierarchię nagłówków</li>
+                    <li><strong>Lighthouse</strong> - sprawdza podstawowe problemy dostępności</li>
+                    <li><strong>Keyboard Navigation Tester</strong> - symuluje nawigację klawiaturową</li>
+                </ul>
+
+                <h4>Checklist zgodności</h4>
+                <div
+                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <h5>✅ Kryteria do spełnienia:</h5>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>☐ Dostępne są linki pomijające do głównej treści</li>
+                        <li>☐ Linki pomijające są pierwszymi elementami focusable</li>
+                        <li>☐ Linki pomijające działają poprawnie (przenoszą fokus)</li>
+                        <li>☐ Struktura nagłówków jest logiczna i hierarchiczna</li>
+                        <li>☐ Można nawigować tylko po nagłówkach</li>
+                        <li>☐ Główne sekcje mają nagłówki lub landmarks</li>
+                        <li>☐ Mechanizmy pomijania są dostępne z klawiatury</li>
+                        <li>☐ Alternatywne metody (collapsible) działają poprawnie</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="implementation-guidelines">
+                <h3>Wytyczne implementacyjne</h3>
+
+                <h4>Najlepsze praktyki:</h4>
+                <ul>
+                    <li><strong>Umieść linki pomijające na początku</strong> - jako pierwsze elementy focusable</li>
+                    <li><strong>Używaj opisowych tekstów</strong> - "Przejdź do treści głównej", nie "Pomiń"</li>
+                    <li><strong>Zapewnij wizualny feedback</strong> - pokaż linki przy focus</li>
+                    <li><strong>Testuj z rzeczywistymi użytkownikami</strong> - szczególnie z osobami niewidomymi</li>
+                    <li><strong>Oferuj multiple opcje</strong> - linki pomijające + struktura nagłówków</li>
+                    <li><strong>Zachowaj spójność</strong> - te same mechanizmy na całej stronie</li>
+                </ul>
+
+                <h4>Popularne wzorce:</h4>
+                <div
+                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #004085; margin-top: 0;">1. Klasyczny link pomijający</h5>
+                    <pre
+                        style="color: #004085;"><code>&lt;a href="#main" class="skip-link"&gt;Skip to main content&lt;/a&gt;</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #155724; margin-top: 0;">2. Wielokrotne linki pomijające</h5>
+                    <pre style="color: #155724;"><code>&lt;nav aria-label="Skip links"&gt;
+  &lt;a href="#main"&gt;Main content&lt;/a&gt;
+  &lt;a href="#sidebar"&gt;Sidebar&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #856404; margin-top: 0;">3. Struktura nagłówków</h5>
+                    <pre style="color: #856404;"><code>&lt;h1&gt;Page title&lt;/h1&gt;
+&lt;h2&gt;Navigation&lt;/h2&gt;
+&lt;h2&gt;Main content&lt;/h2&gt;
+&lt;h2&gt;Sidebar&lt;/h2&gt;</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #721c24; margin-top: 0;">4. ARIA landmarks</h5>
+                    <pre style="color: #721c24;"><code>&lt;main&gt;...&lt;/main&gt;
+&lt;nav aria-label="Main"&gt;...&lt;/nav&gt;
+&lt;aside&gt;...&lt;/aside&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/bypass-blocks.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG 2.1: Pomijanie bloków</a></li>
+                    <li><a href="https://webaim.org/techniques/skipnav/" target="_blank" rel="noopener">WebAIM: Skip
+                            Navigation Links</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/page-structure/headings/" target="_blank"
+                            rel="noopener">W3C: Headings Tutorial</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles" target="_blank"
+                            rel="noopener">MDN: ARIA Roles</a></li>
+                    <li><a href="https://inclusive-components.design/a-content-slider/" target="_blank"
+                            rel="noopener">Inclusive Components: Skip Links</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.4.html">Poprzedni: 2.4 Możliwość nawigacji</a></li>
+                    <li><a href="2.4.2.html">Następny: 2.4.2 Tytuł strony</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+
+    <style>
+        /* Styles for interactive examples */
+        .skip-link-demo:focus {
+            position: static !important;
+            left: auto !important;
+        }
+
+        .collapsible-trigger {
+            transition: background-color 0.2s ease;
+        }
+
+        .collapsible-trigger:hover {
+            background-color: #0056b3 !important;
+        }
+
+        .collapsible-content {
+            transition: all 0.3s ease;
+        }
+
+        /* Highlight current sections */
+        .heading-structure-demo h3,
+        .heading-structure-demo h4,
+        .heading-structure-demo h5 {
+            position: relative;
+        }
+
+        .heading-structure-demo h3::before,
+        .heading-structure-demo h4::before,
+        .heading-structure-demo h5::before {
+            content: attr(data-level);
+            position: absolute;
+            left: -30px;
+            font-weight: normal;
+            font-size: 0.8em;
+            color: #666;
+        }
+    </style>
+
+    <script>
+        // Interactive examples functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            // Skip link demo
+            const skipDemo = document.querySelector('.skip-demo');
+            const skipLink = document.querySelector('.skip-link-demo');
+
+            if (skipDemo && skipLink) {
+                skipDemo.addEventListener('focus', function () {
+                    skipLink.style.position = 'static';
+                    skipLink.style.left = 'auto';
+                });
+
+                skipDemo.addEventListener('blur', function () {
+                    setTimeout(() => {
+                        if (document.activeElement !== skipLink) {
+                            skipLink.style.position = 'absolute';
+                            skipLink.style.left = '-9999px';
+                        }
+                    }, 100);
+                });
+            }
+
+            // Collapsible sections demo
+            const collapsibleTriggers = document.querySelectorAll('.collapsible-trigger');
+
+            collapsibleTriggers.forEach(trigger => {
+                trigger.addEventListener('click', function () {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    const targetId = this.getAttribute('aria-controls');
+                    const targetContent = document.getElementById(targetId);
+                    const arrow = this.querySelector('[aria-hidden]');
+
+                    // Toggle state
+                    this.setAttribute('aria-expanded', !isExpanded);
+
+                    if (isExpanded) {
+                        targetContent.style.display = 'none';
+                        arrow.textContent = '▼';
+                        this.style.borderRadius = '5px';
+                    } else {
+                        targetContent.style.display = 'block';
+                        arrow.textContent = '▲';
+                        this.style.borderRadius = '5px 5px 0 0';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

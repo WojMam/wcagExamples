@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.4.7 Widoczny fokus (AA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.4.7 Widoczny fokus</h2>
+                <p class="criterion-level">Poziom AA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#focus-visible" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Każdy interfejs użytkownika sterowany klawiaturą ma tryb działania, w którym wskaźnik fokusa
+                    klawiatury jest widoczny.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest pomoc użytkownikom w określeniu, który element ma fokus klawiatury.
+                    Musi być jasne, który z elementów ma fokus, aby użytkownicy wiedzieli, który element będzie na nich
+                    działał, gdy naciśną klawisz.</p>
+
+                <p>Widoczny fokus jest szczególnie istotny dla:</p>
+                <ul>
+                    <li><strong>Użytkowników nawigacji klawiaturowej</strong> - muszą widzieć gdzie znajduje się fokus
+                    </li>
+                    <li><strong>Osób z ograniczeniami wzroku</strong> - potrzebują wyraźnych wskaźników wizualnych</li>
+                    <li><strong>Użytkowników z ograniczeniami motorycznymi</strong> - często polegają na nawigacji
+                        klawiaturowej</li>
+                    <li><strong>Osób z ograniczeniami poznawczymi</strong> - jasny fokus pomaga w orientacji</li>
+                    <li><strong>Wszystkich użytkowników</strong> - poprawia ogólną użyteczność interfejsu</li>
+                </ul>
+
+                <p>Kryterium obejmuje:</p>
+                <ul>
+                    <li><strong>Wskaźniki fokusa</strong> - ramki, podkreślenia, kolory tła, cienie</li>
+                    <li><strong>Kontrast fokusa</strong> - wystarczający kontrast względem tła</li>
+                    <li><strong>Widoczność fokusa</strong> - fokus nie może być zasłonięty przez inne elementy</li>
+                    <li><strong>Spójność</strong> - podobne elementy mają podobne wskaźniki fokusa</li>
+                </ul>
+
+                <p><strong>Uwaga:</strong> Wskaźniki fokusa muszą być widoczne dla wszystkich elementów interaktywnych
+                    dostępnych z klawiatury, ale mogą być ukryte podczas interakcji myszą (używając :focus-visible).</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - niewidoczny lub słaby fokus</h4>
+                        <p>Wskaźniki fokusa, które są niemożliwe do dostrzeżenia lub trudne do zauważenia:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #721c24; margin-top: 0;">❌ Problematyczne wskaźniki fokusa:</h5>
+
+                                    <div
+                                        style="background-color: rgba(255,255,255,0.8); padding: 15px; border-radius: 4px; margin: 10px 0;">
+                                        <div
+                                            style="border-bottom: 1px solid #dee2e6; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #721c24; margin-top: 0;">Brak wskaźnika fokusa:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px dashed #dc3545; border-radius: 4px;">
+                                                <p style="margin-bottom: 15px; color: #721c24;">Elementy bez wskaźnika
+                                                    fokusa:</p>
+                                                <div
+                                                    style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
+                                                    <button class="bad-focus-none"
+                                                        style="padding: 10px 20px; background: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                        Przycisk bez fokusa
+                                                    </button>
+                                                    <input type="text" class="bad-focus-none"
+                                                        placeholder="Pole bez fokusa"
+                                                        style="padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                    <a href="#" class="bad-focus-none" onclick="return false;"
+                                                        style="color: #007bff; text-decoration: none;">Link bez
+                                                        fokusa</a>
+                                                </div>
+                                                <div style="color: #dc3545; font-size: 0.9em;">
+                                                    ❌ Użyj Tab aby sprawdzić - fokus jest niewidoczny
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="border-bottom: 1px solid #dee2e6; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #721c24; margin-top: 0;">Słaby kontrast fokusa:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px dashed #dc3545; border-radius: 4px;">
+                                                <p style="margin-bottom: 15px; color: #721c24;">Wskaźniki fokusa z
+                                                    niedostatecznym kontrastem:</p>
+                                                <div
+                                                    style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
+                                                    <button class="bad-focus-weak"
+                                                        style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                        Słaby fokus
+                                                    </button>
+                                                    <input type="text" class="bad-focus-weak"
+                                                        placeholder="Słabo widoczny fokus"
+                                                        style="padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                    <a href="#" class="bad-focus-weak" onclick="return false;"
+                                                        style="color: #6c757d; text-decoration: none;">Link słaby
+                                                        fokus</a>
+                                                </div>
+                                                <div style="color: #dc3545; font-size: 0.9em;">
+                                                    ❌ Fokus ledwo widoczny - niewystarczający kontrast
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="border-bottom: 1px solid #dee2e6; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #721c24; margin-top: 0;">Fokus zasłonięty:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px dashed #dc3545; border-radius: 4px; position: relative;">
+                                                <p style="margin-bottom: 15px; color: #721c24;">Elementy z fokusem
+                                                    zasłoniętym przez inne elementy:</p>
+                                                <div style="position: relative;">
+                                                    <button class="bad-focus-hidden"
+                                                        style="padding: 10px 20px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer; position: relative; z-index: 1;">
+                                                        Przycisk z zasłoniętym fokusem
+                                                    </button>
+                                                    <div
+                                                        style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(255,255,255,0.8); z-index: 2; pointer-events: none; border: 2px solid #ffc107; border-radius: 3px;">
+                                                    </div>
+                                                </div>
+                                                <div style="color: #dc3545; font-size: 0.9em; margin-top: 10px;">
+                                                    ❌ Fokus jest zasłonięty przez nakładkę
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h6 style="color: #721c24; margin-top: 0;">Niespójne wskaźniki fokusa:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px dashed #dc3545; border-radius: 4px;">
+                                                <p style="margin-bottom: 15px; color: #721c24;">Różne style fokusa dla
+                                                    podobnych elementów:</p>
+                                                <div
+                                                    style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
+                                                    <button class="bad-focus-inconsistent-1"
+                                                        style="padding: 10px 20px; background: #fd7e14; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                        Przycisk 1
+                                                    </button>
+                                                    <button class="bad-focus-inconsistent-2"
+                                                        style="padding: 10px 20px; background: #fd7e14; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                        Przycisk 2
+                                                    </button>
+                                                    <button class="bad-focus-inconsistent-3"
+                                                        style="padding: 10px 20px; background: #fd7e14; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                        Przycisk 3
+                                                    </button>
+                                                </div>
+                                                <div style="color: #dc3545; font-size: 0.9em;">
+                                                    ❌ Każdy przycisk ma inny styl fokusa
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #fff3cd; padding: 10px; border-radius: 3px; border-left: 4px solid #ffc107; margin-top: 15px;">
+                                        <p style="color: #856404; margin: 0; font-size: 0.9em;">
+                                            <strong>Test nawigacji:</strong> <span id="focus-test-feedback">Użyj
+                                                klawisza Tab aby nawigować między elementami i sprawdzić widoczność
+                                                fokusa</span>
+                                        </p>
+                                        <button onclick="testFocusNavigation()"
+                                            style="margin-top: 10px; padding: 8px 16px; background: #ffc107; color: #212529; border: none; border-radius: 3px; cursor: pointer;">
+                                            🔍 Rozpocznij test nawigacji
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #856404; margin-top: 0;">Dlaczego to problematyczne?</h6>
+                                    <ul style="color: #856404; margin-bottom: 0;">
+                                        <li><strong>Utrata orientacji</strong> - użytkownicy nie wiedzą gdzie jest fokus
+                                        </li>
+                                        <li><strong>Niemożność nawigacji</strong> - brak wskaźnika uniemożliwia
+                                            efektywne korzystanie z klawiatury</li>
+                                        <li><strong>Frustracja użytkowników</strong> - niepewność co do aktywnego
+                                            elementu</li>
+                                        <li><strong>Błędy obsługi</strong> - przypadkowe aktywowanie niewłaściwych
+                                            elementów</li>
+                                        <li><strong>Wykluczenie</strong> - osoby polegające na klawiaturze nie mogą
+                                            korzystać z interfejsu</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-css">/* ZŁY PRZYKŁAD - niewidoczny lub słaby fokus */
+
+/* 1. Usunięcie domyślnego fokusa bez zastąpienia */
+.bad-focus-none:focus {
+    outline: none; /* ❌ Brak wskaźnika fokusa */
+}
+
+/* 2. Słaby kontrast fokusa */
+.bad-focus-weak:focus {
+    outline: 1px solid #e0e0e0; /* ❌ Zbyt słaby kontrast */
+    outline-offset: 1px;
+}
+
+/* 3. Fokus zasłonięty przez inne elementy */
+.bad-focus-hidden:focus {
+    outline: 2px solid #007bff;
+    z-index: 1; /* ❌ Niższy z-index niż nakładka */
+}
+
+/* 4. Niespójne wskaźniki fokusa */
+.bad-focus-inconsistent-1:focus {
+    outline: 3px solid red; /* ❌ Różny styl */
+}
+
+.bad-focus-inconsistent-2:focus {
+    box-shadow: 0 0 5px blue; /* ❌ Inny rodzaj wskaźnika */
+}
+
+.bad-focus-inconsistent-3:focus {
+    border: 2px dotted green; /* ❌ Jeszcze inny styl */
+}
+
+/* 5. Fokus tylko w jednym kierunku */
+.bad-focus-partial:focus {
+    border-bottom: 2px solid #007bff; /* ❌ Tylko dolna krawędź */
+}
+
+/* 6. Fokus zbyt mały */
+.bad-focus-tiny:focus {
+    outline: 1px solid #007bff;
+    outline-offset: 0; /* ❌ Zbyt mały wskaźnik */
+}</code></pre>
+
+                        <p class="explanation">Problem: Wskaźniki fokusa są niewidoczne, mają słaby kontrast, są
+                            zasłonięte przez inne elementy lub są niespójne. Użytkownicy nawigacji klawiaturowej nie
+                            mogą określić, który element ma fokus, co uniemożliwia efektywne korzystanie z interfejsu.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - wyraźne wskaźniki fokusa</h4>
+                        <p>Widoczne, kontrastowe i spójne wskaźniki fokusa dla wszystkich elementów interaktywnych:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #155724; margin-top: 0;">✅ Prawidłowe wskaźniki fokusa:</h5>
+
+                                    <div
+                                        style="background-color: rgba(255,255,255,0.9); padding: 15px; border-radius: 4px; margin: 10px 0;">
+                                        <div
+                                            style="border-bottom: 1px solid #c3e6cb; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #155724; margin-top: 0;">Standardowe wskaźniki fokusa:
+                                            </h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px solid #28a745; border-radius: 4px;">
+                                                <p style="margin-bottom: 15px; color: #495057;">Elementy z wyraźnymi
+                                                    wskaźnikami fokusa:</p>
+                                                <div
+                                                    style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
+                                                    <button class="good-focus-standard"
+                                                        style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                        Przycisk podstawowy
+                                                    </button>
+                                                    <input type="text" class="good-focus-standard"
+                                                        placeholder="Pole tekstowe"
+                                                        style="padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                    <a href="#" class="good-focus-standard" onclick="return false;"
+                                                        style="color: #007bff; text-decoration: none; padding: 8px;">Link
+                                                        z fokusem</a>
+                                                </div>
+                                                <div style="color: #28a745; font-size: 0.9em;">
+                                                    ✅ Wyraźny fokus z dobrym kontrastem
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="border-bottom: 1px solid #c3e6cb; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #155724; margin-top: 0;">Custom wskaźniki fokusa:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px solid #28a745; border-radius: 4px;">
+                                                <p style="margin-bottom: 15px; color: #495057;">Niestandardowe, ale
+                                                    dostępne style fokusa:</p>
+                                                <div
+                                                    style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
+                                                    <button class="good-focus-custom-glow"
+                                                        style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                        Przycisk z glow
+                                                    </button>
+                                                    <button class="good-focus-custom-border"
+                                                        style="padding: 10px 20px; background: #ffc107; color: #212529; border: none; border-radius: 3px; cursor: pointer;">
+                                                        Przycisk z ramką
+                                                    </button>
+                                                    <input type="email" class="good-focus-custom-underline"
+                                                        placeholder="Email z podkreśleniem"
+                                                        style="padding: 8px; border: none; border-bottom: 2px solid #ced4da; background: transparent;">
+                                                </div>
+                                                <div style="color: #28a745; font-size: 0.9em;">
+                                                    ✅ Niestandardowe style z zachowaniem dostępności
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="border-bottom: 1px solid #c3e6cb; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #155724; margin-top: 0;">Fokus na różnych tłach:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px solid #28a745; border-radius: 4px;">
+                                                <p style="margin-bottom: 15px; color: #495057;">Wskaźniki fokusa
+                                                    dostosowane do tła:</p>
+
+                                                <!-- Jasne tło -->
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 15px; border-radius: 3px; margin-bottom: 15px;">
+                                                    <p style="margin-bottom: 10px; color: #495057; font-weight: 500;">
+                                                        Jasne tło:</p>
+                                                    <button class="good-focus-light-bg"
+                                                        style="padding: 8px 16px; background: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer; margin-right: 10px;">
+                                                        Przycisk
+                                                    </button>
+                                                    <input type="text" class="good-focus-light-bg"
+                                                        placeholder="Pole tekstowe"
+                                                        style="padding: 6px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                </div>
+
+                                                <!-- Ciemne tło -->
+                                                <div
+                                                    style="background-color: #343a40; padding: 15px; border-radius: 3px; margin-bottom: 15px;">
+                                                    <p style="margin-bottom: 10px; color: #f8f9fa; font-weight: 500;">
+                                                        Ciemne tło:</p>
+                                                    <button class="good-focus-dark-bg"
+                                                        style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer; margin-right: 10px;">
+                                                        Przycisk
+                                                    </button>
+                                                    <input type="text" class="good-focus-dark-bg"
+                                                        placeholder="Pole tekstowe"
+                                                        style="padding: 6px; border: 1px solid #495057; border-radius: 3px; background: #495057; color: white;">
+                                                </div>
+
+                                                <!-- Kolorowe tło -->
+                                                <div
+                                                    style="background: linear-gradient(45deg, #667eea 0%, #764ba2 100%); padding: 15px; border-radius: 3px;">
+                                                    <p style="margin-bottom: 10px; color: white; font-weight: 500;">
+                                                        Kolorowe tło:</p>
+                                                    <button class="good-focus-gradient-bg"
+                                                        style="padding: 8px 16px; background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); border-radius: 3px; cursor: pointer; margin-right: 10px;">
+                                                        Przycisk
+                                                    </button>
+                                                    <input type="text" class="good-focus-gradient-bg"
+                                                        placeholder="Pole tekstowe"
+                                                        style="padding: 6px; border: 1px solid rgba(255,255,255,0.3); border-radius: 3px; background: rgba(255,255,255,0.1); color: white;">
+                                                </div>
+
+                                                <div style="color: #28a745; font-size: 0.9em; margin-top: 10px;">
+                                                    ✅ Fokus dostosowany do każdego typu tła
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h6 style="color: #155724; margin-top: 0;">Spójne wzorce fokusa:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px solid #28a745; border-radius: 4px;">
+                                                <p style="margin-bottom: 15px; color: #495057;">Grupa elementów z
+                                                    jednolitym stylem fokusa:</p>
+                                                <div
+                                                    style="display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 15px;">
+                                                    <button class="good-focus-consistent"
+                                                        style="padding: 10px 20px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                        Akcja 1
+                                                    </button>
+                                                    <button class="good-focus-consistent"
+                                                        style="padding: 10px 20px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                        Akcja 2
+                                                    </button>
+                                                    <button class="good-focus-consistent"
+                                                        style="padding: 10px 20px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                        Akcja 3
+                                                    </button>
+                                                </div>
+                                                <div style="color: #28a745; font-size: 0.9em;">
+                                                    ✅ Wszystkie podobne elementy mają identyczny styl fokusa
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #e7f3ff; padding: 10px; border-radius: 3px; border-left: 4px solid #007bff; margin-top: 15px;">
+                                        <p style="color: #004085; margin: 0; font-size: 0.9em;">
+                                            <strong>Test interaktywny:</strong> <span id="good-focus-feedback">Nawiguj
+                                                klawiszem Tab aby zobaczyć różne style fokusa</span>
+                                        </p>
+                                        <button onclick="demonstrateFocusStyles()"
+                                            style="margin-top: 10px; padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                            ✨ Demonstracja stylów fokusa
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #004085; margin-top: 0;">Zalety wyraźnych wskaźników fokusa:</h6>
+                                    <ul style="color: #004085; margin-bottom: 0; font-size: 0.95em;">
+                                        <li><strong>Jasna orientacja</strong> - użytkownicy zawsze wiedzą gdzie jest
+                                            fokus</li>
+                                        <li><strong>Efektywna nawigacja</strong> - szybkie przemieszczanie się po
+                                            interfejsie</li>
+                                        <li><strong>Mniejsza ilość błędów</strong> - pewność co do aktywnego elementu
+                                        </li>
+                                        <li><strong>Lepsze UX</strong> - komfort użytkowania dla wszystkich</li>
+                                        <li><strong>Dostępność</strong> - zgodność z wymaganiami WCAG</li>
+                                        <li><strong>Spójność</strong> - przewidywalny system nawigacji</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-css">/* DOBRY PRZYKŁAD - wyraźne wskaźniki fokusa */
+
+/* 1. Standardowy fokus z dobrym kontrastem */
+.good-focus-standard:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* 2. Custom fokus z glow effect */
+.good-focus-custom-glow:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5);
+}
+
+/* 3. Fokus z ramką */
+.good-focus-custom-border:focus {
+    outline: none;
+    border: 2px solid #dc3545;
+    box-shadow: inset 0 0 0 1px #fff;
+}
+
+/* 4. Fokus z podkreśleniem */
+.good-focus-custom-underline:focus {
+    outline: none;
+    border-bottom-color: #007bff;
+    border-bottom-width: 3px;
+    box-shadow: 0 3px 0 0 rgba(0, 123, 255, 0.3);
+}
+
+/* 5. Fokus dostosowany do jasnego tła */
+.good-focus-light-bg:focus {
+    outline: 2px solid #495057;
+    outline-offset: 2px;
+}
+
+/* 6. Fokus dostosowany do ciemnego tła */
+.good-focus-dark-bg:focus {
+    outline: 2px solid #ffc107;
+    outline-offset: 2px;
+}
+
+/* 7. Fokus na gradientowym tle */
+.good-focus-gradient-bg:focus {
+    outline: none;
+    box-shadow: 
+        0 0 0 2px #fff,
+        0 0 0 4px #007bff;
+}
+
+/* 8. Spójny fokus dla grupy elementów */
+.good-focus-consistent:focus {
+    outline: 2px solid #ffc107;
+    outline-offset: 2px;
+    transform: scale(1.05);
+    transition: transform 0.1s ease;
+}
+
+/* 9. Fokus tylko dla nawigacji klawiaturowej */
+.focus-visible-only:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.focus-visible-only:focus-visible {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Wszystkie elementy interaktywne mają wyraźne, kontrastowe
+                            wskaźniki fokusa dostosowane do tła. Style są spójne dla podobnych elementów, a wskaźniki
+                            nigdy nie są zasłonięte przez inne elementy. Użytkownicy nawigacji klawiaturowej mogą łatwo
+                            określić położenie fokusa.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - narzędzia do testowania fokusa</h4>
+                        <p>Interaktywne narzędzia do analizy i optymalizacji wskaźników fokusa:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #856404; margin-top: 0;">🔧 Narzędzia analizy fokusa:</h5>
+
+                                    <div style="margin: 15px 0;">
+                                        <!-- Przełącznik narzędzi -->
+                                        <div style="margin-bottom: 20px;">
+                                            <strong style="color: #856404;">Wybierz narzędzie:</strong>
+                                            <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 10px;">
+                                                <button onclick="showFocusTool('focus-tester')"
+                                                    class="focus-tool-btn active" data-tool="focus-tester"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: #ffc107; color: #212529; border-radius: 4px; cursor: pointer; font-weight: 500;">🎯
+                                                    Tester fokusa</button>
+                                                <button onclick="showFocusTool('contrast-checker')"
+                                                    class="focus-tool-btn" data-tool="contrast-checker"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: transparent; color: #856404; border-radius: 4px; cursor: pointer;">📊
+                                                    Kalkulator kontrastu</button>
+                                                <button onclick="showFocusTool('focus-simulator')"
+                                                    class="focus-tool-btn" data-tool="focus-simulator"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: transparent; color: #856404; border-radius: 4px; cursor: pointer;">⌨️
+                                                    Symulator nawigacji</button>
+                                                <button onclick="showFocusTool('focus-generator')"
+                                                    class="focus-tool-btn" data-tool="focus-generator"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: transparent; color: #856404; border-radius: 4px; cursor: pointer;">🎨
+                                                    Generator stylów</button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Tester fokusa -->
+                                        <div id="focus-tool-focus-tester" class="focus-tool-content"
+                                            style="border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">🎯 Tester widoczności fokusa</h6>
+                                            <p style="color: #6c757d; font-size: 0.9em; margin-bottom: 15px;">Sprawdź
+                                                widoczność fokusa na różnych elementach:</p>
+
+                                            <div
+                                                style="background-color: #f8f9fa; padding: 15px; border-radius: 3px; margin-bottom: 15px;">
+                                                <h6 style="margin-top: 0; color: #495057;">Elementy do testowania:</h6>
+                                                <div style="display: grid; gap: 10px; margin-bottom: 15px;">
+                                                    <button id="test-btn-1"
+                                                        onmousedown="recordFocusVisibility('test-btn-1')"
+                                                        style="padding: 10px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                        Test Button 1
+                                                    </button>
+                                                    <input id="test-input-1" type="text" placeholder="Test Input 1"
+                                                        onmousedown="recordFocusVisibility('test-input-1')"
+                                                        style="padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                    <a id="test-link-1" href="#"
+                                                        onclick="recordFocusVisibility('test-link-1'); return false;"
+                                                        style="color: #007bff; text-decoration: none; padding: 8px; display: block;">Test
+                                                        Link 1</a>
+                                                    <select id="test-select-1"
+                                                        onmousedown="recordFocusVisibility('test-select-1')"
+                                                        style="padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                        <option>Opcja 1</option>
+                                                        <option>Opcja 2</option>
+                                                    </select>
+                                                </div>
+                                                <button onclick="startFocusTest()"
+                                                    style="padding: 8px 16px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                    🚀 Rozpocznij test fokusa
+                                                </button>
+                                            </div>
+
+                                            <div id="focus-test-results"
+                                                style="margin-top: 15px; padding: 15px; background-color: #f8f9fa; border-radius: 3px; display: none;">
+                                                <h6 style="margin-top: 0; color: #495057;">Wyniki testu:</h6>
+                                                <div id="focus-test-output"></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Kalkulator kontrastu -->
+                                        <div id="focus-tool-contrast-checker" class="focus-tool-content"
+                                            style="display: none; border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">📊 Kalkulator kontrastu fokusa
+                                            </h6>
+                                            <div style="display: grid; gap: 15px; margin-bottom: 15px;">
+                                                <div>
+                                                    <label for="focus-color"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Kolor
+                                                        wskaźnika fokusa:</label>
+                                                    <div style="display: flex; gap: 10px; align-items: center;">
+                                                        <input type="color" id="focus-color" value="#007bff"
+                                                            style="width: 50px; height: 35px; border: none; border-radius: 3px; cursor: pointer;">
+                                                        <input type="text" id="focus-color-hex" value="#007bff"
+                                                            style="flex: 1; padding: 8px; border: 1px solid #ced4da; border-radius: 3px; max-width: 100px;">
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <label for="bg-color"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Kolor
+                                                        tła:</label>
+                                                    <div style="display: flex; gap: 10px; align-items: center;">
+                                                        <input type="color" id="bg-color" value="#ffffff"
+                                                            style="width: 50px; height: 35px; border: none; border-radius: 3px; cursor: pointer;">
+                                                        <input type="text" id="bg-color-hex" value="#ffffff"
+                                                            style="flex: 1; padding: 8px; border: 1px solid #ced4da; border-radius: 3px; max-width: 100px;">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button onclick="calculateContrast()"
+                                                style="padding: 10px 20px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer; font-weight: 500;">
+                                                🔍 Oblicz kontrast
+                                            </button>
+
+                                            <div id="contrast-results"
+                                                style="margin-top: 15px; padding: 15px; background-color: #f8f9fa; border-radius: 3px; display: none;">
+                                                <h6 style="margin-top: 0; color: #495057;">Wynik analizy kontrastu:</h6>
+                                                <div id="contrast-output"></div>
+                                                <div id="contrast-preview"
+                                                    style="margin-top: 15px; padding: 15px; border-radius: 3px; text-align: center;">
+                                                    <div id="focus-preview"
+                                                        style="display: inline-block; padding: 10px 20px; border-radius: 3px;">
+                                                        Podgląd fokusa
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Symulator nawigacji -->
+                                        <div id="focus-tool-focus-simulator" class="focus-tool-content"
+                                            style="display: none; border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">⌨️ Symulator nawigacji
+                                                klawiaturowej</h6>
+                                            <p style="color: #6c757d; font-size: 0.9em; margin-bottom: 15px;">Sprawdź
+                                                jak wygląda nawigacja tylko za pomocą klawiatury:</p>
+
+                                            <div
+                                                style="background-color: #f8f9fa; padding: 15px; border-radius: 3px; margin-bottom: 15px;">
+                                                <div style="margin-bottom: 15px;">
+                                                    <strong>Kontrola symulacji:</strong>
+                                                    <div
+                                                        style="margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap;">
+                                                        <button onclick="simulateTab()"
+                                                            style="padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                            Tab ➡️
+                                                        </button>
+                                                        <button onclick="simulateShiftTab()"
+                                                            style="padding: 8px 16px; background: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                            ⬅️ Shift+Tab
+                                                        </button>
+                                                        <button onclick="simulateEnter()"
+                                                            style="padding: 8px 16px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                            Enter ↵
+                                                        </button>
+                                                        <button onclick="resetFocusSimulation()"
+                                                            style="padding: 8px 16px; background: #dc3545; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                            Reset 🔄
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div id="simulation-area"
+                                                    style="border: 2px solid #007bff; border-radius: 3px; padding: 15px; background: white;">
+                                                    <h6>Przykładowy formularz:</h6>
+                                                    <div style="display: grid; gap: 10px;">
+                                                        <input class="sim-element" type="text" placeholder="Imię"
+                                                            style="padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                        <input class="sim-element" type="email" placeholder="Email"
+                                                            style="padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                        <select class="sim-element"
+                                                            style="padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                            <option>Wybierz kraj</option>
+                                                            <option>Polska</option>
+                                                            <option>Niemcy</option>
+                                                        </select>
+                                                        <div>
+                                                            <input class="sim-element" type="checkbox" id="sim-terms">
+                                                            <label for="sim-terms">Akceptuję regulamin</label>
+                                                        </div>
+                                                        <button class="sim-element"
+                                                            style="padding: 10px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                            Wyślij formularz
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div id="simulation-feedback"
+                                                    style="margin-top: 10px; padding: 10px; background: #e7f3ff; border-radius: 3px; color: #004085;">
+                                                    Użyj przycisków powyżej aby zasymulować nawigację klawiaturową
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Generator stylów -->
+                                        <div id="focus-tool-focus-generator" class="focus-tool-content"
+                                            style="display: none; border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">🎨 Generator stylów fokusa</h6>
+                                            <div style="display: grid; gap: 15px; margin-bottom: 15px;">
+                                                <div>
+                                                    <label for="focus-style-type"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Typ
+                                                        wskaźnika:</label>
+                                                    <select id="focus-style-type"
+                                                        style="width: 100%; max-width: 200px; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                        <option value="outline">Outline</option>
+                                                        <option value="box-shadow">Box Shadow</option>
+                                                        <option value="border">Border</option>
+                                                        <option value="underline">Underline</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label for="focus-style-color"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Kolor:</label>
+                                                    <input type="color" id="focus-style-color" value="#007bff"
+                                                        style="width: 100px; height: 35px; border: none; border-radius: 3px; cursor: pointer;">
+                                                </div>
+                                                <div>
+                                                    <label for="focus-style-width"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Grubość
+                                                        (px):</label>
+                                                    <input type="range" id="focus-style-width" min="1" max="5" value="2"
+                                                        style="width: 100%; max-width: 200px;">
+                                                    <span id="width-value">2px</span>
+                                                </div>
+                                                <div>
+                                                    <label for="focus-style-offset"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Offset
+                                                        (px):</label>
+                                                    <input type="range" id="focus-style-offset" min="0" max="5"
+                                                        value="2" style="width: 100%; max-width: 200px;">
+                                                    <span id="offset-value">2px</span>
+                                                </div>
+                                            </div>
+
+                                            <button onclick="generateFocusStyle()"
+                                                style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer; font-weight: 500;">
+                                                ✨ Generuj styl
+                                            </button>
+
+                                            <div id="generated-style"
+                                                style="margin-top: 15px; padding: 15px; background-color: #f8f9fa; border-radius: 3px; display: none;">
+                                                <h6 style="margin-top: 0; color: #495057;">Wygenerowany CSS:</h6>
+                                                <pre id="css-output"
+                                                    style="background: #ffffff; padding: 10px; border: 1px solid #dee2e6; border-radius: 3px; overflow-x: auto; font-family: monospace; font-size: 0.9em;"></pre>
+
+                                                <h6 style="color: #495057;">Podgląd:</h6>
+                                                <div
+                                                    style="padding: 15px; background: white; border: 1px solid #dee2e6; border-radius: 3px;">
+                                                    <button id="preview-button"
+                                                        style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer; margin-right: 10px;">
+                                                        Przykładowy przycisk
+                                                    </button>
+                                                    <input id="preview-input" type="text" placeholder="Przykładowe pole"
+                                                        style="padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                </div>
+
+                                                <button onclick="copyCSS()"
+                                                    style="margin-top: 10px; padding: 8px 16px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                    📋 Skopiuj CSS
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #d1ecf1; padding: 10px; border-radius: 3px; border-left: 4px solid #17a2b8; margin-top: 15px;">
+                                        <p style="color: #0c5460; margin: 0; font-size: 0.9em;">
+                                            <strong>Aktywne narzędzie:</strong> <span id="focus-tool-description">Tester
+                                                fokusa - sprawdza widoczność wskaźników fokusa na różnych
+                                                elementach</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #155724; margin-top: 0;">🛠️ Korzyści z narzędzi do testowania
+                                        fokusa:</h6>
+                                    <ul style="color: #155724; margin-bottom: 0; font-size: 0.95em;">
+                                        <li><strong>Automatyczna analiza</strong> - szybkie wykrywanie problemów z
+                                            fokusem</li>
+                                        <li><strong>Pomiar kontrastu</strong> - weryfikacja zgodności z WCAG</li>
+                                        <li><strong>Symulacja nawigacji</strong> - test doświadczenia użytkowników
+                                            klawiatury</li>
+                                        <li><strong>Generowanie stylów</strong> - tworzenie dostępnych wskaźników fokusa
+                                        </li>
+                                        <li><strong>Quality assurance</strong> - systematyczne testowanie interfejsu
+                                        </li>
+                                        <li><strong>Edukacja zespołu</strong> - nauka dobrych praktyk przez przykłady
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="explanation">Rozwiązanie: Interaktywne narzędzia umożliwiają kompleksowe testowanie
+                            wskaźników fokusa - od sprawdzenia widoczności, przez analizę kontrastu, po symulację
+                            nawigacji klawiaturowej. Generator stylów pomaga tworzyć dostępne wskaźniki fokusa zgodne z
+                            WCAG 2.1.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie zgodności z 2.4.7</h3>
+
+                <h4>Procedura testowa</h4>
+                <ol>
+                    <li><strong>Test widoczności fokusa</strong>
+                        <ul>
+                            <li>Nawiguj klawiszem Tab przez wszystkie elementy interaktywne</li>
+                            <li>Sprawdź czy fokus jest widoczny na każdym elemencie</li>
+                            <li>Zweryfikuj czy wskaźniki nie są zasłonięte</li>
+                        </ul>
+                    </li>
+                    <li><strong>Analiza kontrastu fokusa</strong>
+                        <ul>
+                            <li>Zmierz kontrast wskaźników fokusa względem tła</li>
+                            <li>Sprawdź czy kontrast wynosi co najmniej 3:1</li>
+                            <li>Przetestuj na różnych tłach i w różnych warunkach</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test spójności fokusa</strong>
+                        <ul>
+                            <li>Sprawdź czy podobne elementy mają podobne wskaźniki</li>
+                            <li>Oceń przewidywalność systemu fokusa</li>
+                            <li>Zweryfikuj czy style są spójne w całej aplikacji</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test z różnymi narzędziami</strong>
+                        <ul>
+                            <li>Przetestuj z różnymi przeglądarkami</li>
+                            <li>Sprawdź działanie z czytnikami ekranu</li>
+                            <li>Zweryfikuj z narzędziami zwiększającymi kontrast</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Narzędzia testowe</h4>
+                <ul>
+                    <li><strong>axe DevTools</strong> - automatyczne sprawdzanie fokusa</li>
+                    <li><strong>WAVE</strong> - analiza dostępności fokusa</li>
+                    <li><strong>Colour Contrast Analyser</strong> - pomiar kontrastu</li>
+                    <li><strong>Keyboard Navigation Tester</strong> - symulacja nawigacji</li>
+                    <li><strong>Focus Ring Debugger</strong> - analiza wskaźników fokusa</li>
+                </ul>
+
+                <h4>Checklist zgodności</h4>
+                <div
+                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <h5>✅ Kryteria do spełnienia:</h5>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>☐ Wszystkie elementy interaktywne mają widoczny fokus</li>
+                        <li>☐ Kontrast wskaźników fokusa wynosi co najmniej 3:1</li>
+                        <li>☐ Fokus nie jest zasłonięty przez inne elementy</li>
+                        <li>☐ Wskaźniki fokusa są spójne dla podobnych elementów</li>
+                        <li>☐ Fokus jest widoczny we wszystkich stanach elementu</li>
+                        <li>☐ Style fokusa działają w różnych przeglądarkach</li>
+                        <li>☐ Wskaźniki są wystarczająco duże i wyraźne</li>
+                        <li>☐ Fokus nie powoduje problemów z użytecznością</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="implementation-guidelines">
+                <h3>Wytyczne implementacyjne</h3>
+
+                <h4>Najlepsze praktyki dla wskaźników fokusa:</h4>
+                <ul>
+                    <li><strong>Zachowaj domyślny fokus</strong> - nie usuwaj outline bez zastąpienia</li>
+                    <li><strong>Zapewnij kontrast 3:1</strong> - minimum dla wskaźników fokusa</li>
+                    <li><strong>Używaj outline-offset</strong> - zapewnia lepszą separację</li>
+                    <li><strong>Zachowaj spójność</strong> - podobne elementy = podobny fokus</li>
+                    <li><strong>Testuj na różnych tłach</strong> - upewnij się, że fokus jest zawsze widoczny</li>
+                    <li><strong>Rozważ :focus-visible</strong> - fokus tylko przy nawigacji klawiaturowej</li>
+                </ul>
+
+                <h4>Wzorce CSS dla fokusa:</h4>
+                <div
+                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #004085; margin-top: 0;">1. Standardowy fokus z dobrym kontrastem</h5>
+                    <pre style="color: #004085;"><code>/* Podstawowy fokus */
+.element:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Fokus tylko dla klawiatury */
+.element:focus:not(:focus-visible) {
+    outline: none;
+}
+
+.element:focus-visible {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #155724; margin-top: 0;">2. Custom fokus z box-shadow</h5>
+                    <pre style="color: #155724;"><code>/* Fokus z glow effect */
+.element:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+/* Podwójny kontur */
+.element:focus {
+    outline: none;
+    box-shadow: 
+        0 0 0 2px #fff,
+        0 0 0 4px #007bff;
+}</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #856404; margin-top: 0;">3. Fokus dostosowany do tła</h5>
+                    <pre style="color: #856404;"><code>/* Na jasnym tle */
+.light-theme .element:focus {
+    outline: 2px solid #495057;
+    outline-offset: 2px;
+}
+
+/* Na ciemnym tle */
+.dark-theme .element:focus {
+    outline: 2px solid #ffc107;
+    outline-offset: 2px;
+}
+
+/* Na kolorowym tle */
+.colorful-bg .element:focus {
+    outline: none;
+    box-shadow: 
+        0 0 0 2px #fff,
+        0 0 0 4px #000;
+}</code></pre>
+                </div>
+
+                <h4>Wskaźniki fokusa dla różnych elementów:</h4>
+                <div
+                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #721c24; margin-top: 0;">Przykłady implementacji</h5>
+                    <pre style="color: #721c24;"><code>/* Przyciski */
+button:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+/* Linki */
+a:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+    text-decoration: underline;
+}
+
+/* Pola formularzy */
+input:focus, 
+textarea:focus, 
+select:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+    border-color: #007bff;
+}
+
+/* Elementy niestandardowe */
+.custom-element:focus {
+    outline: none;
+    box-shadow: 
+        inset 0 0 0 2px #007bff,
+        0 0 0 2px #fff;
+}
+
+/* Checkbox i radio */
+input[type="checkbox"]:focus,
+input[type="radio"]:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}</code></pre>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/focus-visible.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG 2.1: Widoczny fokus</a></li>
+                    <li><a href="https://webaim.org/techniques/keyboard/" target="_blank" rel="noopener">WebAIM:
+                            Keyboard Accessibility</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible" target="_blank"
+                            rel="noopener">MDN: :focus-visible pseudo-class</a></li>
+                    <li><a href="https://www.nngroup.com/articles/keyboard-accessibility/" target="_blank"
+                            rel="noopener">Nielsen Norman Group: Keyboard Accessibility</a></li>
+                    <li><a href="https://hiddedevries.nl/en/blog/2019-06-06-indicating-focus-to-improve-accessibility"
+                            target="_blank" rel="noopener">Indicating focus to improve accessibility</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.4.6.html">Poprzedni: 2.4.6 Nagłówki i etykiety</a></li>
+                    <li><a href="2.4.8.html">Następny: 2.4.8 Lokalizacja</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+
+    <style>
+        /* Style dla złych przykładów fokusa */
+        .bad-focus-none:focus {
+            outline: none;
+        }
+
+        .bad-focus-weak:focus {
+            outline: 1px solid #e0e0e0;
+            outline-offset: 1px;
+        }
+
+        .bad-focus-hidden:focus {
+            outline: 2px solid #007bff;
+            z-index: 1;
+        }
+
+        .bad-focus-inconsistent-1:focus {
+            outline: 3px solid red;
+        }
+
+        .bad-focus-inconsistent-2:focus {
+            box-shadow: 0 0 5px blue;
+        }
+
+        .bad-focus-inconsistent-3:focus {
+            border: 2px dotted green;
+        }
+
+        /* Style dla dobrych przykładów fokusa */
+        .good-focus-standard:focus {
+            outline: 2px solid #007bff;
+            outline-offset: 2px;
+        }
+
+        .good-focus-custom-glow:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.5);
+        }
+
+        .good-focus-custom-border:focus {
+            outline: none;
+            border: 2px solid #dc3545;
+            box-shadow: inset 0 0 0 1px #fff;
+        }
+
+        .good-focus-custom-underline:focus {
+            outline: none;
+            border-bottom-color: #007bff;
+            border-bottom-width: 3px;
+            box-shadow: 0 3px 0 0 rgba(0, 123, 255, 0.3);
+        }
+
+        .good-focus-light-bg:focus {
+            outline: 2px solid #495057;
+            outline-offset: 2px;
+        }
+
+        .good-focus-dark-bg:focus {
+            outline: 2px solid #ffc107;
+            outline-offset: 2px;
+        }
+
+        .good-focus-gradient-bg:focus {
+            outline: none;
+            box-shadow:
+                0 0 0 2px #fff,
+                0 0 0 4px #007bff;
+        }
+
+        .good-focus-consistent:focus {
+            outline: 2px solid #ffc107;
+            outline-offset: 2px;
+            transform: scale(1.05);
+            transition: transform 0.1s ease;
+        }
+
+        /* Style dla symulacji fokusa */
+        .sim-element {
+            transition: all 0.2s ease;
+        }
+
+        .sim-element.simulated-focus {
+            outline: 3px solid #ff6b35;
+            outline-offset: 2px;
+            transform: scale(1.02);
+        }
+    </style>
+
+    <script>
+        // Demo funkcjonalność dla przykładów fokusa
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // === TEST NAWIGACJI FOKUSA ===
+            let focusTestActive = false;
+            let currentFocusIndex = -1;
+            let focusableElements = [];
+
+            window.testFocusNavigation = function () {
+                if (focusTestActive) {
+                    stopFocusTest();
+                    return;
+                }
+
+                focusableElements = Array.from(document.querySelectorAll('.bad-focus-none, .bad-focus-weak, .bad-focus-hidden, .bad-focus-inconsistent-1, .bad-focus-inconsistent-2, .bad-focus-inconsistent-3'));
+                focusTestActive = true;
+                currentFocusIndex = -1;
+
+                const feedback = document.getElementById('focus-test-feedback');
+                feedback.textContent = 'Test aktywny - naciśnij Tab lub strzałki aby nawigować. ESC aby zakończyć.';
+                feedback.style.fontWeight = 'bold';
+                feedback.style.color = '#dc3545';
+
+                document.addEventListener('keydown', handleTestNavigation);
+
+                // Zmień przycisk
+                const btn = event.target;
+                btn.textContent = '⏹️ Zatrzymaj test';
+                btn.style.background = '#dc3545';
+            };
+
+            function handleTestNavigation(e) {
+                if (!focusTestActive) return;
+
+                if (e.key === 'Escape') {
+                    stopFocusTest();
+                    return;
+                }
+
+                if (e.key === 'Tab') {
+                    e.preventDefault();
+                    if (e.shiftKey) {
+                        currentFocusIndex = Math.max(0, currentFocusIndex - 1);
+                    } else {
+                        currentFocusIndex = Math.min(focusableElements.length - 1, currentFocusIndex + 1);
+                    }
+
+                    if (focusableElements[currentFocusIndex]) {
+                        focusableElements[currentFocusIndex].focus();
+                        highlightFocusProblems(focusableElements[currentFocusIndex]);
+                    }
+                }
+            }
+
+            function stopFocusTest() {
+                focusTestActive = false;
+                document.removeEventListener('keydown', handleTestNavigation);
+
+                const feedback = document.getElementById('focus-test-feedback');
+                feedback.textContent = 'Test zakończony. Użyj klawisza Tab aby nawigować między elementami i sprawdzić widoczność fokusa';
+                feedback.style.fontWeight = 'normal';
+                feedback.style.color = '#856404';
+
+                // Przywróć przycisk
+                const btn = document.querySelector('button[onclick="testFocusNavigation()"]');
+                if (btn) {
+                    btn.textContent = '🔍 Rozpocznij test nawigacji';
+                    btn.style.background = '#ffc107';
+                }
+            }
+
+            function highlightFocusProblems(element) {
+                const feedback = document.getElementById('focus-test-feedback');
+                const className = element.className;
+
+                if (className.includes('bad-focus-none')) {
+                    feedback.textContent = '❌ PROBLEM: Ten element nie ma widocznego fokusa!';
+                } else if (className.includes('bad-focus-weak')) {
+                    feedback.textContent = '❌ PROBLEM: Fokus ma bardzo słaby kontrast - trudno go zobaczyć!';
+                } else if (className.includes('bad-focus-hidden')) {
+                    feedback.textContent = '❌ PROBLEM: Fokus jest zasłonięty przez inne elementy!';
+                } else if (className.includes('bad-focus-inconsistent')) {
+                    feedback.textContent = '❌ PROBLEM: Niespójny styl fokusa - każdy element wygląda inaczej!';
+                }
+            }
+
+            // === DEMONSTRACJA STYLÓW FOKUSA ===
+            window.demonstrateFocusStyles = function () {
+                const feedback = document.getElementById('good-focus-feedback');
+                const elements = document.querySelectorAll('.good-focus-standard, .good-focus-custom-glow, .good-focus-custom-border, .good-focus-custom-underline, .good-focus-light-bg, .good-focus-dark-bg, .good-focus-gradient-bg, .good-focus-consistent');
+
+                let index = 0;
+                feedback.textContent = 'Demonstracja w toku - obserwuj różne style fokusa...';
+                feedback.style.fontWeight = 'bold';
+                feedback.style.color = '#007bff';
+
+                function focusNext() {
+                    if (index < elements.length) {
+                        elements[index].focus();
+                        setTimeout(() => {
+                            index++;
+                            focusNext();
+                        }, 1500);
+                    } else {
+                        feedback.textContent = 'Demonstracja zakończona. Nawiguj klawiszem Tab aby zobaczyć różne style fokusa';
+                        feedback.style.fontWeight = 'normal';
+                        feedback.style.color = '#004085';
+                    }
+                }
+
+                focusNext();
+            };
+
+            // === NARZĘDZIA FOKUSA ===
+            window.showFocusTool = function (toolType) {
+                // Ukryj wszystkie narzędzia
+                document.querySelectorAll('.focus-tool-content').forEach(tool => {
+                    tool.style.display = 'none';
+                });
+
+                // Pokaż wybrane narzędzie
+                const selectedTool = document.getElementById(`focus-tool-${toolType}`);
+                if (selectedTool) {
+                    selectedTool.style.display = 'block';
+                }
+
+                // Zaktualizuj przyciski
+                document.querySelectorAll('.focus-tool-btn').forEach(btn => {
+                    btn.style.background = 'transparent';
+                    btn.style.color = '#856404';
+                });
+
+                const activeBtn = document.querySelector(`.focus-tool-btn[data-tool="${toolType}"]`);
+                if (activeBtn) {
+                    activeBtn.style.background = '#ffc107';
+                    activeBtn.style.color = '#212529';
+                }
+
+                // Zaktualizuj opis
+                const descriptions = {
+                    'focus-tester': 'Tester fokusa - sprawdza widoczność wskaźników fokusa na różnych elementach',
+                    'contrast-checker': 'Kalkulator kontrastu - analizuje kontrast wskaźników fokusa względem tła',
+                    'focus-simulator': 'Symulator nawigacji - demonstruje nawigację klawiaturową po interfejsie',
+                    'focus-generator': 'Generator stylów - tworzy kod CSS dla dostępnych wskaźników fokusa'
+                };
+
+                const description = descriptions[toolType] || 'Narzędzie do analizy fokusa';
+                document.getElementById('focus-tool-description').textContent = description;
+            };
+
+            // === TESTER FOKUSA ===
+            let focusTestResults = {};
+
+            window.recordFocusVisibility = function (elementId) {
+                // Funkcja wywoływana gdy element otrzymuje fokus
+                setTimeout(() => {
+                    const element = document.getElementById(elementId);
+                    const computedStyle = window.getComputedStyle(element, ':focus');
+
+                    focusTestResults[elementId] = {
+                        outline: computedStyle.outline,
+                        outlineColor: computedStyle.outlineColor,
+                        outlineWidth: computedStyle.outlineWidth,
+                        boxShadow: computedStyle.boxShadow,
+                        border: computedStyle.border
+                    };
+                }, 100);
+            };
+
+            window.startFocusTest = function () {
+                const output = document.getElementById('focus-test-output');
+                const results = document.getElementById('focus-test-results');
+
+                let analysis = '<div style="margin-bottom: 15px;"><strong>Analiza elementów:</strong></div>';
+
+                // Symuluj analizę elementów
+                const testElements = [
+                    { id: 'test-btn-1', name: 'Test Button 1', type: 'button' },
+                    { id: 'test-input-1', name: 'Test Input 1', type: 'input' },
+                    { id: 'test-link-1', name: 'Test Link 1', type: 'link' },
+                    { id: 'test-select-1', name: 'Test Select 1', type: 'select' }
+                ];
+
+                testElements.forEach(element => {
+                    const el = document.getElementById(element.id);
+                    const hasVisibleFocus = checkFocusVisibility(el);
+
+                    analysis += `
+                        <div style="margin: 10px 0; padding: 10px; background: ${hasVisibleFocus ? '#d4edda' : '#f8d7da'}; border-left: 3px solid ${hasVisibleFocus ? '#28a745' : '#dc3545'}; border-radius: 3px;">
+                            <strong>${element.name}</strong> (${element.type})<br>
+                            <span style="color: ${hasVisibleFocus ? '#155724' : '#721c24'};">
+                                ${hasVisibleFocus ? '✅ Fokus widoczny' : '❌ Fokus niewidoczny lub słaby'}
+                            </span>
+                        </div>
+                    `;
+                });
+
+                output.innerHTML = analysis;
+                results.style.display = 'block';
+            };
+
+            function checkFocusVisibility(element) {
+                // Prosta symulacja sprawdzenia widoczności fokusa
+                const style = window.getComputedStyle(element);
+                return style.outline !== 'none' || style.boxShadow !== 'none';
+            }
+
+            // === KALKULATOR KONTRASTU ===
+            window.calculateContrast = function () {
+                const focusColor = document.getElementById('focus-color').value;
+                const bgColor = document.getElementById('bg-color').value;
+
+                const ratio = getContrastRatio(focusColor, bgColor);
+                const isCompliant = ratio >= 3;
+
+                const output = document.getElementById('contrast-output');
+                const results = document.getElementById('contrast-results');
+                const preview = document.getElementById('focus-preview');
+                const previewContainer = document.getElementById('contrast-preview');
+
+                output.innerHTML = `
+                    <div style="margin-bottom: 15px;">
+                        <strong>Kontrast:</strong> ${ratio.toFixed(2)}:1
+                    </div>
+                    <div style="padding: 10px; background: ${isCompliant ? '#d4edda' : '#f8d7da'}; border-radius: 3px; color: ${isCompliant ? '#155724' : '#721c24'};">
+                        ${isCompliant ? '✅ Zgodny z WCAG (≥ 3:1)' : '❌ Niezgodny z WCAG (< 3:1)'}
+                    </div>
+                `;
+
+                // Ustaw podgląd
+                previewContainer.style.background = bgColor;
+                preview.style.outline = `2px solid ${focusColor}`;
+                preview.style.outlineOffset = '2px';
+                preview.style.background = 'transparent';
+                preview.style.color = getContrastColor(bgColor);
+
+                results.style.display = 'block';
+            };
+
+            // Synchtonizacja pól kolorów
+            document.getElementById('focus-color').addEventListener('input', function () {
+                document.getElementById('focus-color-hex').value = this.value;
+            });
+
+            document.getElementById('focus-color-hex').addEventListener('input', function () {
+                document.getElementById('focus-color').value = this.value;
+            });
+
+            document.getElementById('bg-color').addEventListener('input', function () {
+                document.getElementById('bg-color-hex').value = this.value;
+            });
+
+            document.getElementById('bg-color-hex').addEventListener('input', function () {
+                document.getElementById('bg-color').value = this.value;
+            });
+
+            // === SYMULATOR NAWIGACJI ===
+            let simulationIndex = -1;
+            const simulationElements = [];
+
+            window.simulateTab = function () {
+                if (simulationElements.length === 0) {
+                    initSimulation();
+                }
+
+                // Usuń poprzedni fokus
+                simulationElements.forEach(el => el.classList.remove('simulated-focus'));
+
+                simulationIndex = (simulationIndex + 1) % simulationElements.length;
+                const currentElement = simulationElements[simulationIndex];
+                currentElement.classList.add('simulated-focus');
+
+                updateSimulationFeedback(`Tab → Fokus na: ${getElementDescription(currentElement)}`);
+            };
+
+            window.simulateShiftTab = function () {
+                if (simulationElements.length === 0) {
+                    initSimulation();
+                }
+
+                // Usuń poprzedni fokus
+                simulationElements.forEach(el => el.classList.remove('simulated-focus'));
+
+                simulationIndex = simulationIndex <= 0 ? simulationElements.length - 1 : simulationIndex - 1;
+                const currentElement = simulationElements[simulationIndex];
+                currentElement.classList.add('simulated-focus');
+
+                updateSimulationFeedback(`Shift+Tab ← Fokus na: ${getElementDescription(currentElement)}`);
+            };
+
+            window.simulateEnter = function () {
+                if (simulationIndex >= 0 && simulationElements[simulationIndex]) {
+                    const element = simulationElements[simulationIndex];
+                    updateSimulationFeedback(`Enter ↵ Aktywowano: ${getElementDescription(element)}`);
+
+                    // Wizualny efekt aktywacji
+                    element.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        element.style.transform = '';
+                    }, 150);
+                }
+            };
+
+            window.resetFocusSimulation = function () {
+                simulationElements.forEach(el => el.classList.remove('simulated-focus'));
+                simulationIndex = -1;
+                updateSimulationFeedback('Symulacja zresetowana - użyj przycisków aby nawigować');
+            };
+
+            function initSimulation() {
+                const area = document.getElementById('simulation-area');
+                simulationElements.splice(0, simulationElements.length);
+                simulationElements.push(...area.querySelectorAll('.sim-element'));
+            }
+
+            function getElementDescription(element) {
+                if (element.tagName === 'BUTTON') return 'Przycisk';
+                if (element.tagName === 'INPUT') {
+                    if (element.type === 'checkbox') return 'Checkbox';
+                    return 'Pole tekstowe';
+                }
+                if (element.tagName === 'SELECT') return 'Lista wyboru';
+                return 'Element';
+            }
+
+            function updateSimulationFeedback(message) {
+                const feedback = document.getElementById('simulation-feedback');
+                feedback.textContent = message;
+                feedback.style.background = '#e7f3ff';
+
+                setTimeout(() => {
+                    feedback.style.background = '#f8f9fa';
+                }, 2000);
+            }
+
+            // === GENERATOR STYLÓW ===
+            window.generateFocusStyle = function () {
+                const type = document.getElementById('focus-style-type').value;
+                const color = document.getElementById('focus-style-color').value;
+                const width = document.getElementById('focus-style-width').value;
+                const offset = document.getElementById('focus-style-offset').value;
+
+                let css = '';
+
+                switch (type) {
+                    case 'outline':
+                        css = `.element:focus {
+    outline: ${width}px solid ${color};
+    outline-offset: ${offset}px;
+}`;
+                        break;
+                    case 'box-shadow':
+                        css = `.element:focus {
+    outline: none;
+    box-shadow: 0 0 0 ${width}px ${color};
+}`;
+                        break;
+                    case 'border':
+                        css = `.element:focus {
+    outline: none;
+    border: ${width}px solid ${color};
+    border-radius: 3px;
+}`;
+                        break;
+                    case 'underline':
+                        css = `.element:focus {
+    outline: none;
+    border-bottom: ${width}px solid ${color};
+    box-shadow: 0 ${width}px 0 0 ${color}33;
+}`;
+                        break;
+                }
+
+                const output = document.getElementById('css-output');
+                const results = document.getElementById('generated-style');
+                const previewBtn = document.getElementById('preview-button');
+                const previewInput = document.getElementById('preview-input');
+
+                output.textContent = css;
+
+                // Zastosuj styl do podglądu
+                const styleElement = document.createElement('style');
+                styleElement.id = 'preview-style';
+                const existingStyle = document.getElementById('preview-style');
+                if (existingStyle) {
+                    existingStyle.remove();
+                }
+
+                const previewCSS = css.replace('.element', '#preview-button, #preview-input');
+                styleElement.textContent = previewCSS;
+                document.head.appendChild(styleElement);
+
+                results.style.display = 'block';
+            };
+
+            window.copyCSS = function () {
+                const css = document.getElementById('css-output').textContent;
+                navigator.clipboard.writeText(css).then(() => {
+                    showNotification('CSS skopiowany do schowka!', 'success');
+                });
+            };
+
+            // Aktualizacja wartości sliderów
+            document.getElementById('focus-style-width').addEventListener('input', function () {
+                document.getElementById('width-value').textContent = this.value + 'px';
+            });
+
+            document.getElementById('focus-style-offset').addEventListener('input', function () {
+                document.getElementById('offset-value').textContent = this.value + 'px';
+            });
+
+            // === FUNKCJE POMOCNICZE ===
+            function getContrastRatio(color1, color2) {
+                const l1 = getLuminance(color1);
+                const l2 = getLuminance(color2);
+
+                const brightest = Math.max(l1, l2);
+                const darkest = Math.min(l1, l2);
+
+                return (brightest + 0.05) / (darkest + 0.05);
+            }
+
+            function getLuminance(hex) {
+                const rgb = hexToRgb(hex);
+                const sRGB = [rgb.r, rgb.g, rgb.b].map(c => {
+                    c = c / 255;
+                    return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+                });
+
+                return 0.2126 * sRGB[0] + 0.7152 * sRGB[1] + 0.0722 * sRGB[2];
+            }
+
+            function hexToRgb(hex) {
+                const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+                return result ? {
+                    r: parseInt(result[1], 16),
+                    g: parseInt(result[2], 16),
+                    b: parseInt(result[3], 16)
+                } : null;
+            }
+
+            function getContrastColor(bgColor) {
+                const luminance = getLuminance(bgColor);
+                return luminance > 0.5 ? '#000000' : '#ffffff';
+            }
+
+            function showNotification(message, type) {
+                const notification = document.createElement('div');
+                const colors = {
+                    'success': '#d4edda',
+                    'error': '#f8d7da',
+                    'info': '#e7f3ff',
+                    'warning': '#fff3cd'
+                };
+
+                const borderColors = {
+                    'success': '#28a745',
+                    'error': '#dc3545',
+                    'info': '#007bff',
+                    'warning': '#ffc107'
+                };
+
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: ${colors[type] || colors.info};
+                    color: #495057;
+                    padding: 12px 20px;
+                    border-radius: 4px;
+                    border-left: 4px solid ${borderColors[type] || borderColors.info};
+                    z-index: 1000;
+                    max-width: 400px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    font-size: 14px;
+                    line-height: 1.4;
+                `;
+                notification.textContent = message;
+
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    notification.style.transition = 'opacity 0.3s';
+                    setTimeout(() => {
+                        if (document.body.contains(notification)) {
+                            document.body.removeChild(notification);
+                        }
+                    }, 300);
+                }, 4000);
+            }
+        });
+    </script>
+</body>
+
+</html>

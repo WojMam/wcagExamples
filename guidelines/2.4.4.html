@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.4.4 Cel linku (w kontekście) (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.4.4 Cel linku (w kontekście)</h2>
+                <p class="criterion-level">Poziom A</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#link-purpose-in-context" target="_blank"
+                            rel="noopener">Oficjalna dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Cel każdego linku można zidentyfikować na podstawie samego tekstu linku lub z tekstu linku wraz z
+                    jego kontekstem określonym programowo, chyba że cel linku byłby dwuznaczny dla użytkowników ogólnie.
+                </p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest pomoc użytkownikom w zrozumieniu celu każdego linku, tak aby mogli
+                    oni decydować, czy chcą przejść do tego linku. Najlepsze praktyki wymagają, aby linki o tym samym
+                    miejscu docelowym miały taki sam opis i aby linki o różnych celach miały różne opisy.</p>
+
+                <p>Jasne cele linków są szczególnie ważne dla:</p>
+                <ul>
+                    <li><strong>Użytkowników czytników ekranu</strong> - mogą nawigować między linkami bez czytania
+                        całego kontekstu</li>
+                    <li><strong>Osób z ograniczeniami poznawczymi</strong> - niejasne linki mogą być dezorientujące</li>
+                    <li><strong>Użytkowników technologii wspomagających</strong> - które pozwalają na tworzenie list
+                        linków</li>
+                    <li><strong>Wszystkich użytkowników</strong> - oszczędza czas i redukuje frustrację</li>
+                </ul>
+
+                <p>Kontekst programowy dla linku może pochodzić z:</p>
+                <ul>
+                    <li><strong>Tego samego akapitu</strong> co link</li>
+                    <li><strong>Elementu listy</strong> zawierającego link</li>
+                    <li><strong>Komórki tabeli</strong> zawierającej link</li>
+                    <li><strong>Nagłówka tabeli</strong> powiązanego z komórką zawierającą link</li>
+                    <li><strong>Atrybutów ARIA</strong> takich jak aria-label, aria-labelledby, aria-describedby</li>
+                </ul>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - nieopisowe i niejasne linki</h4>
+                        <p>Przykłady linków, które nie spełniają kryterium 2.4.4:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #721c24; margin-top: 0;">❌ Problematyczne linki:</h5>
+
+                                    <div
+                                        style="background-color: rgba(255,255,255,0.8); padding: 15px; border-radius: 4px; margin: 10px 0;">
+                                        <div
+                                            style="border-bottom: 1px solid #dee2e6; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #721c24; margin-top: 0;">Ogólne i niejasne frazy:</h6>
+                                            <ul style="color: #721c24;">
+                                                <li>Nasza firma oferuje najlepsze produkty na rynku. <a href="#"
+                                                        class="bad-link-demo" data-purpose="Nieznany">Kliknij tutaj</a>
+                                                    aby dowiedzieć się więcej.</li>
+                                                <li>Sprawdź nasze najnowsze artykuły. <a href="#" class="bad-link-demo"
+                                                        data-purpose="Nieznany">Więcej</a></li>
+                                                <li>Przedstawiamy szczegółowy raport finansowy za rok 2023. <a href="#"
+                                                        class="bad-link-demo" data-purpose="Nieznany">Link</a></li>
+                                                <li>Zapoznaj się z naszą ofertą specjalną. <a href="#"
+                                                        class="bad-link-demo" data-purpose="Nieznany">Czytaj dalej</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div
+                                            style="border-bottom: 1px solid #dee2e6; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #721c24; margin-top: 0;">Duplikujące się teksty linków o
+                                                różnych celach:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 10px; border-left: 3px solid #dc3545; margin: 10px 0;">
+                                                <p style="margin: 0; color: #721c24;"><strong>iPhone 14 Pro</strong> -
+                                                    Najnowszy telefon od Apple z 48MP aparatem. <a href="#"
+                                                        class="bad-link-demo"
+                                                        data-purpose="Strona produktu iPhone">Szczegóły</a></p>
+                                            </div>
+                                            <div
+                                                style="background-color: #fff; padding: 10px; border-left: 3px solid #dc3545; margin: 10px 0;">
+                                                <p style="margin: 0; color: #721c24;"><strong>MacBook Pro</strong> -
+                                                    Powerful laptop dla profesjonalistów. <a href="#"
+                                                        class="bad-link-demo"
+                                                        data-purpose="Strona produktu MacBook">Szczegóły</a></p>
+                                            </div>
+                                            <div
+                                                style="background-color: #fff; padding: 10px; border-left: 3px solid #dc3545; margin: 10px 0;">
+                                                <p style="margin: 0; color: #721c24;"><strong>iPad Air</strong> - Tablet
+                                                    dla kreatywnych zadań. <a href="#" class="bad-link-demo"
+                                                        data-purpose="Strona produktu iPad">Szczegóły</a></p>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h6 style="color: #721c24; margin-top: 0;">Linki bez kontekstu:</h6>
+                                            <ul style="color: #721c24;">
+                                                <li><a href="#" class="bad-link-demo"
+                                                        data-purpose="Nieznany">Pobierz</a></li>
+                                                <li><a href="#" class="bad-link-demo" data-purpose="Nieznany">Tutaj</a>
+                                                </li>
+                                                <li><a href="#" class="bad-link-demo" data-purpose="Nieznany">Zobacz</a>
+                                                </li>
+                                                <li><a href="#" class="bad-link-demo" data-purpose="Nieznany">Więcej
+                                                        informacji</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #fff3cd; padding: 10px; border-radius: 3px; border-left: 4px solid #ffc107; margin-top: 15px;">
+                                        <p style="color: #856404; margin: 0; font-size: 0.9em;">
+                                            <strong>Symulacja czytnika ekranu:</strong> <span
+                                                id="bad-link-reader">Najedź na link aby usłyszeć jak brzmi w czytnikach
+                                                ekranu</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #856404; margin-top: 0;">Dlaczego to problematyczne?</h6>
+                                    <ul style="color: #856404; margin-bottom: 0;">
+                                        <li><strong>Niemożność zrozumienia celu</strong> - użytkownik nie wie co się
+                                            stanie po kliknięciu</li>
+                                        <li><strong>Duplikujące się teksty</strong> - różne linki z tym samym tekstem
+                                            dezorientują</li>
+                                        <li><strong>Frustracja użytkowników</strong> - wymusza klikanie aby poznać cel
+                                        </li>
+                                        <li><strong>Problemy z nawigacją</strong> - listy linków w czytnikach ekranu są
+                                            bezużyteczne</li>
+                                        <li><strong>Złe UX</strong> - zwiększa cognitive load i czas wykonywania zadań
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- ZŁE PRZYKŁADY - nieopisowe linki --&gt;
+
+&lt;!-- 1. Ogólne frazy --&gt;
+&lt;p&gt;Nasza firma oferuje najlepsze produkty na rynku. 
+   &lt;a href="products.html"&gt;Kliknij tutaj&lt;/a&gt; aby dowiedzieć się więcej.&lt;/p&gt;
+
+&lt;p&gt;Sprawdź nasze najnowsze artykuły. &lt;a href="blog.html"&gt;Więcej&lt;/a&gt;&lt;/p&gt;
+
+&lt;!-- 2. Duplikujące się teksty linków --&gt;
+&lt;div class="product"&gt;
+    &lt;h3&gt;iPhone 14 Pro&lt;/h3&gt;
+    &lt;p&gt;Najnowszy telefon od Apple...&lt;/p&gt;
+    &lt;a href="iphone14.html"&gt;Szczegóły&lt;/a&gt; &lt;!-- Niejednoznaczny --&gt;
+&lt;/div&gt;
+
+&lt;div class="product"&gt;
+    &lt;h3&gt;MacBook Pro&lt;/h3&gt;
+    &lt;p&gt;Powerful laptop dla profesjonalistów...&lt;/p&gt;
+    &lt;a href="macbook.html"&gt;Szczegóły&lt;/a&gt; &lt;!-- Identyczny tekst! --&gt;
+&lt;/div&gt;
+
+&lt;!-- 3. Linki bez kontekstu --&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href="manual.pdf"&gt;Pobierz&lt;/a&gt;&lt;/li&gt; &lt;!-- Co pobierz? --&gt;
+    &lt;li&gt;&lt;a href="contact.html"&gt;Tutaj&lt;/a&gt;&lt;/li&gt; &lt;!-- Co tutaj? --&gt;
+    &lt;li&gt;&lt;a href="gallery.html"&gt;Zobacz&lt;/a&gt;&lt;/li&gt; &lt;!-- Co zobacz? --&gt;
+&lt;/ul&gt;
+
+&lt;!-- 4. Linki zależne tylko od wizualnego kontekstu --&gt;
+&lt;table&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Raport Q1 2023&lt;/td&gt;
+        &lt;td&gt;&lt;a href="q1.pdf"&gt;PDF&lt;/a&gt;&lt;/td&gt; &lt;!-- Która PDF? --&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;Raport Q2 2023&lt;/td&gt;
+        &lt;td&gt;&lt;a href="q2.pdf"&gt;PDF&lt;/a&gt;&lt;/td&gt; &lt;!-- Identyczny tekst! --&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+                        <p class="explanation">Problem: Linki nie dostarczają wystarczających informacji o swoim celu.
+                            Użytkownicy, szczególnie korzystający z czytników ekranu, nie mogą zrozumieć dokąd prowadzą
+                            linki bez czytania dodatkowego kontekstu. Duplikujące się teksty linków o różnych celach są
+                            szczególnie problematyczne.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - opisowe i jednoznaczne linki</h4>
+                        <p>Linki z jasno określonym celem, zrozumiałe samodzielnie lub z kontekstem:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #155724; margin-top: 0;">✅ Prawidłowe linki:</h5>
+
+                                    <div
+                                        style="background-color: rgba(255,255,255,0.9); padding: 15px; border-radius: 4px; margin: 10px 0;">
+                                        <div
+                                            style="border-bottom: 1px solid #c3e6cb; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #155724; margin-top: 0;">Opisowe teksty linków:</h6>
+                                            <ul style="color: #155724;">
+                                                <li>Nasza firma oferuje najlepsze produkty na rynku. <a href="#"
+                                                        class="good-link-demo"
+                                                        data-purpose="Przejdź do katalogu produktów">Zobacz katalog
+                                                        produktów</a> aby dowiedzieć się więcej.</li>
+                                                <li>Sprawdź nasze najnowsze artykuły na <a href="#"
+                                                        class="good-link-demo"
+                                                        data-purpose="Przejdź do bloga firmowego">blogu firmowym</a>.
+                                                </li>
+                                                <li>Przedstawiamy <a href="#" class="good-link-demo"
+                                                        data-purpose="Pobierz raport finansowy 2023 PDF">szczegółowy
+                                                        raport finansowy za rok 2023 (PDF)</a>.</li>
+                                                <li>Zapoznaj się z naszą <a href="#" class="good-link-demo"
+                                                        data-purpose="Zobacz promocje świąteczne">ofertą specjalną na
+                                                        święta</a>.</li>
+                                            </ul>
+                                        </div>
+
+                                        <div
+                                            style="border-bottom: 1px solid #c3e6cb; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #155724; margin-top: 0;">Unikalne teksty dla różnych
+                                                celów:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 10px; border-left: 3px solid #28a745; margin: 10px 0;">
+                                                <p style="margin: 0; color: #155724;"><strong>iPhone 14 Pro</strong> -
+                                                    Najnowszy telefon od Apple z 48MP aparatem. <a href="#"
+                                                        class="good-link-demo"
+                                                        data-purpose="Zobacz specyfikację iPhone 14 Pro">Specyfikacja
+                                                        iPhone 14 Pro</a></p>
+                                            </div>
+                                            <div
+                                                style="background-color: #fff; padding: 10px; border-left: 3px solid #28a745; margin: 10px 0;">
+                                                <p style="margin: 0; color: #155724;"><strong>MacBook Pro</strong> -
+                                                    Powerful laptop dla profesjonalistów. <a href="#"
+                                                        class="good-link-demo"
+                                                        data-purpose="Zobacz specyfikację MacBook Pro">Specyfikacja
+                                                        MacBook Pro</a></p>
+                                            </div>
+                                            <div
+                                                style="background-color: #fff; padding: 10px; border-left: 3px solid #28a745; margin: 10px 0;">
+                                                <p style="margin: 0; color: #155724;"><strong>iPad Air</strong> - Tablet
+                                                    dla kreatywnych zadań. <a href="#" class="good-link-demo"
+                                                        data-purpose="Zobacz specyfikację iPad Air">Specyfikacja iPad
+                                                        Air</a></p>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h6 style="color: #155724; margin-top: 0;">Linki z jasnym kontekstem:</h6>
+                                            <ul style="color: #155724;">
+                                                <li><a href="#" class="good-link-demo"
+                                                        data-purpose="Pobierz instrukcję obsługi PDF">Pobierz instrukcję
+                                                        obsługi (PDF, 2.3 MB)</a></li>
+                                                <li><a href="#" class="good-link-demo"
+                                                        data-purpose="Skontaktuj się z nami">Formularz kontaktowy</a>
+                                                </li>
+                                                <li><a href="#" class="good-link-demo"
+                                                        data-purpose="Zobacz galerię zdjęć">Galeria zdjęć projektów</a>
+                                                </li>
+                                                <li><a href="#" class="good-link-demo"
+                                                        data-purpose="Więcej informacji o usługach">Szczegóły naszych
+                                                        usług</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #e7f3ff; padding: 10px; border-radius: 3px; border-left: 4px solid #007bff; margin-top: 15px;">
+                                        <p style="color: #004085; margin: 0; font-size: 0.9em;">
+                                            <strong>Symulacja czytnika ekranu:</strong> <span
+                                                id="good-link-reader">Najedź na link aby usłyszeć jak brzmi w czytnikach
+                                                ekranu</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #004085; margin-top: 0;">Zalety opisowych linków:</h6>
+                                    <ul style="color: #004085; margin-bottom: 0;">
+                                        <li><strong>Natychmiastowe zrozumienie</strong> - użytkownik wie dokąd prowadzi
+                                            link</li>
+                                        <li><strong>Efektywna nawigacja</strong> - można podjąć świadomą decyzję o
+                                            kliknięciu</li>
+                                        <li><strong>Lepsze UX</strong> - redukuje niepotrzebne kliknięcia i frustrację
+                                        </li>
+                                        <li><strong>Dostępność</strong> - działa świetnie z czytnikami ekranu</li>
+                                        <li><strong>SEO</strong> - opisowe linki są lepsze dla wyszukiwarek</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRE PRZYKŁADY - opisowe linki --&gt;
+
+&lt;!-- 1. Opisowe teksty linków --&gt;
+&lt;p&gt;Nasza firma oferuje najlepsze produkty na rynku. 
+   &lt;a href="products.html"&gt;Zobacz katalog produktów&lt;/a&gt; aby dowiedzieć się więcej.&lt;/p&gt;
+
+&lt;p&gt;Sprawdź nasze najnowsze artykuły na &lt;a href="blog.html"&gt;blogu firmowym&lt;/a&gt;.&lt;/p&gt;
+
+&lt;!-- 2. Unikalne teksty dla różnych celów --&gt;
+&lt;div class="product"&gt;
+    &lt;h3&gt;iPhone 14 Pro&lt;/h3&gt;
+    &lt;p&gt;Najnowszy telefon od Apple...&lt;/p&gt;
+    &lt;a href="iphone14.html"&gt;Specyfikacja iPhone 14 Pro&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class="product"&gt;
+    &lt;h3&gt;MacBook Pro&lt;/h3&gt;
+    &lt;p&gt;Powerful laptop dla profesjonalistów...&lt;/p&gt;
+    &lt;a href="macbook.html"&gt;Specyfikacja MacBook Pro&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;!-- 3. Linki z kompletnym kontekstem --&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href="manual.pdf"&gt;Pobierz instrukcję obsługi (PDF, 2.3 MB)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="contact.html"&gt;Formularz kontaktowy&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="gallery.html"&gt;Galeria zdjęć projektów&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- 4. Linki z informacją o formacie i rozmiarze --&gt;
+&lt;p&gt;Dokumenty do pobrania:&lt;/p&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href="raport2023.pdf"&gt;Raport roczny 2023 (PDF, 5.2 MB)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="cennik.xlsx"&gt;Cennik usług (Excel, 156 KB)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="prezentacja.pptx"&gt;Prezentacja firmy (PowerPoint, 12 MB)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Każdy link jasno opisuje swój cel. Teksty są opisowe i
+                            unikalne dla różnych miejsc docelowych. Użytkownik od razu wie co się stanie po kliknięciu i
+                            może podjąć świadomą decyzję o nawigacji.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - linki z kontekstem programowym</h4>
+                        <p>Użycie atrybutów ARIA i struktury HTML do dostarczania kontekstu dla linków:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #856404; margin-top: 0;">🔗 Demo linków z kontekstem ARIA:</h5>
+
+                                    <div style="margin: 15px 0;">
+                                        <div
+                                            style="border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; margin: 10px 0; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">1. aria-label dla dodatkowego
+                                                kontekstu:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 12px; border-left: 3px solid #ffc107; margin: 8px 0;">
+                                                <p style="margin: 0; color: #495057;">
+                                                    <strong>Artykuł:</strong> "Najlepsze praktyki dostępności
+                                                    webowej"<br>
+                                                    <a href="#" class="context-demo"
+                                                        aria-label="Czytaj więcej o najlepszych praktykach dostępności webowej"
+                                                        data-context="aria-label">Czytaj więcej</a>
+                                                </p>
+                                            </div>
+
+                                            <div
+                                                style="background-color: #fff; padding: 12px; border-left: 3px solid #ffc107; margin: 8px 0;">
+                                                <p style="margin: 0; color: #495057;">
+                                                    <strong>Produkt:</strong> Laptop Dell XPS 13<br>
+                                                    <a href="#" class="context-demo"
+                                                        aria-label="Kup Dell XPS 13 - dodaj do koszyka"
+                                                        data-context="aria-label">Kup teraz</a>
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; margin: 10px 0; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">2. aria-labelledby dla powiązania
+                                                z nagłówkami:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 12px; border-left: 3px solid #17a2b8; margin: 8px 0;">
+                                                <h4 id="product1" style="margin: 0 0 8px 0; color: #495057;">iPhone 14
+                                                    Pro Max</h4>
+                                                <p style="margin: 0 0 8px 0; color: #6c757d;">Najnowszy flagowy telefon
+                                                    Apple z ekranem 6.7"</p>
+                                                <a href="#" class="context-demo" aria-labelledby="product1"
+                                                    data-context="aria-labelledby">Szczegóły</a> |
+                                                <a href="#" class="context-demo" aria-labelledby="product1"
+                                                    data-context="aria-labelledby" data-action="add to cart">Dodaj do
+                                                    koszyka</a>
+                                            </div>
+
+                                            <div
+                                                style="background-color: #fff; padding: 12px; border-left: 3px solid #17a2b8; margin: 8px 0;">
+                                                <h4 id="product2" style="margin: 0 0 8px 0; color: #495057;">Samsung
+                                                    Galaxy S23 Ultra</h4>
+                                                <p style="margin: 0 0 8px 0; color: #6c757d;">Zaawansowany telefon z S
+                                                    Pen i 200MP aparatem</p>
+                                                <a href="#" class="context-demo" aria-labelledby="product2"
+                                                    data-context="aria-labelledby">Szczegóły</a> |
+                                                <a href="#" class="context-demo" aria-labelledby="product2"
+                                                    data-context="aria-labelledby" data-action="add to cart">Dodaj do
+                                                    koszyka</a>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; margin: 10px 0; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">3. Tabela z kontekstem nagłówków:
+                                            </h6>
+                                            <div style="overflow-x: auto;">
+                                                <table
+                                                    style="width: 100%; border-collapse: collapse; background-color: #fff;">
+                                                    <thead>
+                                                        <tr style="background-color: #f8f9fa;">
+                                                            <th scope="col"
+                                                                style="border: 1px solid #dee2e6; padding: 8px; text-align: left;">
+                                                                Dokument</th>
+                                                            <th scope="col"
+                                                                style="border: 1px solid #dee2e6; padding: 8px; text-align: left;">
+                                                                Format</th>
+                                                            <th scope="col"
+                                                                style="border: 1px solid #dee2e6; padding: 8px; text-align: left;">
+                                                                Akcje</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row"
+                                                                style="border: 1px solid #dee2e6; padding: 8px;">Raport
+                                                                finansowy Q1 2024</th>
+                                                            <td style="border: 1px solid #dee2e6; padding: 8px;">PDF
+                                                            </td>
+                                                            <td style="border: 1px solid #dee2e6; padding: 8px;">
+                                                                <a href="#" class="context-demo"
+                                                                    data-context="table context"
+                                                                    data-document="Raport finansowy Q1 2024">Pobierz</a>
+                                                                |
+                                                                <a href="#" class="context-demo"
+                                                                    data-context="table context"
+                                                                    data-document="Raport finansowy Q1 2024">Podgląd</a>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th scope="row"
+                                                                style="border: 1px solid #dee2e6; padding: 8px;">
+                                                                Instrukcja użytkownika</th>
+                                                            <td style="border: 1px solid #dee2e6; padding: 8px;">PDF
+                                                            </td>
+                                                            <td style="border: 1px solid #dee2e6; padding: 8px;">
+                                                                <a href="#" class="context-demo"
+                                                                    data-context="table context"
+                                                                    data-document="Instrukcja użytkownika">Pobierz</a> |
+                                                                <a href="#" class="context-demo"
+                                                                    data-context="table context"
+                                                                    data-document="Instrukcja użytkownika">Podgląd</a>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #d1ecf1; padding: 10px; border-radius: 3px; border-left: 4px solid #17a2b8; margin-top: 15px;">
+                                        <p style="color: #0c5460; margin: 0; font-size: 0.9em;">
+                                            <strong>Test czytnika ekranu:</strong> <span id="context-reader">Najedź na
+                                                linki aby zobaczyć jak czytnik ekranu interpretuje kontekst</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #155724; margin-top: 0;">🎯 Korzyści z kontekstu programowego:
+                                    </h6>
+                                    <ul style="color: #155724; margin-bottom: 0; font-size: 0.95em;">
+                                        <li><strong>Elastyczność designu</strong> - krótki tekst linku z bogatym
+                                            kontekstem</li>
+                                        <li><strong>Czytelność kodu</strong> - separacja treści od kontekstu</li>
+                                        <li><strong>Lepsze UX</strong> - zwięzły interfejs z pełną dostępnością</li>
+                                        <li><strong>Automatyczne powiązania</strong> - struktura HTML dostarcza kontekst
+                                        </li>
+                                        <li><strong>Skalowalność</strong> - łatwe zarządzanie dużą liczbą podobnych
+                                            linków</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - linki z kontekstem programowym --&gt;
+
+&lt;!-- 1. aria-label dla dodatkowego kontekstu --&gt;
+&lt;article&gt;
+    &lt;h3&gt;Najlepsze praktyki dostępności webowej&lt;/h3&gt;
+    &lt;p&gt;Poznaj kluczowe zasady tworzenia dostępnych stron internetowych...&lt;/p&gt;
+    &lt;a href="article1.html" 
+       aria-label="Czytaj więcej o najlepszych praktykach dostępności webowej"&gt;
+        Czytaj więcej
+    &lt;/a&gt;
+&lt;/article&gt;
+
+&lt;!-- 2. aria-labelledby dla powiązania z nagłówkami --&gt;
+&lt;section&gt;
+    &lt;h3 id="iphone-heading"&gt;iPhone 14 Pro Max&lt;/h3&gt;
+    &lt;p&gt;Najnowszy flagowy telefon Apple z ekranem 6.7"&lt;/p&gt;
+    &lt;a href="iphone14-details.html" aria-labelledby="iphone-heading"&gt;Szczegóły&lt;/a&gt;
+    &lt;a href="add-to-cart.php?product=iphone14" 
+       aria-label="Dodaj iPhone 14 Pro Max do koszyka"&gt;
+        Dodaj do koszyka
+    &lt;/a&gt;
+&lt;/section&gt;
+
+&lt;!-- 3. aria-describedby dla dodatkowych informacji --&gt;
+&lt;div&gt;
+    &lt;a href="download.php?file=manual.pdf" 
+       aria-describedby="manual-info"&gt;
+        Pobierz instrukcję
+    &lt;/a&gt;
+    &lt;span id="manual-info"&gt;(PDF, 2.3 MB, instrukcja obsługi produktu XYZ)&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;!-- 4. Kontekst strukturalny - tabela --&gt;
+&lt;table&gt;
+    &lt;caption&gt;Dokumenty do pobrania&lt;/caption&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th scope="col"&gt;Dokument&lt;/th&gt;
+            &lt;th scope="col"&gt;Format&lt;/th&gt;
+            &lt;th scope="col"&gt;Akcje&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;th scope="row"&gt;Raport finansowy Q1 2024&lt;/th&gt;
+            &lt;td&gt;PDF&lt;/td&gt;
+            &lt;td&gt;
+                &lt;a href="reports/q1-2024.pdf"&gt;Pobierz&lt;/a&gt; |
+                &lt;a href="preview.php?doc=q1-2024"&gt;Podgląd&lt;/a&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;!-- 5. Kontekst strukturalny - lista --&gt;
+&lt;ul&gt;
+    &lt;li&gt;
+        &lt;strong&gt;Artykuł:&lt;/strong&gt; "Trendy w web designie 2024"
+        &lt;br&gt;&lt;a href="articles/trends-2024.html"&gt;Czytaj artykuł&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;strong&gt;Poradnik:&lt;/strong&gt; "Optymalizacja SEO dla początkujących"
+        &lt;br&gt;&lt;a href="guides/seo-basics.html"&gt;Czytaj poradnik&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+                        <pre><code class="language-javascript">// JavaScript dla demonstracji kontekstu ARIA
+
+class LinkContextDemo {
+    constructor() {
+        this.setupEventListeners();
+    }
+
+    setupEventListeners() {
+        // Demo dla linków z kontekstem
+        document.querySelectorAll('.context-demo').forEach(link => {
+            link.addEventListener('mouseenter', (e) => {
+                this.showLinkContext(e.target);
+            });
+            
+            link.addEventListener('focus', (e) => {
+                this.showLinkContext(e.target);
+            });
+            
+            // Prevent actual navigation for demo
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.simulateScreenReader(e.target);
+            });
+        });
+    }
+
+    showLinkContext(link) {
+        const contextType = link.getAttribute('data-context');
+        const indicator = document.getElementById('context-reader');
+        
+        let contextText = '';
+        
+        switch(contextType) {
+            case 'aria-label':
+                contextText = `Czytnik ekranu odczyta: "${link.getAttribute('aria-label')}"`;
+                break;
+                
+            case 'aria-labelledby':
+                const labelledById = link.getAttribute('aria-labelledby');
+                const labelElement = document.getElementById(labelledById);
+                const action = link.getAttribute('data-action') || 'szczegóły';
+                if (labelElement) {
+                    contextText = `Czytnik ekranu odczyta: "${labelElement.textContent} ${action}"`;
+                }
+                break;
+                
+            case 'table context':
+                const document = link.getAttribute('data-document');
+                const action = link.textContent;
+                contextText = `Czytnik ekranu odczyta: "${action} ${document}"`;
+                break;
+                
+            default:
+                contextText = `Czytnik ekranu odczyta: "${link.textContent}"`;
+        }
+        
+        indicator.textContent = contextText;
+        indicator.style.fontWeight = 'bold';
+        indicator.style.color = '#0c5460';
+    }
+
+    simulateScreenReader(link) {
+        // Symulacja ogłoszenia czytnika ekranu
+        const announcement = this.getFullLinkContext(link);
+        
+        // Tworzymy tymczasowy element dla aria-live
+        const liveRegion = document.createElement('div');
+        liveRegion.setAttribute('aria-live', 'polite');
+        liveRegion.setAttribute('aria-atomic', 'true');
+        liveRegion.className = 'sr-only';
+        liveRegion.textContent = `Link aktywowany: ${announcement}`;
+        
+        document.body.appendChild(liveRegion);
+        
+        // Usuń po krótkim czasie
+        setTimeout(() => {
+            document.body.removeChild(liveRegion);
+        }, 3000);
+        
+        // Pokaż powiadomienie dla demo
+        this.showNotification(`🔊 Czytnik ekranu: "${announcement}"`);
+    }
+
+    getFullLinkContext(link) {
+        // Pobierz pełny kontekst linku tak jak robi to czytnik ekranu
+        
+        if (link.hasAttribute('aria-label')) {
+            return link.getAttribute('aria-label');
+        }
+        
+        if (link.hasAttribute('aria-labelledby')) {
+            const labelledById = link.getAttribute('aria-labelledby');
+            const labelElement = document.getElementById(labelledById);
+            if (labelElement) {
+                return `${labelElement.textContent.trim()} ${link.textContent.trim()}`;
+            }
+        }
+        
+        // Kontekst z tabeli
+        const cell = link.closest('td');
+        if (cell) {
+            const row = cell.closest('tr');
+            const rowHeader = row.querySelector('th[scope="row"]');
+            if (rowHeader) {
+                return `${link.textContent.trim()} ${rowHeader.textContent.trim()}`;
+            }
+        }
+        
+        // Kontekst z elementu rodzica
+        const parentContext = this.getParentContext(link);
+        if (parentContext) {
+            return `${link.textContent.trim()}, ${parentContext}`;
+        }
+        
+        return link.textContent.trim();
+    }
+
+    getParentContext(link) {
+        // Szukaj kontekstu w elemencie rodzica
+        const article = link.closest('article');
+        if (article) {
+            const heading = article.querySelector('h1, h2, h3, h4, h5, h6');
+            if (heading) {
+                return `w artykule: ${heading.textContent.trim()}`;
+            }
+        }
+        
+        const listItem = link.closest('li');
+        if (listItem) {
+            const strong = listItem.querySelector('strong');
+            if (strong) {
+                return `w ${strong.textContent.trim()}`;
+            }
+        }
+        
+        return null;
+    }
+
+    showNotification(message) {
+        // Tworzymy powiadomienie
+        const notification = document.createElement('div');
+        const colors = {
+            'success': '#d4edda',
+            'error': '#f8d7da',
+            'info': '#e7f3ff'
+        };
+        
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: ${colors[type] || colors.info};
+            color: #495057;
+            padding: 12px 20px;
+            border-radius: 4px;
+            border-left: 4px solid ${type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#007bff'};
+            z-index: 1000;
+            max-width: 350px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            font-size: 14px;
+        `;
+        notification.textContent = message;
+        
+        document.body.appendChild(notification);
+        
+        // Usuń po 4 sekundach
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            notification.style.transition = 'opacity 0.3s';
+            setTimeout(() => {
+                if (document.body.contains(notification)) {
+                    document.body.removeChild(notification);
+                }
+            }, 300);
+        }, 4000);
+    }
+}
+
+// Inicjalizacja dla demo linków
+document.addEventListener('DOMContentLoaded', () => {
+    new LinkContextDemo();
+});</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Linki używają atrybutów ARIA i struktury HTML do
+                            dostarczania kontekstu programowego. Pozwala to na krótkie, czytelne teksty linków przy
+                            zachowaniu pełnej dostępności i jasności celu dla czytników ekranu.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - wzorce linków w różnych kontekstach</h4>
+                        <p>Praktyczne implementacje linków w typowych scenariuszach webowych:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #004085; margin-top: 0;">📋 Praktyczne wzorce linków:</h5>
+
+                                    <div style="margin: 15px 0;">
+                                        <div
+                                            style="border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; margin: 15px 0; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #004085; margin-top: 0;">1. Linki do plików do pobrania:
+                                            </h6>
+                                            <ul style="color: #495057; margin: 10px 0;">
+                                                <li><a href="#" class="pattern-demo" data-pattern="download"
+                                                        onclick="return false;">📄 Raport roczny 2023 (PDF, 5.2 MB)</a>
+                                                </li>
+                                                <li><a href="#" class="pattern-demo" data-pattern="download"
+                                                        onclick="return false;">📊 Arkusz kalkulacyjny budżetu (Excel,
+                                                        234 KB)</a></li>
+                                                <li><a href="#" class="pattern-demo" data-pattern="download"
+                                                        onclick="return false;">🎵 Prezentacja firmy (PowerPoint, 12.1
+                                                        MB)</a></li>
+                                                <li><a href="#" class="pattern-demo" data-pattern="download"
+                                                        onclick="return false;">🖼️ Logo firmy wysokiej rozdzielczości
+                                                        (PNG, 2.8 MB)</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div
+                                            style="border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; margin: 15px 0; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #004085; margin-top: 0;">2. Linki do nowych okien/kart:
+                                            </h6>
+                                            <ul style="color: #495057; margin: 10px 0;">
+                                                <li><a href="#" class="pattern-demo" data-pattern="external"
+                                                        onclick="return false;">🔗 Dokumentacja WCAG 2.1 na W3C (otwiera
+                                                        w nowej karcie)</a></li>
+                                                <li><a href="#" class="pattern-demo" data-pattern="external"
+                                                        onclick="return false;">📧 Napisz do nas email (otwiera program
+                                                        pocztowy)</a></li>
+                                                <li><a href="#" class="pattern-demo" data-pattern="external"
+                                                        onclick="return false;">📍 Zobacz naszą lokalizację w Google
+                                                        Maps (zewnętrzna strona)</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <div
+                                            style="border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; margin: 15px 0; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #004085; margin-top: 0;">3. Linki nawigacyjne z bieżącą
+                                                stroną:</h6>
+                                            <nav style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;"
+                                                aria-label="Główna nawigacja">
+                                                <ul
+                                                    style="list-style: none; padding: 0; margin: 0; display: flex; gap: 20px; flex-wrap: wrap;">
+                                                    <li><a href="#" class="pattern-demo" data-pattern="nav"
+                                                            onclick="return false;">Strona główna</a></li>
+                                                    <li><a href="#" class="pattern-demo" data-pattern="nav"
+                                                            onclick="return false;">O nas</a></li>
+                                                    <li><span
+                                                            style="font-weight: bold; color: #495057; text-decoration: underline;"
+                                                            aria-current="page">Usługi</span></li>
+                                                    <li><a href="#" class="pattern-demo" data-pattern="nav"
+                                                            onclick="return false;">Portfolio</a></li>
+                                                    <li><a href="#" class="pattern-demo" data-pattern="nav"
+                                                            onclick="return false;">Kontakt</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+
+                                        <div
+                                            style="border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; margin: 15px 0; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #004085; margin-top: 0;">4. Linki w breadcrumbs:</h6>
+                                            <nav aria-label="Ścieżka nawigacyjna"
+                                                style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                <ol
+                                                    style="list-style: none; padding: 0; margin: 0; display: flex; gap: 5px; align-items: center;">
+                                                    <li><a href="#" class="pattern-demo" data-pattern="breadcrumb"
+                                                            onclick="return false;">Strona główna</a></li>
+                                                    <li style="color: #6c757d;">→</li>
+                                                    <li><a href="#" class="pattern-demo" data-pattern="breadcrumb"
+                                                            onclick="return false;">Kategorie produktów</a></li>
+                                                    <li style="color: #6c757d;">→</li>
+                                                    <li><a href="#" class="pattern-demo" data-pattern="breadcrumb"
+                                                            onclick="return false;">Telefony komórkowe</a></li>
+                                                    <li style="color: #6c757d;">→</li>
+                                                    <li aria-current="page" style="font-weight: bold; color: #495057;">
+                                                        iPhone 14 Pro</li>
+                                                </ol>
+                                            </nav>
+                                        </div>
+
+                                        <div
+                                            style="border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; margin: 15px 0; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #004085; margin-top: 0;">5. Linki w kartkach paginacji:
+                                            </h6>
+                                            <nav aria-label="Nawigacja stron wyników"
+                                                style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                <ul
+                                                    style="list-style: none; padding: 0; margin: 0; display: flex; gap: 5px; align-items: center;">
+                                                    <li><a href="#" class="pattern-demo" data-pattern="pagination"
+                                                            onclick="return false;"
+                                                            aria-label="Przejdź do poprzedniej strony">‹ Poprzednia</a>
+                                                    </li>
+                                                    <li><a href="#" class="pattern-demo" data-pattern="pagination"
+                                                            onclick="return false;"
+                                                            aria-label="Przejdź do strony 1">1</a></li>
+                                                    <li><a href="#" class="pattern-demo" data-pattern="pagination"
+                                                            onclick="return false;"
+                                                            aria-label="Przejdź do strony 2">2</a></li>
+                                                    <li><span aria-current="page"
+                                                            style="font-weight: bold; padding: 8px; background-color: #007bff; color: white; border-radius: 3px;">3</span>
+                                                    </li>
+                                                    <li><a href="#" class="pattern-demo" data-pattern="pagination"
+                                                            onclick="return false;"
+                                                            aria-label="Przejdź do strony 4">4</a></li>
+                                                    <li><a href="#" class="pattern-demo" data-pattern="pagination"
+                                                            onclick="return false;"
+                                                            aria-label="Przejdź do strony 5">5</a></li>
+                                                    <li><a href="#" class="pattern-demo" data-pattern="pagination"
+                                                            onclick="return false;"
+                                                            aria-label="Przejdź do następnej strony">Następna ›</a></li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #fff3cd; padding: 10px; border-radius: 3px; border-left: 4px solid #ffc107; margin-top: 15px;">
+                                        <p style="color: #856404; margin: 0; font-size: 0.9em;">
+                                            <strong>Analiza wzorca:</strong> <span id="pattern-reader">Kliknij na link
+                                                aby zobaczyć analizę wzorca i dostępności</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #155724; margin-top: 0;">✨ Najlepsze praktyki dla różnych typów
+                                        linków:</h6>
+                                    <ul style="color: #155724; margin-bottom: 0; font-size: 0.95em;">
+                                        <li><strong>Pliki</strong> - zawsze podaj format i rozmiar</li>
+                                        <li><strong>Zewnętrzne linki</strong> - informuj o otwarciu w nowej karcie</li>
+                                        <li><strong>Nawigacja</strong> - oznacz bieżącą stronę przez aria-current</li>
+                                        <li><strong>Breadcrumbs</strong> - używaj semantycznej listy uporządkowanej</li>
+                                        <li><strong>Paginacja</strong> - dostarczaj jasne etykiety dla przycisków</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- WZORCE LINKÓW - praktyczne implementacje --&gt;
+
+&lt;!-- 1. Linki do plików --&gt;
+&lt;h3&gt;Dokumenty do pobrania&lt;/h3&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href="reports/annual-2023.pdf"&gt;Raport roczny 2023 (PDF, 5.2 MB)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="files/budget.xlsx"&gt;Arkusz kalkulacyjny budżetu (Excel, 234 KB)&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="presentations/company.pptx"&gt;Prezentacja firmy (PowerPoint, 12.1 MB)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- 2. Linki zewnętrzne --&gt;
+&lt;p&gt;Przydatne zasoby:&lt;/p&gt;
+&lt;ul&gt;
+    &lt;li&gt;&lt;a href="https://www.w3.org/WAI/WCAG21/" target="_blank" rel="noopener"&gt;
+        Dokumentacja WCAG 2.1 na W3C (otwiera w nowej karcie)
+    &lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="mailto:kontakt@firma.pl"&gt;
+        Napisz do nas email (otwiera program pocztowy)
+    &lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!-- 3. Nawigacja główna --&gt;
+&lt;nav aria-label="Główna nawigacja"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/o-nas"&gt;O nas&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/uslugi" aria-current="page"&gt;Usługi&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- 4. Breadcrumbs --&gt;
+&lt;nav aria-label="Ścieżka nawigacyjna"&gt;
+    &lt;ol&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/kategorie"&gt;Kategorie produktów&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/kategorie/telefony"&gt;Telefony komórkowe&lt;/a&gt;&lt;/li&gt;
+        &lt;li aria-current="page"&gt;iPhone 14 Pro&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/nav&gt;
+
+&lt;!-- 5. Paginacja --&gt;
+&lt;nav aria-label="Nawigacja stron wyników"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="?page=2" aria-label="Przejdź do poprzedniej strony"&gt;‹ Poprzednia&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="?page=1" aria-label="Przejdź do strony 1"&gt;1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="?page=2" aria-label="Przejdź do strony 2"&gt;2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;span aria-current="page"&gt;3&lt;/span&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="?page=4" aria-label="Przejdź do strony 4"&gt;4&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="?page=5" aria-label="Przejdź do strony 5"&gt;5&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="?page=4" aria-label="Przejdź do następnej strony"&gt;Następna ›&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- 6. Lista produktów z jednoznacznymi linkami --&gt;
+&lt;section&gt;
+    &lt;h3&gt;Polecane produkty&lt;/h3&gt;
+    &lt;div class="product-grid"&gt;
+        &lt;article&gt;
+            &lt;h4&gt;iPhone 14 Pro Max&lt;/h4&gt;
+            &lt;p&gt;Najnowszy flagowy telefon Apple...&lt;/p&gt;
+            &lt;a href="/produkty/iphone-14-pro-max"&gt;Zobacz iPhone 14 Pro Max&lt;/a&gt;
+        &lt;/article&gt;
+        
+        &lt;article&gt;
+            &lt;h4&gt;Samsung Galaxy S23 Ultra&lt;/h4&gt;
+            &lt;p&gt;Zaawansowany telefon z S Pen...&lt;/p&gt;
+            &lt;a href="/produkty/galaxy-s23-ultra"&gt;Zobacz Samsung Galaxy S23 Ultra&lt;/a&gt;
+        &lt;/article&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Różne typy linków mają odpowiednie wzorce implementacji
+                            zapewniające jasność celu. Pliki zawierają informacje o formacie i rozmiarze, linki
+                            zewnętrzne informują o zachowaniu, nawigacja używa aria-current, a paginacja ma opisowe
+                            etykiety.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie zgodności z 2.4.4</h3>
+
+                <h4>Procedura testowa</h4>
+                <ol>
+                    <li><strong>Analiza tekstów linków</strong>
+                        <ul>
+                            <li>Sprawdź czy każdy link ma opisowy tekst</li>
+                            <li>Oceń czy cel linku jest jasny bez dodatkowego kontekstu</li>
+                            <li>Zidentyfikuj linki z ogólnymi frazami jak "kliknij tutaj"</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test unikalności tekstów</strong>
+                        <ul>
+                            <li>Znajdź linki z identycznymi tekstami</li>
+                            <li>Sprawdź czy prowadzą do tego samego miejsca</li>
+                            <li>Oceń czy różne cele mają różne teksty</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test z czytnikiem ekranu</strong>
+                        <ul>
+                            <li>Użyj funkcji "lista linków" w NVDA/JAWS</li>
+                            <li>Sprawdź czy linki są zrozumiałe poza kontekstem</li>
+                            <li>Oceń działanie atrybutów ARIA</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test kontekstu programowego</strong>
+                        <ul>
+                            <li>Sprawdź działanie aria-label i aria-labelledby</li>
+                            <li>Przetestuj kontekst w tabelach i listach</li>
+                            <li>Oceń czy kontekst jest dostępny programowo</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Narzędzia testowe</h4>
+                <ul>
+                    <li><strong>axe DevTools</strong> - wykrywa problemy z tekstami linków</li>
+                    <li><strong>WAVE</strong> - analizuje linki i ich kontekst</li>
+                    <li><strong>Lighthouse</strong> - sprawdza dostępność linków</li>
+                    <li><strong>Browser extensions</strong> - Link checker, HeadingsMap</li>
+                    <li><strong>Screen readers</strong> - NVDA, JAWS, VoiceOver dla testów realnych</li>
+                </ul>
+
+                <h4>Checklist zgodności</h4>
+                <div
+                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <h5>✅ Kryteria do spełnienia:</h5>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>☐ Każdy link ma opisowy tekst jasno określający cel</li>
+                        <li>☐ Linki do tego samego miejsca mają identyczne teksty</li>
+                        <li>☐ Linki do różnych miejsc mają różne teksty</li>
+                        <li>☐ Brak ogólnych fraz jak "kliknij tutaj", "więcej"</li>
+                        <li>☐ Kontekst programowy jest dostępny gdzie potrzebny</li>
+                        <li>☐ Atrybuty ARIA działają poprawnie</li>
+                        <li>☐ Linki do plików zawierają informacje o formacie</li>
+                        <li>☐ Zewnętrzne linki informują o nowym oknie</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="implementation-guidelines">
+                <h3>Wytyczne implementacyjne</h3>
+
+                <h4>Najlepsze praktyki:</h4>
+                <ul>
+                    <li><strong>Opisowość nad zwięzłością</strong> - lepiej dłuższy opis niż niejasny cel</li>
+                    <li><strong>Unikalność tekstów</strong> - różne cele = różne teksty linków</li>
+                    <li><strong>Informacje o plikach</strong> - zawsze podawaj format i rozmiar</li>
+                    <li><strong>Kontekst ARIA</strong> - używaj aria-label gdy tekst jest niewystarczający</li>
+                    <li><strong>Zewnętrzne linki</strong> - informuj o otwarciu w nowej karcie</li>
+                    <li><strong>Testuj z czytnikami ekranu</strong> - sprawdzaj listę linków</li>
+                </ul>
+
+                <h4>Wzorce tekstów linków:</h4>
+                <div
+                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #004085; margin-top: 0;">1. Artykuły i treści</h5>
+                    <pre style="color: #004085;"><code>"Czytaj więcej o [temat artykułu]"
+"Zobacz pełny artykuł: [tytuł]"
+"Kompletny przewodnik: [tytuł przewodnika]"</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #155724; margin-top: 0;">2. Produkty i usługi</h5>
+                    <pre style="color: #155724;"><code>"Zobacz [nazwa produktu] - specyfikacja i cena"
+"Kup [nazwa produktu]"
+"Szczegóły usługi: [nazwa usługi]"</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #856404; margin-top: 0;">3. Pliki do pobrania</h5>
+                    <pre style="color: #856404;"><code>"Pobierz [nazwa dokumentu] ([format], [rozmiar])"
+"[Nazwa pliku] - format [FORMAT], rozmiar [SIZE]"</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #721c24; margin-top: 0;">4. Akcje systemowe</h5>
+                    <pre style="color: #721c24;"><code>"Zaloguj się do konta"
+"Zarejestruj nowe konto"
+"Wyślij formularz kontaktowy"</code></pre>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-in-context.html"
+                            target="_blank" rel="noopener">Zrozumieć WCAG 2.1: Cel linku (w kontekście)</a></li>
+                    <li><a href="https://webaim.org/techniques/hypertext/link_text" target="_blank"
+                            rel="noopener">WebAIM: Link Text and Context</a></li>
+                    <li><a href="https://www.nngroup.com/articles/writing-links/" target="_blank" rel="noopener">Nielsen
+                            Norman Group: Writing Hyperlinks</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Understandable#guideline_2.4_—_navigable_provide_ways_to_help_users_navigate_find_content_and_determine_where_they_are"
+                            target="_blank" rel="noopener">MDN: WCAG Guideline 2.4</a></li>
+                    <li><a href="https://www.w3.org/WAI/ARIA/apg/practices/link-design-pattern/" target="_blank"
+                            rel="noopener">W3C: Link Design Pattern</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.4.3.html">Poprzedni: 2.4.3 Kolejność fokusa</a></li>
+                    <li><a href="2.4.5.html">Następny: 2.4.5 Różne sposoby nawigacji</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+
+    <script>
+        // Demo funkcjonalność dla przykładów linków
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // === DEMO ZŁYCH LINKÓW ===
+            const badLinks = document.querySelectorAll('.bad-link-demo');
+            const badLinkReader = document.getElementById('bad-link-reader');
+
+            badLinks.forEach(link => {
+                link.addEventListener('mouseenter', function () {
+                    const purpose = this.getAttribute('data-purpose');
+                    const linkText = this.textContent;
+                    badLinkReader.innerHTML = `🔊 Czytnik ekranu: "Link: <strong>${linkText}</strong>" <span style="color: #dc3545;">(Cel niejasny: ${purpose})</span>`;
+                });
+
+                link.addEventListener('focus', function () {
+                    const purpose = this.getAttribute('data-purpose');
+                    const linkText = this.textContent;
+                    badLinkReader.innerHTML = `🔊 Czytnik ekranu: "Link: <strong>${linkText}</strong>" <span style="color: #dc3545;">(Cel niejasny: ${purpose})</span>`;
+                });
+
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    showNotification('❌ Problem: Użytkownik nie wie dokąd prowadzi ten link!', 'error');
+                });
+            });
+
+            // === DEMO DOBRYCH LINKÓW ===
+            const goodLinks = document.querySelectorAll('.good-link-demo');
+            const goodLinkReader = document.getElementById('good-link-reader');
+
+            goodLinks.forEach(link => {
+                link.addEventListener('mouseenter', function () {
+                    const purpose = this.getAttribute('data-purpose');
+                    const linkText = this.textContent;
+                    goodLinkReader.innerHTML = `🔊 Czytnik ekranu: "Link: <strong>${linkText}</strong>" <span style="color: #28a745;">(Jasny cel: ${purpose})</span>`;
+                });
+
+                link.addEventListener('focus', function () {
+                    const purpose = this.getAttribute('data-purpose');
+                    const linkText = this.textContent;
+                    goodLinkReader.innerHTML = `🔊 Czytnik ekranu: "Link: <strong>${linkText}</strong>" <span style="color: #28a745;">(Jasny cel: ${purpose})</span>`;
+                });
+
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const purpose = this.getAttribute('data-purpose');
+                    showNotification(`✅ Sukces: ${purpose}`, 'success');
+                });
+            });
+
+            // === DEMO WZORCÓW LINKÓW ===
+            const patternLinks = document.querySelectorAll('.pattern-demo');
+            const patternReader = document.getElementById('pattern-reader');
+
+            patternLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const pattern = this.getAttribute('data-pattern');
+                    analyzePattern(this, pattern);
+                });
+
+                link.addEventListener('mouseenter', function () {
+                    const pattern = this.getAttribute('data-pattern');
+                    patternReader.textContent = `Kliknij aby zobaczyć analizę wzorca: ${getPatternName(pattern)}`;
+                });
+            });
+
+            function analyzePattern(link, patternType) {
+                const linkText = link.textContent;
+                let analysis = '';
+
+                switch (patternType) {
+                    case 'download':
+                        analysis = `📄 Wzorzec: Plik do pobrania\n✅ Zawiera format i rozmiar\n✅ Jasny opis zawartości\n🔊 Czytnik ekranu: "${linkText}"`;
+                        break;
+                    case 'external':
+                        analysis = `🔗 Wzorzec: Link zewnętrzny\n✅ Informuje o nowym oknie/aplikacji\n✅ Opisuje cel linku\n🔊 Czytnik ekranu: "${linkText}"`;
+                        break;
+                    case 'nav':
+                        analysis = `🧭 Wzorzec: Nawigacja główna\n✅ Krótki, jasny tekst\n✅ Używa aria-current dla bieżącej strony\n🔊 Czytnik ekranu: "${linkText}"`;
+                        break;
+                    case 'breadcrumb':
+                        analysis = `🍞 Wzorzec: Ścieżka nawigacyjna\n✅ Semantyczna lista uporządkowana\n✅ aria-current dla bieżącej strony\n🔊 Czytnik ekranu: "${linkText}"`;
+                        break;
+                    case 'pagination':
+                        analysis = `📄 Wzorzec: Paginacja\n✅ Opisowe aria-label\n✅ Jasne oznaczenie bieżącej strony\n🔊 Czytnik ekranu: "${link.getAttribute('aria-label') || linkText}"`;
+                        break;
+                    default:
+                        analysis = `📋 Wzorzec: Standardowy link\n✅ Opisowy tekst\n🔊 Czytnik ekranu: "${linkText}"`;
+                }
+
+                patternReader.innerHTML = analysis.replace(/\n/g, '<br>');
+                patternReader.style.fontFamily = 'monospace';
+                patternReader.style.fontSize = '0.9em';
+                patternReader.style.whiteSpace = 'pre-line';
+            }
+
+            function getPatternName(pattern) {
+                const names = {
+                    'download': 'Plik do pobrania',
+                    'external': 'Link zewnętrzny',
+                    'nav': 'Nawigacja główna',
+                    'breadcrumb': 'Breadcrumbs',
+                    'pagination': 'Paginacja'
+                };
+                return names[pattern] || 'Standardowy link';
+            }
+
+            // Reset readers on mouseleave
+            document.addEventListener('mouseleave', function (e) {
+                if (e.target.matches('.bad-link-demo')) {
+                    badLinkReader.textContent = 'Najedź na link aby usłyszeć jak brzmi w czytnikach ekranu';
+                }
+                if (e.target.matches('.good-link-demo')) {
+                    goodLinkReader.textContent = 'Najedź na link aby usłyszeć jak brzmi w czytnikach ekranu';
+                }
+            });
+
+            function showNotification(message, type) {
+                const notification = document.createElement('div');
+                const colors = {
+                    'success': '#d4edda',
+                    'error': '#f8d7da',
+                    'info': '#e7f3ff'
+                };
+
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: ${colors[type] || colors.info};
+                    color: #495057;
+                    padding: 12px 20px;
+                    border-radius: 4px;
+                    border-left: 4px solid ${type === 'success' ? '#28a745' : type === 'error' ? '#dc3545' : '#007bff'};
+                    z-index: 1000;
+                    max-width: 350px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    font-size: 14px;
+                `;
+                notification.textContent = message;
+
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    notification.style.transition = 'opacity 0.3s';
+                    setTimeout(() => {
+                        if (document.body.contains(notification)) {
+                            document.body.removeChild(notification);
+                        }
+                    }, 300);
+                }, 4000);
+            }
+        });
+    </script>
+</body>
+
+</html>

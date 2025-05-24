@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.4.5 Różne sposoby nawigacji (AA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.4.5 Różne sposoby nawigacji</h2>
+                <p class="criterion-level">Poziom AA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#multiple-ways" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Dostępne są różne sposoby lokalizowania strony internetowej w zestawie stron internetowych, z
+                    wyjątkiem sytuacji, gdy strona internetowa jest wynikiem lub krokiem w procesie.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest umożliwienie użytkownikom lokalizowania treści w sposób, który
+                    najlepiej odpowiada ich potrzebom. Użytkownicy mogą znaleźć jedną technikę łatwiejszą lub bardziej
+                    zrozumiałą niż inną.</p>
+
+                <p>Różne sposoby nawigacji są szczególnie ważne dla:</p>
+                <ul>
+                    <li><strong>Użytkowników z różnymi stylami uczenia się</strong> - niektórzy preferują hierarchię,
+                        inni wyszukiwanie</li>
+                    <li><strong>Osób z ograniczeniami poznawczymi</strong> - mogą preferować wizualne mapy strony</li>
+                    <li><strong>Użytkowników technologii wspomagających</strong> - różne metody mogą być bardziej
+                        dostępne</li>
+                    <li><strong>Wszystkich użytkowników</strong> - zwiększa efektywność i satysfakcję z użytkowania</li>
+                </ul>
+
+                <p>Typowe sposoby nawigacji obejmują:</p>
+                <ul>
+                    <li><strong>Menu nawigacyjne</strong> - strukturalna organizacja treści</li>
+                    <li><strong>Wyszukiwarka</strong> - bezpośrednie wyszukiwanie treści</li>
+                    <li><strong>Mapa strony</strong> - przegląd całej struktury witryny</li>
+                    <li><strong>Breadcrumbs</strong> - ścieżka nawigacyjna</li>
+                    <li><strong>Indeks</strong> - alfabetyczny spis treści</li>
+                    <li><strong>Filtry i kategorie</strong> - organizacja według kryteriów</li>
+                    <li><strong>Powiązane linki</strong> - sugestie podobnych treści</li>
+                    <li><strong>Tagi</strong> - klasyfikacja według tematów</li>
+                </ul>
+
+                <p><strong>Wyjątki:</strong> Kryterium nie dotyczy stron będących częścią procesu (np. krok 2 z 5 w
+                    formularzu zakupowym), gdzie użytkownik musi przejść określoną sekwencję kroków.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - tylko jeden sposób nawigacji</h4>
+                        <p>Strony oferujące ograniczone możliwości lokalizowania treści:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #721c24; margin-top: 0;">❌ Ograniczone możliwości nawigacji:</h5>
+
+                                    <div
+                                        style="background-color: rgba(255,255,255,0.8); padding: 15px; border-radius: 4px; margin: 10px 0;">
+                                        <div
+                                            style="border-bottom: 1px solid #dee2e6; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #721c24; margin-top: 0;">Scenariusz 1: Tylko nawigacja
+                                                główna</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px dashed #dc3545; border-radius: 4px;">
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px; margin-bottom: 10px;">
+                                                    <strong>Header witryny</strong>
+                                                    <nav style="margin-top: 10px;">
+                                                        <ul
+                                                            style="list-style: none; padding: 0; margin: 0; display: flex; gap: 20px; flex-wrap: wrap;">
+                                                            <li><a href="#" onclick="return false;"
+                                                                    style="color: #721c24;">Strona główna</a></li>
+                                                            <li><a href="#" onclick="return false;"
+                                                                    style="color: #721c24;">Produkty</a></li>
+                                                            <li><a href="#" onclick="return false;"
+                                                                    style="color: #721c24;">O nas</a></li>
+                                                            <li><a href="#" onclick="return false;"
+                                                                    style="color: #721c24;">Kontakt</a></li>
+                                                        </ul>
+                                                    </nav>
+                                                </div>
+                                                <div style="padding: 20px; text-align: center; color: #721c24;">
+                                                    <p>Treść strony...</p>
+                                                    <p style="font-style: italic; margin-top: 20px;">❌ Brak
+                                                        wyszukiwarki<br>❌ Brak mapy strony<br>❌ Brak kategorii<br>❌ Brak
+                                                        indeksu</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="border-bottom: 1px solid #dee2e6; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #721c24; margin-top: 0;">Scenariusz 2: Tylko wyszukiwarka
+                                            </h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px dashed #dc3545; border-radius: 4px;">
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 15px; border-radius: 3px; margin-bottom: 10px; text-align: center;">
+                                                    <strong>Strona główna</strong>
+                                                    <div style="margin: 15px 0;">
+                                                        <input type="text" placeholder="Wyszukaj..."
+                                                            style="padding: 8px; width: 200px; margin-right: 10px;">
+                                                        <button
+                                                            style="padding: 8px 16px; background: #dc3545; color: white; border: none; border-radius: 3px;">Szukaj</button>
+                                                    </div>
+                                                </div>
+                                                <div style="padding: 20px; text-align: center; color: #721c24;">
+                                                    <p>Treść strony...</p>
+                                                    <p style="font-style: italic; margin-top: 20px;">❌ Brak menu
+                                                        strukturalnego<br>❌ Brak mapy strony<br>❌ Brak kategorii<br>❌
+                                                        Brak przeglądania</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h6 style="color: #721c24; margin-top: 0;">Scenariusz 3: Ukryte możliwości
+                                                nawigacji</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px dashed #dc3545; border-radius: 4px;">
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px; margin-bottom: 10px;">
+                                                    <strong>Witryna z ukrytymi funkcjami</strong>
+                                                    <p style="margin: 10px 0; font-size: 0.9em; color: #721c24;">
+                                                        Istnieje mapa strony w stopce, ale jest słabo widoczna i trudna
+                                                        do znalezienia</p>
+                                                </div>
+                                                <div style="padding: 20px; text-align: center; color: #721c24;">
+                                                    <p>Treść strony...</p>
+                                                    <div
+                                                        style="margin-top: 30px; padding: 5px; background-color: #f1f1f1; font-size: 0.8em; color: #666;">
+                                                        <a href="#" onclick="return false;"
+                                                            style="color: #666; font-size: 0.7em;">mapa strony</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #fff3cd; padding: 10px; border-radius: 3px; border-left: 4px solid #ffc107; margin-top: 15px;">
+                                        <p style="color: #856404; margin: 0; font-size: 0.9em;">
+                                            <strong>Problem:</strong> <span id="bad-nav-problem">Użytkownicy mają
+                                                ograniczone możliwości lokalizowania treści</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #856404; margin-top: 0;">Dlaczego to problematyczne?</h6>
+                                    <ul style="color: #856404; margin-bottom: 0;">
+                                        <li><strong>Ograniczona dostępność</strong> - różni użytkownicy preferują różne
+                                            metody</li>
+                                        <li><strong>Frustracja użytkowników</strong> - trudno znaleźć konkretne treści
+                                        </li>
+                                        <li><strong>Wykluczenie</strong> - niektórzy użytkownicy nie mogą efektywnie
+                                            nawigować</li>
+                                        <li><strong>Złe UX</strong> - brak alternatyw zwiększa porzucanie witryny</li>
+                                        <li><strong>Nieefektywność</strong> - długie szukanie zwiększa czas wykonywania
+                                            zadań</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- ZŁY PRZYKŁAD - tylko jeden sposób nawigacji --&gt;
+
+&lt;!-- Scenariusz 1: Tylko menu główne --&gt;
+&lt;header&gt;
+    &lt;nav aria-label="Główna nawigacja"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="/"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/produkty"&gt;Produkty&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/o-nas"&gt;O nas&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+    &lt;h1&gt;Witaj na naszej stronie&lt;/h1&gt;
+    &lt;p&gt;Treść...&lt;/p&gt;
+    &lt;!-- Brak wyszukiwarki, mapy strony, kategorii --&gt;
+&lt;/main&gt;
+
+&lt;!-- Scenariusz 2: Tylko wyszukiwarka --&gt;
+&lt;header&gt;
+    &lt;form role="search"&gt;
+        &lt;input type="search" placeholder="Wyszukaj..."&gt;
+        &lt;button type="submit"&gt;Szukaj&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+    &lt;h1&gt;Strona główna&lt;/h1&gt;
+    &lt;p&gt;Treść...&lt;/p&gt;
+    &lt;!-- Brak menu, mapy strony, kategorii --&gt;
+&lt;/main&gt;
+
+&lt;!-- Scenariusz 3: Ukryte funkcje nawigacji --&gt;
+&lt;footer&gt;
+    &lt;!-- Mapa strony ukryta w stopce, słabo widoczna --&gt;
+    &lt;p style="font-size: 0.7em; color: #666;"&gt;
+        &lt;a href="/sitemap"&gt;mapa strony&lt;/a&gt;
+    &lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+
+                        <p class="explanation">Problem: Strony oferują tylko jeden sposób lokalizowania treści, co
+                            utrudnia użytkownikom z różnymi preferencjami i potrzebami efektywne znalezienie informacji.
+                            Niektórzy użytkownicy mogą w ogóle nie móc nawigować po witrynie.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - różnorodne sposoby nawigacji</h4>
+                        <p>Implementacja wielu uzupełniających się metod lokalizowania treści:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #155724; margin-top: 0;">✅ Kompletny system nawigacji:</h5>
+
+                                    <div
+                                        style="background-color: rgba(255,255,255,0.9); padding: 15px; border-radius: 4px; margin: 10px 0;">
+                                        <div id="navigation-showcase"
+                                            style="border: 2px solid #28a745; border-radius: 8px; background-color: #fff;">
+                                            <!-- Header z menu i wyszukiwaniem -->
+                                            <div
+                                                style="background-color: #f8f9fa; padding: 15px; border-bottom: 1px solid #dee2e6;">
+                                                <div
+                                                    style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                                                    <div style="font-weight: bold; color: #28a745;">Logo Firmy</div>
+
+                                                    <!-- Wyszukiwarka -->
+                                                    <div style="flex: 1; max-width: 300px;">
+                                                        <div style="display: flex;">
+                                                            <input type="text"
+                                                                placeholder="Wyszukaj produkty, artykuły..."
+                                                                style="flex: 1; padding: 8px; border: 1px solid #ced4da; border-radius: 4px 0 0 4px;">
+                                                            <button
+                                                                style="padding: 8px 12px; background: #28a745; color: white; border: none; border-radius: 0 4px 4px 0; cursor: pointer;">🔍</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Menu główne -->
+                                                <nav style="margin-top: 15px;">
+                                                    <ul
+                                                        style="list-style: none; padding: 0; margin: 0; display: flex; gap: 25px; flex-wrap: wrap;">
+                                                        <li><a href="#" class="nav-method-demo" data-method="menu"
+                                                                onclick="return false;"
+                                                                style="color: #155724; text-decoration: none; font-weight: 500;">🏠
+                                                                Strona główna</a></li>
+                                                        <li>
+                                                            <a href="#" class="nav-method-demo" data-method="menu"
+                                                                onclick="return false;"
+                                                                style="color: #155724; text-decoration: none; font-weight: 500;">📱
+                                                                Produkty</a>
+                                                            <ul
+                                                                style="list-style: none; padding-left: 20px; margin: 5px 0 0 0; font-size: 0.9em;">
+                                                                <li><a href="#" onclick="return false;"
+                                                                        style="color: #6c757d;">Telefony</a></li>
+                                                                <li><a href="#" onclick="return false;"
+                                                                        style="color: #6c757d;">Laptopy</a></li>
+                                                                <li><a href="#" onclick="return false;"
+                                                                        style="color: #6c757d;">Tablety</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><a href="#" class="nav-method-demo" data-method="menu"
+                                                                onclick="return false;"
+                                                                style="color: #155724; text-decoration: none; font-weight: 500;">📰
+                                                                Blog</a></li>
+                                                        <li><a href="#" class="nav-method-demo" data-method="menu"
+                                                                onclick="return false;"
+                                                                style="color: #155724; text-decoration: none; font-weight: 500;">📞
+                                                                Kontakt</a></li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+
+                                            <!-- Breadcrumbs -->
+                                            <div
+                                                style="background-color: #e9ecef; padding: 10px 15px; font-size: 0.9em;">
+                                                <nav aria-label="Ścieżka nawigacyjna">
+                                                    <a href="#" class="nav-method-demo" data-method="breadcrumbs"
+                                                        onclick="return false;" style="color: #6c757d;">Strona
+                                                        główna</a> →
+                                                    <a href="#" class="nav-method-demo" data-method="breadcrumbs"
+                                                        onclick="return false;" style="color: #6c757d;">Produkty</a> →
+                                                    <span style="color: #495057; font-weight: 500;">Telefony</span>
+                                                </nav>
+                                            </div>
+
+                                            <!-- Główna treść z różnymi metodami -->
+                                            <div style="display: flex; gap: 20px; padding: 20px;">
+                                                <!-- Sidebar z filtrami i kategoriami -->
+                                                <div
+                                                    style="flex: 0 0 250px; background-color: #f8f9fa; padding: 15px; border-radius: 4px;">
+                                                    <h4 style="margin-top: 0; color: #155724; font-size: 1em;">🗂️
+                                                        Kategorie</h4>
+                                                    <ul style="list-style: none; padding: 0; margin: 0 0 20px 0;">
+                                                        <li style="margin: 5px 0;"><a href="#" class="nav-method-demo"
+                                                                data-method="categories" onclick="return false;"
+                                                                style="color: #495057;">📱 Telefony (124)</a></li>
+                                                        <li style="margin: 5px 0;"><a href="#" class="nav-method-demo"
+                                                                data-method="categories" onclick="return false;"
+                                                                style="color: #495057;">💻 Laptopy (89)</a></li>
+                                                        <li style="margin: 5px 0;"><a href="#" class="nav-method-demo"
+                                                                data-method="categories" onclick="return false;"
+                                                                style="color: #495057;">📟 Tablety (45)</a></li>
+                                                        <li style="margin: 5px 0;"><a href="#" class="nav-method-demo"
+                                                                data-method="categories" onclick="return false;"
+                                                                style="color: #495057;">🎧 Audio (67)</a></li>
+                                                    </ul>
+
+                                                    <h4 style="color: #155724; font-size: 1em;">🏷️ Tagi</h4>
+                                                    <div
+                                                        style="display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 20px;">
+                                                        <span
+                                                            style="background: #e7f3ff; color: #004085; padding: 3px 8px; border-radius: 12px; font-size: 0.8em; cursor: pointer;"
+                                                            onclick="demoTagFilter('promocja')">promocja</span>
+                                                        <span
+                                                            style="background: #e7f3ff; color: #004085; padding: 3px 8px; border-radius: 12px; font-size: 0.8em; cursor: pointer;"
+                                                            onclick="demoTagFilter('nowość')">nowość</span>
+                                                        <span
+                                                            style="background: #e7f3ff; color: #004085; padding: 3px 8px; border-radius: 12px; font-size: 0.8em; cursor: pointer;"
+                                                            onclick="demoTagFilter('bestseller')">bestseller</span>
+                                                    </div>
+
+                                                    <h4 style="color: #155724; font-size: 1em;">🔍 Filtry</h4>
+                                                    <div style="font-size: 0.9em;">
+                                                        <label style="display: block; margin: 8px 0;">
+                                                            <input type="checkbox" style="margin-right: 5px;"> Do 1000
+                                                            zł
+                                                        </label>
+                                                        <label style="display: block; margin: 8px 0;">
+                                                            <input type="checkbox" style="margin-right: 5px;"> 1000-2000
+                                                            zł
+                                                        </label>
+                                                        <label style="display: block; margin: 8px 0;">
+                                                            <input type="checkbox" style="margin-right: 5px;"> Powyżej
+                                                            2000 zł
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <!-- Główna treść -->
+                                                <div style="flex: 1;">
+                                                    <h3 style="margin-top: 0; color: #155724;">Telefony komórkowe</h3>
+                                                    <div
+                                                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                                                        <div
+                                                            style="border: 1px solid #dee2e6; padding: 10px; border-radius: 4px; text-align: center;">
+                                                            <div
+                                                                style="background-color: #f8f9fa; height: 80px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border-radius: 3px;">
+                                                                📱</div>
+                                                            <h4 style="margin: 0 0 5px 0; font-size: 0.9em;">iPhone 14
+                                                                Pro</h4>
+                                                            <p style="margin: 0; color: #6c757d; font-size: 0.8em;">4799
+                                                                zł</p>
+                                                        </div>
+                                                        <div
+                                                            style="border: 1px solid #dee2e6; padding: 10px; border-radius: 4px; text-align: center;">
+                                                            <div
+                                                                style="background-color: #f8f9fa; height: 80px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; border-radius: 3px;">
+                                                                📱</div>
+                                                            <h4 style="margin: 0 0 5px 0; font-size: 0.9em;">Samsung S23
+                                                            </h4>
+                                                            <p style="margin: 0; color: #6c757d; font-size: 0.8em;">3299
+                                                                zł</p>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Powiązane linki -->
+                                                    <div
+                                                        style="margin-top: 30px; padding: 15px; background-color: #f8f9fa; border-radius: 4px;">
+                                                        <h4 style="margin-top: 0; color: #155724; font-size: 1em;">🔗
+                                                            Powiązane strony</h4>
+                                                        <ul
+                                                            style="list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 15px;">
+                                                            <li><a href="#" class="nav-method-demo"
+                                                                    data-method="related" onclick="return false;"
+                                                                    style="color: #495057; font-size: 0.9em;">Akcesoria
+                                                                    do telefonów</a></li>
+                                                            <li><a href="#" class="nav-method-demo"
+                                                                    data-method="related" onclick="return false;"
+                                                                    style="color: #495057; font-size: 0.9em;">Porównanie
+                                                                    telefonów</a></li>
+                                                            <li><a href="#" class="nav-method-demo"
+                                                                    data-method="related" onclick="return false;"
+                                                                    style="color: #495057; font-size: 0.9em;">Recenzje
+                                                                    użytkowników</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Footer z dodatkową nawigacją -->
+                                            <div
+                                                style="background-color: #f8f9fa; padding: 20px; border-top: 1px solid #dee2e6;">
+                                                <div
+                                                    style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+                                                    <div>
+                                                        <h4 style="margin-top: 0; color: #155724; font-size: 1em;">🗺️
+                                                            Mapa strony</h4>
+                                                        <ul
+                                                            style="list-style: none; padding: 0; margin: 0; font-size: 0.9em; line-height: 1.6;">
+                                                            <li><a href="#" class="nav-method-demo"
+                                                                    data-method="sitemap" onclick="return false;"
+                                                                    style="color: #495057;">Wszystkie produkty</a></li>
+                                                            <li><a href="#" class="nav-method-demo"
+                                                                    data-method="sitemap" onclick="return false;"
+                                                                    style="color: #495057;">Wszystkie artykuły</a></li>
+                                                            <li><a href="#" class="nav-method-demo"
+                                                                    data-method="sitemap" onclick="return false;"
+                                                                    style="color: #495057;">Pełna mapa strony</a></li>
+                                                        </ul>
+                                                    </div>
+
+                                                    <div>
+                                                        <h4 style="margin-top: 0; color: #155724; font-size: 1em;">📚
+                                                            Indeks A-Z</h4>
+                                                        <ul
+                                                            style="list-style: none; padding: 0; margin: 0; font-size: 0.9em; line-height: 1.6;">
+                                                            <li><a href="#" class="nav-method-demo" data-method="index"
+                                                                    onclick="return false;"
+                                                                    style="color: #495057;">A-F</a></li>
+                                                            <li><a href="#" class="nav-method-demo" data-method="index"
+                                                                    onclick="return false;"
+                                                                    style="color: #495057;">G-M</a></li>
+                                                            <li><a href="#" class="nav-method-demo" data-method="index"
+                                                                    onclick="return false;"
+                                                                    style="color: #495057;">N-Z</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #e7f3ff; padding: 10px; border-radius: 3px; border-left: 4px solid #007bff; margin-top: 15px;">
+                                        <p style="color: #004085; margin: 0; font-size: 0.9em;">
+                                            <strong>Testuj metody nawigacji:</strong> <span
+                                                id="nav-method-feedback">Kliknij na różne elementy nawigacji aby
+                                                zobaczyć demonstrację</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #004085; margin-top: 0;">Dostępne metody nawigacji:</h6>
+                                    <ul style="color: #004085; margin-bottom: 0; font-size: 0.95em;">
+                                        <li><strong>🧭 Menu strukturalne</strong> - hierarchiczna organizacja treści
+                                        </li>
+                                        <li><strong>🔍 Wyszukiwarka</strong> - bezpośrednie wyszukiwanie fraz</li>
+                                        <li><strong>🗂️ Kategorie</strong> - organizacja według typów treści</li>
+                                        <li><strong>🏷️ Tagi</strong> - klasyfikacja według tematów</li>
+                                        <li><strong>🔽 Filtry</strong> - zawężanie według kryteriów</li>
+                                        <li><strong>🍞 Breadcrumbs</strong> - ścieżka w hierarchii</li>
+                                        <li><strong>🔗 Powiązane linki</strong> - sugestie podobnych treści</li>
+                                        <li><strong>🗺️ Mapa strony</strong> - przegląd całej struktury</li>
+                                        <li><strong>📚 Indeks</strong> - alfabetyczny spis treści</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - różnorodne sposoby nawigacji --&gt;
+
+&lt;!-- 1. Header z menu i wyszukiwaniem --&gt;
+&lt;header&gt;
+    &lt;!-- Wyszukiwarka --&gt;
+    &lt;form role="search" class="search-form"&gt;
+        &lt;label for="site-search"&gt;Wyszukaj w witrynie&lt;/label&gt;
+        &lt;input type="search" id="site-search" placeholder="Wyszukaj produkty, artykuły..."&gt;
+        &lt;button type="submit"&gt;Szukaj&lt;/button&gt;
+    &lt;/form&gt;
+    
+    &lt;!-- Menu główne --&gt;
+    &lt;nav aria-label="Główna nawigacja"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="/"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href="/produkty"&gt;Produkty&lt;/a&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a href="/produkty/telefony"&gt;Telefony&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="/produkty/laptopy"&gt;Laptopy&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="/produkty/tablety"&gt;Tablety&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+            &lt;li&gt;&lt;a href="/blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;!-- 2. Breadcrumbs --&gt;
+&lt;nav aria-label="Ścieżka nawigacyjna"&gt;
+    &lt;ol&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/produkty"&gt;Produkty&lt;/a&gt;&lt;/li&gt;
+        &lt;li aria-current="page"&gt;Telefony&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+    &lt;div class="content-layout"&gt;
+        &lt;!-- 3. Sidebar z kategoriami i filtrami --&gt;
+        &lt;aside&gt;
+            &lt;section&gt;
+                &lt;h3&gt;Kategorie&lt;/h3&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a href="/produkty/telefony"&gt;Telefony (124)&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="/produkty/laptopy"&gt;Laptopy (89)&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="/produkty/tablety"&gt;Tablety (45)&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/section&gt;
+            
+            &lt;section&gt;
+                &lt;h3&gt;Tagi&lt;/h3&gt;
+                &lt;div class="tag-cloud"&gt;
+                    &lt;a href="/tag/promocja" class="tag"&gt;promocja&lt;/a&gt;
+                    &lt;a href="/tag/nowosc" class="tag"&gt;nowość&lt;/a&gt;
+                    &lt;a href="/tag/bestseller" class="tag"&gt;bestseller&lt;/a&gt;
+                &lt;/div&gt;
+            &lt;/section&gt;
+            
+            &lt;section&gt;
+                &lt;h3&gt;Filtry&lt;/h3&gt;
+                &lt;form&gt;
+                    &lt;fieldset&gt;
+                        &lt;legend&gt;Cena&lt;/legend&gt;
+                        &lt;label&gt;&lt;input type="checkbox"&gt; Do 1000 zł&lt;/label&gt;
+                        &lt;label&gt;&lt;input type="checkbox"&gt; 1000-2000 zł&lt;/label&gt;
+                        &lt;label&gt;&lt;input type="checkbox"&gt; Powyżej 2000 zł&lt;/label&gt;
+                    &lt;/fieldset&gt;
+                &lt;/form&gt;
+            &lt;/section&gt;
+        &lt;/aside&gt;
+        
+        &lt;!-- 4. Główna treść --&gt;
+        &lt;section&gt;
+            &lt;h1&gt;Telefony komórkowe&lt;/h1&gt;
+            &lt;div class="product-grid"&gt;
+                &lt;!-- Produkty --&gt;
+            &lt;/div&gt;
+            
+            &lt;!-- 5. Powiązane linki --&gt;
+            &lt;section&gt;
+                &lt;h2&gt;Powiązane strony&lt;/h2&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;&lt;a href="/akcesoria/telefony"&gt;Akcesoria do telefonów&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="/porownanie/telefony"&gt;Porównanie telefonów&lt;/a&gt;&lt;/li&gt;
+                    &lt;li&gt;&lt;a href="/recenzje/telefony"&gt;Recenzje użytkowników&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/section&gt;
+        &lt;/section&gt;
+    &lt;/div&gt;
+&lt;/main&gt;
+
+&lt;!-- 6. Footer z mapą strony i indeksem --&gt;
+&lt;footer&gt;
+    &lt;section&gt;
+        &lt;h3&gt;Mapa strony&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="/mapa-strony"&gt;Pełna mapa strony&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/wszystkie-produkty"&gt;Wszystkie produkty&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/wszystkie-artykuly"&gt;Wszystkie artykuły&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/section&gt;
+    
+    &lt;section&gt;
+        &lt;h3&gt;Indeks A-Z&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="/indeks/a-f"&gt;A-F&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/indeks/g-m"&gt;G-M&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/indeks/n-z"&gt;N-Z&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/section&gt;
+&lt;/footer&gt;</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Strona oferuje wiele uzupełniających się sposobów nawigacji
+                            - menu strukturalne, wyszukiwarkę, kategorie, tagi, filtry, breadcrumbs, powiązane linki,
+                            mapę strony i indeks. Użytkownicy mogą wybrać metodę najlepszą dla ich potrzeb i stylu
+                            pracy.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - implementacje dla różnych typów witryn</h4>
+                        <p>Dostosowane zestawy metod nawigacji dla różnych rodzajów stron internetowych:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #856404; margin-top: 0;">🌐 Różne typy witryn i ich metody
+                                        nawigacji:</h5>
+
+                                    <div style="margin: 15px 0;">
+                                        <!-- Przełącznik typów witryn -->
+                                        <div style="margin-bottom: 20px;">
+                                            <strong style="color: #856404;">Wybierz typ witryny:</strong>
+                                            <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 10px;">
+                                                <button onclick="showSiteType('ecommerce')" class="site-type-btn active"
+                                                    data-type="ecommerce"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: #ffc107; color: #212529; border-radius: 4px; cursor: pointer; font-weight: 500;">🛒
+                                                    E-commerce</button>
+                                                <button onclick="showSiteType('news')" class="site-type-btn"
+                                                    data-type="news"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: transparent; color: #856404; border-radius: 4px; cursor: pointer;">📰
+                                                    Portal informacyjny</button>
+                                                <button onclick="showSiteType('corporate')" class="site-type-btn"
+                                                    data-type="corporate"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: transparent; color: #856404; border-radius: 4px; cursor: pointer;">🏢
+                                                    Strona firmowa</button>
+                                                <button onclick="showSiteType('docs')" class="site-type-btn"
+                                                    data-type="docs"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: transparent; color: #856404; border-radius: 4px; cursor: pointer;">📚
+                                                    Dokumentacja</button>
+                                            </div>
+                                        </div>
+
+                                        <!-- E-commerce -->
+                                        <div id="site-ecommerce" class="site-type-content"
+                                            style="border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">🛒 Sklep internetowy</h6>
+                                            <div
+                                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">🔍 Wyszukiwarka produktów</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">Z
+                                                        autouzupełnianiem i sugestiami</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">🗂️ Kategorie produktów</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Hierarchiczna struktura</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">🔽 Filtry zaawansowane</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Cena, marka, parametry</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">🏷️ Tagi i etykiety</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Promocje, nowości, bestsellery</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">🍞 Breadcrumbs</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Ścieżka w kategorii</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">💡 Rekomendacje</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Podobne produkty</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Portal informacyjny -->
+                                        <div id="site-news" class="site-type-content"
+                                            style="display: none; border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">📰 Portal informacyjny</h6>
+                                            <div
+                                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">🔍 Wyszukiwarka treści</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Artykuły, autorzy, daty</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">📂 Kategorie tematyczne</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Sport, polityka, ekonomia</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">📅 Archiwum chronologiczne</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Przeglądanie według dat</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">🏷️ Tagi tematyczne</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Słowa kluczowe</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">👤 Indeks autorów</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Artykuły według autorów</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">🔗 Powiązane artykuły</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Podobne tematy</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Strona firmowa -->
+                                        <div id="site-corporate" class="site-type-content"
+                                            style="display: none; border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">🏢 Strona firmowa</h6>
+                                            <div
+                                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">🧭 Menu główne</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">O
+                                                        nas, usługi, kontakt</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">🔍 Wyszukiwarka witryny</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Wszystkie treści</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">🗺️ Mapa strony</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Przegląd struktury</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">📞 Kontakt bezpośredni</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Telefon, email, adres</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">📰 Aktualności</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Blog firmowy</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">🔗 Szybkie linki</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Często używane strony</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Dokumentacja -->
+                                        <div id="site-docs" class="site-type-content"
+                                            style="display: none; border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">📚 Dokumentacja techniczna</h6>
+                                            <div
+                                                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">📖 Spis treści</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Hierarchiczna struktura</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">🔍 Wyszukiwarka dokumentów</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Pełnotekstowe wyszukiwanie</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">📚 Indeks terminów</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Słownik pojęć</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">🗂️ Kategorie funkcji</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Podział tematyczny</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">🔗 Powiązane sekcje</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Zobacz także</p>
+                                                </div>
+                                                <div
+                                                    style="background-color: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                    <strong style="color: #495057;">🍞 Breadcrumbs</strong>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #6c757d;">
+                                                        Lokalizacja w dokumentacji</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #d1ecf1; padding: 10px; border-radius: 3px; border-left: 4px solid #17a2b8; margin-top: 15px;">
+                                        <p style="color: #0c5460; margin: 0; font-size: 0.9em;">
+                                            <strong>Analiza typu witryny:</strong> <span id="site-type-analysis">Każdy
+                                                typ witryny ma optymalne metody nawigacji dostosowane do potrzeb
+                                                użytkowników i rodzaju treści</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #155724; margin-top: 0;">💡 Kluczowe zasady doboru metod
+                                        nawigacji:</h6>
+                                    <ul style="color: #155724; margin-bottom: 0; font-size: 0.95em;">
+                                        <li><strong>Analiza użytkowników</strong> - różne grupy preferują różne metody
+                                        </li>
+                                        <li><strong>Rodzaj treści</strong> - produkty vs artykuły vs dokumenty</li>
+                                        <li><strong>Rozmiar witryny</strong> - małe vs duże ilości treści</li>
+                                        <li><strong>Częstość aktualizacji</strong> - statyczne vs dynamiczne treści</li>
+                                        <li><strong>Cel użytkowników</strong> - przeglądanie vs wyszukiwanie konkretów
+                                        </li>
+                                        <li><strong>Kontekst użycia</strong> - desktop vs mobile vs assistive technology
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- IMPLEMENTACJE DLA RÓŻNYCH TYPÓW WITRYN --&gt;
+
+&lt;!-- 1. Sklep internetowy --&gt;
+&lt;header class="ecommerce-header"&gt;
+    &lt;!-- Zaawansowana wyszukiwarka produktów --&gt;
+    &lt;form role="search" class="product-search"&gt;
+        &lt;input type="search" 
+               placeholder="Wyszukaj produkty..." 
+               autocomplete="off"
+               list="product-suggestions"&gt;
+        &lt;datalist id="product-suggestions"&gt;
+            &lt;option value="iPhone 14"&gt;
+            &lt;option value="Samsung Galaxy"&gt;
+            &lt;option value="MacBook Pro"&gt;
+        &lt;/datalist&gt;
+        &lt;button type="submit"&gt;Szukaj&lt;/button&gt;
+    &lt;/form&gt;
+    
+    &lt;!-- Menu kategorii --&gt;
+    &lt;nav aria-label="Kategorie produktów"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="/telefony"&gt;Telefony&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/laptopy"&gt;Laptopy&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/tablety"&gt;Tablety&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;!-- Filtry i tagi --&gt;
+&lt;aside class="filters-sidebar"&gt;
+    &lt;section&gt;
+        &lt;h3&gt;Filtry&lt;/h3&gt;
+        &lt;form&gt;
+            &lt;fieldset&gt;
+                &lt;legend&gt;Cena&lt;/legend&gt;
+                &lt;input type="range" min="0" max="5000" aria-label="Maksymalna cena"&gt;
+            &lt;/fieldset&gt;
+            &lt;fieldset&gt;
+                &lt;legend&gt;Marka&lt;/legend&gt;
+                &lt;label&gt;&lt;input type="checkbox"&gt; Apple&lt;/label&gt;
+                &lt;label&gt;&lt;input type="checkbox"&gt; Samsung&lt;/label&gt;
+            &lt;/fieldset&gt;
+        &lt;/form&gt;
+    &lt;/section&gt;
+    
+    &lt;section&gt;
+        &lt;h3&gt;Tagi&lt;/h3&gt;
+        &lt;div class="tag-cloud"&gt;
+            &lt;a href="/tag/promocja"&gt;Promocja&lt;/a&gt;
+            &lt;a href="/tag/nowosc" class="tag"&gt;Nowości&lt;/a&gt;
+            &lt;a href="/tag/bestseller"&gt;Bestsellery&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+&lt;/aside&gt;
+
+&lt;!-- 2. Portal informacyjny --&gt;
+&lt;header class="news-header"&gt;
+    &lt;!-- Wyszukiwarka artykułów --&gt;
+    &lt;form role="search"&gt;
+        &lt;input type="search" placeholder="Wyszukaj artykuły, autorów..."&gt;
+        &lt;select aria-label="Kategoria"&gt;
+            &lt;option&gt;Wszystkie kategorie&lt;/option&gt;
+            &lt;option&gt;Polityka&lt;/option&gt;
+            &lt;option&gt;Sport&lt;/option&gt;
+            &lt;option&gt;Ekonomia&lt;/option&gt;
+        &lt;/select&gt;
+        &lt;button type="submit"&gt;Szukaj&lt;/button&gt;
+    &lt;/form&gt;
+    
+    &lt;!-- Menu tematyczne --&gt;
+    &lt;nav aria-label="Kategorie tematyczne"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="/polityka"&gt;Polityka&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/sport"&gt;Sport&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/ekonomia"&gt;Ekonomia&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/kultura"&gt;Kultura&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;!-- Archiwum chronologiczne --&gt;
+&lt;aside&gt;
+    &lt;section&gt;
+        &lt;h3&gt;Archiwum&lt;/h3&gt;
+        &lt;nav aria-label="Archiwum chronologiczne"&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="/2024/01"&gt;Styczeń 2024&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/2023/12"&gt;Grudzień 2023&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/2023/11"&gt;Listopad 2023&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/section&gt;
+    
+    &lt;section&gt;
+        &lt;h3&gt;Autorzy&lt;/h3&gt;
+        &lt;nav aria-label="Indeks autorów"&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="/autor/jan-kowalski"&gt;Jan Kowalski&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/autor/anna-nowak"&gt;Anna Nowak&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/section&gt;
+&lt;/aside&gt;
+
+&lt;!-- 3. Dokumentacja techniczna --&gt;
+&lt;nav class="docs-toc" aria-label="Spis treści"&gt;
+    &lt;h2&gt;Spis treści&lt;/h2&gt;
+    &lt;ol&gt;
+        &lt;li&gt;
+            &lt;a href="#wprowadzenie"&gt;Wprowadzenie&lt;/a&gt;
+            &lt;ol&gt;
+                &lt;li&gt;&lt;a href="#wymagania"&gt;Wymagania&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#instalacja"&gt;Instalacja&lt;/a&gt;&lt;/li&gt;
+            &lt;/ol&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href="#api"&gt;Dokumentacja API&lt;/a&gt;
+            &lt;ol&gt;
+                &lt;li&gt;&lt;a href="#endpoints"&gt;Endpointy&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#authentication"&gt;Autoryzacja&lt;/a&gt;&lt;/li&gt;
+            &lt;/ol&gt;
+        &lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/nav&gt;
+
+&lt;!-- Wyszukiwarka w dokumentacji --&gt;
+&lt;form role="search" class="docs-search"&gt;
+    &lt;input type="search" 
+           placeholder="Wyszukaj w dokumentacji..." 
+           aria-describedby="search-help"&gt;
+    &lt;button type="submit"&gt;Szukaj&lt;/button&gt;
+    &lt;p id="search-help"&gt;Wyszukuj funkcje, klasy, metody&lt;/p&gt;
+&lt;/form&gt;
+
+&lt;!-- Indeks terminów --&gt;
+&lt;aside&gt;
+    &lt;section&gt;
+        &lt;h3&gt;Indeks terminów&lt;/h3&gt;
+        &lt;nav aria-label="Indeks alfabetyczny"&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="/glossary#a"&gt;A&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/glossary#b"&gt;B&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/glossary#c"&gt;C&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/section&gt;
+&lt;/aside&gt;</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Różne typy witryn mają dostosowane zestawy metod nawigacji.
+                            Sklepy internetowe priorytetowo traktują wyszukiwanie i filtrowanie produktów, portale
+                            informacyjne oferują kategoryzację tematyczną i chronologiczną, strony firmowe skupiają się
+                            na strukturze organizacyjnej, a dokumentacja techniczna wymaga spisu treści i indeksów
+                            terminów.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie zgodności z 2.4.5</h3>
+
+                <h4>Procedura testowa</h4>
+                <ol>
+                    <li><strong>Inwentaryzacja metod nawigacji</strong>
+                        <ul>
+                            <li>Zidentyfikuj wszystkie dostępne sposoby lokalizowania treści</li>
+                            <li>Sprawdź czy dostępne są co najmniej dwa różne sposoby</li>
+                            <li>Oceń czy metody się uzupełniają czy dublują</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test różnych scenariuszy użytkownika</strong>
+                        <ul>
+                            <li>Przetestuj lokalizowanie treści przez menu strukturalne</li>
+                            <li>Sprawdź skuteczność wyszukiwarki</li>
+                            <li>Oceń użyteczność mapy strony i indeksów</li>
+                        </ul>
+                    </li>
+                    <li><strong>Analiza dostępności metod</strong>
+                        <ul>
+                            <li>Sprawdź czy metody są łatwo dostępne</li>
+                            <li>Oceń czy nie są ukryte w stopkach</li>
+                            <li>Przetestuj działanie z technologiami wspomagającymi</li>
+                        </ul>
+                    </li>
+                    <li><strong>Weryfikacja wyjątków</strong>
+                        <ul>
+                            <li>Zidentyfikuj strony będące częścią procesów</li>
+                            <li>Sprawdź czy te strony są prawidłowo wyłączone</li>
+                            <li>Oceń czy proces ma logiczną sekwencję</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Narzędzia testowe</h4>
+                <ul>
+                    <li><strong>Manual testing</strong> - przetestuj wszystkie metody nawigacji</li>
+                    <li><strong>WAVE</strong> - analizuje strukturę nawigacji</li>
+                    <li><strong>axe DevTools</strong> - sprawdza dostępność elementów nawigacji</li>
+                    <li><strong>Site mapping tools</strong> - analizują strukturę witryny</li>
+                    <li><strong>Search analytics</strong> - sprawdzają skuteczność wyszukiwarki</li>
+                </ul>
+
+                <h4>Checklist zgodności</h4>
+                <div
+                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <h5>✅ Kryteria do spełnienia:</h5>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>☐ Dostępne są co najmniej dwa sposoby lokalizowania treści</li>
+                        <li>☐ Metody nawigacji są łatwo dostępne i widoczne</li>
+                        <li>☐ Wyszukiwarka jest funkcjonalna i skuteczna</li>
+                        <li>☐ Menu/kategorie oferują logiczną strukturę</li>
+                        <li>☐ Dostępna jest mapa strony lub indeks</li>
+                        <li>☐ Breadcrumbs pokazują lokalizację w hierarchii</li>
+                        <li>☐ Różne metody uzupełniają się nawzajem</li>
+                        <li>☐ Strony procesów są prawidłowo zidentyfikowane</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="implementation-guidelines">
+                <h3>Wytyczne implementacyjne</h3>
+
+                <h4>Najlepsze praktyki:</h4>
+                <ul>
+                    <li><strong>Minimum dwa sposoby</strong> - zawsze oferuj co najmniej dwie metody nawigacji</li>
+                    <li><strong>Dostosuj do typu witryny</strong> - różne witryny potrzebują różnych metod</li>
+                    <li><strong>Łatwy dostęp</strong> - metody powinny być widoczne i dostępne</li>
+                    <li><strong>Funkcjonalna wyszukiwarka</strong> - jeśli jest, musi działać poprawnie</li>
+                    <li><strong>Logiczna organizacja</strong> - menu i kategorie muszą mieć sens</li>
+                    <li><strong>Uzupełniające się metody</strong> - różne sposoby dla różnych potrzeb</li>
+                </ul>
+
+                <h4>Typowe kombinacje metod nawigacji:</h4>
+                <div
+                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #004085; margin-top: 0;">1. Podstawowy zestaw (małe witryny)</h5>
+                    <pre style="color: #004085;"><code>• Menu główne + Wyszukiwarka
+• Menu główne + Mapa strony
+• Kategorie + Breadcrumbs</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #155724; margin-top: 0;">2. Rozszerzony zestaw (średnie witryny)</h5>
+                    <pre style="color: #155724;"><code>• Menu + Wyszukiwarka + Kategorie
+• Breadcrumbs + Filtry + Tagi
+• Mapa strony + Indeks</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #856404; margin-top: 0;">3. Kompletny zestaw (duże witryny)</h5>
+                    <pre style="color: #856404;"><code>• Menu + Wyszukiwarka + Kategorie + Filtry
+• Breadcrumbs + Tagi + Powiązane treści
+• Mapa strony + Indeks + Lista wszystkich stron</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #721c24; margin-top: 0;">4. Specjalistyczne zestawy</h5>
+                    <pre style="color: #721c24;"><code>• E-commerce: Kategorie + Filtry + Wyszukiwarka + Tagi
+• News: Kategorie + Archiwum + Autorzy + Wyszukiwarka
+• Docs: Spis treści + Wyszukiwarka + Indeks + Breadcrumbs</code></pre>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/multiple-ways.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG 2.1: Różne sposoby nawigacji</a></li>
+                    <li><a href="https://webaim.org/techniques/navigation/" target="_blank" rel="noopener">WebAIM:
+                            Navigation Design</a></li>
+                    <li><a href="https://www.nngroup.com/articles/website-navigation/" target="_blank"
+                            rel="noopener">Nielsen Norman Group: Website Navigation</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Understandable#guideline_2.4_—_navigable_provide_ways_to_help_users_navigate_find_content_and_determine_where_they_are"
+                            target="_blank" rel="noopener">MDN: WCAG Guideline 2.4</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/navigation/" target="_blank" rel="noopener">W3C:
+                            Navigation Tutorial</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.4.4.html">Poprzedni: 2.4.4 Cel linku (w kontekście)</a></li>
+                    <li><a href="2.4.6.html">Następny: 2.4.6 Nagłówki i etykiety</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+
+    <script>
+        // Demo funkcjonalność dla przykładów nawigacji
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // === DEMO METOD NAWIGACJI ===
+            const navMethodLinks = document.querySelectorAll('.nav-method-demo');
+            const navMethodFeedback = document.getElementById('nav-method-feedback');
+
+            navMethodLinks.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const method = this.getAttribute('data-method');
+                    demonstrateNavMethod(method);
+                });
+
+                link.addEventListener('mouseenter', function () {
+                    const method = this.getAttribute('data-method');
+                    showNavMethodInfo(method);
+                });
+            });
+
+            function demonstrateNavMethod(method) {
+                const methodDescriptions = {
+                    'menu': 'Menu strukturalne pozwala na hierarchiczne przeglądanie treści. Użytkownik może łatwo zobaczyć organizację witryny.',
+                    'breadcrumbs': 'Breadcrumbs pokazują dokładną lokalizację w hierarchii strony. Ułatwiają nawigację do wyższych poziomów.',
+                    'categories': 'Kategorie grupują powiązane treści. Liczby w nawiasach pokazują ilość elementów w każdej kategorii.',
+                    'related': 'Powiązane linki sugerują podobne lub uzupełniające treści. Pomagają w odkrywaniu nowych informacji.',
+                    'sitemap': 'Mapa strony oferuje kompletny przegląd struktury witryny. Szczególnie użyteczna dla dużych serwisów.',
+                    'index': 'Indeks alfabetyczny pozwala na szybkie znalezienie konkretnych terminów lub nazw.'
+                };
+
+                const description = methodDescriptions[method] || 'Ta metoda nawigacji pomaga użytkownikom lokalizować treści.';
+                showNotification(`🧭 ${description}`, 'info');
+
+                if (navMethodFeedback) {
+                    navMethodFeedback.textContent = `Demonstracja: ${description}`;
+                    navMethodFeedback.style.fontWeight = 'bold';
+                    navMethodFeedback.style.color = '#007bff';
+                }
+            }
+
+            function showNavMethodInfo(method) {
+                const methodNames = {
+                    'menu': 'Menu strukturalne',
+                    'breadcrumbs': 'Breadcrumbs (ścieżka nawigacyjna)',
+                    'categories': 'Kategorie tematyczne',
+                    'related': 'Powiązane linki',
+                    'sitemap': 'Mapa strony',
+                    'index': 'Indeks alfabetyczny'
+                };
+
+                const methodName = methodNames[method] || 'Metoda nawigacji';
+                if (navMethodFeedback) {
+                    navMethodFeedback.textContent = `Kliknij aby zobaczyć demonstrację: ${methodName}`;
+                }
+            }
+
+            // === DEMO TYPÓW WITRYN ===
+            window.showSiteType = function (type) {
+                // Ukryj wszystkie treści
+                document.querySelectorAll('.site-type-content').forEach(content => {
+                    content.style.display = 'none';
+                });
+
+                // Pokaż wybraną treść
+                const selectedContent = document.getElementById(`site-${type}`);
+                if (selectedContent) {
+                    selectedContent.style.display = 'block';
+                }
+
+                // Zaktualizuj przyciski
+                document.querySelectorAll('.site-type-btn').forEach(btn => {
+                    btn.style.background = 'transparent';
+                    btn.style.color = '#856404';
+                });
+
+                const activeBtn = document.querySelector(`.site-type-btn[data-type="${type}"]`);
+                if (activeBtn) {
+                    activeBtn.style.background = '#ffc107';
+                    activeBtn.style.color = '#212529';
+                }
+
+                // Pokaż analizę
+                const typeAnalyses = {
+                    'ecommerce': 'Sklepy internetowe priorytetowo traktują wyszukiwanie i filtrowanie produktów. Użytkownicy często wiedzą czego szukają.',
+                    'news': 'Portale informacyjne wymagają kategoryzacji tematycznej i chronologicznej. Użytkownicy przeglądają i szukają konkretnych informacji.',
+                    'corporate': 'Strony firmowe skupiają się na strukturze organizacyjnej i łatwym dostępie do kluczowych informacji kontaktowych.',
+                    'docs': 'Dokumentacja techniczna wymaga szczegółowego spisu treści i możliwości wyszukiwania konkretnych terminów.'
+                };
+
+                const analysis = typeAnalyses[type] || 'Każdy typ witryny ma swoje specyficzne potrzeby nawigacyjne.';
+                const analysisElement = document.getElementById('site-type-analysis');
+                if (analysisElement) {
+                    analysisElement.textContent = analysis;
+                }
+            };
+
+            // === DEMO TAGÓW ===
+            window.demoTagFilter = function (tag) {
+                showNotification(`🏷️ Filtrowanie według tagu: "${tag}". Tagi pozwalają na szybkie zawężenie treści do konkretnego tematu.`, 'info');
+            };
+
+            // Reset feedback on mouseleave
+            document.addEventListener('mouseleave', function (e) {
+                if (e.target.matches('.nav-method-demo')) {
+                    if (navMethodFeedback) {
+                        navMethodFeedback.textContent = 'Kliknij na różne elementy nawigacji aby zobaczyć demonstrację';
+                        navMethodFeedback.style.fontWeight = 'normal';
+                        navMethodFeedback.style.color = '#004085';
+                    }
+                }
+            });
+
+            function showNotification(message, type) {
+                const notification = document.createElement('div');
+                const colors = {
+                    'success': '#d4edda',
+                    'error': '#f8d7da',
+                    'info': '#e7f3ff',
+                    'warning': '#fff3cd'
+                };
+
+                const borderColors = {
+                    'success': '#28a745',
+                    'error': '#dc3545',
+                    'info': '#007bff',
+                    'warning': '#ffc107'
+                };
+
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: ${colors[type] || colors.info};
+                    color: #495057;
+                    padding: 12px 20px;
+                    border-radius: 4px;
+                    border-left: 4px solid ${borderColors[type] || borderColors.info};
+                    z-index: 1000;
+                    max-width: 400px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    font-size: 14px;
+                    line-height: 1.4;
+                `;
+                notification.textContent = message;
+
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    notification.style.transition = 'opacity 0.3s';
+                    setTimeout(() => {
+                        if (document.body.contains(notification)) {
+                            document.body.removeChild(notification);
+                        }
+                    }, 300);
+                }, 5000);
+            }
+        });
+    </script>
+</body>
+
+</html>

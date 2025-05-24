@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.4.9 Cel linku (tylko link) (AAA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.4.9 Cel linku (tylko link)</h2>
+                <p class="criterion-level">Poziom AAA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#link-purpose-link-only" target="_blank"
+                            rel="noopener">Oficjalna dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Dostępny jest mechanizm umożliwiający identyfikację celu każdego linku wyłącznie na podstawie tekstu
+                    linku, z wyjątkiem przypadków gdy cel linku byłby niejednoznaczny dla użytkowników w ogóle.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest zapewnienie użytkownikom możliwości zrozumienia celu każdego linku
+                    bez konieczności czytania otaczającego kontekstu. Jest to wyższa wersja kryterium 2.4.4, wymagająca
+                    aby tekst linku sam w sobie był w pełni opisowy i zrozumiały.</p>
+
+                <p>Jasne linki są szczególnie ważne dla:</p>
+                <ul>
+                    <li><strong>Użytkowników czytników ekranu</strong> - mogą nawigować między linkami bez kontekstu
+                    </li>
+                    <li><strong>Osób z ograniczeniami poznawczymi</strong> - redukują cognitive load</li>
+                    <li><strong>Użytkowników klawiaturowych</strong> - ułatwiają szybką nawigację</li>
+                    <li><strong>Osób z problemami koncentracji</strong> - zmniejszają wysiłek umysłowy</li>
+                    <li><strong>Użytkowników mobile</strong> - poprawiają experience na małych ekranach</li>
+                    <li><strong>Wszystkich użytkowników</strong> - zwiększają użyteczność i scanability</li>
+                </ul>
+
+                <p>Różnica między poziomami dostępności:</p>
+                <ul>
+                    <li><strong>Poziom A (2.4.4)</strong> - cel linku można określić z tekstu linku lub kontekstu</li>
+                    <li><strong>Poziom AAA (2.4.9)</strong> - cel linku można określić tylko z tekstu linku</li>
+                </ul>
+
+                <p>Kryterium obejmuje różne typy linków:</p>
+                <ul>
+                    <li><strong>Linki nawigacyjne</strong> - do różnych sekcji witryny</li>
+                    <li><strong>Linki do dokumentów</strong> - pliki PDF, DOC, itp.</li>
+                    <li><strong>Linki zewnętrzne</strong> - do innych witryn</li>
+                    <li><strong>Linki funkcyjne</strong> - akcje jak "pobierz", "zapisz"</li>
+                    <li><strong>Linki w treści</strong> - odnośniki w artykułach</li>
+                    <li><strong>Linki graficzne</strong> - obrazy jako linki</li>
+                </ul>
+
+                <p><strong>Wyjątki:</strong> Kryterium nie dotyczy przypadków gdzie cel linku byłby niejednoznaczny dla
+                    wszystkich użytkowników, nie tylko dla osób z niepełnosprawnościami.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - linki niezrozumiałe bez kontekstu</h4>
+                        <p>Linki które nie są samoopisowe i wymagają kontekstu do zrozumienia celu:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #721c24; margin-top: 0;">❌ Problematyczne teksty linków:</h5>
+
+                                    <div
+                                        style="background-color: rgba(255,255,255,0.8); padding: 15px; border-radius: 4px; margin: 10px 0;">
+                                        <div
+                                            style="border-bottom: 1px solid #dee2e6; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #721c24; margin-top: 0;">Ogólne linki bez kontekstu:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px dashed #dc3545; border-radius: 4px;">
+                                                <div style="margin-bottom: 15px;">
+                                                    <p style="color: #495057; margin-bottom: 10px;">Nasze usługi
+                                                        webdesign obejmują projektowanie stron internetowych, aplikacji
+                                                        mobilnych oraz sklepów online.</p>
+                                                    <a href="#" onclick="demonstrateBadLink('service-generic')"
+                                                        style="color: #dc3545; text-decoration: underline; font-weight: 500;">Kliknij
+                                                        tutaj</a>
+                                                </div>
+                                                <div style="margin-bottom: 15px;">
+                                                    <p style="color: #495057; margin-bottom: 10px;">Przeczytaj nasz
+                                                        najnowszy artykuł o trendach w UX design.</p>
+                                                    <a href="#" onclick="demonstrateBadLink('article-generic')"
+                                                        style="color: #dc3545; text-decoration: underline; font-weight: 500;">Więcej</a>
+                                                </div>
+                                                <div style="margin-bottom: 15px;">
+                                                    <p style="color: #495057; margin-bottom: 10px;">Sprawdź naszą ofertę
+                                                        specjalną na konsultacje IT.</p>
+                                                    <a href="#" onclick="demonstrateBadLink('offer-generic')"
+                                                        style="color: #dc3545; text-decoration: underline; font-weight: 500;">Zobacz</a>
+                                                </div>
+                                                <div style="color: #dc3545; font-size: 0.9em; margin-top: 10px;">
+                                                    ❌ Linki "kliknij tutaj", "więcej", "zobacz" nie informują o celu
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="border-bottom: 1px solid #dee2e6; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #721c24; margin-top: 0;">Nieopisowe linki do dokumentów:
+                                            </h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px dashed #dc3545; border-radius: 4px;">
+                                                <div style="margin-bottom: 15px;">
+                                                    <p style="color: #495057; margin-bottom: 10px;">Regulamin
+                                                        świadczenia usług - dokument zawierający warunki współpracy.</p>
+                                                    <a href="#" onclick="demonstrateBadLink('document-generic')"
+                                                        style="color: #dc3545; text-decoration: underline; font-weight: 500;">Pobierz</a>
+                                                </div>
+                                                <div style="margin-bottom: 15px;">
+                                                    <p style="color: #495057; margin-bottom: 10px;">Cennik naszych usług
+                                                        na rok 2024.</p>
+                                                    <a href="#" onclick="demonstrateBadLink('price-generic')"
+                                                        style="color: #dc3545; text-decoration: underline; font-weight: 500;">Tutaj</a>
+                                                </div>
+                                                <div style="margin-bottom: 15px;">
+                                                    <p style="color: #495057; margin-bottom: 10px;">Instrukcja obsługi
+                                                        nowego systemu CMS.</p>
+                                                    <a href="#" onclick="demonstrateBadLink('manual-generic')"
+                                                        style="color: #dc3545; text-decoration: underline; font-weight: 500;">Link</a>
+                                                </div>
+                                                <div style="color: #dc3545; font-size: 0.9em; margin-top: 10px;">
+                                                    ❌ Brak informacji o typie dokumentu, formacie i zawartości
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="border-bottom: 1px solid #dee2e6; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #721c24; margin-top: 0;">Dwuznaczne linki akcji:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px dashed #dc3545; border-radius: 4px;">
+                                                <div style="display: grid; gap: 15px;">
+                                                    <div
+                                                        style="border: 1px solid #dee2e6; padding: 15px; border-radius: 3px;">
+                                                        <h6 style="color: #495057; margin-top: 0;">Produkt: Laptop HP
+                                                            EliteBook</h6>
+                                                        <p
+                                                            style="color: #6c757d; font-size: 0.9em; margin-bottom: 10px;">
+                                                            Cena: 3,499 PLN</p>
+                                                        <div style="display: flex; gap: 10px;">
+                                                            <a href="#" onclick="demonstrateBadLink('action-generic1')"
+                                                                style="color: #dc3545; text-decoration: underline;">Więcej</a>
+                                                            <a href="#" onclick="demonstrateBadLink('action-generic2')"
+                                                                style="color: #dc3545; text-decoration: underline;">Kup</a>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        style="border: 1px solid #dee2e6; padding: 15px; border-radius: 3px;">
+                                                        <h6 style="color: #495057; margin-top: 0;">Usługa: Projektowanie
+                                                            logo</h6>
+                                                        <p
+                                                            style="color: #6c757d; font-size: 0.9em; margin-bottom: 10px;">
+                                                            Od 500 PLN</p>
+                                                        <div style="display: flex; gap: 10px;">
+                                                            <a href="#" onclick="demonstrateBadLink('action-generic3')"
+                                                                style="color: #dc3545; text-decoration: underline;">Więcej</a>
+                                                            <a href="#" onclick="demonstrateBadLink('action-generic4')"
+                                                                style="color: #dc3545; text-decoration: underline;">Zamów</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="color: #dc3545; font-size: 0.9em; margin-top: 10px;">
+                                                    ❌ Identyczne teksty linków dla różnych produktów i akcji
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h6 style="color: #721c24; margin-top: 0;">Symulacja czytnika ekranu:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px dashed #dc3545; border-radius: 4px;">
+                                                <div
+                                                    style="background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 3px; font-family: monospace; font-size: 0.9em; margin-bottom: 15px;">
+                                                    <div style="color: #f39c12; margin-bottom: 5px;">🔊 Lista linków na
+                                                        stronie:</div>
+                                                    <div>1. "Kliknij tutaj"</div>
+                                                    <div>2. "Więcej"</div>
+                                                    <div>3. "Zobacz"</div>
+                                                    <div>4. "Pobierz"</div>
+                                                    <div>5. "Tutaj"</div>
+                                                    <div>6. "Link"</div>
+                                                    <div>7. "Więcej"</div>
+                                                    <div>8. "Kup"</div>
+                                                    <div>9. "Więcej"</div>
+                                                    <div>10. "Zamów"</div>
+                                                </div>
+                                                <button onclick="simulateScreenReaderLinks('bad')"
+                                                    style="padding: 8px 16px; background: #dc3545; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                    🔊 Odsłuchaj linki
+                                                </button>
+                                                <div style="color: #dc3545; font-size: 0.9em; margin-top: 10px;">
+                                                    ❌ Użytkownik czytnika ekranu nie wie do czego prowadzą linki
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #fff3cd; padding: 10px; border-radius: 3px; border-left: 4px solid #ffc107; margin-top: 15px;">
+                                        <p style="color: #856404; margin: 0; font-size: 0.9em;">
+                                            <strong>Test zrozumiałości:</strong> <span
+                                                id="clarity-test-feedback">Kliknij przycisk aby przetestować jak trudno
+                                                jest zrozumieć cel linków bez kontekstu</span>
+                                        </p>
+                                        <button onclick="startClarityTest()"
+                                            style="margin-top: 10px; padding: 8px 16px; background: #ffc107; color: #212529; border: none; border-radius: 3px; cursor: pointer;">
+                                            🧪 Test zrozumiałości
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #856404; margin-top: 0;">Dlaczego to problematyczne?</h6>
+                                    <ul style="color: #856404; margin-bottom: 0;">
+                                        <li><strong>Utrata kontekstu</strong> - użytkownicy czytników ekranu tracą
+                                            orientację</li>
+                                        <li><strong>Ineffective navigation</strong> - niemożność szybkiego przejścia do
+                                            celu</li>
+                                        <li><strong>Cognitive overload</strong> - konieczność analizy kontekstu dla
+                                            każdego linku</li>
+                                        <li><strong>Poor UX</strong> - frustracja i zmniejszona użyteczność</li>
+                                        <li><strong>SEO issues</strong> - gorsze pozycjonowanie w wyszukiwarkach</li>
+                                        <li><strong>Accessibility barriers</strong> - bariery dla osób z
+                                            niepełnosprawnościami</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- ZŁY PRZYKŁAD - linki niezrozumiałe bez kontekstu --&gt;
+
+&lt;!-- 1. Ogólne teksty linków --&gt;
+&lt;p&gt;Nasze usługi obejmują projektowanie stron internetowych.&lt;/p&gt;
+&lt;a href="/services"&gt;Kliknij tutaj&lt;/a&gt; &lt;!-- Gdzie prowadzi? --&gt;
+
+&lt;p&gt;Przeczytaj najnowszy artykuł o UX design.&lt;/p&gt;
+&lt;a href="/article-1"&gt;Więcej&lt;/a&gt; &lt;!-- Więcej czego? --&gt;
+
+&lt;p&gt;Sprawdź naszą ofertę specjalną.&lt;/p&gt;
+&lt;a href="/offer"&gt;Zobacz&lt;/a&gt; &lt;!-- Zobacz co? --&gt;
+
+&lt;!-- 2. Nieopisowe linki do dokumentów --&gt;
+&lt;p&gt;Regulamin świadczenia usług.&lt;/p&gt;
+&lt;a href="/terms.pdf"&gt;Pobierz&lt;/a&gt; &lt;!-- Pobierz co? Jaki format? --&gt;
+
+&lt;p&gt;Cennik usług na 2024 rok.&lt;/p&gt;
+&lt;a href="/pricing.doc"&gt;Tutaj&lt;/a&gt; &lt;!-- Gdzie tutaj? --&gt;
+
+&lt;!-- 3. Identyczne linki dla różnych treści --&gt;
+&lt;div class="product"&gt;
+    &lt;h3&gt;Laptop HP&lt;/h3&gt;
+    &lt;a href="/laptop-hp"&gt;Więcej&lt;/a&gt;
+    &lt;a href="/buy/laptop-hp"&gt;Kup&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class="product"&gt;
+    &lt;h3&gt;Laptop Dell&lt;/h3&gt;
+    &lt;a href="/laptop-dell"&gt;Więcej&lt;/a&gt; &lt;!-- Identyczny tekst! --&gt;
+    &lt;a href="/buy/laptop-dell"&gt;Kup&lt;/a&gt; &lt;!-- Identyczny tekst! --&gt;
+&lt;/div&gt;
+
+&lt;!-- 4. Linki graficzne bez alt --&gt;
+&lt;a href="/download"&gt;
+    &lt;img src="download-icon.png"&gt; &lt;!-- Brak alt text --&gt;
+&lt;/a&gt;
+
+&lt;!-- 5. Linki z nieprzydatnym tekstem --&gt;
+&lt;a href="/contact"&gt;Strona&lt;/a&gt; &lt;!-- Jaka strona? --&gt;
+&lt;a href="/info"&gt;Informacje&lt;/a&gt; &lt;!-- Jakie informacje? --&gt;
+&lt;a href="/details"&gt;Szczegóły&lt;/a&gt; &lt;!-- Szczegóły czego? --&gt;</code></pre>
+
+                        <p class="explanation">Problem: Linki nie są samoopisowe i wymagają kontekstu do zrozumienia
+                            celu. Użytkownicy czytników ekranu, którzy nawigują między linkami, nie są w stanie określić
+                            gdzie dany link prowadzi bez powrotu do otaczającego kontekstu.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - linki samoopisowe i zrozumiałe</h4>
+                        <p>Linki które są w pełni zrozumiałe bez dodatkowego kontekstu:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #155724; margin-top: 0;">✅ Prawidłowe teksty linków:</h5>
+
+                                    <div
+                                        style="background-color: rgba(255,255,255,0.9); padding: 15px; border-radius: 4px; margin: 10px 0;">
+                                        <div
+                                            style="border-bottom: 1px solid #c3e6cb; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #155724; margin-top: 0;">Opisowe linki do sekcji:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px solid #28a745; border-radius: 4px;">
+                                                <div style="margin-bottom: 15px;">
+                                                    <p style="color: #495057; margin-bottom: 10px;">Oferujemy
+                                                        kompleksowe usługi projektowania stron internetowych i aplikacji
+                                                        mobilnych.</p>
+                                                    <a href="#" onclick="demonstrateGoodLink('service-specific')"
+                                                        style="color: #28a745; text-decoration: underline; font-weight: 500;">Poznaj
+                                                        nasze usługi webdesign</a>
+                                                </div>
+                                                <div style="margin-bottom: 15px;">
+                                                    <p style="color: #495057; margin-bottom: 10px;">Najnowsze trendy w
+                                                        projektowaniu interfejsów użytkownika w 2024 roku.</p>
+                                                    <a href="#" onclick="demonstrateGoodLink('article-specific')"
+                                                        style="color: #28a745; text-decoration: underline; font-weight: 500;">Przeczytaj
+                                                        artykuł "Trendy UX design 2024"</a>
+                                                </div>
+                                                <div style="margin-bottom: 15px;">
+                                                    <p style="color: #495057; margin-bottom: 10px;">Skorzystaj z naszej
+                                                        promocyjnej oferty na konsultacje IT.</p>
+                                                    <a href="#" onclick="demonstrateGoodLink('offer-specific')"
+                                                        style="color: #28a745; text-decoration: underline; font-weight: 500;">Zobacz
+                                                        ofertę specjalną na konsultacje IT</a>
+                                                </div>
+                                                <div style="color: #28a745; font-size: 0.9em; margin-top: 10px;">
+                                                    ✅ Każdy link jasno określa cel i przeznaczenie
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="border-bottom: 1px solid #c3e6cb; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #155724; margin-top: 0;">Opisowe linki do dokumentów:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px solid #28a745; border-radius: 4px;">
+                                                <div style="margin-bottom: 15px;">
+                                                    <p style="color: #495057; margin-bottom: 10px;">Zapoznaj się z
+                                                        warunkami świadczenia naszych usług.</p>
+                                                    <a href="#" onclick="demonstrateGoodLink('document-specific')"
+                                                        style="color: #28a745; text-decoration: underline; font-weight: 500;">Pobierz
+                                                        Regulamin świadczenia usług (PDF, 245 KB)</a>
+                                                </div>
+                                                <div style="margin-bottom: 15px;">
+                                                    <p style="color: #495057; margin-bottom: 10px;">Aktualna lista cen
+                                                        wszystkich oferowanych przez nas usług.</p>
+                                                    <a href="#" onclick="demonstrateGoodLink('price-specific')"
+                                                        style="color: #28a745; text-decoration: underline; font-weight: 500;">Pobierz
+                                                        Cennik usług 2024 (DOC, 156 KB)</a>
+                                                </div>
+                                                <div style="margin-bottom: 15px;">
+                                                    <p style="color: #495057; margin-bottom: 10px;">Krok po kroku jak
+                                                        korzystać z nowego systemu zarządzania treścią.</p>
+                                                    <a href="#" onclick="demonstrateGoodLink('manual-specific')"
+                                                        style="color: #28a745; text-decoration: underline; font-weight: 500;">Otwórz
+                                                        Instrukcję obsługi systemu CMS (PDF, 1.2 MB)</a>
+                                                </div>
+                                                <div style="color: #28a745; font-size: 0.9em; margin-top: 10px;">
+                                                    ✅ Linki zawierają nazwę dokumentu, format i rozmiar
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="border-bottom: 1px solid #c3e6cb; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #155724; margin-top: 0;">Specyficzne linki akcji:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px solid #28a745; border-radius: 4px;">
+                                                <div style="display: grid; gap: 15px;">
+                                                    <div
+                                                        style="border: 1px solid #c3e6cb; padding: 15px; border-radius: 3px;">
+                                                        <h6 style="color: #495057; margin-top: 0;">Produkt: Laptop HP
+                                                            EliteBook 840 G9</h6>
+                                                        <p
+                                                            style="color: #6c757d; font-size: 0.9em; margin-bottom: 10px;">
+                                                            Cena: 3,499 PLN</p>
+                                                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                                            <a href="#" onclick="demonstrateGoodLink('product-details')"
+                                                                style="color: #28a745; text-decoration: underline;">Zobacz
+                                                                szczegóły laptopa HP EliteBook 840</a>
+                                                            <a href="#" onclick="demonstrateGoodLink('product-buy')"
+                                                                style="color: #28a745; text-decoration: underline;">Kup
+                                                                laptop HP EliteBook 840 (3,499 PLN)</a>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        style="border: 1px solid #c3e6cb; padding: 15px; border-radius: 3px;">
+                                                        <h6 style="color: #495057; margin-top: 0;">Usługa: Projektowanie
+                                                            logo firmowego</h6>
+                                                        <p
+                                                            style="color: #6c757d; font-size: 0.9em; margin-bottom: 10px;">
+                                                            Od 500 PLN</p>
+                                                        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                                                            <a href="#" onclick="demonstrateGoodLink('service-details')"
+                                                                style="color: #28a745; text-decoration: underline;">Zobacz
+                                                                portfolio projektowania logo</a>
+                                                            <a href="#" onclick="demonstrateGoodLink('service-order')"
+                                                                style="color: #28a745; text-decoration: underline;">Zamów
+                                                                projektowanie logo (od 500 PLN)</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="color: #28a745; font-size: 0.9em; margin-top: 10px;">
+                                                    ✅ Każdy link zawiera specyficzne informacje o produkcie/usłudze
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h6 style="color: #155724; margin-top: 0;">Symulacja czytnika ekranu
+                                                (poprawna):</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px solid #28a745; border-radius: 4px;">
+                                                <div
+                                                    style="background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 3px; font-family: monospace; font-size: 0.9em; margin-bottom: 15px;">
+                                                    <div style="color: #2ecc71; margin-bottom: 5px;">🔊 Lista linków na
+                                                        stronie:</div>
+                                                    <div>1. "Poznaj nasze usługi webdesign"</div>
+                                                    <div>2. "Przeczytaj artykuł Trendy UX design 2024"</div>
+                                                    <div>3. "Zobacz ofertę specjalną na konsultacje IT"</div>
+                                                    <div>4. "Pobierz Regulamin świadczenia usług PDF 245 KB"</div>
+                                                    <div>5. "Pobierz Cennik usług 2024 DOC 156 KB"</div>
+                                                    <div>6. "Otwórz Instrukcję obsługi systemu CMS PDF 1.2 MB"</div>
+                                                    <div>7. "Zobacz szczegóły laptopa HP EliteBook 840"</div>
+                                                    <div>8. "Kup laptop HP EliteBook 840 3499 PLN"</div>
+                                                    <div>9. "Zobacz portfolio projektowania logo"</div>
+                                                    <div>10. "Zamów projektowanie logo od 500 PLN"</div>
+                                                </div>
+                                                <button onclick="simulateScreenReaderLinks('good')"
+                                                    style="padding: 8px 16px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                    🔊 Odsłuchaj linki
+                                                </button>
+                                                <div style="color: #28a745; font-size: 0.9em; margin-top: 10px;">
+                                                    ✅ Każdy link jest w pełni zrozumiały bez kontekstu
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #e7f3ff; padding: 10px; border-radius: 3px; border-left: 4px solid #007bff; margin-top: 15px;">
+                                        <p style="color: #004085; margin: 0; font-size: 0.9em;">
+                                            <strong>Demo interaktywne:</strong> <span
+                                                id="clarity-demo-feedback">Przetestuj jak dobrze funkcjonują opisowe
+                                                linki</span>
+                                        </p>
+                                        <button onclick="demonstrateGoodLinks()"
+                                            style="margin-top: 10px; padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                            ✨ Demonstracja dobrych linków
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #004085; margin-top: 0;">Zalety samoopisowych linków:</h6>
+                                    <ul style="color: #004085; margin-bottom: 0; font-size: 0.95em;">
+                                        <li><strong>Lepsza dostępność</strong> - użytkownicy czytników ekranu rozumieją
+                                            cel</li>
+                                        <li><strong>Efektywna nawigacja</strong> - szybsze przechodzenie między linkami
+                                        </li>
+                                        <li><strong>Reduced cognitive load</strong> - mniejszy wysiłek umysłowy</li>
+                                        <li><strong>Better UX</strong> - zwiększona użyteczność dla wszystkich</li>
+                                        <li><strong>SEO benefits</strong> - lepsze pozycjonowanie w wyszukiwarkach</li>
+                                        <li><strong>Universal design</strong> - korzyści dla wszystkich użytkowników
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - linki samoopisowe --&gt;
+
+&lt;!-- 1. Opisowe linki do sekcji --&gt;
+&lt;p&gt;Oferujemy kompleksowe usługi projektowania.&lt;/p&gt;
+&lt;a href="/services"&gt;Poznaj nasze usługi webdesign&lt;/a&gt;
+
+&lt;p&gt;Najnowsze trendy w UX design.&lt;/p&gt;
+&lt;a href="/article-1"&gt;Przeczytaj artykuł "Trendy UX design 2024"&lt;/a&gt;
+
+&lt;!-- 2. Opisowe linki do dokumentów --&gt;
+&lt;p&gt;Zapoznaj się z warunkami świadczenia usług.&lt;/p&gt;
+&lt;a href="/terms.pdf"&gt;Pobierz Regulamin świadczenia usług (PDF, 245 KB)&lt;/a&gt;
+
+&lt;p&gt;Aktualna lista cen naszych usług.&lt;/p&gt;
+&lt;a href="/pricing.doc"&gt;Pobierz Cennik usług 2024 (DOC, 156 KB)&lt;/a&gt;
+
+&lt;!-- 3. Specyficzne linki produktów --&gt;
+&lt;div class="product"&gt;
+    &lt;h3&gt;Laptop HP EliteBook 840 G9&lt;/h3&gt;
+    &lt;a href="/laptop-hp"&gt;Zobacz szczegóły laptopa HP EliteBook 840&lt;/a&gt;
+    &lt;a href="/buy/laptop-hp"&gt;Kup laptop HP EliteBook 840 (3,499 PLN)&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;div class="product"&gt;
+    &lt;h3&gt;Laptop Dell Latitude 7420&lt;/h3&gt;
+    &lt;a href="/laptop-dell"&gt;Zobacz szczegóły laptopa Dell Latitude 7420&lt;/a&gt;
+    &lt;a href="/buy/laptop-dell"&gt;Kup laptop Dell Latitude 7420 (2,899 PLN)&lt;/a&gt;
+&lt;/div&gt;
+
+&lt;!-- 4. Linki graficzne z opisowym alt --&gt;
+&lt;a href="/download-report.pdf"&gt;
+    &lt;img src="download-icon.png" alt="Pobierz raport roczny 2023 (PDF)"&gt;
+&lt;/a&gt;
+
+&lt;!-- 5. Linki funkcyjne z jasnym celem --&gt;
+&lt;a href="/contact"&gt;Skontaktuj się z naszym zespołem&lt;/a&gt;
+&lt;a href="/company-info"&gt;Przeczytaj informacje o firmie&lt;/a&gt;
+&lt;a href="/product-details"&gt;Zobacz szczegóły produktu iPhone 15&lt;/a&gt;
+
+&lt;!-- 6. Linki z dodatkowymi informacjami --&gt;
+&lt;a href="/external-site.com"&gt;Odwiedź stronę partnera XYZ (otwiera w nowym oknie)&lt;/a&gt;
+&lt;a href="mailto:contact@example.com"&gt;Wyślij email na adres contact@example.com&lt;/a&gt;
+&lt;a href="tel:+48123456789"&gt;Zadzwoń na numer +48 123 456 789&lt;/a&gt;</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Linki zawierają pełne, opisowe teksty które jasno informują
+                            o celu i przeznaczeniu. Użytkownicy mogą zrozumieć dokąd prowadzi link bez czytania
+                            otaczającego kontekstu, co znacznie poprawia dostępność i użyteczność.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - narzędzia do analizy i projektowania linków</h4>
+                        <p>Interaktywne narzędzia do analizy jakości linków i generowania opisowych tekstów:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #856404; margin-top: 0;">🔧 Narzędzia analizy linków:</h5>
+
+                                    <div style="margin: 15px 0;">
+                                        <!-- Przełącznik narzędzi -->
+                                        <div style="margin-bottom: 20px;">
+                                            <strong style="color: #856404;">Wybierz narzędzie:</strong>
+                                            <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 10px;">
+                                                <button onclick="showLinkTool('link-analyzer')"
+                                                    class="link-tool-btn active" data-tool="link-analyzer"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: #ffc107; color: #212529; border-radius: 4px; cursor: pointer; font-weight: 500;">🔍
+                                                    Analizator linków</button>
+                                                <button onclick="showLinkTool('link-generator')" class="link-tool-btn"
+                                                    data-tool="link-generator"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: transparent; color: #856404; border-radius: 4px; cursor: pointer;">✨
+                                                    Generator opisów</button>
+                                                <button onclick="showLinkTool('clarity-tester')" class="link-tool-btn"
+                                                    data-tool="clarity-tester"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: transparent; color: #856404; border-radius: 4px; cursor: pointer;">🧪
+                                                    Tester zrozumiałości</button>
+                                                <button onclick="showLinkTool('screen-reader-sim')"
+                                                    class="link-tool-btn" data-tool="screen-reader-sim"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: transparent; color: #856404; border-radius: 4px; cursor: pointer;">🔊
+                                                    Symulator czytnika</button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Analizator linków -->
+                                        <div id="link-tool-link-analyzer" class="link-tool-content"
+                                            style="border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">🔍 Analizator jakości linków</h6>
+                                            <p style="color: #6c757d; font-size: 0.9em; margin-bottom: 15px;">Sprawdź
+                                                czy Twoje linki spełniają kryteria dostępności:</p>
+
+                                            <div
+                                                style="background-color: #f8f9fa; padding: 15px; border-radius: 3px; margin-bottom: 15px;">
+                                                <div style="margin-bottom: 15px;">
+                                                    <label for="links-to-analyze"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Linki
+                                                        do analizy (jeden w linii):</label>
+                                                    <textarea id="links-to-analyze" rows="6"
+                                                        style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 3px; font-family: monospace; font-size: 0.9em;"
+                                                        placeholder="Kliknij tutaj&#10;Więcej&#10;Pobierz&#10;Zobacz szczegóły produktu ABC&#10;Przeczytaj artykuł o UX design&#10;Pobierz Cennik 2024 (PDF, 200 KB)"></textarea>
+                                                </div>
+                                                <button onclick="analyzeLinks()"
+                                                    style="padding: 10px 20px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer; font-weight: 500;">
+                                                    🔍 Analizuj linki
+                                                </button>
+                                            </div>
+
+                                            <div id="link-analysis-results"
+                                                style="margin-top: 15px; padding: 15px; background-color: #f8f9fa; border-radius: 3px; display: none;">
+                                                <h6 style="margin-top: 0; color: #495057;">Wyniki analizy:</h6>
+                                                <div id="analysis-output"></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Generator opisów linków -->
+                                        <div id="link-tool-link-generator" class="link-tool-content"
+                                            style="display: none; border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">✨ Generator opisowych linków</h6>
+                                            <div style="display: grid; gap: 15px; margin-bottom: 15px;">
+                                                <div>
+                                                    <label for="link-context"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Kontekst/otaczający
+                                                        tekst:</label>
+                                                    <textarea id="link-context" rows="3"
+                                                        style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;"
+                                                        placeholder="np. Nasze usługi obejmują projektowanie stron internetowych i aplikacji mobilnych."></textarea>
+                                                </div>
+                                                <div>
+                                                    <label for="link-destination"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Cel/przeznaczenie
+                                                        linku:</label>
+                                                    <input type="text" id="link-destination"
+                                                        placeholder="np. strona z listą usług webdesign"
+                                                        style="width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                </div>
+                                                <div>
+                                                    <label for="link-type"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Typ
+                                                        linku:</label>
+                                                    <select id="link-type"
+                                                        style="width: 200px; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                        <option value="page">Strona internetowa</option>
+                                                        <option value="document">Dokument do pobrania</option>
+                                                        <option value="external">Link zewnętrzny</option>
+                                                        <option value="email">Adres email</option>
+                                                        <option value="phone">Numer telefonu</option>
+                                                        <option value="action">Akcja/funkcja</option>
+                                                    </select>
+                                                </div>
+                                                <div id="document-details" style="display: none;">
+                                                    <label for="document-format"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Format
+                                                        dokumentu:</label>
+                                                    <input type="text" id="document-format" placeholder="np. PDF"
+                                                        style="width: 150px; padding: 8px; border: 1px solid #ced4da; border-radius: 3px; margin-right: 10px;">
+                                                    <label for="document-size"
+                                                        style="font-weight: 500; margin-left: 10px;">Rozmiar:</label>
+                                                    <input type="text" id="document-size" placeholder="np. 245 KB"
+                                                        style="width: 100px; padding: 8px; border: 1px solid #ced4da; border-radius: 3px; margin-left: 5px;">
+                                                </div>
+                                            </div>
+                                            <button onclick="generateLinkText()"
+                                                style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer; font-weight: 500;">
+                                                ✨ Generuj opisowy tekst linku
+                                            </button>
+
+                                            <div id="link-generation-results"
+                                                style="margin-top: 15px; padding: 15px; background-color: #f8f9fa; border-radius: 3px; display: none;">
+                                                <h6 style="margin-top: 0; color: #495057;">Wygenerowane teksty linków:
+                                                </h6>
+                                                <div id="generated-links"></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Tester zrozumiałości -->
+                                        <div id="link-tool-clarity-tester" class="link-tool-content"
+                                            style="display: none; border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">🧪 Tester zrozumiałości linków
+                                            </h6>
+                                            <p style="color: #6c757d; font-size: 0.9em; margin-bottom: 15px;">Sprawdź
+                                                czy linki są zrozumiałe bez kontekstu:</p>
+
+                                            <div
+                                                style="background-color: #f8f9fa; padding: 15px; border-radius: 3px; margin-bottom: 15px;">
+                                                <div style="margin-bottom: 15px;">
+                                                    <strong>Scenariusz testowy:</strong>
+                                                    <p style="margin: 10px 0; color: #6c757d; font-size: 0.9em;">Wyobraź
+                                                        sobie że jesteś użytkownikiem czytnika ekranu i nawigujesz
+                                                        między linkami bez czytania otaczającego tekstu.</p>
+                                                </div>
+
+                                                <div id="clarity-test-scenario"
+                                                    style="border: 2px solid #007bff; border-radius: 3px; padding: 15px; background: white; min-height: 150px;">
+                                                    <div style="margin-bottom: 15px;">
+                                                        <strong>Lista linków do oceny:</strong>
+                                                        <div id="test-links-list"
+                                                            style="margin-top: 10px; font-family: monospace; background: #f8f9fa; padding: 10px; border-radius: 3px;">
+                                                            <div>1. Kliknij tutaj</div>
+                                                            <div>2. Więcej informacji</div>
+                                                            <div>3. Zobacz szczegóły produktu XYZ</div>
+                                                            <div>4. Pobierz</div>
+                                                            <div>5. Pobierz Cennik 2024 (PDF, 200 KB)</div>
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-bottom: 15px;">
+                                                        <strong>Pytanie:</strong> Które linki są zrozumiałe bez
+                                                        dodatkowego kontekstu?
+                                                    </div>
+                                                    <div style="display: grid; gap: 5px;">
+                                                        <label style="display: flex; align-items: center; gap: 8px;">
+                                                            <input type="checkbox" name="clear-link" value="1"> Link 1:
+                                                            "Kliknij tutaj"
+                                                        </label>
+                                                        <label style="display: flex; align-items: center; gap: 8px;">
+                                                            <input type="checkbox" name="clear-link" value="2"> Link 2:
+                                                            "Więcej informacji"
+                                                        </label>
+                                                        <label style="display: flex; align-items: center; gap: 8px;">
+                                                            <input type="checkbox" name="clear-link" value="3"> Link 3:
+                                                            "Zobacz szczegóły produktu XYZ"
+                                                        </label>
+                                                        <label style="display: flex; align-items: center; gap: 8px;">
+                                                            <input type="checkbox" name="clear-link" value="4"> Link 4:
+                                                            "Pobierz"
+                                                        </label>
+                                                        <label style="display: flex; align-items: center; gap: 8px;">
+                                                            <input type="checkbox" name="clear-link" value="5"> Link 5:
+                                                            "Pobierz Cennik 2024 (PDF, 200 KB)"
+                                                        </label>
+                                                    </div>
+                                                </div>
+
+                                                <button onclick="checkClarityTest()"
+                                                    style="margin-top: 10px; padding: 8px 16px; background: #dc3545; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                    ✓ Sprawdź odpowiedzi
+                                                </button>
+
+                                                <div id="clarity-test-results"
+                                                    style="margin-top: 15px; padding: 15px; background-color: #e9ecef; border-radius: 3px; display: none;">
+                                                    <h6 style="margin-top: 0;">Wyniki testu zrozumiałości:</h6>
+                                                    <div id="clarity-score"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Symulator czytnika ekranu -->
+                                        <div id="link-tool-screen-reader-sim" class="link-tool-content"
+                                            style="display: none; border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">🔊 Symulator czytnika ekranu</h6>
+                                            <p style="color: #6c757d; font-size: 0.9em; margin-bottom: 15px;">Zasymuluj
+                                                jak czytnik ekranu prezentuje listę linków:</p>
+
+                                            <div
+                                                style="background-color: #f8f9fa; padding: 15px; border-radius: 3px; margin-bottom: 15px;">
+                                                <div style="margin-bottom: 15px;">
+                                                    <label for="sr-links-input"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Wprowadź
+                                                        linki (jeden w linii):</label>
+                                                    <textarea id="sr-links-input" rows="6"
+                                                        style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 3px;"
+                                                        placeholder="Kliknij tutaj&#10;Zobacz więcej&#10;Pobierz raport Q3 2024 (PDF, 1.2 MB)&#10;Skontaktuj się z zespołem sprzedaży&#10;Więcej informacji"></textarea>
+                                                </div>
+                                                <button onclick="simulateScreenReader()"
+                                                    style="padding: 10px 20px; background: #6f42c1; color: white; border: none; border-radius: 3px; cursor: pointer; font-weight: 500;">
+                                                    🔊 Symuluj czytnik ekranu
+                                                </button>
+                                            </div>
+
+                                            <div id="screen-reader-output"
+                                                style="margin-top: 15px; padding: 15px; background-color: #f8f9fa; border-radius: 3px; display: none;">
+                                                <h6 style="margin-top: 0; color: #495057;">Symulacja czytnika ekranu:
+                                                </h6>
+                                                <div id="sr-simulation"
+                                                    style="background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 3px; font-family: monospace; font-size: 0.9em; margin-bottom: 15px;">
+                                                </div>
+                                                <div style="margin-bottom: 15px;">
+                                                    <button onclick="playScreenReaderSimulation()"
+                                                        style="padding: 8px 16px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                                        ▶️ Odtwórz symulację audio
+                                                    </button>
+                                                    <button onclick="stopScreenReaderSimulation()"
+                                                        style="padding: 8px 16px; background: #dc3545; color: white; border: none; border-radius: 3px; cursor: pointer; margin-left: 10px;">
+                                                        ⏹️ Zatrzymaj
+                                                    </button>
+                                                </div>
+                                                <div id="sr-analysis"
+                                                    style="padding: 10px; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 3px;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #d1ecf1; padding: 10px; border-radius: 3px; border-left: 4px solid #17a2b8; margin-top: 15px;">
+                                        <p style="color: #0c5460; margin: 0; font-size: 0.9em;">
+                                            <strong>Aktywne narzędzie:</strong> <span
+                                                id="link-tool-description">Analizator linków - sprawdza jakość i
+                                                dostępność tekstów linków</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #155724; margin-top: 0;">🎯 Korzyści z narzędzi analizy linków:
+                                    </h6>
+                                    <ul style="color: #155724; margin-bottom: 0; font-size: 0.95em;">
+                                        <li><strong>Automatyczna ocena</strong> - szybka identyfikacja problematycznych
+                                            linków</li>
+                                        <li><strong>Generowanie poprawek</strong> - propozycje lepszych tekstów linków
+                                        </li>
+                                        <li><strong>Testowanie dostępności</strong> - symulacja doświadczenia czytników
+                                            ekranu</li>
+                                        <li><strong>Edukacja zespołu</strong> - nauka przez praktyczne przykłady</li>
+                                        <li><strong>Quality assurance</strong> - zapewnienie spójności i jakości</li>
+                                        <li><strong>Compliance checking</strong> - weryfikacja zgodności z WCAG 2.1</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="explanation">Rozwiązanie: Narzędzia interaktywne umożliwiają analizę jakości linków,
+                            generowanie opisowych tekstów, testowanie zrozumiałości i symulację czytników ekranu.
+                            Pomagają w tworzeniu linków które spełniają najwyższe standardy dostępności AAA.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie zgodności z 2.4.9</h3>
+
+                <h4>Procedura testowa</h4>
+                <ol>
+                    <li><strong>Audit tekstów linków</strong>
+                        <ul>
+                            <li>Zbierz wszystkie linki ze strony</li>
+                            <li>Sprawdź czy każdy link jest zrozumiały sam w sobie</li>
+                            <li>Zidentyfikuj linki wymagające kontekstu</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test z czytnikiem ekranu</strong>
+                        <ul>
+                            <li>Użyj funkcji "lista linków" w czytniku ekranu</li>
+                            <li>Sprawdź czy każdy link jest zrozumiały w izolacji</li>
+                            <li>Oceń czy użytkownik może określić cel linku</li>
+                        </ul>
+                    </li>
+                    <li><strong>Analiza kontekstowa</strong>
+                        <ul>
+                            <li>Sprawdź czy usunięcie kontekstu wpływa na zrozumiałość</li>
+                            <li>Zidentyfikuj linki które są dwuznaczne</li>
+                            <li>Oceń wyjątki (linki niejednoznaczne dla wszystkich)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test użyteczności</strong>
+                        <ul>
+                            <li>Przeprowadź testy z rzeczywistymi użytkownikami</li>
+                            <li>Sprawdź efektywność nawigacji</li>
+                            <li>Oceń cognitive load przy korzystaniu z linków</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Narzędzia testowe</h4>
+                <ul>
+                    <li><strong>Screen readers</strong> - NVDA, JAWS, VoiceOver (funkcja lista linków)</li>
+                    <li><strong>Browser extensions</strong> - HeadingsMap, WAVE, axe DevTools</li>
+                    <li><strong>Automated tools</strong> - Pa11y, Lighthouse, axe-core</li>
+                    <li><strong>Manual testing</strong> - przegląd wszystkich linków</li>
+                    <li><strong>User testing</strong> - testy z osobami z niepełnosprawnościami</li>
+                </ul>
+
+                <h4>Checklist zgodności</h4>
+                <div
+                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <h5>✅ Kryteria do spełnienia:</h5>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>☐ Każdy link jest zrozumiały bez kontekstu</li>
+                        <li>☐ Teksty linków opisują cel i przeznaczenie</li>
+                        <li>☐ Linki do dokumentów zawierają format i rozmiar</li>
+                        <li>☐ Linki zewnętrzne są odpowiednio oznaczone</li>
+                        <li>☐ Identyczne linki prowadzą do tego samego miejsca</li>
+                        <li>☐ Różne linki mają różne teksty</li>
+                        <li>☐ Linki graficzne mają opisowe alt text</li>
+                        <li>☐ Brak ogólnych tekstów typu "kliknij tutaj", "więcej"</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="implementation-guidelines">
+                <h3>Wytyczne implementacyjne</h3>
+
+                <h4>Najlepsze praktyki dla tekstów linków:</h4>
+                <ul>
+                    <li><strong>Unique and descriptive</strong> - każdy link ma unikalny, opisowy tekst</li>
+                    <li><strong>Action-oriented</strong> - używaj czasowników opisujących akcję</li>
+                    <li><strong>Specific context</strong> - zawrzyj specyficzne informacje o celu</li>
+                    <li><strong>Consistent patterns</strong> - używaj spójnych wzorców nazewnictwa</li>
+                    <li><strong>Front-loaded keywords</strong> - umieść kluczowe słowa na początku</li>
+                    <li><strong>Appropriate length</strong> - ani za krótke, ani za długie</li>
+                </ul>
+
+                <h4>Wzorce dobrych tekstów linków:</h4>
+                <div
+                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #004085; margin-top: 0;">1. Linki do stron</h5>
+                    <pre style="color: #004085;"><code>❌ Kliknij tutaj
+❌ Więcej informacji  
+❌ Zobacz
+
+✅ Zobacz nasze portfolio projektów webdesign
+✅ Przeczytaj o naszych usługach IT
+✅ Skontaktuj się z zespołem sprzedaży</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #155724; margin-top: 0;">2. Linki do dokumentów</h5>
+                    <pre style="color: #155724;"><code>❌ Pobierz
+❌ Dokument
+❌ Plik PDF
+
+✅ Pobierz Cennik usług 2024 (PDF, 245 KB)
+✅ Otwórz Regulamin świadczenia usług (PDF, 156 KB)
+✅ Zobacz Instrukcję instalacji (DOC, 1.2 MB)</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #856404; margin-top: 0;">3. Linki produktów/usług</h5>
+                    <pre style="color: #856404;"><code>❌ Więcej
+❌ Szczegóły
+❌ Kup teraz
+
+✅ Zobacz szczegóły laptopa HP EliteBook 840
+✅ Kup iPhone 15 Pro Max (5,499 PLN)
+✅ Zamów projektowanie logo firmowego</code></pre>
+                </div>
+
+                <h4>Techniki poprawy tekstów linków:</h4>
+                <div
+                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #721c24; margin-top: 0;">Strategie optymalizacji</h5>
+                    <ul style="color: #721c24;">
+                        <li><strong>Include object/subject</strong> - "Zobacz portfolio" → "Zobacz portfolio projektów
+                            webdesign"</li>
+                        <li><strong>Add action details</strong> - "Pobierz" → "Pobierz Cennik 2024 (PDF, 200 KB)"</li>
+                        <li><strong>Specify destination</strong> - "Więcej" → "Więcej informacji o usługach IT"</li>
+                        <li><strong>Include format/size</strong> - dla dokumentów zawsze dodawaj format i rozmiar</li>
+                        <li><strong>Front-load keywords</strong> - "Laptop HP EliteBook - zobacz szczegóły" → "Zobacz
+                            szczegóły laptopa HP EliteBook"</li>
+                        <li><strong>Use consistent patterns</strong> - "Zobacz [produkt]", "Pobierz [dokument]",
+                            "Skontaktuj się z [zespołem]"</li>
+                    </ul>
+                </div>
+
+                <h4>Specjalne przypadki:</h4>
+                <div
+                    style="background-color: #e2e3e5; border: 1px solid #d3d3d4; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #383d41; margin-top: 0;">Wyjątki i edge cases</h5>
+                    <ul style="color: #383d41;">
+                        <li><strong>Repeated links</strong> - linki powtarzające się mogą używać aria-describedby</li>
+                        <li><strong>Icon links</strong> - używaj aria-label lub ukrytego tekstu</li>
+                        <li><strong>Complex interfaces</strong> - rozważ aria-labelledby dla połączenia z headingiem
+                        </li>
+                        <li><strong>External links</strong> - oznacz jako "(otwiera w nowym oknie)" jeśli potrzebne</li>
+                        <li><strong>File downloads</strong> - zawsze podaj format, rozmiar, język</li>
+                        <li><strong>Email/phone</strong> - podaj pełny adres/numer w tekście linku</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/link-purpose-link-only.html"
+                            target="_blank" rel="noopener">Zrozumieć WCAG 2.1: Cel linku (tylko link)</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/page-structure/links/" target="_blank"
+                            rel="noopener">W3C: Links Tutorial</a></li>
+                    <li><a href="https://webaim.org/techniques/hypertext/" target="_blank" rel="noopener">WebAIM: Links
+                            and Hypertext</a></li>
+                    <li><a href="https://www.nngroup.com/articles/writing-links/" target="_blank" rel="noopener">Nielsen
+                            Norman Group: Writing Hyperlinks</a></li>
+                    <li><a href="https://inclusive-components.design/a-11y-links/" target="_blank"
+                            rel="noopener">Inclusive Components: Accessible Links</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.4.8.html">Poprzedni: 2.4.8 Lokalizacja</a></li>
+                    <li><a href="2.4.10.html">Następny: 2.4.10 Nagłówki sekcji</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+
+    <script>
+        // Demo funkcjonalność dla przykładów linków
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // === DEMONSTRACJA ZŁYCH LINKÓW ===
+            window.demonstrateBadLink = function (type) {
+                const messages = {
+                    'service-generic': 'Link "Kliknij tutaj" - dokąd prowadzi? Do usług? Do kontaktu? Niejasne!',
+                    'article-generic': 'Link "Więcej" - więcej czego? Artykułu? Informacji? Niespecyficzne!',
+                    'offer-generic': 'Link "Zobacz" - zobacz co? Ofertę? Cennik? Brak kontekstu!',
+                    'document-generic': 'Link "Pobierz" - pobierz co? Jaki format? Jaki rozmiar?',
+                    'price-generic': 'Link "Tutaj" - gdzie tutaj? Co tam znajdę?',
+                    'manual-generic': 'Link "Link" - to nie jest opisowy tekst linku!',
+                    'action-generic1': 'Link "Więcej" - który to produkt? Co zawiera "więcej"?',
+                    'action-generic2': 'Link "Kup" - kup co? W jakiej cenie?',
+                    'action-generic3': 'Link "Więcej" - identyczny z poprzednim, ale inna usługa!',
+                    'action-generic4': 'Link "Zamów" - zamów co? Jaką usługę?'
+                };
+
+                showNotification(messages[type] || 'Problematyczny link bez kontekstu!', 'error');
+            };
+
+            // === DEMONSTRACJA DOBRYCH LINKÓW ===
+            window.demonstrateGoodLink = function (type) {
+                const messages = {
+                    'service-specific': 'Link jasno określa: "usługi webdesign" - wiadomo dokąd prowadzi!',
+                    'article-specific': 'Link zawiera tytuł artykułu - użytkownik wie czego się spodziewać!',
+                    'offer-specific': 'Link specyfikuje rodzaj oferty: "konsultacje IT" - bardzo jasne!',
+                    'document-specific': 'Link zawiera nazwę, format i rozmiar - pełna informacja!',
+                    'price-specific': 'Link opisuje dokument, rok, format i rozmiar - doskonałe!',
+                    'manual-specific': 'Link specyfikuje co to za instrukcja i format dokumentu!',
+                    'product-details': 'Link zawiera nazwę konkretnego produktu - bardzo specyficzny!',
+                    'product-buy': 'Link zawiera produkt i cenę - użytkownik wie co kupuje!',
+                    'service-details': 'Link określa konkretny rodzaj portfolio - jasny cel!',
+                    'service-order': 'Link specyfikuje usługę i cenę - pełne informacje!'
+                };
+
+                showNotification(messages[type] || 'Doskonały przykład opisowego linku!', 'success');
+            };
+
+            // === TEST ZROZUMIAŁOŚCI ===
+            let clarityTestActive = false;
+
+            window.startClarityTest = function () {
+                const feedback = document.getElementById('clarity-test-feedback');
+
+                if (!clarityTestActive) {
+                    clarityTestActive = true;
+                    feedback.textContent = 'Test aktywny: Przeczytaj tylko teksty linków powyżej - czy wiesz dokąd prowadzą?';
+                    feedback.style.fontWeight = 'bold';
+                    feedback.style.color = '#dc3545';
+
+                    const btn = event.target;
+                    btn.textContent = '⏹️ Zatrzymaj test';
+                    btn.style.background = '#dc3545';
+
+                    setTimeout(() => {
+                        feedback.textContent = 'Trudno określić cel linków bez kontekstu, prawda? To dlatego potrzebujemy opisowych tekstów!';
+                    }, 5000);
+                } else {
+                    clarityTestActive = false;
+                    feedback.textContent = 'Kliknij przycisk aby przetestować jak trudno jest zrozumieć cel linków bez kontekstu';
+                    feedback.style.fontWeight = 'normal';
+                    feedback.style.color = '#856404';
+
+                    const btn = event.target;
+                    btn.textContent = '🧪 Test zrozumiałości';
+                    btn.style.background = '#ffc107';
+                }
+            };
+
+            // === SYMULACJA CZYTNIKA EKRANU ===
+            let speechSynthesis = window.speechSynthesis;
+            let currentUtterance = null;
+
+            window.simulateScreenReaderLinks = function (type) {
+                const links = type === 'bad' ?
+                    ['Kliknij tutaj', 'Więcej', 'Zobacz', 'Pobierz', 'Tutaj', 'Link', 'Więcej', 'Kup', 'Więcej', 'Zamów'] :
+                    ['Poznaj nasze usługi webdesign', 'Przeczytaj artykuł Trendy UX design 2024', 'Zobacz ofertę specjalną na konsultacje IT', 'Pobierz Regulamin świadczenia usług PDF 245 KB', 'Pobierz Cennik usług 2024 DOC 156 KB', 'Otwórz Instrukcję obsługi systemu CMS PDF 1.2 MB', 'Zobacz szczegóły laptopa HP EliteBook 840', 'Kup laptop HP EliteBook 840 3499 PLN', 'Zobacz portfolio projektowania logo', 'Zamów projektowanie logo od 500 PLN'];
+
+                if (speechSynthesis) {
+                    speechSynthesis.cancel();
+
+                    let text = 'Lista linków na stronie: ';
+                    links.forEach((link, index) => {
+                        text += `Link ${index + 1}: ${link}. `;
+                    });
+
+                    const utterance = new SpeechSynthesisUtterance(text);
+                    utterance.rate = 0.8;
+                    utterance.pitch = 1;
+                    utterance.lang = 'pl-PL';
+
+                    speechSynthesis.speak(utterance);
+
+                    const message = type === 'bad' ?
+                        'Słuchasz symulacji czytnika ekranu - czy potrafisz określić cel każdego linku?' :
+                        'Słuchasz poprawnej wersji - każdy link jest jasny i zrozumiały!';
+
+                    showNotification(message, type === 'bad' ? 'warning' : 'success');
+                } else {
+                    showNotification('Twoja przeglądarka nie obsługuje syntez mowy', 'error');
+                }
+            };
+
+            // === DEMONSTRACJA DOBRYCH LINKÓW ===
+            window.demonstrateGoodLinks = function () {
+                const feedback = document.getElementById('clarity-demo-feedback');
+                const highlights = [
+                    'Opisowe linki do sekcji - jasny cel',
+                    'Linki do dokumentów z formatem i rozmiarem',
+                    'Specyficzne linki produktów z cenami',
+                    'Symulacja czytnika ekranu pokazuje różnicę'
+                ];
+
+                let index = 0;
+                feedback.textContent = 'Demonstracja w toku - obserwuj zalety opisowych linków...';
+                feedback.style.fontWeight = 'bold';
+                feedback.style.color = '#007bff';
+
+                function highlightNext() {
+                    if (index < highlights.length) {
+                        feedback.textContent = `Etap ${index + 1}: ${highlights[index]}`;
+
+                        // Highlight odpowiedniej sekcji
+                        const sections = document.querySelectorAll('.good .border-bottom');
+                        if (sections[index]) {
+                            sections[index].style.background = '#e7f3ff';
+                            setTimeout(() => {
+                                sections[index].style.background = 'transparent';
+                            }, 1500);
+                        }
+
+                        setTimeout(() => {
+                            index++;
+                            highlightNext();
+                        }, 2000);
+                    } else {
+                        feedback.textContent = 'Demonstracja zakończona. Opisowe linki znacznie poprawiają dostępność!';
+                        feedback.style.fontWeight = 'normal';
+                        feedback.style.color = '#004085';
+                    }
+                }
+
+                highlightNext();
+            };
+
+            // === NARZĘDZIA ANALIZY LINKÓW ===
+            window.showLinkTool = function (toolType) {
+                // Ukryj wszystkie narzędzia
+                document.querySelectorAll('.link-tool-content').forEach(tool => {
+                    tool.style.display = 'none';
+                });
+
+                // Pokaż wybrane narzędzie
+                const selectedTool = document.getElementById(`link-tool-${toolType}`);
+                if (selectedTool) {
+                    selectedTool.style.display = 'block';
+                }
+
+                // Zaktualizuj przyciski
+                document.querySelectorAll('.link-tool-btn').forEach(btn => {
+                    btn.style.background = 'transparent';
+                    btn.style.color = '#856404';
+                });
+
+                const activeBtn = document.querySelector(`.link-tool-btn[data-tool="${toolType}"]`);
+                if (activeBtn) {
+                    activeBtn.style.background = '#ffc107';
+                    activeBtn.style.color = '#212529';
+                }
+
+                // Zaktualizuj opis
+                const descriptions = {
+                    'link-analyzer': 'Analizator linków - sprawdza jakość i dostępność tekstów linków',
+                    'link-generator': 'Generator opisów - tworzy opisowe teksty linków na podstawie kontekstu',
+                    'clarity-tester': 'Tester zrozumiałości - sprawdza czy linki są jasne bez kontekstu',
+                    'screen-reader-sim': 'Symulator czytnika - pokazuje jak czytniki ekranu prezentują linki'
+                };
+
+                const description = descriptions[toolType] || 'Narzędzie do analizy linków';
+                document.getElementById('link-tool-description').textContent = description;
+
+                // Specjalne akcje dla niektórych narzędzi
+                if (toolType === 'link-generator') {
+                    // Pokaż/ukryj pola dla dokumentów
+                    const linkTypeSelect = document.getElementById('link-type');
+                    const documentDetails = document.getElementById('document-details');
+
+                    function toggleDocumentFields() {
+                        if (linkTypeSelect.value === 'document') {
+                            documentDetails.style.display = 'block';
+                        } else {
+                            documentDetails.style.display = 'none';
+                        }
+                    }
+
+                    linkTypeSelect.addEventListener('change', toggleDocumentFields);
+                    toggleDocumentFields();
+                }
+            };
+
+            // === ANALIZATOR LINKÓW ===
+            window.analyzeLinks = function () {
+                const linksText = document.getElementById('links-to-analyze').value;
+                const output = document.getElementById('analysis-output');
+                const results = document.getElementById('link-analysis-results');
+
+                if (!linksText.trim()) {
+                    showNotification('Wprowadź linki do analizy', 'warning');
+                    return;
+                }
+
+                const links = linksText.split('\n').map(link => link.trim()).filter(link => link);
+                let analysis = '';
+                let score = 0;
+                let maxScore = links.length;
+
+                analysis += '<div style="margin-bottom: 15px;"><strong>Analiza jakości linków:</strong></div>';
+
+                links.forEach((link, index) => {
+                    const linkScore = analyzeLinkQuality(link);
+                    score += linkScore.score;
+
+                    const color = linkScore.score >= 0.8 ? '#28a745' : linkScore.score >= 0.5 ? '#ffc107' : '#dc3545';
+                    const icon = linkScore.score >= 0.8 ? '✅' : linkScore.score >= 0.5 ? '⚠️' : '❌';
+
+                    analysis += `
+                        <div style="margin: 10px 0; padding: 10px; border-left: 4px solid ${color}; background: rgba(${color === '#28a745' ? '40, 167, 69' : color === '#ffc107' ? '255, 193, 7' : '220, 53, 69'}, 0.1);">
+                            <div style="color: ${color}; font-weight: 500;">${icon} Link ${index + 1}: "${link}"</div>
+                            <div style="font-size: 0.9em; color: #495057; margin-top: 5px;">
+                                ${linkScore.feedback.join(', ')}
+                            </div>
+                        </div>
+                    `;
+                });
+
+                const overallScore = Math.round((score / maxScore) * 100);
+                const overallColor = overallScore >= 80 ? '#28a745' : overallScore >= 50 ? '#ffc107' : '#dc3545';
+
+                analysis += `
+                    <div style="margin-top: 20px; padding: 15px; background: ${overallColor}; color: white; border-radius: 3px;">
+                        <strong>Ogólna ocena: ${overallScore}%</strong>
+                        <div style="margin-top: 5px; font-size: 0.9em;">
+                            ${overallScore >= 80 ? 'Doskonała jakość linków!' : overallScore >= 50 ? 'Umiarkowana jakość, można poprawić' : 'Linki wymagają znacznych poprawek'}
+                        </div>
+                    </div>
+                `;
+
+                output.innerHTML = analysis;
+                results.style.display = 'block';
+            };
+
+            function analyzeLinkQuality(linkText) {
+                let score = 0;
+                let feedback = [];
+
+                // Sprawdź długość
+                if (linkText.length < 5) {
+                    feedback.push('za krótki');
+                } else if (linkText.length > 100) {
+                    feedback.push('za długi');
+                    score += 0.3;
+                } else {
+                    score += 0.4;
+                    feedback.push('dobra długość');
+                }
+
+                // Sprawdź problematyczne wzorce
+                const badPatterns = ['kliknij', 'tutaj', 'więcej', 'zobacz', 'link', 'strona', 'pobierz', 'czytaj'];
+                const hasBadPattern = badPatterns.some(pattern => linkText.toLowerCase().includes(pattern) && linkText.toLowerCase().length < 15);
+
+                if (hasBadPattern) {
+                    feedback.push('ogólny tekst');
+                } else {
+                    score += 0.4;
+                    feedback.push('specyficzny');
+                }
+
+                // Sprawdź czy zawiera czasownik akcji na początku
+                const actionWords = ['zobacz', 'przeczytaj', 'pobierz', 'otwórz', 'skontaktuj', 'zamów', 'kup', 'poznaj'];
+                const startsWithAction = actionWords.some(action => linkText.toLowerCase().startsWith(action));
+
+                if (startsWithAction) {
+                    score += 0.2;
+                    feedback.push('czasownik akcji');
+                }
+
+                // Bonus za informacje o dokumencie
+                if (linkText.includes('PDF') || linkText.includes('DOC') || linkText.includes('KB') || linkText.includes('MB')) {
+                    score += 0.2;
+                    feedback.push('info o dokumencie');
+                }
+
+                return { score: Math.min(score, 1), feedback };
+            }
+
+            // === GENERATOR OPISÓW LINKÓW ===
+            window.generateLinkText = function () {
+                const context = document.getElementById('link-context').value;
+                const destination = document.getElementById('link-destination').value;
+                const type = document.getElementById('link-type').value;
+                const docFormat = document.getElementById('document-format').value;
+                const docSize = document.getElementById('document-size').value;
+
+                const output = document.getElementById('generated-links');
+                const results = document.getElementById('link-generation-results');
+
+                if (!destination.trim()) {
+                    showNotification('Wprowadź cel/przeznaczenie linku', 'warning');
+                    return;
+                }
+
+                let suggestions = generateLinkSuggestions(context, destination, type, docFormat, docSize);
+
+                let html = '';
+                suggestions.forEach((suggestion, index) => {
+                    html += `
+                        <div style="margin: 10px 0; padding: 15px; background: white; border: 1px solid #dee2e6; border-radius: 3px;">
+                            <div style="font-weight: 500; color: #28a745; margin-bottom: 8px;">
+                                Opcja ${index + 1}: "${suggestion.text}"
+                            </div>
+                            <div style="font-size: 0.9em; color: #6c757d; margin-bottom: 8px;">
+                                ${suggestion.explanation}
+                            </div>
+                            <button onclick="copyLinkText('${suggestion.text}')" style="padding: 5px 10px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer; font-size: 0.8em;">
+                                📋 Skopiuj
+                            </button>
+                        </div>
+                    `;
+                });
+
+                output.innerHTML = html;
+                results.style.display = 'block';
+            };
+
+            function generateLinkSuggestions(context, destination, type, docFormat, docSize) {
+                let suggestions = [];
+
+                switch (type) {
+                    case 'page':
+                        suggestions = [
+                            {
+                                text: `Zobacz ${destination}`,
+                                explanation: 'Czasownik akcji + specyficzny cel'
+                            },
+                            {
+                                text: `Przejdź do ${destination}`,
+                                explanation: 'Jasna akcja nawigacji'
+                            },
+                            {
+                                text: `Poznaj ${destination}`,
+                                explanation: 'Zachęcający czasownik + cel'
+                            }
+                        ];
+                        break;
+
+                    case 'document':
+                        const formatInfo = docFormat && docSize ? ` (${docFormat}, ${docSize})` : docFormat ? ` (${docFormat})` : '';
+                        suggestions = [
+                            {
+                                text: `Pobierz ${destination}${formatInfo}`,
+                                explanation: 'Jasna akcja + nazwa dokumentu + format/rozmiar'
+                            },
+                            {
+                                text: `Otwórz ${destination}${formatInfo}`,
+                                explanation: 'Alternatywny czasownik dla dokumentów'
+                            },
+                            {
+                                text: `Dostęp do ${destination}${formatInfo}`,
+                                explanation: 'Neutralny czasownik dostępu'
+                            }
+                        ];
+                        break;
+
+                    case 'external':
+                        suggestions = [
+                            {
+                                text: `Odwiedź ${destination} (otwiera w nowej karcie)`,
+                                explanation: 'Informacja o zewnętrznym linku'
+                            },
+                            {
+                                text: `Przejdź do ${destination} (strona zewnętrzna)`,
+                                explanation: 'Ostrzeżenie o opuszczeniu witryny'
+                            }
+                        ];
+                        break;
+
+                    case 'email':
+                        suggestions = [
+                            {
+                                text: `Wyślij email na adres ${destination}`,
+                                explanation: 'Jasna akcja + pełny adres'
+                            },
+                            {
+                                text: `Skontaktuj się przez email: ${destination}`,
+                                explanation: 'Kontekst kontaktu + adres'
+                            }
+                        ];
+                        break;
+
+                    case 'phone':
+                        suggestions = [
+                            {
+                                text: `Zadzwoń na numer ${destination}`,
+                                explanation: 'Jasna akcja + pełny numer'
+                            },
+                            {
+                                text: `Połącz się telefonicznie: ${destination}`,
+                                explanation: 'Alternatywne sformułowanie'
+                            }
+                        ];
+                        break;
+
+                    case 'action':
+                        suggestions = [
+                            {
+                                text: destination.charAt(0).toUpperCase() + destination.slice(1),
+                                explanation: 'Bezpośrednia akcja jako tekst linku'
+                            },
+                            {
+                                text: `Wykonaj ${destination}`,
+                                explanation: 'Czasownik + akcja'
+                            }
+                        ];
+                        break;
+                }
+
+                return suggestions;
+            }
+
+            window.copyLinkText = function (text) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showNotification('Tekst linku skopiowany!', 'success');
+                });
+            };
+
+            // === TESTER ZROZUMIAŁOŚCI ===
+            window.checkClarityTest = function () {
+                const checkboxes = document.querySelectorAll('input[name="clear-link"]:checked');
+                const results = document.getElementById('clarity-test-results');
+                const scoreElement = document.getElementById('clarity-score');
+
+                const correctAnswers = ['3', '5']; // Tylko linki 3 i 5 są jasne
+                const userAnswers = Array.from(checkboxes).map(cb => cb.value);
+
+                let correct = 0;
+                let total = correctAnswers.length;
+
+                correctAnswers.forEach(answer => {
+                    if (userAnswers.includes(answer)) correct++;
+                });
+
+                // Sprawdź czy zaznaczono błędne odpowiedzi
+                const wrongAnswers = userAnswers.filter(answer => !correctAnswers.includes(answer));
+
+                const percentage = Math.round((correct / total) * 100);
+                let feedback = '';
+
+                if (percentage === 100 && wrongAnswers.length === 0) {
+                    feedback = '<div style="color: #28a745;">✅ Doskonale! Tylko linki 3 i 5 są rzeczywiście zrozumiałe bez kontekstu.</div>';
+                } else if (percentage >= 50) {
+                    feedback = '<div style="color: #ffc107;">⚠️ Częściowo poprawnie. Sprawdź które linki rzeczywiście są samoopisowe.</div>';
+                } else {
+                    feedback = '<div style="color: #dc3545;">❌ Spróbuj ponownie. Zastanów się które linki są zrozumiałe bez dodatkowego kontekstu.</div>';
+                }
+
+                feedback += `
+                    <div style="margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 3px;">
+                        <strong>Prawidłowe odpowiedzi:</strong><br>
+                        • Link 3: "Zobacz szczegóły produktu XYZ" - jasny cel i przedmiot<br>
+                        • Link 5: "Pobierz Cennik 2024 (PDF, 200 KB)" - pełna informacja o dokumencie<br><br>
+                        <strong>Problematyczne linki:</strong><br>
+                        • "Kliknij tutaj", "Więcej informacji", "Pobierz" - wymagają kontekstu
+                    </div>
+                `;
+
+                scoreElement.innerHTML = `
+                    <div style="margin-bottom: 10px;"><strong>Wynik: ${correct}/${total} (${percentage}%)</strong></div>
+                    ${feedback}
+                `;
+
+                results.style.display = 'block';
+            };
+
+            // === SYMULATOR CZYTNIKA EKRANU ===
+            window.simulateScreenReader = function () {
+                const linksText = document.getElementById('sr-links-input').value;
+                const output = document.getElementById('screen-reader-output');
+                const simulation = document.getElementById('sr-simulation');
+                const analysis = document.getElementById('sr-analysis');
+
+                if (!linksText.trim()) {
+                    showNotification('Wprowadź linki do symulacji', 'warning');
+                    return;
+                }
+
+                const links = linksText.split('\n').map(link => link.trim()).filter(link => link);
+
+                let simulationHTML = '<div style="color: #3498db; margin-bottom: 5px;">🔊 Czytnik ekranu - Lista linków:</div>';
+                let goodLinks = 0;
+                let totalLinks = links.length;
+
+                links.forEach((link, index) => {
+                    simulationHTML += `<div>Link ${index + 1}: "${link}"</div>`;
+
+                    // Prosta ocena jakości
+                    if (link.length > 10 && !['kliknij', 'więcej', 'tutaj', 'zobacz', 'link'].some(bad => link.toLowerCase().includes(bad) && link.length < 20)) {
+                        goodLinks++;
+                    }
+                });
+
+                simulation.innerHTML = simulationHTML;
+
+                const quality = goodLinks / totalLinks;
+                let analysisText = '';
+                let analysisColor = '';
+
+                if (quality >= 0.8) {
+                    analysisText = `✅ Doskonała jakość! ${goodLinks}/${totalLinks} linków jest zrozumiałych bez kontekstu.`;
+                    analysisColor = '#28a745';
+                } else if (quality >= 0.5) {
+                    analysisText = `⚠️ Umiarkowana jakość. ${goodLinks}/${totalLinks} linków jest zrozumiałych. Popraw pozostałe.`;
+                    analysisColor = '#ffc107';
+                } else {
+                    analysisText = `❌ Niska jakość. Tylko ${goodLinks}/${totalLinks} linków jest zrozumiałych. Wymagane znaczne poprawki.`;
+                    analysisColor = '#dc3545';
+                }
+
+                analysis.innerHTML = `<div style="color: ${analysisColor};">${analysisText}</div>`;
+                output.style.display = 'block';
+            };
+
+            window.playScreenReaderSimulation = function () {
+                const links = document.getElementById('sr-links-input').value.split('\n').map(link => link.trim()).filter(link => link);
+
+                if (speechSynthesis && links.length > 0) {
+                    speechSynthesis.cancel();
+
+                    let text = 'Lista linków na stronie: ';
+                    links.forEach((link, index) => {
+                        text += `Link ${index + 1}: ${link}. `;
+                    });
+
+                    currentUtterance = new SpeechSynthesisUtterance(text);
+                    currentUtterance.rate = 0.8;
+                    currentUtterance.pitch = 1;
+                    currentUtterance.lang = 'pl-PL';
+
+                    speechSynthesis.speak(currentUtterance);
+                    showNotification('Odtwarzanie symulacji czytnika ekranu...', 'info');
+                } else {
+                    showNotification('Brak linków do odtworzenia lub brak wsparcia dla syntez mowy', 'warning');
+                }
+            };
+
+            window.stopScreenReaderSimulation = function () {
+                if (speechSynthesis) {
+                    speechSynthesis.cancel();
+                    showNotification('Symulacja zatrzymana', 'info');
+                }
+            };
+
+            function showNotification(message, type) {
+                const notification = document.createElement('div');
+                const colors = {
+                    'success': '#d4edda',
+                    'error': '#f8d7da',
+                    'info': '#e7f3ff',
+                    'warning': '#fff3cd'
+                };
+
+                const borderColors = {
+                    'success': '#28a745',
+                    'error': '#dc3545',
+                    'info': '#007bff',
+                    'warning': '#ffc107'
+                };
+
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: ${colors[type] || colors.info};
+                    color: #495057;
+                    padding: 12px 20px;
+                    border-radius: 4px;
+                    border-left: 4px solid ${borderColors[type] || borderColors.info};
+                    z-index: 1000;
+                    max-width: 400px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    font-size: 14px;
+                    line-height: 1.4;
+                `;
+                notification.textContent = message;
+
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    notification.style.transition = 'opacity 0.3s';
+                    setTimeout(() => {
+                        if (document.body.contains(notification)) {
+                            document.body.removeChild(notification);
+                        }
+                    }, 300);
+                }, 4000);
+            }
+        });
+    </script>
+</body>
+
+</html>

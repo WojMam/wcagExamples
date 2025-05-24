@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.4.2 Tytuł strony (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.4.2 Tytuł strony</h2>
+                <p class="criterion-level">Poziom A</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#page-titled" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Strony internetowe mają tytuły opisujące temat lub cel strony.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest pomoc użytkownikom w znajdowaniu treści oraz orientowaniu się w
+                    niej poprzez zapewnienie, że każda strona ma opisowy tytuł. Tytuły identyfikują bieżące położenie
+                    bez konieczności czytania lub interpretowania zawartości strony.</p>
+
+                <p>Tytuły stron są szczególnie ważne dla:</p>
+                <ul>
+                    <li><strong>Użytkowników czytników ekranu</strong> - tytuł jest pierwszą informacją odczytywaną na
+                        stronie</li>
+                    <li><strong>Osób z ograniczeniami poznawczymi</strong> - pomagają w orientacji i zrozumieniu
+                        kontekstu</li>
+                    <li><strong>Wszystkich użytkowników</strong> - są widoczne w kartach przeglądarki, zakładkach i
+                        historii</li>
+                    <li><strong>Wyszukiwarek</strong> - tytuły są kluczowe dla SEO i prezentowania wyników</li>
+                </ul>
+
+                <p>Gdy użytkownicy nawigują między różnymi stronami, tytuł pomaga im zrozumieć gdzie się znajdują i co
+                    mogą znaleźć na danej stronie.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - nieopisowe i problematyczne tytuły</h4>
+                        <p>Przykłady tytułów, które nie spełniają kryterium 2.4.2:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #721c24; margin-top: 0;">❌ Problematyczne tytuły:</h5>
+                                    <div style="color: #721c24;">
+                                        <div
+                                            style="margin: 10px 0; padding: 10px; background-color: rgba(255,255,255,0.7); border-radius: 3px;">
+                                            <strong>1. Brak tytułu:</strong><br>
+                                            <code>&lt;title&gt;&lt;/title&gt;</code> lub brak elementu title
+                                        </div>
+
+                                        <div
+                                            style="margin: 10px 0; padding: 10px; background-color: rgba(255,255,255,0.7); border-radius: 3px;">
+                                            <strong>2. Ogólny tytuł:</strong><br>
+                                            <code>&lt;title&gt;Strona główna&lt;/title&gt;</code>
+                                        </div>
+
+                                        <div
+                                            style="margin: 10px 0; padding: 10px; background-color: rgba(255,255,255,0.7); border-radius: 3px;">
+                                            <strong>3. Tylko nazwa firmy:</strong><br>
+                                            <code>&lt;title&gt;Acme Corp&lt;/title&gt;</code>
+                                        </div>
+
+                                        <div
+                                            style="margin: 10px 0; padding: 10px; background-color: rgba(255,255,255,0.7); border-radius: 3px;">
+                                            <strong>4. Nieaktualne tytuły:</strong><br>
+                                            <code>&lt;title&gt;Strona w budowie&lt;/title&gt;</code>
+                                        </div>
+
+                                        <div
+                                            style="margin: 10px 0; padding: 10px; background-color: rgba(255,255,255,0.7); border-radius: 3px;">
+                                            <strong>5. Techniczne nazwy:</strong><br>
+                                            <code>&lt;title&gt;page_01.html&lt;/title&gt;</code>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="padding: 15px; background-color: #fff3cd; border: 1px solid #ffeaa7; border-radius: 5px;">
+                                    <h6 style="color: #856404; margin-top: 0;">Dlaczego to problematyczne?</h6>
+                                    <ul style="color: #856404; margin-bottom: 0;">
+                                        <li>Użytkownik nie wie na jakiej stronie się znajduje</li>
+                                        <li>Trudno rozróżnić karty w przeglądarce</li>
+                                        <li>Problemy z zakładkami i historią</li>
+                                        <li>Słaba dostępność dla czytników ekranu</li>
+                                        <li>Negatywny wpływ na SEO</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- ZŁE PRZYKŁADY - nieopisowe tytuły --&gt;
+
+&lt;!-- 1. Brak tytułu --&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;!-- Brak elementu title --&gt;
+&lt;/head&gt;
+
+&lt;!-- 2. Pusty tytuł --&gt;
+&lt;head&gt;
+    &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!-- 3. Nieopisowy tytuł --&gt;
+&lt;head&gt;
+    &lt;title&gt;Strona&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!-- 4. Tylko nazwa firmy --&gt;
+&lt;head&gt;
+    &lt;title&gt;Acme Corporation&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!-- 5. Techniczne nazwy --&gt;
+&lt;head&gt;
+    &lt;title&gt;index.html&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!-- 6. Nieaktualne informacje --&gt;
+&lt;head&gt;
+    &lt;title&gt;Strona w budowie | Proszę wrócić później&lt;/title&gt;
+&lt;/head&gt;</code></pre>
+
+                        <p class="explanation">Problem: Te tytuły nie dostarczają użytkownikowi wystarczających
+                            informacji o treści lub celu strony. Użytkownicy, szczególnie korzystający z czytników
+                            ekranu, nie mogą skutecznie identyfikować i nawigować między stronami.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - opisowe tytuły stron</h4>
+                        <p>Przykłady dobrze napisanych tytułów dla różnych typów stron:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #155724; margin-top: 0;">✅ Dobre przykłady tytułów:</h5>
+
+                                    <div style="color: #155724;">
+                                        <div
+                                            style="margin: 15px 0; padding: 12px; background-color: rgba(255,255,255,0.8); border-radius: 5px; border-left: 4px solid #28a745;">
+                                            <strong>Strona główna:</strong><br>
+                                            <code
+                                                style="color: #155724;">"Najlepsze produkty ekologiczne - EcoShop | Naturalny sklep online"</code>
+                                            <p style="margin: 5px 0 0 0; font-size: 0.9em;">Zawiera: cel strony + nazwę
+                                                firmy + opis działalności</p>
+                                        </div>
+
+                                        <div
+                                            style="margin: 15px 0; padding: 12px; background-color: rgba(255,255,255,0.8); border-radius: 5px; border-left: 4px solid #007bff;">
+                                            <strong>Strona produktu:</strong><br>
+                                            <code
+                                                style="color: #155724;">"Laptop Dell XPS 13 - specyfikacja, cena, opinie | TechStore"</code>
+                                            <p style="margin: 5px 0 0 0; font-size: 0.9em;">Zawiera: nazwę produktu +
+                                                kluczowe informacje + sklep</p>
+                                        </div>
+
+                                        <div
+                                            style="margin: 15px 0; padding: 12px; background-color: rgba(255,255,255,0.8); border-radius: 5px; border-left: 4px solid #6f42c1;">
+                                            <strong>Artykuł/blog:</strong><br>
+                                            <code
+                                                style="color: #155724;">"Jak dbać o rośliny domowe zimą - 10 praktycznych porad | Garden Blog"</code>
+                                            <p style="margin: 5px 0 0 0; font-size: 0.9em;">Zawiera: temat artykułu +
+                                                wartość + nazwę bloga</p>
+                                        </div>
+
+                                        <div
+                                            style="margin: 15px 0; padding: 12px; background-color: rgba(255,255,255,0.8); border-radius: 5px; border-left: 4px solid #dc3545;">
+                                            <strong>Formularz kontaktowy:</strong><br>
+                                            <code
+                                                style="color: #155724;">"Skontaktuj się z nami - formularz kontaktowy | Firma ABC"</code>
+                                            <p style="margin: 5px 0 0 0; font-size: 0.9em;">Zawiera: cel strony + typ
+                                                treści + firmę</p>
+                                        </div>
+
+                                        <div
+                                            style="margin: 15px 0; padding: 12px; background-color: rgba(255,255,255,0.8); border-radius: 5px; border-left: 4px solid #fd7e14;">
+                                            <strong>Strona błędu:</strong><br>
+                                            <code
+                                                style="color: #155724;">"Błąd 404 - Strona nie została znaleziona | Pomocne linki | NaszaSerwis"</code>
+                                            <p style="margin: 5px 0 0 0; font-size: 0.9em;">Zawiera: typ błędu +
+                                                informację pomocniczą + serwis</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #004085; margin-top: 0;">Zalety dobrych tytułów:</h6>
+                                    <ul style="color: #004085; margin-bottom: 0;">
+                                        <li><strong>Natychmiastowa identyfikacja</strong> - użytkownik od razu wie gdzie
+                                            jest</li>
+                                        <li><strong>Łatwa nawigacja</strong> - rozróżnianie kart i zakładek</li>
+                                        <li><strong>Lepsza dostępność</strong> - czytniki ekranu ogłaszają tytuł</li>
+                                        <li><strong>SEO</strong> - lepsze pozycjonowanie w wyszukiwarkach</li>
+                                        <li><strong>UX</strong> - lepsza orientacja w serwisie</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRE PRZYKŁADY - opisowe tytuły --&gt;
+
+&lt;!-- Strona główna sklepu --&gt;
+&lt;head&gt;
+    &lt;title&gt;Najlepsze produkty ekologiczne - EcoShop | Naturalny sklep online&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!-- Strona kategorii --&gt;
+&lt;head&gt;
+    &lt;title&gt;Laptopy i komputery - szeroki wybór, najlepsze ceny | TechStore&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!-- Konkretny produkt --&gt;
+&lt;head&gt;
+    &lt;title&gt;Dell XPS 13 (2023) - specyfikacja, cena 4999 zł | TechStore&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!-- Artykuł na blogu --&gt;
+&lt;head&gt;
+    &lt;title&gt;Jak zabezpieczyć dom przed zimą - kompletny przewodnik | Dom&amp;amp;Ogród&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!-- Strona usługi --&gt;
+&lt;head&gt;
+    &lt;title&gt;Serwis samochodowy - naprawa, przeglądy, diagnostyka | AutoMaster Warszawa&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!-- Formularz kontaktowy --&gt;
+&lt;head&gt;
+    &lt;title&gt;Kontakt - napisz do nas, zadzwoń, umów wizytę | Klinika DentaMed&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!-- Strona z wynikami wyszukiwania --&gt;
+&lt;head&gt;
+    &lt;title&gt;Wyniki dla "buty sportowe" - 247 produktów | SportShop&lt;/title&gt;
+&lt;/head&gt;</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Każdy tytuł jasno opisuje zawartość i cel strony. Zawiera
+                            kluczowe słowa, nazwę firmy/serwisu i dodatkowe informacje pomagające w identyfikacji.
+                            Użytkownik od razu wie gdzie się znajduje i czego może się spodziewać.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - hierarchiczne tytuły w serwisach wielopoziomowych</h4>
+                        <p>System tytułów odzwierciedlający strukturę nawigacyjną serwisu:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #856404; margin-top: 0;">🏗️ Hierarchiczna struktura tytułów:</h5>
+
+                                    <div style="color: #856404;">
+                                        <div
+                                            style="margin: 10px 0; padding: 8px 12px; background-color: rgba(255,255,255,0.9); border-radius: 3px; border-left: 3px solid #007bff;">
+                                            <strong>Poziom 1 - Strona główna:</strong><br>
+                                            <code>"Uniwersytet Warszawski - Najlepsza uczelnia w Polsce"</code>
+                                        </div>
+
+                                        <div
+                                            style="margin: 10px 0; padding: 8px 12px; background-color: rgba(255,255,255,0.9); border-radius: 3px; border-left: 3px solid #28a745; margin-left: 20px;">
+                                            <strong>Poziom 2 - Wydział:</strong><br>
+                                            <code>"Wydział Informatyki - studia, badania, współpraca | UW"</code>
+                                        </div>
+
+                                        <div
+                                            style="margin: 10px 0; padding: 8px 12px; background-color: rgba(255,255,255,0.9); border-radius: 3px; border-left: 3px solid #ffc107; margin-left: 40px;">
+                                            <strong>Poziom 3 - Kierunek:</strong><br>
+                                            <code>"Informatyka - program studiów, rekrutacja | Wydział Informatyki UW"</code>
+                                        </div>
+
+                                        <div
+                                            style="margin: 10px 0; padding: 8px 12px; background-color: rgba(255,255,255,0.9); border-radius: 3px; border-left: 3px solid #dc3545; margin-left: 60px;">
+                                            <strong>Poziom 4 - Szczegóły:</strong><br>
+                                            <code>"Plan zajęć I rok Informatyka - semestr zimowy 2024 | UW"</code>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #d1ecf1; border: 1px solid #bee5eb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                                    <h6 style="color: #0c5460; margin-top: 0;">📋 Wzorzec: Temat > Kontekst >
+                                        Organizacja</h6>
+                                    <div
+                                        style="color: #0c5460; font-family: monospace; background-color: rgba(255,255,255,0.8); padding: 10px; border-radius: 3px; margin: 10px 0;">
+                                        "[Konkretna treść] - [Dodatkowy kontekst] | [Nadrzędna sekcja] [Organizacja]"
+                                    </div>
+                                    <p style="color: #0c5460; margin: 5px 0 0 0; font-size: 0.9em;">
+                                        Przykład: "Plan zajęć I rok Informatyka - semestr zimowy 2024 | Wydział
+                                        Informatyki UW"
+                                    </p>
+                                </div>
+
+                                <div
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #004085; margin-top: 0;">🎯 Korzyści hierarchicznych tytułów:</h6>
+                                    <ul style="color: #004085; margin-bottom: 0; font-size: 0.95em;">
+                                        <li><strong>Kontekst</strong> - użytkownik wie gdzie jest w strukturze serwisu
+                                        </li>
+                                        <li><strong>Breadcrumbs</strong> - tytuł działa jak ścieżka nawigacyjna</li>
+                                        <li><strong>Spójność</strong> - przewidywalny system tytułów</li>
+                                        <li><strong>SEO</strong> - lepsze pozycjonowanie dzięki strukturze</li>
+                                        <li><strong>Dostępność</strong> - łatwiejsza orientacja dla wszystkich
+                                            użytkowników</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - hierarchiczne tytuły --&gt;
+
+&lt;!-- Strona główna organizacji --&gt;
+&lt;head&gt;
+    &lt;title&gt;Uniwersytet Warszawski - Najlepsza uczelnia w Polsce&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!-- Główna strona wydziału --&gt;
+&lt;head&gt;
+    &lt;title&gt;Wydział Informatyki - studia, badania, współpraca | Uniwersytet Warszawski&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!-- Strona kierunku studiów --&gt;
+&lt;head&gt;
+    &lt;title&gt;Informatyka - program studiów, rekrutacja, praktyki | Wydział Informatyki UW&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!-- Szczegółowa strona kursu --&gt;
+&lt;head&gt;
+    &lt;title&gt;Algoritmy i struktury danych - sylabus, terminy egzaminów | Informatyka UW&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!-- Plan zajęć --&gt;
+&lt;head&gt;
+    &lt;title&gt;Plan zajęć rok I semestr zimowy - Informatyka | Wydział Informatyki UW&lt;/title&gt;
+&lt;/head&gt;
+
+&lt;!-- Strona wykładowcy --&gt;
+&lt;head&gt;
+    &lt;title&gt;Dr hab. Jan Kowalski - biografia, publikacje, kursy | Wydział Informatyki UW&lt;/title&gt;
+&lt;/head&gt;</code></pre>
+
+                        <p class="explanation">Rozwiązanie: System hierarchicznych tytułów odzwierciedla strukturę
+                            serwisu. Każdy tytuł zawiera konkretną treść, kontekst (gdzie jesteśmy w hierarchii) i
+                            identyfikator organizacji. Użytkownik zawsze wie gdzie się znajduje w strukturze serwisu.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - dynamiczne tytuły w aplikacjach SPA</h4>
+                        <p>Dynamiczne zarządzanie tytułami w aplikacjach jednostronicowych:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #495057; margin-top: 0;">⚡ Demo: Dynamiczne zmiany tytułu</h5>
+                                    <p style="color: #495057; margin-bottom: 15px;">Kliknij przyciski, aby zobaczyć jak
+                                        zmienia się tytuł strony:</p>
+
+                                    <div style="margin: 15px 0;">
+                                        <button onclick="updateTitle('dashboard')"
+                                            style="background: #007bff; color: white; border: none; padding: 8px 16px; margin: 4px; border-radius: 4px; cursor: pointer;">
+                                            Dashboard
+                                        </button>
+                                        <button onclick="updateTitle('profile')"
+                                            style="background: #28a745; color: white; border: none; padding: 8px 16px; margin: 4px; border-radius: 4px; cursor: pointer;">
+                                            Profil użytkownika
+                                        </button>
+                                        <button onclick="updateTitle('settings')"
+                                            style="background: #ffc107; color: #212529; border: none; padding: 8px 16px; margin: 4px; border-radius: 4px; cursor: pointer;">
+                                            Ustawienia
+                                        </button>
+                                        <button onclick="updateTitle('messages')"
+                                            style="background: #dc3545; color: white; border: none; padding: 8px 16px; margin: 4px; border-radius: 4px; cursor: pointer;">
+                                            Wiadomości (3)
+                                        </button>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #e7f3ff; padding: 10px; border-radius: 4px; border-left: 4px solid #007bff;">
+                                        <strong>Aktualny tytuł:</strong><br>
+                                        <span id="current-title"
+                                            style="font-family: monospace; color: #007bff; font-weight: bold;">
+                                            2.4.2 Tytuł strony (A) - Nieoficjalny przewodnik WCAG 2.1
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #155724; margin-top: 0;">✨ Kluczowe cechy dynamicznych tytułów:
+                                    </h6>
+                                    <ul style="color: #155724; margin-bottom: 0;">
+                                        <li><strong>Automatyczna aktualizacja</strong> - tytuł zmienia się przy zmianie
+                                            widoku</li>
+                                        <li><strong>Informacje kontekstowe</strong> - np. liczba nieprzeczytanych
+                                            wiadomości</li>
+                                        <li><strong>Status operacji</strong> - np. "Zapisywanie..." lub "Błąd
+                                            połączenia"</li>
+                                        <li><strong>Breadcrumbs w tytule</strong> - odzwierciedlenie ścieżki nawigacji
+                                        </li>
+                                        <li><strong>Accessibility</strong> - czytniki ekranu są powiadamiane o zmianach
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-javascript">// DOBRY PRZYKŁAD - zarządzanie dynamicznymi tytułami
+
+class PageTitleManager {
+    constructor(appName = '') {
+        this.appName = appName;
+        this.defaultTitle = appName;
+        this.titleStack = [];
+    }
+
+    // Ustawia tytuł strony z automatycznym formatowaniem
+    setTitle(pageTitle, context = '', showNotifications = true) {
+        let fullTitle = '';
+        
+        if (pageTitle) {
+            fullTitle = pageTitle;
+            
+            // Dodaj kontekst jeśli istnieje
+            if (context) {
+                fullTitle += ` - ${context}`;
+            }
+            
+            // Dodaj nazwę aplikacji
+            if (this.appName) {
+                fullTitle += ` | ${this.appName}`;
+            }
+        } else {
+            fullTitle = this.defaultTitle;
+        }
+        
+        // Aktualizuj tytuł
+        document.title = fullTitle;
+        
+        // Powiadom czytniki ekranu o zmianie (opcjonalne)
+        if (showNotifications) {
+            this.announcePageChange(pageTitle);
+        }
+        
+        console.log(`Tytuł zmieniony na: ${fullTitle}`);
+    }
+
+    // Tytuł z dodatkowymi informacjami (np. liczniki)
+    setTitleWithBadge(pageTitle, badgeCount, context = '') {
+        let titleWithBadge = pageTitle;
+        
+        if (badgeCount && badgeCount > 0) {
+            titleWithBadge = `(${badgeCount}) ${pageTitle}`;
+        }
+        
+        this.setTitle(titleWithBadge, context);
+    }
+
+    // Tymczasowy tytuł ze statusem (np. ładowanie, błąd)
+    setTemporaryTitle(status, originalTitle) {
+        const tempTitle = `${status} - ${originalTitle}`;
+        this.setTitle(tempTitle, '', false);
+    }
+
+    // Przywróć poprzedni tytuł
+    restoreTitle() {
+        if (this.titleStack.length > 0) {
+            const previousTitle = this.titleStack.pop();
+            document.title = previousTitle;
+        }
+    }
+
+    // Powiadom czytniki ekranu o zmianie strony
+    announcePageChange(pageTitle) {
+        // Twórz ukryty element dla czytników ekranu
+        const announcement = document.createElement('div');
+        announcement.setAttribute('aria-live', 'polite');
+        announcement.setAttribute('aria-atomic', 'true');
+        announcement.className = 'sr-only';
+        announcement.textContent = `Przeszedłeś do sekcji: ${pageTitle}`;
+        
+        document.body.appendChild(announcement);
+        
+        // Usuń po krótkim czasie
+        setTimeout(() => {
+            document.body.removeChild(announcement);
+        }, 1000);
+    }
+
+    // Formatowanie dla różnych typów stron
+    formatTitle(type, data) {
+        switch(type) {
+            case 'dashboard':
+                return this.setTitle('Panel główny', 'Przegląd aktywności');
+            
+            case 'profile':
+                const userName = data?.name || 'użytkownika';
+                return this.setTitle(`Profil ${userName}`, 'Ustawienia konta');
+            
+            case 'messages':
+                const unreadCount = data?.unread || 0;
+                return this.setTitleWithBadge('Wiadomości', unreadCount, 'Skrzynka odbiorcza');
+            
+            case 'settings':
+                const section = data?.section || '';
+                const context = section ? `Sekcja: ${section}` : 'Konfiguracja';
+                return this.setTitle('Ustawienia', context);
+            
+            case 'error':
+                const errorCode = data?.code || '404';
+                return this.setTitle(`Błąd ${errorCode}`, 'Strona nie została znaleziona');
+            
+            case 'loading':
+                return this.setTemporaryTitle('Ładowanie', data?.target || 'treści');
+            
+            default:
+                return this.setTitle(data?.title || 'Strona główna');
+        }
+    }
+}
+
+// Inicjalizacja managera tytułów
+const titleManager = new PageTitleManager('MyApp - System zarządzania');
+
+// Przykłady użycia w SPA
+function navigateToPage(route, data = {}) {
+    // Symulacja nawigacji w SPA
+    console.log(`Navigating to: ${route}`);
+    
+    // Aktualizuj tytuł zgodnie z nową stroną
+    titleManager.formatTitle(route, data);
+    
+    // Tutaj normalmente byłaby logika renderowania treści
+    updatePageContent(route, data);
+}
+
+// Funkcja pomocnicza dla demo
+function updateTitle(page) {
+    const pageData = {
+        dashboard: { },
+        profile: { name: 'Jan Kowalski' },
+        settings: { section: 'Powiadomienia' },
+        messages: { unread: 3 }
+    };
+    
+    navigateToPage(page, pageData[page]);
+}
+
+// Automatyczne zarządzanie tytułami na podstawie routing'u (React Router przykład)
+/*
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+
+function useDynamicTitle() {
+    const location = useLocation();
+    
+    useEffect(() => {
+        // Mapowanie ścieżek na tytuły
+        const routeTitles = {
+            '/': 'Dashboard',
+            '/profile': 'Profil użytkownika',
+            '/settings': 'Ustawienia',
+            '/messages': 'Wiadomości'
+        };
+        
+        const pageTitle = routeTitles[location.pathname] || 'Strona';
+        titleManager.setTitle(pageTitle);
+        
+    }, [location]);
+}
+*/
+
+// Demo funkcja aktualizacji treści
+function updatePageContent(route, data) {
+    // Tutaj normalne byłaby aktualizacja treści strony
+    console.log(`Aktualizuję treść dla: ${route}`, data);
+}</code></pre>
+
+                        <pre><code class="language-css">/* CSS dla elementów pomocniczych dostępności */
+
+/* Ukryty tekst dla czytników ekranu */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Loading indicator w tytule */
+@keyframes titlePulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.title-loading::after {
+    content: " ●●●";
+    animation: titlePulse 1.5s infinite;
+}</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Dynamiczne zarządzanie tytułami w aplikacjach SPA zapewnia,
+                            że użytkownicy zawsze wiedzą gdzie się znajdują, nawet gdy strona się nie przeładowuje.
+                            System automatycznie aktualizuje tytuły, obsługuje powiadomienia dla czytników ekranu i
+                            formatuje tytuły zgodnie z kontekstem.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie zgodności z 2.4.2</h3>
+
+                <h4>Procedura testowa</h4>
+                <ol>
+                    <li><strong>Sprawdzenie obecności tytułu</strong>
+                        <ul>
+                            <li>Sprawdź czy każda strona ma element <code>&lt;title&gt;</code></li>
+                            <li>Upewnij się, że tytuł nie jest pusty</li>
+                            <li>Sprawdź czy tytuł jest w sekcji <code>&lt;head&gt;</code></li>
+                        </ul>
+                    </li>
+                    <li><strong>Ocena opisowości tytułu</strong>
+                        <ul>
+                            <li>Sprawdź czy tytuł opisuje temat lub cel strony</li>
+                            <li>Oceń czy tytuł jest wystarczająco szczegółowy</li>
+                            <li>Sprawdź czy tytuł nie jest zbyt ogólny</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test z czytnikiem ekranu</strong>
+                        <ul>
+                            <li>Otwórz stronę z czytnikiem ekranu (NVDA, JAWS)</li>
+                            <li>Sprawdź czy tytuł jest pierwszą informacją</li>
+                            <li>Oceń czy tytuł jest zrozumiały bez kontekstu</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test nawigacji</strong>
+                        <ul>
+                            <li>Otwórz kilka kart z różnymi stronami</li>
+                            <li>Sprawdź czy można łatwo rozróżnić karty</li>
+                            <li>Przetestuj dodawanie do zakładek</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Narzędzia testowe</h4>
+                <ul>
+                    <li><strong>axe DevTools</strong> - sprawdza obecność i jakość tytułów</li>
+                    <li><strong>WAVE</strong> - analizuje tytuły stron</li>
+                    <li><strong>Lighthouse</strong> - ocenia SEO i dostępność tytułów</li>
+                    <li><strong>Browser DevTools</strong> - inspekcja elementu title</li>
+                    <li><strong>HeadingsMap</strong> - pokazuje strukturę nagłówków i tytuł</li>
+                </ul>
+
+                <h4>Checklist zgodności</h4>
+                <div
+                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <h5>✅ Kryteria do spełnienia:</h5>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>☐ Każda strona ma element &lt;title&gt;</li>
+                        <li>☐ Tytuł nie jest pusty</li>
+                        <li>☐ Tytuł opisuje temat lub cel strony</li>
+                        <li>☐ Tytuł jest wystarczająco szczegółowy</li>
+                        <li>☐ Tytuł pozwala rozróżnić strony</li>
+                        <li>☐ Tytuł jest zrozumiały bez kontekstu</li>
+                        <li>☐ W aplikacjach SPA tytuł aktualizuje się dynamicznie</li>
+                        <li>☐ Tytuł odzwierciedla bieżący stan aplikacji</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="implementation-guidelines">
+                <h3>Wytyczne implementacyjne</h3>
+
+                <h4>Najlepsze praktyki:</h4>
+                <ul>
+                    <li><strong>Konkretność</strong> - opisuj konkretną treść, nie ogólniki</li>
+                    <li><strong>Unikalność</strong> - każda strona powinna mieć unikalny tytuł</li>
+                    <li><strong>Długość</strong> - optymalna długość 30-60 znaków dla SEO</li>
+                    <li><strong>Struktura</strong> - używaj spójnego wzorca w całym serwisie</li>
+                    <li><strong>Kluczowe słowa</strong> - umieść najważniejsze informacje na początku</li>
+                    <li><strong>Aktualizacje</strong> - w SPA aktualizuj tytuł przy zmianie widoku</li>
+                </ul>
+
+                <h4>Wzorce tytułów:</h4>
+                <div
+                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #004085; margin-top: 0;">1. Strona główna</h5>
+                    <pre
+                        style="color: #004085;"><code>[Główna wartość/oferta] - [Nazwa firmy] | [Branża/opis]</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #155724; margin-top: 0;">2. Strony treści</h5>
+                    <pre style="color: #155724;"><code>[Konkretna treść] - [Kontekst] | [Serwis]</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #856404; margin-top: 0;">3. Strony funkcjonalne</h5>
+                    <pre style="color: #856404;"><code>[Funkcja/akcja] - [Dodatkowe info] | [Aplikacja]</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #721c24; margin-top: 0;">4. Strony błędów</h5>
+                    <pre style="color: #721c24;"><code>[Typ błędu] - [Pomocna informacja] | [Serwis]</code></pre>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/page-titled.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG 2.1: Tytuł strony</a></li>
+                    <li><a href="https://webaim.org/techniques/pagetitles/" target="_blank" rel="noopener">WebAIM: Page
+                            Titles</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/title" target="_blank"
+                            rel="noopener">MDN: HTML title element</a></li>
+                    <li><a href="https://moz.com/learn/seo/title-tag" target="_blank" rel="noopener">Moz: Title Tag SEO
+                            Best Practices</a></li>
+                    <li><a href="https://www.nngroup.com/articles/page-titles/" target="_blank" rel="noopener">Nielsen
+                            Norman Group: Page Titles</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.4.1.html">Poprzedni: 2.4.1 Pomijanie bloków</a></li>
+                    <li><a href="2.4.3.html">Następny: 2.4.3 Kolejność fokusa</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+
+    <script>
+        // Demo funkcjonalność dla dynamicznych tytułów
+        document.addEventListener('DOMContentLoaded', function () {
+            // Przechowaj oryginalny tytuł
+            const originalTitle = document.title;
+
+            // Aktualizuj wyświetlany tytuł w demo
+            function updateDisplayedTitle() {
+                const currentTitleElement = document.getElementById('current-title');
+                if (currentTitleElement) {
+                    currentTitleElement.textContent = document.title;
+                }
+            }
+
+            // Globalna funkcja dla przycisków demo
+            window.updateTitle = function (page) {
+                const titles = {
+                    dashboard: 'Panel główny - przegląd aktywności | MyApp',
+                    profile: 'Profil Jan Kowalski - ustawienia konta | MyApp',
+                    settings: 'Ustawienia - sekcja powiadomienia | MyApp',
+                    messages: '(3) Wiadomości - skrzynka odbiorcza | MyApp'
+                };
+
+                document.title = titles[page] || originalTitle;
+                updateDisplayedTitle();
+
+                // Przywróć oryginalny tytuł po 3 sekundach
+                setTimeout(() => {
+                    document.title = originalTitle;
+                    updateDisplayedTitle();
+                }, 3000);
+            };
+
+            // Zaktualizuj wyświetlany tytuł na start
+            updateDisplayedTitle();
+        });
+    </script>
+</body>
+
+</html>

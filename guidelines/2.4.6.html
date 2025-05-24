@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.4.6 Nagłówki i etykiety (AA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.4.6 Nagłówki i etykiety</h2>
+                <p class="criterion-level">Poziom AA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#headings-and-labels" target="_blank"
+                            rel="noopener">Oficjalna dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Nagłówki i etykiety opisują temat lub cel treści.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest pomoc użytkownikom w zrozumieniu jakie informacje znajdują się na
+                    stronach internetowych i jak te informacje są zorganizowane. Gdy nagłówki są jasne i opisowe,
+                    użytkownicy mogą łatwiej znaleźć poszukiwane informacje i zrozumieć relacje między różnymi częściami
+                    treści.</p>
+
+                <p>Opisowe nagłówki i etykiety są szczególnie ważne dla:</p>
+                <ul>
+                    <li><strong>Użytkowników czytników ekranu</strong> - nawigują między nagłówkami i używają ich do
+                        orientacji</li>
+                    <li><strong>Osób z ograniczeniami poznawczymi</strong> - jasne etykiety redukują confused i
+                        cognitive load</li>
+                    <li><strong>Użytkowników nawigacji klawiaturowej</strong> - nagłówki służą jako punkty orientacyjne
+                    </li>
+                    <li><strong>Wszystkich użytkowników</strong> - ułatwiają szybkie skanowanie i zrozumienie treści
+                    </li>
+                </ul>
+
+                <p>Kryterium obejmuje:</p>
+                <ul>
+                    <li><strong>Nagłówki sekcji</strong> - h1, h2, h3, h4, h5, h6 opisujące zawartość sekcji</li>
+                    <li><strong>Etykiety formularzy</strong> - label, aria-label, aria-labelledby dla pól formularzy
+                    </li>
+                    <li><strong>Etykiety kontrolek</strong> - opisy przycisków, linków, elementów interaktywnych</li>
+                    <li><strong>Tytuły sekcji</strong> - opisy grup powiązanych elementów</li>
+                </ul>
+
+                <p><strong>Uwaga:</strong> Kryterium nie wymaga obecności nagłówków lub etykiet, ale gdy są używane,
+                    muszą być opisowe i informacyjne.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - niejasne nagłówki i etykiety</h4>
+                        <p>Nagłówki i etykiety, które nie informują o swoim celu:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #721c24; margin-top: 0;">❌ Problematyczne nagłówki i etykiety:
+                                    </h5>
+
+                                    <div
+                                        style="background-color: rgba(255,255,255,0.8); padding: 15px; border-radius: 4px; margin: 10px 0;">
+                                        <div
+                                            style="border-bottom: 1px solid #dee2e6; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #721c24; margin-top: 0;">Problematyczna struktura
+                                                nagłówków:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px dashed #dc3545; border-radius: 4px;">
+                                                <div
+                                                    style="font-size: 1.5em; font-weight: bold; color: #721c24; margin-bottom: 10px;">
+                                                    Więcej</div>
+                                                <p style="margin: 10px 0; color: #721c24;">Lorem ipsum dolor sit amet,
+                                                    consectetur adipiscing elit...</p>
+
+                                                <div
+                                                    style="font-size: 1.2em; font-weight: bold; color: #721c24; margin: 15px 0 10px 0;">
+                                                    Informacje</div>
+                                                <p style="margin: 10px 0; color: #721c24;">Sed do eiusmod tempor
+                                                    incididunt ut labore...</p>
+
+                                                <div
+                                                    style="font-size: 1.4em; font-weight: bold; color: #721c24; margin: 15px 0 10px 0;">
+                                                    Dane</div>
+                                                <p style="margin: 10px 0; color: #721c24;">Ut enim ad minim veniam, quis
+                                                    nostrud...</p>
+
+                                                <div
+                                                    style="font-size: 1.1em; font-weight: bold; color: #721c24; margin: 15px 0 10px 0;">
+                                                    Zobacz</div>
+                                                <p style="margin: 10px 0; color: #721c24;">Duis aute irure dolor in
+                                                    reprehenderit...</p>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="border-bottom: 1px solid #dee2e6; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #721c24; margin-top: 0;">Zła hierarchia nagłówków:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px dashed #dc3545; border-radius: 4px;">
+                                                <div
+                                                    style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                                    <span
+                                                        style="background: #dc3545; color: white; padding: 2px 6px; border-radius: 3px; font-size: 0.8em;">H1</span>
+                                                    <span
+                                                        style="font-size: 1.5em; font-weight: bold; color: #721c24;">Strona
+                                                        główna</span>
+                                                </div>
+                                                <div
+                                                    style="display: flex; align-items: center; gap: 10px; margin: 10px 0 10px 20px;">
+                                                    <span
+                                                        style="background: #dc3545; color: white; padding: 2px 6px; border-radius: 3px; font-size: 0.8em;">H4</span>
+                                                    <span
+                                                        style="font-size: 1.1em; font-weight: bold; color: #721c24;">Sekcja</span>
+                                                    <span style="color: #dc3545; font-size: 0.9em;">⚠️ Pominięto H2,
+                                                        H3</span>
+                                                </div>
+                                                <div
+                                                    style="display: flex; align-items: center; gap: 10px; margin: 10px 0 10px 40px;">
+                                                    <span
+                                                        style="background: #dc3545; color: white; padding: 2px 6px; border-radius: 3px; font-size: 0.8em;">H2</span>
+                                                    <span
+                                                        style="font-size: 1.3em; font-weight: bold; color: #721c24;">Podsekcja</span>
+                                                    <span style="color: #dc3545; font-size: 0.9em;">⚠️ Zła
+                                                        kolejność</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h6 style="color: #721c24; margin-top: 0;">Problematyczne etykiety
+                                                formularzy:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px dashed #dc3545; border-radius: 4px;">
+                                                <form style="display: grid; gap: 15px;">
+                                                    <div>
+                                                        <div style="color: #721c24; margin-bottom: 5px;">Pole 1</div>
+                                                        <input type="text"
+                                                            style="padding: 8px; border: 1px solid #ced4da; width: 100%; max-width: 300px;">
+                                                    </div>
+                                                    <div>
+                                                        <div style="color: #721c24; margin-bottom: 5px;">Pole 2</div>
+                                                        <input type="email"
+                                                            style="padding: 8px; border: 1px solid #ced4da; width: 100%; max-width: 300px;">
+                                                    </div>
+                                                    <div>
+                                                        <input type="text" placeholder="Wprowadź dane"
+                                                            style="padding: 8px; border: 1px solid #ced4da; width: 100%; max-width: 300px;">
+                                                        <div style="color: #dc3545; font-size: 0.8em; margin-top: 5px;">
+                                                            ❌ Brak etykiety</div>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="bad-checkbox">
+                                                        <span style="color: #721c24; margin-left: 5px;">Akceptuję</span>
+                                                        <div style="color: #dc3545; font-size: 0.8em; margin-top: 5px;">
+                                                            ❌ Niejasna etykieta</div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #fff3cd; padding: 10px; border-radius: 3px; border-left: 4px solid #ffc107; margin-top: 15px;">
+                                        <p style="color: #856404; margin: 0; font-size: 0.9em;">
+                                            <strong>Analiza struktury:</strong> <span id="bad-heading-analysis">Kliknij
+                                                przycisk analizy aby zobaczyć problemy z nagłówkami</span>
+                                        </p>
+                                        <button onclick="analyzeBadHeadings()"
+                                            style="margin-top: 10px; padding: 8px 16px; background: #ffc107; color: #212529; border: none; border-radius: 3px; cursor: pointer;">
+                                            🔍 Analizuj strukturę nagłówków
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #856404; margin-top: 0;">Dlaczego to problematyczne?</h6>
+                                    <ul style="color: #856404; margin-bottom: 0;">
+                                        <li><strong>Brak orientacji</strong> - użytkownicy nie wiedzą czego dotyczy
+                                            sekcja</li>
+                                        <li><strong>Trudności w nawigacji</strong> - czytniki ekranu nie mogą efektywnie
+                                            przeskakiwać między sekcjami</li>
+                                        <li><strong>Problemy z formularzami</strong> - niejasne etykiety utrudniają
+                                            wypełnienie</li>
+                                        <li><strong>Cognitive load</strong> - użytkownicy muszą domyślać się znaczenia
+                                        </li>
+                                        <li><strong>Zła hierarchia</strong> - zaburza logiczną strukturę dokumentu</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- ZŁY PRZYKŁAD - niejasne nagłówki i etykiety --&gt;
+
+&lt;!-- 1. Niejasne nagłówki --&gt;
+&lt;h2&gt;Więcej&lt;/h2&gt; &lt;!-- Więcej czego? --&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet...&lt;/p&gt;
+
+&lt;h3&gt;Informacje&lt;/h3&gt; &lt;!-- Jakie informacje? --&gt;
+&lt;p&gt;Sed do eiusmod tempor...&lt;/p&gt;
+
+&lt;h2&gt;Dane&lt;/h2&gt; &lt;!-- Jakie dane? --&gt;
+&lt;p&gt;Ut enim ad minim veniam...&lt;/p&gt;
+
+&lt;!-- 2. Zła hierarchia nagłówków --&gt;
+&lt;h1&gt;Strona główna&lt;/h1&gt;
+&lt;h4&gt;Sekcja&lt;/h4&gt; &lt;!-- Pominięto H2, H3 --&gt;
+&lt;h2&gt;Podsekcja&lt;/h2&gt; &lt;!-- Zła kolejność hierarchii --&gt;
+
+&lt;!-- 3. Problematyczne etykiety formularzy --&gt;
+&lt;form&gt;
+    &lt;!-- Ogólne etykiety --&gt;
+    &lt;div&gt;Pole 1&lt;/div&gt; &lt;!-- Nie związane z inputem --&gt;
+    &lt;input type="text"&gt;
+    
+    &lt;div&gt;Pole 2&lt;/div&gt; &lt;!-- Niejasny cel --&gt;
+    &lt;input type="email"&gt;
+    
+    &lt;!-- Brak etykiety --&gt;
+    &lt;input type="text" placeholder="Wprowadź dane"&gt; &lt;!-- Placeholder to nie etykieta --&gt;
+    
+    &lt;!-- Niejasna etykieta --&gt;
+    &lt;input type="checkbox" id="terms"&gt;
+    &lt;span&gt;Akceptuję&lt;/span&gt; &lt;!-- Akceptuję co? --&gt;
+&lt;/form&gt;
+
+&lt;!-- 4. Brak powiązania etykiet z polami --&gt;
+&lt;div&gt;Imię&lt;/div&gt;
+&lt;input type="text"&gt; &lt;!-- Brak for/id lub aria-label --&gt;
+
+&lt;div&gt;Email&lt;/div&gt;
+&lt;input type="email"&gt; &lt;!-- Nie związane programowo --&gt;</code></pre>
+
+                        <p class="explanation">Problem: Nagłówki nie informują o zawartości sekcji, hierarchia jest
+                            zaburzona, a etykiety formularzy są ogólne lub brakuje ich całkowicie. Użytkownicy,
+                            szczególnie korzystający z technologii wspomagających, nie mogą efektywnie nawigować i
+                            wypełniać formularzy.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - opisowe nagłówki i etykiety</h4>
+                        <p>Jasne, informacyjne nagłówki i etykiety z prawidłową hierarchią:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #155724; margin-top: 0;">✅ Prawidłowe nagłówki i etykiety:</h5>
+
+                                    <div
+                                        style="background-color: rgba(255,255,255,0.9); padding: 15px; border-radius: 4px; margin: 10px 0;">
+                                        <div
+                                            style="border-bottom: 1px solid #c3e6cb; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #155724; margin-top: 0;">Opisowe nagłówki sekcji:</h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px solid #28a745; border-radius: 4px;">
+                                                <div
+                                                    style="font-size: 1.5em; font-weight: bold; color: #155724; margin-bottom: 10px;">
+                                                    Najnowsze artykuły o technologii</div>
+                                                <p style="margin: 10px 0; color: #495057;">Poznaj najświeższe trendy w
+                                                    świecie technologii, recenzje najnowszych gadżetów i analizy
+                                                    branżowe...</p>
+
+                                                <div
+                                                    style="font-size: 1.2em; font-weight: bold; color: #155724; margin: 15px 0 10px 0;">
+                                                    Polityka prywatności i cookies</div>
+                                                <p style="margin: 10px 0; color: #495057;">Dowiedz się jak chronimy
+                                                    Twoje dane osobowe i jakie informacje zbieramy podczas korzystania z
+                                                    naszej strony...</p>
+
+                                                <div
+                                                    style="font-size: 1.4em; font-weight: bold; color: #155724; margin: 15px 0 10px 0;">
+                                                    Dane kontaktowe i godziny otwarcia</div>
+                                                <p style="margin: 10px 0; color: #495057;">Znajdź wszystkie sposoby
+                                                    kontaktu z naszym biurem obsługi klienta oraz godziny, w których
+                                                    jesteśmy dostępni...</p>
+
+                                                <div
+                                                    style="font-size: 1.1em; font-weight: bold; color: #155724; margin: 15px 0 10px 0;">
+                                                    Zobacz wszystkie promocje i rabaty</div>
+                                                <p style="margin: 10px 0; color: #495057;">Przeglądaj aktualne oferty
+                                                    specjalne, kody rabatowe i czasowe promocje na wszystkie kategorie
+                                                    produktów...</p>
+                                            </div>
+                                        </div>
+
+                                        <div
+                                            style="border-bottom: 1px solid #c3e6cb; padding-bottom: 15px; margin-bottom: 15px;">
+                                            <h6 style="color: #155724; margin-top: 0;">Prawidłowa hierarchia nagłówków:
+                                            </h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px solid #28a745; border-radius: 4px;">
+                                                <div
+                                                    style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                                                    <span
+                                                        style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px; font-size: 0.8em;">H1</span>
+                                                    <span
+                                                        style="font-size: 1.5em; font-weight: bold; color: #155724;">Sklep
+                                                        internetowy TechMart</span>
+                                                </div>
+                                                <div
+                                                    style="display: flex; align-items: center; gap: 10px; margin: 10px 0 10px 20px;">
+                                                    <span
+                                                        style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px; font-size: 0.8em;">H2</span>
+                                                    <span
+                                                        style="font-size: 1.3em; font-weight: bold; color: #155724;">Kategorie
+                                                        produktów</span>
+                                                </div>
+                                                <div
+                                                    style="display: flex; align-items: center; gap: 10px; margin: 10px 0 10px 40px;">
+                                                    <span
+                                                        style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px; font-size: 0.8em;">H3</span>
+                                                    <span
+                                                        style="font-size: 1.1em; font-weight: bold; color: #155724;">Telefony
+                                                        i akcesoria</span>
+                                                </div>
+                                                <div
+                                                    style="display: flex; align-items: center; gap: 10px; margin: 10px 0 10px 60px;">
+                                                    <span
+                                                        style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px; font-size: 0.8em;">H4</span>
+                                                    <span
+                                                        style="font-size: 1em; font-weight: bold; color: #155724;">Smartfony</span>
+                                                </div>
+                                                <div
+                                                    style="display: flex; align-items: center; gap: 10px; margin: 10px 0 10px 40px;">
+                                                    <span
+                                                        style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px; font-size: 0.8em;">H3</span>
+                                                    <span
+                                                        style="font-size: 1.1em; font-weight: bold; color: #155724;">Komputery
+                                                        i laptopy</span>
+                                                </div>
+                                                <div
+                                                    style="display: flex; align-items: center; gap: 10px; margin: 10px 0 10px 20px;">
+                                                    <span
+                                                        style="background: #28a745; color: white; padding: 2px 6px; border-radius: 3px; font-size: 0.8em;">H2</span>
+                                                    <span
+                                                        style="font-size: 1.3em; font-weight: bold; color: #155724;">Aktualności
+                                                        i promocje</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <h6 style="color: #155724; margin-top: 0;">Prawidłowe etykiety formularzy:
+                                            </h6>
+                                            <div
+                                                style="background-color: #fff; padding: 15px; border: 2px solid #28a745; border-radius: 4px;">
+                                                <form style="display: grid; gap: 15px;">
+                                                    <div>
+                                                        <label for="good-name"
+                                                            style="display: block; color: #155724; margin-bottom: 5px; font-weight: 500;">Imię
+                                                            i nazwisko *</label>
+                                                        <input type="text" id="good-name" required
+                                                            style="padding: 8px; border: 1px solid #28a745; width: 100%; max-width: 300px;"
+                                                            aria-describedby="name-help">
+                                                        <div id="name-help"
+                                                            style="font-size: 0.8em; color: #6c757d; margin-top: 3px;">
+                                                            Podaj swoje pełne imię i nazwisko</div>
+                                                    </div>
+                                                    <div>
+                                                        <label for="good-email"
+                                                            style="display: block; color: #155724; margin-bottom: 5px; font-weight: 500;">Adres
+                                                            email do kontaktu *</label>
+                                                        <input type="email" id="good-email" required
+                                                            style="padding: 8px; border: 1px solid #28a745; width: 100%; max-width: 300px;"
+                                                            aria-describedby="email-help">
+                                                        <div id="email-help"
+                                                            style="font-size: 0.8em; color: #6c757d; margin-top: 3px;">
+                                                            Użyjemy tego adresu do wysłania potwierdzenia</div>
+                                                    </div>
+                                                    <div>
+                                                        <label for="good-phone"
+                                                            style="display: block; color: #155724; margin-bottom: 5px; font-weight: 500;">Numer
+                                                            telefonu (opcjonalnie)</label>
+                                                        <input type="tel" id="good-phone"
+                                                            style="padding: 8px; border: 1px solid #28a745; width: 100%; max-width: 300px;"
+                                                            aria-describedby="phone-help">
+                                                        <div id="phone-help"
+                                                            style="font-size: 0.8em; color: #6c757d; margin-top: 3px;">
+                                                            Format: +48 123 456 789</div>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="good-terms" required>
+                                                        <label for="good-terms"
+                                                            style="color: #155724; margin-left: 8px;">Akceptuję
+                                                            regulamin serwisu i politykę prywatności *</label>
+                                                    </div>
+                                                    <div>
+                                                        <input type="checkbox" id="good-newsletter">
+                                                        <label for="good-newsletter"
+                                                            style="color: #155724; margin-left: 8px;">Chcę otrzymywać
+                                                            newsletter z nowościami i promocjami</label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #e7f3ff; padding: 10px; border-radius: 3px; border-left: 4px solid #007bff; margin-top: 15px;">
+                                        <p style="color: #004085; margin: 0; font-size: 0.9em;">
+                                            <strong>Analiza struktury:</strong> <span id="good-heading-analysis">Kliknij
+                                                przycisk analizy aby zobaczyć prawidłową strukturę</span>
+                                        </p>
+                                        <button onclick="analyzeGoodHeadings()"
+                                            style="margin-top: 10px; padding: 8px 16px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer;">
+                                            ✅ Analizuj strukturę nagłówków
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #004085; margin-top: 0;">Zalety opisowych nagłówków i etykiet:
+                                    </h6>
+                                    <ul style="color: #004085; margin-bottom: 0; font-size: 0.95em;">
+                                        <li><strong>Łatwa orientacja</strong> - użytkownicy od razu wiedzą czego dotyczy
+                                            sekcja</li>
+                                        <li><strong>Efektywna nawigacja</strong> - czytniki ekranu mogą szybko
+                                            przeskakiwać między sekcjami</li>
+                                        <li><strong>Intuicyjne formularze</strong> - jasne etykiety ułatwiają
+                                            wypełnienie</li>
+                                        <li><strong>Redukuje cognitive load</strong> - nie trzeba domyślać się znaczenia
+                                        </li>
+                                        <li><strong>Lepsza struktura</strong> - logiczna hierarchia ułatwia zrozumienie
+                                        </li>
+                                        <li><strong>Dostępność</strong> - zgodność z technologiami wspomagającymi</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - opisowe nagłówki i etykiety --&gt;
+
+&lt;!-- 1. Opisowe nagłówki sekcji --&gt;
+&lt;h2&gt;Najnowsze artykuły o technologii&lt;/h2&gt;
+&lt;p&gt;Poznaj najświeższe trendy w świecie technologii...&lt;/p&gt;
+
+&lt;h3&gt;Polityka prywatności i cookies&lt;/h3&gt;
+&lt;p&gt;Dowiedz się jak chronimy Twoje dane osobowe...&lt;/p&gt;
+
+&lt;h2&gt;Dane kontaktowe i godziny otwarcia&lt;/h2&gt;
+&lt;p&gt;Znajdź wszystkie sposoby kontaktu...&lt;/p&gt;
+
+&lt;!-- 2. Prawidłowa hierarchia nagłówków --&gt;
+&lt;h1&gt;Sklep internetowy TechMart&lt;/h1&gt;
+  &lt;h2&gt;Kategorie produktów&lt;/h2&gt;
+    &lt;h3&gt;Telefony i akcesoria&lt;/h3&gt;
+      &lt;h4&gt;Smartfony&lt;/h4&gt;
+    &lt;h3&gt;Komputery i laptopy&lt;/h3&gt;
+  &lt;h2&gt;Aktualności i promocje&lt;/h2&gt;
+
+&lt;!-- 3. Prawidłowe etykiety formularzy --&gt;
+&lt;form&gt;
+    &lt;!-- Połączone label z input przez for/id --&gt;
+    &lt;label for="fullname"&gt;Imię i nazwisko *&lt;/label&gt;
+    &lt;input type="text" id="fullname" required aria-describedby="name-help"&gt;
+    &lt;div id="name-help"&gt;Podaj swoje pełne imię i nazwisko&lt;/div&gt;
+    
+    &lt;!-- Opisowa etykieta --&gt;
+    &lt;label for="email"&gt;Adres email do kontaktu *&lt;/label&gt;
+    &lt;input type="email" id="email" required aria-describedby="email-help"&gt;
+    &lt;div id="email-help"&gt;Użyjemy tego adresu do wysłania potwierdzenia&lt;/div&gt;
+    
+    &lt;!-- Opcjonalne pole z informacją --&gt;
+    &lt;label for="phone"&gt;Numer telefonu (opcjonalnie)&lt;/label&gt;
+    &lt;input type="tel" id="phone" aria-describedby="phone-help"&gt;
+    &lt;div id="phone-help"&gt;Format: +48 123 456 789&lt;/div&gt;
+    
+    &lt;!-- Jasne etykiety dla checkboxów --&gt;
+    &lt;input type="checkbox" id="terms" required&gt;
+    &lt;label for="terms"&gt;Akceptuję regulamin serwisu i politykę prywatności *&lt;/label&gt;
+    
+    &lt;input type="checkbox" id="newsletter"&gt;
+    &lt;label for="newsletter"&gt;Chcę otrzymywać newsletter z nowościami i promocjami&lt;/label&gt;
+&lt;/form&gt;
+
+&lt;!-- 4. Alternatywne sposoby etykietowania --&gt;
+&lt;!-- aria-label gdy label wizualny nie jest potrzebny --&gt;
+&lt;input type="search" aria-label="Wyszukaj produkty w sklepie"&gt;
+
+&lt;!-- aria-labelledby dla grup pól --&gt;
+&lt;fieldset&gt;
+    &lt;legend id="address-legend"&gt;Adres dostawy&lt;/legend&gt;
+    &lt;input type="text" aria-labelledby="address-legend" placeholder="Ulica i numer"&gt;
+    &lt;input type="text" aria-labelledby="address-legend" placeholder="Kod pocztowy"&gt;
+&lt;/fieldset&gt;</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Nagłówki jasno opisują zawartość sekcji, hierarchia jest
+                            logiczna i spójna, a etykiety formularzy są połączone z polami i dokładnie opisują ich cel.
+                            Dodatkowe informacje pomocnicze są dostępne przez aria-describedby.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - interaktywne narzędzia analizy</h4>
+                        <p>Narzędzia do testowania i poprawiania nagłówków i etykiet:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #856404; margin-top: 0;">🛠️ Narzędzia interaktywne:</h5>
+
+                                    <div style="margin: 15px 0;">
+                                        <!-- Przełącznik narzędzi -->
+                                        <div style="margin-bottom: 20px;">
+                                            <strong style="color: #856404;">Wybierz narzędzie:</strong>
+                                            <div style="margin-top: 10px; display: flex; flex-wrap: wrap; gap: 10px;">
+                                                <button onclick="showTool('heading-analyzer')" class="tool-btn active"
+                                                    data-tool="heading-analyzer"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: #ffc107; color: #212529; border-radius: 4px; cursor: pointer; font-weight: 500;">📊
+                                                    Analizator nagłówków</button>
+                                                <button onclick="showTool('heading-generator')" class="tool-btn"
+                                                    data-tool="heading-generator"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: transparent; color: #856404; border-radius: 4px; cursor: pointer;">✏️
+                                                    Generator nagłówków</button>
+                                                <button onclick="showTool('label-checker')" class="tool-btn"
+                                                    data-tool="label-checker"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: transparent; color: #856404; border-radius: 4px; cursor: pointer;">🏷️
+                                                    Sprawdzacz etykiet</button>
+                                                <button onclick="showTool('screen-reader-sim')" class="tool-btn"
+                                                    data-tool="screen-reader-sim"
+                                                    style="padding: 8px 16px; border: 2px solid #ffc107; background: transparent; color: #856404; border-radius: 4px; cursor: pointer;">🔊
+                                                    Symulator czytnika</button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Analizator nagłówków -->
+                                        <div id="tool-heading-analyzer" class="tool-content"
+                                            style="border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">📊 Analizator struktury nagłówków
+                                            </h6>
+                                            <div style="margin-bottom: 15px;">
+                                                <label for="heading-html"
+                                                    style="display: block; font-weight: 500; margin-bottom: 5px;">Wklej
+                                                    kod HTML z nagłówkami:</label>
+                                                <textarea id="heading-html" rows="6"
+                                                    style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 3px; font-family: monospace; font-size: 0.9em;"
+                                                    placeholder="&lt;h1&gt;Główny tytuł&lt;/h1&gt;&#10;&lt;h2&gt;Sekcja pierwsza&lt;/h2&gt;&#10;&lt;h3&gt;Podsekcja&lt;/h3&gt;&#10;&lt;h2&gt;Sekcja druga&lt;/h2&gt;"></textarea>
+                                            </div>
+                                            <button onclick="analyzeHeadings()"
+                                                style="padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer; font-weight: 500;">
+                                                🔍 Analizuj strukturę
+                                            </button>
+                                            <div id="heading-results"
+                                                style="margin-top: 15px; padding: 15px; background-color: #f8f9fa; border-radius: 3px; display: none;">
+                                                <h6 style="margin-top: 0; color: #495057;">Wyniki analizy:</h6>
+                                                <div id="heading-output"></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Generator nagłówków -->
+                                        <div id="tool-heading-generator" class="tool-content"
+                                            style="display: none; border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">✏️ Generator opisowych nagłówków
+                                            </h6>
+                                            <div style="display: grid; gap: 15px; margin-bottom: 15px;">
+                                                <div>
+                                                    <label for="content-type"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Typ
+                                                        treści:</label>
+                                                    <select id="content-type"
+                                                        style="width: 100%; max-width: 300px; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                        <option value="article">Artykuł</option>
+                                                        <option value="product">Opis produktu</option>
+                                                        <option value="service">Usługa</option>
+                                                        <option value="contact">Kontakt</option>
+                                                        <option value="policy">Polityka/Regulamin</option>
+                                                        <option value="faq">FAQ</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label for="topic-keywords"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Słowa
+                                                        kluczowe tematu:</label>
+                                                    <input type="text" id="topic-keywords"
+                                                        style="width: 100%; max-width: 400px; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;"
+                                                        placeholder="np. telefony, Samsung, Galaxy S23">
+                                                </div>
+                                                <div>
+                                                    <label for="target-audience"
+                                                        style="display: block; font-weight: 500; margin-bottom: 5px;">Grupa
+                                                        docelowa:</label>
+                                                    <select id="target-audience"
+                                                        style="width: 100%; max-width: 300px; padding: 8px; border: 1px solid #ced4da; border-radius: 3px;">
+                                                        <option value="general">Ogólna</option>
+                                                        <option value="technical">Techniczna</option>
+                                                        <option value="business">Biznesowa</option>
+                                                        <option value="beginner">Początkujący</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <button onclick="generateHeadings()"
+                                                style="padding: 10px 20px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer; font-weight: 500;">
+                                                ✨ Generuj nagłówki
+                                            </button>
+                                            <div id="generated-headings"
+                                                style="margin-top: 15px; padding: 15px; background-color: #f8f9fa; border-radius: 3px; display: none;">
+                                                <h6 style="margin-top: 0; color: #495057;">Wygenerowane nagłówki:</h6>
+                                                <div id="headings-output"></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sprawdzacz etykiet -->
+                                        <div id="tool-label-checker" class="tool-content"
+                                            style="display: none; border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">🏷️ Sprawdzacz etykiet formularzy
+                                            </h6>
+                                            <div style="margin-bottom: 15px;">
+                                                <label for="form-html"
+                                                    style="display: block; font-weight: 500; margin-bottom: 5px;">Kod
+                                                    HTML formularza:</label>
+                                                <textarea id="form-html" rows="8"
+                                                    style="width: 100%; padding: 10px; border: 1px solid #ced4da; border-radius: 3px; font-family: monospace; font-size: 0.9em;"
+                                                    placeholder="&lt;form&gt;&#10;  &lt;label for=&quot;name&quot;&gt;Imię&lt;/label&gt;&#10;  &lt;input type=&quot;text&quot; id=&quot;name&quot;&gt;&#10;  &lt;input type=&quot;email&quot; placeholder=&quot;Email&quot;&gt;&#10;&lt;/form&gt;"></textarea>
+                                            </div>
+                                            <button onclick="checkLabels()"
+                                                style="padding: 10px 20px; background: #17a2b8; color: white; border: none; border-radius: 3px; cursor: pointer; font-weight: 500;">
+                                                🔍 Sprawdź etykiety
+                                            </button>
+                                            <div id="label-results"
+                                                style="margin-top: 15px; padding: 15px; background-color: #f8f9fa; border-radius: 3px; display: none;">
+                                                <h6 style="margin-top: 0; color: #495057;">Wyniki sprawdzenia:</h6>
+                                                <div id="label-output"></div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Symulator czytnika ekranu -->
+                                        <div id="tool-screen-reader-sim" class="tool-content"
+                                            style="display: none; border: 1px solid #dee2e6; border-radius: 4px; padding: 15px; background-color: rgba(255,255,255,0.9);">
+                                            <h6 style="color: #856404; margin-top: 0;">🔊 Symulator czytnika ekranu</h6>
+                                            <p style="color: #6c757d; font-size: 0.9em; margin-bottom: 15px;">Sprawdź
+                                                jak nagłówki i etykiety są odczytywane przez technologie wspomagające:
+                                            </p>
+
+                                            <div
+                                                style="background-color: #f8f9fa; padding: 15px; border-radius: 3px; margin-bottom: 15px;">
+                                                <h6 style="margin-top: 0; color: #495057;">Demo nagłówków:</h6>
+                                                <div style="border-left: 3px solid #007bff; padding-left: 15px;">
+                                                    <div style="margin: 10px 0;">
+                                                        <button
+                                                            onclick="simulateReading('Nagłówek pierwszego poziomu: Sklep internetowy TechMart')"
+                                                            style="background: #e7f3ff; border: 1px solid #007bff; padding: 8px 12px; border-radius: 3px; cursor: pointer; color: #004085;">
+                                                            <strong>H1:</strong> Sklep internetowy TechMart
+                                                        </button>
+                                                    </div>
+                                                    <div style="margin: 10px 0;">
+                                                        <button
+                                                            onclick="simulateReading('Nagłówek drugiego poziomu: Telefony i akcesoria')"
+                                                            style="background: #e7f3ff; border: 1px solid #007bff; padding: 8px 12px; border-radius: 3px; cursor: pointer; color: #004085; margin-left: 20px;">
+                                                            <strong>H2:</strong> Telefony i akcesoria
+                                                        </button>
+                                                    </div>
+                                                    <div style="margin: 10px 0;">
+                                                        <button
+                                                            onclick="simulateReading('Nagłówek trzeciego poziomu: Smartfony Samsung')"
+                                                            style="background: #e7f3ff; border: 1px solid #007bff; padding: 8px 12px; border-radius: 3px; cursor: pointer; color: #004085; margin-left: 40px;">
+                                                            <strong>H3:</strong> Smartfony Samsung
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div
+                                                style="background-color: #f8f9fa; padding: 15px; border-radius: 3px; margin-bottom: 15px;">
+                                                <h6 style="margin-top: 0; color: #495057;">Demo etykiet formularzy:</h6>
+                                                <div style="display: grid; gap: 10px;">
+                                                    <button
+                                                        onclick="simulateReading('Imię i nazwisko, edycja wymagana')"
+                                                        style="background: #f0f8ea; border: 1px solid #28a745; padding: 8px 12px; border-radius: 3px; cursor: pointer; color: #155724; text-align: left;">
+                                                        <strong>Label:</strong> Imię i nazwisko *
+                                                    </button>
+                                                    <button
+                                                        onclick="simulateReading('Adres email do kontaktu, edycja wymagana')"
+                                                        style="background: #f0f8ea; border: 1px solid #28a745; padding: 8px 12px; border-radius: 3px; cursor: pointer; color: #155724; text-align: left;">
+                                                        <strong>Label:</strong> Adres email do kontaktu *
+                                                    </button>
+                                                    <button
+                                                        onclick="simulateReading('Akceptuję regulamin serwisu i politykę prywatności, pole wyboru niezaznaczone')"
+                                                        style="background: #f0f8ea; border: 1px solid #28a745; padding: 8px 12px; border-radius: 3px; cursor: pointer; color: #155724; text-align: left;">
+                                                        <strong>Checkbox:</strong> Akceptuję regulamin serwisu i
+                                                        politykę prywatności
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div id="screen-reader-output"
+                                                style="background-color: #212529; color: #f8f9fa; padding: 15px; border-radius: 3px; font-family: monospace; min-height: 50px; display: flex; align-items: center;">
+                                                <span id="reader-text">🔊 Kliknij na element powyżej aby usłyszeć jak
+                                                    brzmi w czytnikach ekranu</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        style="background-color: #d1ecf1; padding: 10px; border-radius: 3px; border-left: 4px solid #17a2b8; margin-top: 15px;">
+                                        <p style="color: #0c5460; margin: 0; font-size: 0.9em;">
+                                            <strong>Aktywne narzędzie:</strong> <span id="tool-description">Analizator
+                                                nagłówków - sprawdza hierarchię i strukturę nagłówków w kodzie
+                                                HTML</span>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #155724; margin-top: 0;">🎯 Korzyści z narzędzi interaktywnych:
+                                    </h6>
+                                    <ul style="color: #155724; margin-bottom: 0; font-size: 0.95em;">
+                                        <li><strong>Szybka analiza</strong> - automatyczne wykrywanie problemów z
+                                            nagłówkami</li>
+                                        <li><strong>Generowanie sugestii</strong> - pomoc w tworzeniu opisowych
+                                            nagłówków</li>
+                                        <li><strong>Sprawdzanie etykiet</strong> - weryfikacja powiązań między
+                                            etykietami a polami</li>
+                                        <li><strong>Symulacja AT</strong> - test doświadczenia użytkowników technologii
+                                            wspomagających</li>
+                                        <li><strong>Edukacja zespołu</strong> - nauka przez praktyczne przykłady</li>
+                                        <li><strong>Quality assurance</strong> - systematyczne testowanie dostępności
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="explanation">Rozwiązanie: Interaktywne narzędzia umożliwiają praktyczne testowanie i
+                            poprawianie nagłówków i etykiet. Analizator wykrywa problemy hierarchii, generator pomaga
+                            tworzyć opisowe nagłówki, sprawdzacz etykiet weryfikuje powiązania, a symulator pokazuje
+                            perspektywę użytkowników technologii wspomagających.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie zgodności z 2.4.6</h3>
+
+                <h4>Procedura testowa</h4>
+                <ol>
+                    <li><strong>Analiza nagłówków</strong>
+                        <ul>
+                            <li>Sprawdź czy nagłówki są opisowe i informują o zawartości</li>
+                            <li>Oceń hierarchię nagłówków (h1-h6) pod kątem logiczności</li>
+                            <li>Zidentyfikuj nagłówki ogólne lub niejasne</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test etykiet formularzy</strong>
+                        <ul>
+                            <li>Sprawdź powiązania między etykietami a polami (for/id)</li>
+                            <li>Oceń czy etykiety jasno opisują cel pola</li>
+                            <li>Przetestuj działanie z czytnikami ekranu</li>
+                        </ul>
+                    </li>
+                    <li><strong>Analiza struktury semantycznej</strong>
+                        <ul>
+                            <li>Zweryfikuj używanie elementów nagłówków vs stylizacji</li>
+                            <li>Sprawdź czy nie pomijasz poziomów hierarchii</li>
+                            <li>Oceń spójność struktury na całej witrynie</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test z technologiami wspomagającymi</strong>
+                        <ul>
+                            <li>Nawiguj między nagłówkami w czytnikach ekranu</li>
+                            <li>Przetestuj wypełnianie formularzy</li>
+                            <li>Sprawdź ogłaszanie etykiet i opisów</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Narzędzia testowe</h4>
+                <ul>
+                    <li><strong>HeadingsMap</strong> - browser extension do analizy struktury nagłówków</li>
+                    <li><strong>axe DevTools</strong> - sprawdza nagłówki i etykiety</li>
+                    <li><strong>WAVE</strong> - identyfikuje problemy z hierarchią</li>
+                    <li><strong>Screen readers</strong> - NVDA, JAWS, VoiceOver</li>
+                    <li><strong>Accessibility Insights</strong> - kompleksowa analiza</li>
+                </ul>
+
+                <h4>Checklist zgodności</h4>
+                <div
+                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <h5>✅ Kryteria do spełnienia:</h5>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>☐ Nagłówki są opisowe i informują o zawartości sekcji</li>
+                        <li>☐ Hierarchia nagłówków jest logiczna i spójna</li>
+                        <li>☐ Etykiety formularzy są połączone z polami</li>
+                        <li>☐ Etykiety jasno opisują cel i typ danych</li>
+                        <li>☐ Brak ogólnych fraz jak "więcej", "informacje"</li>
+                        <li>☐ Używane są semantyczne elementy nagłówków</li>
+                        <li>☐ Struktura działa z czytnikami ekranu</li>
+                        <li>☐ Etykiety są dostępne bez stylów CSS</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="implementation-guidelines">
+                <h3>Wytyczne implementacyjne</h3>
+
+                <h4>Najlepsze praktyki dla nagłówków:</h4>
+                <ul>
+                    <li><strong>Opisowość</strong> - nagłówek powinien jasno informować o zawartości sekcji</li>
+                    <li><strong>Hierarchia</strong> - używaj h1-h6 w logicznej kolejności</li>
+                    <li><strong>Jedyność h1</strong> - jeden h1 na stronę (główny temat)</li>
+                    <li><strong>Nie pomijaj poziomów</strong> - h1 → h2 → h3, nie h1 → h3</li>
+                    <li><strong>Semantyka przed stylami</strong> - używaj właściwych elementów</li>
+                    <li><strong>Spójność</strong> - podobne sekcje mają podobne nagłówki</li>
+                </ul>
+
+                <h4>Wzorce opisowych nagłówków:</h4>
+                <div
+                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #004085; margin-top: 0;">1. Artykuły i treści</h5>
+                    <pre style="color: #004085;"><code>✅ "Jak zadbać o bezpieczeństwo w aplikacjach webowych"
+✅ "10 najlepszych praktyk UX dla e-commerce"
+❌ "Więcej informacji"
+❌ "Artykuł"</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #155724; margin-top: 0;">2. Sekcje produktów</h5>
+                    <pre style="color: #155724;"><code>✅ "Smartfony Samsung - najnowsze modele"
+✅ "Akcesoria do telefonów - etui, ładowarki, słuchawki"
+❌ "Produkty"
+❌ "Zobacz"</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #856404; margin-top: 0;">3. Formularze i kontakt</h5>
+                    <pre style="color: #856404;"><code>✅ "Dane osobowe do rejestracji"
+✅ "Adres dostawy zamówienia"
+❌ "Dane"
+❌ "Formularz"</code></pre>
+                </div>
+
+                <h4>Najlepsze praktyki dla etykiet:</h4>
+                <ul>
+                    <li><strong>Połączenie z polem</strong> - używaj for/id lub aria-labelledby</li>
+                    <li><strong>Jasny cel</strong> - etykieta powinna informować o celu pola</li>
+                    <li><strong>Typ danych</strong> - wskaż jaki format jest oczekiwany</li>
+                    <li><strong>Wymagalność</strong> - oznaczaj pola wymagane</li>
+                    <li><strong>Instrukcje</strong> - używaj aria-describedby dla dodatkowych informacji</li>
+                    <li><strong>Grupy pól</strong> - używaj fieldset/legend dla powiązanych pól</li>
+                </ul>
+
+                <h4>Wzorce etykiet formularzy:</h4>
+                <div
+                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #721c24; margin-top: 0;">Przykłady implementacji</h5>
+                    <pre style="color: #721c24;"><code>&lt;!-- Podstawowa etykieta --&gt;
+&lt;label for="email"&gt;Adres email do kontaktu&lt;/label&gt;
+&lt;input type="email" id="email" required&gt;
+
+&lt;!-- Z dodatkową instrukcją --&gt;
+&lt;label for="phone"&gt;Numer telefonu&lt;/label&gt;
+&lt;input type="tel" id="phone" aria-describedby="phone-help"&gt;
+&lt;div id="phone-help"&gt;Format: +48 123 456 789&lt;/div&gt;
+
+&lt;!-- Grupa powiązanych pól --&gt;
+&lt;fieldset&gt;
+  &lt;legend&gt;Adres zamieszkania&lt;/legend&gt;
+  &lt;label for="street"&gt;Ulica i numer&lt;/label&gt;
+  &lt;input type="text" id="street"&gt;
+  &lt;label for="city"&gt;Miasto&lt;/label&gt;
+  &lt;input type="text" id="city"&gt;
+&lt;/fieldset&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/headings-and-labels.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG 2.1: Nagłówki i etykiety</a></li>
+                    <li><a href="https://webaim.org/techniques/semanticstructure/" target="_blank"
+                            rel="noopener">WebAIM: Semantic Structure</a></li>
+                    <li><a href="https://www.nngroup.com/articles/headings-pickup-lines/" target="_blank"
+                            rel="noopener">Nielsen Norman Group: Headings Are Pick-Up Lines</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Heading_Elements"
+                            target="_blank" rel="noopener">MDN: Heading elements</a></li>
+                    <li><a href="https://www.w3.org/WAI/tutorials/forms/labels/" target="_blank" rel="noopener">W3C:
+                            Labeling Controls</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.4.5.html">Poprzedni: 2.4.5 Różne sposoby nawigacji</a></li>
+                    <li><a href="2.4.7.html">Następny: 2.4.7 Widoczny fokus</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+
+    <script>
+        // Demo funkcjonalność dla przykładów nagłówków i etykiet
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // === ANALIZA ZŁYCH NAGŁÓWKÓW ===
+            window.analyzeBadHeadings = function () {
+                const analysis = `
+                    <div style="color: #dc3545;">
+                        <strong>🚫 Wykryte problemy:</strong><br>
+                        • Nagłówek "Więcej" - nie informuje o zawartości<br>
+                        • "Informacje" - zbyt ogólny, nie wskazuje tematu<br>
+                        • "Dane" - niejasny cel sekcji<br>
+                        • "Zobacz" - nie opisuje co można zobaczyć<br>
+                        • Brak logicznej hierarchii<br>
+                        • Niespójne poziomy nagłówków
+                    </div>
+                `;
+                document.getElementById('bad-heading-analysis').innerHTML = analysis;
+            };
+
+            // === ANALIZA DOBRYCH NAGŁÓWKÓW ===
+            window.analyzeGoodHeadings = function () {
+                const analysis = `
+                    <div style="color: #28a745;">
+                        <strong>✅ Zalety struktury:</strong><br>
+                        • Opisowe nagłówki informujące o zawartości<br>
+                        • Logiczna hierarchia H1 → H2 → H3 → H4<br>
+                        • Każdy nagłówek jasno określa temat sekcji<br>
+                        • Spójna terminologia w całej strukturze<br>
+                        • Ułatwia nawigację czytnikami ekranu<br>
+                        • Pomaga w orientacji przestrzennej
+                    </div>
+                `;
+                document.getElementById('good-heading-analysis').innerHTML = analysis;
+            };
+
+            // === PRZEŁĄCZANIE NARZĘDZI ===
+            window.showTool = function (toolType) {
+                // Ukryj wszystkie narzędzia
+                document.querySelectorAll('.tool-content').forEach(tool => {
+                    tool.style.display = 'none';
+                });
+
+                // Pokaż wybrane narzędzie
+                const selectedTool = document.getElementById(`tool-${toolType}`);
+                if (selectedTool) {
+                    selectedTool.style.display = 'block';
+                }
+
+                // Zaktualizuj przyciski
+                document.querySelectorAll('.tool-btn').forEach(btn => {
+                    btn.style.background = 'transparent';
+                    btn.style.color = '#856404';
+                });
+
+                const activeBtn = document.querySelector(`.tool-btn[data-tool="${toolType}"]`);
+                if (activeBtn) {
+                    activeBtn.style.background = '#ffc107';
+                    activeBtn.style.color = '#212529';
+                }
+
+                // Zaktualizuj opis
+                const descriptions = {
+                    'heading-analyzer': 'Analizator nagłówków - sprawdza hierarchię i strukturę nagłówków w kodzie HTML',
+                    'heading-generator': 'Generator nagłówków - pomaga tworzyć opisowe i angażujące nagłówki',
+                    'label-checker': 'Sprawdzacz etykiet - weryfikuje powiązania między etykietami a polami formularzy',
+                    'screen-reader-sim': 'Symulator czytnika ekranu - pokazuje jak nagłówki i etykiety są interpretowane'
+                };
+
+                const description = descriptions[toolType] || 'Narzędzie do analizy dostępności';
+                document.getElementById('tool-description').textContent = description;
+            };
+
+            // === ANALIZATOR NAGŁÓWKÓW ===
+            window.analyzeHeadings = function () {
+                const html = document.getElementById('heading-html').value;
+                const results = document.getElementById('heading-results');
+                const output = document.getElementById('heading-output');
+
+                if (!html.trim()) {
+                    showNotification('Wprowadź kod HTML z nagłówkami', 'warning');
+                    return;
+                }
+
+                // Prosta analiza nagłówków
+                const headings = html.match(/<h[1-6][^>]*>.*?<\/h[1-6]>/gi) || [];
+                let analysis = '';
+                let problems = [];
+                let previousLevel = 0;
+
+                if (headings.length === 0) {
+                    analysis = '<div style="color: #dc3545;">❌ Nie znaleziono nagłówków w kodzie</div>';
+                } else {
+                    analysis = '<div style="margin-bottom: 15px;"><strong>Znalezione nagłówki:</strong></div>';
+
+                    headings.forEach((heading, index) => {
+                        const levelMatch = heading.match(/<h([1-6])/);
+                        const textMatch = heading.match(/>([^<]+)</);
+
+                        if (levelMatch && textMatch) {
+                            const level = parseInt(levelMatch[1]);
+                            const text = textMatch[1].trim();
+
+                            // Sprawdź hierarchię
+                            if (index > 0 && level > previousLevel + 1) {
+                                problems.push(`H${level}: Pominięto poziom (poprzedni: H${previousLevel})`);
+                            }
+
+                            // Sprawdź opisowość
+                            const shortWords = ['więcej', 'informacje', 'dane', 'zobacz', 'link', 'tutaj'];
+                            if (shortWords.some(word => text.toLowerCase().includes(word)) && text.length < 20) {
+                                problems.push(`H${level}: Nieopisowy tekst "${text}"`);
+                            }
+
+                            analysis += `
+                                <div style="margin: 8px 0; padding: 8px; background: #f8f9fa; border-left: 3px solid #007bff;">
+                                    <strong>H${level}:</strong> ${text}
+                                    ${level === 1 ? '<span style="color: #28a745; margin-left: 10px;">✓ Główny nagłówek</span>' : ''}
+                                </div>
+                            `;
+
+                            previousLevel = level;
+                        }
+                    });
+
+                    if (problems.length > 0) {
+                        analysis += '<div style="margin-top: 15px;"><strong style="color: #dc3545;">⚠️ Wykryte problemy:</strong></div>';
+                        problems.forEach(problem => {
+                            analysis += `<div style="color: #dc3545; margin: 5px 0;">• ${problem}</div>`;
+                        });
+                    } else {
+                        analysis += '<div style="color: #28a745; margin-top: 15px;"><strong>✅ Struktura wygląda poprawnie!</strong></div>';
+                    }
+                }
+
+                output.innerHTML = analysis;
+                results.style.display = 'block';
+            };
+
+            // === GENERATOR NAGŁÓWKÓW ===
+            window.generateHeadings = function () {
+                const contentType = document.getElementById('content-type').value;
+                const keywords = document.getElementById('topic-keywords').value;
+                const audience = document.getElementById('target-audience').value;
+                const output = document.getElementById('headings-output');
+                const results = document.getElementById('generated-headings');
+
+                if (!keywords.trim()) {
+                    showNotification('Wprowadź słowa kluczowe tematu', 'warning');
+                    return;
+                }
+
+                // Szablony nagłówków
+                const templates = {
+                    article: {
+                        general: ['Kompletny przewodnik po {keywords}', 'Wszystko co musisz wiedzieć o {keywords}', '{keywords} - najważniejsze informacje'],
+                        technical: ['Zaawansowane techniki {keywords}', 'Implementacja {keywords} krok po kroku', 'Najlepsze praktyki {keywords}'],
+                        business: ['{keywords} dla biznesu - ROI i korzyści', 'Jak {keywords} zwiększa efektywność firmy', 'Strategia wdrożenia {keywords}'],
+                        beginner: ['{keywords} dla początkujących', 'Wprowadzenie do {keywords}', 'Podstawy {keywords} w prostych słowach']
+                    },
+                    product: {
+                        general: ['{keywords} - przegląd funkcji i możliwości', 'Najlepsze {keywords} na rynku 2024', '{keywords} - porównanie modeli'],
+                        technical: ['{keywords} - specyfikacja techniczna', 'Zaawansowane funkcje {keywords}', '{keywords} - analiza wydajności'],
+                        business: ['{keywords} dla przedsiębiorstw', 'ROI z inwestycji w {keywords}', '{keywords} - korzyści biznesowe'],
+                        beginner: ['{keywords} - przewodnik zakupowy', 'Jak wybrać odpowiednie {keywords}', '{keywords} - podstawowe funkcje']
+                    },
+                    service: {
+                        general: ['Usługi {keywords} - oferta i cennik', 'Profesjonalne {keywords} dla Twojej firmy', '{keywords} - kompleksowe rozwiązania'],
+                        technical: ['Zaawansowane usługi {keywords}', '{keywords} - implementacja i wsparcie', 'Specjalistyczne {keywords}'],
+                        business: ['{keywords} dla biznesu - pakiety usług', 'Outsourcing {keywords}', '{keywords} - optymalizacja kosztów'],
+                        beginner: ['{keywords} - podstawowe usługi', 'Wprowadzenie do usług {keywords}', '{keywords} - pierwsze kroki']
+                    }
+                };
+
+                const selectedTemplates = templates[contentType]?.[audience] || templates.article.general;
+
+                let generatedHeadings = '<div style="margin-bottom: 15px;"><strong>Sugerowane nagłówki:</strong></div>';
+
+                selectedTemplates.forEach((template, index) => {
+                    const heading = template.replace('{keywords}', keywords);
+                    const level = index === 0 ? 'H1' : 'H2';
+                    generatedHeadings += `
+                        <div style="margin: 10px 0; padding: 10px; background: #f8f9fa; border-left: 3px solid #28a745; cursor: pointer;" onclick="copyHeading('${heading}')">
+                            <strong>${level}:</strong> ${heading}
+                            <span style="float: right; color: #6c757d; font-size: 0.8em;">Kliknij aby skopiować</span>
+                        </div>
+                    `;
+                });
+
+                output.innerHTML = generatedHeadings;
+                results.style.display = 'block';
+            };
+
+            window.copyHeading = function (text) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showNotification('Nagłówek skopiowany do schowka!', 'success');
+                });
+            };
+
+            // === SPRAWDZACZ ETYKIET ===
+            window.checkLabels = function () {
+                const html = document.getElementById('form-html').value;
+                const results = document.getElementById('label-results');
+                const output = document.getElementById('label-output');
+
+                if (!html.trim()) {
+                    showNotification('Wprowadź kod HTML formularza', 'warning');
+                    return;
+                }
+
+                // Analiza etykiet
+                const inputs = html.match(/<input[^>]*>/gi) || [];
+                const labels = html.match(/<label[^>]*>.*?<\/label>/gi) || [];
+                let analysis = '';
+                let problems = [];
+                let successes = [];
+
+                analysis += `<div style="margin-bottom: 15px;"><strong>Analiza formularza:</strong></div>`;
+                analysis += `<div>Znaleziono: ${inputs.length} pól, ${labels.length} etykiet</div>`;
+
+                inputs.forEach((input, index) => {
+                    const idMatch = input.match(/id="([^"]+)"/);
+                    const typeMatch = input.match(/type="([^"]+)"/);
+                    const placeholderMatch = input.match(/placeholder="([^"]+)"/);
+                    const ariaLabelMatch = input.match(/aria-label="([^"]+)"/);
+
+                    const inputId = idMatch ? idMatch[1] : null;
+                    const inputType = typeMatch ? typeMatch[1] : 'text';
+
+                    // Sprawdź czy pole ma etykietę
+                    let hasLabel = false;
+                    let labelText = '';
+
+                    if (inputId) {
+                        const associatedLabel = labels.find(label => label.includes(`for="${inputId}"`));
+                        if (associatedLabel) {
+                            hasLabel = true;
+                            const textMatch = associatedLabel.match(/>([^<]+)</);
+                            labelText = textMatch ? textMatch[1].trim() : '';
+                        }
+                    }
+
+                    if (ariaLabelMatch) {
+                        hasLabel = true;
+                        labelText = ariaLabelMatch[1];
+                    }
+
+                    if (hasLabel) {
+                        successes.push(`${inputType} field: "${labelText}" ✓`);
+                    } else {
+                        if (placeholderMatch) {
+                            problems.push(`${inputType} field: tylko placeholder "${placeholderMatch[1]}" (brak prawdziwej etykiety)`);
+                        } else {
+                            problems.push(`${inputType} field: brak etykiety`);
+                        }
+                    }
+                });
+
+                if (successes.length > 0) {
+                    analysis += '<div style="margin-top: 15px;"><strong style="color: #28a745;">✅ Prawidłowe etykiety:</strong></div>';
+                    successes.forEach(success => {
+                        analysis += `<div style="color: #28a745; margin: 5px 0;">• ${success}</div>`;
+                    });
+                }
+
+                if (problems.length > 0) {
+                    analysis += '<div style="margin-top: 15px;"><strong style="color: #dc3545;">⚠️ Problemy z etykietami:</strong></div>';
+                    problems.forEach(problem => {
+                        analysis += `<div style="color: #dc3545; margin: 5px 0;">• ${problem}</div>`;
+                    });
+                } else if (inputs.length > 0) {
+                    analysis += '<div style="color: #28a745; margin-top: 15px;"><strong>🎉 Wszystkie pola mają prawidłowe etykiety!</strong></div>';
+                }
+
+                output.innerHTML = analysis;
+                results.style.display = 'block';
+            };
+
+            // === SYMULATOR CZYTNIKA EKRANU ===
+            window.simulateReading = function (text) {
+                const output = document.getElementById('reader-text');
+                const container = document.getElementById('screen-reader-output');
+
+                // Animacja pisania
+                output.textContent = '';
+                container.style.background = '#28a745';
+
+                let index = 0;
+                const typeWriter = () => {
+                    if (index < text.length) {
+                        output.textContent += text.charAt(index);
+                        index++;
+                        setTimeout(typeWriter, 50);
+                    } else {
+                        setTimeout(() => {
+                            container.style.background = '#212529';
+                        }, 2000);
+                    }
+                };
+
+                typeWriter();
+            };
+
+            function showNotification(message, type) {
+                const notification = document.createElement('div');
+                const colors = {
+                    'success': '#d4edda',
+                    'error': '#f8d7da',
+                    'info': '#e7f3ff',
+                    'warning': '#fff3cd'
+                };
+
+                const borderColors = {
+                    'success': '#28a745',
+                    'error': '#dc3545',
+                    'info': '#007bff',
+                    'warning': '#ffc107'
+                };
+
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: ${colors[type] || colors.info};
+                    color: #495057;
+                    padding: 12px 20px;
+                    border-radius: 4px;
+                    border-left: 4px solid ${borderColors[type] || borderColors.info};
+                    z-index: 1000;
+                    max-width: 400px;
+                    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                    font-size: 14px;
+                    line-height: 1.4;
+                `;
+                notification.textContent = message;
+
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.style.opacity = '0';
+                    notification.style.transition = 'opacity 0.3s';
+                    setTimeout(() => {
+                        if (document.body.contains(notification)) {
+                            document.body.removeChild(notification);
+                        }
+                    }, 300);
+                }, 4000);
+            }
+        });
+    </script>
+</body>
+
+</html>
