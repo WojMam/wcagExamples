@@ -802,7 +802,7 @@ app.use(AbbreviationPlugin, {
             const expansion = this.getExpansion(abbr, context);
             if (!expansion) return;
             
-            const regex = new RegExp(`\\b${this.escapeRegex(abbr)}\\b`, 'g');
+            const regex = new RegExp(`\\b(${this.escapeRegex(abbr)})\\b`, 'g');
             
             textNodes.forEach(node => {
                 if (regex.test(node.textContent) && !this.processed.has(node)) {
@@ -1132,21 +1132,12 @@ Frequently Asked Questions (&lt;abbr&gt;FAQ&lt;/abbr&gt;) - Często Zadawane Pyt
             </ul>
         </section>
 
-        <nav class="page-navigation" aria-label="Nawigacja między stronami">
-            <a href="3.1.3.html" class="nav-link prev-page">
-                <span class="nav-arrow">←</span>
-                <span class="nav-text">
-                    <span class="nav-label">Poprzednia</span>
-                    <span class="nav-title">3.1.3 Nietypowe słowa</span>
-                </span>
-            </a>
-            <a href="3.1.5.html" class="nav-link next-page">
-                <span class="nav-text">
-                    <span class="nav-label">Następna</span>
-                    <span class="nav-title">3.1.5 Poziom trudności czytania (w przygotowaniu)</span>
-                </span>
-                <span class="nav-arrow">→</span>
-            </a>
+        <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+            <ul>
+                <li><a href="3.1.3.html">Poprzedni: 3.1.3 Nietypowe słowa</a></li>
+                <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                <li><a href="3.1.5.html">Następny: 3.1.5 Poziom trudności czytania</a></li>
+            </ul>
         </nav>
     </main>
 

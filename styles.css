@@ -234,6 +234,59 @@ p {
 	margin-bottom: 10px;
 }
 
+/* Style dla nowych klas przykładów */
+.example-block {
+	padding: 15px;
+	border-radius: 5px;
+	margin-bottom: 15px;
+	border-left: 5px solid;
+}
+
+.example-block.good-example {
+	background-color: #e8f5e9;
+	border-left-color: var(--good-color);
+}
+
+.example-block.bad-example {
+	background-color: #ffebee;
+	border-left-color: var(--bad-color);
+}
+
+.example-block h4 {
+	margin-top: 0;
+	margin-bottom: 10px;
+}
+
+/* Style dla nagłówków praktyk */
+.good-practice {
+	color: var(--good-color) !important;
+}
+
+.bad-practice {
+	color: var(--bad-color) !important;
+}
+
+/* Style dla ostrzeżeń i grup demonstracyjnych */
+.warning-group {
+	background-color: #fff3cd;
+	border-color: #ffeaa7 !important;
+}
+
+.warning-text {
+	color: #856404;
+	font-style: italic;
+	font-size: 0.9em;
+}
+
+.demo-warning {
+	background-color: var(--bad-color);
+	color: white;
+	padding: 15px;
+	border-radius: 5px;
+	margin: 10px 0;
+	animation: fadeInOut 3s forwards;
+}
+
 /* Styl dla bloków kodu */
 pre {
 	background-color: var(--code-bg);

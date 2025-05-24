@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.2.1 Po otrzymaniu fokusa (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>3.2.1 Po otrzymaniu fokusa (A)</h1>
+            <p>Gdy dowolny element interfejsu użytkownika otrzymuje fokus,
+                nie powoduje to zmiany kontekstu.</p>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>To kryterium wymaga, aby otrzymanie fokusa przez element nie powodowało
+                nieoczekiwanych zmian w kontekście strony. Oznacza to, że sama czynność
+                przeniesienia fokusa na element (przy użyciu klawiatury, myszy lub technologii wspomagających)
+                nie może prowadzić do:</p>
+            <ul>
+                <li>Automatycznego wysłania formularza</li>
+                <li>Otwarcia nowego okna lub karty</li>
+                <li>Przeniesienia fokusa na inny element</li>
+                <li>Istotnej zmiany zawartości strony</li>
+                <li>Rozpoczęcia odtwarzania mediów</li>
+            </ul>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Osoby niewidome</strong> - używające czytników ekranu do nawigacji</li>
+                <li><strong>Osoby z ograniczeniami motorycznymi</strong> - które mogą przypadkowo przesunąć fokus</li>
+                <li><strong>Osoby z ograniczeniami poznawczymi</strong> - które potrzebują przewidywalności</li>
+                <li><strong>Osoby z zespołem nadpobudliwości (ADHD)</strong> - które mogą być rozpraszane</li>
+                <li><strong>Osoby z padaczką</strong> - które mogą być wrażliwe na niespodziewane zmiany</li>
+                <li><strong>Użytkownicy klawiatury</strong> - którzy navigują sekwencyjnie przez elementy</li>
+                <li><strong>Starsi użytkownicy</strong> - którzy preferują przewidywalny interfejs</li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje</h2>
+            <dl>
+                <dt><strong>Fokus (Focus)</strong></dt>
+                <dd>Stan elementu interfejsu, który jest obecnie aktywny i gotowy do interakcji.
+                    Element z fokusem może odbierać dane wejściowe z klawiatury.</dd>
+
+                <dt><strong>Zmiana kontekstu (Change of context)</strong></dt>
+                <dd>Znaczące zmiany w treści strony internetowej, które mogą dezorientować użytkowników,
+                    jeśli nie są oni świadomi, że zmiana może wystąpić.</dd>
+
+                <dt><strong>Element interfejsu użytkownika</strong></dt>
+                <dd>Część treści, która jest postrzegana przez użytkowników jako pojedynczy element kontrolny
+                    dla określonej funkcji.</dd>
+
+                <dt><strong>Otrzymanie fokusa</strong></dt>
+                <dd>Sytuacja, w której element staje się aktywnym elementem na stronie,
+                    gotowym do odbierania wprowadzanych danych.</dd>
+            </dl>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Automatyczne wysłanie formularza na fokus</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - formularz wysyła się gdy input otrzyma fokus --&gt;
+&lt;form&gt;
+    &lt;input type="text" onfocus="this.form.submit()" placeholder="Wpisz tekst"&gt;
+&lt;/form&gt;</code></pre>
+                <p><strong>Problem:</strong> Użytkownik nie ma możliwości wprowadzenia danych - formularz wysyła się
+                    natychmiast.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Otwarcie okna popup na fokus</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - link otwiera popup przy otrzymaniu fokusa --&gt;
+&lt;a href="help.html" onfocus="window.open(this.href, 'popup'); return false;"&gt;
+    Pomoc
+&lt;/a&gt;</code></pre>
+                <p><strong>Problem:</strong> Okno otwiera się niespodziewanie, nawet gdy użytkownik tylko przechodzi
+                    przez linki.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Przeniesienie fokusa na inny element</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - fokus automatycznie przenosi się dalej --&gt;
+&lt;input type="text" onfocus="document.getElementById('next-field').focus()" 
+       placeholder="Pole 1"&gt;
+&lt;input type="text" id="next-field" placeholder="Pole 2"&gt;</code></pre>
+                <p><strong>Problem:</strong> Użytkownik nie może skupić się na pierwszym polu, fokus skacze
+                    automatycznie.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Zmiana zawartości strony na fokus</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - treść zmienia się przy fokusie --&gt;
+&lt;button onfocus="changePageContent()"&gt;Opcje&lt;/button&gt;
+
+&lt;script&gt;
+function changePageContent() {
+    document.getElementById('main-content').innerHTML = '&lt;h1&gt;Nowa zawartość&lt;/h1&gt;';
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Problem:</strong> Istotna zmiana treści może dezorientować użytkownika.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Automatyczne rozpoczęcie odtwarzania na fokus</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - wideo rozpoczyna się przy fokusie --&gt;
+&lt;video controls onfocus="this.play()"&gt;
+    &lt;source src="movie.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+                <p><strong>Problem:</strong> Odtwarzanie rozpoczyna się niespodziewanie, może rozpraszać i być
+                    niedostępne.</p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Bezpieczne otrzymanie fokusa</h4>
+                <pre><code class="language-html">&lt;!-- Prawidłowe - fokus nie powoduje zmian --&gt;
+&lt;form&gt;
+    &lt;label for="search-input"&gt;Wyszukaj:&lt;/label&gt;
+    &lt;input type="text" id="search-input" placeholder="Wprowadź wyszukiwany tekst"&gt;
+    &lt;button type="submit"&gt;Szukaj&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Użytkownik może skupić się na polu bez niespodziewanych akcji.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Pomoc kontekstowa na fokus</h4>
+                <pre><code class="language-html">&lt;!-- Prawidłowe - pokazanie pomocy nie zmienia kontekstu --&gt;
+&lt;div class="field-group"&gt;
+    &lt;label for="password"&gt;Hasło:&lt;/label&gt;
+    &lt;input type="password" id="password" 
+           aria-describedby="password-help"
+           onfocus="showHelp('password-help')"
+           onblur="hideHelp('password-help')"&gt;
+    &lt;div id="password-help" class="help-text" style="display: none;"&gt;
+        Hasło musi mieć co najmniej 8 znaków
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function showHelp(helpId) {
+    document.getElementById(helpId).style.display = 'block';
+}
+
+function hideHelp(helpId) {
+    document.getElementById(helpId).style.display = 'none';
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Pomoc pojawia się lokalnie, nie zmienia głównego kontekstu strony.
+                </p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Dropdown menu na fokus</h4>
+                <pre><code class="language-html">&lt;!-- Prawidłowe - menu rozwija się bez zmiany kontekstu --&gt;
+&lt;div class="dropdown"&gt;
+    &lt;button class="dropdown-toggle" 
+            aria-haspopup="true" 
+            aria-expanded="false"
+            onfocus="showDropdown(this)"
+            onblur="hideDropdown(this)"&gt;
+        Menu opcji ▼
+    &lt;/button&gt;
+    &lt;ul class="dropdown-menu" style="display: none;"&gt;
+        &lt;li&gt;&lt;a href="#option1"&gt;Opcja 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#option2"&gt;Opcja 2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#option3"&gt;Opcja 3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function showDropdown(button) {
+    const menu = button.nextElementSibling;
+    menu.style.display = 'block';
+    button.setAttribute('aria-expanded', 'true');
+}
+
+function hideDropdown(button) {
+    // Opóźnienie, aby umożliwić kliknięcie w menu
+    setTimeout(() =&gt; {
+        const menu = button.nextElementSibling;
+        if (!menu.contains(document.activeElement)) {
+            menu.style.display = 'none';
+            button.setAttribute('aria-expanded', 'false');
+        }
+    }, 150);
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Menu rozwija się lokalnie, nie wpływa na resztę strony.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Tooltip na fokus</h4>
+                <pre><code class="language-html">&lt;!-- Prawidłowe - tooltip nie zmienia kontekstu --&gt;
+&lt;span class="tooltip-container"&gt;
+    &lt;button class="info-button" 
+            aria-describedby="tooltip-1"
+            onfocus="showTooltip('tooltip-1')"
+            onblur="hideTooltip('tooltip-1')"
+            onmouseenter="showTooltip('tooltip-1')"
+            onmouseleave="hideTooltip('tooltip-1')"&gt;
+        ℹ️ Info
+    &lt;/button&gt;
+    &lt;div id="tooltip-1" class="tooltip" role="tooltip" style="display: none;"&gt;
+        Dodatkowe informacje o tym elemencie
+    &lt;/div&gt;
+&lt;/span&gt;
+
+&lt;style&gt;
+.tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip {
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #333;
+}
+&lt;/style&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Tooltip pojawia się jako dodatek wizualny, nie zmienia
+                    funkcjonalności strony.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Kontrolowane akcje</h4>
+                <pre><code class="language-html">&lt;!-- Prawidłowe - akcje wymagają jawnej interakcji --&gt;
+&lt;div class="media-player"&gt;
+    &lt;video controls&gt;
+        &lt;source src="movie.mp4" type="video/mp4"&gt;
+        Twoja przeglądarka nie obsługuje elementu video.
+    &lt;/video&gt;
+    &lt;div class="player-controls"&gt;
+        &lt;button onclick="playVideo()" aria-label="Odtwórz wideo"&gt;▶️ Play&lt;/button&gt;
+        &lt;button onclick="pauseVideo()" aria-label="Wstrzymaj wideo"&gt;⏸️ Pause&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+const video = document.querySelector('video');
+
+function playVideo() {
+    video.play();
+}
+
+function pauseVideo() {
+    video.pause();
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Odtwarzanie wymaga świadomej akcji użytkownika, nie dzieje się
+                    automatycznie.</p>
+            </div>
+        </section>
+
+        <section class="interactive-demo">
+            <h2>Interaktywne demo - testy fokusa</h2>
+            <p>Przetestuj różne zachowania elementów przy otrzymywaniu fokusa:</p>
+
+            <div class="demo-container">
+                <h3>Bezpieczne zachowania na fokus</h3>
+                <div class="safe-focus-demo">
+                    <div class="demo-group">
+                        <h4>✅ Prawidłowe przykłady:</h4>
+
+                        <div class="demo-item">
+                            <label for="safe-input">Pole tekstowe:</label>
+                            <input type="text" id="safe-input" placeholder="Kliknij lub naciśnij Tab"
+                                onfocus="logFocusEvent('Bezpieczne pole tekstowe otrzymało fokus')"
+                                onblur="logFocusEvent('Bezpieczne pole tekstowe straciło fokus')">
+                        </div>
+
+                        <div class="demo-item">
+                            <button id="safe-button" onfocus="showSafeTooltip()" onblur="hideSafeTooltip()"
+                                onmouseenter="showSafeTooltip()" onmouseleave="hideSafeTooltip()">
+                                Przycisk z tooltipem
+                            </button>
+                            <div id="safe-tooltip" class="demo-tooltip" style="display: none;">
+                                To jest bezpieczny tooltip
+                            </div>
+                        </div>
+
+                        <div class="demo-item">
+                            <select id="safe-select" onfocus="logFocusEvent('Lista rozwijana otrzymała fokus')"
+                                onchange="logFocusEvent('Zmieniono wartość listy')">
+                                <option>Wybierz opcję...</option>
+                                <option value="1">Opcja 1</option>
+                                <option value="2">Opcja 2</option>
+                                <option value="3">Opcja 3</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="demo-group warning-group">
+                        <h4>⚠️ Niebezpieczne przykłady (tylko demonstracja):</h4>
+                        <p><em>Te elementy pokazują problematyczne zachowania, ale są bezpieczne w tym demo.</em></p>
+
+                        <div class="demo-item">
+                            <input type="text" id="unsafe-input" placeholder="Niebezpieczne pole"
+                                onfocus="demonstrateUnsafeBehavior('auto-submit')">
+                            <span class="warning-text">W prawdziwej implementacji: automatyczne wysłanie
+                                formularza</span>
+                        </div>
+
+                        <div class="demo-item">
+                            <button id="unsafe-button" onfocus="demonstrateUnsafeBehavior('popup')">
+                                Niebezpieczny przycisk
+                            </button>
+                            <span class="warning-text">W prawdziwej implementacji: otwarcie nowego okna</span>
+                        </div>
+
+                        <div class="demo-item">
+                            <button id="focus-stealer" onfocus="demonstrateUnsafeBehavior('focus-steal')">
+                                Przycisk kradnący fokus
+                            </button>
+                            <span class="warning-text">W prawdziwej implementacji: przeniesienie fokusa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-log">
+                    <h4>Log zdarzeń fokusa:</h4>
+                    <div id="focus-log" class="log-area"></div>
+                    <button onclick="clearFocusLog()" class="clear-button">Wyczyść log</button>
+                </div>
+            </div>
+
+            <script>
+                let focusLogCount = 0;
+
+                function logFocusEvent(message) {
+                    const log = document.getElementById('focus-log');
+                    const timestamp = new Date().toLocaleTimeString();
+                    const entry = document.createElement('div');
+                    entry.className = 'log-entry';
+                    entry.innerHTML = `<span class="timestamp">[${timestamp}]</span> ${message}`;
+                    log.appendChild(entry);
+                    log.scrollTop = log.scrollHeight;
+                    focusLogCount++;
+                }
+
+                function showSafeTooltip() {
+                    document.getElementById('safe-tooltip').style.display = 'block';
+                    logFocusEvent('Tooltip pokazany (bezpieczne zachowanie)');
+                }
+
+                function hideSafeTooltip() {
+                    document.getElementById('safe-tooltip').style.display = 'none';
+                    logFocusEvent('Tooltip ukryty');
+                }
+
+                function demonstrateUnsafeBehavior(type) {
+                    const messages = {
+                        'auto-submit': '🚫 DEMO: W prawdziwej sytuacji formularz zostałby automatycznie wysłany',
+                        'popup': '🚫 DEMO: W prawdziwej sytuacji otworzyłoby się nowe okno',
+                        'focus-steal': '🚫 DEMO: W prawdziwej sytuacji fokus zostałby przeniesiony na inny element'
+                    };
+
+                    logFocusEvent(messages[type]);
+
+                    // Pokaż ostrzeżenie wizualne
+                    const warning = document.createElement('div');
+                    warning.className = 'demo-warning';
+                    warning.textContent = 'Niebezpieczne zachowanie zostało powstrzymane w demo!';
+                    warning.style.cssText = `
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        background: #dc3545;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 5px;
+                        z-index: 1000;
+                        animation: fadeInOut 3s forwards;
+                    `;
+
+                    document.body.appendChild(warning);
+
+                    setTimeout(() => {
+                        if (warning.parentNode) {
+                            warning.parentNode.removeChild(warning);
+                        }
+                    }, 3000);
+                }
+
+                function clearFocusLog() {
+                    document.getElementById('focus-log').innerHTML = '';
+                    focusLogCount = 0;
+                    logFocusEvent('Log wyczyszczony');
+                }
+
+                // Style dla animacji ostrzeżeń
+                const style = document.createElement('style');
+                style.textContent = `
+                    @keyframes fadeInOut {
+                        0% { opacity: 0; transform: translateX(100%); }
+                        20% { opacity: 1; transform: translateX(0); }
+                        80% { opacity: 1; transform: translateX(0); }
+                        100% { opacity: 0; transform: translateX(100%); }
+                    }
+                `;
+                document.head.appendChild(style);
+            </script>
+
+            <style>
+                .demo-container {
+                    background-color: #f8f9fa;
+                    border: 1px solid #dee2e6;
+                    border-radius: 5px;
+                    padding: 20px;
+                    margin: 20px 0;
+                }
+
+                .demo-group {
+                    margin-bottom: 30px;
+                    padding: 15px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+
+                .warning-group {
+                    background-color: #fff3cd;
+                    border-color: #ffeaa7;
+                }
+
+                .demo-item {
+                    margin: 15px 0;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                }
+
+                .demo-item input,
+                .demo-item select,
+                .demo-item button {
+                    padding: 8px 12px;
+                    border: 1px solid #ccc;
+                    border-radius: 3px;
+                    font-size: 14px;
+                }
+
+                .demo-item button {
+                    background-color: #007cba;
+                    color: white;
+                    cursor: pointer;
+                }
+
+                .demo-item button:hover {
+                    background-color: #005a87;
+                }
+
+                .demo-item button:focus {
+                    outline: 2px solid #005a87;
+                    outline-offset: 2px;
+                }
+
+                .demo-tooltip {
+                    background-color: #333;
+                    color: white;
+                    padding: 8px 12px;
+                    border-radius: 4px;
+                    font-size: 12px;
+                    position: relative;
+                    margin-left: 10px;
+                }
+
+                .warning-text {
+                    font-size: 12px;
+                    color: #856404;
+                    font-style: italic;
+                    flex-basis: 100%;
+                }
+
+                .demo-log {
+                    margin-top: 20px;
+                    padding: 15px;
+                    background-color: white;
+                    border: 1px solid #dee2e6;
+                    border-radius: 5px;
+                }
+
+                .log-area {
+                    height: 200px;
+                    overflow-y: auto;
+                    border: 1px solid #ccc;
+                    padding: 10px;
+                    background-color: #f8f9fa;
+                    font-family: monospace;
+                    font-size: 12px;
+                    margin-bottom: 10px;
+                }
+
+                .log-entry {
+                    margin-bottom: 5px;
+                    padding: 2px 0;
+                }
+
+                .timestamp {
+                    color: #666;
+                    font-weight: bold;
+                }
+
+                .clear-button {
+                    background-color: #6c757d;
+                    color: white;
+                    border: none;
+                    padding: 8px 16px;
+                    border-radius: 3px;
+                    cursor: pointer;
+                }
+
+                .clear-button:hover {
+                    background-color: #545b62;
+                }
+            </style>
+        </section>
+
+        <section class="focus-testing">
+            <h2>Automatyczne testowanie fokusa</h2>
+            <p>Użyj tego narzędzia do analizy zachowań elementów na fokus:</p>
+
+            <div class="testing-tool">
+                <div class="tool-controls">
+                    <button id="start-focus-test" class="test-button">Rozpocznij test fokusa</button>
+                    <button id="analyze-page" class="test-button">Analizuj stronę</button>
+                    <button id="stop-test" class="test-button" disabled>Zatrzymaj test</button>
+                </div>
+
+                <div class="test-results">
+                    <h4>Wyniki testów:</h4>
+                    <div id="test-results-area"></div>
+                </div>
+            </div>
+
+            <script>
+                let focusTestActive = false;
+                let focusEvents = [];
+                let originalFocusHandlers = new Map();
+
+                function startFocusTest() {
+                    if (focusTestActive) return;
+
+                    focusTestActive = true;
+                    focusEvents = [];
+
+                    // Aktualizuj przyciski
+                    document.getElementById('start-focus-test').disabled = true;
+                    document.getElementById('stop-test').disabled = false;
+
+                    // Monitoruj wszystkie elementy focusable
+                    const focusableElements = document.querySelectorAll(
+                        'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                    );
+
+                    focusableElements.forEach(element => {
+                        // Zapisz oryginalne handlery
+                        const originalFocus = element.getAttribute('onfocus');
+                        if (originalFocus) {
+                            originalFocusHandlers.set(element, originalFocus);
+                        }
+
+                        // Dodaj nasłuchiwacz
+                        element.addEventListener('focus', monitorFocusEvent);
+                        element.addEventListener('blur', monitorBlurEvent);
+                    });
+
+                    showTestMessage('Test fokusa rozpoczęty. Nawiguj przez stronę używając Tab/Shift+Tab.');
+                }
+
+                function stopFocusTest() {
+                    if (!focusTestActive) return;
+
+                    focusTestActive = false;
+
+                    // Aktualizuj przyciski
+                    document.getElementById('start-focus-test').disabled = false;
+                    document.getElementById('stop-test').disabled = true;
+
+                    // Usuń nasłuchiwacze
+                    const focusableElements = document.querySelectorAll(
+                        'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                    );
+
+                    focusableElements.forEach(element => {
+                        element.removeEventListener('focus', monitorFocusEvent);
+                        element.removeEventListener('blur', monitorBlurEvent);
+                    });
+
+                    // Pokaż wyniki
+                    displayTestResults();
+                    showTestMessage('Test fokusa zakończony.');
+                }
+
+                function monitorFocusEvent(event) {
+                    const element = event.target;
+                    const timestamp = Date.now();
+
+                    // Sprawdź czy element ma problematyczne zachowania
+                    const issues = checkForFocusIssues(element);
+
+                    focusEvents.push({
+                        type: 'focus',
+                        element: element,
+                        tagName: element.tagName,
+                        id: element.id || '',
+                        className: element.className || '',
+                        timestamp: timestamp,
+                        issues: issues
+                    });
+                }
+
+                function monitorBlurEvent(event) {
+                    const element = event.target;
+                    const timestamp = Date.now();
+
+                    focusEvents.push({
+                        type: 'blur',
+                        element: element,
+                        tagName: element.tagName,
+                        id: element.id || '',
+                        timestamp: timestamp,
+                        issues: []
+                    });
+                }
+
+                function checkForFocusIssues(element) {
+                    const issues = [];
+
+                    // Sprawdź onfocus handler
+                    const focusHandler = element.getAttribute('onfocus');
+                    if (focusHandler) {
+                        if (focusHandler.includes('submit')) {
+                            issues.push('Automatyczne wysłanie formularza');
+                        }
+                        if (focusHandler.includes('window.open') || focusHandler.includes('open(')) {
+                            issues.push('Otwieranie nowego okna');
+                        }
+                        if (focusHandler.includes('.focus()')) {
+                            issues.push('Przeniesienie fokusa');
+                        }
+                        if (focusHandler.includes('location') || focusHandler.includes('href')) {
+                            issues.push('Przekierowanie');
+                        }
+                        if (focusHandler.includes('play()')) {
+                            issues.push('Automatyczne odtwarzanie mediów');
+                        }
+                    }
+
+                    return issues;
+                }
+
+                function analyzePage() {
+                    const analysis = {
+                        totalFocusable: 0,
+                        elementsWithFocusHandlers: 0,
+                        potentialIssues: [],
+                        recommendations: []
+                    };
+
+                    const focusableElements = document.querySelectorAll(
+                        'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                    );
+
+                    analysis.totalFocusable = focusableElements.length;
+
+                    focusableElements.forEach(element => {
+                        const focusHandler = element.getAttribute('onfocus');
+                        if (focusHandler) {
+                            analysis.elementsWithFocusHandlers++;
+
+                            const issues = checkForFocusIssues(element);
+                            if (issues.length > 0) {
+                                analysis.potentialIssues.push({
+                                    element: element,
+                                    selector: getElementSelector(element),
+                                    issues: issues
+                                });
+                            }
+                        }
+                    });
+
+                    // Generuj rekomendacje
+                    if (analysis.potentialIssues.length > 0) {
+                        analysis.recommendations.push('Usuń automatyczne akcje z handlerów onfocus');
+                        analysis.recommendations.push('Przenieś akcje do handlerów onclick lub onactivate');
+                    }
+
+                    if (analysis.elementsWithFocusHandlers === 0) {
+                        analysis.recommendations.push('Rozważ dodanie wizualnych wskazówek dla elementów z fokusem');
+                    }
+
+                    displayPageAnalysis(analysis);
+                }
+
+                function getElementSelector(element) {
+                    if (element.id) {
+                        return `#${element.id}`;
+                    }
+
+                    let selector = element.tagName.toLowerCase();
+                    if (element.className) {
+                        selector += `.${element.className.split(' ')[0]}`;
+                    }
+
+                    return selector;
+                }
+
+                function displayTestResults() {
+                    const resultsArea = document.getElementById('test-results-area');
+
+                    if (focusEvents.length === 0) {
+                        resultsArea.innerHTML = '<p>Brak zarejestrowanych zdarzeń fokusa.</p>';
+                        return;
+                    }
+
+                    const issueElements = focusEvents.filter(event =>
+                        event.issues && event.issues.length > 0
+                    );
+
+                    let html = `
+                        <div class="test-summary">
+                            <h5>Podsumowanie testu:</h5>
+                            <ul>
+                                <li>Całkowite zdarzenia fokusa: ${focusEvents.filter(e => e.type === 'focus').length}</li>
+                                <li>Elementy z problemami: ${issueElements.length}</li>
+                                <li>Ocena: ${issueElements.length === 0 ? '✅ Doskonała' : '⚠️ Wymaga uwagi'}</li>
+                            </ul>
+                        </div>
+                    `;
+
+                    if (issueElements.length > 0) {
+                        html += '<div class="issues-list"><h5>Znalezione problemy:</h5><ul>';
+                        issueElements.forEach(event => {
+                            event.issues.forEach(issue => {
+                                html += `<li><strong>${event.tagName}</strong> (${event.id || 'brak id'}): ${issue}</li>`;
+                            });
+                        });
+                        html += '</ul></div>';
+                    }
+
+                    resultsArea.innerHTML = html;
+                }
+
+                function displayPageAnalysis(analysis) {
+                    const resultsArea = document.getElementById('test-results-area');
+
+                    let html = `
+                        <div class="analysis-summary">
+                            <h5>Analiza strony:</h5>
+                            <ul>
+                                <li>Elementy focusable: ${analysis.totalFocusable}</li>
+                                <li>Z handlerami focus: ${analysis.elementsWithFocusHandlers}</li>
+                                <li>Potencjalne problemy: ${analysis.potentialIssues.length}</li>
+                            </ul>
+                        </div>
+                    `;
+
+                    if (analysis.potentialIssues.length > 0) {
+                        html += '<div class="issues-list"><h5>Potencjalne problemy:</h5><ul>';
+                        analysis.potentialIssues.forEach(item => {
+                            html += `<li><strong>${item.selector}</strong>: ${item.issues.join(', ')}</li>`;
+                        });
+                        html += '</ul></div>';
+                    }
+
+                    if (analysis.recommendations.length > 0) {
+                        html += '<div class="recommendations"><h5>Rekomendacje:</h5><ul>';
+                        analysis.recommendations.forEach(rec => {
+                            html += `<li>${rec}</li>`;
+                        });
+                        html += '</ul></div>';
+                    }
+
+                    resultsArea.innerHTML = html;
+                }
+
+                function showTestMessage(message) {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'test-message';
+                    messageDiv.textContent = message;
+                    messageDiv.style.cssText = `
+                        position: fixed;
+                        bottom: 20px;
+                        left: 20px;
+                        background: #007cba;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 5px;
+                        z-index: 1000;
+                        animation: slideIn 0.5s ease-out;
+                    `;
+
+                    document.body.appendChild(messageDiv);
+
+                    setTimeout(() => {
+                        if (messageDiv.parentNode) {
+                            messageDiv.style.animation = 'slideOut 0.5s ease-out';
+                            setTimeout(() => {
+                                if (messageDiv.parentNode) {
+                                    messageDiv.parentNode.removeChild(messageDiv);
+                                }
+                            }, 500);
+                        }
+                    }, 3000);
+                }
+
+                // Event listeners dla przycisków testowych
+                document.getElementById('start-focus-test').addEventListener('click', startFocusTest);
+                document.getElementById('stop-test').addEventListener('click', stopFocusTest);
+                document.getElementById('analyze-page').addEventListener('click', analyzePage);
+
+                // Style dla animacji wiadomości
+                const testStyle = document.createElement('style');
+                testStyle.textContent = `
+                    @keyframes slideIn {
+                        from { transform: translateX(-100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                    @keyframes slideOut {
+                        from { transform: translateX(0); opacity: 1; }
+                        to { transform: translateX(-100%); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(testStyle);
+            </script>
+
+            <style>
+                .testing-tool {
+                    background-color: #f8f9fa;
+                    border: 1px solid #dee2e6;
+                    border-radius: 5px;
+                    padding: 20px;
+                    margin: 20px 0;
+                }
+
+                .tool-controls {
+                    margin-bottom: 20px;
+                }
+
+                .test-button {
+                    background-color: #28a745;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    margin: 5px;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    font-size: 14px;
+                }
+
+                .test-button:hover:not(:disabled) {
+                    background-color: #218838;
+                }
+
+                .test-button:disabled {
+                    background-color: #6c757d;
+                    cursor: not-allowed;
+                }
+
+                .test-results {
+                    background-color: white;
+                    border: 1px solid #dee2e6;
+                    border-radius: 3px;
+                    padding: 15px;
+                }
+
+                .test-summary,
+                .analysis-summary {
+                    background-color: #e7f3ff;
+                    padding: 15px;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                }
+
+                .issues-list {
+                    background-color: #fff3cd;
+                    padding: 15px;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                }
+
+                .recommendations {
+                    background-color: #d4edda;
+                    padding: 15px;
+                    border-radius: 3px;
+                }
+            </style>
+        </section>
+
+        <section class="implementation-guidelines">
+            <h2>Wytyczne implementacyjne</h2>
+
+            <h3>Co MOŻNA robić na fokus:</h3>
+            <ul>
+                <li><strong>Pokazywanie pomocy kontekstowej</strong> - tooltips, instrukcje</li>
+                <li><strong>Podświetlanie powiązanych elementów</strong> - wizualne wskazówki</li>
+                <li><strong>Rozwijanie menu dropdown</strong> - w miejscu, bez zmiany układu</li>
+                <li><strong>Zmiana stylu elementu</strong> - kolor, obramowanie, cień</li>
+                <li><strong>Aktualizacja statusu</strong> - ARIA live regions</li>
+                <li><strong>Przygotowanie danych</strong> - ładowanie w tle</li>
+            </ul>
+
+            <h3>Czego NIE MOŻNA robić na fokus:</h3>
+            <ul>
+                <li><strong>Automatyczne wysyłanie formularzy</strong></li>
+                <li><strong>Otwieranie nowych okien/kart</strong></li>
+                <li><strong>Przekierowywanie na inne strony</strong></li>
+                <li><strong>Przenoszenie fokusa na inne elementy</strong></li>
+                <li><strong>Istotne zmiany layoutu strony</strong></li>
+                <li><strong>Automatyczne odtwarzanie mediów</strong></li>
+                <li><strong>Usuwanie lub ukrywanie elementów</strong></li>
+            </ul>
+
+            <h3>Przykłady implementacji</h3>
+            <pre><code class="language-javascript">// ✅ Prawidłowe - pokazanie pomocy
+function showHelpOnFocus(inputElement) {
+    const helpId = inputElement.getAttribute('aria-describedby');
+    if (helpId) {
+        const helpElement = document.getElementById(helpId);
+        if (helpElement) {
+            helpElement.style.display = 'block';
+        }
+    }
+}
+
+// ✅ Prawidłowe - podświetlenie powiązanych elementów
+function highlightRelatedElements(element) {
+    const relatedClass = element.getAttribute('data-related');
+    if (relatedClass) {
+        document.querySelectorAll(`.${relatedClass}`).forEach(el => {
+            el.classList.add('related-highlighted');
+        });
+    }
+}
+
+// ❌ Nieprawidłowe - automatyczna submisja
+function autoSubmitOnFocus(inputElement) {
+    // NIGDY tego nie rób!
+    inputElement.form.submit();
+}
+
+// ❌ Nieprawidłowe - otwieranie okna
+function openWindowOnFocus(linkElement) {
+    // NIGDY tego nie rób!
+    window.open(linkElement.href, '_blank');
+}
+
+// ✅ Prawidłowa alternatywa - przygotowanie
+function prepareDataOnFocus(selectElement) {
+    // Można przygotować dane w tle
+    if (!selectElement.dataset.loaded) {
+        fetch('/api/options')
+            .then(response => response.json())
+            .then(data => {
+                // Przygotuj dane, ale nie zmieniaj interfejsu
+                selectElement.dataset.options = JSON.stringify(data);
+                selectElement.dataset.loaded = 'true';
+            });
+    }
+}</code></pre>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie kryterium 3.2.1</h2>
+
+            <h3>Testy manualne</h3>
+            <ul>
+                <li><strong>Nawigacja klawiaturą</strong> - przejdź przez wszystkie elementy używając Tab</li>
+                <li><strong>Test z czytnikami ekranu</strong> - sprawdź czy nie ma niespodziewanych zmian</li>
+                <li><strong>Test różnych przeglądarek</strong> - weryfikuj spójność zachowań</li>
+                <li><strong>Test z wolniejszym połączeniem</strong> - sprawdź czy nie ma race conditions</li>
+            </ul>
+
+            <h3>Testy automatyczne</h3>
+            <pre><code class="language-javascript">// Test wykrywania problematycznych handlerów fokusa
+function auditFocusHandlers() {
+    const issues = [];
+    const focusableElements = document.querySelectorAll(
+        'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    
+    focusableElements.forEach(element => {
+        const focusHandler = element.getAttribute('onfocus');
+        
+        if (focusHandler) {
+            // Sprawdź problematyczne wzorce
+            const problematicPatterns = [
+                { pattern: /\.submit\(\)/, issue: 'Automatyczne wysłanie formularza' },
+                { pattern: /window\.open/, issue: 'Otwieranie nowego okna' },
+                { pattern: /location\.href/, issue: 'Przekierowanie' },
+                { pattern: /\.focus\(\)/, issue: 'Przeniesienie fokusa' },
+                { pattern: /\.play\(\)/, issue: 'Automatyczne odtwarzanie' }
+            ];
+            
+            problematicPatterns.forEach(({ pattern, issue }) => {
+                if (pattern.test(focusHandler)) {
+                    issues.push({
+                        element: element,
+                        selector: getElementSelector(element),
+                        issue: issue,
+                        handler: focusHandler
+                    });
+                }
+            });
+        }
+    });
+    
+    return issues;
+}
+
+// Test symulujący nawigację klawiaturą
+function simulateKeyboardNavigation() {
+    const focusableElements = document.querySelectorAll(
+        'a[href], button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    
+    const results = [];
+    
+    focusableElements.forEach((element, index) => {
+        const initialURL = window.location.href;
+        const initialWindowCount = window.length;
+        
+        // Symuluj focus
+        try {
+            element.focus();
+            
+            // Sprawdź czy nastąpiły niespodziewane zmiany
+            setTimeout(() => {
+                const urlChanged = window.location.href !== initialURL;
+                const windowCountChanged = window.length !== initialWindowCount;
+                
+                if (urlChanged || windowCountChanged) {
+                    results.push({
+                        element: element,
+                        index: index,
+                        urlChanged: urlChanged,
+                        windowCountChanged: windowCountChanged
+                    });
+                }
+            }, 100);
+            
+        } catch (error) {
+            console.warn(`Nie można ustawić fokusa na element ${index}:`, error);
+        }
+    });
+    
+    return results;
+}
+
+function getElementSelector(element) {
+    if (element.id) return `#${element.id}`;
+    if (element.className) return `${element.tagName.toLowerCase()}.${element.className.split(' ')[0]}`;
+    return element.tagName.toLowerCase();
+}</code></pre>
+
+            <h3>Checklist testowa</h3>
+            <div class="checklist">
+                <h4>✅ Sprawdź czy:</h4>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ Żaden element nie wysyła formularza przy otrzymaniu fokusa</li>
+                    <li>☐ Żaden element nie otwiera nowego okna przy otrzymaniu fokusa</li>
+                    <li>☐ Fokus nie jest automatycznie przenoszony na inne elementy</li>
+                    <li>☐ Treść strony nie zmienia się istotnie przy fokusie</li>
+                    <li>☐ Media nie rozpoczynają automatycznego odtwarzania</li>
+                    <li>☐ URL strony nie zmienia się przy fokusie</li>
+                    <li>☐ Użytkownik może nawigować przewidywalnie przez Tab</li>
+                    <li>☐ Wszystkie interaktywne elementy są dostępne z klawiatury</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="common-mistakes">
+            <h2>Częste błędy</h2>
+
+            <div class="mistake-block">
+                <h3>❌ Automatyczne wysyłanie formularza</h3>
+                <p><strong>Problem:</strong> Formularz wysyła się gdy pole otrzyma fokus</p>
+                <pre><code class="language-html">&lt;input onfocus="this.form.submit()"&gt;</code></pre>
+                <p><strong>Rozwiązanie:</strong> Usuń automatyczną submisję, pozwól użytkownikowi kontrolować wysyłanie
+                </p>
+                <pre><code class="language-html">&lt;input type="text"&gt;
+&lt;button type="submit"&gt;Wyślij&lt;/button&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Otwieranie okien popup</h3>
+                <p><strong>Problem:</strong> Okno otwiera się niespodziewanie przy fokusie</p>
+                <pre><code class="language-html">&lt;a href="help.html" onfocus="window.open(this.href)"&gt;Pomoc&lt;/a&gt;</code></pre>
+                <p><strong>Rozwiązanie:</strong> Przenieś akcję na kliknięcie i ostrzeż użytkownika</p>
+                <pre><code class="language-html">&lt;a href="help.html" onclick="window.open(this.href); return false;"&gt;
+    Pomoc (otwiera nowe okno)
+&lt;/a&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Kradzież fokusa</h3>
+                <p><strong>Problem:</strong> Fokus automatycznie przenosi się na inny element</p>
+                <pre><code class="language-html">&lt;input onfocus="document.getElementById('next').focus()"&gt;</code></pre>
+                <p><strong>Rozwiązanie:</strong> Pozwól użytkownikowi kontrolować nawigację</p>
+                <pre><code class="language-html">&lt;input type="text"&gt;
+&lt;button onclick="moveToNext()"&gt;Przejdź dalej&lt;/button&gt;</code></pre>
+            </div>
+        </section>
+
+        <section class="resources">
+            <h2>Dodatkowe zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/on-focus.html" target="_blank"
+                        rel="noopener">Understanding SC 3.2.1: On Focus (W3C)</a></li>
+                <li><a href="https://webaim.org/techniques/keyboard/" target="_blank" rel="noopener">WebAIM: Keyboard
+                        Accessibility</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus" target="_blank"
+                        rel="noopener">MDN: HTMLElement.focus()</a></li>
+                <li><a href="https://www.a11yproject.com/posts/focus-management/" target="_blank" rel="noopener">A11Y
+                        Project: Focus Management</a></li>
+                <li><a href="https://inclusive-components.design/menus-menu-buttons/" target="_blank"
+                        rel="noopener">Inclusive Components: Menu & Menu Buttons</a></li>
+            </ul>
+        </section>
+
+        <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+            <ul>
+                <li><a href="3.1.6.html">Poprzedni: 3.1.6 Wymowa</a></li>
+                <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                <li><a href="3.2.2.html">Następny: 3.2.2 Podczas wpisywania</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

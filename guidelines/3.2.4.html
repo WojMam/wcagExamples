@@ -1,0 +1,2494 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.2.4 Spójna identyfikacja (AA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>3.2.4 Spójna identyfikacja (AA)</h1>
+            <p>Komponenty, które mają tę samą funkcjonalność w obrębie zestawu stron internetowych,
+                są identyfikowane w spójny sposób.</p>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>To kryterium wymaga, aby elementy interfejsu o identycznej lub podobnej funkcjonalności
+                były nazywane, opisywane i prezentowane w sposób spójny w całej witrynie. Oznacza to, że:</p>
+            <ul>
+                <li>Przyciski wykonujące tę samą akcję powinny mieć identyczne etykiety</li>
+                <li>Ikony reprezentujące tę samą funkcję powinny być jednakowe</li>
+                <li>Pola formularzy o tym samym przeznaczeniu powinny mieć spójne nazwy</li>
+                <li>Linki prowadzące do tego samego miejsca powinny być identycznie nazwane</li>
+                <li>Elementy kontrolne o tej samej funkcji powinny działać w ten sam sposób</li>
+            </ul>
+
+            <p>Spójność dotyczy zarówno <strong>etykiet tekstowych</strong>, jak i <strong>alternatywnych
+                    tekstów</strong>
+                dla elementów nietekstowych (ikony, obrazy, przyciski graficzne).</p>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Osoby niewidome</strong> - spójne nazwy ułatwiają przewidywanie funkcji elementów</li>
+                <li><strong>Osoby z ograniczeniami poznawczymi</strong> - konsekwentne nazewnictwo redukuje
+                    dezorientację</li>
+                <li><strong>Osoby z zaburzeniami uczenia się</strong> - jednolite wzorce pomagają w zapamiętywaniu</li>
+                <li><strong>Użytkownicy z dysleksją</strong> - spójne etykiety ułatwiają rozpoznawanie funkcji</li>
+                <li><strong>Osoby słabowidzące</strong> - jednakowe ikony i przyciski są łatwiejsze do rozpoznania</li>
+                <li><strong>Użytkownicy technologii wspomagających</strong> - spójne nazwy pomagają w nawigacji</li>
+                <li><strong>Wszyscy użytkownicy</strong> - przewidywalny interfejs poprawia użyteczność</li>
+                <li><strong>Osoby starsze</strong> - konsekwentne nazewnictwo zmniejsza konfuzję</li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje</h2>
+            <dl>
+                <dt><strong>Komponenty o tej samej funkcjonalności</strong></dt>
+                <dd>Elementy interfejsu, które wykonują identyczne lub bardzo podobne działania, takie jak:
+                    <ul>
+                        <li>Przyciski "Zapisz" w różnych formularzach</li>
+                        <li>Ikony "Wyszukaj" w różnych sekcjach</li>
+                        <li>Linki "Strona główna" w różnych miejscach</li>
+                        <li>Pola "E-mail" w różnych formularzach</li>
+                        <li>Przyciski "Dodaj do koszyka" w katalogu produktów</li>
+                    </ul>
+                </dd>
+
+                <dt><strong>Identyfikacja</strong></dt>
+                <dd>Sposób nazewnictwa i opisywania komponentów, obejmujący:
+                    <ul>
+                        <li>Etykiety tekstowe (visible labels)</li>
+                        <li>Alternatywne opisy (alt text)</li>
+                        <li>Nazwy dostępne (accessible names)</li>
+                        <li>Tytuły i podpowiedzi (titles, tooltips)</li>
+                        <li>Aria-label i aria-labelledby</li>
+                    </ul>
+                </dd>
+
+                <dt><strong>Spójny sposób</strong></dt>
+                <dd>Użycie identycznych lub bardzo podobnych:
+                    <ul>
+                        <li>Słów i fraz w etykietach</li>
+                        <li>Ikon i symboli graficznych</li>
+                        <li>Pozycji i układu elementów</li>
+                        <li>Stylów wizualnych</li>
+                        <li>Zachowań interakcji</li>
+                    </ul>
+                </dd>
+
+                <dt><strong>Zestaw stron internetowych</strong></dt>
+                <dd>Kolekcja powiązanych stron utworzonych przez tę samą organizację,
+                    dzielących wspólny cel lub domenę (np. cała witryna firmowa, system e-commerce).</dd>
+            </dl>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Niespójne nazwy przycisków o tej samej funkcji</h4>
+                <pre><code class="language-html">&lt;!-- Strona produktu A --&gt;
+&lt;button type="button" class="add-to-cart"&gt;
+    Dodaj do koszyka
+&lt;/button&gt;
+
+&lt;!-- Strona produktu B - inna nazwa! --&gt;
+&lt;button type="button" class="add-to-cart"&gt;
+    Kup teraz
+&lt;/button&gt;
+
+&lt;!-- Strona produktu C - jeszcze inna! --&gt;
+&lt;button type="button" class="add-to-cart"&gt;
+    Do koszyka
+&lt;/button&gt;</code></pre>
+                <p><strong>Problem:</strong> Identyczna funkcja ma różne nazwy, co dezorientuje użytkowników.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Różne ikony dla tej samej funkcji</h4>
+                <pre><code class="language-html">&lt;!-- Nagłówek strony - ikona wyszukiwania --&gt;
+&lt;button class="search-btn" aria-label="Wyszukaj"&gt;
+    &lt;svg&gt;&lt;path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"&gt;&lt;/path&gt;&lt;/svg&gt;
+&lt;/button&gt;
+
+&lt;!-- Sidebar - inna ikona dla wyszukiwania! --&gt;
+&lt;button class="search-btn" aria-label="Szukaj"&gt;
+    &lt;svg&gt;&lt;path d="M10 18a8 8 0 100-16 8 8 0 000 16zm4-8H6"&gt;&lt;/path&gt;&lt;/svg&gt;
+&lt;/button&gt;
+
+&lt;!-- Footer - jeszcze inna ikona! --&gt;
+&lt;button class="search-btn" aria-label="Znajdź"&gt;
+    &lt;svg&gt;&lt;path d="M15 15l5 5M10 17a7 7 0 110-14"&gt;&lt;/path&gt;&lt;/svg&gt;
+&lt;/button&gt;</code></pre>
+                <p><strong>Problem:</strong> Ta sama funkcja ma różne ikony i etykiety w różnych miejscach.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Niespójne etykiety pól formularza</h4>
+                <pre><code class="language-html">&lt;!-- Formularz rejestracji --&gt;
+&lt;label for="email1"&gt;Adres e-mail:&lt;/label&gt;
+&lt;input type="email" id="email1" name="email"&gt;
+
+&lt;!-- Formularz kontaktowy - inna nazwa! --&gt;
+&lt;label for="email2"&gt;E-mail:&lt;/label&gt;
+&lt;input type="email" id="email2" name="email"&gt;
+
+&lt;!-- Formularz newslettera - jeszcze inna! --&gt;
+&lt;label for="email3"&gt;Twój adres mailowy:&lt;/label&gt;
+&lt;input type="email" id="email3" name="email"&gt;
+
+&lt;!-- Formularz zamówienia --&gt;
+&lt;label for="email4"&gt;Podaj swój e-mail:&lt;/label&gt;
+&lt;input type="email" id="email4" name="email"&gt;</code></pre>
+                <p><strong>Problem:</strong> Pole e-mail ma różne etykiety w różnych formularzach.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Różne nazwy linków do tego samego miejsca</h4>
+                <pre><code class="language-html">&lt;!-- Nawigacja główna --&gt;
+&lt;nav&gt;
+    &lt;a href="/"&gt;Strona główna&lt;/a&gt;
+    &lt;a href="/produkty"&gt;Produkty&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;!-- Breadcrumbs - inna nazwa! --&gt;
+&lt;nav aria-label="Ścieżka nawigacyjna"&gt;
+    &lt;a href="/"&gt;Start&lt;/a&gt; &gt;
+    &lt;a href="/produkty"&gt;Oferta&lt;/a&gt; &gt;
+    &lt;span&gt;Laptop XYZ&lt;/span&gt;
+&lt;/nav&gt;
+
+&lt;!-- Footer - jeszcze inne nazwy! --&gt;
+&lt;footer&gt;
+    &lt;a href="/"&gt;Home&lt;/a&gt; |
+    &lt;a href="/produkty"&gt;Sklep&lt;/a&gt;
+&lt;/footer&gt;</code></pre>
+                <p><strong>Problem:</strong> Linki do tych samych stron mają różne nazwy w różnych miejscach.</p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Spójne nazwy przycisków w całej witrynie</h4>
+                <pre><code class="language-html">&lt;!-- Wszystkie strony produktów - identyczna nazwa --&gt;
+&lt;button type="button" class="add-to-cart"&gt;
+    &lt;svg class="icon" aria-hidden="true"&gt;
+        &lt;use href="#icon-cart"&gt;&lt;/use&gt;
+    &lt;/svg&gt;
+    Dodaj do koszyka
+&lt;/button&gt;
+
+&lt;!-- W liście produktów - ta sama nazwa --&gt;
+&lt;button type="button" class="add-to-cart"&gt;
+    &lt;svg class="icon" aria-hidden="true"&gt;
+        &lt;use href="#icon-cart"&gt;&lt;/use&gt;
+    &lt;/svg&gt;
+    Dodaj do koszyka
+&lt;/button&gt;
+
+&lt;!-- W rezultatach wyszukiwania - spójnie --&gt;
+&lt;button type="button" class="add-to-cart"&gt;
+    &lt;svg class="icon" aria-hidden="true"&gt;
+        &lt;use href="#icon-cart"&gt;&lt;/use&gt;
+    &lt;/svg&gt;
+    Dodaj do koszyka
+&lt;/button&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Identyczna funkcja ma zawsze tę samą nazwę i ikonę.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Jednolite ikony i etykiety wyszukiwania</h4>
+                <pre><code class="language-html">&lt;!-- Szablon ikony wyszukiwania --&gt;
+&lt;svg id="search-icon" style="display: none;"&gt;
+    &lt;symbol id="icon-search" viewBox="0 0 24 24"&gt;
+        &lt;path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/&gt;
+    &lt;/symbol&gt;
+&lt;/svg&gt;
+
+&lt;!-- Nagłówek strony --&gt;
+&lt;button class="search-btn" aria-label="Wyszukaj"&gt;
+    &lt;svg class="icon" aria-hidden="true"&gt;
+        &lt;use href="#icon-search"&gt;&lt;/use&gt;
+    &lt;/svg&gt;
+&lt;/button&gt;
+
+&lt;!-- Sidebar --&gt;
+&lt;button class="search-btn" aria-label="Wyszukaj"&gt;
+    &lt;svg class="icon" aria-hidden="true"&gt;
+        &lt;use href="#icon-search"&gt;&lt;/use&gt;
+    &lt;/svg&gt;
+&lt;/button&gt;
+
+&lt;!-- Formularz wyszukiwania --&gt;
+&lt;form role="search"&gt;
+    &lt;label for="search-input"&gt;Wyszukaj:&lt;/label&gt;
+    &lt;input type="search" id="search-input" placeholder="Wpisz szukane hasło"&gt;
+    &lt;button type="submit" aria-label="Wyszukaj"&gt;
+        &lt;svg class="icon" aria-hidden="true"&gt;
+            &lt;use href="#icon-search"&gt;&lt;/use&gt;
+        &lt;/svg&gt;
+    &lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Ta sama ikona i etykieta dla wszystkich przycisków wyszukiwania.
+                </p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Spójne etykiety pól w formularzach</h4>
+                <pre><code class="language-html">&lt;!-- Komponent pola e-mail - używany wszędzie --&gt;
+&lt;div class="form-field"&gt;
+    &lt;label for="email" class="field-label"&gt;
+        Adres e-mail:
+        &lt;span class="required" aria-label="wymagane"&gt;*&lt;/span&gt;
+    &lt;/label&gt;
+    &lt;input type="email" 
+           id="email" 
+           name="email" 
+           class="form-input"
+           required
+           aria-describedby="email-help"&gt;
+    &lt;div id="email-help" class="field-help"&gt;
+        Podaj prawidłowy adres e-mail
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Formularz rejestracji --&gt;
+&lt;form class="registration-form"&gt;
+    &lt;h2&gt;Utwórz konto&lt;/h2&gt;
+    
+    &lt;!-- Używa tego samego komponentu --&gt;
+    &lt;div class="form-field"&gt;
+        &lt;label for="reg-email" class="field-label"&gt;
+            Adres e-mail:
+            &lt;span class="required" aria-label="wymagane"&gt;*&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;input type="email" 
+               id="reg-email" 
+               name="email" 
+               class="form-input"
+               required
+               aria-describedby="reg-email-help"&gt;
+        &lt;div id="reg-email-help" class="field-help"&gt;
+            Podaj prawidłowy adres e-mail
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;button type="submit"&gt;Zarejestruj się&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- Formularz kontaktowy --&gt;
+&lt;form class="contact-form"&gt;
+    &lt;h2&gt;Skontaktuj się z nami&lt;/h2&gt;
+    
+    &lt;!-- Ten sam komponent z tą samą etykietą --&gt;
+    &lt;div class="form-field"&gt;
+        &lt;label for="contact-email" class="field-label"&gt;
+            Adres e-mail:
+            &lt;span class="required" aria-label="wymagane"&gt;*&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;input type="email" 
+               id="contact-email" 
+               name="email" 
+               class="form-input"
+               required
+               aria-describedby="contact-email-help"&gt;
+        &lt;div id="contact-email-help" class="field-help"&gt;
+            Podaj prawidłowy adres e-mail
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;button type="submit"&gt;Wyślij wiadomość&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Pole e-mail ma identyczną etykietę i opis we wszystkich
+                    formularzach.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Konsekwentne nazwy linków</h4>
+                <pre><code class="language-html">&lt;!-- Stałe nazwy używane w całej witrynie --&gt;
+&lt;script&gt;
+const SITE_LINKS = {
+    home: 'Strona główna',
+    products: 'Produkty', 
+    about: 'O nas',
+    contact: 'Kontakt',
+    blog: 'Blog'
+};
+&lt;/script&gt;
+
+&lt;!-- Nawigacja główna --&gt;
+&lt;nav aria-label="Menu główne"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/produkty"&gt;Produkty&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/o-nas"&gt;O nas&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- Breadcrumbs - te same nazwy --&gt;
+&lt;nav aria-label="Ścieżka nawigacyjna"&gt;
+    &lt;ol&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/produkty"&gt;Produkty&lt;/a&gt;&lt;/li&gt;
+        &lt;li aria-current="page"&gt;Laptop XYZ&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/nav&gt;
+
+&lt;!-- Footer - spójnie --&gt;
+&lt;footer&gt;
+    &lt;nav aria-label="Linki stopki"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="/"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/produkty"&gt;Produkty&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/o-nas"&gt;O nas&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/footer&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Wszystkie linki do tych samych stron mają identyczne nazwy.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>System komponentów z spójnymi etykietami</h4>
+                <pre><code class="language-html">&lt;!-- Definicje komponentów --&gt;
+&lt;template id="save-button-template"&gt;
+    &lt;button type="submit" class="btn btn-primary"&gt;
+        &lt;svg class="icon" aria-hidden="true"&gt;&lt;/svg&gt;
+        &lt;span class="btn-text"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/template&gt;
+
+&lt;!-- Szablon pola formularza --&gt;
+&lt;template id="form-field-template"&gt;
+    &lt;div class="form-field"&gt;
+        &lt;label class="field-label"&gt;
+            &lt;span class="label-text"&gt;&lt;/span&gt;
+            &lt;span class="required" aria-label="wymagane"&gt;*&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;input class="form-input"&gt;
+        &lt;div class="field-help"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+// Klasa do tworzenia spójnych komponentów
+class ComponentFactory {
+    static createButton(action, options = {}) {
+        const template = document.getElementById('action-button-template');
+        const button = template.content.cloneNode(true).querySelector('button');
+        
+        // Ustaw spójną etykietę
+        const label = getComponentLabel('buttons', action);
+        button.querySelector('.btn-text').textContent = label;
+        button.setAttribute('data-action', action);
+        
+        // Ustaw ikonę jeśli dostępna
+        if (options.icon) {
+            const icon = button.querySelector('.btn-icon');
+            icon.innerHTML = `&lt;use href="#icon-${action}"&gt;&lt;/use&gt;`;
+        }
+        
+        // Ustaw typu przycisku
+        if (options.type) {
+            button.type = options.type;
+        }
+        
+        // Dodaj klasy CSS
+        if (options.variant) {
+            button.classList.add(`btn-${options.variant}`);
+        }
+        
+        return button;
+    }
+    
+    static createFormField(fieldType, options = {}) {
+        const template = document.getElementById('form-field-template');
+        const field = template.content.cloneNode(true).querySelector('.form-field');
+        
+        // Ustaw spójną etykietę
+        const label = getComponentLabel('formFields', fieldType);
+        field.querySelector('.label-text').textContent = label;
+        
+        // Skonfiguruj input
+        const input = field.querySelector('.form-input');
+        input.type = options.inputType || 'text';
+        input.name = options.name || fieldType;
+        input.id = options.id || `field-${fieldType}-${Date.now()}`;
+        
+        // Połącz label z input
+        const labelElement = field.querySelector('.field-label');
+        labelElement.setAttribute('for', input.id);
+        
+        // Ustaw wymagalność
+        if (options.required) {
+            input.required = true;
+        } else {
+            field.querySelector('.required').style.display = 'none';
+        }
+        
+        // Dodaj tekst pomocy
+        if (options.helpText) {
+            const help = field.querySelector('.field-help');
+            help.textContent = options.helpText;
+            help.id = `${input.id}-help`;
+            input.setAttribute('aria-describedby', help.id);
+        }
+        
+        return field;
+    }
+    
+    static createNavigationLink(page, options = {}) {
+        const link = document.createElement('a');
+        link.href = options.href || `/${page}`;
+        link.textContent = getComponentLabel('navigation', page);
+        
+        if (options.current) {
+            link.setAttribute('aria-current', 'page');
+        }
+        
+        return link;
+    }
+}
+
+// Przykłady użycia
+const saveButton = ComponentFactory.createButton('save', {
+    type: 'submit',
+    variant: 'primary',
+    icon: true
+});
+
+const emailField = ComponentFactory.createFormField('email', {
+    inputType: 'email',
+    required: true,
+    helpText: 'Podaj prawidłowy adres e-mail'
+});
+
+const homeLink = ComponentFactory.createNavigationLink('home', {
+    href: '/',
+    current: true
+});
+&lt;/script&gt;</code></pre>
+            </div>
+        </section>
+
+        <section class="interactive-demo">
+            <h2>Interaktywne demo - analiza spójności identyfikacji</h2>
+            <p>Przetestuj różne scenariusze nazewnictwa komponentów i zobacz wpływ niespójności na użyteczność:</p>
+
+            <div class="demo-container">
+                <h3>Symulator spójności komponentów</h3>
+                <div class="consistency-simulator">
+
+                    <div class="demo-controls">
+                        <h4>Ustawienia spójności:</h4>
+                        <div class="consistency-toggles">
+                            <label>
+                                <input type="checkbox" id="consistent-buttons" checked
+                                    onchange="toggleButtonConsistency()">
+                                Spójne nazwy przycisków
+                            </label>
+                            <label>
+                                <input type="checkbox" id="consistent-icons" checked onchange="toggleIconConsistency()">
+                                Spójne ikony
+                            </label>
+                            <label>
+                                <input type="checkbox" id="consistent-labels" checked
+                                    onchange="toggleLabelConsistency()">
+                                Spójne etykiety pól
+                            </label>
+                            <label>
+                                <input type="checkbox" id="consistent-links" checked onchange="toggleLinkConsistency()">
+                                Spójne nazwy linków
+                            </label>
+                        </div>
+
+                        <div class="demo-section-selector">
+                            <h4>Wybierz sekcję do sprawdzenia:</h4>
+                            <button class="section-btn active" onclick="showSection('header')">Nagłówek</button>
+                            <button class="section-btn" onclick="showSection('products')">Lista produktów</button>
+                            <button class="section-btn" onclick="showSection('form')">Formularz</button>
+                            <button class="section-btn" onclick="showSection('footer')">Stopka</button>
+                        </div>
+                    </div>
+
+                    <div class="demo-display" id="demo-display">
+                        <!-- Zawartość generowana przez JavaScript -->
+                    </div>
+
+                    <div class="consistency-analysis" id="consistency-analysis">
+                        <h4>Analiza spójności:</h4>
+                        <div id="analysis-results"></div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                let currentSection = 'header';
+                let consistentButtons = true;
+                let consistentIcons = true;
+                let consistentLabels = true;
+                let consistentLinks = true;
+                let inconsistencyCount = 0;
+
+                const componentData = {
+                    buttons: {
+                        consistent: {
+                            save: 'Zapisz zmiany',
+                            cancel: 'Anuluj',
+                            delete: 'Usuń',
+                            addToCart: 'Dodaj do koszyka',
+                            search: 'Wyszukaj'
+                        },
+                        inconsistent: {
+                            save: ['Zapisz zmiany', 'Zatwierdź', 'OK', 'Potwierdź'],
+                            cancel: ['Anuluj', 'Cofnij', 'Rezygnuj', 'Wróć'],
+                            delete: ['Usuń', 'Skasuj', 'Wymaż', 'Zlikwiduj'],
+                            addToCart: ['Dodaj do koszyka', 'Kup teraz', 'Do koszyka', 'Zamów'],
+                            search: ['Wyszukaj', 'Szukaj', 'Znajdź', 'Przeszukaj']
+                        }
+                    },
+                    icons: {
+                        consistent: {
+                            search: '🔍',
+                            cart: '🛒',
+                            user: '👤',
+                            home: '🏠',
+                            save: '💾'
+                        },
+                        inconsistent: {
+                            search: ['🔍', '🔎', '🌐', '📋'],
+                            cart: ['🛒', '🛍️', '📦', '🎁'],
+                            user: ['👤', '👨', '👩', '😊'],
+                            home: ['🏠', '🏢', '🏡', '📍'],
+                            save: ['💾', '📁', '💿', '📋']
+                        }
+                    },
+                    labels: {
+                        consistent: {
+                            email: 'Adres e-mail:',
+                            name: 'Imię i nazwisko:',
+                            phone: 'Numer telefonu:',
+                            message: 'Wiadomość:'
+                        },
+                        inconsistent: {
+                            email: ['Adres e-mail:', 'E-mail:', 'Twój e-mail:', 'Podaj e-mail:'],
+                            name: ['Imię i nazwisko:', 'Twoje dane:', 'Jak się nazywasz?', 'Dane osobowe:'],
+                            phone: ['Numer telefonu:', 'Telefon:', 'Nr tel.:', 'Kontakt:'],
+                            message: ['Wiadomość:', 'Treść:', 'Twoja wiadomość:', 'Co chcesz przekazać?']
+                        }
+                    },
+                    links: {
+                        consistent: {
+                            home: 'Strona główna',
+                            products: 'Produkty',
+                            contact: 'Kontakt',
+                            about: 'O nas'
+                        },
+                        inconsistent: {
+                            home: ['Strona główna', 'Start', 'Home', 'Główna'],
+                            products: ['Produkty', 'Oferta', 'Sklep', 'Asortyment'],
+                            contact: ['Kontakt', 'Napisz do nas', 'Skontaktuj się', 'Dane kontaktowe'],
+                            about: ['O nas', 'Kim jesteśmy', 'Nasza firma', 'Informacje']
+                        }
+                    }
+                };
+
+                function showSection(sectionId) {
+                    currentSection = sectionId;
+                    updateSectionButtons();
+                    renderSection();
+                    analyzeConsistency();
+                }
+
+                function updateSectionButtons() {
+                    document.querySelectorAll('.section-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    document.querySelector(`[onclick="showSection('${currentSection}')"]`).classList.add('active');
+                }
+
+                function toggleButtonConsistency() {
+                    consistentButtons = document.getElementById('consistent-buttons').checked;
+                    renderSection();
+                    analyzeConsistency();
+                }
+
+                function toggleIconConsistency() {
+                    consistentIcons = document.getElementById('consistent-icons').checked;
+                    renderSection();
+                    analyzeConsistency();
+                }
+
+                function toggleLabelConsistency() {
+                    consistentLabels = document.getElementById('consistent-labels').checked;
+                    renderSection();
+                    analyzeConsistency();
+                }
+
+                function toggleLinkConsistency() {
+                    consistentLinks = document.getElementById('consistent-links').checked;
+                    renderSection();
+                    analyzeConsistency();
+                }
+
+                function getComponentText(category, type, index = 0) {
+                    const consistent = componentData[category].consistent[type];
+                    const inconsistent = componentData[category].inconsistent[type];
+
+                    let useConsistent = true;
+                    switch (category) {
+                        case 'buttons': useConsistent = consistentButtons; break;
+                        case 'icons': useConsistent = consistentIcons; break;
+                        case 'labels': useConsistent = consistentLabels; break;
+                        case 'links': useConsistent = consistentLinks; break;
+                    }
+
+                    if (useConsistent) {
+                        return consistent;
+                    } else {
+                        return inconsistent[index % inconsistent.length];
+                    }
+                }
+
+                function renderSection() {
+                    const display = document.getElementById('demo-display');
+                    let content = '';
+
+                    switch (currentSection) {
+                        case 'header':
+                            content = generateHeader();
+                            break;
+                        case 'products':
+                            content = generateProductList();
+                            break;
+                        case 'form':
+                            content = generateForm();
+                            break;
+                        case 'footer':
+                            content = generateFooter();
+                            break;
+                    }
+
+                    display.innerHTML = content;
+                }
+
+                function generateHeader() {
+                    const searchIcon = getComponentText('icons', 'search', 0);
+                    const searchButton = getComponentText('buttons', 'search', 0);
+                    const homeLink = getComponentText('links', 'home', 0);
+                    const productsLink = getComponentText('links', 'products', 0);
+                    const contactLink = getComponentText('links', 'contact', 0);
+
+                    return `
+                        <div class="mock-header">
+                            <div class="logo">Logo Firmy</div>
+                            <nav class="main-nav">
+                                <a href="#" class="nav-link">${homeLink}</a>
+                                <a href="#" class="nav-link">${productsLink}</a>
+                                <a href="#" class="nav-link">${contactLink}</a>
+                            </nav>
+                            <div class="search-area">
+                                <input type="search" placeholder="Szukaj...">
+                                <button class="search-btn">
+                                    <span class="icon">${searchIcon}</span>
+                                    ${searchButton}
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }
+
+                function generateProductList() {
+                    let content = '<div class="products-grid">';
+
+                    for (let i = 0; i < 4; i++) {
+                        const addToCartText = getComponentText('buttons', 'addToCart', i);
+                        const cartIcon = getComponentText('icons', 'cart', i);
+
+                        content += `
+                            <div class="product-card">
+                                <img src="data:image/svg+xml,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="200" height="150"><rect width="200" height="150" fill="#ddd"/><text x="100" y="75" text-anchor="middle" dy=".3em" font-family="Arial" font-size="14">Produkt ${i+1}</text></svg>')}" alt="Produkt ${i + 1}">
+                                <h3>Produkt ${i + 1}</h3>
+                                <p class="price">199,99 zł</p>
+                                <button class="add-to-cart-btn">
+                                    <span class="icon">${cartIcon}</span>
+                                    ${addToCartText}
+                                </button>
+                            </div>
+                        `;
+                    }
+
+                    content += '</div>';
+                    return content;
+                }
+
+                function generateForm() {
+                    const emailLabel = getComponentText('labels', 'email', 0);
+                    const nameLabel = getComponentText('labels', 'name', 1);
+                    const phoneLabel = getComponentText('labels', 'phone', 2);
+                    const messageLabel = getComponentText('labels', 'message', 3);
+                    const saveButton = getComponentText('buttons', 'save', 0);
+                    const cancelButton = getComponentText('buttons', 'cancel', 1);
+                    const saveIcon = getComponentText('icons', 'save', 0);
+
+                    return `
+                        <div class="form-container">
+                            <h3>Formularz kontaktowy</h3>
+                            <form class="demo-form">
+                                <div class="form-field">
+                                    <label>${emailLabel}</label>
+                                    <input type="email" placeholder="Wpisz adres e-mail">
+                                </div>
+                                <div class="form-field">
+                                    <label>${nameLabel}</label>
+                                    <input type="text" placeholder="Wpisz imię i nazwisko">
+                                </div>
+                                <div class="form-field">
+                                    <label>${phoneLabel}</label>
+                                    <input type="tel" placeholder="Wpisz numer telefonu">
+                                </div>
+                                <div class="form-field">
+                                    <label>${messageLabel}</label>
+                                    <textarea placeholder="Wpisz wiadomość"></textarea>
+                                </div>
+                                <div class="form-actions">
+                                    <button type="submit" class="save-btn">
+                                        <span class="icon">${saveIcon}</span>
+                                        ${saveButton}
+                                    </button>
+                                    <button type="button" class="cancel-btn">${cancelButton}</button>
+                                </div>
+                            </form>
+                        </div>
+                    `;
+                }
+
+                function generateFooter() {
+                    const homeLink = getComponentText('links', 'home', 1);
+                    const productsLink = getComponentText('links', 'products', 2);
+                    const aboutLink = getComponentText('links', 'about', 3);
+                    const contactLink = getComponentText('links', 'contact', 0);
+
+                    return `
+                        <div class="mock-footer">
+                            <nav class="footer-nav">
+                                <a href="#" class="footer-link">${homeLink}</a>
+                                <a href="#" class="footer-link">${productsLink}</a>
+                                <a href="#" class="footer-link">${aboutLink}</a>
+                                <a href="#" class="footer-link">${contactLink}</a>
+                            </nav>
+                            <p>&copy; 2024 Firma Example. Wszystkie prawa zastrzeżone.</p>
+                        </div>
+                    `;
+                }
+
+                function analyzeConsistency() {
+                    const results = document.getElementById('analysis-results');
+                    let issues = [];
+                    let score = 0;
+                    let totalChecks = 4;
+
+                    if (consistentButtons) {
+                        score++;
+                    } else {
+                        issues.push('❌ Przyciski o tej samej funkcji mają różne nazwy');
+                    }
+
+                    if (consistentIcons) {
+                        score++;
+                    } else {
+                        issues.push('❌ Ikony reprezentujące tę samą funkcję są różne');
+                    }
+
+                    if (consistentLabels) {
+                        score++;
+                    } else {
+                        issues.push('❌ Etykiety pól o tym samym przeznaczeniu różnią się');
+                    }
+
+                    if (consistentLinks) {
+                        score++;
+                    } else {
+                        issues.push('❌ Linki do tych samych stron mają różne nazwy');
+                    }
+
+                    const consistencyPercentage = Math.round((score / totalChecks) * 100);
+
+                    if (issues.length === 0) {
+                        issues.push('✅ Wszystkie komponenty są spójnie zidentyfikowane');
+                    }
+
+                    results.innerHTML = `
+                        <div class="analysis-summary">
+                            <p><strong>Wskaźnik spójności:</strong> ${consistencyPercentage}%</p>
+                            <p><strong>Sekcja:</strong> ${getSectionName(currentSection)}</p>
+                        </div>
+                        
+                        <div class="analysis-issues">
+                            <h5>Stan spójności:</h5>
+                            <ul>
+                                ${issues.map(issue => `<li>${issue}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="analysis-recommendations">
+                            <h5>Rekomendacje:</h5>
+                            <ul>
+                                ${generateRecommendations().map(rec => `<li>${rec}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                }
+
+                function getSectionName(sectionId) {
+                    const names = {
+                        header: 'Nagłówek',
+                        products: 'Lista produktów',
+                        form: 'Formularz',
+                        footer: 'Stopka'
+                    };
+                    return names[sectionId] || sectionId;
+                }
+
+                function generateRecommendations() {
+                    const recommendations = [];
+
+                    if (!consistentButtons) {
+                        recommendations.push('Ustandaryzuj nazwy przycisków wykonujących tę samą akcję');
+                    }
+
+                    if (!consistentIcons) {
+                        recommendations.push('Używaj tych samych ikon dla identycznych funkcji');
+                    }
+
+                    if (!consistentLabels) {
+                        recommendations.push('Standaryzuj etykiety pól formularzy o tym samym przeznaczeniu');
+                    }
+
+                    if (!consistentLinks) {
+                        recommendations.push('Zapewnij jednolite nazwy linków prowadzących do tych samych stron');
+                    }
+
+                    if (recommendations.length === 0) {
+                        recommendations.push('Kontynuuj utrzymywanie spójnej identyfikacji komponentów');
+                        recommendations.push('Rozważ stworzenie przewodnika stylu dla komponentów');
+                    }
+
+                    return recommendations;
+                }
+
+                // Inicjalizacja
+                renderSection();
+                analyzeConsistency();
+            </script>
+
+            <style>
+                .consistency-simulator {
+                    background-color: #f8f9fa;
+                    border: 1px solid #dee2e6;
+                    border-radius: 5px;
+                    padding: 20px;
+                    margin: 20px 0;
+                }
+
+                .demo-controls {
+                    display: flex;
+                    gap: 30px;
+                    margin-bottom: 20px;
+                    flex-wrap: wrap;
+                }
+
+                .consistency-toggles {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+
+                .consistency-toggles label {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 14px;
+                }
+
+                .demo-section-selector {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+
+                .section-btn {
+                    padding: 8px 16px;
+                    border: 1px solid #007cba;
+                    background: white;
+                    color: #007cba;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    margin: 2px;
+                }
+
+                .section-btn.active,
+                .section-btn:hover {
+                    background: #007cba;
+                    color: white;
+                }
+
+                .demo-display {
+                    margin: 20px 0;
+                    border: 2px solid #007cba;
+                    border-radius: 5px;
+                    background: white;
+                    padding: 20px;
+                    min-height: 300px;
+                }
+
+                .mock-header {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    padding: 15px;
+                    background: #e9ecef;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                    flex-wrap: wrap;
+                }
+
+                .logo {
+                    font-weight: bold;
+                    font-size: 18px;
+                    color: #007cba;
+                }
+
+                .main-nav {
+                    display: flex;
+                    gap: 15px;
+                }
+
+                .nav-link,
+                .footer-link {
+                    text-decoration: none;
+                    color: #333;
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                }
+
+                .nav-link:hover,
+                .footer-link:hover {
+                    background: #f0f0f0;
+                }
+
+                .search-area {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    margin-left: auto;
+                }
+
+                .search-area input {
+                    padding: 8px 12px;
+                    border: 1px solid #ccc;
+                    border-radius: 3px;
+                    width: 200px;
+                }
+
+                .search-btn,
+                .add-to-cart-btn,
+                .save-btn,
+                .cancel-btn {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                    padding: 8px 12px;
+                    border: 1px solid #007cba;
+                    background: #007cba;
+                    color: white;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    font-size: 14px;
+                }
+
+                .cancel-btn {
+                    background: #6c757d;
+                    border-color: #6c757d;
+                }
+
+                .products-grid {
+                    display: grid;
+                    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                    gap: 20px;
+                }
+
+                .product-card {
+                    border: 1px solid #dee2e6;
+                    border-radius: 5px;
+                    padding: 15px;
+                    text-align: center;
+                }
+
+                .product-card img {
+                    width: 100%;
+                    height: 150px;
+                    object-fit: cover;
+                    border-radius: 3px;
+                    margin-bottom: 10px;
+                }
+
+                .product-card h3 {
+                    margin: 10px 0;
+                    font-size: 16px;
+                }
+
+                .price {
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: #28a745;
+                    margin: 10px 0;
+                }
+
+                .form-container {
+                    max-width: 500px;
+                    margin: 0 auto;
+                }
+
+                .demo-form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                }
+
+                .form-field {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                }
+
+                .form-field label {
+                    font-weight: bold;
+                    font-size: 14px;
+                }
+
+                .form-field input,
+                .form-field textarea {
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 3px;
+                    font-size: 14px;
+                }
+
+                .form-field textarea {
+                    min-height: 100px;
+                    resize: vertical;
+                }
+
+                .form-actions {
+                    display: flex;
+                    gap: 10px;
+                    margin-top: 20px;
+                }
+
+                .mock-footer {
+                    background: #e9ecef;
+                    padding: 20px;
+                    text-align: center;
+                    border-radius: 3px;
+                }
+
+                .footer-nav {
+                    display: flex;
+                    justify-content: center;
+                    gap: 20px;
+                    margin-bottom: 15px;
+                    flex-wrap: wrap;
+                }
+
+                .icon {
+                    font-size: 16px;
+                }
+
+                .consistency-analysis {
+                    background: white;
+                    border: 1px solid #dee2e6;
+                    border-radius: 5px;
+                    padding: 15px;
+                    margin-top: 20px;
+                }
+
+                .analysis-summary {
+                    background: #e7f3ff;
+                    padding: 10px;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                }
+
+                .analysis-issues {
+                    background: #fff3cd;
+                    padding: 10px;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                }
+
+                .analysis-recommendations {
+                    background: #d4edda;
+                    padding: 10px;
+                    border-radius: 3px;
+                }
+            </style>
+        </section>
+
+        <section class="identification-testing">
+            <h2>Narzędzie do testowania spójności identyfikacji</h2>
+            <p>Użyj tego narzędzia do automatycznej analizy spójności identyfikacji komponentów w witrynie:</p>
+
+            <div class="testing-tool">
+                <div class="tool-controls">
+                    <button id="start-identification-test" class="test-button">Rozpocznij test identyfikacji</button>
+                    <button id="analyze-components" class="test-button">Analizuj komponenty</button>
+                    <button id="stop-identification-test" class="test-button" disabled>Zatrzymaj test</button>
+                </div>
+
+                <div class="test-options">
+                    <h4>Opcje analizy:</h4>
+                    <label>
+                        <input type="checkbox" id="analyze-buttons" checked> Analizuj przyciski
+                    </label>
+                    <label>
+                        <input type="checkbox" id="analyze-links" checked> Analizuj linki
+                    </label>
+                    <label>
+                        <input type="checkbox" id="analyze-form-labels" checked> Analizuj etykiety pól
+                    </label>
+                    <label>
+                        <input type="checkbox" id="analyze-icons" checked> Analizuj ikony i obrazy
+                    </label>
+                </div>
+
+                <div class="test-results">
+                    <h4>Wyniki analizy spójności:</h4>
+                    <div id="identification-test-results"></div>
+                </div>
+            </div>
+
+            <script>
+                let identificationTestActive = false;
+                let componentDatabase = new Map();
+                let pageAnalysisData = [];
+
+                function startIdentificationTest() {
+                    if (identificationTestActive) return;
+
+                    identificationTestActive = true;
+                    componentDatabase.clear();
+                    pageAnalysisData = [];
+
+                    // Aktualizuj przyciski
+                    document.getElementById('start-identification-test').disabled = true;
+                    document.getElementById('stop-identification-test').disabled = false;
+
+                    // Rozpocznij analizę obecnej strony
+                    analyzeCurrentPageComponents();
+
+                    showIdentificationMessage('Test identyfikacji rozpoczęty. Analizuję spójność komponentów na stronie.');
+                }
+
+                function stopIdentificationTest() {
+                    if (!identificationTestActive) return;
+
+                    identificationTestActive = false;
+
+                    // Aktualizuj przyciski
+                    document.getElementById('start-identification-test').disabled = false;
+                    document.getElementById('stop-identification-test').disabled = true;
+
+                    // Pokaż wyniki
+                    displayIdentificationResults();
+                    showIdentificationMessage('Test identyfikacji zakończony.');
+                }
+
+                function analyzeCurrentPageComponents() {
+                    const analysisOptions = {
+                        buttons: document.getElementById('analyze-buttons').checked,
+                        links: document.getElementById('analyze-links').checked,
+                        formLabels: document.getElementById('analyze-form-labels').checked,
+                        icons: document.getElementById('analyze-icons').checked
+                    };
+
+                    const pageAnalysis = {
+                        url: window.location.href,
+                        title: document.title,
+                        timestamp: Date.now(),
+                        components: {
+                            buttons: analysisOptions.buttons ? extractButtons() : [],
+                            links: analysisOptions.links ? extractLinks() : [],
+                            formLabels: analysisOptions.formLabels ? extractFormLabels() : [],
+                            icons: analysisOptions.icons ? extractIcons() : []
+                        }
+                    };
+
+                    pageAnalysisData.push(pageAnalysis);
+                    updateComponentDatabase(pageAnalysis.components);
+                }
+
+                function extractButtons() {
+                    const buttons = document.querySelectorAll('button, input[type="button"], input[type="submit"]');
+                    const buttonData = [];
+
+                    buttons.forEach((button, index) => {
+                        const buttonInfo = {
+                            element: button,
+                            text: getButtonText(button),
+                            ariaLabel: button.getAttribute('aria-label'),
+                            title: button.getAttribute('title'),
+                            type: button.type || 'button',
+                            classes: button.className,
+                            position: getElementPosition(button),
+                            functionality: inferButtonFunctionality(button)
+                        };
+                        buttonData.push(buttonInfo);
+                    });
+
+                    return buttonData;
+                }
+
+                function extractLinks() {
+                    const links = document.querySelectorAll('a[href]');
+                    const linkData = [];
+
+                    links.forEach(link => {
+                        const linkInfo = {
+                            element: link,
+                            text: link.textContent.trim(),
+                            href: link.href,
+                            ariaLabel: link.getAttribute('aria-label'),
+                            title: link.getAttribute('title'),
+                            position: getElementPosition(link),
+                            context: getElementContext(link)
+                        };
+                        linkData.push(linkInfo);
+                    });
+
+                    return linkData;
+                }
+
+                function extractFormLabels() {
+                    const labels = document.querySelectorAll('label');
+                    const inputs = document.querySelectorAll('input, select, textarea');
+                    const labelData = [];
+
+                    labels.forEach(label => {
+                        const labelInfo = {
+                            element: label,
+                            text: label.textContent.trim(),
+                            for: label.getAttribute('for'),
+                            associatedInput: label.getAttribute('for') ?
+                                document.getElementById(label.getAttribute('for')) : null,
+                            inputType: null,
+                            functionality: inferLabelFunctionality(label)
+                        };
+
+                        if (labelInfo.associatedInput) {
+                            labelInfo.inputType = labelInfo.associatedInput.type ||
+                                labelInfo.associatedInput.tagName.toLowerCase();
+                        }
+
+                        labelData.push(labelInfo);
+                    });
+
+                    // Sprawdź też inputs z aria-label
+                    inputs.forEach(input => {
+                        const ariaLabel = input.getAttribute('aria-label');
+                        const placeholder = input.getAttribute('placeholder');
+
+                        if (ariaLabel && !labelData.find(l => l.associatedInput === input)) {
+                            labelData.push({
+                                element: input,
+                                text: ariaLabel,
+                                for: input.id,
+                                associatedInput: input,
+                                inputType: input.type || input.tagName.toLowerCase(),
+                                functionality: inferInputFunctionality(input),
+                                isAriaLabel: true
+                            });
+                        }
+                    });
+
+                    return labelData;
+                }
+
+                function extractIcons() {
+                    const icons = document.querySelectorAll('img, svg, [class*="icon"], [class*="fa-"]');
+                    const iconData = [];
+
+                    icons.forEach(icon => {
+                        const iconInfo = {
+                            element: icon,
+                            alt: icon.getAttribute('alt'),
+                            ariaLabel: icon.getAttribute('aria-label'),
+                            title: icon.getAttribute('title'),
+                            src: icon.src || null,
+                            classes: icon.className,
+                            context: getElementContext(icon),
+                            functionality: inferIconFunctionality(icon)
+                        };
+                        iconData.push(iconInfo);
+                    });
+
+                    return iconData;
+                }
+
+                function getButtonText(button) {
+                    // Pobierz tekst z button, uwzględniając aria-label
+                    if (button.getAttribute('aria-label')) {
+                        return button.getAttribute('aria-label');
+                    }
+
+                    if (button.type === 'image' && button.alt) {
+                        return button.alt;
+                    }
+
+                    return button.textContent.trim() || button.value || 'Przycisk bez tekstu';
+                }
+
+                function inferButtonFunctionality(button) {
+                    const text = getButtonText(button).toLowerCase();
+                    const classes = button.className.toLowerCase();
+
+                    // Mapowanie funkcjonalności na podstawie tekstu i klas
+                    const functionalityMap = {
+                        'save': ['zapisz', 'save', 'zatwierdź', 'potwierdź'],
+                        'cancel': ['anuluj', 'cancel', 'cofnij', 'rezygnuj'],
+                        'delete': ['usuń', 'delete', 'skasuj', 'wymaż'],
+                        'search': ['szukaj', 'search', 'wyszukaj', 'znajdź'],
+                        'submit': ['wyślij', 'submit', 'prześlij', 'zatwierdź'],
+                        'cart': ['koszyk', 'cart', 'dodaj do koszyka', 'kup']
+                    };
+
+                    for (const [functionality, keywords] of Object.entries(functionalityMap)) {
+                        if (keywords.some(keyword => text.includes(keyword) || classes.includes(keyword))) {
+                            return functionality;
+                        }
+                    }
+
+                    return 'unknown';
+                }
+
+                function inferLabelFunctionality(label) {
+                    const text = label.textContent.toLowerCase();
+
+                    const functionalityMap = {
+                        'email': ['email', 'e-mail', 'mail', 'adres email'],
+                        'name': ['imię', 'nazwisko', 'name', 'nazwa'],
+                        'phone': ['telefon', 'phone', 'numer'],
+                        'password': ['hasło', 'password', 'pwd'],
+                        'message': ['wiadomość', 'message', 'treść']
+                    };
+
+                    for (const [functionality, keywords] of Object.entries(functionalityMap)) {
+                        if (keywords.some(keyword => text.includes(keyword))) {
+                            return functionality;
+                        }
+                    }
+
+                    return 'unknown';
+                }
+
+                function inferInputFunctionality(input) {
+                    const type = input.type;
+                    const name = input.name?.toLowerCase() || '';
+                    const placeholder = input.placeholder?.toLowerCase() || '';
+
+                    if (type === 'email' || name.includes('email') || placeholder.includes('email')) {
+                        return 'email';
+                    }
+                    if (type === 'password' || name.includes('password') || name.includes('haslo')) {
+                        return 'password';
+                    }
+                    if (type === 'tel' || name.includes('phone') || name.includes('tel')) {
+                        return 'phone';
+                    }
+                    if (name.includes('name') || name.includes('imie') || name.includes('nazwisko')) {
+                        return 'name';
+                    }
+
+                    return input.type || 'text';
+                }
+
+                function inferIconFunctionality(icon) {
+                    const alt = (icon.alt || '').toLowerCase();
+                    const ariaLabel = (icon.getAttribute('aria-label') || '').toLowerCase();
+                    const classes = icon.className.toLowerCase();
+                    const context = getElementContext(icon).toLowerCase();
+
+                    const allText = `${alt} ${ariaLabel} ${classes} ${context}`;
+
+                    const functionalityMap = {
+                        'search': ['search', 'szukaj', 'wyszukaj', 'lupa'],
+                        'user': ['user', 'użytkownik', 'profil', 'account'],
+                        'cart': ['cart', 'koszyk', 'basket', 'shopping'],
+                        'home': ['home', 'dom', 'strona główna', 'house'],
+                        'menu': ['menu', 'hamburger', 'nav', 'bars']
+                    };
+
+                    for (const [functionality, keywords] of Object.entries(functionalityMap)) {
+                        if (keywords.some(keyword => allText.includes(keyword))) {
+                            return functionality;
+                        }
+                    }
+
+                    return 'unknown';
+                }
+
+                function getElementContext(element) {
+                    const parent = element.closest('nav, header, footer, form, .navbar, .menu');
+                    if (parent) {
+                        return parent.tagName.toLowerCase() + (parent.className ? ' ' + parent.className : '');
+                    }
+                    return '';
+                }
+
+                function getElementPosition(element) {
+                    const rect = element.getBoundingClientRect();
+                    return {
+                        top: Math.round(rect.top + window.scrollY),
+                        left: Math.round(rect.left + window.scrollX),
+                        width: Math.round(rect.width),
+                        height: Math.round(rect.height)
+                    };
+                }
+
+                function updateComponentDatabase(components) {
+                    Object.entries(components).forEach(([type, items]) => {
+                        if (!componentDatabase.has(type)) {
+                            componentDatabase.set(type, new Map());
+                        }
+
+                        const typeDatabase = componentDatabase.get(type);
+
+                        items.forEach(item => {
+                            const functionality = item.functionality;
+                            if (!typeDatabase.has(functionality)) {
+                                typeDatabase.set(functionality, []);
+                            }
+                            typeDatabase.get(functionality).push(item);
+                        });
+                    });
+                }
+
+                function analyzeComponentsConsistency() {
+                    // Analizuj obecną stronę
+                    analyzeCurrentPageComponents();
+
+                    const analysis = {
+                        totalComponents: 0,
+                        inconsistencies: [],
+                        recommendations: [],
+                        score: 0
+                    };
+
+                    let totalFunctionalities = 0;
+                    let consistentFunctionalities = 0;
+
+                    componentDatabase.forEach((functionalityMap, componentType) => {
+                        functionalityMap.forEach((items, functionality) => {
+                            if (items.length > 1) {
+                                totalFunctionalities++;
+                                const consistency = analyzeComponentGroupConsistency(items, componentType);
+
+                                if (consistency.isConsistent) {
+                                    consistentFunctionalities++;
+                                } else {
+                                    analysis.inconsistencies.push({
+                                        type: componentType,
+                                        functionality: functionality,
+                                        issues: consistency.issues,
+                                        items: items.length
+                                    });
+                                }
+                            }
+                        });
+                    });
+
+                    analysis.totalComponents = Array.from(componentDatabase.values())
+                        .flatMap(map => Array.from(map.values()))
+                        .reduce((sum, items) => sum + items.length, 0);
+
+                    analysis.score = totalFunctionalities > 0 ?
+                        Math.round((consistentFunctionalities / totalFunctionalities) * 100) : 100;
+
+                    // Generuj rekomendacje
+                    if (analysis.inconsistencies.length > 0) {
+                        analysis.recommendations.push('Standaryzuj nazwy komponentów o tej samej funkcji');
+                        analysis.recommendations.push('Stwórz przewodnik stylu dla komponentów');
+                        analysis.recommendations.push('Używaj spójnych ikon dla tych samych funkcji');
+                    } else {
+                        analysis.recommendations.push('Komponenty są spójnie zidentyfikowane');
+                        analysis.recommendations.push('Kontynuuj stosowanie jednolitego nazewnictwa');
+                    }
+
+                    displayComponentAnalysis(analysis);
+                }
+
+                function analyzeComponentGroupConsistency(items, componentType) {
+                    const result = {
+                        isConsistent: true,
+                        issues: []
+                    };
+
+                    if (componentType === 'buttons' || componentType === 'links') {
+                        // Sprawdź spójność tekstów
+                        const texts = items.map(item => item.text?.toLowerCase().trim()).filter(Boolean);
+                        const uniqueTexts = [...new Set(texts)];
+
+                        if (uniqueTexts.length > 1) {
+                            result.isConsistent = false;
+                            result.issues.push(`Różne nazwy: ${uniqueTexts.join(', ')}`);
+                        }
+                    }
+
+                    if (componentType === 'formLabels') {
+                        // Sprawdź spójność etykiet
+                        const labels = items.map(item => item.text?.toLowerCase().trim()).filter(Boolean);
+                        const uniqueLabels = [...new Set(labels)];
+
+                        if (uniqueLabels.length > 1) {
+                            result.isConsistent = false;
+                            result.issues.push(`Różne etykiety: ${uniqueLabels.join(', ')}`);
+                        }
+                    }
+
+                    if (componentType === 'icons') {
+                        // Sprawdź spójność opisów ikon
+                        const descriptions = items.map(item =>
+                            (item.alt || item.ariaLabel || '').toLowerCase().trim()
+                        ).filter(Boolean);
+                        const uniqueDescriptions = [...new Set(descriptions)];
+
+                        if (uniqueDescriptions.length > 1) {
+                            result.isConsistent = false;
+                            result.issues.push(`Różne opisy: ${uniqueDescriptions.join(', ')}`);
+                        }
+                    }
+
+                    return result;
+                }
+
+                function displayIdentificationResults() {
+                    const resultsArea = document.getElementById('identification-test-results');
+
+                    if (pageAnalysisData.length === 0) {
+                        resultsArea.innerHTML = '<p>Brak danych do analizy. Rozpocznij test identyfikacji.</p>';
+                        return;
+                    }
+
+                    const totalComponents = Array.from(componentDatabase.values())
+                        .flatMap(map => Array.from(map.values()))
+                        .reduce((sum, items) => sum + items.length, 0);
+
+                    let html = `
+                        <div class="test-summary">
+                            <h5>Podsumowanie analizy:</h5>
+                            <ul>
+                                <li>Całkowite komponenty: ${totalComponents}</li>
+                                <li>Typy komponentów: ${componentDatabase.size}</li>
+                                <li>Analizowane strony: ${pageAnalysisData.length}</li>
+                            </ul>
+                        </div>
+                    `;
+
+                    // Pokaż statystyki komponentów
+                    html += '<div class="component-stats"><h5>Statystyki komponentów:</h5><ul>';
+                    componentDatabase.forEach((functionalityMap, type) => {
+                        const count = Array.from(functionalityMap.values())
+                            .reduce((sum, items) => sum + items.length, 0);
+                        html += `<li>${getComponentTypeName(type)}: ${count} elementów</li>`;
+                    });
+                    html += '</ul></div>';
+
+                    resultsArea.innerHTML = html;
+                }
+
+                function displayComponentAnalysis(analysis) {
+                    const resultsArea = document.getElementById('identification-test-results');
+
+                    let html = `
+                        <div class="analysis-summary">
+                            <h5>Analiza spójności identyfikacji:</h5>
+                            <p><strong>Wskaźnik spójności:</strong> ${analysis.score}%</p>
+                            <p><strong>Całkowite komponenty:</strong> ${analysis.totalComponents}</p>
+                            <p><strong>Wykryte niespójności:</strong> ${analysis.inconsistencies.length}</p>
+                        </div>
+                    `;
+
+                    if (analysis.inconsistencies.length > 0) {
+                        html += '<div class="analysis-issues"><h5>Niespójności:</h5><ul>';
+                        analysis.inconsistencies.forEach(inc => {
+                            html += `<li><strong>${getComponentTypeName(inc.type)}</strong> - 
+                                ${inc.functionality} (${inc.items} elementów): ${inc.issues.join(', ')}</li>`;
+                        });
+                        html += '</ul></div>';
+                    }
+
+                    html += '<div class="analysis-recommendations"><h5>Rekomendacje:</h5><ul>';
+                    analysis.recommendations.forEach(rec => {
+                        html += `<li>${rec}</li>`;
+                    });
+                    html += '</ul></div>';
+
+                    resultsArea.innerHTML = html;
+                }
+
+                function getComponentTypeName(type) {
+                    const names = {
+                        buttons: 'Przyciski',
+                        links: 'Linki',
+                        formLabels: 'Etykiety pól',
+                        icons: 'Ikony'
+                    };
+                    return names[type] || type;
+                }
+
+                function showIdentificationMessage(message) {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'identification-message';
+                    messageDiv.textContent = message;
+                    messageDiv.style.cssText = `
+                        position: fixed;
+                        bottom: 20px;
+                        right: 20px;
+                        background: #28a745;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 5px;
+                        z-index: 1000;
+                        max-width: 300px;
+                        animation: slideIn 0.5s ease-out;
+                    `;
+
+                    document.body.appendChild(messageDiv);
+
+                    setTimeout(() => {
+                        if (messageDiv.parentNode) {
+                            messageDiv.style.animation = 'slideOut 0.5s ease-out';
+                            setTimeout(() => {
+                                if (messageDiv.parentNode) {
+                                    messageDiv.parentNode.removeChild(messageDiv);
+                                }
+                            }, 500);
+                        }
+                    }, 3000);
+                }
+
+                // Event listeners
+                document.getElementById('start-identification-test').addEventListener('click', startIdentificationTest);
+                document.getElementById('stop-identification-test').addEventListener('click', stopIdentificationTest);
+                document.getElementById('analyze-components').addEventListener('click', analyzeComponentsConsistency);
+            </script>
+
+            <style>
+                .testing-tool {
+                    background-color: #f8f9fa;
+                    border: 1px solid #dee2e6;
+                    border-radius: 5px;
+                    padding: 20px;
+                    margin: 20px 0;
+                }
+
+                .tool-controls {
+                    margin-bottom: 20px;
+                }
+
+                .test-button {
+                    background-color: #28a745;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    margin: 5px;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    font-size: 14px;
+                }
+
+                .test-button:hover:not(:disabled) {
+                    background-color: #218838;
+                }
+
+                .test-button:disabled {
+                    background-color: #6c757d;
+                    cursor: not-allowed;
+                }
+
+                .test-options {
+                    background-color: white;
+                    border: 1px solid #dee2e6;
+                    border-radius: 3px;
+                    padding: 15px;
+                    margin-bottom: 20px;
+                }
+
+                .test-options label {
+                    display: block;
+                    margin: 8px 0;
+                    font-size: 14px;
+                }
+
+                .test-options input[type="checkbox"] {
+                    margin-right: 8px;
+                }
+
+                .test-results {
+                    background-color: white;
+                    border: 1px solid #dee2e6;
+                    border-radius: 3px;
+                    padding: 15px;
+                }
+
+                .test-summary,
+                .analysis-summary {
+                    background-color: #e7f3ff;
+                    padding: 15px;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                }
+
+                .component-stats {
+                    background-color: #f8f9fa;
+                    padding: 15px;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                }
+
+                .analysis-issues {
+                    background-color: #fff3cd;
+                    padding: 15px;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                }
+
+                .analysis-recommendations {
+                    background-color: #d4edda;
+                    padding: 15px;
+                    border-radius: 3px;
+                }
+            </style>
+        </section>
+
+        <section class="implementation-guidelines">
+            <h2>Wytyczne implementacyjne</h2>
+
+            <h3>Jak zapewnić spójną identyfikację komponentów</h3>
+
+            <div class="guideline-item">
+                <h4>1. Stwórz słownik komponentów</h4>
+                <pre><code class="language-javascript">// Słownik standardowych nazw komponentów
+const COMPONENT_LABELS = {
+    // Przyciski akcji
+    buttons: {
+        save: 'Zapisz zmiany',
+        cancel: 'Anuluj', 
+        delete: 'Usuń',
+        edit: 'Edytuj',
+        submit: 'Wyślij',
+        addToCart: 'Dodaj do koszyka',
+        search: 'Wyszukaj',
+        login: 'Zaloguj się',
+        logout: 'Wyloguj się'
+    },
+    
+    // Etykiety pól formularza
+    formFields: {
+        email: 'Adres e-mail:',
+        password: 'Hasło:',
+        confirmPassword: 'Potwierdź hasło:',
+        firstName: 'Imię:',
+        lastName: 'Nazwisko:',
+        phone: 'Numer telefonu:',
+        address: 'Adres:',
+        city: 'Miasto:',
+        postalCode: 'Kod pocztowy:',
+        message: 'Wiadomość:'
+    },
+    
+    // Nazwy linków nawigacyjnych
+    navigation: {
+        home: 'Strona główna',
+        products: 'Produkty',
+        services: 'Usługi',
+        about: 'O nas',
+        contact: 'Kontakt',
+        blog: 'Blog',
+        account: 'Moje konto',
+        cart: 'Koszyk'
+    },
+    
+    // Opisy ikon
+    icons: {
+        search: 'Wyszukaj',
+        user: 'Profil użytkownika',
+        cart: 'Koszyk zakupów',
+        menu: 'Menu',
+        home: 'Strona główna',
+        edit: 'Edytuj',
+        delete: 'Usuń',
+        save: 'Zapisz',
+        close: 'Zamknij'
+    }
+};
+
+// Funkcja pobrania spójnej etykiety
+function getComponentLabel(category, key) {
+    return COMPONENT_LABELS[category]?.[key] || `Nieznany ${category}: ${key}`;
+}
+
+// Przykład użycia
+const saveButtonLabel = getComponentLabel('buttons', 'save'); // "Zapisz zmiany"
+const emailFieldLabel = getComponentLabel('formFields', 'email'); // "Adres e-mail:"</code></pre>
+            </div>
+
+            <div class="guideline-item">
+                <h4>2. Implementuj system komponentów</h4>
+                <pre><code class="language-html">&lt;!-- Szablon przycisku z spójną etykietą --&gt;
+&lt;template id="action-button-template"&gt;
+    &lt;button type="button" class="btn" data-action=""&gt;
+        &lt;svg class="btn-icon" aria-hidden="true"&gt;&lt;/svg&gt;
+        &lt;span class="btn-text"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+&lt;/template&gt;
+
+&lt;!-- Szablon pola formularza --&gt;
+&lt;template id="form-field-template"&gt;
+    &lt;div class="form-field"&gt;
+        &lt;label class="field-label"&gt;
+            &lt;span class="label-text"&gt;&lt;/span&gt;
+            &lt;span class="required" aria-label="wymagane"&gt;*&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;input class="form-input"&gt;
+        &lt;div class="field-help"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+// Klasa do tworzenia spójnych komponentów
+class ComponentFactory {
+    static createButton(action, options = {}) {
+        const template = document.getElementById('action-button-template');
+        const button = template.content.cloneNode(true).querySelector('button');
+        
+        // Ustaw spójną etykietę
+        const label = getComponentLabel('buttons', action);
+        button.querySelector('.btn-text').textContent = label;
+        button.setAttribute('data-action', action);
+        
+        // Ustaw ikonę jeśli dostępna
+        if (options.icon) {
+            const icon = button.querySelector('.btn-icon');
+            icon.innerHTML = `&lt;use href="#icon-${action}"&gt;&lt;/use&gt;`;
+        }
+        
+        // Ustaw typu przycisku
+        if (options.type) {
+            button.type = options.type;
+        }
+        
+        // Dodaj klasy CSS
+        if (options.variant) {
+            button.classList.add(`btn-${options.variant}`);
+        }
+        
+        return button;
+    }
+    
+    static createFormField(fieldType, options = {}) {
+        const template = document.getElementById('form-field-template');
+        const field = template.content.cloneNode(true).querySelector('.form-field');
+        
+        // Ustaw spójną etykietę
+        const label = getComponentLabel('formFields', fieldType);
+        field.querySelector('.label-text').textContent = label;
+        
+        // Skonfiguruj input
+        const input = field.querySelector('.form-input');
+        input.type = options.inputType || 'text';
+        input.name = options.name || fieldType;
+        input.id = options.id || `field-${fieldType}-${Date.now()}`;
+        
+        // Połącz label z input
+        const labelElement = field.querySelector('.field-label');
+        labelElement.setAttribute('for', input.id);
+        
+        // Ustaw wymagalność
+        if (options.required) {
+            input.required = true;
+        } else {
+            field.querySelector('.required').style.display = 'none';
+        }
+        
+        // Dodaj tekst pomocy
+        if (options.helpText) {
+            const help = field.querySelector('.field-help');
+            help.textContent = options.helpText;
+            help.id = `${input.id}-help`;
+            input.setAttribute('aria-describedby', help.id);
+        }
+        
+        return field;
+    }
+    
+    static createNavigationLink(page, options = {}) {
+        const link = document.createElement('a');
+        link.href = options.href || `/${page}`;
+        link.textContent = getComponentLabel('navigation', page);
+        
+        if (options.current) {
+            link.setAttribute('aria-current', 'page');
+        }
+        
+        return link;
+    }
+}
+
+// Przykłady użycia
+const saveButton = ComponentFactory.createButton('save', {
+    type: 'submit',
+    variant: 'primary',
+    icon: true
+});
+
+const emailField = ComponentFactory.createFormField('email', {
+    inputType: 'email',
+    required: true,
+    helpText: 'Podaj prawidłowy adres e-mail'
+});
+
+const homeLink = ComponentFactory.createNavigationLink('home', {
+    href: '/',
+    current: true
+});
+&lt;/script&gt;</code></pre>
+            </div>
+
+            <div class="guideline-item">
+                <h4>3. Zarządzaj ikonami spójnie</h4>
+                <pre><code class="language-html">&lt;!-- Centralny zestaw ikon SVG --&gt;
+&lt;svg style="display: none;" aria-hidden="true"&gt;
+    &lt;defs&gt;
+        &lt;!-- Ikona wyszukiwania - używana wszędzie identycznie --&gt;
+        &lt;symbol id="icon-search" viewBox="0 0 24 24"&gt;
+            &lt;path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" 
+                  stroke="currentColor" stroke-width="2" 
+                  stroke-linecap="round" stroke-linejoin="round" fill="none"/&gt;
+        &lt;/symbol&gt;
+        
+        &lt;!-- Ikona koszyka - spójna w całej witrynie --&gt;
+        &lt;symbol id="icon-cart" viewBox="0 0 24 24"&gt;
+            &lt;path d="M3 3h2l.4 2M7 13h10l4-8H5.4m1.6 8L5 3H3m4 10v6a1 1 0 001 1h8a1 1 0 001-1v-6" 
+                  stroke="currentColor" stroke-width="2" 
+                  stroke-linecap="round" stroke-linejoin="round" fill="none"/&gt;
+        &lt;/symbol&gt;
+        
+        &lt;!-- Ikona użytkownika --&gt;
+        &lt;symbol id="icon-user" viewBox="0 0 24 24"&gt;
+            &lt;path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2M12 11a4 4 0 100-8 4 4 0 000 8z" 
+                  stroke="currentColor" stroke-width="2" 
+                  stroke-linecap="round" stroke-linejoin="round" fill="none"/&gt;
+        &lt;/symbol&gt;
+    &lt;/defs&gt;
+&lt;/svg&gt;
+
+&lt;script&gt;
+// Klasa do zarządzania spójnymi ikonami
+class IconManager {
+    static icons = {
+        search: { id: 'icon-search', label: 'Wyszukaj' },
+        cart: { id: 'icon-cart', label: 'Koszyk zakupów' },
+        user: { id: 'icon-user', label: 'Profil użytkownika' },
+        save: { id: 'icon-save', label: 'Zapisz' },
+        edit: { id: 'icon-edit', label: 'Edytuj' },
+        delete: { id: 'icon-delete', label: 'Usuń' },
+        home: { id: 'icon-home', label: 'Strona główna' },
+        menu: { id: 'icon-menu', label: 'Menu' }
+    };
+    
+    static createIcon(iconName, options = {}) {
+        const iconData = IconManager.icons[iconName];
+        if (!iconData) {
+            console.warn(`Nieznana ikona: ${iconName}`);
+            return null;
+        }
+        
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('class', 'icon');
+        svg.setAttribute('aria-hidden', 'true');
+        
+        if (options.size) {
+            svg.setAttribute('width', options.size);
+            svg.setAttribute('height', options.size);
+        }
+        
+        const use = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+        use.setAttribute('href', `#${iconData.id}`);
+        svg.appendChild(use);
+        
+        return svg;
+    }
+    
+    static createIconButton(iconName, options = {}) {
+        const button = document.createElement('button');
+        button.type = options.type || 'button';
+        button.className = options.className || 'icon-button';
+        
+        const iconData = IconManager.icons[iconName];
+        const icon = IconManager.createIcon(iconName, options);
+        
+        if (icon) {
+            button.appendChild(icon);
+        }
+        
+        // Ustaw spójną etykietę dostępności
+        const label = options.label || iconData?.label || 'Przycisk';
+        button.setAttribute('aria-label', label);
+        
+        if (options.text) {
+            const textSpan = document.createElement('span');
+            textSpan.textContent = options.text;
+            button.appendChild(textSpan);
+        }
+        
+        return button;
+    }
+}
+
+// Przykłady użycia - zawsze spójne ikony i etykiety
+const searchButton1 = IconManager.createIconButton('search'); // W nagłówku
+const searchButton2 = IconManager.createIconButton('search'); // W formularzu
+const searchButton3 = IconManager.createIconButton('search'); // W stopce
+
+// Wszystkie będą miały tę samą ikonę i etykietę "Wyszukaj"
+&lt;/script&gt;</code></pre>
+            </div>
+
+            <div class="guideline-item">
+                <h4>4. System walidacji spójności</h4>
+                <pre><code class="language-javascript">// System do walidacji spójności komponentów
+class ConsistencyValidator {
+    constructor() {
+        this.componentRegistry = new Map();
+        this.inconsistencies = [];
+    }
+    
+    // Rejestruj komponent w systemie
+    registerComponent(type, functionality, element, label) {
+        const key = `${type}-${functionality}`;
+        
+        if (!this.componentRegistry.has(key)) {
+            this.componentRegistry.set(key, {
+                type,
+                functionality,
+                expectedLabel: label,
+                elements: []
+            });
+        }
+        
+        const component = this.componentRegistry.get(key);
+        component.elements.push({ element, label });
+        
+        // Sprawdź spójność
+        this.validateComponentConsistency(key);
+    }
+    
+    validateComponentConsistency(key) {
+        const component = this.componentRegistry.get(key);
+        const labels = component.elements.map(el => el.label);
+        const uniqueLabels = [...new Set(labels)];
+        
+        if (uniqueLabels.length > 1) {
+            this.inconsistencies.push({
+                type: component.type,
+                functionality: component.functionality,
+                expectedLabel: component.expectedLabel,
+                foundLabels: uniqueLabels,
+                elements: component.elements
+            });
+            
+            console.warn(`Niespójność w ${component.type}/${component.functionality}:`, uniqueLabels);
+        }
+    }
+    
+    // Sprawdź wszystkie komponenty na stronie
+    validatePage() {
+        this.componentRegistry.clear();
+        this.inconsistencies = [];
+        
+        // Sprawdź przyciski
+        document.querySelectorAll('button, input[type="button"], input[type="submit"]').forEach(button => {
+            const functionality = this.inferButtonFunctionality(button);
+            const label = this.getButtonLabel(button);
+            this.registerComponent('button', functionality, button, label);
+        });
+        
+        // Sprawdź linki
+        document.querySelectorAll('a[href]').forEach(link => {
+            const href = link.getAttribute('href');
+            const label = link.textContent.trim();
+            this.registerComponent('link', href, link, label);
+        });
+        
+        // Sprawdź etykiety pól
+        document.querySelectorAll('label').forEach(label => {
+            const forAttr = label.getAttribute('for');
+            const input = forAttr ? document.getElementById(forAttr) : null;
+            if (input) {
+                const functionality = this.inferInputFunctionality(input);
+                const labelText = label.textContent.trim();
+                this.registerComponent('label', functionality, label, labelText);
+            }
+        });
+        
+        return {
+            totalComponents: this.componentRegistry.size,
+            inconsistencies: this.inconsistencies,
+            isConsistent: this.inconsistencies.length === 0
+        };
+    }
+    
+    getButtonLabel(button) {
+        return button.getAttribute('aria-label') || 
+               button.textContent.trim() || 
+               button.value || 
+               'Przycisk bez etykiety';
+    }
+    
+    inferButtonFunctionality(button) {
+        const text = this.getButtonLabel(button).toLowerCase();
+        const className = button.className.toLowerCase();
+        
+        // Mapowanie funkcjonalności
+        if (text.includes('zapisz') || text.includes('save')) return 'save';
+        if (text.includes('anuluj') || text.includes('cancel')) return 'cancel';
+        if (text.includes('usuń') || text.includes('delete')) return 'delete';
+        if (text.includes('szukaj') || text.includes('search')) return 'search';
+        if (text.includes('koszyk') || text.includes('cart')) return 'cart';
+        
+        return 'unknown';
+    }
+    
+    inferInputFunctionality(input) {
+        const type = input.type;
+        const name = input.name?.toLowerCase() || '';
+        
+        if (type === 'email' || name.includes('email')) return 'email';
+        if (type === 'password') return 'password';
+        if (type === 'tel' || name.includes('phone')) return 'phone';
+        if (name.includes('name') || name.includes('imie')) return 'name';
+        
+        return type;
+    }
+    
+    // Generuj raport niespójności
+    generateReport() {
+        if (this.inconsistencies.length === 0) {
+            return 'Wszystkie komponenty są spójnie zidentyfikowane.';
+        }
+        
+        let report = 'Wykryte niespójności:\n\n';
+        
+        this.inconsistencies.forEach((inconsistency, index) => {
+            report += `${index + 1}. ${inconsistency.type}/${inconsistency.functionality}:\n`;
+            report += `   Oczekiwana etykieta: "${inconsistency.expectedLabel}"\n`;
+            report += `   Znalezione etykiety: ${inconsistency.foundLabels.map(l => `"${l}"`).join(', ')}\n`;
+            report += `   Liczba elementów: ${inconsistency.elements.length}\n\n`;
+        });
+        
+        return report;
+    }
+}
+
+// Użycie walidatora
+const validator = new ConsistencyValidator();
+
+// Waliduj stronę
+const result = validator.validatePage();
+console.log('Wynik walidacji:', result);
+
+if (!result.isConsistent) {
+    console.log('Raport niespójności:\n', validator.generateReport());
+}
+
+// Można też walidować automatycznie przy ładowaniu strony
+document.addEventListener('DOMContentLoaded', () => {
+    const validator = new ConsistencyValidator();
+    const result = validator.validatePage();
+    
+    if (!result.isConsistent && window.location.hostname === 'localhost') {
+        // Wyświetl ostrzeżenia tylko w developmencie
+        console.warn('Wykryto niespójności w komponentach:', result.inconsistencies);
+    }
+});</code></pre>
+            </div>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie kryterium 3.2.4</h2>
+
+            <h3>Testy manualne</h3>
+            <ul>
+                <li><strong>Audyt przycisków</strong> - sprawdź czy przyciski o tej samej funkcji mają identyczne nazwy
+                </li>
+                <li><strong>Audyt ikon</strong> - zweryfikuj spójność ikon reprezentujących te same funkcje</li>
+                <li><strong>Audyt etykiet pól</strong> - sprawdź jednolitość nazw pól o tym samym przeznaczeniu</li>
+                <li><strong>Audyt linków</strong> - upewnij się, że linki do tych samych stron mają identyczne nazwy
+                </li>
+                <li><strong>Test z technologiami wspomagającymi</strong> - sprawdź czy czytnik ekranu odczytuje spójne
+                    nazwy</li>
+                <li><strong>Test między stronami</strong> - porównaj identyfikację komponentów na różnych stronach</li>
+            </ul>
+
+            <h3>Testy automatyczne</h3>
+            <pre><code class="language-javascript">// Test automatyczny spójności identyfikacji
+function testIdentificationConsistency() {
+    const results = {
+        isConsistent: true,
+        issues: [],
+        componentStats: {}
+    };
+    
+    // Grupa komponentów według funkcjonalności
+    const componentGroups = {
+        buttons: new Map(),
+        links: new Map(), 
+        formLabels: new Map(),
+        icons: new Map()
+    };
+    
+    // Analizuj przyciski
+    document.querySelectorAll('button, input[type="button"], input[type="submit"]').forEach(button => {
+        const functionality = inferButtonFunction(button);
+        const label = getElementLabel(button);
+        
+        if (!componentGroups.buttons.has(functionality)) {
+            componentGroups.buttons.set(functionality, []);
+        }
+        componentGroups.buttons.get(functionality).push({ element: button, label });
+    });
+    
+    // Analizuj linki
+    document.querySelectorAll('a[href]').forEach(link => {
+        const href = normalizeHref(link.href);
+        const label = link.textContent.trim();
+        
+        if (!componentGroups.links.has(href)) {
+            componentGroups.links.set(href, []);
+        }
+        componentGroups.links.get(href).push({ element: link, label });
+    });
+    
+    // Analizuj etykiety pól
+    document.querySelectorAll('label').forEach(label => {
+        const input = getAssociatedInput(label);
+        if (input) {
+            const functionality = inferInputFunction(input);
+            const labelText = label.textContent.trim();
+            
+            if (!componentGroups.formLabels.has(functionality)) {
+                componentGroups.formLabels.set(functionality, []);
+            }
+            componentGroups.formLabels.get(functionality).push({ element: label, label: labelText });
+        }
+    });
+    
+    // Sprawdź spójność w każdej grupie
+    Object.entries(componentGroups).forEach(([type, groups]) => {
+        groups.forEach((items, functionality) => {
+            if (items.length > 1) {
+                const labels = items.map(item => item.label);
+                const uniqueLabels = [...new Set(labels)];
+                
+                if (uniqueLabels.length > 1) {
+                    results.isConsistent = false;
+                    results.issues.push({
+                        type,
+                        functionality,
+                        expectedOne: uniqueLabels[0],
+                        found: uniqueLabels,
+                        count: items.length
+                    });
+                }
+            }
+        });
+        
+        results.componentStats[type] = groups.size;
+    });
+    
+    return results;
+}
+
+function inferButtonFunction(button) {
+    const text = getElementLabel(button).toLowerCase();
+    const classes = button.className.toLowerCase();
+    
+    if (text.includes('zapisz') || text.includes('save')) return 'save';
+    if (text.includes('anuluj') || text.includes('cancel')) return 'cancel';
+    if (text.includes('usuń') || text.includes('delete')) return 'delete';
+    if (text.includes('szukaj') || text.includes('search')) return 'search';
+    if (text.includes('wyślij') || text.includes('submit')) return 'submit';
+    if (text.includes('koszyk') || text.includes('cart')) return 'addToCart';
+    
+    return button.type || 'unknown';
+}
+
+function getElementLabel(element) {
+    return element.getAttribute('aria-label') ||
+           element.textContent.trim() ||
+           element.value ||
+           element.alt ||
+           'Element bez etykiety';
+}
+
+function normalizeHref(href) {
+    try {
+        const url = new URL(href);
+        return url.pathname;
+    } catch {
+        return href;
+    }
+}
+
+function getAssociatedInput(label) {
+    const forAttr = label.getAttribute('for');
+    if (forAttr) {
+        return document.getElementById(forAttr);
+    }
+    
+    // Sprawdź czy input jest dzieckiem label
+    return label.querySelector('input, select, textarea');
+}
+
+function inferInputFunction(input) {
+    const type = input.type;
+    const name = input.name?.toLowerCase() || '';
+    const placeholder = input.placeholder?.toLowerCase() || '';
+    
+    if (type === 'email' || name.includes('email') || placeholder.includes('email')) {
+        return 'email';
+    }
+    if (type === 'password') return 'password';
+    if (type === 'tel' || name.includes('phone') || name.includes('tel')) {
+        return 'phone';
+    }
+    if (name.includes('name') || name.includes('imie') || name.includes('nazwisko')) {
+        return 'name';
+    }
+    
+    return type;
+}
+
+// Uruchom test
+const consistencyResult = testIdentificationConsistency();
+
+if (consistencyResult.isConsistent) {
+    console.log('✅ Wszystkie komponenty są spójnie zidentyfikowane');
+} else {
+    console.log('❌ Wykryto niespójności:');
+    consistencyResult.issues.forEach(issue => {
+        console.log(`${issue.type}/${issue.functionality}: ${issue.found.join(', ')}`);
+    });
+}
+
+console.log('Statystyki komponentów:', consistencyResult.componentStats);</code></pre>
+
+            <h3>Checklist testowa</h3>
+            <div class="checklist">
+                <h4>✅ Sprawdź czy:</h4>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ Przyciski o tej samej funkcji mają identyczne nazwy na wszystkich stronach</li>
+                    <li>☐ Ikony reprezentujące tę samą funkcję są jednakowe w całej witrynie</li>
+                    <li>☐ Pola formularzy o tym samym przeznaczeniu mają spójne etykiety</li>
+                    <li>☐ Linki prowadzące do tych samych stron mają identyczne nazwy</li>
+                    <li>☐ Alternatywne teksty dla grafik o tej samej funkcji są spójne</li>
+                    <li>☐ Aria-label dla komponentów o tej samej funkcji jest jednolite</li>
+                    <li>☐ Opisy przycisków (title) są konsekwentne</li>
+                    <li>☐ Komponenty działają w ten sam sposób na wszystkich stronach</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="common-mistakes">
+            <h2>Częste błędy</h2>
+
+            <div class="mistake-block">
+                <h3>❌ Różne nazwy przycisków o tej samej funkcji</h3>
+                <p><strong>Problem:</strong> Przycisk dodawania do koszyka ma różne nazwy</p>
+                <pre><code class="language-html">&lt;button&gt;Dodaj do koszyka&lt;/button&gt;  &lt;!-- Strona A --&gt;
+&lt;button&gt;Kup teraz&lt;/button&gt;         &lt;!-- Strona B --&gt;
+&lt;button&gt;Do koszyka&lt;/button&gt;        &lt;!-- Strona C --&gt;</code></pre>
+                <p><strong>Rozwiązanie:</strong> Używaj stałego słownika nazw</p>
+                <pre><code class="language-html">&lt;button&gt;Dodaj do koszyka&lt;/button&gt;  &lt;!-- Wszędzie --&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Niespójne etykiety pól e-mail</h3>
+                <p><strong>Problem:</strong> Pole e-mail ma różne nazwy w formularzach</p>
+                <pre><code class="language-html">&lt;label&gt;Adres e-mail:&lt;/label&gt;     &lt;!-- Formularz A --&gt;
+&lt;label&gt;E-mail:&lt;/label&gt;           &lt;!-- Formularz B --&gt;
+&lt;label&gt;Podaj swój e-mail:&lt;/label&gt; &lt;!-- Formularz C --&gt;</code></pre>
+                <p><strong>Rozwiązanie:</strong> Standaryzuj etykiety pól</p>
+                <pre><code class="language-html">&lt;label&gt;Adres e-mail:&lt;/label&gt;     &lt;!-- Wszędzie --&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Różne ikony dla tej samej funkcji</h3>
+                <p><strong>Problem:</strong> Ikona wyszukiwania różni się między sekcjami</p>
+                <p><strong>Rozwiązanie:</strong> Używaj centralnego zestawu ikon SVG z jednolitymi symbolami</p>
+            </div>
+        </section>
+
+        <section class="resources">
+            <h2>Dodatkowe zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/consistent-identification.html" target="_blank"
+                        rel="noopener">Understanding SC 3.2.4: Consistent Identification (W3C)</a></li>
+                <li><a href="https://webaim.org/techniques/forms/controls" target="_blank" rel="noopener">WebAIM: Form
+                        Controls</a></li>
+                <li><a href="https://www.nngroup.com/articles/consistency-and-standards/" target="_blank"
+                        rel="noopener">Consistency and Standards (Nielsen Norman Group)</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label"
+                        target="_blank" rel="noopener">MDN: aria-label</a></li>
+                <li><a href="https://inclusive-components.design/" target="_blank" rel="noopener">Inclusive
+                        Components</a></li>
+                <li><a href="https://design-system.service.gov.uk/components/" target="_blank" rel="noopener">GOV.UK
+                        Design System Components</a></li>
+            </ul>
+        </section>
+
+        <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+            <ul>
+                <li><a href="3.2.3.html">Poprzedni: 3.2.3 Spójna nawigacja</a></li>
+                <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                <li><a href="3.2.5.html">Następny: 3.2.5 Zmiana na żądanie</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

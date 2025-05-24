@@ -1,0 +1,2640 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.2.5 Zmiana na żądanie (AAA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>3.2.5 Zmiana na żądanie (AAA)</h1>
+            <p>Zmiany kontekstu są inicjowane tylko na żądanie użytkownika
+                lub dostępny jest mechanizm do wyłączenia takich zmian.</p>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>To kryterium poziomu AAA wymaga najwyższego poziomu kontroli użytkownika nad zmianami kontekstu.
+                Oznacza to, że:</p>
+            <ul>
+                <li>Wszystkie zmiany kontekstu muszą być inicjowane przez użytkownika</li>
+                <li>Automatyczne zmiany są dozwolone tylko jeśli użytkownik może je wyłączyć</li>
+                <li>Użytkownik musi być uprzedzony o potencjalnych zmianach</li>
+                <li>Mechanizmy kontroli muszą być łatwo dostępne</li>
+                <li>Ustawienia użytkownika muszą być zachowane</li>
+            </ul>
+
+            <p>Kryterium obejmuje <strong>wszystkie typy zmian kontekstu</strong>, w tym:</p>
+            <ul>
+                <li>Otwieranie nowych okien i zakładek</li>
+                <li>Przenoszenie fokusa na inne elementy</li>
+                <li>Przekierowania i zmiany adresu URL</li>
+                <li>Znaczące zmiany zawartości strony</li>
+                <li>Automatyczne odświeżanie i przeładowywanie</li>
+                <li>Wyskakujące okienka i modala</li>
+                <li>Zmiany orientacji lub układu strony</li>
+            </ul>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Osoby niewidome</strong> - pełna kontrola nad nawigacją i kontekstem</li>
+                <li><strong>Osoby z ograniczeniami poznawczymi</strong> - przewidywalne środowisko bez zakłóceń</li>
+                <li><strong>Osoby z ADHD</strong> - minimalizacja rozpraszających zmian</li>
+                <li><strong>Osoby z zaburzeniami orientacji</strong> - stabilny kontekst odniesienia</li>
+                <li><strong>Osoby słabowidzące</strong> - możliwość kontroli powiększenia i położenia</li>
+                <li><strong>Osoby z dysleksją</strong> - stabilne środowisko czytania</li>
+                <li><strong>Użytkownicy urządzeń mobilnych</strong> - oszczędność baterii i danych</li>
+                <li><strong>Wszyscy użytkownicy</strong> - pełna kontrola nad doświadczeniem</li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje</h2>
+            <dl>
+                <dt><strong>Zmiana na żądanie</strong></dt>
+                <dd>Zmiana kontekstu, która jest:</dd>
+                <ul>
+                    <li>Bezpośrednio inicjowana przez działanie użytkownika (kliknięcie, naciśnięcie klawisza)</li>
+                    <li>Poprzedzona jasną informacją o konsekwencjach</li>
+                    <li>Podlegająca kontroli użytkownika (można ją wyłączyć lub skonfigurować)</li>
+                    <li>Opcjonalna - użytkownik może zdecydować czy ją uruchomić</li>
+                </ul>
+
+                <dt><strong>Mechanizm kontroli</strong></dt>
+                <dd>Funkcja umożliwiająca użytkownikowi:</dd>
+                <ul>
+                    <li>Wyłączanie automatycznych zmian</li>
+                    <li>Konfigurację zachowań interfejsu</li>
+                    <li>Przywracanie poprzedniego stanu</li>
+                    <li>Wstrzymywanie/wznawianie automatycznych działań</li>
+                </ul>
+
+                <dt><strong>Automatyczna zmiana kontekstu</strong></dt>
+                <dd>Zmiana wywołana przez:</dd>
+                <ul>
+                    <li>Upływ czasu (timery, timeouty)</li>
+                    <li>Załadowanie strony</li>
+                    <li>Zdarzenia zewnętrzne</li>
+                    <li>Algorytmy lub systemy automatyczne</li>
+                    <li>Reakcje na pozycję kursora (hover)</li>
+                </ul>
+
+                <dt><strong>Kontrola poprzez ustawienia</strong></dt>
+                <dd>Możliwość skonfigurowania zachowania za pomocą:</dd>
+                <ul>
+                    <li>Panelu preferencji użytkownika</li>
+                    <li>Ustawień dostępności</li>
+                    <li>Opcji konfiguracyjnych</li>
+                    <li>Personalizacji interfejsu</li>
+                </ul>
+            </dl>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Automatyczne przekierowania bez kontroli</h4>
+                <pre><code class="language-html">&lt;!-- Automatyczne przekierowanie po 5 sekundach - niedozwolone! --&gt;
+&lt;meta http-equiv="refresh" content="5; url=https://example.com/new-page"&gt;
+
+&lt;!-- JavaScript przekierowanie bez zgody użytkownika --&gt;
+&lt;script&gt;
+// Przekierowuje automatycznie po załadowaniu - błędne!
+window.addEventListener('load', function() {
+    setTimeout(function() {
+        window.location.href = '/dashboard';
+    }, 3000);
+});
+&lt;/script&gt;
+
+&lt;!-- Komunikat bez opcji kontroli --&gt;
+&lt;div class="notification"&gt;
+    Zostaniesz przekierowany za &lt;span id="countdown"&gt;5&lt;/span&gt; sekund...
+&lt;/div&gt;</code></pre>
+                <p><strong>Problem:</strong> Brak możliwości zatrzymania lub wyłączenia automatycznego przekierowania.
+                </p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Automatyczne otwieranie modali</h4>
+                <pre><code class="language-html">&lt;!-- Modal otwierający się automatycznie --&gt;
+&lt;script&gt;
+// Otwiera modal po 10 sekundach - niedozwolone!
+setTimeout(function() {
+    document.getElementById('promo-modal').style.display = 'block';
+    document.getElementById('promo-modal').focus();
+}, 10000);
+
+// Modal przy hover - problematyczne
+document.addEventListener('mouseover', function(e) {
+    if (e.target.classList.contains('product-card')) {
+        showProductModal(e.target.dataset.productId);
+    }
+});
+&lt;/script&gt;</code></pre>
+                <p><strong>Problem:</strong> Automatyczne zmiany fokusa i kontekstu bez zgody użytkownika.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Automatyczne odświeżanie bez kontroli</h4>
+                <pre><code class="language-html">&lt;!-- Strona odświeża się co 30 sekund --&gt;
+&lt;script&gt;
+// Automatyczne odświeżanie - niedozwolone!
+setInterval(function() {
+    location.reload();
+}, 30000);
+
+// Aktualizacja zawartości bez informowania użytkownika
+function updateContent() {
+    fetch('/api/latest-news')
+        .then(response =&gt; response.json())
+        .then(data =&gt; {
+            // Zastępuje zawartość bez zgody użytkownika
+            document.getElementById('news-content').innerHTML = data.html;
+        });
+}
+
+setInterval(updateContent, 60000); // Co minutę
+&lt;/script&gt;</code></pre>
+                <p><strong>Problem:</strong> Brak kontroli nad automatycznymi aktualizacjami zawartości.</p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Kontrolowane przekierowanie z opcjami</h4>
+                <pre><code class="language-html">&lt;!-- Panel kontroli przekierowań --&gt;
+&lt;div class="redirect-control" role="alert"&gt;
+    &lt;h3&gt;Przekierowanie&lt;/h3&gt;
+    &lt;p&gt;Ta strona może Cię przekierować do nowej lokalizacji.&lt;/p&gt;
+    
+    &lt;div class="countdown-display"&gt;
+        Automatyczne przekierowanie za: &lt;span id="countdown" aria-live="polite"&gt;10&lt;/span&gt; sekund
+    &lt;/div&gt;
+    
+    &lt;div class="redirect-actions"&gt;
+        &lt;button type="button" id="redirect-now" class="btn btn-primary"&gt;
+            Przekieruj teraz
+        &lt;/button&gt;
+        &lt;button type="button" id="cancel-redirect" class="btn btn-secondary"&gt;
+            Anuluj przekierowanie
+        &lt;/button&gt;
+        &lt;button type="button" id="disable-auto-redirect" class="btn btn-link"&gt;
+            Wyłącz automatyczne przekierowania
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+class RedirectController {
+    constructor() {
+        this.countdownTime = 10;
+        this.redirectUrl = '/dashboard';
+        this.timer = null;
+        this.autoRedirectEnabled = this.getAutoRedirectPreference();
+        
+        this.init();
+    }
+    
+    init() {
+        if (!this.autoRedirectEnabled) {
+            this.showManualRedirectOption();
+            return;
+        }
+        
+        this.setupEventListeners();
+        this.startCountdown();
+    }
+    
+    setupEventListeners() {
+        document.getElementById('redirect-now').addEventListener('click', () =&gt; {
+            this.redirectNow();
+        });
+        
+        document.getElementById('cancel-redirect').addEventListener('click', () =&gt; {
+            this.cancelRedirect();
+        });
+        
+        document.getElementById('disable-auto-redirect').addEventListener('click', () =&gt; {
+            this.disableAutoRedirect();
+        });
+    }
+    
+    startCountdown() {
+        this.timer = setInterval(() =&gt; {
+            this.countdownTime--;
+            document.getElementById('countdown').textContent = this.countdownTime;
+            
+            if (this.countdownTime &lt;= 0) {
+                this.redirectNow();
+            }
+        }, 1000);
+    }
+    
+    redirectNow() {
+        this.clearTimer();
+        window.location.href = this.redirectUrl;
+    }
+    
+    cancelRedirect() {
+        this.clearTimer();
+        document.querySelector('.redirect-control').style.display = 'none';
+    }
+    
+    disableAutoRedirect() {
+        this.clearTimer();
+        localStorage.setItem('autoRedirectDisabled', 'true');
+        this.showManualRedirectOption();
+    }
+    
+    clearTimer() {
+        if (this.timer) {
+            clearInterval(this.timer);
+            this.timer = null;
+        }
+    }
+    
+    getAutoRedirectPreference() {
+        return localStorage.getItem('autoRedirectDisabled') !== 'true';
+    }
+    
+    showManualRedirectOption() {
+        document.querySelector('.redirect-control').innerHTML = `
+            &lt;h3&gt;Przekierowanie dostępne&lt;/h3&gt;
+            &lt;p&gt;Możesz przejść do nowej strony klikając poniższy przycisk.&lt;/p&gt;
+            &lt;button type="button" onclick="location.href='${this.redirectUrl}'" class="btn btn-primary"&gt;
+                Przejdź do Dashboard
+            &lt;/button&gt;
+        `;
+    }
+}
+
+// Inicjalizuj tylko jeśli użytkownik nie wyłączył
+new RedirectController();
+&lt;/script&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Użytkownik ma pełną kontrolę nad przekierowaniem i może je
+                    wyłączyć.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Kontrolowane aktualizacje zawartości</h4>
+                <pre><code class="language-html">&lt;!-- Panel kontroli aktualizacji --&gt;
+&lt;div class="content-update-control"&gt;
+    &lt;div class="update-settings"&gt;
+        &lt;h3&gt;Ustawienia aktualizacji&lt;/h3&gt;
+        &lt;label&gt;
+            &lt;input type="checkbox" id="auto-update-enabled" checked&gt;
+            Automatyczne aktualizacje treści
+        &lt;/label&gt;
+        &lt;div class="update-frequency" id="frequency-controls"&gt;
+            &lt;label for="update-interval"&gt;Częstotliwość aktualizacji:&lt;/label&gt;
+            &lt;select id="update-interval"&gt;
+                &lt;option value="30"&gt;Co 30 sekund&lt;/option&gt;
+                &lt;option value="60" selected&gt;Co minutę&lt;/option&gt;
+                &lt;option value="300"&gt;Co 5 minut&lt;/option&gt;
+                &lt;option value="0"&gt;Tylko ręcznie&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+        &lt;button type="button" id="manual-update" class="btn btn-secondary"&gt;
+            Odśwież teraz
+        &lt;/button&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="update-status" aria-live="polite" id="update-status"&gt;
+        Ostatnia aktualizacja: &lt;span id="last-update-time"&gt;nigdy&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="content-area" id="content-area"&gt;
+    &lt;!-- Treść do aktualizacji --&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+class ContentUpdateManager {
+    constructor() {
+        this.updateTimer = null;
+        this.updateInterval = parseInt(localStorage.getItem('updateInterval') || '60');
+        this.autoUpdateEnabled = localStorage.getItem('autoUpdateEnabled') !== 'false';
+        
+        this.init();
+    }
+    
+    init() {
+        this.setupEventListeners();
+        this.updateUI();
+        this.startAutoUpdate();
+    }
+    
+    setupEventListeners() {
+        document.getElementById('auto-update-enabled').addEventListener('change', (e) =&gt; {
+            this.autoUpdateEnabled = e.target.checked;
+            localStorage.setItem('autoUpdateEnabled', this.autoUpdateEnabled);
+            this.updateUI();
+            this.startAutoUpdate();
+        });
+        
+        document.getElementById('update-interval').addEventListener('change', (e) =&gt; {
+            this.updateInterval = parseInt(e.target.value);
+            localStorage.setItem('updateInterval', this.updateInterval);
+            this.startAutoUpdate();
+        });
+        
+        document.getElementById('manual-update').addEventListener('click', () =&gt; {
+            this.updateContent(true); // Manual update
+        });
+    }
+    
+    updateUI() {
+        document.getElementById('auto-update-enabled').checked = this.autoUpdateEnabled;
+        document.getElementById('update-interval').value = this.updateInterval;
+        document.getElementById('frequency-controls').style.display = 
+            this.autoUpdateEnabled ? 'block' : 'none';
+    }
+    
+    startAutoUpdate() {
+        this.stopAutoUpdate();
+        
+        if (this.autoUpdateEnabled &amp;&amp; this.updateInterval &gt; 0) {
+            this.updateTimer = setInterval(() =&gt; {
+                this.updateContent(false); // Automatic update
+            }, this.updateInterval * 1000);
+        }
+    }
+    
+    stopAutoUpdate() {
+        if (this.updateTimer) {
+            clearInterval(this.updateTimer);
+            this.updateTimer = null;
+        }
+    }
+    
+    async updateContent(isManual = false) {
+        try {
+            const response = await fetch('/api/content-updates');
+            const data = await response.json();
+            
+            // Sprawdź czy są zmiany
+            const currentHash = this.getContentHash();
+            if (data.hash === currentHash &amp;&amp; !isManual) {
+                return; // Brak zmian
+            }
+            
+            // Jeśli to automatyczna aktualizacja, zapytaj użytkownika
+            if (!isManual &amp;&amp; this.hasSignificantChanges(data)) {
+                this.offerContentUpdate(data);
+                return;
+            }
+            
+            // Aktualizuj zawartość
+            this.applyContentUpdate(data);
+            this.updateTimestamp();
+            
+        } catch (error) {
+            console.error('Błąd aktualizacji:', error);
+        }
+    }
+    
+    hasSignificantChanges(data) {
+        // Sprawdź czy zmiany są znaczące (np. nowe artykuły, ważne aktualizacje)
+        return data.hasNewItems || data.hasImportantUpdates;
+    }
+    
+    offerContentUpdate(data) {
+        const notification = document.createElement('div');
+        notification.className = 'update-notification';
+        notification.setAttribute('role', 'alert');
+        notification.innerHTML = `
+            &lt;p&gt;Dostępne są nowe treści. Czy chcesz je załadować?&lt;/p&gt;
+            &lt;button type="button" onclick="this.parentNode.acceptUpdate()" class="btn btn-primary"&gt;
+                Załaduj nowe treści
+            &lt;/button&gt;
+            &lt;button type="button" onclick="this.parentNode.remove()" class="btn btn-secondary"&gt;
+                Nie teraz
+            &lt;/button&gt;
+        `;
+        
+        notification.acceptUpdate = () =&gt; {
+            this.applyContentUpdate(data);
+            this.updateTimestamp();
+            notification.remove();
+        };
+        
+        document.body.appendChild(notification);
+    }
+    
+    applyContentUpdate(data) {
+        // Bezpieczna aktualizacja zawartości
+        const contentArea = document.getElementById('content-area');
+        contentArea.innerHTML = data.html;
+        
+        // Zachowaj fokus użytkownika
+        this.preserveUserFocus();
+    }
+    
+    preserveUserFocus() {
+        // Implementacja zachowania fokusa po aktualizacji
+        const activeElement = document.activeElement;
+        if (activeElement &amp;&amp; activeElement !== document.body) {
+            // Spróbuj zachować fokus na podobnym elemencie
+            setTimeout(() =&gt; {
+                const similarElement = this.findSimilarElement(activeElement);
+                if (similarElement) {
+                    similarElement.focus();
+                }
+            }, 100);
+        }
+    }
+    
+    updateTimestamp() {
+        document.getElementById('last-update-time').textContent = 
+            new Date().toLocaleTimeString();
+    }
+    
+    getContentHash() {
+        // Prosta implementacja hash zawartości
+        const content = document.getElementById('content-area').innerHTML;
+        return btoa(content).slice(0, 10);
+    }
+    
+    findSimilarElement(element) {
+        // Znajdź podobny element po aktualizacji
+        const selector = this.createElementSelector(element);
+        return document.querySelector(selector);
+    }
+    
+    createElementSelector(element) {
+        // Tworzy selektor dla elementu
+        let selector = element.tagName.toLowerCase();
+        if (element.id) selector += `#${element.id}`;
+        if (element.className) selector += `.${element.className.split(' ').join('.')}`;
+        return selector;
+    }
+}
+
+// Inicjalizuj manager aktualizacji
+new ContentUpdateManager();
+&lt;/script&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Użytkownik kontroluje czy, kiedy i jak często zawartość jest
+                    aktualizowana.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Kontrolowane modala i okna popup</h4>
+                <pre><code class="language-html">&lt;!-- System kontroli modali --&gt;
+&lt;div class="modal-preferences"&gt;
+    &lt;h3&gt;Preferencje wyskakujących okien&lt;/h3&gt;
+    &lt;div class="preference-group"&gt;
+        &lt;label&gt;
+            &lt;input type="checkbox" id="block-promotional-modals" 
+                   onchange="updateModalPreferences()"&gt;
+            Blokuj modala promocyjne
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type="checkbox" id="block-survey-modals"
+                   onchange="updateModalPreferences()"&gt;
+            Blokuj ankiety i badania
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type="checkbox" id="allow-important-modals" checked
+                   onchange="updateModalPreferences()"&gt;
+            Pozwól na ważne powiadomienia
+        &lt;/label&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+class ModalManager {
+    constructor() {
+        this.preferences = this.loadPreferences();
+        this.modalQueue = [];
+        this.activeModal = null;
+        
+        this.init();
+    }
+    
+    init() {
+        this.updatePreferencesUI();
+        this.setupGlobalModalControl();
+    }
+    
+    loadPreferences() {
+        return {
+            blockPromotional: localStorage.getItem('blockPromotionalModals') === 'true',
+            blockSurvey: localStorage.getItem('blockSurveyModals') === 'true',
+            allowImportant: localStorage.getItem('allowImportantModals') !== 'false'
+        };
+    }
+    
+    updatePreferencesUI() {
+        document.getElementById('block-promotional-modals').checked = this.preferences.blockPromotional;
+        document.getElementById('block-survey-modals').checked = this.preferences.blockSurvey;
+        document.getElementById('allow-important-modals').checked = this.preferences.allowImportant;
+    }
+    
+    updatePreferences() {
+        this.preferences.blockPromotional = document.getElementById('block-promotional-modals').checked;
+        this.preferences.blockSurvey = document.getElementById('block-survey-modals').checked;
+        this.preferences.allowImportant = document.getElementById('allow-important-modals').checked;
+        
+        localStorage.setItem('blockPromotionalModals', this.preferences.blockPromotional);
+        localStorage.setItem('blockSurveyModals', this.preferences.blockSurvey);
+        localStorage.setItem('allowImportantModals', this.preferences.allowImportant);
+    }
+    
+    setupGlobalModalControl() {
+        // Przechwyć wszystkie próby otworzenia modali
+        const originalShowModal = window.showModal;
+        window.showModal = (modalConfig) =&gt; {
+            return this.requestModalDisplay(modalConfig);
+        };
+    }
+    
+    requestModalDisplay(modalConfig) {
+        // Sprawdź preferencje użytkownika
+        if (!this.shouldShowModal(modalConfig)) {
+            console.log('Modal zablokowany przez preferencje użytkownika:', modalConfig.type);
+            return false;
+        }
+        
+        // Jeśli modal jest dopuszczony ale nie pilny, dodaj do kolejki
+        if (!modalConfig.urgent) {
+            this.queueModal(modalConfig);
+            return false;
+        }
+        
+        // Pokaż modal natychmiast tylko jeśli jest pilny
+        return this.showModalNow(modalConfig);
+    }
+    
+    shouldShowModal(modalConfig) {
+        switch (modalConfig.type) {
+            case 'promotional':
+                return !this.preferences.blockPromotional;
+            case 'survey':
+                return !this.preferences.blockSurvey;
+            case 'important':
+                return this.preferences.allowImportant;
+            case 'error':
+            case 'confirmation':
+                return true; // Zawsze pokaż modala systemowe
+            default:
+                return false;
+        }
+    }
+    
+    queueModal(modalConfig) {
+        this.modalQueue.push(modalConfig);
+        this.showModalQueueNotification();
+    }
+    
+    showModalQueueNotification() {
+        if (document.getElementById('modal-queue-notification')) return;
+        
+        const notification = document.createElement('div');
+        notification.id = 'modal-queue-notification';
+        notification.className = 'modal-queue-notification';
+        notification.innerHTML = `
+            &lt;p&gt;Masz &lt;strong&gt;${this.modalQueue.length}&lt;/strong&gt; oczekujących powiadomień.&lt;/p&gt;
+            &lt;button type="button" onclick="modalManager.showQueuedModals()" class="btn btn-primary"&gt;
+                Pokaż powiadomienia
+            &lt;/button&gt;
+            &lt;button type="button" onclick="modalManager.clearQueue()" class="btn btn-secondary"&gt;
+                Odrzuć wszystkie
+            &lt;/button&gt;
+        `;
+        
+        document.body.appendChild(notification);
+    }
+    
+    showQueuedModals() {
+        if (this.modalQueue.length === 0) return;
+        
+        const modal = this.modalQueue.shift();
+        this.showModalNow(modal);
+        
+        // Aktualizuj powiadomienie o kolejce
+        this.updateQueueNotification();
+    }
+    
+    updateQueueNotification() {
+        const notification = document.getElementById('modal-queue-notification');
+        if (this.modalQueue.length === 0) {
+            if (notification) notification.remove();
+        } else if (notification) {
+            notification.querySelector('strong').textContent = this.modalQueue.length;
+        }
+    }
+    
+    clearQueue() {
+        this.modalQueue = [];
+        const notification = document.getElementById('modal-queue-notification');
+        if (notification) notification.remove();
+    }
+    
+    showModalNow(modalConfig) {
+        // Rzeczywiste wyświetlenie modala
+        const modal = this.createModal(modalConfig);
+        document.body.appendChild(modal);
+        
+        // Fokus na modal
+        modal.focus();
+        this.activeModal = modal;
+        
+        return true;
+    }
+    
+    createModal(config) {
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-modal', 'true');
+        modal.setAttribute('tabindex', '-1');
+        
+        modal.innerHTML = `
+            &lt;div class="modal-content"&gt;
+                &lt;div class="modal-header"&gt;
+                    &lt;h2&gt;${config.title}&lt;/h2&gt;
+                    &lt;button type="button" class="modal-close" onclick="this.closest('.modal').remove()"&gt;
+                        &amp;times;
+                    &lt;/button&gt;
+                &lt;/div&gt;
+                &lt;div class="modal-body"&gt;
+                    ${config.content}
+                &lt;/div&gt;
+                &lt;div class="modal-footer"&gt;
+                    &lt;button type="button" onclick="this.closest('.modal').remove()" class="btn btn-secondary"&gt;
+                        Zamknij
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        `;
+        
+        return modal;
+    }
+}
+
+// Globalna instancja managera modali
+const modalManager = new ModalManager();
+
+// Funkcja pomocnicza dla aktualizacji preferencji
+function updateModalPreferences() {
+    modalManager.updatePreferences();
+}
+
+// Przykład użycia:
+// showModal({
+//     type: 'promotional',
+//     title: 'Specjalna oferta',
+//     content: 'Sprawdź nasze nowe produkty!',
+//     urgent: false
+// });
+&lt;/script&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Użytkownik ma pełną kontrolę nad tym, które modala są wyświetlane i
+                    kiedy.</p>
+            </div>
+        </section>
+
+        <section class="interactive-demo">
+            <h2>Interaktywne demo - kontrola zmian kontekstu</h2>
+            <p>Przetestuj różne mechanizmy kontroli zmian kontekstu i zobacz jak wpływają na użyteczność:</p>
+
+            <div class="demo-container">
+                <h3>Symulator kontroli zmian kontekstu</h3>
+                <div class="context-control-simulator">
+
+                    <div class="demo-controls">
+                        <h4>Preferencje użytkownika:</h4>
+                        <div class="preference-toggles">
+                            <label>
+                                <input type="checkbox" id="allow-auto-redirect" onchange="updateRedirectPreference()">
+                                Pozwól na automatyczne przekierowania
+                            </label>
+                            <label>
+                                <input type="checkbox" id="allow-auto-refresh" onchange="updateRefreshPreference()">
+                                Pozwól na automatyczne odświeżanie
+                            </label>
+                            <label>
+                                <input type="checkbox" id="allow-auto-modals" onchange="updateModalPreference()">
+                                Pozwól na automatyczne modala
+                            </label>
+                            <label>
+                                <input type="checkbox" id="allow-content-updates" checked
+                                    onchange="updateContentPreference()">
+                                Pozwól na aktualizacje zawartości
+                            </label>
+                        </div>
+
+                        <div class="demo-triggers">
+                            <h4>Symuluj zdarzenia:</h4>
+                            <button class="test-btn" onclick="triggerRedirect()">Test przekierowania</button>
+                            <button class="test-btn" onclick="triggerRefresh()">Test odświeżania</button>
+                            <button class="test-btn" onclick="triggerModal()">Test modala</button>
+                            <button class="test-btn" onclick="triggerContentUpdate()">Test aktualizacji</button>
+                        </div>
+                    </div>
+
+                    <div class="demo-display" id="demo-display">
+                        <div class="demo-page">
+                            <h4>Symulowana strona</h4>
+                            <p>To jest przykładowa strona do testowania kontroli zmian kontekstu.</p>
+                            <div id="demo-content">
+                                <p>Zawartość strony - ostatnia aktualizacja: <span id="content-timestamp">nigdy</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="control-log" id="control-log">
+                        <h4>Dziennik kontroli:</h4>
+                        <div id="log-entries"></div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                let userPreferences = {
+                    allowAutoRedirect: false,
+                    allowAutoRefresh: false,
+                    allowAutoModals: false,
+                    allowContentUpdates: true
+                };
+
+                function updateRedirectPreference() {
+                    userPreferences.allowAutoRedirect = document.getElementById('allow-auto-redirect').checked;
+                    logControl('redirect', userPreferences.allowAutoRedirect);
+                }
+
+                function updateRefreshPreference() {
+                    userPreferences.allowAutoRefresh = document.getElementById('allow-auto-refresh').checked;
+                    logControl('refresh', userPreferences.allowAutoRefresh);
+                }
+
+                function updateModalPreference() {
+                    userPreferences.allowAutoModals = document.getElementById('allow-auto-modals').checked;
+                    logControl('modals', userPreferences.allowAutoModals);
+                }
+
+                function updateContentPreference() {
+                    userPreferences.allowContentUpdates = document.getElementById('allow-content-updates').checked;
+                    logControl('content-updates', userPreferences.allowContentUpdates);
+                }
+
+                function triggerRedirect() {
+                    if (userPreferences.allowAutoRedirect) {
+                        showRedirectDialog();
+                    } else {
+                        showBlockedAction('Przekierowanie zablokowane przez preferencje użytkownika');
+                    }
+                }
+
+                function triggerRefresh() {
+                    if (userPreferences.allowAutoRefresh) {
+                        showRefreshDialog();
+                    } else {
+                        showBlockedAction('Automatyczne odświeżanie zablokowane przez preferencje użytkownika');
+                    }
+                }
+
+                function triggerModal() {
+                    if (userPreferences.allowAutoModals) {
+                        showTestModal();
+                    } else {
+                        showBlockedAction('Automatyczne modala zablokowane przez preferencje użytkownika');
+                    }
+                }
+
+                function triggerContentUpdate() {
+                    if (userPreferences.allowContentUpdates) {
+                        showContentUpdateDialog();
+                    } else {
+                        showBlockedAction('Automatyczne aktualizacje zablokowane przez preferencje użytkownika');
+                    }
+                }
+
+                function showRedirectDialog() {
+                    const dialog = createControlDialog(
+                        'Żądanie przekierowania',
+                        'Aplikacja chce przekierować Cię do nowej strony. Czy chcesz kontynuować?',
+                        [
+                            { text: 'Przekieruj teraz', action: () => simulateAction('Przekierowanie wykonane') },
+                            { text: 'Nie teraz', action: () => simulateAction('Przekierowanie odrzucone') },
+                            {
+                                text: 'Wyłącz automatyczne', action: () => {
+                                    document.getElementById('allow-auto-redirect').checked = false;
+                                    updateRedirectPreference();
+                                    simulateAction('Automatyczne przekierowania wyłączone');
+                                }
+                            }
+                        ]
+                    );
+                    showDialog(dialog);
+                }
+
+                function showRefreshDialog() {
+                    const dialog = createControlDialog(
+                        'Żądanie odświeżenia',
+                        'Aplikacja chce odświeżyć stronę aby pobrać najnowsze dane.',
+                        [
+                            { text: 'Odśwież teraz', action: () => simulateAction('Strona odświeżona') },
+                            { text: 'Nie odświeżaj', action: () => simulateAction('Odświeżanie anulowane') }
+                        ]
+                    );
+                    showDialog(dialog);
+                }
+
+                function showTestModal() {
+                    const dialog = createControlDialog(
+                        'Automatyczny modal',
+                        'To jest przykład automatycznego modala, który pojawił się na stronie.',
+                        [
+                            { text: 'OK', action: () => simulateAction('Modal zaakceptowany') },
+                            {
+                                text: 'Wyłącz modala', action: () => {
+                                    document.getElementById('allow-auto-modals').checked = false;
+                                    updateModalPreference();
+                                    simulateAction('Automatyczne modala wyłączone');
+                                }
+                            }
+                        ]
+                    );
+                    showDialog(dialog);
+                }
+
+                function showContentUpdateDialog() {
+                    const dialog = createControlDialog(
+                        'Aktualizacja zawartości',
+                        'Dostępne są nowe treści. Czy chcesz je załadować?',
+                        [
+                            {
+                                text: 'Załaduj nowe treści', action: () => {
+                                    document.getElementById('content-timestamp').textContent = new Date().toLocaleTimeString();
+                                    simulateAction('Zawartość zaktualizowana');
+                                }
+                            },
+                            { text: 'Nie teraz', action: () => simulateAction('Aktualizacja odrzucona') }
+                        ]
+                    );
+                    showDialog(dialog);
+                }
+
+                function createControlDialog(title, message, buttons) {
+                    return {
+                        title: title,
+                        message: message,
+                        buttons: buttons
+                    };
+                }
+
+                function showDialog(dialog) {
+                    const overlay = document.createElement('div');
+                    overlay.className = 'demo-dialog-overlay';
+                    overlay.innerHTML = `
+                        <div class="demo-dialog" role="dialog" aria-modal="true">
+                            <div class="dialog-header">
+                                <h5>${dialog.title}</h5>
+                            </div>
+                            <div class="dialog-body">
+                                <p>${dialog.message}</p>
+                            </div>
+                            <div class="dialog-footer">
+                                ${dialog.buttons.map((btn, index) =>
+                        `<button class="dialog-btn" data-action="${index}">${btn.text}</button>`
+                    ).join('')}
+                            </div>
+                        </div>
+                    `;
+
+                    // Add event listeners
+                    overlay.addEventListener('click', (e) => {
+                        if (e.target.classList.contains('dialog-btn')) {
+                            const actionIndex = parseInt(e.target.dataset.action);
+                            dialog.buttons[actionIndex].action();
+                            overlay.remove();
+                        } else if (e.target === overlay) {
+                            overlay.remove();
+                        }
+                    });
+
+                    document.body.appendChild(overlay);
+                    overlay.querySelector('.demo-dialog').focus();
+                }
+
+                function showBlockedAction(message) {
+                    const notification = document.createElement('div');
+                    notification.className = 'blocked-action-notification';
+                    notification.textContent = message;
+                    notification.style.cssText = `
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        background: #dc3545;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 5px;
+                        z-index: 1000;
+                        max-width: 300px;
+                    `;
+
+                    document.body.appendChild(notification);
+                    logControl('blocked', message);
+
+                    setTimeout(() => {
+                        if (notification.parentNode) {
+                            notification.remove();
+                        }
+                    }, 3000);
+                }
+
+                function simulateAction(action) {
+                    logControl('action', action);
+                }
+
+                function logControl(type, details) {
+                    const logEntries = document.getElementById('log-entries');
+                    const entry = document.createElement('div');
+                    entry.className = `log-entry log-${type}`;
+
+                    const timestamp = new Date().toLocaleTimeString();
+                    entry.innerHTML = `
+                        <span class="log-time">${timestamp}</span>
+                        <span class="log-type">${type}</span>
+                        <span class="log-details">${details}</span>
+                    `;
+
+                    logEntries.insertBefore(entry, logEntries.firstChild);
+
+                    // Keep only last 10 entries
+                    while (logEntries.children.length > 10) {
+                        logEntries.removeChild(logEntries.lastChild);
+                    }
+                }
+
+                // Initialize preferences UI
+                document.getElementById('allow-auto-redirect').checked = userPreferences.allowAutoRedirect;
+                document.getElementById('allow-auto-refresh').checked = userPreferences.allowAutoRefresh;
+                document.getElementById('allow-auto-modals').checked = userPreferences.allowAutoModals;
+                document.getElementById('allow-content-updates').checked = userPreferences.allowContentUpdates;
+            </script>
+
+            <style>
+                .context-control-simulator {
+                    background-color: #f8f9fa;
+                    border: 1px solid #dee2e6;
+                    border-radius: 5px;
+                    padding: 20px;
+                    margin: 20px 0;
+                }
+
+                .demo-controls {
+                    display: flex;
+                    gap: 30px;
+                    margin-bottom: 20px;
+                    flex-wrap: wrap;
+                }
+
+                .preference-toggles {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+
+                .preference-toggles label {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 14px;
+                }
+
+                .demo-triggers {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+
+                .test-btn {
+                    padding: 8px 16px;
+                    border: 1px solid #007cba;
+                    background: #007cba;
+                    color: white;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    font-size: 14px;
+                }
+
+                .test-btn:hover {
+                    background: #005a8b;
+                }
+
+                .demo-display {
+                    margin: 20px 0;
+                    border: 2px solid #007cba;
+                    border-radius: 5px;
+                    background: white;
+                    padding: 20px;
+                    min-height: 200px;
+                }
+
+                .demo-page {
+                    border: 1px solid #ddd;
+                    padding: 15px;
+                    border-radius: 3px;
+                    background: #fafafa;
+                }
+
+                .control-log {
+                    background: white;
+                    border: 1px solid #dee2e6;
+                    border-radius: 3px;
+                    padding: 15px;
+                    max-height: 200px;
+                    overflow-y: auto;
+                }
+
+                .log-entry {
+                    display: flex;
+                    gap: 10px;
+                    padding: 5px;
+                    border-bottom: 1px solid #eee;
+                    font-size: 12px;
+                }
+
+                .log-time {
+                    color: #666;
+                    width: 80px;
+                }
+
+                .log-type {
+                    font-weight: bold;
+                    width: 100px;
+                }
+
+                .log-blocked {
+                    background: #f8d7da;
+                }
+
+                .log-action {
+                    background: #d4edda;
+                }
+
+                .demo-dialog-overlay {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background: rgba(0, 0, 0, 0.5);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 1000;
+                }
+
+                .demo-dialog {
+                    background: white;
+                    border-radius: 5px;
+                    padding: 20px;
+                    max-width: 400px;
+                    width: 90%;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                }
+
+                .dialog-header h5 {
+                    margin: 0 0 15px 0;
+                    color: #333;
+                }
+
+                .dialog-body p {
+                    margin: 0 0 20px 0;
+                    color: #666;
+                }
+
+                .dialog-footer {
+                    display: flex;
+                    gap: 10px;
+                    justify-content: flex-end;
+                    flex-wrap: wrap;
+                }
+
+                .dialog-btn {
+                    padding: 8px 16px;
+                    border: 1px solid #007cba;
+                    background: white;
+                    color: #007cba;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    font-size: 14px;
+                }
+
+                .dialog-btn:hover {
+                    background: #007cba;
+                    color: white;
+                }
+
+                .dialog-btn:first-child {
+                    background: #007cba;
+                    color: white;
+                }
+
+                .dialog-btn:first-child:hover {
+                    background: #005a8b;
+                }
+            </style>
+        </section>
+
+        <section class="change-request-testing">
+            <h2>Narzędzie do testowania kontroli zmian kontekstu</h2>
+            <p>Użyj tego narzędzia do automatycznej analizy mechanizmów kontroli zmian kontekstu:</p>
+
+            <div class="testing-tool">
+                <div class="tool-controls">
+                    <button id="start-change-test" class="test-button">Rozpocznij test kontroli zmian</button>
+                    <button id="analyze-automatic-changes" class="test-button">Analizuj automatyczne zmiany</button>
+                    <button id="stop-change-test" class="test-button" disabled>Zatrzymaj test</button>
+                </div>
+
+                <div class="test-options">
+                    <h4>Opcje analizy:</h4>
+                    <label>
+                        <input type="checkbox" id="monitor-redirects" checked> Monitoruj przekierowania
+                    </label>
+                    <label>
+                        <input type="checkbox" id="monitor-dom-changes" checked> Monitoruj zmiany DOM
+                    </label>
+                    <label>
+                        <input type="checkbox" id="monitor-focus-changes" checked> Monitoruj zmiany fokusa
+                    </label>
+                    <label>
+                        <input type="checkbox" id="monitor-timers" checked> Monitoruj timery i interwały
+                    </label>
+                </div>
+
+                <div class="test-results">
+                    <h4>Wyniki analizy kontroli zmian:</h4>
+                    <div id="change-test-results"></div>
+                </div>
+            </div>
+
+            <script>
+                let changeTestActive = false;
+                let automaticChanges = [];
+                let originalFunctions = {};
+                let changeObserver = null;
+                let focusMonitor = null;
+
+                function startChangeTest() {
+                    if (changeTestActive) return;
+
+                    changeTestActive = true;
+                    automaticChanges = [];
+
+                    // Update buttons
+                    document.getElementById('start-change-test').disabled = true;
+                    document.getElementById('stop-change-test').disabled = false;
+
+                    // Set up monitoring
+                    setupRedirectMonitoring();
+                    setupDOMMonitoring();
+                    setupFocusMonitoring();
+                    setupTimerMonitoring();
+
+                    showChangeMessage('Test kontroli zmian rozpoczęty. Monitoruję automatyczne zmiany kontekstu.');
+                }
+
+                function stopChangeTest() {
+                    if (!changeTestActive) return;
+
+                    changeTestActive = false;
+
+                    // Update buttons
+                    document.getElementById('start-change-test').disabled = false;
+                    document.getElementById('stop-change-test').disabled = true;
+
+                    // Clean up monitoring
+                    cleanupMonitoring();
+
+                    // Show results
+                    displayChangeResults();
+                    showChangeMessage('Test kontroli zmian zakończony.');
+                }
+
+                function setupRedirectMonitoring() {
+                    if (!document.getElementById('monitor-redirects').checked) return;
+
+                    // Monitor location changes
+                    originalFunctions.pushState = history.pushState;
+                    originalFunctions.replaceState = history.replaceState;
+
+                    history.pushState = function (...args) {
+                        logAutomaticChange('navigation', 'pushState', {
+                            url: args[2],
+                            hasUserControl: false,
+                            timestamp: Date.now()
+                        });
+                        return originalFunctions.pushState.apply(this, args);
+                    };
+
+                    history.replaceState = function (...args) {
+                        logAutomaticChange('navigation', 'replaceState', {
+                            url: args[2],
+                            hasUserControl: false,
+                            timestamp: Date.now()
+                        });
+                        return originalFunctions.replaceState.apply(this, args);
+                    };
+
+                    // Monitor meta refresh
+                    const metaRefresh = document.querySelector('meta[http-equiv="refresh"]');
+                    if (metaRefresh) {
+                        logAutomaticChange('navigation', 'meta-refresh', {
+                            content: metaRefresh.content,
+                            hasUserControl: false,
+                            timestamp: Date.now()
+                        });
+                    }
+                }
+
+                function setupDOMMonitoring() {
+                    if (!document.getElementById('monitor-dom-changes').checked) return;
+
+                    changeObserver = new MutationObserver(function (mutations) {
+                        mutations.forEach(function (mutation) {
+                            if (mutation.type === 'childList') {
+                                mutation.addedNodes.forEach(function (node) {
+                                    if (node.nodeType === Node.ELEMENT_NODE) {
+                                        analyzeDOMChange(node, 'added');
+                                    }
+                                });
+                            }
+                        });
+                    });
+
+                    changeObserver.observe(document.body, {
+                        childList: true,
+                        subtree: true,
+                        attributes: false
+                    });
+                }
+
+                function setupFocusMonitoring() {
+                    if (!document.getElementById('monitor-focus-changes').checked) return;
+
+                    focusMonitor = function (event) {
+                        // Check if focus change was user-initiated
+                        const wasUserInitiated = checkUserInitiation();
+
+                        if (!wasUserInitiated) {
+                            logAutomaticChange('focus', 'automatic-focus', {
+                                element: event.target.tagName,
+                                id: event.target.id,
+                                hasUserControl: false,
+                                timestamp: Date.now()
+                            });
+                        }
+                    };
+
+                    document.addEventListener('focus', focusMonitor, true);
+                }
+
+                function setupTimerMonitoring() {
+                    if (!document.getElementById('monitor-timers').checked) return;
+
+                    // Monitor setTimeout and setInterval
+                    originalFunctions.setTimeout = window.setTimeout;
+                    originalFunctions.setInterval = window.setInterval;
+
+                    window.setTimeout = function (callback, delay, ...args) {
+                        const timerId = originalFunctions.setTimeout.call(this, function () {
+                            analyzeTimerCallback('setTimeout', callback, delay);
+                            return callback.apply(this, args);
+                        }, delay);
+                        return timerId;
+                    };
+
+                    window.setInterval = function (callback, delay, ...args) {
+                        const timerId = originalFunctions.setInterval.call(this, function () {
+                            analyzeTimerCallback('setInterval', callback, delay);
+                            return callback.apply(this, args);
+                        }, delay);
+                        return timerId;
+                    };
+                }
+
+                function analyzeDOMChange(node, changeType) {
+                    // Check if this is a modal or popup
+                    if (node.classList && (
+                        node.classList.contains('modal') ||
+                        node.classList.contains('popup') ||
+                        node.classList.contains('dialog') ||
+                        node.role === 'dialog'
+                    )) {
+                        logAutomaticChange('ui', 'modal-appearance', {
+                            element: node.tagName,
+                            classes: node.className,
+                            hasUserControl: checkModalUserControl(node),
+                            timestamp: Date.now()
+                        });
+                    }
+
+                    // Check for content updates
+                    if (node.textContent && node.textContent.length > 50) {
+                        logAutomaticChange('content', 'content-update', {
+                            size: node.textContent.length,
+                            hasUserControl: false,
+                            timestamp: Date.now()
+                        });
+                    }
+                }
+
+                function analyzeTimerCallback(timerType, callback, delay) {
+                    const callbackString = callback.toString();
+
+                    // Check for potential context changes
+                    if (callbackString.includes('location.') ||
+                        callbackString.includes('window.open') ||
+                        callbackString.includes('focus()') ||
+                        callbackString.includes('innerHTML')) {
+
+                        logAutomaticChange('timer', timerType, {
+                            delay: delay,
+                            potentialContextChange: true,
+                            hasUserControl: false,
+                            timestamp: Date.now()
+                        });
+                    }
+                }
+
+                function checkUserInitiation() {
+                    // Simple heuristic - check if there was recent user interaction
+                    const now = Date.now();
+                    const recentInteraction = window.lastUserInteraction || 0;
+                    return (now - recentInteraction) < 1000; // Within 1 second
+                }
+
+                function checkModalUserControl(modal) {
+                    // Look for control mechanisms
+                    const hasCloseButton = modal.querySelector('[data-dismiss], .close, .modal-close');
+                    const hasEscape = modal.getAttribute('data-keyboard') !== 'false';
+                    const hasOverlayClose = modal.getAttribute('data-backdrop') !== 'static';
+
+                    return !!(hasCloseButton || hasEscape || hasOverlayClose);
+                }
+
+                function logAutomaticChange(category, type, details) {
+                    automaticChanges.push({
+                        category: category,
+                        type: type,
+                        details: details,
+                        timestamp: Date.now()
+                    });
+                }
+
+                function cleanupMonitoring() {
+                    // Restore original functions
+                    if (originalFunctions.pushState) {
+                        history.pushState = originalFunctions.pushState;
+                    }
+                    if (originalFunctions.replaceState) {
+                        history.replaceState = originalFunctions.replaceState;
+                    }
+                    if (originalFunctions.setTimeout) {
+                        window.setTimeout = originalFunctions.setTimeout;
+                    }
+                    if (originalFunctions.setInterval) {
+                        window.setInterval = originalFunctions.setInterval;
+                    }
+
+                    // Disconnect observers
+                    if (changeObserver) {
+                        changeObserver.disconnect();
+                        changeObserver = null;
+                    }
+
+                    if (focusMonitor) {
+                        document.removeEventListener('focus', focusMonitor, true);
+                        focusMonitor = null;
+                    }
+
+                    originalFunctions = {};
+                }
+
+                function analyzeAutomaticChanges() {
+                    const results = {
+                        totalChanges: automaticChanges.length,
+                        categoriesFound: {},
+                        controlIssues: [],
+                        score: 0
+                    };
+
+                    // Group changes by category
+                    automaticChanges.forEach(change => {
+                        if (!results.categoriesFound[change.category]) {
+                            results.categoriesFound[change.category] = [];
+                        }
+                        results.categoriesFound[change.category].push(change);
+
+                        // Check for control issues
+                        if (!change.details.hasUserControl) {
+                            results.controlIssues.push({
+                                category: change.category,
+                                type: change.type,
+                                issue: 'Brak mechanizmu kontroli użytkownika'
+                            });
+                        }
+                    });
+
+                    // Calculate score
+                    const totalPotentialIssues = automaticChanges.length;
+                    const actualIssues = results.controlIssues.length;
+                    results.score = totalPotentialIssues > 0 ?
+                        Math.round(((totalPotentialIssues - actualIssues) / totalPotentialIssues) * 100) : 100;
+
+                    displayChangeAnalysis(results);
+                }
+
+                function displayChangeResults() {
+                    const resultsArea = document.getElementById('change-test-results');
+
+                    if (automaticChanges.length === 0) {
+                        resultsArea.innerHTML = '<p>Nie wykryto automatycznych zmian kontekstu podczas testu.</p>';
+                        return;
+                    }
+
+                    let html = `
+                        <div class="test-summary">
+                            <h5>Podsumowanie wykrytych zmian:</h5>
+                            <ul>
+                                <li>Całkowite automatyczne zmiany: ${automaticChanges.length}</li>
+                                <li>Czas trwania testu: ${formatTestDuration()}</li>
+                            </ul>
+                        </div>
+                    `;
+
+                    // Group changes by category
+                    const grouped = {};
+                    automaticChanges.forEach(change => {
+                        if (!grouped[change.category]) {
+                            grouped[change.category] = [];
+                        }
+                        grouped[change.category].push(change);
+                    });
+
+                    html += '<div class="change-categories"><h5>Kategorie zmian:</h5>';
+                    Object.entries(grouped).forEach(([category, changes]) => {
+                        html += `<div class="category-section">
+                            <h6>${getCategoryName(category)} (${changes.length})</h6>
+                            <ul>`;
+                        changes.slice(0, 3).forEach(change => {
+                            html += `<li>${change.type} - ${change.details.hasUserControl ? 'Ma kontrolę' : 'Brak kontroli'}</li>`;
+                        });
+                        if (changes.length > 3) {
+                            html += `<li>... i ${changes.length - 3} więcej</li>`;
+                        }
+                        html += '</ul></div>';
+                    });
+                    html += '</div>';
+
+                    resultsArea.innerHTML = html;
+                }
+
+                function displayChangeAnalysis(analysis) {
+                    const resultsArea = document.getElementById('change-test-results');
+
+                    let html = `
+                        <div class="analysis-summary">
+                            <h5>Analiza kontroli zmian kontekstu:</h5>
+                            <p><strong>Wskaźnik kontroli:</strong> ${analysis.score}%</p>
+                            <p><strong>Wykryte automatyczne zmiany:</strong> ${analysis.totalChanges}</p>
+                            <p><strong>Problemy z kontrolą:</strong> ${analysis.controlIssues.length}</p>
+                        </div>
+                    `;
+
+                    if (analysis.controlIssues.length > 0) {
+                        html += '<div class="control-issues"><h5>Problemy z kontrolą:</h5><ul>';
+                        analysis.controlIssues.forEach(issue => {
+                            html += `<li><strong>${getCategoryName(issue.category)}</strong> - 
+                                ${issue.type}: ${issue.issue}</li>`;
+                        });
+                        html += '</ul></div>';
+                    }
+
+                    // Recommendations
+                    html += '<div class="analysis-recommendations"><h5>Rekomendacje:</h5><ul>';
+                    if (analysis.controlIssues.length > 0) {
+                        html += '<li>Dodaj mechanizmy kontroli dla automatycznych zmian</li>';
+                        html += '<li>Pozwól użytkownikom na wyłączenie automatycznych zachowań</li>';
+                        html += '<li>Informuj użytkowników o nadchodzących zmianach kontekstu</li>';
+                    } else {
+                        html += '<li>Kontrola zmian kontekstu jest właściwie zaimplementowana</li>';
+                        html += '<li>Kontynuuj stosowanie mechanizmów kontroli użytkownika</li>';
+                    }
+                    html += '</ul></div>';
+
+                    resultsArea.innerHTML = html;
+                }
+
+                function getCategoryName(category) {
+                    const names = {
+                        navigation: 'Nawigacja',
+                        ui: 'Interfejs użytkownika',
+                        content: 'Zawartość',
+                        focus: 'Fokus',
+                        timer: 'Timery'
+                    };
+                    return names[category] || category;
+                }
+
+                function formatTestDuration() {
+                    if (automaticChanges.length === 0) return '0 sekund';
+
+                    const first = automaticChanges[0].timestamp;
+                    const last = automaticChanges[automaticChanges.length - 1].timestamp;
+                    const duration = Math.round((last - first) / 1000);
+
+                    return `${duration} sekund`;
+                }
+
+                function showChangeMessage(message) {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'change-message';
+                    messageDiv.textContent = message;
+                    messageDiv.style.cssText = `
+                        position: fixed;
+                        bottom: 20px;
+                        right: 20px;
+                        background: #28a745;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 5px;
+                        z-index: 1000;
+                        max-width: 300px;
+                    `;
+
+                    document.body.appendChild(messageDiv);
+
+                    setTimeout(() => {
+                        if (messageDiv.parentNode) {
+                            messageDiv.remove();
+                        }
+                    }, 3000);
+                }
+
+                // Track user interactions for better detection
+                ['click', 'keydown', 'touchstart'].forEach(eventType => {
+                    document.addEventListener(eventType, () => {
+                        window.lastUserInteraction = Date.now();
+                    }, true);
+                });
+
+                // Event listeners
+                document.getElementById('start-change-test').addEventListener('click', startChangeTest);
+                document.getElementById('stop-change-test').addEventListener('click', stopChangeTest);
+                document.getElementById('analyze-automatic-changes').addEventListener('click', analyzeAutomaticChanges);
+            </script>
+
+            <style>
+                .testing-tool {
+                    background-color: #f8f9fa;
+                    border: 1px solid #dee2e6;
+                    border-radius: 5px;
+                    padding: 20px;
+                    margin: 20px 0;
+                }
+
+                .tool-controls {
+                    margin-bottom: 20px;
+                }
+
+                .test-button {
+                    background-color: #28a745;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    margin: 5px;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    font-size: 14px;
+                }
+
+                .test-button:hover:not(:disabled) {
+                    background-color: #218838;
+                }
+
+                .test-button:disabled {
+                    background-color: #6c757d;
+                    cursor: not-allowed;
+                }
+
+                .test-options {
+                    background-color: white;
+                    border: 1px solid #dee2e6;
+                    border-radius: 3px;
+                    padding: 15px;
+                    margin-bottom: 20px;
+                }
+
+                .test-options label {
+                    display: block;
+                    margin: 8px 0;
+                    font-size: 14px;
+                }
+
+                .test-options input[type="checkbox"] {
+                    margin-right: 8px;
+                }
+
+                .test-results {
+                    background-color: white;
+                    border: 1px solid #dee2e6;
+                    border-radius: 3px;
+                    padding: 15px;
+                }
+
+                .test-summary,
+                .analysis-summary {
+                    background-color: #e7f3ff;
+                    padding: 15px;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                }
+
+                .change-categories {
+                    background-color: #f8f9fa;
+                    padding: 15px;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                }
+
+                .category-section {
+                    margin-bottom: 10px;
+                }
+
+                .category-section h6 {
+                    margin: 0 0 5px 0;
+                    color: #495057;
+                }
+
+                .control-issues {
+                    background-color: #fff3cd;
+                    padding: 15px;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                }
+
+                .analysis-recommendations {
+                    background-color: #d4edda;
+                    padding: 15px;
+                    border-radius: 3px;
+                }
+            </style>
+        </section>
+
+        <section class="implementation-guidelines">
+            <h2>Wytyczne implementacyjne</h2>
+
+            <h3>Jak zapewnić kontrolę nad zmianami kontekstu</h3>
+
+            <div class="guideline-item">
+                <h4>1. System preferencji użytkownika</h4>
+                <pre><code class="language-javascript">// Centralny system zarządzania preferencjami
+class UserPreferencesManager {
+    constructor() {
+        this.preferences = this.loadPreferences();
+        this.init();
+    }
+    
+    loadPreferences() {
+        const defaults = {
+            allowAutoRedirect: false,
+            allowAutoRefresh: false,
+            allowAutoModals: false,
+            allowBackgroundUpdates: true,
+            redirectDelay: 10, // seconds
+            notificationPosition: 'bottom-right'
+        };
+        
+        const stored = localStorage.getItem('userPreferences');
+        return stored ? { ...defaults, ...JSON.parse(stored) } : defaults;
+    }
+    
+    savePreferences() {
+        localStorage.setItem('userPreferences', JSON.stringify(this.preferences));
+        this.notifyPreferenceChange();
+    }
+    
+    get(key) {
+        return this.preferences[key];
+    }
+    
+    set(key, value) {
+        this.preferences[key] = value;
+        this.savePreferences();
+    }
+    
+    notifyPreferenceChange() {
+        document.dispatchEvent(new CustomEvent('preferencesChanged', {
+            detail: this.preferences
+        }));
+    }
+    
+    createPreferencesUI() {
+        return `
+            <div class="preferences-panel">
+                <h3>Kontrola zmian kontekstu</h3>
+                
+                <div class="preference-group">
+                    <h4>Automatyczne przekierowania</h4>
+                    <label>
+                        <input type="checkbox" 
+                               data-pref="allowAutoRedirect" 
+                               ${this.preferences.allowAutoRedirect ? 'checked' : ''}>
+                        Pozwól na automatyczne przekierowania
+                    </label>
+                    <div class="sub-option" ${!this.preferences.allowAutoRedirect ? 'style="display:none"' : ''}>
+                        <label>
+                            Opóźnienie: 
+                            <input type="range" min="5" max="30" 
+                                   data-pref="redirectDelay" 
+                                   value="${this.preferences.redirectDelay}">
+                            <span>${this.preferences.redirectDelay}s</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="preference-group">
+                    <h4>Automatyczne odświeżanie</h4>
+                    <label>
+                        <input type="checkbox" 
+                               data-pref="allowAutoRefresh" 
+                               ${this.preferences.allowAutoRefresh ? 'checked' : ''}>
+                        Pozwól na automatyczne odświeżanie stron
+                    </label>
+                </div>
+                
+                <div class="preference-group">
+                    <h4>Wyskakujące okna</h4>
+                    <label>
+                        <input type="checkbox" 
+                               data-pref="allowAutoModals" 
+                               ${this.preferences.allowAutoModals ? 'checked' : ''}>
+                        Pozwól na automatyczne modala i popupy
+                    </label>
+                </div>
+                
+                <div class="preference-group">
+                    <h4>Aktualizacje w tle</h4>
+                    <label>
+                        <input type="checkbox" 
+                               data-pref="allowBackgroundUpdates" 
+                               ${this.preferences.allowBackgroundUpdates ? 'checked' : ''}>
+                        Pozwól na aktualizacje zawartości w tle
+                    </label>
+                </div>
+                
+                <button type="button" onclick="userPrefs.exportPreferences()">
+                    Eksportuj ustawienia
+                </button>
+                <button type="button" onclick="userPrefs.importPreferences()">
+                    Importuj ustawienia
+                </button>
+            </div>
+        `;
+    }
+    
+    init() {
+        // Setup event listeners for preferences UI
+        document.addEventListener('change', (e) => {
+            const prefKey = e.target.dataset.pref;
+            if (prefKey) {
+                const value = e.target.type === 'checkbox' ? 
+                    e.target.checked : e.target.value;
+                this.set(prefKey, value);
+            }
+        });
+    }
+    
+    exportPreferences() {
+        const dataStr = JSON.stringify(this.preferences, null, 2);
+        const dataBlob = new Blob([dataStr], {type:'application/json'});
+        
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(dataBlob);
+        link.download = 'preferencje-dostepnosci.json';
+        link.click();
+    }
+    
+    importPreferences() {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = '.json';
+        input.onchange = (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    try {
+                        const imported = JSON.parse(e.target.result);
+                        this.preferences = { ...this.preferences, ...imported };
+                        this.savePreferences();
+                        location.reload(); // Refresh to apply new preferences
+                    } catch (error) {
+                        alert('Błąd importu preferencji');
+                    }
+                };
+                reader.readAsText(file);
+            }
+        };
+        input.click();
+    }
+}
+
+// Global instance
+const userPrefs = new UserPreferencesManager();</code></pre>
+            </div>
+
+            <div class="guideline-item">
+                <h4>2. Kontrolowane przekierowania</h4>
+                <pre><code class="language-javascript">// System kontrolowanych przekierowań
+class RedirectManager {
+    constructor() {
+        this.pendingRedirects = [];
+        this.init();
+    }
+    
+    init() {
+        // Override location changes
+        this.interceptLocationChanges();
+        
+        // Handle page unload
+        window.addEventListener('beforeunload', (e) => {
+            if (this.pendingRedirects.length > 0) {
+                const message = 'Masz oczekujące przekierowania. Czy na pewno chcesz opuścić stronę?';
+                e.returnValue = message;
+                return message;
+            }
+        });
+    }
+    
+    requestRedirect(url, options = {}) {
+        const redirectConfig = {
+            url: url,
+            delay: options.delay || userPrefs.get('redirectDelay'),
+            reason: options.reason || 'Przekierowanie',
+            urgent: options.urgent || false,
+            allowCancel: options.allowCancel !== false,
+            timestamp: Date.now()
+        };
+        
+        if (!userPrefs.get('allowAutoRedirect') && !redirectConfig.urgent) {
+            this.queueRedirect(redirectConfig);
+            return false;
+        }
+        
+        return this.executeRedirect(redirectConfig);
+    }
+    
+    queueRedirect(config) {
+        this.pendingRedirects.push(config);
+        this.showRedirectQueue();
+    }
+    
+    executeRedirect(config) {
+        if (config.allowCancel) {
+            return this.showRedirectDialog(config);
+        } else {
+            // Immediate redirect for urgent cases
+            window.location.href = config.url;
+            return true;
+        }
+    }
+    
+    showRedirectDialog(config) {
+        const dialog = document.createElement('div');
+        dialog.className = 'redirect-dialog';
+        dialog.setAttribute('role', 'alertdialog');
+        dialog.setAttribute('aria-labelledby', 'redirect-title');
+        dialog.setAttribute('aria-describedby', 'redirect-description');
+        
+        dialog.innerHTML = `
+            <div class="dialog-content">
+                <h3 id="redirect-title">${config.reason}</h3>
+                <p id="redirect-description">
+                    Ta strona chce przekierować Cię na: <strong>${config.url}</strong>
+                </p>
+                
+                <div class="countdown-container">
+                    <p>Automatyczne przekierowanie za: 
+                       <span class="countdown" aria-live="polite">${config.delay}</span> sekund</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+                
+                <div class="dialog-actions">
+                    <button type="button" class="btn-primary" onclick="redirectManager.confirmRedirect('${config.url}')">
+                        Przekieruj teraz
+                    </button>
+                    <button type="button" class="btn-secondary" onclick="redirectManager.cancelRedirect()">
+                        Anuluj
+                    </button>
+                    <button type="button" class="btn-link" onclick="redirectManager.disableAutoRedirects()">
+                        Wyłącz automatyczne przekierowania
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(dialog);
+        dialog.focus();
+        
+        // Start countdown
+        this.startRedirectCountdown(config, dialog);
+        
+        return true;
+    }
+    
+    startRedirectCountdown(config, dialog) {
+        let remaining = config.delay;
+        const countdownElement = dialog.querySelector('.countdown');
+        const progressFill = dialog.querySelector('.progress-fill');
+        
+        const timer = setInterval(() => {
+            remaining--;
+            countdownElement.textContent = remaining;
+            
+            const percentage = ((config.delay - remaining) / config.delay) * 100;
+            progressFill.style.width = percentage + '%';
+            
+            if (remaining <= 0) {
+                clearInterval(timer);
+                this.confirmRedirect(config.url);
+                dialog.remove();
+            }
+        }, 1000);
+        
+        // Store timer for potential cancellation
+        dialog.dataset.timerId = timer;
+    }
+    
+    confirmRedirect(url) {
+        window.location.href = url;
+    }
+    
+    cancelRedirect() {
+        const dialog = document.querySelector('.redirect-dialog');
+        if (dialog) {
+            const timerId = dialog.dataset.timerId;
+            if (timerId) clearInterval(parseInt(timerId));
+            dialog.remove();
+        }
+    }
+    
+    disableAutoRedirects() {
+        userPrefs.set('allowAutoRedirect', false);
+        this.cancelRedirect();
+        this.showNotification('Automatyczne przekierowania zostały wyłączone');
+    }
+    
+    showRedirectQueue() {
+        if (document.querySelector('.redirect-queue')) return;
+        
+        const queue = document.createElement('div');
+        queue.className = 'redirect-queue';
+        queue.innerHTML = `
+            <div class="queue-header">
+                <h4>Oczekujące przekierowania (${this.pendingRedirects.length})</h4>
+                <button type="button" onclick="redirectManager.hideRedirectQueue()">×</button>
+            </div>
+            <div class="queue-list">
+                ${this.pendingRedirects.map((redirect, index) => `
+                    <div class="queue-item">
+                        <span class="redirect-url">${redirect.url}</span>
+                        <span class="redirect-reason">${redirect.reason}</span>
+                        <div class="queue-actions">
+                            <button onclick="redirectManager.executeQueuedRedirect(${index})">Przekieruj</button>
+                            <button onclick="redirectManager.removeFromQueue(${index})">Usuń</button>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="queue-footer">
+                <button onclick="redirectManager.executeAllRedirects()">Wykonaj wszystkie</button>
+                <button onclick="redirectManager.clearRedirectQueue()">Wyczyść kolejkę</button>
+            </div>
+        `;
+        
+        document.body.appendChild(queue);
+    }
+    
+    executeQueuedRedirect(index) {
+        const redirect = this.pendingRedirects[index];
+        this.pendingRedirects.splice(index, 1);
+        this.executeRedirect(redirect);
+        this.updateRedirectQueue();
+    }
+    
+    removeFromQueue(index) {
+        this.pendingRedirects.splice(index, 1);
+        this.updateRedirectQueue();
+    }
+    
+    updateRedirectQueue() {
+        const queue = document.querySelector('.redirect-queue');
+        if (queue) {
+            if (this.pendingRedirects.length === 0) {
+                queue.remove();
+            } else {
+                // Refresh queue display
+                queue.remove();
+                this.showRedirectQueue();
+            }
+        }
+    }
+    
+    showNotification(message) {
+        const notification = document.createElement('div');
+        notification.className = 'notification';
+        notification.textContent = message;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => notification.remove(), 3000);
+    }
+}
+
+// Global instance
+const redirectManager = new RedirectManager();
+
+// Example usage:
+// redirectManager.requestRedirect('/new-page', {
+//     reason: 'Sesja wygasła',
+//     delay: 10,
+//     allowCancel: true
+// });</code></pre>
+            </div>
+
+            <div class="guideline-item">
+                <h4>3. Kontrolowane aktualizacje zawartości</h4>
+                <pre><code class="language-javascript">// System kontrolowanych aktualizacji
+class ContentUpdateManager {
+    constructor() {
+        this.updateQueue = [];
+        this.activeUpdates = new Map();
+        this.updateSources = new Map();
+        this.init();
+    }
+    
+    init() {
+        this.setupUpdateSources();
+        this.startUpdateMonitoring();
+    }
+    
+    registerUpdateSource(sourceId, config) {
+        this.updateSources.set(sourceId, {
+            url: config.url,
+            interval: config.interval || 60000, // 1 minute default
+            selector: config.selector,
+            enabled: config.enabled !== false,
+            lastUpdate: null,
+            failCount: 0
+        });
+    }
+    
+    enableUpdateSource(sourceId, enabled = true) {
+        const source = this.updateSources.get(sourceId);
+        if (source) {
+            source.enabled = enabled;
+            if (enabled) {
+                this.scheduleUpdate(sourceId);
+            } else {
+                this.cancelUpdate(sourceId);
+            }
+        }
+    }
+    
+    scheduleUpdate(sourceId) {
+        const source = this.updateSources.get(sourceId);
+        if (!source || !source.enabled) return;
+        
+        if (!userPrefs.get('allowBackgroundUpdates')) {
+            this.queueUpdate(sourceId);
+            return;
+        }
+        
+        const timerId = setTimeout(() => {
+            this.performUpdate(sourceId);
+        }, source.interval);
+        
+        this.activeUpdates.set(sourceId, timerId);
+    }
+    
+    async performUpdate(sourceId) {
+        const source = this.updateSources.get(sourceId);
+        if (!source) return;
+        
+        try {
+            const response = await fetch(source.url);
+            const data = await response.json();
+            
+            if (this.hasSignificantChanges(data, sourceId)) {
+                this.requestUpdateApproval(sourceId, data);
+            } else {
+                this.applyUpdateSilently(sourceId, data);
+            }
+            
+            source.lastUpdate = Date.now();
+            source.failCount = 0;
+            
+            // Schedule next update
+            this.scheduleUpdate(sourceId);
+            
+        } catch (error) {
+            source.failCount++;
+            console.error(`Update failed for ${sourceId}:`, error);
+            
+            // Exponential backoff on failures
+            const delay = Math.min(source.interval * Math.pow(2, source.failCount), 300000);
+            setTimeout(() => this.scheduleUpdate(sourceId), delay);
+        }
+    }
+    
+    hasSignificantChanges(data, sourceId) {
+        // Define what constitutes "significant" changes
+        return data.hasNewItems || 
+               data.hasImportantUpdates || 
+               data.userActionRequired ||
+               (data.changeScore && data.changeScore > 0.7);
+    }
+    
+    requestUpdateApproval(sourceId, data) {
+        const approval = document.createElement('div');
+        approval.className = 'update-approval';
+        approval.setAttribute('role', 'alertdialog');
+        
+        approval.innerHTML = `
+            <div class="approval-content">
+                <h4>Aktualizacja zawartości</h4>
+                <p>Dostępne są nowe treści dla sekcji: <strong>${sourceId}</strong></p>
+                
+                ${data.preview ? `
+                    <div class="update-preview">
+                        <h5>Podgląd zmian:</h5>
+                        <div class="preview-content">${data.preview}</div>
+                    </div>
+                ` : ''}
+                
+                <div class="approval-actions">
+                    <button type="button" onclick="contentUpdateManager.approveUpdate('${sourceId}', this.closest('.update-approval'))">
+                        Załaduj aktualizację
+                    </button>
+                    <button type="button" onclick="contentUpdateManager.deferUpdate('${sourceId}', this.closest('.update-approval'))">
+                        Później
+                    </button>
+                    <button type="button" onclick="contentUpdateManager.rejectUpdate('${sourceId}', this.closest('.update-approval'))">
+                        Odrzuć
+                    </button>
+                    <label class="small-option">
+                        <input type="checkbox" onchange="contentUpdateManager.toggleAutoUpdates(this.checked)">
+                        Wyłącz automatyczne aktualizacje
+                    </label>
+                </div>
+            </div>
+        `;
+        
+        // Store data for later use
+        approval.dataset.updateData = JSON.stringify(data);
+        
+        document.body.appendChild(approval);
+        approval.focus();
+    }
+    
+    approveUpdate(sourceId, approvalElement) {
+        const data = JSON.parse(approvalElement.dataset.updateData);
+        this.applyUpdate(sourceId, data);
+        approvalElement.remove();
+    }
+    
+    deferUpdate(sourceId, approvalElement) {
+        const data = JSON.parse(approvalElement.dataset.updateData);
+        this.queueUpdate(sourceId, data);
+        approvalElement.remove();
+    }
+    
+    rejectUpdate(sourceId, approvalElement) {
+        approvalElement.remove();
+        // Continue with normal update schedule
+        this.scheduleUpdate(sourceId);
+    }
+    
+    applyUpdate(sourceId, data) {
+        const source = this.updateSources.get(sourceId);
+        if (!source) return;
+        
+        const targetElement = document.querySelector(source.selector);
+        if (!targetElement) return;
+        
+        // Preserve user focus and scroll position
+        const focusedElement = document.activeElement;
+        const scrollPosition = window.scrollY;
+        
+        // Apply update
+        if (data.html) {
+            targetElement.innerHTML = data.html;
+        } else if (data.updates) {
+            this.applyPartialUpdates(targetElement, data.updates);
+        }
+        
+        // Restore focus and position
+        this.restoreUserContext(focusedElement, scrollPosition);
+        
+        // Announce update to screen readers
+        this.announceUpdate(sourceId);
+    }
+    
+    applyUpdateSilently(sourceId, data) {
+        // Apply updates that don't require user approval
+        if (data.timestamp && data.counters) {
+            this.updateTimestamps(data.timestamp);
+            this.updateCounters(data.counters);
+        }
+    }
+    
+    restoreUserContext(focusedElement, scrollPosition) {
+        // Restore scroll position
+        window.scrollTo(0, scrollPosition);
+        
+        // Restore focus
+        if (focusedElement && focusedElement !== document.body) {
+            setTimeout(() => {
+                try {
+                    if (document.contains(focusedElement)) {
+                        focusedElement.focus();
+                    } else {
+                        // Try to focus on a similar element
+                        const similar = this.findSimilarElement(focusedElement);
+                        if (similar) similar.focus();
+                    }
+                } catch (e) {
+                    // Focus restoration failed, that's ok
+                }
+            }, 100);
+        }
+    }
+    
+    announceUpdate(sourceId) {
+        const announcement = document.createElement('div');
+        announcement.setAttribute('aria-live', 'polite');
+        announcement.setAttribute('aria-atomic', 'true');
+        announcement.className = 'sr-only';
+        announcement.textContent = `Sekcja ${sourceId} została zaktualizowana`;
+        
+        document.body.appendChild(announcement);
+        setTimeout(() => announcement.remove(), 1000);
+    }
+    
+    queueUpdate(sourceId, data = null) {
+        this.updateQueue.push({ sourceId, data, timestamp: Date.now() });
+        this.showUpdateQueue();
+    }
+    
+    showUpdateQueue() {
+        if (this.updateQueue.length === 0) return;
+        
+        let queueDisplay = document.querySelector('.update-queue');
+        if (!queueDisplay) {
+            queueDisplay = document.createElement('div');
+            queueDisplay.className = 'update-queue';
+            document.body.appendChild(queueDisplay);
+        }
+        
+        queueDisplay.innerHTML = `
+            <div class="queue-header">
+                <h4>Oczekujące aktualizacje (${this.updateQueue.length})</h4>
+                <button onclick="contentUpdateManager.hideUpdateQueue()">×</button>
+            </div>
+            <div class="queue-items">
+                ${this.updateQueue.map((item, index) => `
+                    <div class="queue-item">
+                        <span>${item.sourceId}</span>
+                        <button onclick="contentUpdateManager.processQueuedUpdate(${index})">Załaduj</button>
+                    </div>
+                `).join('')}
+            </div>
+            <div class="queue-footer">
+                <button onclick="contentUpdateManager.processAllQueuedUpdates()">Załaduj wszystkie</button>
+                <button onclick="contentUpdateManager.clearUpdateQueue()">Wyczyść kolejkę</button>
+            </div>
+        `;
+    }
+    
+    processQueuedUpdate(index) {
+        const update = this.updateQueue[index];
+        this.updateQueue.splice(index, 1);
+        
+        if (update.data) {
+            this.applyUpdate(update.sourceId, update.data);
+        } else {
+            this.performUpdate(update.sourceId);
+        }
+        
+        this.updateQueueDisplay();
+    }
+    
+    toggleAutoUpdates(disable) {
+        userPrefs.set('allowBackgroundUpdates', !disable);
+        
+        if (disable) {
+            // Cancel all active updates
+            this.activeUpdates.forEach((timerId, sourceId) => {
+                clearTimeout(timerId);
+            });
+            this.activeUpdates.clear();
+        } else {
+            // Restart all enabled update sources
+            this.updateSources.forEach((source, sourceId) => {
+                if (source.enabled) {
+                    this.scheduleUpdate(sourceId);
+                }
+            });
+        }
+    }
+}
+
+// Global instance
+const contentUpdateManager = new ContentUpdateManager();
+
+// Example usage:
+// contentUpdateManager.registerUpdateSource('news-feed', {
+//     url: '/api/news-updates',
+//     interval: 30000,
+//     selector: '#news-container',
+//     enabled: true
+// });</code></pre>
+            </div>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie kryterium 3.2.5</h2>
+
+            <h3>Testy manualne</h3>
+            <ul>
+                <li><strong>Audyt automatycznych przekierowań</strong> - sprawdź czy wszystkie przekierowania mają
+                    mechanizm kontroli</li>
+                <li><strong>Test wyskakujących okien</strong> - zweryfikuj czy modala można wyłączyć lub kontrolować
+                </li>
+                <li><strong>Analiza aktualizacji zawartości</strong> - sprawdź czy użytkownik kontroluje automatyczne
+                    zmiany</li>
+                <li><strong>Test timerów i interwałów</strong> - upewnij się, że automatyczne działania można zatrzymać
+                </li>
+                <li><strong>Sprawdzenie preferencji</strong> - zweryfikuj czy ustawienia użytkownika są zachowane</li>
+                <li><strong>Test przywracania kontroli</strong> - sprawdź czy można przywrócić domyślne zachowania</li>
+            </ul>
+
+            <h3>Testy automatyczne</h3>
+            <pre><code class="language-javascript">// Test automatyczny kontroli zmian kontekstu
+function testChangeOnRequest() {
+    const results = {
+        hasUserControl: true,
+        issues: [],
+        controlMechanisms: {},
+        score: 0
+    };
+    
+    // Test 1: Sprawdź meta refresh
+    const metaRefresh = document.querySelector('meta[http-equiv="refresh"]');
+    if (metaRefresh) {
+        results.issues.push({
+            type: 'meta-refresh',
+            element: metaRefresh,
+            issue: 'Meta refresh bez kontroli użytkownika',
+            severity: 'high'
+        });
+        results.hasUserControl = false;
+    }
+    
+    // Test 2: Monitor automatic redirects
+    const originalPushState = history.pushState;
+    const originalReplaceState = history.replaceState;
+    let automaticNavigationDetected = false;
+    
+    history.pushState = function(...args) {
+        if (!checkRecentUserInteraction()) {
+            automaticNavigationDetected = true;
+            results.issues.push({
+                type: 'automatic-navigation',
+                url: args[2],
+                issue: 'Automatyczna zmiana URL bez interakcji użytkownika',
+                severity: 'medium'
+            });
+        }
+        return originalPushState.apply(this, args);
+    };
+    
+    // Test 3: Check for timer-based context changes
+    const originalSetTimeout = window.setTimeout;
+    const originalSetInterval = window.setInterval;
+    
+    window.setTimeout = function(callback, delay, ...args) {
+        const callbackString = callback.toString();
+        if (containsContextChange(callbackString)) {
+            results.issues.push({
+                type: 'timer-context-change',
+                delay: delay,
+                callback: callbackString.substring(0, 100),
+                issue: 'Timer może zmieniać kontekst bez kontroli użytkownika',
+                severity: 'medium'
+            });
+        }
+        return originalSetTimeout.call(this, callback, delay, ...args);
+    };
+    
+    // Test 4: Check for user control mechanisms
+    results.controlMechanisms = {
+        preferencesUI: !!document.querySelector('[data-preferences], .preferences, #preferences'),
+        stopButtons: document.querySelectorAll('[data-stop], .stop, [onclick*="stop"]').length,
+        cancelButtons: document.querySelectorAll('[data-cancel], .cancel, [onclick*="cancel"]').length,
+        disableOptions: document.querySelectorAll('[data-disable], .disable-auto').length
+    };
+    
+    // Test 5: Check localStorage for user preferences
+    const hasStoredPreferences = localStorage.getItem('userPreferences') || 
+                                  localStorage.getItem('autoRedirectDisabled') ||
+                                  localStorage.getItem('allowAutoModals');
+    
+    if (hasStoredPreferences) {
+        results.controlMechanisms.persistentPreferences = true;
+    }
+    
+    // Calculate score
+    let totalMechanisms = Object.values(results.controlMechanisms).filter(Boolean).length;
+    let totalIssues = results.issues.length;
+    
+    if (totalIssues === 0 && totalMechanisms > 0) {
+        results.score = 100;
+    } else if (totalIssues === 0) {
+        results.score = 80; // No issues but limited control mechanisms
+    } else {
+        results.score = Math.max(0, 100 - (totalIssues * 20));
+    }
+    
+    // Restore original functions
+    history.pushState = originalPushState;
+    history.replaceState = originalReplaceState;
+    window.setTimeout = originalSetTimeout;
+    window.setInterval = originalSetInterval;
+    
+    return results;
+}
+
+function checkRecentUserInteraction() {
+    const now = Date.now();
+    const lastInteraction = window.lastUserInteraction || 0;
+    return (now - lastInteraction) < 2000; // Within 2 seconds
+}
+
+function containsContextChange(callbackString) {
+    const contextChangePatterns = [
+        'location.href',
+        'location.assign',
+        'location.replace',
+        'window.open',
+        'document.write',
+        'innerHTML',
+        'focus()',
+        'blur()',
+        'submit()'
+    ];
+    
+    return contextChangePatterns.some(pattern => 
+        callbackString.includes(pattern)
+    );
+}
+
+// Example usage and monitoring
+function monitorContextChanges() {
+    // Track user interactions
+    ['click', 'keydown', 'touchstart', 'submit'].forEach(event => {
+        document.addEventListener(event, () => {
+            window.lastUserInteraction = Date.now();
+        }, { passive: true });
+    });
+    
+    // Monitor DOM changes for automatic modals
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            mutation.addedNodes.forEach(node => {
+                if (node.nodeType === Node.ELEMENT_NODE) {
+                    if (isModal(node) && !checkRecentUserInteraction()) {
+                        console.warn('Automatic modal detected without user interaction:', node);
+                    }
+                }
+            });
+        });
+    });
+    
+    observer.observe(document.body, {
+        childList: true,
+        subtree: true
+    });
+    
+    return observer;
+}
+
+function isModal(element) {
+    return element.classList.contains('modal') ||
+           element.role === 'dialog' ||
+           element.getAttribute('aria-modal') === 'true' ||
+           element.classList.contains('popup');
+}
+
+// Run the test
+const changeControlResults = testChangeOnRequest();
+console.log('Change on Request Test Results:', changeControlResults);
+
+// Start monitoring
+const changeMonitor = monitorContextChanges();</code></pre>
+
+            <h3>Checklist testowa</h3>
+            <div class="checklist">
+                <h4>✅ Sprawdź czy:</h4>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ Wszystkie automatyczne przekierowania mają mechanizm anulowania</li>
+                    <li>☐ Użytkownik może wyłączyć automatyczne odświeżanie</li>
+                    <li>☐ Modala i popupy można kontrolować lub blokować</li>
+                    <li>☐ Aktualizacje zawartości wymagają zgody użytkownika</li>
+                    <li>☐ Istnieją preferencje kontroli zmian kontekstu</li>
+                    <li>☐ Ustawienia użytkownika są trwale zapisywane</li>
+                    <li>☐ Użytkownik jest informowany o nadchodzących zmianach</li>
+                    <li>☐ Dostępne są mechanizmy anulowania i cofnięcia</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="common-mistakes">
+            <h2>Częste błędy</h2>
+
+            <div class="mistake-block">
+                <h3>❌ Automatyczne przekierowania bez kontroli</h3>
+                <p><strong>Problem:</strong> Meta refresh lub JavaScript przekierowuje automatycznie</p>
+                <pre><code class="language-html">&lt;meta http-equiv="refresh" content="5; url=/new-page"&gt;</code></pre>
+                <p><strong>Rozwiązanie:</strong> Dodaj mechanizm kontroli z możliwością anulowania</p>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Automatyczne modala bez preferencji</h3>
+                <p><strong>Problem:</strong> Modala pojawiają się automatycznie bez możliwości wyłączenia</p>
+                <p><strong>Rozwiązanie:</strong> Implementuj system preferencji modali</p>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Brak trwałych ustawień użytkownika</h3>
+                <p><strong>Problem:</strong> Preferencje nie są zapisywane między sesjami</p>
+                <p><strong>Rozwiązanie:</strong> Używaj localStorage lub cookies do zachowania ustawień</p>
+            </div>
+        </section>
+
+        <section class="resources">
+            <h2>Dodatkowe zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/change-on-request.html" target="_blank"
+                        rel="noopener">Understanding SC 3.2.5: Change on Request (W3C)</a></li>
+                <li><a href="https://webaim.org/techniques/javascript/" target="_blank" rel="noopener">WebAIM:
+                        JavaScript
+                        and Accessibility</a></li>
+                <li><a href="https://www.nngroup.com/articles/user-control-and-freedom/" target="_blank"
+                        rel="noopener">User Control and Freedom (Nielsen Norman Group)</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Page_Visibility_API" target="_blank"
+                        rel="noopener">MDN: Page Visibility API</a></li>
+                <li><a href="https://web.dev/user-preference-media-features-headers/" target="_blank"
+                        rel="noopener">User Preference Media Features Headers</a></li>
+            </ul>
+        </section>
+
+        <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+            <ul>
+                <li><a href="3.2.4.html">Poprzedni: 3.2.4 Spójna identyfikacja</a></li>
+                <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                <li><a href="3.3.1.html">Następny: 3.3.1 Identyfikacja błędu</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

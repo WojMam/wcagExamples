@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.2 Przewidywalność - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>3.2 Przewidywalność</h1>
+            <p>Wytyczna ta zapewnia, że strony internetowe pojawiają się i działają w przewidywalny sposób.</p>
+        </div>
+
+        <section class="guideline-description">
+            <h2>Opis wytycznej</h2>
+            <p>Przewidywalność w interfejsach użytkownika oznacza, że użytkownicy mogą przewidzieć, co się stanie w
+                odpowiedzi na ich działania. Wytyczna 3.2 koncentruje się na:</p>
+            <ul>
+                <li><strong>Stabilności interfejsu</strong> - elementy nie zmieniają się niespodziewanie</li>
+                <li><strong>Spójności zachowań</strong> - podobne elementy działają podobnie</li>
+                <li><strong>Kontroli użytkownika</strong> - zmiany następują na żądanie</li>
+                <li><strong>Jasnej komunikacji</strong> - użytkownik wie, czego się spodziewać</li>
+            </ul>
+
+            <p>Te elementy są szczególnie istotne dla osób:</p>
+            <ul>
+                <li><strong>Z ograniczeniami poznawczymi</strong> - które potrzebują przewidywalnych wzorców</li>
+                <li><strong>Używających czytników ekranu</strong> - które polegają na spójnej strukturze</li>
+                <li><strong>Z niepełnosprawnościami motorycznymi</strong> - które mają trudności z nawigacją</li>
+                <li><strong>Z zaburzeniami uwagi</strong> - które mogą być rozpraszane przez niespodziewane zmiany</li>
+                <li><strong>Starszych</strong> - które preferują znane wzorce interakcji</li>
+                <li><strong>Początkujących użytkowników</strong> - które uczą się obsługi interfejsu</li>
+            </ul>
+        </section>
+
+        <section class="criteria-overview">
+            <h2>Kryteria sukcesu</h2>
+
+            <div class="criteria-level-section">
+                <h3>Poziom A (podstawowy)</h3>
+                <ul class="criteria-list">
+                    <li><a href="3.2.1.html">3.2.1 Po otrzymaniu fokusa (A)</a> - komponenty nie zmieniają kontekstu
+                        przy otrzymaniu fokusa</li>
+                    <li><a href="3.2.2.html">3.2.2 Podczas wpisywania (A)</a> - zmiana ustawień nie powoduje
+                        automatycznej zmiany kontekstu</li>
+                </ul>
+            </div>
+
+            <div class="criteria-level-section">
+                <h3>Poziom AA (standardowy)</h3>
+                <ul class="criteria-list">
+                    <li><a href="3.2.3.html">3.2.3 Spójna nawigacja (AA)</a> - mechanizmy nawigacji są spójne na
+                        wszystkich stronach</li>
+                    <li><a href="3.2.4.html">3.2.4 Spójna identyfikacja (AA)</a> - komponenty o tej samej
+                        funkcjonalności są identyfikowane spójnie</li>
+                </ul>
+            </div>
+
+            <div class="criteria-level-section">
+                <h3>Poziom AAA (zaawansowany)</h3>
+                <ul class="criteria-list">
+                    <li><a href="3.2.5.html">3.2.5 Zmiana na żądanie (AAA)</a> - zmiany kontekstu inicjowane są tylko
+                        przez użytkownika lub dostępny jest mechanizm ich wyłączenia</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="predictability-principles">
+            <h2>Kluczowe zasady przewidywalności</h2>
+
+            <div class="principle-card"
+                style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 20px; border-radius: 5px; margin: 15px 0;">
+                <h3 style="color: #004085; margin-top: 0;">🎯 Kontrola użytkownika</h3>
+                <p style="color: #004085;">Użytkownik powinien mieć kontrolę nad:</p>
+                <ul style="color: #004085;">
+                    <li>Kiedy następują zmiany w interfejsie</li>
+                    <li>Czy i jak są otwierane nowe okna</li>
+                    <li>Czy formularze są automatycznie wysyłane</li>
+                    <li>Kiedy odtwarzane są multimedia</li>
+                </ul>
+            </div>
+
+            <div class="principle-card"
+                style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 20px; border-radius: 5px; margin: 15px 0;">
+                <h3 style="color: #155724; margin-top: 0;">🔄 Spójność</h3>
+                <p style="color: #155724;">Elementy interfejsu powinny być:</p>
+                <ul style="color: #155724;">
+                    <li>Umieszczone w tych samych miejscach</li>
+                    <li>Oznaczone w ten sam sposób</li>
+                    <li>Zachowywać się podobnie</li>
+                    <li>Mieć przewidywalne funkcje</li>
+                </ul>
+            </div>
+
+            <div class="principle-card"
+                style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 20px; border-radius: 5px; margin: 15px 0;">
+                <h3 style="color: #856404; margin-top: 0;">⚡ Stabilność</h3>
+                <p style="color: #856404;">Interfejs powinien:</p>
+                <ul style="color: #856404;">
+                    <li>Nie zmieniać się niespodziewanie</li>
+                    <li>Ostrzegać przed ważnymi zmianami</li>
+                    <li>Dawać możliwość cofnięcia akcji</li>
+                    <li>Zachowywać stan po błędach</li>
+                </ul>
+            </div>
+
+            <div class="principle-card"
+                style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 20px; border-radius: 5px; margin: 15px 0;">
+                <h3 style="color: #721c24; margin-top: 0;">📢 Komunikacja</h3>
+                <p style="color: #721c24;">Użytkownik powinien wiedzieć:</p>
+                <ul style="color: #721c24;">
+                    <li>Co się stanie po kliknięciu</li>
+                    <li>Gdzie zostanie przeniesiony</li>
+                    <li>Jakie dane są wymagane</li>
+                    <li>Czy akcja jest nieodwracalna</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="context-changes">
+            <h2>Typy zmian kontekstu</h2>
+
+            <h3>Zmiany kontekstu to:</h3>
+            <div class="definition-list">
+                <dl>
+                    <dt><strong>Otwarcie nowego okna/karty</strong></dt>
+                    <dd>Przeniesienie użytkownika do innej aplikacji lub strony bez jego wyraźnej zgody</dd>
+
+                    <dt><strong>Przeniesienie fokusa</strong></dt>
+                    <dd>Automatyczne przeniesienie fokusa do innego elementu bez działania użytkownika</dd>
+
+                    <dt><strong>Zmiana treści</strong></dt>
+                    <dd>Istotna modyfikacja zawartości strony, która zmienia znaczenie lub funkcjonalność</dd>
+
+                    <dt><strong>Reorganizacja layoutu</strong></dt>
+                    <dd>Przesunięcie, ukrycie lub pokazanie głównych elementów nawigacji</dd>
+                </dl>
+            </div>
+
+            <h3>Co NIE jest zmianą kontekstu:</h3>
+            <ul>
+                <li>Rozwinięcie menu dropdown na tym samym miejscu</li>
+                <li>Pokazanie tooltipa lub pomocy kontekstowej</li>
+                <li>Zmiana zawartości w wydzielonym obszarze (np. tab panel)</li>
+                <li>Dodanie komunikatów o błędach lub sukcesie</li>
+                <li>Progresywne ładowanie treści (infinite scroll)</li>
+            </ul>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Automatyczne otwieranie nowego okna</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - otwiera nowe okno bez ostrzeżenia --&gt;
+&lt;a href="external-site.com" target="_blank"&gt;Zobacz więcej&lt;/a&gt;</code></pre>
+                <p><strong>Problem:</strong> Użytkownik nie wie, że link otworzy nowe okno.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Automatyczne wysyłanie formularza</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - natychmiastowa submisja po zmianie --&gt;
+&lt;select onchange="this.form.submit()"&gt;
+    &lt;option&gt;Opcja 1&lt;/option&gt;
+    &lt;option&gt;Opcja 2&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+                <p><strong>Problem:</strong> Formularz się wysyła bez możliwości sprawdzenia innych opcji.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Niespójne umiejscowienie nawigacji</h4>
+                <pre><code class="language-html">&lt;!-- Strona 1 - menu u góry --&gt;
+&lt;header&gt;
+    &lt;nav&gt;Menu główne&lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;!-- Strona 2 - menu z boku --&gt;
+&lt;div class="sidebar"&gt;
+    &lt;nav&gt;Menu główne&lt;/nav&gt;
+&lt;/div&gt;</code></pre>
+                <p><strong>Problem:</strong> Menu znajduje się w różnych miejscach na różnych stronach.</p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Ostrzeżenie o nowym oknie</h4>
+                <pre><code class="language-html">&lt;!-- Prawidłowe - informuje o nowym oknie --&gt;
+&lt;a href="external-site.com" target="_blank" rel="noopener"&gt;
+    Zobacz więcej 
+    &lt;span class="sr-only"&gt;(otwiera się w nowym oknie)&lt;/span&gt;
+    &lt;span aria-hidden="true"&gt;↗&lt;/span&gt;
+&lt;/a&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Użytkownik jest informowany o otwarciu nowego okna.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Kontrolowane wysyłanie formularza</h4>
+                <pre><code class="language-html">&lt;!-- Prawidłowe - zmiana nie powoduje submisji --&gt;
+&lt;form&gt;
+    &lt;label for="category-select"&gt;Wybierz kategorię:&lt;/label&gt;
+    &lt;select id="category-select" name="category"&gt;
+        &lt;option&gt;Kategoria 1&lt;/option&gt;
+        &lt;option&gt;Kategoria 2&lt;/option&gt;
+    &lt;/select&gt;
+    
+    &lt;button type="submit"&gt;Zastosuj filtr&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Użytkownik musi świadomie wysłać formularz przyciskiem.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Spójna nawigacja</h4>
+                <pre><code class="language-html">&lt;!-- Każda strona ma tę samą strukturę nawigacji --&gt;
+&lt;header class="site-header"&gt;
+    &lt;nav class="main-navigation" aria-label="Nawigacja główna"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="/"&gt;Strona główna&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/produkty"&gt;Produkty&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Nawigacja jest zawsze w tym samym miejscu i ma tę samą strukturę.
+                </p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Kontrolowana zmiana kontekstu</h4>
+                <pre><code class="language-html">&lt;!-- Ostrzeżenie o przekierowaniu --&gt;
+&lt;div class="redirect-notice"&gt;
+    &lt;p&gt;Za 10 sekund zostaniesz przekierowany do nowej strony.&lt;/p&gt;
+    &lt;button onclick="redirectNow()"&gt;Przejdź teraz&lt;/button&gt;
+    &lt;button onclick="cancelRedirect()"&gt;Anuluj przekierowanie&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+let redirectTimer;
+
+function startRedirectTimer() {
+    redirectTimer = setTimeout(() =&gt; {
+        window.location.href = '/new-page';
+    }, 10000);
+}
+
+function cancelRedirect() {
+    clearTimeout(redirectTimer);
+    document.querySelector('.redirect-notice').style.display = 'none';
+}
+
+function redirectNow() {
+    clearTimeout(redirectTimer);
+    window.location.href = '/new-page';
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Użytkownik jest informowany o przekierowaniu i może je kontrolować.
+                </p>
+            </div>
+        </section>
+
+        <section class="interactive-demo">
+            <h2>Interaktywne demo przewidywalności</h2>
+            <p>Sprawdź różne aspekty przewidywalności w interfejsach:</p>
+
+            <div class="demo-container">
+                <h3>Analiza przewidywalności strony</h3>
+                <div class="predictability-demo">
+                    <div class="demo-controls">
+                        <button id="analyze-predictability" class="demo-button">Analizuj przewidywalność</button>
+                        <button id="test-focus-changes" class="demo-button">Test zmian fokusa</button>
+                        <button id="check-navigation" class="demo-button">Sprawdź nawigację</button>
+                        <button id="validate-links" class="demo-button">Waliduj linki</button>
+                    </div>
+
+                    <div class="demo-results">
+                        <h4>Wyniki analizy:</h4>
+                        <div id="predictability-results"></div>
+                    </div>
+                </div>
+
+                <h3>Test niespodziewanych zmian</h3>
+                <div class="unexpected-changes-demo">
+                    <div class="demo-section">
+                        <h4>Bezpieczne zachowania (✅):</h4>
+                        <button id="safe-dropdown" class="demo-button">Dropdown bez zmiany kontekstu</button>
+                        <button id="safe-tooltip" class="demo-button">Tooltip na hover</button>
+                        <button id="safe-tab" class="demo-button">Zmiana taba</button>
+
+                        <div id="safe-demo-area" class="demo-area"></div>
+                    </div>
+
+                    <div class="demo-section">
+                        <h4>Niebezpieczne zachowania (⚠️ - tylko demo):</h4>
+                        <button id="unsafe-popup" class="demo-button">Niespodziewane okno</button>
+                        <button id="unsafe-redirect" class="demo-button">Automatyczne przekierowanie</button>
+                        <button id="unsafe-focus" class="demo-button">Niespodziewana zmiana fokusa</button>
+
+                        <div id="unsafe-demo-area" class="demo-area"></div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                // Analiza przewidywalności strony
+                document.getElementById('analyze-predictability').addEventListener('click', function () {
+                    const results = analyzePredictability();
+                    displayResults(results);
+                });
+
+                function analyzePredictability() {
+                    const analysis = {
+                        focusChanges: checkFocusChanges(),
+                        unexpectedWindows: checkUnexpectedWindows(),
+                        autoSubmits: checkAutoSubmits(),
+                        navigationConsistency: checkNavigationConsistency(),
+                        linkTargets: checkLinkTargets()
+                    };
+
+                    return analysis;
+                }
+
+                function checkFocusChanges() {
+                    const elementsWithFocus = document.querySelectorAll('[onfocus], [tabindex]');
+                    const issues = [];
+
+                    elementsWithFocus.forEach(element => {
+                        const focusHandler = element.getAttribute('onfocus');
+                        if (focusHandler && (
+                            focusHandler.includes('submit') ||
+                            focusHandler.includes('location') ||
+                            focusHandler.includes('window.open')
+                        )) {
+                            issues.push({
+                                element: element.tagName,
+                                issue: 'Potencjalna zmiana kontekstu na focus',
+                                severity: 'high'
+                            });
+                        }
+                    });
+
+                    return {
+                        totalElements: elementsWithFocus.length,
+                        issues: issues,
+                        score: issues.length === 0 ? 'Doskonały' : issues.length < 3 ? 'Dobry' : 'Wymaga poprawy'
+                    };
+                }
+
+                function checkUnexpectedWindows() {
+                    const linksWithTarget = document.querySelectorAll('a[target="_blank"]');
+                    const issues = [];
+
+                    linksWithTarget.forEach(link => {
+                        const hasWarning = link.textContent.includes('nowym oknie') ||
+                            link.getAttribute('aria-label')?.includes('nowym oknie') ||
+                            link.querySelector('.sr-only')?.textContent.includes('nowym oknie');
+
+                        if (!hasWarning) {
+                            issues.push({
+                                href: link.getAttribute('href'),
+                                text: link.textContent.trim(),
+                                issue: 'Brak ostrzeżenia o nowym oknie'
+                            });
+                        }
+                    });
+
+                    return {
+                        totalLinks: linksWithTarget.length,
+                        issues: issues,
+                        score: issues.length === 0 ? 'Doskonały' : 'Wymaga poprawy'
+                    };
+                }
+
+                function checkAutoSubmits() {
+                    const elementsWithChange = document.querySelectorAll('[onchange], [oninput]');
+                    const issues = [];
+
+                    elementsWithChange.forEach(element => {
+                        const changeHandler = element.getAttribute('onchange') || element.getAttribute('oninput');
+                        if (changeHandler && changeHandler.includes('submit')) {
+                            issues.push({
+                                element: element.tagName,
+                                name: element.name || element.id,
+                                issue: 'Automatyczne wysyłanie formularza'
+                            });
+                        }
+                    });
+
+                    return {
+                        totalElements: elementsWithChange.length,
+                        issues: issues,
+                        score: issues.length === 0 ? 'Doskonały' : 'Wymaga poprawy'
+                    };
+                }
+
+                function checkNavigationConsistency() {
+                    const navElements = document.querySelectorAll('nav, [role="navigation"]');
+
+                    return {
+                        navigationElements: navElements.length,
+                        score: navElements.length > 0 ? 'Obecna' : 'Brak nawigacji',
+                        note: 'Sprawdź ręcznie spójność między stronami'
+                    };
+                }
+
+                function checkLinkTargets() {
+                    const allLinks = document.querySelectorAll('a[href]');
+                    const externalLinks = Array.from(allLinks).filter(link => {
+                        const href = link.getAttribute('href');
+                        return href && (href.startsWith('http') && !href.includes(window.location.hostname));
+                    });
+
+                    return {
+                        totalLinks: allLinks.length,
+                        externalLinks: externalLinks.length,
+                        score: 'OK'
+                    };
+                }
+
+                function displayResults(analysis) {
+                    const resultsDiv = document.getElementById('predictability-results');
+
+                    let html = '<div class="analysis-results">';
+
+                    // Focus changes
+                    html += `<div class="result-section">
+                        <h5>🎯 Zmiany fokusa</h5>
+                        <p>Ocena: <strong>${analysis.focusChanges.score}</strong></p>
+                        <p>Znalezione elementy: ${analysis.focusChanges.totalElements}</p>`;
+
+                    if (analysis.focusChanges.issues.length > 0) {
+                        html += '<ul>';
+                        analysis.focusChanges.issues.forEach(issue => {
+                            html += `<li>${issue.element}: ${issue.issue}</li>`;
+                        });
+                        html += '</ul>';
+                    }
+                    html += '</div>';
+
+                    // Unexpected windows
+                    html += `<div class="result-section">
+                        <h5>🔗 Nowe okna</h5>
+                        <p>Ocena: <strong>${analysis.unexpectedWindows.score}</strong></p>
+                        <p>Linki target="_blank": ${analysis.unexpectedWindows.totalLinks}</p>`;
+
+                    if (analysis.unexpectedWindows.issues.length > 0) {
+                        html += '<p>Linki bez ostrzeżeń:</p><ul>';
+                        analysis.unexpectedWindows.issues.slice(0, 5).forEach(issue => {
+                            html += `<li>"${issue.text}" - ${issue.issue}</li>`;
+                        });
+                        html += '</ul>';
+                    }
+                    html += '</div>';
+
+                    // Auto submits
+                    html += `<div class="result-section">
+                        <h5>📝 Automatyczne formularze</h5>
+                        <p>Ocena: <strong>${analysis.autoSubmits.score}</strong></p>
+                        <p>Problematyczne elementy: ${analysis.autoSubmits.issues.length}</p>`;
+
+                    if (analysis.autoSubmits.issues.length > 0) {
+                        html += '<ul>';
+                        analysis.autoSubmits.issues.forEach(issue => {
+                            html += `<li>${issue.element} (${issue.name}): ${issue.issue}</li>`;
+                        });
+                        html += '</ul>';
+                    }
+                    html += '</div>';
+
+                    // Navigation
+                    html += `<div class="result-section">
+                        <h5>🧭 Nawigacja</h5>
+                        <p>Elementy nawigacji: ${analysis.navigationConsistency.navigationElements}</p>
+                        <p>Uwaga: ${analysis.navigationConsistency.note}</p>
+                    </div>`;
+
+                    html += '</div>';
+                    resultsDiv.innerHTML = html;
+                }
+
+                // Test bezpiecznych zachowań
+                document.getElementById('safe-dropdown').addEventListener('click', function () {
+                    const area = document.getElementById('safe-demo-area');
+                    area.innerHTML = `
+                        <div class="dropdown-demo">
+                            <button id="dropdown-trigger">Menu opcji ▼</button>
+                            <ul id="dropdown-menu" style="display: none; list-style: none; background: #f9f9f9; border: 1px solid #ccc; padding: 10px;">
+                                <li><a href="#option1">Opcja 1</a></li>
+                                <li><a href="#option2">Opcja 2</a></li>
+                                <li><a href="#option3">Opcja 3</a></li>
+                            </ul>
+                        </div>
+                    `;
+
+                    document.getElementById('dropdown-trigger').addEventListener('click', function () {
+                        const menu = document.getElementById('dropdown-menu');
+                        menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+                    });
+                });
+
+                document.getElementById('safe-tooltip').addEventListener('click', function () {
+                    const area = document.getElementById('safe-demo-area');
+                    area.innerHTML = `
+                        <div class="tooltip-demo">
+                            <button id="tooltip-trigger" title="To jest tooltip - pojawia się na hover">
+                                Najedź myszką na mnie
+                            </button>
+                        </div>
+                    `;
+                });
+
+                document.getElementById('safe-tab').addEventListener('click', function () {
+                    const area = document.getElementById('safe-demo-area');
+                    area.innerHTML = `
+                        <div class="tab-demo">
+                            <div class="tab-buttons">
+                                <button class="tab-btn active" data-tab="tab1">Tab 1</button>
+                                <button class="tab-btn" data-tab="tab2">Tab 2</button>
+                            </div>
+                            <div class="tab-content">
+                                <div id="tab1" class="tab-panel active">Zawartość Tab 1</div>
+                                <div id="tab2" class="tab-panel">Zawartość Tab 2</div>
+                            </div>
+                        </div>
+                    `;
+
+                    document.querySelectorAll('.tab-btn').forEach(btn => {
+                        btn.addEventListener('click', function () {
+                            const targetTab = this.getAttribute('data-tab');
+
+                            // Update buttons
+                            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                            this.classList.add('active');
+
+                            // Update panels
+                            document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+                            document.getElementById(targetTab).classList.add('active');
+                        });
+                    });
+                });
+
+                // Niebezpieczne zachowania (tylko demonstracja)
+                document.getElementById('unsafe-popup').addEventListener('click', function () {
+                    const area = document.getElementById('unsafe-demo-area');
+                    area.innerHTML = `
+                        <div class="warning-demo">
+                            <p>⚠️ <strong>DEMO:</strong> W prawdziwej sytuacji tutaj otworzyłoby się niespodziewane okno popup.</p>
+                            <p><strong>Problem:</strong> Użytkownik nie został ostrzeżony o otwarciu nowego okna.</p>
+                        </div>
+                    `;
+                });
+
+                document.getElementById('unsafe-redirect').addEventListener('click', function () {
+                    const area = document.getElementById('unsafe-demo-area');
+                    area.innerHTML = `
+                        <div class="warning-demo">
+                            <p>⚠️ <strong>DEMO:</strong> Automatyczne przekierowanie za 3 sekundy...</p>
+                            <p><strong>Problem:</strong> Brak kontroli użytkownika nad przekierowaniem.</p>
+                            <button onclick="this.parentElement.parentElement.innerHTML = 'Przekierowanie zatrzymane przez demo'">
+                                Zatrzymaj (tylko w demo)
+                            </button>
+                        </div>
+                    `;
+                });
+
+                document.getElementById('unsafe-focus').addEventListener('click', function () {
+                    const area = document.getElementById('unsafe-demo-area');
+                    area.innerHTML = `
+                        <div class="warning-demo">
+                            <input type="text" placeholder="Kliknij tutaj">
+                            <p>⚠️ <strong>DEMO:</strong> W prawdziwej sytuacji fokus przeskoczyłby automatycznie do innego elementu.</p>
+                            <p><strong>Problem:</strong> Niespodziewana zmiana fokusa może dezorientować użytkownika.</p>
+                        </div>
+                    `;
+                });
+            </script>
+
+            <style>
+                .demo-container {
+                    background-color: #f8f9fa;
+                    border: 1px solid #dee2e6;
+                    border-radius: 5px;
+                    padding: 20px;
+                    margin: 20px 0;
+                }
+
+                .demo-controls {
+                    margin-bottom: 20px;
+                }
+
+                .demo-button {
+                    background-color: #007cba;
+                    color: white;
+                    border: none;
+                    padding: 10px 15px;
+                    margin: 5px;
+                    border-radius: 3px;
+                    cursor: pointer;
+                }
+
+                .demo-button:hover {
+                    background-color: #005a87;
+                }
+
+                .demo-area {
+                    background-color: white;
+                    border: 1px solid #ccc;
+                    padding: 15px;
+                    margin: 10px 0;
+                    border-radius: 3px;
+                    min-height: 60px;
+                }
+
+                .warning-demo {
+                    background-color: #fff3cd;
+                    border: 1px solid #ffeaa7;
+                    padding: 15px;
+                    border-radius: 3px;
+                }
+
+                .result-section {
+                    background-color: white;
+                    border: 1px solid #dee2e6;
+                    padding: 15px;
+                    margin: 10px 0;
+                    border-radius: 3px;
+                }
+
+                .tab-demo .tab-buttons {
+                    border-bottom: 1px solid #ccc;
+                    margin-bottom: 10px;
+                }
+
+                .tab-btn {
+                    background-color: #f8f9fa;
+                    border: 1px solid #ccc;
+                    border-bottom: none;
+                    padding: 8px 16px;
+                    cursor: pointer;
+                }
+
+                .tab-btn.active {
+                    background-color: white;
+                    border-bottom: 1px solid white;
+                    margin-bottom: -1px;
+                }
+
+                .tab-panel {
+                    display: none;
+                    padding: 15px;
+                }
+
+                .tab-panel.active {
+                    display: block;
+                }
+            </style>
+        </section>
+
+        <section class="consistency-patterns">
+            <h2>Wzorce spójności</h2>
+
+            <h3>Spójna nawigacja</h3>
+            <ul>
+                <li><strong>Położenie</strong> - menu w tym samym miejscu na każdej stronie</li>
+                <li><strong>Kolejność</strong> - elementy menu w takiej samej kolejności</li>
+                <li><strong>Nazewnictwo</strong> - te same nazwy dla tych samych sekcji</li>
+                <li><strong>Wygląd</strong> - spójne style i zachowania</li>
+            </ul>
+
+            <h3>Spójna identyfikacja</h3>
+            <ul>
+                <li><strong>Ikony</strong> - ta sama ikona oznacza tę samą funkcję</li>
+                <li><strong>Etykiety</strong> - podobne funkcje mają podobne nazwy</li>
+                <li><strong>Kolory</strong> - spójne znaczenie kolorów (np. czerwony = błąd)</li>
+                <li><strong>Zachowania</strong> - podobne elementy reagują podobnie</li>
+            </ul>
+
+            <h3>Kontrola zmian</h3>
+            <ul>
+                <li><strong>Ostrzeżenia</strong> - informowanie o nadchodzących zmianach</li>
+                <li><strong>Potwierdzenia</strong> - wymóg akceptacji ważnych akcji</li>
+                <li><strong>Anulowanie</strong> - możliwość cofnięcia zmian</li>
+                <li><strong>Status</strong> - komunikowanie stanu operacji</li>
+            </ul>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie przewidywalności</h2>
+
+            <h3>Testy manualne</h3>
+            <ul>
+                <li><strong>Nawigacja klawiaturą</strong> - sprawdzenie czy fokus nie skacze niespodziewanie</li>
+                <li><strong>Test różnych przeglądarek</strong> - czy zachowania są spójne</li>
+                <li><strong>Porównanie stron</strong> - czy nawigacja jest jednakowa</li>
+                <li><strong>Test użytkowników</strong> - czy interfejs jest przewidywalny</li>
+            </ul>
+
+            <h3>Testy automatyczne</h3>
+            <pre><code class="language-javascript">// Test spójności nawigacji
+function testNavigationConsistency() {
+    const currentPageNav = document.querySelector('nav');
+    const navItems = Array.from(currentPageNav.querySelectorAll('a')).map(a => ({
+        text: a.textContent.trim(),
+        href: a.getAttribute('href'),
+        order: Array.from(a.parentElement.children).indexOf(a)
+    }));
+    
+    // Zapisz strukturę nawigacji
+    localStorage.setItem('expectedNavigation', JSON.stringify(navItems));
+    
+    return {
+        items: navItems.length,
+        structure: navItems
+    };
+}
+
+// Test niespodziewanych zachowań
+function testUnexpectedBehaviors() {
+    const issues = [];
+    
+    // Sprawdź elementy z onchange
+    document.querySelectorAll('[onchange]').forEach(element => {
+        const handler = element.getAttribute('onchange');
+        if (handler.includes('submit') || handler.includes('location')) {
+            issues.push({
+                element: element,
+                issue: 'Potencjalna niespodziewana zmiana kontekstu'
+            });
+        }
+    });
+    
+    // Sprawdź linki target="_blank" bez ostrzeżenia
+    document.querySelectorAll('a[target="_blank"]').forEach(link => {
+        const hasWarning = link.textContent.includes('nowym oknie') ||
+                          link.getAttribute('aria-label')?.includes('nowym oknie');
+        if (!hasWarning) {
+            issues.push({
+                element: link,
+                issue: 'Link otwiera nowe okno bez ostrzeżenia'
+            });
+        }
+    });
+    
+    return issues;
+}
+
+// Test fokusa
+function testFocusManagement() {
+    let focusTraps = 0;
+    let unexpectedFocusChanges = 0;
+    
+    document.addEventListener('focus', function(e) {
+        console.log('Focus moved to:', e.target);
+        // Monitoruj nieoczekiwane zmiany fokusa
+    }, true);
+    
+    return {
+        focusTraps: focusTraps,
+        unexpectedChanges: unexpectedFocusChanges
+    };
+}</code></pre>
+
+            <h3>Checklist przewidywalności</h3>
+            <div class="checklist">
+                <h4>✅ Sprawdź czy:</h4>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ Otrzymanie fokusa nie zmienia kontekstu</li>
+                    <li>☐ Zmiana wartości nie powoduje automatycznych akcji</li>
+                    <li>☐ Nawigacja jest spójna między stronami</li>
+                    <li>☐ Podobne elementy są identyfikowane podobnie</li>
+                    <li>☐ Linki otwierające nowe okna są oznaczone</li>
+                    <li>☐ Użytkownik kontroluje ważne zmiany</li>
+                    <li>☐ Błędy nie powodują utraty danych</li>
+                    <li>☐ Stan interfejsu jest jasno komunikowany</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="resources">
+            <h2>Dodatkowe zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/predictable.html" target="_blank"
+                        rel="noopener">Understanding Guideline 3.2: Predictable (W3C)</a></li>
+                <li><a href="https://webaim.org/articles/usability/" target="_blank" rel="noopener">WebAIM:
+                        Usability</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/Understanding_WCAG/Understandable"
+                        target="_blank" rel="noopener">MDN: Understandable content</a></li>
+                <li><a href="https://www.nngroup.com/articles/consistency-and-standards/" target="_blank"
+                        rel="noopener">Nielsen Norman Group: Consistency and Standards</a></li>
+                <li><a href="https://inclusive-components.design/" target="_blank" rel="noopener">Inclusive
+                        Components</a></li>
+            </ul>
+        </section>
+
+        <nav class="page-navigation" aria-label="Nawigacja między stronami">
+            <a href="3.1.6.html" class="nav-link prev-page">
+                <span class="nav-arrow">←</span>
+                <span class="nav-text">
+                    <span class="nav-label">Poprzednia</span>
+                    <span class="nav-title">3.1.6 Wymowa</span>
+                </span>
+            </a>
+            <a href="3.2.1.html" class="nav-link next-page">
+                <span class="nav-text">
+                    <span class="nav-label">Następna</span>
+                    <span class="nav-title">3.2.1 Po otrzymaniu fokusa</span>
+                </span>
+                <span class="nav-arrow">→</span>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

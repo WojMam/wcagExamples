@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.2.2 Podczas wpisywania (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>3.2.2 Podczas wpisywania (A)</h1>
+            <p>Zmiana ustawień komponentu interfejsu użytkownika nie powoduje automatycznie zmiany kontekstu,
+                chyba że użytkownik został poinformowany o tym zachowaniu przed użyciem komponentu.</p>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>To kryterium wymaga, aby wprowadzanie danych lub zmiana ustawień w elementach interfejsu
+                (takich jak pola formularza, listy rozwijane, przyciski radio) nie powodowało automatycznych
+                zmian kontekstu bez uprzedzenia użytkownika. Oznacza to, że:</p>
+            <ul>
+                <li>Wybór opcji z listy rozwijanej nie powinien automatycznie wysyłać formularza</li>
+                <li>Zmiana wartości pola nie powinna przekierowywać na inną stronę</li>
+                <li>Zaznaczenie checkboxa nie może otwierać nowego okna</li>
+                <li>Wprowadzanie tekstu nie powinno automatycznie przesyłać danych</li>
+            </ul>
+
+            <p>Wyjątek stanowią sytuacje, gdzie użytkownik został wcześniej poinformowany
+                o automatycznym zachowaniu systemu.</p>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Osoby niewidome</strong> - używające czytników ekranu, które potrzebują przewidywalności
+                </li>
+                <li><strong>Osoby z ograniczeniami poznawczymi</strong> - które mogą być zdezorientowane
+                    niespodziewanymi zmianami</li>
+                <li><strong>Osoby z ograniczeniami motorycznymi</strong> - które mogą przypadkowo zmienić wartości</li>
+                <li><strong>Użytkownicy z ADHD</strong> - którzy są wrażliwi na rozpraszające zmiany</li>
+                <li><strong>Początkujący użytkownicy</strong> - którzy uczą się obsługi interfejsu</li>
+                <li><strong>Użytkownicy urządzeń mobilnych</strong> - którzy mogą przypadkowo dotknąć elementy</li>
+                <li><strong>Starsi użytkownicy</strong> - którzy preferują przewidywalny interfejs</li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje</h2>
+            <dl>
+                <dt><strong>Zmiana kontekstu (Change of context)</strong></dt>
+                <dd>Znaczące zmiany w treści strony internetowej, które mogą dezorientować użytkowników,
+                    jeśli nie są oni świadomi, że zmiana może wystąpić. Obejmuje to zmiany:
+                    <ul>
+                        <li>Programu użytkownika (przeglądarki)</li>
+                        <li>Okna wyświetlania (viewport)</li>
+                        <li>Fokusa</li>
+                        <li>Treści, która zmienia znaczenie strony</li>
+                    </ul>
+                </dd>
+
+                <dt><strong>Komponent interfejsu użytkownika</strong></dt>
+                <dd>Część treści, która jest postrzegana przez użytkowników jako pojedynczy element kontrolny
+                    dla określonej funkcji (np. przycisk, pole tekstowe, lista rozwijana).</dd>
+
+                <dt><strong>Wprowadzanie danych (Input)</strong></dt>
+                <dd>Dane podawane do systemu przez użytkownika poprzez działania takie jak:
+                    pisanie na klawiaturze, zaznaczanie opcji, klikanie przycisków.</dd>
+
+                <dt><strong>Ustawienia komponentu</strong></dt>
+                <dd>Konfiguracja lub stan elementu interfejsu, taki jak zaznaczenie checkboxa,
+                    wybrana opcja z listy, wprowadzony tekst.</dd>
+            </dl>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Automatyczne wysłanie formularza przy zmianie listy</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - formularz wysyła się przy zmianie --&gt;
+&lt;form method="get" action="/search"&gt;
+    &lt;label for="category"&gt;Kategoria:&lt;/label&gt;
+    &lt;select id="category" name="category" onchange="this.form.submit()"&gt;
+        &lt;option value=""&gt;Wybierz kategorię&lt;/option&gt;
+        &lt;option value="electronics"&gt;Elektronika&lt;/option&gt;
+        &lt;option value="books"&gt;Książki&lt;/option&gt;
+        &lt;option value="clothing"&gt;Odzież&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/form&gt;</code></pre>
+                <p><strong>Problem:</strong> Użytkownik nie może przeglądać opcji bez automatycznego wysłania
+                    formularza.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Automatyczne przekierowanie przy wyborze języka</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - przekierowanie bez ostrzeżenia --&gt;
+&lt;form&gt;
+    &lt;label for="language"&gt;Język:&lt;/label&gt;
+    &lt;select id="language" onchange="redirectToLanguage(this.value)"&gt;
+        &lt;option value="pl"&gt;Polski&lt;/option&gt;
+        &lt;option value="en"&gt;English&lt;/option&gt;
+        &lt;option value="de"&gt;Deutsch&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+function redirectToLanguage(lang) {
+    window.location.href = '/' + lang + '/';
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Problem:</strong> Strona zmienia się natychmiast bez możliwości anulowania.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Otwieranie okna popup przy zaznaczeniu checkboxa</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - popup otwiera się automatycznie --&gt;
+&lt;form&gt;
+    &lt;input type="checkbox" id="newsletter" 
+           onchange="openNewsletterPopup(this.checked)"&gt;
+    &lt;label for="newsletter"&gt;Zapisz się do newslettera&lt;/label&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+function openNewsletterPopup(checked) {
+    if (checked) {
+        window.open('/newsletter-signup', 'newsletter', 'width=400,height=300');
+    }
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Problem:</strong> Niespodziewane otwarcie nowego okna może dezorientować użytkownika.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Automatyczna zmiana treści przy wpisywaniu</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - treść zmienia się podczas pisania --&gt;
+&lt;form&gt;
+    &lt;label for="search"&gt;Wyszukaj produkt:&lt;/label&gt;
+    &lt;input type="text" id="search" 
+           oninput="changePageContent(this.value)"&gt;
+&lt;/form&gt;
+
+&lt;div id="main-content"&gt;
+    &lt;h2&gt;Strona główna&lt;/h2&gt;
+    &lt;p&gt;Witamy w naszym sklepie&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function changePageContent(query) {
+    if (query.length &gt; 2) {
+        document.getElementById('main-content').innerHTML = 
+            '&lt;h2&gt;Wyniki wyszukiwania&lt;/h2&gt;&lt;p&gt;Szukasz: ' + query + '&lt;/p&gt;';
+    }
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Problem:</strong> Główna treść strony zmienia się podczas wpisywania, co może dezorientować.
+                </p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Formularz z przyciskiem wysłania</h4>
+                <pre><code class="language-html">&lt;!-- Prawidłowe - użytkownik kontroluje wysłanie --&gt;
+&lt;form method="get" action="/search"&gt;
+    &lt;label for="category"&gt;Kategoria:&lt;/label&gt;
+    &lt;select id="category" name="category"&gt;
+        &lt;option value=""&gt;Wybierz kategorię&lt;/option&gt;
+        &lt;option value="electronics"&gt;Elektronika&lt;/option&gt;
+        &lt;option value="books"&gt;Książki&lt;/option&gt;
+        &lt;option value="clothing"&gt;Odzież&lt;/option&gt;
+    &lt;/select&gt;
+    
+    &lt;button type="submit"&gt;Wyszukaj&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Użytkownik może wybrać kategorię i zdecydować kiedy wysłać
+                    formularz.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Wybór języka z ostrzeżeniem</h4>
+                <pre><code class="language-html">&lt;!-- Prawidłowe - użytkownik jest informowany --&gt;
+&lt;form&gt;
+    &lt;label for="language"&gt;
+        Język strony 
+        &lt;small&gt;(zmiana przekieruje na nową stronę)&lt;/small&gt;:
+    &lt;/label&gt;
+    &lt;select id="language" onchange="confirmLanguageChange(this)"&gt;
+        &lt;option value="pl"&gt;Polski&lt;/option&gt;
+        &lt;option value="en"&gt;English&lt;/option&gt;
+        &lt;option value="de"&gt;Deutsch&lt;/option&gt;
+    &lt;/select&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+function confirmLanguageChange(select) {
+    const confirmed = confirm(
+        'Czy chcesz zmienić język strony? Zostaniesz przekierowany na nową stronę.'
+    );
+    
+    if (confirmed) {
+        window.location.href = '/' + select.value + '/';
+    } else {
+        // Przywróć poprzednią wartość
+        select.selectedIndex = 0;
+    }
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Użytkownik jest ostrzeżony i musi potwierdzić zmianę.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Newsletter z kontrolowaną akcją</h4>
+                <pre><code class="language-html">&lt;!-- Prawidłowe - akcja na żądanie użytkownika --&gt;
+&lt;form&gt;
+    &lt;input type="checkbox" id="newsletter"&gt;
+    &lt;label for="newsletter"&gt;Chcę otrzymywać newsletter&lt;/label&gt;
+    
+    &lt;div id="newsletter-options" style="display: none;"&gt;
+        &lt;p&gt;Dziękujemy za zainteresowanie!&lt;/p&gt;
+        &lt;button type="button" onclick="openNewsletterForm()"&gt;
+            Wypełnij formularz zapisu
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+document.getElementById('newsletter').addEventListener('change', function() {
+    const options = document.getElementById('newsletter-options');
+    options.style.display = this.checked ? 'block' : 'none';
+});
+
+function openNewsletterForm() {
+    // Kontrolowane otwarcie formularza
+    window.open('/newsletter-signup', 'newsletter', 'width=600,height=400');
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Pokazuje opcje lokalnie, nowe okno otwiera się tylko na żądanie.
+                </p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Wyszukiwanie z podpowiedziami</h4>
+                <pre><code class="language-html">&lt;!-- Prawidłowe - podpowiedzi bez zmiany kontekstu --&gt;
+&lt;form method="get" action="/search"&gt;
+    &lt;label for="search"&gt;Wyszukaj produkt:&lt;/label&gt;
+    &lt;div class="search-container"&gt;
+        &lt;input type="text" id="search" name="q"
+               aria-describedby="search-suggestions"
+               oninput="showSuggestions(this.value)"&gt;
+        
+        &lt;div id="search-suggestions" class="suggestions" role="listbox"&gt;
+            &lt;!-- Podpowiedzi będą tu dodawane dynamicznie --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;button type="submit"&gt;Szukaj&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+function showSuggestions(query) {
+    const suggestionsDiv = document.getElementById('search-suggestions');
+    
+    if (query.length < 2) {
+        suggestionsDiv.innerHTML = '';
+        return;
+    }
+    
+    // Symulacja podpowiedzi
+    const suggestions = ['laptop', 'lampa', 'lalka'].filter(item =&gt; 
+        item.includes(query.toLowerCase())
+    );
+    
+    suggestionsDiv.innerHTML = suggestions.map(suggestion =&gt; 
+        `&lt;div class="suggestion" onclick="selectSuggestion('${suggestion}')"&gt;
+            ${suggestion}
+        &lt;/div&gt;`
+    ).join('');
+}
+
+function selectSuggestion(text) {
+    document.getElementById('search').value = text;
+    document.getElementById('search-suggestions').innerHTML = '';
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Podpowiedzi pojawiają się lokalnie, nie zmieniając głównej treści.
+                </p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Filtrowanie z opcją zastosowania</h4>
+                <pre><code class="language-html">&lt;!-- Prawidłowe - filtrowanie na żądanie --&gt;
+&lt;form class="filter-form"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Filtry produktów&lt;/legend&gt;
+        
+        &lt;div class="filter-group"&gt;
+            &lt;label for="price-range"&gt;Zakres cen:&lt;/label&gt;
+            &lt;select id="price-range" name="price"&gt;
+                &lt;option value=""&gt;Wszystkie&lt;/option&gt;
+                &lt;option value="0-100"&gt;0-100 zł&lt;/option&gt;
+                &lt;option value="100-500"&gt;100-500 zł&lt;/option&gt;
+                &lt;option value="500+"&gt;Powyżej 500 zł&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="filter-group"&gt;
+            &lt;label&gt;Marka:&lt;/label&gt;
+            &lt;input type="checkbox" id="brand1" name="brand" value="samsung"&gt;
+            &lt;label for="brand1"&gt;Samsung&lt;/label&gt;
+            
+            &lt;input type="checkbox" id="brand2" name="brand" value="apple"&gt;
+            &lt;label for="brand2"&gt;Apple&lt;/label&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="filter-actions"&gt;
+            &lt;button type="submit"&gt;Zastosuj filtry&lt;/button&gt;
+            &lt;button type="reset"&gt;Wyczyść&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Użytkownik może ustawić wszystkie filtry i zastosować je
+                    jednocześnie.</p>
+            </div>
+        </section>
+
+        <section class="interactive-demo">
+            <h2>Interaktywne demo - testy wprowadzania danych</h2>
+            <p>Przetestuj różne zachowania elementów przy wprowadzaniu danych:</p>
+
+            <div class="demo-container">
+                <h3>Bezpieczne zachowania przy wprowadzaniu</h3>
+                <div class="safe-input-demo">
+                    <div class="demo-group">
+                        <h4>✅ Prawidłowe przykłady:</h4>
+
+                        <div class="demo-item">
+                            <label for="safe-select">Lista z przyciskiem:</label>
+                            <select id="safe-select" onchange="logInputEvent('Bezpieczna zmiana listy')">
+                                <option value="">Wybierz opcję...</option>
+                                <option value="1">Opcja 1</option>
+                                <option value="2">Opcja 2</option>
+                                <option value="3">Opcja 3</option>
+                            </select>
+                            <button onclick="applySafeSelection()">Zastosuj</button>
+                            <div class="demo-feedback" id="safe-feedback"></div>
+                        </div>
+
+                        <div class="demo-item">
+                            <label for="safe-search">Wyszukiwanie z podpowiedziami:</label>
+                            <div class="search-demo">
+                                <input type="text" id="safe-search" placeholder="Wpisz 'lap' lub 'tel'"
+                                    oninput="showDemoSuggestions(this.value)">
+                                <div id="demo-suggestions" class="suggestions-box"></div>
+                                <button onclick="performSearch()">Szukaj</button>
+                            </div>
+                        </div>
+
+                        <div class="demo-item">
+                            <input type="checkbox" id="safe-checkbox" onchange="showCheckboxFeedback(this.checked)">
+                            <label for="safe-checkbox">Pokaż dodatkowe opcje</label>
+                            <div id="additional-options" style="display: none;" class="additional-content">
+                                <p>Dodatkowe opcje są teraz widoczne</p>
+                                <button>Akcja opcjonalna</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="demo-group warning-group">
+                        <h4>⚠️ Problematyczne przykłady (tylko demonstracja):</h4>
+                        <p><em>Te elementy pokazują problematyczne zachowania, ale są bezpieczne w tym demo.</em></p>
+
+                        <div class="demo-item">
+                            <label for="unsafe-select">Lista "automatyczna":</label>
+                            <select id="unsafe-select" onchange="demonstrateUnsafeInput('auto-submit')">
+                                <option value="">Wybierz...</option>
+                                <option value="redirect">Przekierowanie</option>
+                                <option value="popup">Nowe okno</option>
+                                <option value="submit">Auto-wysłanie</option>
+                            </select>
+                            <span class="warning-text">W prawdziwej implementacji: automatyczna akcja</span>
+                        </div>
+
+                        <div class="demo-item">
+                            <label for="unsafe-input">Pole "na żywo":</label>
+                            <input type="text" id="unsafe-input" placeholder="Problematyczne pole"
+                                oninput="demonstrateUnsafeInput('live-change')">
+                            <span class="warning-text">W prawdziwej implementacji: zmiany podczas pisania</span>
+                        </div>
+
+                        <div class="demo-item">
+                            <input type="checkbox" id="unsafe-checkbox" onchange="demonstrateUnsafeInput('auto-popup')">
+                            <label for="unsafe-checkbox">Checkbox "automatyczny"</label>
+                            <span class="warning-text">W prawdziwej implementacji: automatyczne okno popup</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-log">
+                    <h4>Log zdarzeń wprowadzania:</h4>
+                    <div id="input-log" class="log-area"></div>
+                    <button onclick="clearInputLog()" class="clear-button">Wyczyść log</button>
+                </div>
+            </div>
+
+            <script>
+                let inputLogCount = 0;
+
+                function logInputEvent(message) {
+                    const log = document.getElementById('input-log');
+                    const timestamp = new Date().toLocaleTimeString();
+                    const entry = document.createElement('div');
+                    entry.className = 'log-entry';
+                    entry.innerHTML = `<span class="timestamp">[${timestamp}]</span> ${message}`;
+                    log.appendChild(entry);
+                    log.scrollTop = log.scrollHeight;
+                    inputLogCount++;
+                }
+
+                function applySafeSelection() {
+                    const select = document.getElementById('safe-select');
+                    const feedback = document.getElementById('safe-feedback');
+
+                    if (select.value) {
+                        feedback.innerHTML = `<span style="color: green;">✅ Zastosowano: ${select.options[select.selectedIndex].text}</span>`;
+                        logInputEvent(`Bezpieczne zastosowanie wyboru: ${select.value}`);
+                    } else {
+                        feedback.innerHTML = `<span style="color: orange;">⚠️ Nie wybrano opcji</span>`;
+                    }
+                }
+
+                function showDemoSuggestions(query) {
+                    const suggestionsDiv = document.getElementById('demo-suggestions');
+
+                    if (query.length < 2) {
+                        suggestionsDiv.innerHTML = '';
+                        return;
+                    }
+
+                    const suggestions = {
+                        'lap': ['laptop', 'lampa'],
+                        'tel': ['telefon', 'telewizor'],
+                        'kom': ['komputer', 'komoda']
+                    };
+
+                    let matches = [];
+                    Object.keys(suggestions).forEach(key => {
+                        if (query.toLowerCase().includes(key)) {
+                            matches = matches.concat(suggestions[key]);
+                        }
+                    });
+
+                    if (matches.length > 0) {
+                        suggestionsDiv.innerHTML = matches.map(item =>
+                            `<div class="suggestion-item" onclick="selectDemoSuggestion('${item}')">${item}</div>`
+                        ).join('');
+                        logInputEvent(`Pokazano ${matches.length} podpowiedzi dla "${query}"`);
+                    } else {
+                        suggestionsDiv.innerHTML = '';
+                    }
+                }
+
+                function selectDemoSuggestion(text) {
+                    document.getElementById('safe-search').value = text;
+                    document.getElementById('demo-suggestions').innerHTML = '';
+                    logInputEvent(`Wybrano podpowiedź: ${text}`);
+                }
+
+                function performSearch() {
+                    const query = document.getElementById('safe-search').value;
+                    if (query) {
+                        logInputEvent(`Wykonano wyszukiwanie: "${query}"`);
+                        showSearchResults(query);
+                    }
+                }
+
+                function showSearchResults(query) {
+                    const suggestions = document.getElementById('demo-suggestions');
+                    suggestions.innerHTML = `<div class="search-result">Wyniki dla: "${query}" (${Math.floor(Math.random() * 20) + 1} znalezionych)</div>`;
+                }
+
+                function showCheckboxFeedback(checked) {
+                    const options = document.getElementById('additional-options');
+                    options.style.display = checked ? 'block' : 'none';
+                    logInputEvent(`Checkbox ${checked ? 'zaznaczony' : 'odznaczony'} - opcje ${checked ? 'pokazane' : 'ukryte'}`);
+                }
+
+                function demonstrateUnsafeInput(type) {
+                    const messages = {
+                        'auto-submit': '🚫 DEMO: W prawdziwej sytuacji formularz zostałby automatycznie wysłany',
+                        'live-change': '🚫 DEMO: W prawdziwej sytuacji treść strony zmieniałaby się podczas pisania',
+                        'auto-popup': '🚫 DEMO: W prawdziwej sytuacji otworzyłoby się automatyczne okno popup'
+                    };
+
+                    logInputEvent(messages[type]);
+                    showUnsafeWarning(type);
+                }
+
+                function showUnsafeWarning(type) {
+                    const warning = document.createElement('div');
+                    warning.className = 'demo-warning';
+                    warning.innerHTML = `
+                        <strong>⚠️ Problematyczne zachowanie wykryte!</strong><br>
+                        Typ: ${type}<br>
+                        <small>To zachowanie naruszałoby kryterium 3.2.2</small>
+                    `;
+                    warning.style.cssText = `
+                        position: fixed;
+                        top: 20px;
+                        right: 20px;
+                        background: #dc3545;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 5px;
+                        z-index: 1000;
+                        max-width: 300px;
+                        animation: slideIn 0.5s ease-out;
+                    `;
+
+                    document.body.appendChild(warning);
+
+                    setTimeout(() => {
+                        if (warning.parentNode) {
+                            warning.style.animation = 'slideOut 0.5s ease-out';
+                            setTimeout(() => {
+                                if (warning.parentNode) {
+                                    warning.parentNode.removeChild(warning);
+                                }
+                            }, 500);
+                        }
+                    }, 4000);
+                }
+
+                function clearInputLog() {
+                    document.getElementById('input-log').innerHTML = '';
+                    inputLogCount = 0;
+                    logInputEvent('Log wyczyszczony');
+                }
+
+                // Style dla demo
+                const demoStyle = document.createElement('style');
+                demoStyle.textContent = `
+                    .search-demo {
+                        position: relative;
+                        display: inline-block;
+                    }
+                    
+                    .suggestions-box {
+                        position: absolute;
+                        top: 100%;
+                        left: 0;
+                        right: 0;
+                        background: white;
+                        border: 1px solid #ccc;
+                        border-top: none;
+                        max-height: 150px;
+                        overflow-y: auto;
+                        z-index: 100;
+                    }
+                    
+                    .suggestion-item {
+                        padding: 8px 12px;
+                        cursor: pointer;
+                        border-bottom: 1px solid #eee;
+                    }
+                    
+                    .suggestion-item:hover {
+                        background-color: #f0f0f0;
+                    }
+                    
+                    .search-result {
+                        padding: 8px 12px;
+                        background-color: #e8f5e9;
+                        border: 1px solid #4caf50;
+                        color: #2e7d32;
+                    }
+                    
+                    .additional-content {
+                        margin-top: 10px;
+                        padding: 10px;
+                        background-color: #f0f8ff;
+                        border: 1px solid #b3d9ff;
+                        border-radius: 3px;
+                    }
+                    
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                    
+                    @keyframes slideOut {
+                        from { transform: translateX(0); opacity: 1; }
+                        to { transform: translateX(100%); opacity: 0; }
+                    }
+                `;
+                document.head.appendChild(demoStyle);
+            </script>
+
+            <style>
+                .demo-container {
+                    background-color: #f8f9fa;
+                    border: 1px solid #dee2e6;
+                    border-radius: 5px;
+                    padding: 20px;
+                    margin: 20px 0;
+                }
+
+                .demo-group {
+                    margin-bottom: 30px;
+                    padding: 15px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                }
+
+                .warning-group {
+                    background-color: #fff3cd;
+                    border-color: #ffeaa7;
+                }
+
+                .demo-item {
+                    margin: 15px 0;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                }
+
+                .demo-item input,
+                .demo-item select,
+                .demo-item button {
+                    padding: 8px 12px;
+                    border: 1px solid #ccc;
+                    border-radius: 3px;
+                    font-size: 14px;
+                }
+
+                .demo-item button {
+                    background-color: #007cba;
+                    color: white;
+                    cursor: pointer;
+                }
+
+                .demo-item button:hover {
+                    background-color: #005a87;
+                }
+
+                .demo-feedback {
+                    font-size: 14px;
+                    margin-left: 10px;
+                }
+
+                .warning-text {
+                    font-size: 12px;
+                    color: #856404;
+                    font-style: italic;
+                    flex-basis: 100%;
+                }
+
+                .demo-log {
+                    margin-top: 20px;
+                    padding: 15px;
+                    background-color: white;
+                    border: 1px solid #dee2e6;
+                    border-radius: 5px;
+                }
+
+                .log-area {
+                    height: 200px;
+                    overflow-y: auto;
+                    border: 1px solid #ccc;
+                    padding: 10px;
+                    background-color: #f8f9fa;
+                    font-family: monospace;
+                    font-size: 12px;
+                    margin-bottom: 10px;
+                }
+
+                .log-entry {
+                    margin-bottom: 5px;
+                    padding: 2px 0;
+                }
+
+                .timestamp {
+                    color: #666;
+                    font-weight: bold;
+                }
+
+                .clear-button {
+                    background-color: #6c757d;
+                    color: white;
+                    border: none;
+                    padding: 8px 16px;
+                    border-radius: 3px;
+                    cursor: pointer;
+                }
+
+                .clear-button:hover {
+                    background-color: #545b62;
+                }
+            </style>
+        </section>
+
+        <section class="input-testing">
+            <h2>Automatyczne testowanie wprowadzania danych</h2>
+            <p>Użyj tego narzędzia do analizy problematycznych zachowań przy wprowadzaniu danych:</p>
+
+            <div class="testing-tool">
+                <div class="tool-controls">
+                    <button id="start-input-test" class="test-button">Rozpocznij test wprowadzania</button>
+                    <button id="analyze-forms" class="test-button">Analizuj formularze</button>
+                    <button id="stop-input-test" class="test-button" disabled>Zatrzymaj test</button>
+                </div>
+
+                <div class="test-results">
+                    <h4>Wyniki testów:</h4>
+                    <div id="input-test-results"></div>
+                </div>
+            </div>
+
+            <script>
+                let inputTestActive = false;
+                let inputEvents = [];
+                let problematicElements = new Set();
+
+                function startInputTest() {
+                    if (inputTestActive) return;
+
+                    inputTestActive = true;
+                    inputEvents = [];
+                    problematicElements.clear();
+
+                    // Aktualizuj przyciski
+                    document.getElementById('start-input-test').disabled = true;
+                    document.getElementById('stop-input-test').disabled = false;
+
+                    // Monitoruj elementy z potencjalnymi problemami
+                    const inputElements = document.querySelectorAll(
+                        'input, select, textarea, [role="checkbox"], [role="radio"]'
+                    );
+
+                    inputElements.forEach(element => {
+                        element.addEventListener('change', monitorInputEvent);
+                        element.addEventListener('input', monitorInputEvent);
+                    });
+
+                    showTestMessage('Test wprowadzania danych rozpoczęty. Wypróbuj różne elementy formularza.');
+                }
+
+                function stopInputTest() {
+                    if (!inputTestActive) return;
+
+                    inputTestActive = false;
+
+                    // Aktualizuj przyciski
+                    document.getElementById('start-input-test').disabled = false;
+                    document.getElementById('stop-input-test').disabled = true;
+
+                    // Usuń nasłuchiwacze
+                    const inputElements = document.querySelectorAll(
+                        'input, select, textarea, [role="checkbox"], [role="radio"]'
+                    );
+
+                    inputElements.forEach(element => {
+                        element.removeEventListener('change', monitorInputEvent);
+                        element.removeEventListener('input', monitorInputEvent);
+                    });
+
+                    // Pokaż wyniki
+                    displayInputTestResults();
+                    showTestMessage('Test wprowadzania danych zakończony.');
+                }
+
+                function monitorInputEvent(event) {
+                    const element = event.target;
+                    const timestamp = Date.now();
+
+                    // Sprawdź czy element ma problematyczne zachowania
+                    const issues = checkForInputIssues(element);
+
+                    if (issues.length > 0) {
+                        problematicElements.add(element);
+                    }
+
+                    inputEvents.push({
+                        type: event.type,
+                        element: element,
+                        tagName: element.tagName,
+                        type_attr: element.type || '',
+                        id: element.id || '',
+                        className: element.className || '',
+                        timestamp: timestamp,
+                        value: element.value || '',
+                        issues: issues
+                    });
+                }
+
+                function checkForInputIssues(element) {
+                    const issues = [];
+
+                    // Sprawdź onchange handler
+                    const changeHandler = element.getAttribute('onchange');
+                    if (changeHandler) {
+                        if (changeHandler.includes('submit')) {
+                            issues.push('Automatyczne wysłanie formularza');
+                        }
+                        if (changeHandler.includes('window.open') || changeHandler.includes('open(')) {
+                            issues.push('Otwieranie nowego okna');
+                        }
+                        if (changeHandler.includes('location') || changeHandler.includes('href')) {
+                            issues.push('Przekierowanie');
+                        }
+                        if (changeHandler.includes('.focus()')) {
+                            issues.push('Przeniesienie fokusa');
+                        }
+                    }
+
+                    // Sprawdź oninput handler
+                    const inputHandler = element.getAttribute('oninput');
+                    if (inputHandler) {
+                        if (inputHandler.includes('submit')) {
+                            issues.push('Automatyczne wysłanie podczas pisania');
+                        }
+                        if (inputHandler.includes('location') || inputHandler.includes('href')) {
+                            issues.push('Przekierowanie podczas pisania');
+                        }
+                    }
+
+                    return issues;
+                }
+
+                function analyzeForms() {
+                    const analysis = {
+                        totalForms: 0,
+                        totalInputs: 0,
+                        problematicElements: 0,
+                        issues: [],
+                        recommendations: []
+                    };
+
+                    const forms = document.querySelectorAll('form');
+                    const inputs = document.querySelectorAll('input, select, textarea');
+
+                    analysis.totalForms = forms.length;
+                    analysis.totalInputs = inputs.length;
+
+                    inputs.forEach(element => {
+                        const issues = checkForInputIssues(element);
+                        if (issues.length > 0) {
+                            analysis.problematicElements++;
+                            analysis.issues.push({
+                                element: element,
+                                selector: getElementSelector(element),
+                                issues: issues
+                            });
+                        }
+                    });
+
+                    // Sprawdź czy formularze mają submit buttony
+                    forms.forEach(form => {
+                        const submitButtons = form.querySelectorAll('button[type="submit"], input[type="submit"]');
+                        if (submitButtons.length === 0) {
+                            analysis.recommendations.push('Dodaj przyciski submit do formularzy');
+                        }
+                    });
+
+                    // Generuj rekomendacje
+                    if (analysis.problematicElements > 0) {
+                        analysis.recommendations.push('Usuń automatyczne akcje z handlerów onchange/oninput');
+                        analysis.recommendations.push('Dodaj kontrolowane akcje za pomocą przycisków');
+                    }
+
+                    if (analysis.totalForms > 0 && analysis.totalInputs === 0) {
+                        analysis.recommendations.push('Sprawdź czy formularze są prawidłowo zaimplementowane');
+                    }
+
+                    displayFormAnalysis(analysis);
+                }
+
+                function getElementSelector(element) {
+                    if (element.id) {
+                        return `#${element.id}`;
+                    }
+
+                    let selector = element.tagName.toLowerCase();
+                    if (element.type) {
+                        selector += `[type="${element.type}"]`;
+                    }
+                    if (element.className) {
+                        selector += `.${element.className.split(' ')[0]}`;
+                    }
+
+                    return selector;
+                }
+
+                function displayInputTestResults() {
+                    const resultsArea = document.getElementById('input-test-results');
+
+                    if (inputEvents.length === 0) {
+                        resultsArea.innerHTML = '<p>Brak zarejestrowanych zdarzeń wprowadzania danych.</p>';
+                        return;
+                    }
+
+                    const problematicEvents = inputEvents.filter(event =>
+                        event.issues && event.issues.length > 0
+                    );
+
+                    let html = `
+                        <div class="test-summary">
+                            <h5>Podsumowanie testu:</h5>
+                            <ul>
+                                <li>Całkowite zdarzenia: ${inputEvents.length}</li>
+                                <li>Problematyczne elementy: ${problematicElements.size}</li>
+                                <li>Zdarzenia z problemami: ${problematicEvents.length}</li>
+                                <li>Ocena: ${problematicEvents.length === 0 ? '✅ Doskonała' : '⚠️ Wymaga uwagi'}</li>
+                            </ul>
+                        </div>
+                    `;
+
+                    if (problematicEvents.length > 0) {
+                        html += '<div class="issues-list"><h5>Znalezione problemy:</h5><ul>';
+                        problematicEvents.forEach(event => {
+                            event.issues.forEach(issue => {
+                                html += `<li><strong>${event.tagName}</strong> (${event.id || 'brak id'}): ${issue}</li>`;
+                            });
+                        });
+                        html += '</ul></div>';
+                    }
+
+                    // Pokaż częstotliwość zdarzeń
+                    const eventsByType = {};
+                    inputEvents.forEach(event => {
+                        eventsByType[event.type] = (eventsByType[event.type] || 0) + 1;
+                    });
+
+                    html += '<div class="event-stats"><h5>Statystyki zdarzeń:</h5><ul>';
+                    Object.entries(eventsByType).forEach(([type, count]) => {
+                        html += `<li>${type}: ${count} zdarzeń</li>`;
+                    });
+                    html += '</ul></div>';
+
+                    resultsArea.innerHTML = html;
+                }
+
+                function displayFormAnalysis(analysis) {
+                    const resultsArea = document.getElementById('input-test-results');
+
+                    let html = `
+                        <div class="analysis-summary">
+                            <h5>Analiza formularzy:</h5>
+                            <ul>
+                                <li>Formularze: ${analysis.totalForms}</li>
+                                <li>Elementy wprowadzania: ${analysis.totalInputs}</li>
+                                <li>Problematyczne elementy: ${analysis.problematicElements}</li>
+                            </ul>
+                        </div>
+                    `;
+
+                    if (analysis.issues.length > 0) {
+                        html += '<div class="issues-list"><h5>Wykryte problemy:</h5><ul>';
+                        analysis.issues.forEach(item => {
+                            html += `<li><strong>${item.selector}</strong>: ${item.issues.join(', ')}</li>`;
+                        });
+                        html += '</ul></div>';
+                    }
+
+                    if (analysis.recommendations.length > 0) {
+                        html += '<div class="recommendations"><h5>Rekomendacje:</h5><ul>';
+                        analysis.recommendations.forEach(rec => {
+                            html += `<li>${rec}</li>`;
+                        });
+                        html += '</ul></div>';
+                    }
+
+                    resultsArea.innerHTML = html;
+                }
+
+                function showTestMessage(message) {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'test-message';
+                    messageDiv.textContent = message;
+                    messageDiv.style.cssText = `
+                        position: fixed;
+                        bottom: 20px;
+                        left: 20px;
+                        background: #007cba;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 5px;
+                        z-index: 1000;
+                        animation: slideIn 0.5s ease-out;
+                        max-width: 300px;
+                    `;
+
+                    document.body.appendChild(messageDiv);
+
+                    setTimeout(() => {
+                        if (messageDiv.parentNode) {
+                            messageDiv.style.animation = 'slideOut 0.5s ease-out';
+                            setTimeout(() => {
+                                if (messageDiv.parentNode) {
+                                    messageDiv.parentNode.removeChild(messageDiv);
+                                }
+                            }, 500);
+                        }
+                    }, 3000);
+                }
+
+                // Event listeners dla przycisków testowych
+                document.getElementById('start-input-test').addEventListener('click', startInputTest);
+                document.getElementById('stop-input-test').addEventListener('click', stopInputTest);
+                document.getElementById('analyze-forms').addEventListener('click', analyzeForms);
+            </script>
+
+            <style>
+                .testing-tool {
+                    background-color: #f8f9fa;
+                    border: 1px solid #dee2e6;
+                    border-radius: 5px;
+                    padding: 20px;
+                    margin: 20px 0;
+                }
+
+                .tool-controls {
+                    margin-bottom: 20px;
+                }
+
+                .test-button {
+                    background-color: #28a745;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    margin: 5px;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    font-size: 14px;
+                }
+
+                .test-button:hover:not(:disabled) {
+                    background-color: #218838;
+                }
+
+                .test-button:disabled {
+                    background-color: #6c757d;
+                    cursor: not-allowed;
+                }
+
+                .test-results {
+                    background-color: white;
+                    border: 1px solid #dee2e6;
+                    border-radius: 3px;
+                    padding: 15px;
+                }
+
+                .test-summary,
+                .analysis-summary {
+                    background-color: #e7f3ff;
+                    padding: 15px;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                }
+
+                .issues-list {
+                    background-color: #fff3cd;
+                    padding: 15px;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                }
+
+                .recommendations {
+                    background-color: #d4edda;
+                    padding: 15px;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                }
+
+                .event-stats {
+                    background-color: #f8f9fa;
+                    padding: 15px;
+                    border-radius: 3px;
+                }
+            </style>
+        </section>
+
+        <section class="implementation-guidelines">
+            <h2>Wytyczne implementacyjne</h2>
+
+            <h3>Co MOŻNA robić przy wprowadzaniu danych:</h3>
+            <ul>
+                <li><strong>Pokazywanie podpowiedzi</strong> - sugestie, autocompletowanie</li>
+                <li><strong>Walidacja w czasie rzeczywistym</strong> - sprawdzanie formatu bez przesyłania</li>
+                <li><strong>Lokalne filtrowanie</strong> - ukrywanie/pokazywanie opcji na tej samej stronie</li>
+                <li><strong>Aktualizacja powiązanych pól</strong> - np. lista miast po wyborze województwa</li>
+                <li><strong>Pokazywanie dodatkowych opcji</strong> - rozwijanie sekcji formularza</li>
+                <li><strong>Przygotowanie danych w tle</strong> - ładowanie bez zmiany interfejsu</li>
+            </ul>
+
+            <h3>Czego NIE MOŻNA robić przy wprowadzaniu danych:</h3>
+            <ul>
+                <li><strong>Automatyczne wysyłanie formularzy</strong></li>
+                <li><strong>Przekierowywanie na inne strony</strong></li>
+                <li><strong>Otwieranie nowych okien</strong></li>
+                <li><strong>Przenoszenie fokusa</strong></li>
+                <li><strong>Zmiana głównej treści strony</strong></li>
+                <li><strong>Usuwanie lub ukrywanie aktywnych elementów</strong></li>
+            </ul>
+
+            <h3>Bezpieczne wzorce implementacji</h3>
+            <pre><code class="language-javascript">// ✅ Prawidłowe - podpowiedzi bez zmiany kontekstu
+function showSuggestions(inputElement) {
+    const query = inputElement.value;
+    const suggestionsContainer = document.getElementById('suggestions');
+    
+    if (query.length > 2) {
+        fetch(`/api/suggestions?q=${encodeURIComponent(query)}`)
+            .then(response => response.json())
+            .then(suggestions => {
+                suggestionsContainer.innerHTML = suggestions.map(item => 
+                    `<div class="suggestion" onclick="selectSuggestion('${item}')">${item}</div>`
+                ).join('');
+            });
+    } else {
+        suggestionsContainer.innerHTML = '';
+    }
+}
+
+// ✅ Prawidłowe - walidacja bez przesyłania
+function validateField(field) {
+    const errorDiv = document.getElementById(field.id + '-error');
+    let isValid = true;
+    let message = '';
+    
+    // Wykonaj walidację
+    if (field.type === 'email' && !isValidEmail(field.value)) {
+        isValid = false;
+        message = 'Nieprawidłowy format email';
+    }
+    
+    // Pokaż/ukryj komunikat błędu lokalnie
+    if (errorDiv) {
+        errorDiv.textContent = message;
+        errorDiv.style.display = isValid ? 'none' : 'block';
+    }
+    
+    return isValid;
+}
+
+// ✅ Prawidłowe - kontrolowane przesłanie
+function handleFormSubmit(event) {
+    event.preventDefault(); // Zatrzymaj domyślne przesłanie
+    
+    const form = event.target;
+    const isValid = validateForm(form);
+    
+    if (isValid) {
+        // Użytkownik kontroluje kiedy formularz jest wysłany
+        if (confirm('Czy chcesz wysłać formularz?')) {
+            form.submit();
+        }
+    }
+}
+
+// ❌ Nieprawidłowe - automatyczne przesłanie
+function autoSubmitOnChange(selectElement) {
+    // NIGDY tego nie rób!
+    selectElement.form.submit();
+}
+
+// ❌ Nieprawidłowe - automatyczne przekierowanie  
+function redirectOnInput(inputElement) {
+    // NIGDY tego nie rób!
+    if (inputElement.value.length > 3) {
+        window.location.href = '/search?q=' + inputElement.value;
+    }
+}
+
+// ✅ Prawidłowa alternatywa - przygotowanie z przyciskiem
+function prepareSearchAndWait(inputElement) {
+    const query = inputElement.value;
+    const searchButton = document.getElementById('search-button');
+    
+    if (query.length > 2) {
+        // Przygotuj wyszukiwanie, ale nie wykonuj
+        searchButton.disabled = false;
+        searchButton.textContent = `Szukaj "${query}"`;
+    } else {
+        searchButton.disabled = true;
+        searchButton.textContent = 'Wpisz więcej znaków';
+    }
+}</code></pre>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie kryterium 3.2.2</h2>
+
+            <h3>Testy manualne</h3>
+            <ul>
+                <li><strong>Test każdego elementu formularza</strong> - sprawdź czy zmiana wartości nie powoduje
+                    niespodziewanych akcji</li>
+                <li><strong>Test nawigacji klawiaturą</strong> - czy przechodzenie przez pola nie powoduje
+                    automatycznych zmian</li>
+                <li><strong>Test z czytnikami ekranu</strong> - czy zmiany są komunikowane odpowiednio</li>
+                <li><strong>Test różnych przeglądarek</strong> - weryfikuj spójność zachowań</li>
+                <li><strong>Test na urządzeniach mobilnych</strong> - sprawdź przypadkowe dotknięcia</li>
+            </ul>
+
+            <h3>Testy automatyczne</h3>
+            <pre><code class="language-javascript">// Test wykrywania automatycznych akcji
+function auditInputHandlers() {
+    const issues = [];
+    const inputElements = document.querySelectorAll('input, select, textarea');
+    
+    inputElements.forEach(element => {
+        // Sprawdź onchange
+        const changeHandler = element.getAttribute('onchange');
+        if (changeHandler) {
+            const problematicPatterns = [
+                { pattern: /\.submit\(\)/, issue: 'Automatyczne wysłanie formularza' },
+                { pattern: /location\.href/, issue: 'Przekierowanie' },
+                { pattern: /window\.open/, issue: 'Otwieranie nowego okna' },
+                { pattern: /\.focus\(\)/, issue: 'Przeniesienie fokusa' }
+            ];
+            
+            problematicPatterns.forEach(({ pattern, issue }) => {
+                if (pattern.test(changeHandler)) {
+                    issues.push({
+                        element: element,
+                        selector: getElementSelector(element),
+                        issue: issue,
+                        handler: changeHandler,
+                        event: 'onchange'
+                    });
+                }
+            });
+        }
+        
+        // Sprawdź oninput
+        const inputHandler = element.getAttribute('oninput');
+        if (inputHandler) {
+            if (/\.submit\(\)|location\.href/.test(inputHandler)) {
+                issues.push({
+                    element: element,
+                    selector: getElementSelector(element),
+                    issue: 'Automatyczna akcja podczas pisania',
+                    handler: inputHandler,
+                    event: 'oninput'
+                });
+            }
+        }
+    });
+    
+    return issues;
+}
+
+// Test formularzy bez przycisków submit
+function auditFormsWithoutSubmit() {
+    const issues = [];
+    const forms = document.querySelectorAll('form');
+    
+    forms.forEach(form => {
+        const submitButtons = form.querySelectorAll(
+            'button[type="submit"], input[type="submit"]'
+        );
+        
+        if (submitButtons.length === 0) {
+            // Sprawdź czy jest jakiś inny sposób wysłania
+            const hasAutoSubmit = Array.from(form.elements).some(element => {
+                const changeHandler = element.getAttribute('onchange');
+                return changeHandler && changeHandler.includes('submit');
+            });
+            
+            if (hasAutoSubmit) {
+                issues.push({
+                    form: form,
+                    issue: 'Formularz bez przycisku submit używa automatycznego wysyłania',
+                    severity: 'high'
+                });
+            }
+        }
+    });
+    
+    return issues;
+}
+
+// Test symulujący wprowadzanie danych
+function simulateInputChanges() {
+    const results = [];
+    const inputElements = document.querySelectorAll('input, select');
+    
+    inputElements.forEach((element, index) => {
+        const initialURL = window.location.href;
+        const initialWindowCount = window.length;
+        const initialFocus = document.activeElement;
+        
+        try {
+            // Symuluj zmianę wartości
+            if (element.type === 'checkbox') {
+                element.checked = !element.checked;
+            } else if (element.tagName === 'SELECT') {
+                if (element.options.length > 1) {
+                    element.selectedIndex = 1;
+                }
+            } else {
+                element.value = 'test input';
+            }
+            
+            // Wywołaj zdarzenie change
+            const changeEvent = new Event('change', { bubbles: true });
+            element.dispatchEvent(changeEvent);
+            
+            // Sprawdź czy nastąpiły niespodziewane zmiany
+            setTimeout(() => {
+                const urlChanged = window.location.href !== initialURL;
+                const windowCountChanged = window.length !== initialWindowCount;
+                const focusChanged = document.activeElement !== initialFocus && 
+                                  document.activeElement !== element;
+                
+                if (urlChanged || windowCountChanged || focusChanged) {
+                    results.push({
+                        element: element,
+                        index: index,
+                        urlChanged: urlChanged,
+                        windowCountChanged: windowCountChanged,
+                        focusChanged: focusChanged
+                    });
+                }
+            }, 100);
+            
+        } catch (error) {
+            console.warn(`Nie można przetestować elementu ${index}:`, error);
+        }
+    });
+    
+    return results;
+}</code></pre>
+
+            <h3>Checklist testowa</h3>
+            <div class="checklist">
+                <h4>✅ Sprawdź czy:</h4>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ Zmiana wartości w polach nie wysyła automatycznie formularza</li>
+                    <li>☐ Wybór opcji z listy nie przekierowuje na inne strony</li>
+                    <li>☐ Zaznaczenie checkboxów nie otwiera nowych okien</li>
+                    <li>☐ Wpisywanie tekstu nie zmienia głównej treści strony</li>
+                    <li>☐ Wszystkie formularze mają przyciski submit</li>
+                    <li>☐ Automatyczne akcje są wyraźnie oznaczone</li>
+                    <li>☐ Użytkownik może anulować automatyczne zachowania</li>
+                    <li>☐ Podpowiedzi i sugestie pojawiają się lokalnie</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="common-mistakes">
+            <h2>Częste błędy</h2>
+
+            <div class="mistake-block">
+                <h3>❌ Automatyczne wysłanie formularza</h3>
+                <p><strong>Problem:</strong> Formularz wysyła się przy zmianie wartości w polu</p>
+                <pre><code class="language-html">&lt;select onchange="this.form.submit()"&gt;</code></pre>
+                <p><strong>Rozwiązanie:</strong> Dodaj przycisk submit</p>
+                <pre><code class="language-html">&lt;select name="category"&gt;&lt;/select&gt;
+&lt;button type="submit"&gt;Zastosuj filtr&lt;/button&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Przekierowanie przy wyborze opcji</h3>
+                <p><strong>Problem:</strong> Lista język automatycznie przekierowuje</p>
+                <pre><code class="language-html">&lt;select onchange="location.href='/'+this.value"&gt;</code></pre>
+                <p><strong>Rozwiązanie:</strong> Ostrzeż użytkownika i daj możliwość anulowania</p>
+                <pre><code class="language-html">&lt;select onchange="confirmLanguageChange(this)"&gt;
+&lt;script&gt;
+function confirmLanguageChange(select) {
+    if (confirm('Zmienić język strony?')) {
+        location.href = '/' + select.value;
+    } else {
+        select.selectedIndex = 0;
+    }
+}
+&lt;/script&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Utrata danych przy błędach</h3>
+                <p><strong>Problem:</strong> Automatyczne wysłanie nie pozwala na poprawkę błędów</p>
+                <p><strong>Rozwiązanie:</strong> Waliduj lokalnie przed wysłaniem</p>
+                <pre><code class="language-html">&lt;form onsubmit="return validateBeforeSubmit(this)"&gt;
+    &lt;input required oninput="validateField(this)"&gt;
+    &lt;button type="submit"&gt;Wyślij&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+        </section>
+
+        <section class="resources">
+            <h2>Dodatkowe zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/on-input.html" target="_blank"
+                        rel="noopener">Understanding SC 3.2.2: On Input (W3C)</a></li>
+                <li><a href="https://webaim.org/techniques/forms/" target="_blank" rel="noopener">WebAIM: Creating
+                        Accessible Forms</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit" target="_blank"
+                        rel="noopener">MDN: HTMLFormElement.submit()</a></li>
+                <li><a href="https://www.a11yproject.com/posts/how-to-write-accessible-forms/" target="_blank"
+                        rel="noopener">A11Y Project: How to write accessible forms</a></li>
+                <li><a href="https://inclusive-components.design/a-todo-list/" target="_blank" rel="noopener">Inclusive
+                        Components: A Todo List</a></li>
+            </ul>
+        </section>
+
+        <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+            <ul>
+                <li><a href="3.2.1.html">Poprzedni: 3.2.1 Po otrzymaniu fokusa</a></li>
+                <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                <li><a href="3.2.3.html">Następny: 3.2.3 Spójna nawigacja</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

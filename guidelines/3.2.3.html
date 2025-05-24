@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.2.3 Spójna nawigacja (AA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>3.2.3 Spójna nawigacja (AA)</h1>
+            <p>Mechanizmy nawigacyjne, które są powtarzane na wielu stronach internetowych w obrębie
+                danego zestawu stron, występują w tej samej względnej kolejności za każdym razem,
+                gdy się powtarzają, chyba że zmiana została zainicjowana przez użytkownika.</p>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>To kryterium wymaga, aby elementy nawigacyjne występowały w spójny sposób
+                na wszystkich stronach witryny. Oznacza to, że:</p>
+            <ul>
+                <li>Menu główne powinno zawsze znajdować się w tym samym miejscu</li>
+                <li>Kolejność pozycji w menu powinna być jednakowa na wszystkich stronach</li>
+                <li>Dodatkowe elementy nawigacyjne (np. breadcrumbs, footer) powinny być umieszczone konsekwentnie</li>
+                <li>Struktura i układ nawigacji mają być przewidywalne dla użytkownika</li>
+            </ul>
+
+            <p>Kryterium dotyczy <strong>względnej kolejności</strong> elementów - elementy mogą być
+                dodawane lub usuwane, ale te które występują na wielu stronach, powinny zachować
+                swoją wzajemną kolejność.</p>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Osoby niewidome</strong> - przewidywalna struktura ułatwia orientację w serwisie</li>
+                <li><strong>Osoby słabowidzące</strong> - spójna lokalizacja elementów usprawnia nawigację</li>
+                <li><strong>Osoby z ograniczeniami poznawczymi</strong> - konsekwentny układ redukuje dezorientację</li>
+                <li><strong>Osoby z zaburzeniami uwagi (ADHD)</strong> - przewidywalność zmniejsza distraktory</li>
+                <li><strong>Użytkownicy technologii wspomagających</strong> - spójność ułatwia korzystanie z narzędzi
+                </li>
+                <li><strong>Wszyscy użytkownicy</strong> - konsekwentna nawigacja poprawia doświadczenie użytkownika
+                </li>
+                <li><strong>Użytkownicy urządzeń mobilnych</strong> - przewidywalny układ usprawnia obsługę dotykową
+                </li>
+                <li><strong>Starsi użytkownicy</strong> - rutyna w nawigacji zmniejsza frustrację</li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje</h2>
+            <dl>
+                <dt><strong>Mechanizm nawigacyjny</strong></dt>
+                <dd>Sposób znajdowania stron internetowych i poruszania się między nimi. Obejmuje:
+                    <ul>
+                        <li>Menu główne i submenu</li>
+                        <li>Breadcrumbs (ścieżkę nawigacyjną)</li>
+                        <li>Mapy serwisu</li>
+                        <li>Wyszukiwarki</li>
+                        <li>Listy linków</li>
+                        <li>Nawigację kontekstową</li>
+                    </ul>
+                </dd>
+
+                <dt><strong>Zestaw stron internetowych</strong></dt>
+                <dd>Kolekcja stron internetowych, które dzielą wspólny cel i są tworzone przez
+                    tego samego autora, grupę lub organizację (np. witryna firmy, portal informacyjny).</dd>
+
+                <dt><strong>Względna kolejność</strong></dt>
+                <dd>Pozycja elementów względem siebie. Element A zawsze występuje przed elementem B,
+                    niezależnie od tego, czy między nimi są inne elementy.</dd>
+
+                <dt><strong>Zmiana zainicjowana przez użytkownika</strong></dt>
+                <dd>Zmiana wynikająca z działań użytkownika, takich jak:
+                    <ul>
+                        <li>Wybór różnych opcji wyświetlania</li>
+                        <li>Personalizacja interfejsu</li>
+                        <li>Sortowanie lub filtrowanie treści</li>
+                        <li>Zmiana ustawień użytkownika</li>
+                    </ul>
+                </dd>
+            </dl>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Niespójna kolejność w menu głównym</h4>
+                <pre><code class="language-html">&lt;!-- Strona główna --&gt;
+&lt;nav aria-label="Menu główne"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Start&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/o-nas"&gt;O nas&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/uslugi"&gt;Usługi&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- Strona "O nas" - zmieniona kolejność --&gt;
+&lt;nav aria-label="Menu główne"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Start&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;  &lt;!-- Inne miejsce! --&gt;
+        &lt;li&gt;&lt;a href="/uslugi"&gt;Usługi&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/o-nas"&gt;O nas&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                <p><strong>Problem:</strong> Kolejność elementów menu różni się między stronami, co dezorientuje
+                    użytkowników.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Różne położenie nawigacji na stronach</h4>
+                <pre><code class="language-html">&lt;!-- Strona A - nav na górze --&gt;
+&lt;header&gt;
+    &lt;div class="logo"&gt;Logo&lt;/div&gt;
+    &lt;nav aria-label="Menu główne"&gt;
+        &lt;!-- Menu tutaj --&gt;
+    &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;!-- Strona B - nav na dole --&gt;
+&lt;header&gt;
+    &lt;div class="logo"&gt;Logo&lt;/div&gt;
+&lt;/header&gt;
+&lt;main&gt;
+    &lt;!-- Treść --&gt;
+&lt;/main&gt;
+&lt;nav aria-label="Menu główne"&gt;
+    &lt;!-- Menu przeniesione na dół --&gt;
+&lt;/nav&gt;</code></pre>
+                <p><strong>Problem:</strong> Nawigacja występuje w różnych miejscach na różnych stronach.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Niespójne breadcrumbs</h4>
+                <pre><code class="language-html">&lt;!-- Strona produktu A --&gt;
+&lt;nav aria-label="Ścieżka nawigacyjna"&gt;
+    &lt;ol&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Start&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/kategorie"&gt;Kategorie&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/elektronika"&gt;Elektronika&lt;/a&gt;&lt;/li&gt;
+        &lt;li aria-current="page"&gt;Laptop XYZ&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/nav&gt;
+
+&lt;!-- Strona produktu B - inne breadcrumbs --&gt;
+&lt;nav aria-label="Ścieżka nawigacyjna"&gt;
+    &lt;ol&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;  &lt;!-- Różna nazwa! --&gt;
+        &lt;li&gt;&lt;a href="/produkty"&gt;Produkty&lt;/a&gt;&lt;/li&gt;  &lt;!-- Inne podejście! --&gt;
+        &lt;li aria-current="page"&gt;Telefon ABC&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/nav&gt;</code></pre>
+                <p><strong>Problem:</strong> Struktura breadcrumbs różni się między podobnymi stronami.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Niejednorodne umieszczenie wyszukiwarki</h4>
+                <pre><code class="language-html">&lt;!-- Strona główna - wyszukiwarka w header --&gt;
+&lt;header&gt;
+    &lt;div class="logo"&gt;Logo&lt;/div&gt;
+    &lt;form role="search"&gt;
+        &lt;input type="search" placeholder="Szukaj..."&gt;
+        &lt;button type="submit"&gt;Szukaj&lt;/button&gt;
+    &lt;/form&gt;
+    &lt;nav&gt;Menu&lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;!-- Strona kategorii - wyszukiwarka w sidebar --&gt;
+&lt;header&gt;
+    &lt;div class="logo"&gt;Logo&lt;/div&gt;
+    &lt;nav&gt;Menu&lt;/nav&gt;
+&lt;/header&gt;
+&lt;main&gt;
+    &lt;aside&gt;
+        &lt;form role="search"&gt;  &lt;!-- Przesunięta do sidebar --&gt;
+            &lt;input type="search" placeholder="Szukaj..."&gt;
+            &lt;button type="submit"&gt;Szukaj&lt;/button&gt;
+        &lt;/form&gt;
+    &lt;/aside&gt;
+&lt;/main&gt;</code></pre>
+                <p><strong>Problem:</strong> Wyszukiwarka znajduje się w różnych miejscach na różnych stronach.</p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Spójne menu główne</h4>
+                <pre><code class="language-html">&lt;!-- Wszystkie strony - identyczna struktura i kolejność --&gt;
+&lt;nav aria-label="Menu główne"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/" aria-current="page"&gt;Start&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/o-nas"&gt;O nas&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/uslugi"&gt;Usługi&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- Podstrona może mieć dodatkowe elementy, ale główne menu pozostaje takie samo --&gt;
+&lt;nav aria-label="Menu główne"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Start&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/o-nas"&gt;O nas&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/uslugi" aria-current="page"&gt;Usługi&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/portfolio"&gt;Portfolio&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- Dodatkowe submenu może się pojawiać --&gt;
+&lt;nav aria-label="Menu usług"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/uslugi/webdesign"&gt;Projektowanie stron&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/uslugi/hosting"&gt;Hosting&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/uslugi/seo"&gt;SEO&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Główne menu ma identyczną strukturę i kolejność na wszystkich
+                    stronach.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Spójne breadcrumbs z jednolitą strukturą</h4>
+                <pre><code class="language-html">&lt;!-- Breadcrumbs dla produktów - spójna struktura --&gt;
+&lt;nav aria-label="Ścieżka nawigacyjna"&gt;
+    &lt;ol&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Start&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/sklep"&gt;Sklep&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/sklep/elektronika"&gt;Elektronika&lt;/a&gt;&lt;/li&gt;
+        &lt;li aria-current="page"&gt;Laptop XYZ&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/nav&gt;
+
+&lt;!-- Inny produkt - ta sama struktura poziomów --&gt;
+&lt;nav aria-label="Ścieżka nawigacyjna"&gt;
+    &lt;ol&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Start&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/sklep"&gt;Sklep&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/sklep/odziez"&gt;Odzież&lt;/a&gt;&lt;/li&gt;
+        &lt;li aria-current="page"&gt;Koszulka ABC&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/nav&gt;
+
+&lt;!-- Artykuł na blogu - spójna struktura dla tego typu treści --&gt;
+&lt;nav aria-label="Ścieżka nawigacyjna"&gt;
+    &lt;ol&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Start&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/blog/kategoria/technologia"&gt;Technologia&lt;/a&gt;&lt;/li&gt;
+        &lt;li aria-current="page"&gt;Najnowsze trendy w AI&lt;/li&gt;
+    &lt;/ol&gt;
+&lt;/nav&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Struktura breadcrumbs jest konsekwentna dla każdego typu treści.
+                </p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Jednolite umieszczenie elementów nawigacyjnych</h4>
+                <pre><code class="language-html">&lt;!-- Template strony - spójna struktura --&gt;
+&lt;header&gt;
+    &lt;div class="container"&gt;
+        &lt;div class="logo"&gt;
+            &lt;a href="/"&gt;
+                &lt;img src="/logo.png" alt="Nazwa firmy"&gt;
+            &lt;/a&gt;
+        &lt;/div&gt;
+        
+        &lt;form role="search" class="search-form"&gt;
+            &lt;label for="search"&gt;Wyszukaj:&lt;/label&gt;
+            &lt;input type="search" id="search" placeholder="Wpisz słowa kluczowe..."&gt;
+            &lt;button type="submit"&gt;Szukaj&lt;/button&gt;
+        &lt;/form&gt;
+        
+        &lt;nav aria-label="Menu główne" class="main-nav"&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="/"&gt;Start&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/produkty"&gt;Produkty&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/wsparcie"&gt;Wsparcie&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;!-- Każda strona używa tej samej struktury header --&gt;
+&lt;main&gt;
+    &lt;!-- Treść strony --&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;
+    &lt;nav aria-label="Menu stopki"&gt;
+        &lt;ul&gt;
+            &lt;li&gt;&lt;a href="/polityka-prywatnosci"&gt;Polityka prywatności&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/regulamin"&gt;Regulamin&lt;/a&gt;&lt;/li&gt;
+            &lt;li&gt;&lt;a href="/mapa-serwisu"&gt;Mapa serwisu&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+&lt;/footer&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Wszystkie elementy nawigacyjne mają stałe położenie na każdej
+                    stronie.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Personalizacja zachowująca spójność</h4>
+                <pre><code class="language-html">&lt;!-- Domyślne menu --&gt;
+&lt;nav aria-label="Menu główne"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Start&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/sklep"&gt;Sklep&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- Personalizowane menu (użytkownik zalogowany) --&gt;
+&lt;nav aria-label="Menu główne"&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Start&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/sklep"&gt;Sklep&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/moje-konto"&gt;Moje konto&lt;/a&gt;&lt;/li&gt;  &lt;!-- Dodane --&gt;
+        &lt;li&gt;&lt;a href="/blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;!-- Kontrola użytkownika nad układem --&gt;
+&lt;div class="layout-controls"&gt;
+    &lt;h3&gt;Personalizuj nawigację&lt;/h3&gt;
+    &lt;form&gt;
+        &lt;label&gt;
+            &lt;input type="checkbox" name="show-search" checked&gt;
+            Pokaż wyszukiwarkę w nagłówku
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type="checkbox" name="compact-menu"&gt;
+            Kompaktowe menu
+        &lt;/label&gt;
+        &lt;button type="submit"&gt;Zastosuj zmiany&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/div&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Zmiany w układzie są kontrolowane przez użytkownika i zachowują
+                    względną kolejność elementów.</p>
+            </div>
+        </section>
+
+        <section class="interactive-demo">
+            <h2>Interaktywne demo - analiza spójności nawigacji</h2>
+            <p>Przetestuj różne scenariusze nawigacji i zobacz jak spójność wpływa na doświadczenie użytkownika:</p>
+
+            <div class="demo-container">
+                <h3>Symulator nawigacji strony</h3>
+                <div class="navigation-simulator">
+
+                    <div class="demo-controls">
+                        <h4>Wybierz typ strony:</h4>
+                        <div class="page-selector">
+                            <button class="page-btn active" onclick="showPage('home')">Strona główna</button>
+                            <button class="page-btn" onclick="showPage('products')">Produkty</button>
+                            <button class="page-btn" onclick="showPage('about')">O nas</button>
+                            <button class="page-btn" onclick="showPage('contact')">Kontakt</button>
+                            <button class="page-btn" onclick="showPage('blog')">Blog</button>
+                        </div>
+
+                        <div class="consistency-controls">
+                            <h4>Opcje testowania spójności:</h4>
+                            <label>
+                                <input type="checkbox" id="consistent-nav" checked onchange="toggleConsistency()">
+                                Spójna nawigacja
+                            </label>
+                            <label>
+                                <input type="checkbox" id="consistent-breadcrumbs" checked
+                                    onchange="toggleBreadcrumbs()">
+                                Spójne breadcrumbs
+                            </label>
+                            <label>
+                                <input type="checkbox" id="consistent-search" checked onchange="toggleSearch()">
+                                Spójna wyszukiwarka
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="page-mockup" id="page-mockup">
+                        <!-- Zawartość będzie generowana przez JavaScript -->
+                    </div>
+
+                    <div class="navigation-analysis" id="navigation-analysis">
+                        <h4>Analiza nawigacji:</h4>
+                        <div id="analysis-results"></div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                let currentPage = 'home';
+                let consistentNav = true;
+                let consistentBreadcrumbs = true;
+                let consistentSearch = true;
+                let navigationData = [];
+
+                const pageConfig = {
+                    home: {
+                        title: 'Strona główna',
+                        breadcrumbs: ['Start'],
+                        content: 'Witamy na naszej stronie! Znajdziesz tutaj najlepsze produkty i usługi.',
+                        mainNavPosition: 'header',
+                        searchPosition: 'header'
+                    },
+                    products: {
+                        title: 'Produkty',
+                        breadcrumbs: ['Start', 'Produkty'],
+                        content: 'Przeglądaj naszą ofertę produktów w różnych kategoriach.',
+                        mainNavPosition: 'header',
+                        searchPosition: 'header',
+                        hasSubnav: true,
+                        subnav: ['Wszystkie', 'Elektronika', 'Odzież', 'Dom i ogród']
+                    },
+                    about: {
+                        title: 'O nas',
+                        breadcrumbs: ['Start', 'O nas'],
+                        content: 'Poznaj historię naszej firmy i zespół.',
+                        mainNavPosition: 'header',
+                        searchPosition: 'header'
+                    },
+                    contact: {
+                        title: 'Kontakt',
+                        breadcrumbs: ['Start', 'Kontakt'],
+                        content: 'Skontaktuj się z nami - jesteśmy do Twojej dyspozycji.',
+                        mainNavPosition: 'header',
+                        searchPosition: 'header'
+                    },
+                    blog: {
+                        title: 'Blog',
+                        breadcrumbs: ['Start', 'Blog'],
+                        content: 'Najnowsze artykuły i aktualności z branży.',
+                        mainNavPosition: 'header',
+                        searchPosition: 'header',
+                        hasSubnav: true,
+                        subnav: ['Wszystkie', 'Technologia', 'Design', 'Business']
+                    }
+                };
+
+                function showPage(pageId) {
+                    // Zapisz dane nawigacji
+                    recordNavigationData(pageId);
+
+                    currentPage = pageId;
+                    updatePageButtons();
+                    renderPage();
+                    analyzeNavigation();
+                }
+
+                function updatePageButtons() {
+                    document.querySelectorAll('.page-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    document.querySelector(`[onclick="showPage('${currentPage}')"]`).classList.add('active');
+                }
+
+                function toggleConsistency() {
+                    consistentNav = document.getElementById('consistent-nav').checked;
+                    renderPage();
+                    analyzeNavigation();
+                }
+
+                function toggleBreadcrumbs() {
+                    consistentBreadcrumbs = document.getElementById('consistent-breadcrumbs').checked;
+                    renderPage();
+                    analyzeNavigation();
+                }
+
+                function toggleSearch() {
+                    consistentSearch = document.getElementById('consistent-search').checked;
+                    renderPage();
+                    analyzeNavigation();
+                }
+
+                function renderPage() {
+                    const config = pageConfig[currentPage];
+                    const mockup = document.getElementById('page-mockup');
+
+                    // Generuj różne układy w zależności od ustawień spójności
+                    const headerNav = generateMainNav(consistentNav ? 'consistent' : 'random');
+                    const breadcrumbs = generateBreadcrumbs(config.breadcrumbs, consistentBreadcrumbs);
+                    const searchForm = generateSearch(consistentSearch ? 'header' : getRandomPosition());
+                    const subnav = config.hasSubnav ? generateSubnav(config.subnav) : '';
+
+                    mockup.innerHTML = `
+                        <div class="mock-page">
+                            <header class="mock-header">
+                                <div class="mock-logo">Logo</div>
+                                ${consistentSearch || currentPage === 'home' ? searchForm : ''}
+                                ${headerNav}
+                            </header>
+                            
+                            ${breadcrumbs}
+                            
+                            <main class="mock-main">
+                                <h1>${config.title}</h1>
+                                ${subnav}
+                                <p>${config.content}</p>
+                                
+                                ${!consistentSearch && currentPage !== 'home' ?
+                            `<aside class="mock-sidebar">${searchForm}</aside>` : ''
+                        }
+                            </main>
+                            
+                            <footer class="mock-footer">
+                                <nav>
+                                    <a href="#">Polityka prywatności</a> |
+                                    <a href="#">Regulamin</a> |
+                                    <a href="#">Kontakt</a>
+                                </nav>
+                            </footer>
+                        </div>
+                    `;
+                }
+
+                function generateMainNav(type) {
+                    const baseItems = ['Start', 'Produkty', 'O nas', 'Kontakt', 'Blog'];
+                    let items = [...baseItems];
+
+                    if (type === 'random' && currentPage !== 'home') {
+                        // Symuluj niespójność - przemieszaj kolejność
+                        items = shuffleArray([...baseItems]);
+                    }
+
+                    const navItems = items.map(item => {
+                        const isActive = (item.toLowerCase() === currentPage) ||
+                            (item === 'Start' && currentPage === 'home');
+                        return `<a href="#" class="${isActive ? 'active' : ''}">${item}</a>`;
+                    }).join(' | ');
+
+                    return `<nav class="mock-nav">${navItems}</nav>`;
+                }
+
+                function generateBreadcrumbs(items, consistent) {
+                    if (!consistent && currentPage !== 'home') {
+                        // Symuluj niespójność - różne nazwy lub struktura
+                        const inconsistentItems = items.map(item => {
+                            if (item === 'Start') return Math.random() > 0.5 ? 'Home' : 'Główna';
+                            return item;
+                        });
+                        items = inconsistentItems;
+                    }
+
+                    if (items.length <= 1) return '';
+
+                    const breadcrumbItems = items.map((item, index) => {
+                        const isLast = index === items.length - 1;
+                        return isLast ?
+                            `<span class="current">${item}</span>` :
+                            `<a href="#">${item}</a>`;
+                    }).join(' › ');
+
+                    return `<nav class="mock-breadcrumbs">${breadcrumbItems}</nav>`;
+                }
+
+                function generateSearch(position) {
+                    return `<div class="mock-search">
+                        <input type="search" placeholder="Szukaj...">
+                        <button>🔍</button>
+                    </div>`;
+                }
+
+                function generateSubnav(items) {
+                    const subnavItems = items.map(item =>
+                        `<a href="#" class="subnav-item">${item}</a>`
+                    ).join(' | ');
+
+                    return `<nav class="mock-subnav">${subnavItems}</nav>`;
+                }
+
+                function getRandomPosition() {
+                    const positions = ['header', 'sidebar', 'footer'];
+                    return positions[Math.floor(Math.random() * positions.length)];
+                }
+
+                function shuffleArray(array) {
+                    const shuffled = [...array];
+                    for (let i = shuffled.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1));
+                        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+                    }
+                    return shuffled;
+                }
+
+                function recordNavigationData(pageId) {
+                    navigationData.push({
+                        page: pageId,
+                        timestamp: Date.now(),
+                        consistent: {
+                            nav: consistentNav,
+                            breadcrumbs: consistentBreadcrumbs,
+                            search: consistentSearch
+                        }
+                    });
+                }
+
+                function analyzeNavigation() {
+                    const results = document.getElementById('analysis-results');
+
+                    let issues = [];
+                    let recommendations = [];
+
+                    if (!consistentNav) {
+                        issues.push('❌ Menu główne ma różną kolejność na stronach');
+                        recommendations.push('Ustaw identyczną kolejność elementów menu na wszystkich stronach');
+                    }
+
+                    if (!consistentBreadcrumbs) {
+                        issues.push('❌ Breadcrumbs mają niespójną strukturę');
+                        recommendations.push('Używaj jednolitych nazw i struktur w ścieżkach nawigacyjnych');
+                    }
+
+                    if (!consistentSearch) {
+                        issues.push('❌ Wyszukiwarka znajduje się w różnych miejscach');
+                        recommendations.push('Umieść wyszukiwarkę w tym samym miejscu na wszystkich stronach');
+                    }
+
+                    if (issues.length === 0) {
+                        issues.push('✅ Nawigacja jest spójna między stronami');
+                        recommendations.push('Kontynuuj utrzymywanie spójnej struktury nawigacyjnej');
+                    }
+
+                    const visitedPages = [...new Set(navigationData.map(item => item.page))];
+                    const navigationScore = ((consistentNav ? 1 : 0) +
+                        (consistentBreadcrumbs ? 1 : 0) +
+                        (consistentSearch ? 1 : 0)) / 3 * 100;
+
+                    results.innerHTML = `
+                        <div class="analysis-summary">
+                            <p><strong>Odwiedzone strony:</strong> ${visitedPages.length}</p>
+                            <p><strong>Wskaźnik spójności:</strong> ${Math.round(navigationScore)}%</p>
+                        </div>
+                        
+                        <div class="analysis-issues">
+                            <h5>Wykryte problemy:</h5>
+                            <ul>
+                                ${issues.map(issue => `<li>${issue}</li>`).join('')}
+                            </ul>
+                        </div>
+                        
+                        <div class="analysis-recommendations">
+                            <h5>Rekomendacje:</h5>
+                            <ul>
+                                ${recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                }
+
+                // Inicjalizacja
+                renderPage();
+                analyzeNavigation();
+            </script>
+
+            <style>
+                .navigation-simulator {
+                    background-color: #f8f9fa;
+                    border: 1px solid #dee2e6;
+                    border-radius: 5px;
+                    padding: 20px;
+                    margin: 20px 0;
+                }
+
+                .demo-controls {
+                    display: flex;
+                    gap: 30px;
+                    margin-bottom: 20px;
+                    flex-wrap: wrap;
+                }
+
+                .page-selector {
+                    display: flex;
+                    gap: 5px;
+                    flex-wrap: wrap;
+                }
+
+                .page-btn {
+                    padding: 8px 16px;
+                    border: 1px solid #007cba;
+                    background: white;
+                    color: #007cba;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    font-size: 14px;
+                }
+
+                .page-btn.active,
+                .page-btn:hover {
+                    background: #007cba;
+                    color: white;
+                }
+
+                .consistency-controls {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 8px;
+                }
+
+                .consistency-controls label {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 14px;
+                }
+
+                .page-mockup {
+                    margin: 20px 0;
+                    border: 2px solid #007cba;
+                    border-radius: 5px;
+                    background: white;
+                    min-height: 400px;
+                }
+
+                .mock-page {
+                    display: flex;
+                    flex-direction: column;
+                    min-height: 400px;
+                }
+
+                .mock-header {
+                    background: #e9ecef;
+                    padding: 15px;
+                    border-bottom: 1px solid #ccc;
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+                    flex-wrap: wrap;
+                }
+
+                .mock-logo {
+                    font-weight: bold;
+                    font-size: 18px;
+                    color: #007cba;
+                }
+
+                .mock-nav {
+                    display: flex;
+                    gap: 10px;
+                }
+
+                .mock-nav a {
+                    text-decoration: none;
+                    color: #333;
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                }
+
+                .mock-nav a.active {
+                    background: #007cba;
+                    color: white;
+                }
+
+                .mock-search {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                }
+
+                .mock-search input {
+                    padding: 5px 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 3px;
+                    width: 150px;
+                }
+
+                .mock-search button {
+                    padding: 5px 10px;
+                    border: 1px solid #ccc;
+                    background: white;
+                    border-radius: 3px;
+                    cursor: pointer;
+                }
+
+                .mock-breadcrumbs {
+                    padding: 10px 15px;
+                    background: #f8f9fa;
+                    border-bottom: 1px solid #eee;
+                    font-size: 14px;
+                }
+
+                .mock-breadcrumbs .current {
+                    color: #666;
+                    font-weight: bold;
+                }
+
+                .mock-main {
+                    flex: 1;
+                    padding: 20px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 15px;
+                }
+
+                .mock-subnav {
+                    padding: 10px 0;
+                    border-bottom: 1px solid #eee;
+                }
+
+                .subnav-item {
+                    text-decoration: none;
+                    color: #007cba;
+                    padding: 5px 10px;
+                    border-radius: 3px;
+                }
+
+                .subnav-item:hover {
+                    background: #e9ecef;
+                }
+
+                .mock-sidebar {
+                    position: absolute;
+                    right: 20px;
+                    top: 100px;
+                    width: 200px;
+                    padding: 15px;
+                    background: #f8f9fa;
+                    border: 1px solid #dee2e6;
+                    border-radius: 3px;
+                }
+
+                .mock-footer {
+                    background: #e9ecef;
+                    padding: 15px;
+                    border-top: 1px solid #ccc;
+                    text-align: center;
+                }
+
+                .mock-footer a {
+                    color: #666;
+                    text-decoration: none;
+                }
+
+                .navigation-analysis {
+                    background: white;
+                    border: 1px solid #dee2e6;
+                    border-radius: 5px;
+                    padding: 15px;
+                    margin-top: 20px;
+                }
+
+                .analysis-summary {
+                    background: #e7f3ff;
+                    padding: 10px;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                }
+
+                .analysis-issues {
+                    background: #fff3cd;
+                    padding: 10px;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                }
+
+                .analysis-recommendations {
+                    background: #d4edda;
+                    padding: 10px;
+                    border-radius: 3px;
+                }
+            </style>
+        </section>
+
+        <section class="consistency-testing">
+            <h2>Narzędzie do testowania spójności nawigacji</h2>
+            <p>Użyj tego narzędzia do automatycznej analizy spójności nawigacji w Twojej witrynie:</p>
+
+            <div class="testing-tool">
+                <div class="tool-controls">
+                    <button id="start-consistency-test" class="test-button">Rozpocznij test spójności</button>
+                    <button id="analyze-navigation" class="test-button">Analizuj nawigację</button>
+                    <button id="stop-consistency-test" class="test-button" disabled>Zatrzymaj test</button>
+                </div>
+
+                <div class="test-options">
+                    <h4>Opcje testowania:</h4>
+                    <label>
+                        <input type="checkbox" id="test-main-nav" checked> Testuj menu główne
+                    </label>
+                    <label>
+                        <input type="checkbox" id="test-breadcrumbs" checked> Testuj breadcrumbs
+                    </label>
+                    <label>
+                        <input type="checkbox" id="test-search" checked> Testuj wyszukiwarkę
+                    </label>
+                    <label>
+                        <input type="checkbox" id="test-footer" checked> Testuj nawigację w stopce
+                    </label>
+                </div>
+
+                <div class="test-results">
+                    <h4>Wyniki testów spójności:</h4>
+                    <div id="consistency-test-results"></div>
+                </div>
+            </div>
+
+            <script>
+                let consistencyTestActive = false;
+                let navigationElements = new Map();
+                let pageData = [];
+                let currentPageUrl = window.location.href;
+
+                function startConsistencyTest() {
+                    if (consistencyTestActive) return;
+
+                    consistencyTestActive = true;
+                    navigationElements.clear();
+                    pageData = [];
+
+                    // Aktualizuj przyciski
+                    document.getElementById('start-consistency-test').disabled = true;
+                    document.getElementById('stop-consistency-test').disabled = false;
+
+                    // Rozpocznij analizę obecnej strony
+                    analyzeCurrentPage();
+
+                    showConsistencyMessage('Test spójności rozpoczęty. Odwiedź różne strony witryny, aby zbadać spójność nawigacji.');
+                }
+
+                function stopConsistencyTest() {
+                    if (!consistencyTestActive) return;
+
+                    consistencyTestActive = false;
+
+                    // Aktualizuj przyciski
+                    document.getElementById('start-consistency-test').disabled = false;
+                    document.getElementById('stop-consistency-test').disabled = true;
+
+                    // Pokaż wyniki
+                    displayConsistencyResults();
+                    showConsistencyMessage('Test spójności zakończony.');
+                }
+
+                function analyzeCurrentPage() {
+                    const pageInfo = {
+                        url: window.location.href,
+                        title: document.title,
+                        timestamp: Date.now(),
+                        navigation: {
+                            mainNav: extractMainNavigation(),
+                            breadcrumbs: extractBreadcrumbs(),
+                            search: extractSearchElements(),
+                            footer: extractFooterNavigation()
+                        }
+                    };
+
+                    pageData.push(pageInfo);
+                    updateNavigationElements(pageInfo.navigation);
+                }
+
+                function extractMainNavigation() {
+                    const mainNavs = document.querySelectorAll(
+                        'nav[aria-label*="główn"], nav[aria-label*="main"], nav.main-nav, header nav, nav:first-of-type'
+                    );
+
+                    const navData = [];
+                    mainNavs.forEach(nav => {
+                        const links = nav.querySelectorAll('a');
+                        const navInfo = {
+                            selector: getElementSelector(nav),
+                            position: getElementPosition(nav),
+                            links: Array.from(links).map(link => ({
+                                text: link.textContent.trim(),
+                                href: link.href,
+                                order: Array.from(nav.querySelectorAll('a')).indexOf(link)
+                            }))
+                        };
+                        navData.push(navInfo);
+                    });
+
+                    return navData;
+                }
+
+                function extractBreadcrumbs() {
+                    const breadcrumbs = document.querySelectorAll(
+                        'nav[aria-label*="breadcrumb"], nav[aria-label*="ścieżka"], .breadcrumbs, .breadcrumb'
+                    );
+
+                    const breadcrumbData = [];
+                    breadcrumbs.forEach(breadcrumb => {
+                        const items = breadcrumb.querySelectorAll('a, span, li');
+                        const breadcrumbInfo = {
+                            selector: getElementSelector(breadcrumb),
+                            position: getElementPosition(breadcrumb),
+                            items: Array.from(items).map(item => ({
+                                text: item.textContent.trim(),
+                                isLink: item.tagName === 'A',
+                                isCurrent: item.hasAttribute('aria-current') || item.classList.contains('current')
+                            }))
+                        };
+                        breadcrumbData.push(breadcrumbInfo);
+                    });
+
+                    return breadcrumbData;
+                }
+
+                function extractSearchElements() {
+                    const searches = document.querySelectorAll(
+                        'form[role="search"], .search-form, input[type="search"], [class*="search"]'
+                    );
+
+                    const searchData = [];
+                    searches.forEach(search => {
+                        const searchInfo = {
+                            selector: getElementSelector(search),
+                            position: getElementPosition(search),
+                            type: search.tagName,
+                            parentContext: search.closest('header, aside, footer, main')?.tagName || 'UNKNOWN'
+                        };
+                        searchData.push(searchInfo);
+                    });
+
+                    return searchData;
+                }
+
+                function extractFooterNavigation() {
+                    const footers = document.querySelectorAll('footer nav, footer ul, footer .nav');
+
+                    const footerData = [];
+                    footers.forEach(footer => {
+                        const links = footer.querySelectorAll('a');
+                        const footerInfo = {
+                            selector: getElementSelector(footer),
+                            position: getElementPosition(footer),
+                            links: Array.from(links).map(link => ({
+                                text: link.textContent.trim(),
+                                href: link.href
+                            }))
+                        };
+                        footerData.push(footerInfo);
+                    });
+
+                    return footerData;
+                }
+
+                function getElementPosition(element) {
+                    const rect = element.getBoundingClientRect();
+                    return {
+                        top: Math.round(rect.top + window.scrollY),
+                        left: Math.round(rect.left + window.scrollX),
+                        width: Math.round(rect.width),
+                        height: Math.round(rect.height)
+                    };
+                }
+
+                function getElementSelector(element) {
+                    if (element.id) {
+                        return `#${element.id}`;
+                    }
+
+                    let selector = element.tagName.toLowerCase();
+                    if (element.className) {
+                        selector += `.${element.className.split(' ')[0]}`;
+                    }
+
+                    // Dodaj informację o pozycji względem rodzica
+                    const parent = element.parentElement;
+                    if (parent) {
+                        const siblings = Array.from(parent.children).filter(child =>
+                            child.tagName === element.tagName
+                        );
+                        if (siblings.length > 1) {
+                            const index = siblings.indexOf(element);
+                            selector += `:nth-of-type(${index + 1})`;
+                        }
+                    }
+
+                    return selector;
+                }
+
+                function updateNavigationElements(navigation) {
+                    // Aktualizuj mapę elementów nawigacyjnych dla analizy spójności
+                    Object.entries(navigation).forEach(([type, elements]) => {
+                        if (!navigationElements.has(type)) {
+                            navigationElements.set(type, []);
+                        }
+                        navigationElements.get(type).push(elements);
+                    });
+                }
+
+                function analyzeNavigationConsistency() {
+                    const testOptions = {
+                        mainNav: document.getElementById('test-main-nav').checked,
+                        breadcrumbs: document.getElementById('test-breadcrumbs').checked,
+                        search: document.getElementById('test-search').checked,
+                        footer: document.getElementById('test-footer').checked
+                    };
+
+                    // Analizuj obecną stronę
+                    analyzeCurrentPage();
+
+                    const analysis = {
+                        pagesAnalyzed: pageData.length,
+                        issues: [],
+                        recommendations: [],
+                        score: 0
+                    };
+
+                    if (pageData.length < 2) {
+                        analysis.issues.push('Potrzebujesz odwiedzić więcej stron aby przeprowadzić pełną analizę spójności');
+                        displayNavigationAnalysis(analysis);
+                        return;
+                    }
+
+                    // Analizuj spójność dla każdego typu nawigacji
+                    const typeNames = {
+                        mainNav: 'menu głównego',
+                        breadcrumbs: 'breadcrumbs',
+                        search: 'wyszukiwarki',
+                        footer: 'nawigacji w stopce'
+                    };
+
+                    let totalChecks = 0;
+                    let passedChecks = 0;
+
+                    Object.entries(testOptions).forEach(([type, enabled]) => {
+                        if (!enabled) return;
+
+                        totalChecks++;
+                        const consistency = analyzeElementConsistency(type);
+
+                        if (consistency.isConsistent) {
+                            passedChecks++;
+                            analysis.recommendations.push(`✅ ${typeNames[type].charAt(0).toUpperCase() + typeNames[type].slice(1)} jest spójne między stronami`);
+                        } else {
+                            analysis.issues.push(`❌ Problemy ze spójnością ${typeNames[type]}: ${consistency.issues.join(', ')}`);
+                            analysis.recommendations.push(`Popraw spójność ${typeNames[type]} - ${consistency.recommendations.join(', ')}`);
+                        }
+                    });
+
+                    analysis.score = totalChecks > 0 ? Math.round((passedChecks / totalChecks) * 100) : 0;
+
+                    displayNavigationAnalysis(analysis);
+                }
+
+                function analyzeElementConsistency(elementType) {
+                    const elements = navigationElements.get(elementType) || [];
+                    const result = {
+                        isConsistent: true,
+                        issues: [],
+                        recommendations: []
+                    };
+
+                    if (elements.length < 2) {
+                        result.isConsistent = false;
+                        result.issues.push('za mało danych do analizy');
+                        return result;
+                    }
+
+                    // Sprawdź spójność pozycji
+                    const positions = elements.map(pageElements =>
+                        pageElements.map(el => ({ top: el.position?.top || 0, left: el.position?.left || 0 }))
+                    );
+
+                    const positionVariance = calculatePositionVariance(positions);
+                    if (positionVariance > 50) { // 50px tolerance
+                        result.isConsistent = false;
+                        result.issues.push('różne pozycje na stronach');
+                        result.recommendations.push('umieść element w tym samym miejscu na wszystkich stronach');
+                    }
+
+                    // Sprawdź spójność kolejności (dla menu i breadcrumbs)
+                    if (elementType === 'mainNav' || elementType === 'breadcrumbs') {
+                        const orderConsistency = analyzeOrderConsistency(elements);
+                        if (!orderConsistency.isConsistent) {
+                            result.isConsistent = false;
+                            result.issues.push('różna kolejność elementów');
+                            result.recommendations.push('zachowaj identyczną kolejność elementów na wszystkich stronach');
+                        }
+                    }
+
+                    return result;
+                }
+
+                function calculatePositionVariance(positions) {
+                    if (positions.length < 2) return 0;
+
+                    const topValues = positions.flat().map(pos => pos.top);
+                    const leftValues = positions.flat().map(pos => pos.left);
+
+                    const topVariance = Math.max(...topValues) - Math.min(...topValues);
+                    const leftVariance = Math.max(...leftValues) - Math.min(...leftValues);
+
+                    return Math.max(topVariance, leftVariance);
+                }
+
+                function analyzeOrderConsistency(elements) {
+                    if (elements.length < 2) return { isConsistent: true };
+
+                    // Pobierz pierwsze menu jako referencję
+                    const reference = elements[0][0]?.links || [];
+                    const referenceOrder = reference.map(link => link.text);
+
+                    // Sprawdź czy inne strony mają tę samą kolejność
+                    for (let i = 1; i < elements.length; i++) {
+                        const current = elements[i][0]?.links || [];
+                        const currentTexts = current.map(link => link.text);
+
+                        // Sprawdź względną kolejność wspólnych elementów
+                        const commonElements = referenceOrder.filter(text => currentTexts.includes(text));
+                        const currentOrder = currentTexts.filter(text => commonElements.includes(text));
+
+                        for (let j = 0; j < commonElements.length - 1; j++) {
+                            const refIndex = commonElements.indexOf(commonElements[j]);
+                            const refNextIndex = commonElements.indexOf(commonElements[j + 1]);
+                            const curIndex = currentOrder.indexOf(commonElements[j]);
+                            const curNextIndex = currentOrder.indexOf(commonElements[j + 1]);
+
+                            if ((refNextIndex > refIndex) !== (curNextIndex > curIndex)) {
+                                return { isConsistent: false };
+                            }
+                        }
+                    }
+
+                    return { isConsistent: true };
+                }
+
+                function displayConsistencyResults() {
+                    const resultsArea = document.getElementById('consistency-test-results');
+
+                    if (pageData.length === 0) {
+                        resultsArea.innerHTML = '<p>Brak danych do analizy. Rozpocznij test i odwiedź kilka stron.</p>';
+                        return;
+                    }
+
+                    const summary = {
+                        pagesVisited: pageData.length,
+                        uniquePages: new Set(pageData.map(page => page.url)).size,
+                        testDuration: pageData.length > 1 ?
+                            Math.round((pageData[pageData.length - 1].timestamp - pageData[0].timestamp) / 1000) : 0
+                    };
+
+                    let html = `
+                        <div class="test-summary">
+                            <h5>Podsumowanie testu:</h5>
+                            <ul>
+                                <li>Analizowane strony: ${summary.uniquePages}</li>
+                                <li>Całkowite przejścia: ${summary.pagesVisited}</li>
+                                <li>Czas testowania: ${summary.testDuration} sekund</li>
+                            </ul>
+                        </div>
+                    `;
+
+                    // Pokaż podstawowe dane o nawigacji
+                    const navigationSummary = summarizeNavigationElements();
+                    html += `
+                        <div class="navigation-summary">
+                            <h5>Znalezione elementy nawigacji:</h5>
+                            <ul>
+                                <li>Menu główne: ${navigationSummary.mainNav} elementów</li>
+                                <li>Breadcrumbs: ${navigationSummary.breadcrumbs} elementów</li>
+                                <li>Wyszukiwarki: ${navigationSummary.search} elementów</li>
+                                <li>Nawigacja w stopce: ${navigationSummary.footer} elementów</li>
+                            </ul>
+                        </div>
+                    `;
+
+                    resultsArea.innerHTML = html;
+                }
+
+                function displayNavigationAnalysis(analysis) {
+                    const resultsArea = document.getElementById('consistency-test-results');
+
+                    let html = `
+                        <div class="analysis-summary">
+                            <h5>Analiza spójności nawigacji:</h5>
+                            <p><strong>Analizowane strony:</strong> ${analysis.pagesAnalyzed}</p>
+                            <p><strong>Wskaźnik spójności:</strong> ${analysis.score}%</p>
+                        </div>
+                    `;
+
+                    if (analysis.issues.length > 0) {
+                        html += `
+                            <div class="analysis-issues">
+                                <h5>Wykryte problemy:</h5>
+                                <ul>
+                                    ${analysis.issues.map(issue => `<li>${issue}</li>`).join('')}
+                                </ul>
+                            </div>
+                        `;
+                    }
+
+                    if (analysis.recommendations.length > 0) {
+                        html += `
+                            <div class="analysis-recommendations">
+                                <h5>Rekomendacje:</h5>
+                                <ul>
+                                    ${analysis.recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                                </ul>
+                            </div>
+                        `;
+                    }
+
+                    resultsArea.innerHTML = html;
+                }
+
+                function summarizeNavigationElements() {
+                    const summary = {
+                        mainNav: 0,
+                        breadcrumbs: 0,
+                        search: 0,
+                        footer: 0
+                    };
+
+                    navigationElements.forEach((elements, type) => {
+                        summary[type] = elements.reduce((count, pageElements) =>
+                            count + pageElements.length, 0
+                        );
+                    });
+
+                    return summary;
+                }
+
+                function showConsistencyMessage(message) {
+                    const messageDiv = document.createElement('div');
+                    messageDiv.className = 'consistency-message';
+                    messageDiv.textContent = message;
+                    messageDiv.style.cssText = `
+                        position: fixed;
+                        bottom: 20px;
+                        right: 20px;
+                        background: #28a745;
+                        color: white;
+                        padding: 15px;
+                        border-radius: 5px;
+                        z-index: 1000;
+                        max-width: 300px;
+                        animation: slideIn 0.5s ease-out;
+                    `;
+
+                    document.body.appendChild(messageDiv);
+
+                    setTimeout(() => {
+                        if (messageDiv.parentNode) {
+                            messageDiv.style.animation = 'slideOut 0.5s ease-out';
+                            setTimeout(() => {
+                                if (messageDiv.parentNode) {
+                                    messageDiv.parentNode.removeChild(messageDiv);
+                                }
+                            }, 500);
+                        }
+                    }, 4000);
+                }
+
+                // Event listeners
+                document.getElementById('start-consistency-test').addEventListener('click', startConsistencyTest);
+                document.getElementById('stop-consistency-test').addEventListener('click', stopConsistencyTest);
+                document.getElementById('analyze-navigation').addEventListener('click', analyzeNavigationConsistency);
+
+                // Auto-analiza przy zmianie strony (jeśli test jest aktywny)
+                let lastUrl = window.location.href;
+                setInterval(() => {
+                    if (consistencyTestActive && window.location.href !== lastUrl) {
+                        lastUrl = window.location.href;
+                        analyzeCurrentPage();
+                    }
+                }, 1000);
+            </script>
+
+            <style>
+                .testing-tool {
+                    background-color: #f8f9fa;
+                    border: 1px solid #dee2e6;
+                    border-radius: 5px;
+                    padding: 20px;
+                    margin: 20px 0;
+                }
+
+                .tool-controls {
+                    margin-bottom: 20px;
+                }
+
+                .test-button {
+                    background-color: #28a745;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    margin: 5px;
+                    border-radius: 3px;
+                    cursor: pointer;
+                    font-size: 14px;
+                }
+
+                .test-button:hover:not(:disabled) {
+                    background-color: #218838;
+                }
+
+                .test-button:disabled {
+                    background-color: #6c757d;
+                    cursor: not-allowed;
+                }
+
+                .test-options {
+                    background-color: white;
+                    border: 1px solid #dee2e6;
+                    border-radius: 3px;
+                    padding: 15px;
+                    margin-bottom: 20px;
+                }
+
+                .test-options label {
+                    display: block;
+                    margin: 8px 0;
+                    font-size: 14px;
+                }
+
+                .test-options input[type="checkbox"] {
+                    margin-right: 8px;
+                }
+
+                .test-results {
+                    background-color: white;
+                    border: 1px solid #dee2e6;
+                    border-radius: 3px;
+                    padding: 15px;
+                }
+
+                .test-summary,
+                .analysis-summary {
+                    background-color: #e7f3ff;
+                    padding: 15px;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                }
+
+                .navigation-summary {
+                    background-color: #f8f9fa;
+                    padding: 15px;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                }
+
+                .analysis-issues {
+                    background-color: #fff3cd;
+                    padding: 15px;
+                    border-radius: 3px;
+                    margin-bottom: 15px;
+                }
+
+                .analysis-recommendations {
+                    background-color: #d4edda;
+                    padding: 15px;
+                    border-radius: 3px;
+                }
+            </style>
+        </section>
+
+        <section class="implementation-guidelines">
+            <h2>Wytyczne implementacyjne</h2>
+
+            <h3>Jak zapewnić spójną nawigację</h3>
+
+            <div class="guideline-item">
+                <h4>1. Ustal standardową strukturę strony</h4>
+                <pre><code class="language-html">&lt;!-- Template podstawowy dla wszystkich stron --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;!-- Meta tags, title itp. --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;a href="#main" class="skip-link"&gt;Przejdź do treści głównej&lt;/a&gt;
+    
+    &lt;header&gt;
+        &lt;div class="logo"&gt;
+            &lt;a href="/"&gt;Logo firmy&lt;/a&gt;
+        &lt;/div&gt;
+        
+        &lt;form role="search" class="search-form"&gt;
+            &lt;!-- Wyszukiwarka zawsze w tym samym miejscu --&gt;
+        &lt;/form&gt;
+        
+        &lt;nav aria-label="Menu główne" class="main-navigation"&gt;
+            &lt;!-- Menu główne - identyczna struktura --&gt;
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="/"&gt;Start&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/produkty"&gt;Produkty&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/o-nas"&gt;O nas&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;main id="main"&gt;
+        &lt;nav aria-label="Ścieżka nawigacyjna" class="breadcrumbs"&gt;
+            &lt;!-- Breadcrumbs - spójna struktura --&gt;
+        &lt;/nav&gt;
+        
+        &lt;!-- Treść specyficzna dla strony --&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;
+        &lt;nav aria-label="Menu stopki" class="footer-navigation"&gt;
+            &lt;!-- Nawigacja w stopce - zawsze taka sama --&gt;
+        &lt;/nav&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+
+            <div class="guideline-item">
+                <h4>2. Zachowaj względną kolejność elementów</h4>
+                <pre><code class="language-javascript">// ✅ Prawidłowe - zachowanie względnej kolejności
+const mainMenuItems = [
+    { text: 'Start', url: '/', order: 1 },
+    { text: 'Produkty', url: '/produkty', order: 2 },
+    { text: 'Usługi', url: '/uslugi', order: 3 },
+    { text: 'O nas', url: '/o-nas', order: 4 },
+    { text: 'Kontakt', url: '/kontakt', order: 5 }
+];
+
+// Funkcja dodająca nowe elementy zachowuje kolejność
+function addMenuItem(newItem, insertAfter) {
+    const afterIndex = mainMenuItems.findIndex(item => item.text === insertAfter);
+    if (afterIndex !== -1) {
+        // Wstaw po określonym elemencie, zachowując względną kolejność
+        mainMenuItems.splice(afterIndex + 1, 0, newItem);
+        updateMenuOrders();
+    }
+}
+
+function updateMenuOrders() {
+    mainMenuItems.forEach((item, index) => {
+        item.order = index + 1;
+    });
+}
+
+// ❌ Nieprawidłowe - losowa kolejność
+function randomizeMenu() {
+    return mainMenuItems.sort(() => Math.random() - 0.5); // NIGDY tego nie rób!
+}</code></pre>
+            </div>
+
+            <div class="guideline-item">
+                <h4>3. Implementuj spójne breadcrumbs</h4>
+                <pre><code class="language-javascript">// System generowania spójnych breadcrumbs
+class BreadcrumbGenerator {
+    constructor() {
+        this.pathMapping = {
+            '/': { title: 'Start', parent: null },
+            '/produkty': { title: 'Produkty', parent: '/' },
+            '/produkty/elektronika': { title: 'Elektronika', parent: '/produkty' },
+            '/produkty/elektronika/laptopy': { title: 'Laptopy', parent: '/produkty/elektronika' },
+            '/o-nas': { title: 'O nas', parent: '/' },
+            '/o-nas/zespol': { title: 'Zespół', parent: '/o-nas' },
+            '/kontakt': { title: 'Kontakt', parent: '/' }
+        };
+    }
+    
+    generateBreadcrumbs(currentPath) {
+        const breadcrumbs = [];
+        let path = currentPath;
+        
+        while (path && this.pathMapping[path]) {
+            const item = this.pathMapping[path];
+            breadcrumbs.unshift({
+                title: item.title,
+                url: path,
+                isCurrent: path === currentPath
+            });
+            path = item.parent;
+        }
+        
+        return breadcrumbs;
+    }
+    
+    renderBreadcrumbs(currentPath) {
+        const breadcrumbs = this.generateBreadcrumbs(currentPath);
+        
+        return `
+            &lt;nav aria-label="Ścieżka nawigacyjna"&gt;
+                &lt;ol class="breadcrumb-list"&gt;
+                    ${breadcrumbs.map(item => `
+                        &lt;li class="breadcrumb-item"&gt;
+                            ${item.isCurrent ? 
+                                `&lt;span aria-current="page"&gt;${item.title}&lt;/span&gt;` :
+                                `&lt;a href="${item.url}"&gt;${item.title}&lt;/a&gt;`
+                            }
+                        &lt;/li&gt;
+                    `).join('')}
+                &lt;/ol&gt;
+            &lt;/nav&gt;
+        `;
+    }
+}
+
+// Użycie
+const breadcrumbGen = new BreadcrumbGenerator();
+document.addEventListener('DOMContentLoaded', () => {
+    const currentPath = window.location.pathname;
+    const breadcrumbContainer = document.querySelector('.breadcrumbs');
+    if (breadcrumbContainer) {
+        breadcrumbContainer.innerHTML = breadcrumbGen.renderBreadcrumbs(currentPath);
+    }
+});</code></pre>
+            </div>
+
+            <div class="guideline-item">
+                <h4>4. Zarządzaj dynamiczną nawigacją</h4>
+                <pre><code class="language-javascript">// System zarządzania dynamiczną nawigacją
+class NavigationManager {
+    constructor() {
+        this.baseNavigation = [
+            { id: 'home', text: 'Start', url: '/', visible: true, order: 1 },
+            { id: 'products', text: 'Produkty', url: '/produkty', visible: true, order: 2 },
+            { id: 'about', text: 'O nas', url: '/o-nas', visible: true, order: 3 },
+            { id: 'contact', text: 'Kontakt', url: '/kontakt', visible: true, order: 4 }
+        ];
+        this.userCustomization = {};
+    }
+    
+    // Dodaj element zachowując względną kolejność
+    addNavigationItem(item, insertAfter = null) {
+        const newItem = {
+            ...item,
+            order: this.getNextOrder(insertAfter)
+        };
+        
+        if (insertAfter) {
+            const afterIndex = this.baseNavigation.findIndex(nav => nav.id === insertAfter);
+            if (afterIndex !== -1) {
+                this.baseNavigation.splice(afterIndex + 1, 0, newItem);
+            }
+        } else {
+            this.baseNavigation.push(newItem);
+        }
+        
+        this.reorderNavigation();
+        this.updateNavigation();
+    }
+    
+    // Ukryj element (nie usuwa, zachowuje kolejność)
+    hideNavigationItem(itemId) {
+        const item = this.baseNavigation.find(nav => nav.id === itemId);
+        if (item) {
+            item.visible = false;
+            this.updateNavigation();
+        }
+    }
+    
+    // Pokaż ukryty element
+    showNavigationItem(itemId) {
+        const item = this.baseNavigation.find(nav => nav.id === itemId);
+        if (item) {
+            item.visible = true;
+            this.updateNavigation();
+        }
+    }
+    
+    // Personalizacja użytkownika
+    applyUserCustomization(customization) {
+        this.userCustomization = customization;
+        this.updateNavigation();
+    }
+    
+    getNextOrder(insertAfter) {
+        if (!insertAfter) {
+            return Math.max(...this.baseNavigation.map(item => item.order)) + 1;
+        }
+        
+        const afterItem = this.baseNavigation.find(nav => nav.id === insertAfter);
+        return afterItem ? afterItem.order + 0.5 : 1;
+    }
+    
+    reorderNavigation() {
+        this.baseNavigation.sort((a, b) => a.order - b.order);
+        this.baseNavigation.forEach((item, index) => {
+            item.order = index + 1;
+        });
+    }
+    
+    updateNavigation() {
+        const visibleItems = this.baseNavigation.filter(item => item.visible);
+        const nav = document.querySelector('.main-navigation ul');
+        
+        if (nav) {
+            nav.innerHTML = visibleItems.map(item => `
+                &lt;li&gt;
+                    &lt;a href="${item.url}" 
+                       ${window.location.pathname === item.url ? 'aria-current="page"' : ''}&gt;
+                        ${item.text}
+                    &lt;/a&gt;
+                &lt;/li&gt;
+            `).join('');
+        }
+    }
+}
+
+// Użycie
+const navManager = new NavigationManager();
+
+// Dodaj nowy element po "Produkty"
+navManager.addNavigationItem({
+    id: 'services',
+    text: 'Usługi',
+    url: '/uslugi',
+    visible: true
+}, 'products');
+
+// Zastosuj personalizację użytkownika
+navManager.applyUserCustomization({
+    compactMode: true,
+    hideSearch: false
+});</code></pre>
+            </div>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie kryterium 3.2.3</h2>
+
+            <h3>Testy manualne</h3>
+            <ul>
+                <li><strong>Test nawigacji między stronami</strong> - sprawdź czy menu znajduje się w tym samym miejscu
+                </li>
+                <li><strong>Test kolejności elementów</strong> - zweryfikuj identyczną kolejność pozycji menu</li>
+                <li><strong>Test breadcrumbs</strong> - sprawdź spójność struktury ścieżek nawigacyjnych</li>
+                <li><strong>Test z różnych punktów wejścia</strong> - wejdź na stronę z różnych źródeł</li>
+                <li><strong>Test responsywności</strong> - sprawdź spójność na różnych rozmiarach ekranu</li>
+                <li><strong>Test z technologiami wspomagającymi</strong> - użyj czytnika ekranu</li>
+            </ul>
+
+            <h3>Testy automatyczne</h3>
+            <pre><code class="language-javascript">// Test spójności struktury nawigacji
+async function testNavigationConsistency(urls) {
+    const navigationData = [];
+    
+    for (const url of urls) {
+        const response = await fetch(url);
+        const html = await response.text();
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        
+        const navData = {
+            url: url,
+            mainNav: extractNavigationData(doc, 'nav[aria-label*="główn"], .main-nav'),
+            breadcrumbs: extractNavigationData(doc, '[aria-label*="breadcrumb"], .breadcrumbs'),
+            search: extractSearchData(doc),
+            footer: extractNavigationData(doc, 'footer nav')
+        };
+        
+        navigationData.push(navData);
+    }
+    
+    return analyzeConsistency(navigationData);
+}
+
+function extractNavigationData(doc, selector) {
+    const navElements = doc.querySelectorAll(selector);
+    return Array.from(navElements).map(nav => {
+        const links = nav.querySelectorAll('a');
+        return {
+            selector: getElementDescription(nav),
+            links: Array.from(links).map((link, index) => ({
+                text: link.textContent.trim(),
+                href: link.href,
+                position: index
+            })),
+            position: getElementCoordinates(nav)
+        };
+    });
+}
+
+function extractSearchData(doc) {
+    const searchElements = doc.querySelectorAll('form[role="search"], input[type="search"]');
+    return Array.from(searchElements).map(element => ({
+        type: element.tagName,
+        selector: getElementDescription(element),
+        position: getElementCoordinates(element),
+        context: element.closest('header, aside, footer, main')?.tagName
+    }));
+}
+
+function analyzeConsistency(navigationData) {
+    const results = {
+        isConsistent: true,
+        issues: [],
+        recommendations: []
+    };
+    
+    if (navigationData.length < 2) {
+        results.isConsistent = false;
+        results.issues.push('Potrzeba przynajmniej 2 stron do analizy');
+        return results;
+    }
+    
+    // Sprawdź spójność głównej nawigacji
+    const mainNavConsistency = checkMainNavigationConsistency(navigationData);
+    if (!mainNavConsistency.isConsistent) {
+        results.isConsistent = false;
+        results.issues.push(...mainNavConsistency.issues);
+        results.recommendations.push(...mainNavConsistency.recommendations);
+    }
+    
+    // Sprawdź spójność pozycji elementów
+    const positionConsistency = checkPositionConsistency(navigationData);
+    if (!positionConsistency.isConsistent) {
+        results.isConsistent = false;
+        results.issues.push(...positionConsistency.issues);
+        results.recommendations.push(...positionConsistency.recommendations);
+    }
+    
+    return results;
+}
+
+function checkMainNavigationConsistency(navigationData) {
+    const results = { isConsistent: true, issues: [], recommendations: [] };
+    
+    // Pobierz pierwszy zestaw nawigacji jako referencję
+    const reference = navigationData[0].mainNav[0];
+    if (!reference) return results;
+    
+    const referenceLinks = reference.links.map(link => link.text);
+    
+    // Sprawdź inne strony
+    for (let i = 1; i < navigationData.length; i++) {
+        const current = navigationData[i].mainNav[0];
+        if (!current) continue;
+        
+        const currentLinks = current.links.map(link => link.text);
+        
+        // Sprawdź względną kolejność wspólnych elementów
+        const commonElements = referenceLinks.filter(text => currentLinks.includes(text));
+        
+        for (let j = 0; j < commonElements.length - 1; j++) {
+            const elem1 = commonElements[j];
+            const elem2 = commonElements[j + 1];
+            
+            const refIndex1 = referenceLinks.indexOf(elem1);
+            const refIndex2 = referenceLinks.indexOf(elem2);
+            const curIndex1 = currentLinks.indexOf(elem1);
+            const curIndex2 = currentLinks.indexOf(elem2);
+            
+            if ((refIndex2 > refIndex1) !== (curIndex2 > curIndex1)) {
+                results.isConsistent = false;
+                results.issues.push(`Różna kolejność elementów "${elem1}" i "${elem2}" na stronie ${navigationData[i].url}`);
+                results.recommendations.push('Zachowaj identyczną względną kolejność elementów menu na wszystkich stronach');
+                break;
+            }
+        }
+    }
+    
+    return results;
+}
+
+function checkPositionConsistency(navigationData) {
+    const results = { isConsistent: true, issues: [], recommendations: [] };
+    
+    // Sprawdź czy główna nawigacja jest w tym samym miejscu
+    const navPositions = navigationData.map(data => 
+        data.mainNav[0]?.position || { x: 0, y: 0 }
+    );
+    
+    const maxXDiff = Math.max(...navPositions.map(pos => pos.x)) - 
+                     Math.min(...navPositions.map(pos => pos.x));
+    const maxYDiff = Math.max(...navPositions.map(pos => pos.y)) - 
+                     Math.min(...navPositions.map(pos => pos.y));
+    
+    if (maxXDiff > 50 || maxYDiff > 50) { // 50px tolerance
+        results.isConsistent = false;
+        results.issues.push('Główna nawigacja znajduje się w różnych miejscach na stronach');
+        results.recommendations.push('Umieść główną nawigację w tym samym miejscu na wszystkich stronach');
+    }
+    
+    return results;
+}
+
+// Przykład użycia
+const urlsToTest = [
+    'https://example.com/',
+    'https://example.com/produkty',
+    'https://example.com/o-nas',
+    'https://example.com/kontakt'
+];
+
+testNavigationConsistency(urlsToTest)
+    .then(results => {
+        console.log('Wyniki testu spójności:', results);
+        if (results.isConsistent) {
+            console.log('✅ Nawigacja jest spójna');
+        } else {
+            console.log('❌ Wykryto problemy ze spójnością:');
+            results.issues.forEach(issue => console.log(`- ${issue}`));
+        }
+    })
+    .catch(error => {
+        console.error('Błąd podczas testowania:', error);
+    });</code></pre>
+
+            <h3>Checklist testowa</h3>
+            <div class="checklist">
+                <h4>✅ Sprawdź czy:</h4>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ Menu główne ma identyczną strukturę i kolejność na wszystkich stronach</li>
+                    <li>☐ Elementy nawigacyjne znajdują się w tych samych miejscach</li>
+                    <li>☐ Breadcrumbs mają spójną strukturę i nazewnictwo</li>
+                    <li>☐ Wyszukiwarka jest umieszczona konsekwentnie</li>
+                    <li>☐ Nawigacja w stopce nie zmienia się między stronami</li>
+                    <li>☐ Dodatkowe elementy nawigacyjne (np. submenu) pojawiają się przewidywalnie</li>
+                    <li>☐ Względna kolejność elementów jest zachowana nawet przy dodawaniu nowych</li>
+                    <li>☐ Personalizacja użytkownika nie narusza ogólnej spójności</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="common-mistakes">
+            <h2>Częste błędy</h2>
+
+            <div class="mistake-block">
+                <h3>❌ Zmiana kolejności menu między stronami</h3>
+                <p><strong>Problem:</strong> Kolejność elementów menu różni się na różnych stronach</p>
+                <pre><code class="language-html">&lt;!-- Strona A --&gt;
+&lt;nav&gt;
+    &lt;a href="/"&gt;Start&lt;/a&gt;
+    &lt;a href="/produkty"&gt;Produkty&lt;/a&gt;
+    &lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;!-- Strona B - inna kolejność --&gt;
+&lt;nav&gt;
+    &lt;a href="/"&gt;Start&lt;/a&gt;
+    &lt;a href="/kontakt"&gt;Kontakt&lt;/a&gt;
+    &lt;a href="/produkty"&gt;Produkty&lt;/a&gt;
+&lt;/nav&gt;</code></pre>
+                <p><strong>Rozwiązanie:</strong> Używaj szablonów lub komponentów zapewniających identyczną strukturę
+                </p>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Niespójne breadcrumbs</h3>
+                <p><strong>Problem:</strong> Różne nazwy i struktury ścieżek nawigacyjnych</p>
+                <pre><code class="language-html">&lt;!-- Strona produktu A --&gt;
+&lt;nav aria-label="Breadcrumbs"&gt;
+    Start › Kategorie › Elektronika › Laptop
+&lt;/nav&gt;
+
+&lt;!-- Strona produktu B --&gt;
+&lt;nav aria-label="Breadcrumbs"&gt;
+    Home › Produkty › Telefon  &lt;!-- Brak spójności! --&gt;
+&lt;/nav&gt;</code></pre>
+                <p><strong>Rozwiązanie:</strong> Stwórz system automatycznego generowania breadcrumbs</p>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Różne położenie wyszukiwarki</h3>
+                <p><strong>Problem:</strong> Wyszukiwarka pojawia się w różnych miejscach</p>
+                <p><strong>Rozwiązanie:</strong> Określ stałe miejsce dla wyszukiwarki we wszystkich szablonach</p>
+            </div>
+        </section>
+
+        <section class="resources">
+            <h2>Dodatkowe zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/consistent-navigation.html" target="_blank"
+                        rel="noopener">Understanding SC 3.2.3: Consistent Navigation (W3C)</a></li>
+                <li><a href="https://webaim.org/techniques/navigation/" target="_blank" rel="noopener">WebAIM: Website
+                        Navigation</a></li>
+                <li><a href="https://www.nngroup.com/articles/navigation-consistency/" target="_blank"
+                        rel="noopener">Navigation Consistency (Nielsen Norman Group)</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav" target="_blank"
+                        rel="noopener">MDN: &lt;nav&gt; Element</a></li>
+                <li><a href="https://inclusive-components.design/menus-menu-buttons/" target="_blank"
+                        rel="noopener">Inclusive Components: Menus & Menu Buttons</a></li>
+            </ul>
+        </section>
+
+        <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+            <ul>
+                <li><a href="3.2.2.html">Poprzedni: 3.2.2 Podczas wpisywania</a></li>
+                <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                <li><a href="3.2.4.html">Następny: 3.2.4 Spójna identyfikacja</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
