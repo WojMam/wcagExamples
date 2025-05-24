@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.3.2 Trzy błyski (AAA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.3.2 Trzy błyski</h2>
+                <p class="criterion-level">Poziom AAA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#three-flashes" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="safety-warning"
+                style="background-color: #f8d7da; border: 2px solid #f5c6cb; padding: 20px; margin: 20px 0; border-radius: 5px;">
+                <h3 style="color: #721c24; margin-top: 0;">⚠️ OSTRZEŻENIE BEZPIECZEŃSTWA</h3>
+                <p style="color: #721c24; font-weight: bold;">Ta strona zawiera informacje o migających treściach. Nigdy
+                    nie testuj migających elementów na sobie ani na innych osobach. Używaj wyłącznie narzędzi
+                    automatycznych do analizy.</p>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Strony internetowe nie zawierają żadnych elementów, które migają więcej niż trzy razy w ciągu jednej
+                    sekundy.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest zapewnienie maksymalnego poziomu bezpieczeństwa dla osób z padaczką
+                    fotogenną. W przeciwieństwie do kryterium 2.3.1, które pozwala na miganie poniżej określonych
+                    progów, kryterium 2.3.2 ma prostszą i bardziej restrykcyjną zasadę: <strong>absolutnie żadne miganie
+                        częstsze niż 3 razy na sekundę</strong>.</p>
+
+                <p>Ta wytyczna eliminuje potrzebę skomplikowanych analiz progów i zapewnia prostą, jednoznaczną regułę
+                    bezpieczeństwa.</p>
+
+                <h3>Różnica między 2.3.1 a 2.3.2</h3>
+                <div class="comparison-table" style="margin: 20px 0;">
+                    <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd;">
+                        <thead>
+                            <tr style="background-color: #f5f5f5;">
+                                <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">Aspekt</th>
+                                <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">2.3.1 (Poziom A)
+                                </th>
+                                <th style="border: 1px solid #ddd; padding: 12px; text-align: left;">2.3.2 (Poziom AAA)
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 12px;"><strong>Podstawowa zasada</strong>
+                                </td>
+                                <td style="border: 1px solid #ddd; padding: 12px;">Maksymalnie 3 błyski/s LUB poniżej
+                                    progów bezpieczeństwa</td>
+                                <td style="border: 1px solid #ddd; padding: 12px;">Maksymalnie 3 błyski/s - BEZ WYJĄTKÓW
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 12px;"><strong>Analiza progów</strong></td>
+                                <td style="border: 1px solid #ddd; padding: 12px;">Wymagana (czerwone błyski, kontrast,
+                                    rozmiar)</td>
+                                <td style="border: 1px solid #ddd; padding: 12px;">Nie wymagana</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 12px;"><strong>Złożoność testowania</strong>
+                                </td>
+                                <td style="border: 1px solid #ddd; padding: 12px;">Wysoka - wymaga specjalistycznych
+                                    narzędzi</td>
+                                <td style="border: 1px solid #ddd; padding: 12px;">Niska - prosta zasada 3 Hz</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 12px;"><strong>Poziom
+                                        bezpieczeństwa</strong></td>
+                                <td style="border: 1px solid #ddd; padding: 12px;">Wystarczający</td>
+                                <td style="border: 1px solid #ddd; padding: 12px;">Maksymalny</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - miganie przekraczające 3 Hz</h4>
+                        <p>Dowolne miganie częstsze niż 3 razy na sekundę jest niedozwolone w kryterium 2.3.2:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <p><strong>⚠️ Ten przykład jest WYŁĄCZONY ze względów bezpieczeństwa</strong></p>
+                                <div
+                                    style="background-color: #f8f8f8; border: 2px dashed #ccc; padding: 20px; text-align: center; color: #666;">
+                                    <p>Tutaj byłby element migający 4 razy na sekundę</p>
+                                    <p>(Niedozwolone w 2.3.2, nawet jeśli poniżej progów z 2.3.1)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-css">/* NIEDOZWOLONE w 2.3.2 - nawet subtelne miganie powyżej 3 Hz */
+.subtle-but-too-fast {
+    animation: subtleFlash 0.25s infinite; /* 4 Hz - przekracza próg! */
+}
+
+@keyframes subtleFlash {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.9; }  /* Bardzo subtelna zmiana */
+    100% { opacity: 1.0; }
+}</code></pre>
+
+                        <pre><code class="language-javascript">// NIEDOZWOLONE w 2.3.2 - nawet delikatne miganie
+function subtleButTooFast() {
+    const element = document.getElementById('indicator');
+    let opacity = 1.0;
+    
+    // Zmiana co 200ms = 5 Hz - za szybko dla 2.3.2!
+    setInterval(function() {
+        opacity = opacity === 1.0 ? 0.95 : 1.0;
+        element.style.opacity = opacity;
+    }, 200); // Przekracza 3 Hz
+}</code></pre>
+
+                        <p class="explanation">Problem: Nawet bardzo subtelne miganie z częstotliwością 4-5 Hz
+                            przekracza dopuszczalny próg dla poziomu AAA. W kryterium 2.3.2 nie ma wyjątków - każde
+                            miganie częstsze niż 3 Hz jest niedozwolone, niezależnie od jego intensywności.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - bezpieczne animacje zgodne z 2.3.2</h4>
+                        <p>Animacje, które nigdy nie przekraczają 3 błysków na sekundę:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div class="status-indicators">
+                                    <div class="indicator safe-slow"
+                                        style="display: inline-block; width: 20px; height: 20px; background-color: #28a745; border-radius: 50%; margin: 10px; animation: safePulse 1s ease-in-out infinite;">
+                                    </div>
+                                    <span>Wolny pulsujący wskaźnik (1 Hz)</span>
+
+                                    <br>
+
+                                    <div class="indicator safe-medium"
+                                        style="display: inline-block; width: 20px; height: 20px; background-color: #ffc107; border-radius: 50%; margin: 10px; animation: safePulse 0.5s ease-in-out infinite;">
+                                    </div>
+                                    <span>Średni pulsujący wskaźnik (2 Hz)</span>
+
+                                    <br>
+
+                                    <div class="indicator safe-fast"
+                                        style="display: inline-block; width: 20px; height: 20px; background-color: #fd7e14; border-radius: 50%; margin: 10px; animation: safePulse 0.33s ease-in-out infinite;">
+                                    </div>
+                                    <span>Najszybszy dozwolony wskaźnik (3 Hz)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-css">/* Bezpieczne animacje zgodne z 2.3.2 */
+
+/* Wolny puls - 1 Hz (raz na sekundę) */
+.safe-slow {
+    animation: safePulse 1s ease-in-out infinite;
+}
+
+/* Średni puls - 2 Hz (dwa razy na sekundę) */
+.safe-medium {
+    animation: safePulse 0.5s ease-in-out infinite;
+}
+
+/* Najszybszy dozwolony - 3 Hz (trzy razy na sekundę) */
+.safe-fast {
+    animation: safePulse 0.33s ease-in-out infinite;
+}
+
+@keyframes safePulse {
+    0% { 
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% { 
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% { 
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Zawsze respektuj preferencje użytkownika */
+@media (prefers-reduced-motion: reduce) {
+    .safe-slow, .safe-medium, .safe-fast {
+        animation: none;
+        transform: scale(1);
+        opacity: 1;
+    }
+}</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Wszystkie animacje mają częstotliwość maksymalnie 3 Hz.
+                            Najwolniejsza (1 Hz) jest najbezpieczniejsza, średnia (2 Hz) nadal bardzo bezpieczna, a
+                            najszybsza (3 Hz) jest na granicy, ale zgodna z kryterium 2.3.2.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - alternatywy dla szybkich animacji</h4>
+                        <p>Sposoby na zastąpienie szybkich animacji bezpiecznymi alternatywami:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <h5>Bezpieczne alternatywy:</h5>
+
+                                <!-- Płynne obracanie zamiast migania -->
+                                <div style="margin: 15px 0;">
+                                    <div
+                                        style="display: inline-block; width: 30px; height: 30px; border: 3px solid #f3f3f3; border-top: 3px solid #3498db; border-radius: 50%; animation: spin 1s linear infinite; margin-right: 10px;">
+                                    </div>
+                                    <span>Płynne obracanie (spinner)</span>
+                                </div>
+
+                                <!-- Przesuwający się pasek -->
+                                <div style="margin: 15px 0;">
+                                    <div
+                                        style="background-color: #f0f0f0; height: 6px; border-radius: 3px; overflow: hidden; position: relative; width: 200px; display: inline-block; margin-right: 10px;">
+                                        <div
+                                            style="background-color: #007bff; height: 100%; width: 30%; animation: slide 2s ease-in-out infinite; border-radius: 3px;">
+                                        </div>
+                                    </div>
+                                    <span>Przesuwający się wskaźnik</span>
+                                </div>
+
+                                <!-- Powiększanie/zmniejszanie -->
+                                <div style="margin: 15px 0;">
+                                    <div
+                                        style="display: inline-block; width: 20px; height: 20px; background-color: #28a745; border-radius: 50%; animation: breathe 2s ease-in-out infinite; margin-right: 10px;">
+                                    </div>
+                                    <span>Płynne "oddychanie" (skalowanie)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-css">/* Bezpieczne alternatywy dla szybkich animacji */
+
+/* Spinner - płynne obracanie */
+.spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Przesuwający się wskaźnik */
+.sliding-indicator {
+    background-color: #f0f0f0;
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.sliding-indicator::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 30%;
+    background-color: #007bff;
+    border-radius: 3px;
+    animation: slide 2s ease-in-out infinite;
+}
+
+@keyframes slide {
+    0% { transform: translateX(-100%); }
+    50% { transform: translateX(250%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Płynne "oddychanie" */
+.breathing-indicator {
+    animation: breathe 2s ease-in-out infinite;
+}
+
+@keyframes breathe {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+/* Gradient w ruchu */
+.moving-gradient {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+    background-size: 400% 400%;
+    animation: gradientMove 3s ease infinite;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Zamiast migania używamy płynnych animacji, które nie
+                            powodują nagłych zmian jasności lub koloru. Obracanie, przesuwanie, skalowanie i gradient w
+                            ruchu to bezpieczne alternatywy, które przyciągają uwagę bez ryzyka napadów.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - system monitorowania częstotliwości</h4>
+                        <p>JavaScript do automatycznego kontrolowania częstotliwości animacji:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px;">
+                                    <h5 style="color: #155724; margin-top: 0;">System monitorowania animacji</h5>
+                                    <p style="color: #155724; margin: 5px 0;">Status: <span
+                                            id="animation-status">Monitorowanie aktywne</span></p>
+                                    <p style="color: #155724; margin: 5px 0;">Dozwolona częstotliwość: maksymalnie 3 Hz
+                                    </p>
+                                    <p style="color: #155724; margin: 5px 0;">Aktywne animacje: <span
+                                            id="active-animations">Sprawdzam...</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-javascript">// System monitorowania częstotliwości animacji dla 2.3.2
+class AnimationFrequencyMonitor {
+    constructor() {
+        this.maxFrequency = 3; // 3 Hz - maksymalna dozwolona częstotliwość
+        this.animationRegistry = new Map();
+        this.init();
+    }
+
+    init() {
+        this.monitorCSSAnimations();
+        this.monitorJSAnimations();
+        this.setupEmergencyStop();
+    }
+
+    // Rejestruj animację z określoną częstotliwością
+    registerAnimation(id, frequency, element) {
+        if (frequency > this.maxFrequency) {
+            console.error(`BŁĄD: Animacja "${id}" ma częstotliwość ${frequency} Hz, przekracza limit ${this.maxFrequency} Hz`);
+            this.blockAnimation(id, element);
+            return false;
+        }
+
+        this.animationRegistry.set(id, {
+            frequency: frequency,
+            element: element,
+            startTime: Date.now()
+        });
+
+        console.log(`Animacja "${id}" zarejestrowana: ${frequency} Hz`);
+        return true;
+    }
+
+    // Bezpieczna animacja z kontrolą częstotliwości
+    createSafeAnimation(element, duration, keyframes) {
+        const frequency = 1000 / duration; // Oblicz częstotliwość
+        
+        if (frequency > this.maxFrequency) {
+            console.warn(`Animacja za szybka (${frequency} Hz), dostosowuję do ${this.maxFrequency} Hz`);
+            duration = 1000 / this.maxFrequency; // Dostosuj czas trwania
+        }
+
+        const animation = element.animate(keyframes, {
+            duration: duration,
+            iterations: Infinity,
+            easing: 'ease-in-out'
+        });
+
+        this.registerAnimation(`auto-${Date.now()}`, 1000 / duration, element);
+        return animation;
+    }
+
+    // Blokuj niebezpieczną animację
+    blockAnimation(id, element) {
+        if (element) {
+            // Zatrzymaj wszystkie animacje CSS
+            element.style.animation = 'none';
+            element.style.transition = 'none';
+            
+            // Zatrzymaj animacje Web Animations API
+            element.getAnimations().forEach(animation => {
+                animation.cancel();
+            });
+        }
+
+        // Pokaż ostrzeżenie
+        this.showWarning(`Animacja "${id}" została zablokowana - przekraczała limit 3 Hz`);
+    }
+
+    // Monitoruj animacje CSS
+    monitorCSSAnimations() {
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+                    this.checkElementAnimations(mutation.target);
+                }
+            });
+        });
+
+        observer.observe(document.body, {
+            attributes: true,
+            subtree: true,
+            attributeFilter: ['style', 'class']
+        });
+    }
+
+    checkElementAnimations(element) {
+        const computedStyle = window.getComputedStyle(element);
+        const animationDuration = parseFloat(computedStyle.animationDuration);
+        
+        if (animationDuration && animationDuration > 0) {
+            const frequency = 1 / animationDuration;
+            if (frequency > this.maxFrequency) {
+                this.blockAnimation(`css-${element.className}`, element);
+            }
+        }
+    }
+
+    // Funkcja awaryjnego zatrzymania
+    setupEmergencyStop() {
+        // Skrót klawiszowy Ctrl+Shift+S
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.shiftKey && e.key === 'S') {
+                this.emergencyStopAll();
+            }
+        });
+
+        // Dodaj przycisk awaryjny
+        const stopButton = document.createElement('button');
+        stopButton.textContent = '⏹️ STOP (Ctrl+Shift+S)';
+        stopButton.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10000;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        `;
+        
+        stopButton.addEventListener('click', () => this.emergencyStopAll());
+        document.body.appendChild(stopButton);
+    }
+
+    emergencyStopAll() {
+        // Zatrzymaj wszystkie animacje CSS
+        const stopStyle = document.createElement('style');
+        stopStyle.id = 'emergency-stop-style';
+        stopStyle.textContent = `
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        `;
+        document.head.appendChild(stopStyle);
+
+        // Zatrzymaj wszystkie zarejestrowane animacje
+        this.animationRegistry.forEach((data, id) => {
+            if (data.element) {
+                data.element.getAnimations().forEach(animation => animation.cancel());
+            }
+        });
+
+        // Zatrzymaj wszystkie timery
+        for (let i = 1; i < 99999; i++) {
+            clearInterval(i);
+            clearTimeout(i);
+        }
+
+        this.showWarning('🛑 WSZYSTKIE ANIMACJE ZATRZYMANE - System bezpieczeństwa aktywowany');
+    }
+
+    showWarning(message) {
+        const warning = document.createElement('div');
+        warning.style.cssText = `
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 2px solid #f5c6cb;
+            padding: 15px 20px;
+            border-radius: 5px;
+            z-index: 10001;
+            font-weight: bold;
+            max-width: 80%;
+            text-align: center;
+        `;
+        warning.textContent = message;
+        document.body.appendChild(warning);
+
+        setTimeout(() => {
+            if (warning.parentNode) {
+                warning.parentNode.removeChild(warning);
+            }
+        }, 5000);
+    }
+
+    // Publiczna metoda do bezpiecznego tworzenia animacji
+    static createSafeFlash(element, options = {}) {
+        const monitor = new AnimationFrequencyMonitor();
+        const duration = Math.max(334, options.duration || 1000); // Minimum 334ms dla 3 Hz
+        
+        return monitor.createSafeAnimation(element, duration, [
+            { opacity: options.startOpacity || 1 },
+            { opacity: options.midOpacity || 0.7 },
+            { opacity: options.endOpacity || 1 }
+        ]);
+    }
+}
+
+// Inicjalizacja monitora
+const animationMonitor = new AnimationFrequencyMonitor();
+
+// Przykład użycia
+document.addEventListener('DOMContentLoaded', () => {
+    // Bezpieczne tworzenie animacji
+    const indicator = document.getElementById('safe-indicator');
+    if (indicator) {
+        AnimationFrequencyMonitor.createSafeFlash(indicator, {
+            duration: 1000, // 1 sekunda = 1 Hz
+            startOpacity: 1,
+            midOpacity: 0.5,
+            endOpacity: 1
+        });
+    }
+});</code></pre>
+
+                        <p class="explanation">Rozwiązanie: System automatycznie monitoruje częstotliwość wszystkich
+                            animacji i blokuje te, które przekraczają 3 Hz. Zawiera funkcje awaryjnego zatrzymania i
+                            narzędzia do bezpiecznego tworzenia animacji zgodnych z kryterium 2.3.2.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie zgodności z 2.3.2</h3>
+                <h4>Uproszczona procedura testowa</h4>
+                <p>Kryterium 2.3.2 ma znacznie prostszą procedurę testową niż 2.3.1:</p>
+                <ol>
+                    <li><strong>Zidentyfikuj wszystkie migające elementy</strong> na stronie</li>
+                    <li><strong>Zmierz częstotliwość migania</strong> każdego elementu</li>
+                    <li><strong>Sprawdź, czy żaden element nie miga częściej niż 3 razy na sekundę</strong></li>
+                    <li><strong>Nie wymagana analiza progów</strong> - prosta zasada 3 Hz</li>
+                </ol>
+
+                <h4>Narzędzia pomiarowe</h4>
+                <ul>
+                    <li><strong>Stoper + licznik ręczny</strong> - najprostszy sposób</li>
+                    <li><strong>Browser DevTools</strong> - analiza animacji CSS</li>
+                    <li><strong>PEAT</strong> - mimo że zaprojektowany dla 2.3.1, nadal użyteczny</li>
+                    <li><strong>Kalkulator częstotliwości</strong> - 1 / czas_trwania = częstotliwość</li>
+                </ul>
+
+                <h4>Kalkulator częstotliwości</h4>
+                <div
+                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <h5>Sprawdź zgodność swojej animacji:</h5>
+                    <p>Czas trwania jednego cyklu animacji: <input type="number" id="duration-input"
+                            placeholder="np. 500" style="padding: 5px; margin: 0 5px;"> ms</p>
+                    <button onclick="calculateFrequency()"
+                        style="background-color: #007bff; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">Oblicz
+                        częstotliwość</button>
+                    <p id="frequency-result" style="margin-top: 10px; font-weight: bold;"></p>
+                </div>
+
+                <script>
+                    function calculateFrequency() {
+                        const duration = parseFloat(document.getElementById('duration-input').value);
+                        const resultElement = document.getElementById('frequency-result');
+
+                        if (isNaN(duration) || duration <= 0) {
+                            resultElement.textContent = 'Proszę wprowadzić poprawny czas trwania.';
+                            resultElement.style.color = '#dc3545';
+                            return;
+                        }
+
+                        const frequency = 1000 / duration; // Przelicz ms na Hz
+
+                        if (frequency <= 3) {
+                            resultElement.textContent = `✅ Częstotliwość: ${frequency.toFixed(2)} Hz - ZGODNE z 2.3.2`;
+                            resultElement.style.color = '#28a745';
+                        } else {
+                            resultElement.textContent = `❌ Częstotliwość: ${frequency.toFixed(2)} Hz - NIEZGODNE z 2.3.2 (przekracza 3 Hz)`;
+                            resultElement.style.color = '#dc3545';
+                        }
+                    }
+                </script>
+            </div>
+
+            <div class="implementation-tips">
+                <h3>Wskazówki implementacyjne dla 2.3.2</h3>
+
+                <h4>Strategie zapewnienia zgodności:</h4>
+                <ul>
+                    <li><strong>Ustaw minimum 334ms</strong> dla czasu trwania animacji (1000ms / 3Hz = 333.33ms)</li>
+                    <li><strong>Używaj wolnych easing funkcji</strong> - ease-in-out zamiast linear</li>
+                    <li><strong>Preferuj animacje ciągłe</strong> zamiast migających</li>
+                    <li><strong>Testuj na etapie projektowania</strong> - nie na końcu</li>
+                    <li><strong>Dokumentuj częstotliwości</strong> wszystkich animacji w projekcie</li>
+                </ul>
+
+                <h4>CSS helper classes:</h4>
+                <pre><code class="language-css">/* Gotowe klasy zgodne z 2.3.2 */
+.aaa-safe-1hz { animation-duration: 1s; }      /* 1 Hz - bardzo bezpieczne */
+.aaa-safe-2hz { animation-duration: 0.5s; }    /* 2 Hz - bezpieczne */
+.aaa-safe-3hz { animation-duration: 0.334s; }  /* 3 Hz - na granicy, ale zgodne */
+
+/* NIGDY nie używaj tych klas */
+.aaa-unsafe-4hz { animation-duration: 0.25s; } /* 4 Hz - NIEDOZWOLONE */
+.aaa-unsafe-5hz { animation-duration: 0.2s; }  /* 5 Hz - NIEDOZWOLONE */</code></pre>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/three-flashes.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG 2.1: Trzy błyski</a></li>
+                    <li><a href="https://www.w3.org/TR/WCAG21/#dfn-flash" target="_blank" rel="noopener">Definicja
+                            "błysku" w WCAG 2.1</a></li>
+                    <li><a href="https://www.epilepsy.com/learn/triggers-seizures/photosensitivity-and-seizures"
+                            target="_blank" rel="noopener">Epilepsy Foundation: Photosensitivity and Seizures</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API" target="_blank"
+                            rel="noopener">MDN: Web Animations API</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.3.1.html">Poprzedni: 2.3.1 Trzy błyski lub poniżej progu</a></li>
+                    <li><a href="2.3.3.html">Następny: 2.3.3 Animacja z interakcji</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+
+    <style>
+        /* Bezpieczne animacje dla tej strony - wszystkie zgodne z 2.3.2 */
+        @keyframes safePulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            50% {
+                transform: scale(1.1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            50% {
+                transform: translateX(250%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        @keyframes breathe {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes gradientMove {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Wszystkie animacje mają minimum 334ms (3 Hz) */
+        .safe-slow {
+            animation-duration: 1s;
+        }
+
+        /* 1 Hz */
+        .safe-medium {
+            animation-duration: 0.5s;
+        }
+
+        /* 2 Hz */
+        .safe-fast {
+            animation-duration: 0.334s;
+        }
+
+        /* 3 Hz - maksymalna dozwolona */
+
+        /* Respektowanie preferencji użytkownika */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</body>
+
+</html>

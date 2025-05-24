@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.3.1 Trzy błyski lub poniżej progu (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.3.1 Trzy błyski lub poniżej progu</h2>
+                <p class="criterion-level">Poziom A</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#three-flashes-or-below-threshold" target="_blank"
+                            rel="noopener">Oficjalna dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="safety-warning"
+                style="background-color: #f8d7da; border: 2px solid #f5c6cb; padding: 20px; margin: 20px 0; border-radius: 5px;">
+                <h3 style="color: #721c24; margin-top: 0;">⚠️ OSTRZEŻENIE BEZPIECZEŃSTWA</h3>
+                <p style="color: #721c24; font-weight: bold;">Ta strona zawiera informacje o migających treściach. Nigdy
+                    nie testuj migających elementów na sobie ani na innych osobach. Używaj wyłącznie narzędzi
+                    automatycznych do analizy.</p>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Strony internetowe nie zawierają żadnych elementów, które migają więcej niż trzy razy w ciągu jednej
+                    sekundy, lub miganie znajduje się poniżej ogólnych progów wywołujących napady padaczkowe i czerwone
+                    błyski.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest umożliwienie użytkownikom z padaczką fotogenną dostępu do treści
+                    internetowych bez ryzyka wywoływania napadów. Migające światła w określonych częstotliwościach mogą
+                    wywołać napady padaczkowe u osób z padaczką fotogenną.</p>
+
+                <p>Szczególnie niebezpieczne są:</p>
+                <ul>
+                    <li><strong>Miganie częstsze niż 3 Hz</strong> (3 błyski na sekundę)</li>
+                    <li><strong>Czerwone błyski</strong> - szczególnie niebezpieczne</li>
+                    <li><strong>Duże obszary migających treści</strong> - powyżej 341 x 256 pikseli</li>
+                    <li><strong>Wysokie kontrasty</strong> - nagłe zmiany jasności</li>
+                </ul>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - niebezpieczne miganie</h4>
+                        <p>Element interfejsu, który miga zbyt szybko i może wywołać napady padaczkowe:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <p><strong>⚠️ Ten przykład jest WYŁĄCZONY ze względów bezpieczeństwa</strong></p>
+                                <div
+                                    style="background-color: #f8f8f8; border: 2px dashed #ccc; padding: 20px; text-align: center; color: #666;">
+                                    <p>Tutaj byłby element migający zbyt szybko</p>
+                                    <p>(NIGDY nie implementuj takiego kodu)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-css">/* NIGDY NIE UŻYWAJ - niebezpieczne miganie */
+.dangerous-flashing {
+    animation: dangerousFlash 0.1s infinite; /* 10 Hz - NIEBEZPIECZNE! */
+}
+
+@keyframes dangerousFlash {
+    0% { background-color: white; }
+    50% { background-color: red; }    /* Czerwone błyski są szczególnie niebezpieczne */
+    100% { background-color: white; }
+}</code></pre>
+
+                        <pre><code class="language-javascript">// NIGDY NIE UŻYWAJ - niebezpieczne miganie przez JavaScript
+function dangerousFlashing() {
+    const element = document.getElementById('flash-element');
+    let isRed = false;
+    
+    // Miganie co 50ms = 20 Hz - BARDZO NIEBEZPIECZNE!
+    setInterval(function() {
+        if (isRed) {
+            element.style.backgroundColor = 'white';
+        } else {
+            element.style.backgroundColor = 'red';
+        }
+        isRed = !isRed;
+    }, 50); // NIGDY nie używaj tak krótkich interwałów!
+}</code></pre>
+
+                        <p class="explanation">Problem: Element miga z częstotliwością 10 Hz (10 razy na sekundę), co
+                            znacznie przekracza bezpieczny próg 3 Hz. Dodatkowo używa czerwonych błysków, które są
+                            szczególnie niebezpieczne. Taki kod może wywołać napady padaczkowe u wrażliwych osób.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - bezpieczna animacja uwagi</h4>
+                        <p>Element interfejsu, który przyciąga uwagę bez ryzyka wywołania napadów:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div class="safe-attention"
+                                    style="padding: 15px; background-color: #e7f3ff; border: 2px solid #3498db; border-radius: 5px; animation: safeGlow 2s ease-in-out infinite;">
+                                    <h4 style="margin-top: 0; color: #2c3e50;">💡 Ważna informacja</h4>
+                                    <p style="margin-bottom: 0;">Ta wiadomość używa bezpiecznej animacji, która
+                                        przyciąga uwagę bez ryzyka napadów padaczkowych.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-css">/* Bezpieczna animacja - wolne, subtelne świecenie */
+.safe-attention {
+    animation: safeGlow 2s ease-in-out infinite;
+}
+
+@keyframes safeGlow {
+    0% { 
+        border-color: #3498db; 
+        box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+    }
+    50% { 
+        border-color: #2980b9; 
+        box-shadow: 0 0 15px rgba(52, 152, 219, 0.6);
+    }
+    100% { 
+        border-color: #3498db; 
+        box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+    }
+}
+
+/* Respektowanie preferencji użytkownika */
+@media (prefers-reduced-motion: reduce) {
+    .safe-attention {
+        animation: none;
+        border-color: #3498db;
+        box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+    }
+}</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Animacja trwa 2 sekundy (0.5 Hz), co jest znacznie poniżej
+                            bezpiecznego progu 3 Hz. Używa subtelnych zmian koloru zamiast ostrych przejść między jasnym
+                            a ciemnym. Dodatkowo respektuje preferencje użytkownika dotyczące redukcji ruchu.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - bezpieczny wskaźnik ładowania</h4>
+                        <p>Animowany wskaźnik postępu, który nie powoduje migania:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div style="margin-bottom: 15px;">
+                                    <label for="safe-progress">Bezpieczny wskaźnik postępu:</label>
+                                </div>
+                                <div
+                                    style="background-color: #f0f0f0; border-radius: 10px; height: 20px; overflow: hidden; position: relative;">
+                                    <div
+                                        style="background: linear-gradient(90deg, #4CAF50, #45a049); height: 100%; width: 60%; border-radius: 10px; position: relative;">
+                                        <div
+                                            style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation: progressShine 3s ease-in-out infinite;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="margin-top: 10px; text-align: center; font-size: 0.9em; color: #666;">
+                                    Ładowanie... 60%
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-css">/* Bezpieczny wskaźnik postępu */
+.progress-bar {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    height: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #4CAF50, #45a049);
+    height: 100%;
+    border-radius: 10px;
+    position: relative;
+    transition: width 0.3s ease; /* Płynne zmiany bez migania */
+}
+
+.progress-shine {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        transparent, 
+        rgba(255,255,255,0.3), 
+        transparent
+    );
+    animation: progressShine 3s ease-in-out infinite;
+}
+
+@keyframes progressShine {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Bezpieczny spinner - obracanie zamiast migania */
+.safe-spinner {
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Wskaźnik postępu używa płynnych przejść i obracających się
+                            elementów zamiast migania. Efekt "błysku" przesuwa się przez pasek w tempie 0.33 Hz (jeden
+                            cykl na 3 sekundy), co jest bezpieczne.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - ostrzeżenie przed migającą treścią</h4>
+                        <p>Implementacja ostrzeżenia przed treścią, która może zawierać miganie:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div id="seizure-warning"
+                                    style="background-color: #fff3cd; border: 2px solid #ffc107; padding: 20px; border-radius: 5px; margin-bottom: 20px;">
+                                    <h4 style="color: #856404; margin-top: 0;">⚠️ Ostrzeżenie o migających treściach
+                                    </h4>
+                                    <p style="color: #856404;">Poniższa treść może zawierać migające elementy. Jeśli
+                                        cierpisz na padaczkę fotogenną lub jesteś wrażliwy na migające światła, nie
+                                        oglądaj tej treści.</p>
+                                    <div style="margin-top: 15px;">
+                                        <button id="acknowledge-warning"
+                                            style="background-color: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 4px; margin-right: 10px; cursor: pointer;">Rozumiem
+                                            i chcę kontynuować</button>
+                                        <button id="skip-content"
+                                            style="background-color: #6c757d; color: white; border: none; padding: 10px 20px; border-radius: 4px; cursor: pointer;">Pomiń
+                                            tę treść</button>
+                                    </div>
+                                </div>
+
+                                <div id="protected-content"
+                                    style="display: none; background-color: #f8f9fa; padding: 20px; border-radius: 5px;">
+                                    <h4>Chroniona treść</h4>
+                                    <p>Tutaj byłaby treść, która może zawierać miganie (np. video, animacje, gry).</p>
+                                    <button
+                                        style="background-color: #dc3545; color: white; border: none; padding: 8px 16px; border-radius: 4px;">Zatrzymaj
+                                        wszystkie animacje</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-javascript">// System ostrzeżeń przed migającymi treściami
+class SeizureWarningSystem {
+    constructor() {
+        this.warningShown = false;
+        this.contentBlocked = true;
+        this.init();
+    }
+
+    init() {
+        this.setupWarningHandlers();
+        this.checkUserPreferences();
+    }
+
+    setupWarningHandlers() {
+        const acknowledgeBtn = document.getElementById('acknowledge-warning');
+        const skipBtn = document.getElementById('skip-content');
+
+        acknowledgeBtn?.addEventListener('click', () => {
+            this.acknowledgeWarning();
+        });
+
+        skipBtn?.addEventListener('click', () => {
+            this.skipContent();
+        });
+    }
+
+    acknowledgeWarning() {
+        // Zapisz decyzję użytkownika
+        localStorage.setItem('seizureWarningAcknowledged', 'true');
+        
+        // Ukryj ostrzeżenie i pokaż treść
+        document.getElementById('seizure-warning').style.display = 'none';
+        document.getElementById('protected-content').style.display = 'block';
+        
+        this.contentBlocked = false;
+        this.addEmergencyStop();
+    }
+
+    skipContent() {
+        // Przekieruj do bezpiecznej alternatywy
+        window.location.href = '#safe-alternative';
+    }
+
+    addEmergencyStop() {
+        // Dodaj możliwość natychmiastowego zatrzymania animacji
+        const stopButton = document.createElement('button');
+        stopButton.textContent = 'STOP - Zatrzymaj wszystkie animacje';
+        stopButton.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        `;
+        
+        stopButton.addEventListener('click', () => {
+            this.emergencyStop();
+        });
+        
+        document.body.appendChild(stopButton);
+    }
+
+    emergencyStop() {
+        // Zatrzymaj wszystkie animacje CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Zatrzymaj wszystkie video
+        document.querySelectorAll('video').forEach(video => {
+            video.pause();
+        });
+
+        // Zatrzymaj wszystkie timery JavaScript
+        for (let i = 1; i < 99999; i++) {
+            window.clearInterval(i);
+            window.clearTimeout(i);
+        }
+
+        alert('Wszystkie animacje zostały zatrzymane.');
+    }
+
+    checkUserPreferences() {
+        // Sprawdź preferencje systemowe
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            // Automatycznie blokuj migające treści
+            this.skipContent();
+        }
+
+        // Sprawdź wcześniejsze decyzje użytkownika
+        if (localStorage.getItem('seizureWarningAcknowledged') === 'true') {
+            // Nadal pokaż ostrzeżenie, ale z opcją szybkiego potwierdzenia
+            this.showQuickAcknowledge();
+        }
+    }
+
+    showQuickAcknowledge() {
+        const warning = document.getElementById('seizure-warning');
+        warning.innerHTML = `
+            <p><strong>Wcześniej zaakceptowałeś ostrzeżenie o migających treściach.</strong></p>
+            <button onclick="seizureWarning.acknowledgeWarning()">Kontynuuj</button>
+            <button onclick="seizureWarning.skipContent()">Pomiń</button>
+        `;
+    }
+}
+
+// Inicjalizacja systemu ostrzeżeń
+const seizureWarning = new SeizureWarningSystem();</code></pre>
+
+                        <p class="explanation">Rozwiązanie: System ostrzeżeń informuje użytkowników o potencjalnie
+                            niebezpiecznych treściach i daje im wybór. Zawiera funkcję awaryjnego zatrzymania wszystkich
+                            animacji oraz respektuje preferencje systemowe użytkownika dotyczące ruchu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie</h3>
+                <h4>Narzędzia do automatycznej analizy</h4>
+                <ul>
+                    <li><strong>PEAT (Photosensitive Epilepsy Analysis Tool)</strong> - darmowe narzędzie od Trace
+                        Center</li>
+                    <li><strong>FKA (Flash and Pattern Analyzer)</strong> - profesjonalne narzędzie do analizy</li>
+                    <li><strong>Web Developer Tools</strong> - sprawdzanie częstotliwości animacji CSS</li>
+                </ul>
+
+                <h4>Procedura testowa</h4>
+                <ol>
+                    <li>Zidentyfikuj wszystkie migające, błyskające lub szybko zmieniające się elementy</li>
+                    <li>Użyj narzędzi automatycznych do analizy częstotliwości migania</li>
+                    <li>Sprawdź, czy częstotliwość nie przekracza 3 Hz (3 błyski na sekundę)</li>
+                    <li>Zwróć szczególną uwagę na czerwone błyski</li>
+                    <li>Przetestuj na różnych rozmiarach ekranu - duże obszary są bardziej niebezpieczne</li>
+                    <li>Upewnij się, że użytkownicy są ostrzegani przed problematycznymi treściami</li>
+                </ol>
+
+                <h4>⚠️ Ważne zasady bezpieczeństwa podczas testowania</h4>
+                <ul>
+                    <li><strong>NIGDY nie testuj migających treści na sobie</strong></li>
+                    <li><strong>NIGDY nie proś innych o testowanie migających treści</strong></li>
+                    <li><strong>Używaj WYŁĄCZNIE narzędzi automatycznych</strong></li>
+                    <li>W przypadku wątpliwości, usuń migające elementy całkowicie</li>
+                </ul>
+            </div>
+
+            <div class="technical-details">
+                <h3>Szczegóły techniczne</h3>
+                <h4>Progi bezpieczeństwa według WCAG:</h4>
+                <ul>
+                    <li><strong>Ogólny próg migania:</strong> maksymalnie 3 błyski na sekundę</li>
+                    <li><strong>Próg dla czerwonych błysków:</strong> znacznie niższy niż dla innych kolorów</li>
+                    <li><strong>Rozmiar obszaru:</strong> miganie w obszarze większym niż 341 x 256 pikseli jest
+                        bardziej niebezpieczne</li>
+                    <li><strong>Kontrast względny:</strong> zmiana jasności powyżej 10% może być problematyczna przy
+                        wysokich częstotliwościach</li>
+                </ul>
+
+                <h4>Bezpieczne alternatywy dla migania:</h4>
+                <ul>
+                    <li><strong>Fade in/out:</strong> płynne pojawianie się i znikanie</li>
+                    <li><strong>Obracanie:</strong> animacje rotacyjne</li>
+                    <li><strong>Przesuwanie:</strong> płynne ruchy translacyjne</li>
+                    <li><strong>Skalowanie:</strong> stopniowe zmiany rozmiaru</li>
+                    <li><strong>Zmiana koloru:</strong> płynne przejścia między kolorami</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/three-flashes-or-below-threshold.html"
+                            target="_blank" rel="noopener">Zrozumieć WCAG 2.1: Trzy błyski lub poniżej progu</a></li>
+                    <li><a href="https://trace.umd.edu/peat/" target="_blank" rel="noopener">PEAT - Photosensitive
+                            Epilepsy Analysis Tool</a></li>
+                    <li><a href="https://www.epilepsy.com/learn/triggers-seizures/photosensitivity-and-seizures"
+                            target="_blank" rel="noopener">Epilepsy Foundation: Photosensitivity and Seizures</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"
+                            target="_blank" rel="noopener">MDN: prefers-reduced-motion</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.3.html">Poprzedni: 2.3 Ataki padaczki i reakcje fizyczne</a></li>
+                    <li><a href="2.3.2.html">Następny: 2.3.2 Trzy błyski</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+
+    <style>
+        /* Bezpieczne styles dla animacji na tej stronie */
+        @keyframes safeGlow {
+            0% {
+                border-color: #3498db;
+                box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+            }
+
+            50% {
+                border-color: #2980b9;
+                box-shadow: 0 0 15px rgba(52, 152, 219, 0.6);
+            }
+
+            100% {
+                border-color: #3498db;
+                box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+            }
+        }
+
+        @keyframes progressShine {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        /* Respektowanie preferencji użytkownika */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</body>
+
+</html>

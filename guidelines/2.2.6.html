@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.2.6 Ostrzeżenie o limicie czasu (AAA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.2.6 Ostrzeżenie o limicie czasu</h2>
+                <p class="criterion-level">Poziom AAA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#timeouts" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Użytkownicy są informowani o czasie trwania wszelkich limitów czasowych związanych z aktywnością
+                    użytkownika, chyba że:</p>
+                <ul>
+                    <li>Dane są zachowywane przez ponad 20 godzin, gdy użytkownik nie podejmuje żadnych działań.</li>
+                </ul>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest zapewnienie użytkownikom jasnej informacji o tym, ile czasu mają na
+                    wykonanie zadania, zanim utracą swoje dane lub sesja zostanie zakończona. To szczególnie ważne dla
+                    osób z niepełnosprawnościami poznawczymi, które mogą potrzebować więcej czasu na zrozumienie
+                    instrukcji lub wypełnienie formularzy.</p>
+
+                <p>Informowanie użytkowników o limitach czasowych pozwala im lepiej planować swoje działania i zmniejsza
+                    stres związany z nieoczekiwanym utratą danych lub zakończeniem sesji.</p>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - brak informacji o limicie czasowym</h4>
+                        <p>Formularz rejestracji na kurs, który automatycznie czyści dane po 15 minutach nieaktywności,
+                            ale nie informuje o tym użytkownika:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <h4 style="margin-top: 0;">Rejestracja na kurs</h4>
+                                <form>
+                                    <label for="name">Imię i nazwisko:</label>
+                                    <input type="text" id="name" name="name"
+                                        style="width: 100%; margin-bottom: 10px; padding: 5px;">
+
+                                    <label for="email">Email:</label>
+                                    <input type="email" id="email" name="email"
+                                        style="width: 100%; margin-bottom: 10px; padding: 5px;">
+
+                                    <label for="course">Wybierz kurs:</label>
+                                    <select id="course" name="course"
+                                        style="width: 100%; margin-bottom: 10px; padding: 5px;">
+                                        <option value="">-- Wybierz kurs --</option>
+                                        <option value="js">JavaScript dla początkujących</option>
+                                        <option value="react">React - podstawy</option>
+                                        <option value="node">Node.js - backend</option>
+                                    </select>
+
+                                    <button type="submit"
+                                        style="background-color: #007cba; color: white; padding: 10px 20px; border: none; border-radius: 4px;">Zarejestruj
+                                        się</button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-javascript">// JavaScript bez informowania o limicie czasowym
+let inactivityTimer;
+
+function startInactivityTimer() {
+    inactivityTimer = setTimeout(function() {
+        // Usuń wszystkie dane formularza po 15 minutach
+        document.querySelector('form').reset();
+        sessionStorage.clear();
+        
+        alert('Sesja wygasła. Formularz został wyczyszczony.');
+    }, 15 * 60 * 1000); // 15 minut
+}
+
+function resetInactivityTimer() {
+    clearTimeout(inactivityTimer);
+    startInactivityTimer();
+}
+
+// Nasłuchiwanie aktywności użytkownika
+document.addEventListener('input', resetInactivityTimer);
+document.addEventListener('click', resetInactivityTimer);
+
+// Uruchomienie timera
+window.onload = startInactivityTimer;</code></pre>
+
+                        <p class="explanation">Problem: Użytkownik nie jest informowany o tym, że formularz będzie
+                            wyczyszczony po 15 minutach nieaktywności. Może to prowadzić do frustracji i utraty danych,
+                            szczególnie dla osób, które potrzebują więcej czasu na wypełnienie formularza.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - jasna informacja o limicie czasowym</h4>
+                        <p>Formularz rejestracyjny z wyraźną informacją o limicie czasowym i możliwością przedłużenia
+                            sesji:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div id="timeout-info"
+                                    style="background-color: #e7f3ff; border: 1px solid #b3d9ff; padding: 15px; margin-bottom: 20px; border-radius: 4px;">
+                                    <h4 style="margin-top: 0; color: #0066cc;">ℹ️ Informacja o czasie sesji</h4>
+                                    <p style="margin-bottom: 10px;">Ze względów bezpieczeństwa, Twoja sesja wygaśnie po
+                                        <strong>15 minutach</strong> nieaktywności. Zostaniesz ostrzeżony na 2 minuty
+                                        przed wygaśnięciem.</p>
+                                    <p style="margin-bottom: 0;">Pozostały czas: <strong
+                                            id="remaining-time">15:00</strong></p>
+                                </div>
+
+                                <h4 style="margin-top: 0;">Rejestracja na kurs</h4>
+                                <form>
+                                    <label for="name2">Imię i nazwisko:</label>
+                                    <input type="text" id="name2" name="name"
+                                        style="width: 100%; margin-bottom: 10px; padding: 5px;">
+
+                                    <label for="email2">Email:</label>
+                                    <input type="email" id="email2" name="email"
+                                        style="width: 100%; margin-bottom: 10px; padding: 5px;">
+
+                                    <label for="course2">Wybierz kurs:</label>
+                                    <select id="course2" name="course"
+                                        style="width: 100%; margin-bottom: 10px; padding: 5px;">
+                                        <option value="">-- Wybierz kurs --</option>
+                                        <option value="js">JavaScript dla początkujących</option>
+                                        <option value="react">React - podstawy</option>
+                                        <option value="node">Node.js - backend</option>
+                                    </select>
+
+                                    <button type="submit"
+                                        style="background-color: #007cba; color: white; padding: 10px 20px; border: none; border-radius: 4px;">Zarejestruj
+                                        się</button>
+                                </form>
+
+                                <div id="warning-modal"
+                                    style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; border: 2px solid #ff6b35; padding: 20px; border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); z-index: 1000;">
+                                    <h4 style="margin-top: 0; color: #ff6b35;">⚠️ Ostrzeżenie o wygaśnięciu sesji</h4>
+                                    <p>Twoja sesja wygaśnie za <strong id="warning-countdown">2:00</strong>.</p>
+                                    <p>Czy chcesz przedłużyć sesję?</p>
+                                    <button id="extend-session"
+                                        style="background-color: #28a745; color: white; padding: 8px 16px; border: none; border-radius: 4px; margin-right: 10px;">Przedłuż
+                                        sesję</button>
+                                    <button id="save-draft"
+                                        style="background-color: #6c757d; color: white; padding: 8px 16px; border: none; border-radius: 4px;">Zapisz
+                                        szkic</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-javascript">// JavaScript z pełną informacją o limicie czasowym
+let sessionTimeoutId;
+let warningTimeoutId;
+let countdownInterval;
+let totalSessionTime = 15 * 60; // 15 minut w sekundach
+let warningTime = 2 * 60; // Ostrzeżenie na 2 minuty przed
+let timeLeft = totalSessionTime;
+
+function updateRemainingTimeDisplay() {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    const timeString = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    document.getElementById('remaining-time').textContent = timeString;
+    
+    // Zmień kolor gdy zostaje mało czasu
+    const timeElement = document.getElementById('remaining-time');
+    if (timeLeft <= warningTime) {
+        timeElement.style.color = '#ff6b35';
+    } else if (timeLeft <= warningTime + 60) {
+        timeElement.style.color = '#ffa500';
+    } else {
+        timeElement.style.color = '#28a745';
+    }
+}
+
+function startSessionCountdown() {
+    countdownInterval = setInterval(function() {
+        timeLeft--;
+        updateRemainingTimeDisplay();
+        
+        if (timeLeft <= 0) {
+            clearInterval(countdownInterval);
+        }
+    }, 1000);
+}
+
+function startSessionTimeout() {
+    timeLeft = totalSessionTime;
+    updateRemainingTimeDisplay();
+    startSessionCountdown();
+    
+    // Ustaw ostrzeżenie
+    warningTimeoutId = setTimeout(function() {
+        showWarningModal();
+    }, (totalSessionTime - warningTime) * 1000);
+    
+    // Ustaw automatyczne zakończenie sesji
+    sessionTimeoutId = setTimeout(function() {
+        endSession();
+    }, totalSessionTime * 1000);
+}
+
+function showWarningModal() {
+    const modal = document.getElementById('warning-modal');
+    modal.style.display = 'block';
+    
+    // Rozpocznij odliczanie ostrzeżenia
+    let warningTimeLeft = warningTime;
+    const warningCountdown = setInterval(function() {
+        warningTimeLeft--;
+        const minutes = Math.floor(warningTimeLeft / 60);
+        const seconds = warningTimeLeft % 60;
+        const timeString = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        document.getElementById('warning-countdown').textContent = timeString;
+        
+        if (warningTimeLeft <= 0) {
+            clearInterval(warningCountdown);
+        }
+    }, 1000);
+}
+
+function extendSession() {
+    // Ukryj modal ostrzeżenia
+    document.getElementById('warning-modal').style.display = 'none';
+    
+    // Wyczyść istniejące timery
+    clearTimeout(warningTimeoutId);
+    clearTimeout(sessionTimeoutId);
+    clearInterval(countdownInterval);
+    
+    // Rozpocznij nową sesję
+    startSessionTimeout();
+    
+    console.log('Sesja została przedłużona o kolejne 15 minut');
+}
+
+function saveDraft() {
+    // Zapisz dane formularza
+    const formData = {
+        name: document.getElementById('name2').value,
+        email: document.getElementById('email2').value,
+        course: document.getElementById('course2').value,
+        timestamp: new Date().toISOString()
+    };
+    
+    localStorage.setItem('courseRegistrationDraft', JSON.stringify(formData));
+    document.getElementById('warning-modal').style.display = 'none';
+    
+    alert('Szkic został zapisany. Możesz wrócić później i dokończyć rejestrację.');
+}
+
+function endSession() {
+    document.getElementById('warning-modal').style.display = 'none';
+    clearInterval(countdownInterval);
+    
+    // Automatycznie zapisz szkic przed zakończeniem sesji
+    saveDraft();
+    
+    alert('Sesja wygasła. Twoje dane zostały zapisane jako szkic.');
+}
+
+function resetSessionTimeout() {
+    if (document.getElementById('warning-modal').style.display !== 'block') {
+        clearTimeout(warningTimeoutId);
+        clearTimeout(sessionTimeoutId);
+        clearInterval(countdownInterval);
+        startSessionTimeout();
+    }
+}
+
+// Event listenery
+document.getElementById('extend-session').addEventListener('click', extendSession);
+document.getElementById('save-draft').addEventListener('click', saveDraft);
+
+// Nasłuchiwanie aktywności użytkownika
+document.addEventListener('input', resetSessionTimeout);
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('#warning-modal')) {
+        resetSessionTimeout();
+    }
+});
+
+// Wczytaj zapisany szkic przy ładowaniu strony
+window.onload = function() {
+    const savedDraft = localStorage.getItem('courseRegistrationDraft');
+    if (savedDraft) {
+        const formData = JSON.parse(savedDraft);
+        if (confirm('Znaleziono zapisany szkic. Czy chcesz go wczytać?')) {
+            document.getElementById('name2').value = formData.name || '';
+            document.getElementById('email2').value = formData.email || '';
+            document.getElementById('course2').value = formData.course || '';
+        }
+    }
+    
+    startSessionTimeout();
+};</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Użytkownik jest od razu informowany o limicie czasowym sesji
+                            (15 minut). System wyświetla licznik czasu, ostrzega na 2 minuty przed wygaśnięciem i
+                            oferuje opcje przedłużenia sesji lub zapisania szkicu. To pozwala użytkownikom lepiej
+                            planować swoją pracę i nie tracić danych.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - długoterminowe przechowywanie danych</h4>
+                        <p>System zarządzania dokumentami, który przechowuje dane przez 24 godziny i informuje o tym
+                            użytkownika:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; margin-bottom: 20px; border-radius: 4px;">
+                                    <h4 style="margin-top: 0; color: #155724;">✅ Automatyczne zapisywanie</h4>
+                                    <p style="margin-bottom: 5px;">Twoje zmiany są automatycznie zapisywane co 30
+                                        sekund.</p>
+                                    <p style="margin-bottom: 0;">Dokumenty są przechowywane przez <strong>24
+                                            godziny</strong> od ostatniej modyfikacji.</p>
+                                </div>
+
+                                <h4 style="margin-top: 0;">Edytor dokumentów</h4>
+                                <textarea
+                                    style="width: 100%; height: 150px; padding: 10px; border: 1px solid #ccc; border-radius: 4px;"
+                                    placeholder="Wpisz treść dokumentu...">Przykładowa treść dokumentu...</textarea>
+
+                                <div style="margin-top: 10px; font-size: 0.9em; color: #666;">
+                                    Ostatnie zapisanie: <span id="last-saved">właśnie teraz</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-javascript">// System z długoterminowym przechowywaniem danych
+let autoSaveInterval;
+let lastSaveTime = new Date();
+
+function autoSaveDocument() {
+    const content = document.querySelector('textarea').value;
+    
+    // Zapisz do localStorage z timestampem
+    const documentData = {
+        content: content,
+        lastModified: new Date().toISOString(),
+        expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString() // 24 godziny
+    };
+    
+    localStorage.setItem('document_draft', JSON.stringify(documentData));
+    
+    // Aktualizuj informację o ostatnim zapisaniu
+    lastSaveTime = new Date();
+    updateLastSavedDisplay();
+    
+    console.log('Dokument został automatycznie zapisany');
+}
+
+function updateLastSavedDisplay() {
+    const now = new Date();
+    const timeDiff = Math.floor((now - lastSaveTime) / 1000);
+    
+    let timeText;
+    if (timeDiff < 60) {
+        timeText = 'właśnie teraz';
+    } else if (timeDiff < 3600) {
+        const minutes = Math.floor(timeDiff / 60);
+        timeText = `${minutes} ${minutes === 1 ? 'minutę' : 'minut'} temu`;
+    } else {
+        const hours = Math.floor(timeDiff / 3600);
+        timeText = `${hours} ${hours === 1 ? 'godzinę' : 'godzin'} temu`;
+    }
+    
+    document.getElementById('last-saved').textContent = timeText;
+}
+
+function startAutoSave() {
+    // Zapisuj co 30 sekund
+    autoSaveInterval = setInterval(autoSaveDocument, 30000);
+    
+    // Aktualizuj czas ostatniego zapisu co sekundę
+    setInterval(updateLastSavedDisplay, 1000);
+}
+
+function loadSavedDocument() {
+    const savedData = localStorage.getItem('document_draft');
+    if (savedData) {
+        const documentData = JSON.parse(savedData);
+        const expiresAt = new Date(documentData.expiresAt);
+        
+        if (new Date() < expiresAt) {
+            // Dokument jeszcze nie wygasł
+            document.querySelector('textarea').value = documentData.content;
+            lastSaveTime = new Date(documentData.lastModified);
+            updateLastSavedDisplay();
+        } else {
+            // Dokument wygasł - usuń go
+            localStorage.removeItem('document_draft');
+        }
+    }
+}
+
+// Zapisuj przy każdej zmianie treści
+document.querySelector('textarea').addEventListener('input', function() {
+    clearInterval(autoSaveInterval);
+    startAutoSave();
+});
+
+// Wczytaj zapisany dokument przy ładowaniu strony
+window.onload = function() {
+    loadSavedDocument();
+    startAutoSave();
+};</code></pre>
+
+                        <p class="explanation">Rozwiązanie: System informuje użytkownika o automatycznym zapisywaniu i
+                            czasie przechowywania danych (24 godziny). Ponieważ dane są przechowywane dłużej niż 20
+                            godzin, nie ma konieczności ostrzegania o limitach czasowych zgodnie z wyjątkiem w kryterium
+                            2.2.6.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie</h3>
+                <h4>Procedura testowa</h4>
+                <ol>
+                    <li>Zidentyfikuj wszystkie funkcje na stronie, które mają limity czasowe</li>
+                    <li>Sprawdź, czy użytkownicy są informowani o czasie trwania tych limitów</li>
+                    <li>Upewnij się, że informacja o limicie czasowym jest przedstawiona w sposób jasny i zrozumiały
+                    </li>
+                    <li>Sprawdź, czy informacja jest dostępna przed rozpoczęciem działania, które podlega limitowi
+                        czasowemu</li>
+                    <li>Dla systemów z długoterminowym przechowywaniem (ponad 20 godzin), sprawdź czy ta informacja jest
+                        przekazana użytkownikowi</li>
+                </ol>
+
+                <h4>Kto może mieć problemy?</h4>
+                <ul>
+                    <li><strong>Osoby z niepełnosprawnościami poznawczymi</strong> - mogą potrzebować więcej czasu na
+                        zrozumienie zadania i planowanie działań</li>
+                    <li><strong>Osoby z niepełnosprawnościami motorycznymi</strong> - mogą potrzebować więcej czasu na
+                        nawigację i wprowadzanie danych</li>
+                    <li><strong>Osoby starsze</strong> - mogą działać wolniej i potrzebować więcej czasu na wykonanie
+                        zadań online</li>
+                    <li><strong>Początkujący użytkownicy komputerów</strong> - mogą potrzebować więcej czasu na
+                        zrozumienie interfejsu</li>
+                    <li><strong>Osoby używające technologii wspomagających</strong> - nawigacja za pomocą czytnika
+                        ekranu może być czasochłonna</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/timeouts.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG 2.1: Ostrzeżenie o limicie czasu</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G198" target="_blank"
+                            rel="noopener">Technika G198: Zapewnienie użytkownikowi sposobu na wyłączenie limitu
+                            czasowego</a></li>
+                    <li><a href="https://webaim.org/articles/cognitive/design/#timeouts" target="_blank"
+                            rel="noopener">WebAIM: Projektowanie dostępności poznawczej - Limity czasowe</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.2.5.html">Poprzedni: 2.2.5 Ponowne potwierdzenie autentyczności</a></li>
+                    <li><a href="../wytyczne.html">Powrót do spisu wytycznych</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

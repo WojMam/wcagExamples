@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.3 Ataki padaczki i reakcje fizyczne - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>2.3 Ataki padaczki i reakcje fizyczne</h1>
+            <p>Wytyczna ta zapewnia, że treść nie powoduje napadów padaczkowych lub innych reakcji fizycznych.</p>
+        </div>
+
+        <section class="guideline-description">
+            <h2>Opis wytycznej</h2>
+            <p>Niektóre osoby z padaczką fotogenną mogą doświadczyć napadów wywołanych przez migające lub błyskające
+                treści. Miganie w określonych częstotliwościach może wywoływać napady padaczkowe nawet u osób, które
+                wcześniej ich nie doświadczyły.</p>
+
+            <p>Ta wytyczna zapewnia, że treść nie zawiera elementów, które migają więcej niż trzy razy w ciągu jednej
+                sekundy, lub że miganie znajduje się poniżej ogólnych progów wywołujących napady padaczkowe.</p>
+
+            <p>Dodatkowo, niektóre rodzaje ruchów lub wzorców wizualnych mogą wywoływać reakcje vestibuularne (związane
+                z układem równowagi), powodując zawroty głowy, nudności lub dezorientację.</p>
+        </section>
+
+        <section class="criteria-overview">
+            <h2>Kryteria sukcesu</h2>
+            <ul class="criteria-list">
+                <li><a href="2.3.1.html">2.3.1 Trzy błyski lub poniżej progu (A)</a></li>
+                <li><a href="2.3.2.html">2.3.2 Trzy błyski (AAA)</a></li>
+                <li><a href="2.3.3.html">2.3.3 Animacja z interakcji (AAA)</a></li>
+            </ul>
+        </section>
+
+        <section class="important-note">
+            <h2>⚠️ Ważne uwagi bezpieczeństwa</h2>
+            <div class="warning-box"
+                style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                <h3 style="color: #856404; margin-top: 0;">Ostrzeżenie dotyczące bezpieczeństwa</h3>
+                <ul style="color: #856404;">
+                    <li><strong>Nigdy nie testuj migających treści na sobie ani na innych osobach</strong> - może to być
+                        niebezpieczne</li>
+                    <li>Używaj wyłącznie narzędzi automatycznych do analizy migających treści</li>
+                    <li>W przypadku wątpliwości, unikaj stosowania migających elementów całkowicie</li>
+                    <li>Zawsze umieść ostrzeżenia przed treściami, które mogą zawierać miganie</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="common-triggers">
+            <h2>Typowe wyzwalacze napadów</h2>
+            <h3>Elementy mogące powodować napady padaczkowe:</h3>
+            <ul>
+                <li><strong>Migające obrazy</strong> - częstotliwość powyżej 3 Hz (3 błyski na sekundę)</li>
+                <li><strong>Błyskające światła</strong> - szczególnie w kolorach czerwonym i niebieskim</li>
+                <li><strong>Szybko zmieniające się kolory</strong> - kontrastowe przejścia</li>
+                <li><strong>Stroboskopowe efekty</strong> - regularne, szybkie zmiany jasności</li>
+                <li><strong>Szybkie ruchy kamery</strong> - w materiałach wideo</li>
+                <li><strong>Geometryczne wzory</strong> - regularnie powtarzające się paski lub kratki</li>
+            </ul>
+
+            <h3>Elementy mogące powodować reakcje vestibularne:</h3>
+            <ul>
+                <li><strong>Animacje paralaksy</strong> - przesuwające się warstwy z różną prędkością</li>
+                <li><strong>Zoom i obracanie</strong> - szybkie zmiany skali lub orientacji</li>
+                <li><strong>Animacje przejść</strong> - intensywne efekty przy zmianie stron</li>
+                <li><strong>Auto-play video</strong> - automatycznie odtwarzane materiały z ruchem</li>
+            </ul>
+        </section>
+
+        <section class="prevention-strategies">
+            <h2>Strategie zapobiegania</h2>
+            <h3>Najlepsze praktyki:</h3>
+            <ul>
+                <li><strong>Unikaj migających elementów</strong> - jeśli nie są absolutnie konieczne</li>
+                <li><strong>Testuj częstotliwość migania</strong> - upewnij się, że jest poniżej 3 Hz</li>
+                <li><strong>Dodaj kontrolę użytkownika</strong> - pozwól wyłączyć animacje</li>
+                <li><strong>Przestrzegaj preferencji systemu</strong> - obsłuż `prefers-reduced-motion`</li>
+                <li><strong>Umieść ostrzeżenia</strong> - informuj o potencjalnie problematycznych treściach</li>
+                <li><strong>Zapewnij alternatywy</strong> - oferuj statyczne wersje animowanych treści</li>
+            </ul>
+        </section>
+
+        <section class="css-support">
+            <h2>Wsparcie CSS dla dostępności ruchu</h2>
+            <pre><code class="language-css">/* Respektowanie preferencji użytkownika dotyczących ruchu */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Bezpieczne animacje - wolne i subtelne */
+.safe-animation {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Unikaj szybkich migań */
+.avoid-flashing {
+    /* Nigdy nie używaj animacji szybszych niż 3 klatki na sekundę */
+    animation-duration: 2s; /* minimum dla bezpieczeństwa */
+}</code></pre>
+        </section>
+
+        <section class="additional-resources">
+            <h2>Dodatkowe zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/seizures-and-physical-reactions"
+                        target="_blank" rel="noopener">Understanding Success Criterion 2.3 (W3C)</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/three-flashes-or-below-threshold.html"
+                        target="_blank" rel="noopener">Understanding Three Flashes or Below Threshold</a></li>
+                <li><a href="https://www.epilepsy.com/learn/triggers-seizures/photosensitivity-and-seizures"
+                        target="_blank" rel="noopener">Epilepsy Foundation: Photosensitivity and Seizures</a></li>
+                <li><a href="https://vestibular.org/article/managing-motion-sensitivity/" target="_blank"
+                        rel="noopener">Vestibular Disorders Association: Managing Motion Sensitivity</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"
+                        target="_blank" rel="noopener">MDN: prefers-reduced-motion</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

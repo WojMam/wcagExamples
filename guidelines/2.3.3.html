@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.3.3 Animacja z interakcji (AAA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.3.3 Animacja z interakcji</h2>
+                <p class="criterion-level">Poziom AAA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#animation-from-interactions" target="_blank"
+                            rel="noopener">Oficjalna dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="safety-warning"
+                style="background-color: #fff3cd; border: 2px solid #ffeaa7; padding: 20px; margin: 20px 0; border-radius: 5px;">
+                <h3 style="color: #856404; margin-top: 0;">⚠️ Uwaga dotycząca bezpieczeństwa</h3>
+                <p style="color: #856404; font-weight: bold;">Animacje mogą powodować zawroty głowy, nudności i
+                    dezorientację u osób z zaburzeniami vestibulanymi. Zawsze zapewnij możliwość wyłączenia animacji.
+                </p>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Animacja wywołana przez interakcję może zostać wyłączona, chyba że animacja jest niezbędna do
+                    funkcjonalności lub do przekazania informacji.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest umożliwienie użytkownikom wyłączenia animacji, które nie są
+                    niezbędne do funkcjonowania strony. Niektóre osoby doświadczają zawrotów głowy, nudności, bólu głowy
+                    lub innych objawów przy oglądaniu animacji ruchu.</p>
+
+                <p>Wytyczna ta koncentruje się na <strong>animacjach wywoływanych przez interakcje użytkownika</strong>,
+                    takich jak:</p>
+                <ul>
+                    <li>Animacje przejść między stronami</li>
+                    <li>Efekty hover i focus</li>
+                    <li>Animacje parallax podczas przewijania</li>
+                    <li>Zmiany orientacji i zoom</li>
+                    <li>Animowane menu i modalne okna</li>
+                    <li>Efekty przeciągania i upuszczania</li>
+                </ul>
+
+                <h3>Kiedy animacja jest "niezbędna"?</h3>
+                <div
+                    style="background-color: #d1ecf1; border: 1px solid #bee5eb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h4 style="color: #0c5460; margin-top: 0;">Animacje niezbędne (można pozostawić):</h4>
+                    <ul style="color: #0c5460;">
+                        <li><strong>Wskaźniki postępu</strong> - pokazują stan ładowania lub przetwarzania</li>
+                        <li><strong>Informacje o stanie</strong> - animowane ikony błędów, sukcesu</li>
+                        <li><strong>Przewijanie do treści</strong> - orientowanie użytkownika w przestrzeni</li>
+                        <li><strong>Animacje danych</strong> - wykresy, diagramy pokazujące zmiany wartości</li>
+                    </ul>
+                </div>
+
+                <div
+                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h4 style="color: #721c24; margin-top: 0;">Animacje nieniezbędne (powinny być wyłączalne):</h4>
+                    <ul style="color: #721c24;">
+                        <li><strong>Animacje dekoracyjne</strong> - elementy estetyczne bez funkcji informacyjnej</li>
+                        <li><strong>Efekty parallax</strong> - ruchy tła podczas przewijania</li>
+                        <li><strong>Animowane przejścia</strong> - między stronami lub sekcjami</li>
+                        <li><strong>Hover effects</strong> - animacje przy najechaniu myszą</li>
+                        <li><strong>Efekty zoom</strong> - powiększanie/zmniejszanie bez funkcji</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - problematyczna animacja parallax</h4>
+                        <p>Efekt parallax bez możliwości wyłączenia, który może powodować zawroty głowy:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <p><strong>⚠️ Ten przykład jest OGRANICZONY ze względów bezpieczeństwa</strong></p>
+                                <div id="bad-parallax-container"
+                                    style="height: 200px; overflow-y: scroll; position: relative; background: linear-gradient(45deg, #ff9a9e, #fad0c4); border-radius: 5px;">
+                                    <div style="padding: 20px; text-align: center; color: white; font-weight: bold;">
+                                        <p>Przewijaj, aby zobaczyć efekt parallax</p>
+                                        <p style="margin-top: 100px;">Ten efekt może powodować zawroty głowy</p>
+                                        <p style="margin-top: 100px;">Brak możliwości wyłączenia!</p>
+                                        <p style="margin-top: 100px;">To narusza kryterium 2.3.3</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-css">/* ZŁY PRZYKŁAD - parallax bez kontroli użytkownika */
+.parallax-container {
+    height: 100vh;
+    overflow-y: scroll;
+    perspective: 1px;
+}
+
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateZ(-1px) scale(2);
+    /* Zawsze aktywny parallax - PROBLEMA! */
+}
+
+/* Brak wsparcia dla prefers-reduced-motion */</code></pre>
+
+                        <pre><code class="language-javascript">// ZŁY PRZYKŁAD - wymuszone animacje
+function problematicParallax() {
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallaxElements = document.querySelectorAll('.parallax');
+        
+        parallaxElements.forEach(element => {
+            // Animacja bez możliwości wyłączenia
+            const speed = element.dataset.speed;
+            element.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+    });
+}
+
+// Brak sprawdzania preferencji użytkownika
+problematicParallax();</code></pre>
+
+                        <p class="explanation">Problem: Animacja parallax jest zawsze aktywna, bez możliwości wyłączenia
+                            przez użytkownika. Nie sprawdza preferencji systemowych ani nie oferuje własnych kontrolek.
+                            Może powodować zawroty głowy i nudności u osób z zaburzeniami vestibulanymi.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - kontrolowalne animacje z preferencjami użytkownika</h4>
+                        <p>System animacji z pełną kontrolą użytkownika:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div class="animation-controls"
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin-bottom: 20px;">
+                                    <h5 style="margin-top: 0; color: #004085;">Kontrola animacji</h5>
+                                    <label style="display: block; margin: 10px 0; color: #004085;">
+                                        <input type="checkbox" id="enable-animations" checked
+                                            style="margin-right: 8px;">
+                                        Włącz animacje (możesz wyłączyć w każdej chwili)
+                                    </label>
+                                    <label style="display: block; margin: 10px 0; color: #004085;">
+                                        <input type="checkbox" id="enable-parallax" style="margin-right: 8px;">
+                                        Włącz efekty parallax (może powodować zawroty głowy)
+                                    </label>
+                                    <p style="color: #004085; font-size: 0.9em; margin: 10px 0;">
+                                        Status preferencji systemowych: <span id="motion-preference">Sprawdzam...</span>
+                                    </p>
+                                </div>
+
+                                <div class="demo-area">
+                                    <button id="demo-button" class="controlled-animation"
+                                        style="background-color: #28a745; color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; margin: 10px;">
+                                        Przycisk z animacją hover
+                                    </button>
+
+                                    <div id="demo-card" class="controlled-animation"
+                                        style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 10px 0; cursor: pointer;">
+                                        <h6 style="margin-top: 0;">Kliknij, aby zobaczyć animację</h6>
+                                        <p style="margin-bottom: 0;">Ta karta ma animowane przejścia</p>
+                                    </div>
+
+                                    <div id="parallax-demo"
+                                        style="height: 150px; overflow-y: scroll; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 5px; position: relative;">
+                                        <div style="padding: 20px; color: white; text-align: center;">
+                                            <p>Przewijaj dla efektu parallax</p>
+                                            <div class="parallax-element"
+                                                style="margin-top: 50px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 5px;">
+                                                Element z parallax
+                                            </div>
+                                            <p style="margin-top: 50px;">Można wyłączyć powyżej!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-css">/* DOBRY PRZYKŁAD - animacje z kontrolą użytkownika */
+
+/* Domyślnie animacje wyłączone dla bezpieczeństwa */
+.controlled-animation {
+    transition: none;
+    transform: none;
+}
+
+/* Animacje włączane tylko gdy użytkownik wyraża zgodę */
+.animations-enabled .controlled-animation {
+    transition: all 0.3s ease;
+}
+
+.animations-enabled .controlled-animation:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.animations-enabled .controlled-animation:active {
+    transform: translateY(0);
+}
+
+/* Parallax tylko dla chętnych */
+.parallax-enabled .parallax-element {
+    transform: translateZ(-1px) scale(1.5);
+    transition: transform 0.1s ease-out;
+}
+
+/* Zawsze respektuj preferencje systemowe */
+@media (prefers-reduced-motion: reduce) {
+    .controlled-animation,
+    .parallax-element {
+        transition: none !important;
+        transform: none !important;
+        animation: none !important;
+    }
+    
+    /* Ukryj kontrolki parallax jeśli system nie wspiera */
+    .parallax-controls {
+        display: none;
+    }
+}
+
+/* Bezpieczne animacje, które można pozostawić */
+.essential-animation {
+    /* Animacje niezbędne - np. wskaźniki ładowania */
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}</code></pre>
+
+                        <pre><code class="language-javascript">// DOBRY PRZYKŁAD - system kontroli animacji
+class AnimationController {
+    constructor() {
+        this.animationsEnabled = false;
+        this.parallaxEnabled = false;
+        this.motionPreference = 'no-preference';
+        this.init();
+    }
+
+    init() {
+        this.checkMotionPreference();
+        this.setupControls();
+        this.applyInitialState();
+        this.setupEventListeners();
+    }
+
+    checkMotionPreference() {
+        // Sprawdź preferencje systemowe
+        const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        this.motionPreference = mediaQuery.matches ? 'reduce' : 'no-preference';
+        
+        // Nasłuchuj zmian preferencji
+        mediaQuery.addListener((mq) => {
+            this.motionPreference = mq.matches ? 'reduce' : 'no-preference';
+            this.updateMotionPreferenceDisplay();
+            this.applyMotionSettings();
+        });
+
+        this.updateMotionPreferenceDisplay();
+    }
+
+    updateMotionPreferenceDisplay() {
+        const display = document.getElementById('motion-preference');
+        if (display) {
+            if (this.motionPreference === 'reduce') {
+                display.textContent = '🔧 Redukcja ruchu włączona w systemie';
+                display.style.color = '#856404';
+            } else {
+                display.textContent = '✅ Brak ograniczeń systemowych';
+                display.style.color = '#155724';
+            }
+        }
+    }
+
+    setupControls() {
+        const animationToggle = document.getElementById('enable-animations');
+        const parallaxToggle = document.getElementById('enable-parallax');
+
+        if (animationToggle) {
+            animationToggle.addEventListener('change', (e) => {
+                this.setAnimations(e.target.checked);
+            });
+        }
+
+        if (parallaxToggle) {
+            parallaxToggle.addEventListener('change', (e) => {
+                this.setParallax(e.target.checked);
+            });
+        }
+    }
+
+    applyInitialState() {
+        // Domyślnie animacje wyłączone dla bezpieczeństwa
+        this.setAnimations(false);
+        this.setParallax(false);
+        
+        // Sprawdź zapisane preferencje użytkownika
+        const savedAnimations = localStorage.getItem('animationsEnabled');
+        const savedParallax = localStorage.getItem('parallaxEnabled');
+        
+        if (savedAnimations === 'true' && this.motionPreference !== 'reduce') {
+            this.setAnimations(true);
+            document.getElementById('enable-animations').checked = true;
+        }
+        
+        if (savedParallax === 'true' && this.motionPreference !== 'reduce') {
+            this.setParallax(true);
+            document.getElementById('enable-parallax').checked = true;
+        }
+    }
+
+    setAnimations(enabled) {
+        this.animationsEnabled = enabled && this.motionPreference !== 'reduce';
+        
+        if (this.animationsEnabled) {
+            document.body.classList.add('animations-enabled');
+        } else {
+            document.body.classList.remove('animations-enabled');
+        }
+        
+        // Zapisz preferencje
+        localStorage.setItem('animationsEnabled', enabled);
+        
+        console.log(`Animacje ${this.animationsEnabled ? 'włączone' : 'wyłączone'}`);
+    }
+
+    setParallax(enabled) {
+        this.parallaxEnabled = enabled && this.motionPreference !== 'reduce';
+        
+        if (this.parallaxEnabled) {
+            document.body.classList.add('parallax-enabled');
+            this.setupParallaxEvents();
+        } else {
+            document.body.classList.remove('parallax-enabled');
+            this.removeParallaxEvents();
+        }
+        
+        // Zapisz preferencje
+        localStorage.setItem('parallaxEnabled', enabled);
+        
+        console.log(`Parallax ${this.parallaxEnabled ? 'włączony' : 'wyłączony'}`);
+    }
+
+    setupParallaxEvents() {
+        const parallaxContainer = document.getElementById('parallax-demo');
+        if (parallaxContainer && this.parallaxEnabled) {
+            this.parallaxHandler = () => {
+                const scrolled = parallaxContainer.scrollTop;
+                const parallaxElements = parallaxContainer.querySelectorAll('.parallax-element');
+                
+                parallaxElements.forEach(element => {
+                    const speed = 0.3; // Subtelny efekt
+                    element.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            };
+            
+            parallaxContainer.addEventListener('scroll', this.parallaxHandler, { passive: true });
+        }
+    }
+
+    removeParallaxEvents() {
+        const parallaxContainer = document.getElementById('parallax-demo');
+        if (parallaxContainer && this.parallaxHandler) {
+            parallaxContainer.removeEventListener('scroll', this.parallaxHandler);
+            
+            // Resetuj pozycje elementów
+            const parallaxElements = parallaxContainer.querySelectorAll('.parallax-element');
+            parallaxElements.forEach(element => {
+                element.style.transform = 'none';
+            });
+        }
+    }
+
+    applyMotionSettings() {
+        // Wymuś wyłączenie jeśli preferencje systemowe tego wymagają
+        if (this.motionPreference === 'reduce') {
+            this.setAnimations(false);
+            this.setParallax(false);
+            
+            // Zaktualizuj kontrolki
+            const animationToggle = document.getElementById('enable-animations');
+            const parallaxToggle = document.getElementById('enable-parallax');
+            
+            if (animationToggle) animationToggle.checked = false;
+            if (parallaxToggle) parallaxToggle.checked = false;
+        }
+    }
+
+    setupEventListeners() {
+        // Demo interakcji z kartą
+        const demoCard = document.getElementById('demo-card');
+        if (demoCard) {
+            demoCard.addEventListener('click', () => {
+                if (this.animationsEnabled) {
+                    demoCard.style.backgroundColor = '#e7f3ff';
+                    setTimeout(() => {
+                        demoCard.style.backgroundColor = '#f8f9fa';
+                    }, 300);
+                } else {
+                    demoCard.style.backgroundColor = '#e7f3ff';
+                    // Natychmiastowy powrót bez animacji
+                    demoCard.style.backgroundColor = '#f8f9fa';
+                }
+            });
+        }
+    }
+
+    // Publiczna metoda do awaryjnego wyłączenia wszystkich animacji
+    emergencyDisableAll() {
+        this.setAnimations(false);
+        this.setParallax(false);
+        
+        // Zatrzymaj wszystkie CSS animacje
+        const style = document.createElement('style');
+        style.textContent = `
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                transform: none !important;
+            }
+        `;
+        document.head.appendChild(style);
+        
+        console.log('🛑 Wszystkie animacje zostały awaryjnie wyłączone');
+    }
+}
+
+// Inicjalizacja kontrolera animacji
+const animationController = new AnimationController();
+
+// Dodaj przycisk awaryjny
+document.addEventListener('DOMContentLoaded', () => {
+    const emergencyButton = document.createElement('button');
+    emergencyButton.textContent = '🛑 STOP ANIMACJI';
+    emergencyButton.style.cssText = `
+        position: fixed;
+        bottom: 70px;
+        right: 20px;
+        background-color: #dc3545;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        font-size: 12px;
+        z-index: 10000;
+        cursor: pointer;
+    `;
+    
+    emergencyButton.addEventListener('click', () => {
+        animationController.emergencyDisableAll();
+    });
+    
+    document.body.appendChild(emergencyButton);
+});</code></pre>
+
+                        <p class="explanation">Rozwiązanie: System daje użytkownikowi pełną kontrolę nad animacjami.
+                            Sprawdza preferencje systemowe, oferuje własne kontrolki, zapisuje wybory użytkownika i
+                            zawiera funkcję awaryjną. Animacje są domyślnie wyłączone dla bezpieczeństwa.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - niezbędne vs. nieniezbędne animacje</h4>
+                        <p>Rozróżnienie między animacjami, które można wyłączyć, a tymi które są niezbędne:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <h5>Animacje niezbędne (zawsze aktywne):</h5>
+
+                                <div style="margin: 15px 0;">
+                                    <label>Wskaźnik postępu (niezbędny):</label>
+                                    <div
+                                        style="background-color: #e9ecef; border-radius: 10px; height: 20px; margin: 5px 0; overflow: hidden;">
+                                        <div class="essential-progress"
+                                            style="background-color: #007bff; height: 100%; width: 60%; border-radius: 10px; position: relative;">
+                                            <div
+                                                style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent); animation: shimmer 2s ease-in-out infinite;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div style="margin: 15px 0;">
+                                    <label>Status operacji (niezbędny):</label>
+                                    <div
+                                        style="padding: 10px; background-color: #d4edda; border: 1px solid #c3e6cb; border-radius: 5px; margin: 5px 0;">
+                                        <span
+                                            style="display: inline-block; width: 12px; height: 12px; background-color: #28a745; border-radius: 50%; margin-right: 8px; animation: pulse 2s ease-in-out infinite;"></span>
+                                        Operacja przebiegła pomyślnie
+                                    </div>
+                                </div>
+
+                                <hr style="margin: 20px 0;">
+
+                                <h5>Animacje nieniezbędne (kontrolowane przez użytkownika):</h5>
+
+                                <div style="margin: 15px 0;">
+                                    <label>Dekoracyjne hover effects:</label>
+                                    <button class="decorative-button"
+                                        style="background-color: #6f42c1; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; margin: 5px;">
+                                        Efekt hover (dekoracyjny)
+                                    </button>
+                                </div>
+
+                                <div style="margin: 15px 0;">
+                                    <label>Animowane przejścia:</label>
+                                    <div class="transition-demo"
+                                        style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 15px; border-radius: 5px; cursor: pointer;">
+                                        Kliknij mnie - animowane przejście koloru
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-css">/* ANIMACJE NIEZBĘDNE - zawsze aktywne */
+.essential-progress {
+    /* Wskaźnik postępu jest niezbędny do komunikacji stanu */
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* Te animacje działają nawet przy prefers-reduced-motion: reduce */
+@media (prefers-reduced-motion: reduce) {
+    .essential-progress {
+        /* Zachowaj animacje niezbędne */
+        animation: shimmer 2s ease-in-out infinite;
+    }
+    
+    /* Ale zrób je mniej intensywne */
+    @keyframes shimmer {
+        0% { opacity: 0.8; }
+        50% { opacity: 1; }
+        100% { opacity: 0.8; }
+    }
+}
+
+/* ANIMACJE NIENIEZBĘDNE - kontrolowane przez użytkownika */
+.decorative-button {
+    transition: none; /* Domyślnie wyłączone */
+}
+
+.transition-demo {
+    transition: none; /* Domyślnie wyłączone */
+}
+
+/* Włączane tylko gdy użytkownik wyrazi zgodę */
+.animations-enabled .decorative-button {
+    transition: all 0.3s ease;
+}
+
+.animations-enabled .decorative-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(111, 66, 193, 0.3);
+}
+
+.animations-enabled .transition-demo {
+    transition: background-color 0.3s ease;
+}
+
+.animations-enabled .transition-demo:hover {
+    background-color: #e7f3ff;
+}
+
+/* Zawsze respektuj preferencje systemowe */
+@media (prefers-reduced-motion: reduce) {
+    .decorative-button,
+    .transition-demo {
+        transition: none !important;
+        transform: none !important;
+    }
+}</code></pre>
+
+                        <pre><code class="language-javascript">// Zarządzanie niezbędnymi vs. nieniezbędnymi animacjami
+class EssentialAnimationManager {
+    constructor() {
+        this.init();
+    }
+
+    init() {
+        this.handleEssentialAnimations();
+        this.handleNonEssentialAnimations();
+    }
+
+    handleEssentialAnimations() {
+        // Animacje niezbędne są zawsze aktywne
+        // ale mogą być zmodyfikowane dla komfortu użytkownika
+        
+        const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        if (isReducedMotion) {
+            // Zmień animacje niezbędne na mniej intensywne
+            const style = document.createElement('style');
+            style.textContent = `
+                .essential-animation {
+                    animation-duration: 3s !important; /* Wolniej */
+                    animation-timing-function: ease !important; /* Łagodniej */
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+
+    handleNonEssentialAnimations() {
+        // Animacje nieniezbędne wymagają zgody użytkownika
+        const transitionDemo = document.querySelector('.transition-demo');
+        
+        if (transitionDemo) {
+            transitionDemo.addEventListener('click', () => {
+                const animationsEnabled = document.body.classList.contains('animations-enabled');
+                
+                if (animationsEnabled) {
+                    // Z animacją
+                    transitionDemo.style.backgroundColor = '#fff3cd';
+                    setTimeout(() => {
+                        transitionDemo.style.backgroundColor = '#f8f9fa';
+                    }, 300);
+                } else {
+                    // Bez animacji - natychmiastowa zmiana
+                    transitionDemo.style.backgroundColor = '#fff3cd';
+                    setTimeout(() => {
+                        transitionDemo.style.backgroundColor = '#f8f9fa';
+                    }, 50); // Bardzo krótkie dla wrażenia zmiany
+                }
+            });
+        }
+    }
+
+    // Publiczna metoda do sprawdzania czy animacja jest niezbędna
+    static isEssential(animationType) {
+        const essentialTypes = [
+            'progress-indicator',
+            'loading-spinner',
+            'status-notification',
+            'error-alert',
+            'form-validation',
+            'scroll-position',
+            'focus-indicator'
+        ];
+        
+        return essentialTypes.includes(animationType);
+    }
+
+    // Metoda do bezpiecznego tworzenia animacji
+    static createSafeAnimation(element, animationType, options = {}) {
+        const isEssential = this.isEssential(animationType);
+        
+        if (isEssential) {
+            // Animacje niezbędne - zawsze aktywne, ale respektują preferencje
+            const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            
+            if (reducedMotion) {
+                // Zmodyfikowane dla komfortu
+                options.duration = (options.duration || 1000) * 1.5; // Wolniej
+                options.easing = 'ease'; // Łagodniej
+            }
+        } else {
+            // Animacje nieniezbędne - tylko za zgodą użytkownika
+            const animationsEnabled = document.body.classList.contains('animations-enabled');
+            
+            if (!animationsEnabled) {
+                // Zastąp animację natychmiastową zmianą
+                if (options.onComplete) {
+                    options.onComplete();
+                }
+                return null; // Brak animacji
+            }
+        }
+
+        // Stwórz animację
+        return element.animate(options.keyframes || [], {
+            duration: options.duration || 300,
+            easing: options.easing || 'ease',
+            fill: 'forwards'
+        });
+    }
+}
+
+// Inicjalizacja managera
+const essentialAnimationManager = new EssentialAnimationManager();</code></pre>
+
+                        <p class="explanation">Rozwiązanie: System rozróżnia animacje niezbędne (wskaźniki postępu,
+                            statusy) od nieniezbędnych (efekty dekoracyjne). Niezbędne działają zawsze, ale są
+                            modyfikowane dla osób z preferencjami redukcji ruchu. Nieniezbędne wymagają zgody
+                            użytkownika.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - globalne ustawienia dostępności</h4>
+                        <p>Kompleksowy panel kontroli animacji dla całej strony:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div class="accessibility-panel"
+                                    style="background-color: #f8f9fa; border: 2px solid #6f42c1; border-radius: 8px; padding: 20px;">
+                                    <h5 style="color: #6f42c1; margin-top: 0; display: flex; align-items: center;">
+                                        <span style="margin-right: 10px;">♿</span>
+                                        Panel dostępności
+                                    </h5>
+
+                                    <div
+                                        style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0;">
+                                        <label style="display: flex; align-items: center; color: #495057;">
+                                            <input type="checkbox" id="global-animations"
+                                                style="margin-right: 8px; transform: scale(1.2);">
+                                            <span>Podstawowe animacje</span>
+                                        </label>
+
+                                        <label style="display: flex; align-items: center; color: #495057;">
+                                            <input type="checkbox" id="global-transitions"
+                                                style="margin-right: 8px; transform: scale(1.2);">
+                                            <span>Animowane przejścia</span>
+                                        </label>
+
+                                        <label style="display: flex; align-items: center; color: #495057;">
+                                            <input type="checkbox" id="global-parallax"
+                                                style="margin-right: 8px; transform: scale(1.2);">
+                                            <span>Efekty parallax</span>
+                                        </label>
+
+                                        <label style="display: flex; align-items: center; color: #495057;">
+                                            <input type="checkbox" id="global-hover"
+                                                style="margin-right: 8px; transform: scale(1.2);">
+                                            <span>Efekty hover</span>
+                                        </label>
+                                    </div>
+
+                                    <div
+                                        style="margin: 15px 0; padding: 10px; background-color: #e7f3ff; border-radius: 5px;">
+                                        <span style="color: #004085; font-size: 0.9em;">
+                                            Preferencje systemowe: <span id="system-motion-status">Sprawdzam...</span>
+                                        </span>
+                                    </div>
+
+                                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                                        <button id="save-preferences"
+                                            style="background-color: #28a745; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                                            Zapisz preferencje
+                                        </button>
+                                        <button id="reset-preferences"
+                                            style="background-color: #6c757d; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                                            Resetuj
+                                        </button>
+                                        <button id="disable-all"
+                                            style="background-color: #dc3545; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+                                            Wyłącz wszystko
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="margin-top: 20px; padding: 15px; background-color: #d1ecf1; border-radius: 5px;">
+                                    <p style="margin: 0; color: #0c5460;">
+                                        <strong>Status:</strong> <span id="accessibility-status">Panel jest gotowy do
+                                            użycia</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-javascript">// Globalny system kontroli dostępności animacji
+class GlobalAccessibilityManager {
+    constructor() {
+        this.preferences = {
+            animations: false,
+            transitions: false,
+            parallax: false,
+            hover: false
+        };
+        
+        this.systemMotionPreference = 'no-preference';
+        this.init();
+    }
+
+    init() {
+        this.loadPreferences();
+        this.checkSystemPreferences();
+        this.setupEventListeners();
+        this.applySettings();
+        this.updateStatusDisplay();
+    }
+
+    loadPreferences() {
+        // Wczytaj zapisane preferencje lub ustaw bezpieczne domyślne
+        const saved = localStorage.getItem('accessibilityPreferences');
+        
+        if (saved) {
+            try {
+                this.preferences = { ...this.preferences, ...JSON.parse(saved) };
+            } catch (e) {
+                console.warn('Nie można wczytać preferencji dostępności');
+            }
+        }
+        
+        // Zaktualizuj checkboxy
+        Object.keys(this.preferences).forEach(key => {
+            const checkbox = document.getElementById(`global-${key}`);
+            if (checkbox) {
+                checkbox.checked = this.preferences[key];
+            }
+        });
+    }
+
+    checkSystemPreferences() {
+        const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        this.systemMotionPreference = mediaQuery.matches ? 'reduce' : 'no-preference';
+        
+        // Nasłuchuj zmian
+        mediaQuery.addListener((mq) => {
+            this.systemMotionPreference = mq.matches ? 'reduce' : 'no-preference';
+            this.handleSystemPreferenceChange();
+        });
+        
+        this.updateSystemStatus();
+    }
+
+    handleSystemPreferenceChange() {
+        if (this.systemMotionPreference === 'reduce') {
+            // System wymaga redukcji ruchu - wyłącz wszystko
+            this.disableAllAnimations();
+            this.showNotification('System wymaga redukcji ruchu - wszystkie animacje zostały wyłączone');
+        }
+        
+        this.updateSystemStatus();
+        this.applySettings();
+    }
+
+    setupEventListeners() {
+        // Checkboxy preferencji
+        Object.keys(this.preferences).forEach(key => {
+            const checkbox = document.getElementById(`global-${key}`);
+            if (checkbox) {
+                checkbox.addEventListener('change', (e) => {
+                    this.setPreference(key, e.target.checked);
+                });
+            }
+        });
+
+        // Przyciski kontrolne
+        document.getElementById('save-preferences')?.addEventListener('click', () => {
+            this.savePreferences();
+        });
+
+        document.getElementById('reset-preferences')?.addEventListener('click', () => {
+            this.resetPreferences();
+        });
+
+        document.getElementById('disable-all')?.addEventListener('click', () => {
+            this.disableAllAnimations();
+        });
+    }
+
+    setPreference(type, enabled) {
+        // Nie pozwól włączyć jeśli system wymaga redukcji ruchu
+        if (enabled && this.systemMotionPreference === 'reduce') {
+            this.showNotification(`Nie można włączyć ${type} - system wymaga redukcji ruchu`);
+            document.getElementById(`global-${type}`).checked = false;
+            return;
+        }
+
+        this.preferences[type] = enabled;
+        this.applySettings();
+        this.updateStatusDisplay();
+        
+        console.log(`${type} ${enabled ? 'włączone' : 'wyłączone'}`);
+    }
+
+    applySettings() {
+        // Usuń wszystkie klasy
+        document.body.classList.remove(
+            'animations-enabled',
+            'transitions-enabled', 
+            'parallax-enabled',
+            'hover-enabled'
+        );
+
+        // Dodaj klasy zgodnie z preferencjami (jeśli system pozwala)
+        if (this.systemMotionPreference !== 'reduce') {
+            Object.keys(this.preferences).forEach(key => {
+                if (this.preferences[key]) {
+                    document.body.classList.add(`${key}-enabled`);
+                }
+            });
+        }
+
+        // Zastosuj globalne style
+        this.applyGlobalStyles();
+    }
+
+    applyGlobalStyles() {
+        // Usuń poprzedni arkusz stylów
+        const existingStyle = document.getElementById('accessibility-styles');
+        if (existingStyle) {
+            existingStyle.remove();
+        }
+
+        // Stwórz nowy
+        const style = document.createElement('style');
+        style.id = 'accessibility-styles';
+        
+        let css = '';
+
+        // Jeśli system wymaga redukcji ruchu lub wszystko wyłączone
+        if (this.systemMotionPreference === 'reduce' || !Object.values(this.preferences).some(v => v)) {
+            css += `
+                *, *::before, *::after {
+                    animation-duration: 0.01ms !important;
+                    animation-iteration-count: 1 !important;
+                    transition-duration: 0.01ms !important;
+                    transform: none !important;
+                }
+            `;
+        } else {
+            // Selektywnie włącz animacje
+            if (!this.preferences.animations) {
+                css += `.controlled-animation { animation: none !important; }`;
+            }
+            
+            if (!this.preferences.transitions) {
+                css += `.controlled-transition { transition: none !important; }`;
+            }
+            
+            if (!this.preferences.hover) {
+                css += `.controlled-hover:hover { transform: none !important; }`;
+            }
+            
+            if (!this.preferences.parallax) {
+                css += `.parallax-element { transform: none !important; }`;
+            }
+        }
+
+        style.textContent = css;
+        document.head.appendChild(style);
+    }
+
+    savePreferences() {
+        localStorage.setItem('accessibilityPreferences', JSON.stringify(this.preferences));
+        this.showNotification('Preferencje zostały zapisane');
+    }
+
+    resetPreferences() {
+        this.preferences = {
+            animations: false,
+            transitions: false,
+            parallax: false,
+            hover: false
+        };
+        
+        this.loadPreferences();
+        this.applySettings();
+        this.showNotification('Preferencje zostały zresetowane');
+    }
+
+    disableAllAnimations() {
+        Object.keys(this.preferences).forEach(key => {
+            this.preferences[key] = false;
+            const checkbox = document.getElementById(`global-${key}`);
+            if (checkbox) checkbox.checked = false;
+        });
+        
+        this.applySettings();
+        this.showNotification('Wszystkie animacje zostały wyłączone');
+    }
+
+    updateSystemStatus() {
+        const statusElement = document.getElementById('system-motion-status');
+        if (statusElement) {
+            if (this.systemMotionPreference === 'reduce') {
+                statusElement.textContent = '🔧 Redukcja ruchu włączona';
+                statusElement.style.color = '#856404';
+            } else {
+                statusElement.textContent = '✅ Brak ograniczeń';
+                statusElement.style.color = '#155724';
+            }
+        }
+    }
+
+    updateStatusDisplay() {
+        const statusElement = document.getElementById('accessibility-status');
+        if (statusElement) {
+            const enabledCount = Object.values(this.preferences).filter(v => v).length;
+            
+            if (this.systemMotionPreference === 'reduce') {
+                statusElement.textContent = 'System wymaga redukcji ruchu - wszystkie animacje wyłączone';
+            } else if (enabledCount === 0) {
+                statusElement.textContent = 'Wszystkie animacje wyłączone (tryb bezpieczny)';
+            } else {
+                statusElement.textContent = `Włączonych typów animacji: ${enabledCount}/4`;
+            }
+        }
+    }
+
+    showNotification(message) {
+        // Pokaż notification
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #28a745;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            z-index: 10000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        `;
+        notification.textContent = message;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 3000);
+    }
+
+    // API publiczne
+    isAnimationTypeEnabled(type) {
+        return this.preferences[type] && this.systemMotionPreference !== 'reduce';
+    }
+
+    getPreferences() {
+        return { ...this.preferences };
+    }
+}
+
+// Inicjalizacja globalnego managera
+const globalAccessibilityManager = new GlobalAccessibilityManager();</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Kompleksowy panel umożliwia użytkownikom szczegółową
+                            kontrolę nad wszystkimi typami animacji. Automatycznie wykrywa preferencje systemowe,
+                            zapisuje wybory użytkownika i zapewnia bezpieczne domyślne ustawienia z możliwością
+                            awaryjnego wyłączenia wszystkiego.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie zgodności z 2.3.3</h3>
+
+                <h4>Procedura testowa</h4>
+                <ol>
+                    <li><strong>Zidentyfikuj wszystkie animacje wywołane interakcjami</strong>
+                        <ul>
+                            <li>Efekty hover i focus</li>
+                            <li>Animacje kliknięć i dotknięć</li>
+                            <li>Przejścia między stronami</li>
+                            <li>Efekty parallax podczas przewijania</li>
+                            <li>Animacje menu i modali</li>
+                        </ul>
+                    </li>
+                    <li><strong>Określ, które animacje są niezbędne</strong>
+                        <ul>
+                            <li>Wskaźniki ładowania i postępu</li>
+                            <li>Komunikaty o błędach i sukcesach</li>
+                            <li>Wskaźniki orientacji w przestrzeni</li>
+                            <li>Animacje przekazujące ważne informacje</li>
+                        </ul>
+                    </li>
+                    <li><strong>Sprawdź możliwość wyłączenia animacji nieniezbędnych</strong>
+                        <ul>
+                            <li>Kontrolki w interfejsie</li>
+                            <li>Wsparcie dla prefers-reduced-motion</li>
+                            <li>Zapisywanie preferencji użytkownika</li>
+                        </ul>
+                    </li>
+                    <li><strong>Przetestuj funkcjonalność bez animacji</strong>
+                        <ul>
+                            <li>Czy strona nadal działa?</li>
+                            <li>Czy wszystkie funkcje są dostępne?</li>
+                            <li>Czy nie ma utraty informacji?</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Narzędzia testowe</h4>
+                <ul>
+                    <li><strong>Browser DevTools</strong> - inspekcja CSS animacji</li>
+                    <li><strong>Prefers-reduced-motion</strong> - emulacja w DevTools</li>
+                    <li><strong>Accessibility auditing tools</strong> - axe, WAVE</li>
+                    <li><strong>User testing</strong> - testy z osobami z zaburzeniami vestibulanymi</li>
+                </ul>
+
+                <h4>Checklist zgodności</h4>
+                <div
+                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <h5>✅ Kryteria do spełnienia:</h5>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>☐ Wszystkie animacje nieniezbędne można wyłączyć</li>
+                        <li>☐ Animacje niezbędne są wyraźnie oznaczone</li>
+                        <li>☐ Wspierane jest prefers-reduced-motion</li>
+                        <li>☐ Preferencje użytkownika są zapisywane</li>
+                        <li>☐ Funkcjonalność strony nie zależy od animacji</li>
+                        <li>☐ Dostępne są kontrolki wyłączania animacji</li>
+                        <li>☐ Wszystkie informacje są dostępne bez animacji</li>
+                        <li>☐ Jest dostępna funkcja awaryjnego wyłączenia</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="implementation-guidelines">
+                <h3>Wytyczne implementacyjne</h3>
+
+                <h4>Najlepsze praktyki:</h4>
+                <ul>
+                    <li><strong>Domyślnie wyłączone</strong> - animacje nieniezbędne powinny być wyłączone do momentu
+                        wyrażenia zgody</li>
+                    <li><strong>Wyraźne etykiety</strong> - jasno oznaczaj, które animacje można wyłączyć</li>
+                    <li><strong>Progresywne enhancement</strong> - strona musi działać bez animacji</li>
+                    <li><strong>Szybkie wyłączenie</strong> - umieść kontrolki w łatwo dostępnym miejscu</li>
+                    <li><strong>Zapamiętaj wybory</strong> - zapisuj preferencje użytkownika</li>
+                    <li><strong>Informuj o ograniczeniach</strong> - wyjaśnij potencjalne problemy z animacjami</li>
+                </ul>
+
+                <h4>CSS framework dla 2.3.3:</h4>
+                <pre><code class="language-css">/* Framework zgodności z 2.3.3 */
+
+/* Domyślne bezpieczne stany */
+.controllable-animation {
+    transition: none;
+    transform: none;
+    animation: none;
+}
+
+/* Włączane tylko za zgodą użytkownika */
+.animations-enabled .controllable-animation {
+    transition: all 0.3s ease;
+}
+
+/* Animacje niezbędne - zawsze aktywne */
+.essential-animation {
+    /* Te animacje są niezbędne do funkcjonalności */
+}
+
+/* Wsparcie prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    .controllable-animation,
+    .optional-animation {
+        transition: none !important;
+        animation: none !important;
+        transform: none !important;
+    }
+    
+    /* Niezbędne animacje - zmodyfikowane, ale aktywne */
+    .essential-animation {
+        animation-duration: 0.01ms;
+        transition-duration: 0.01ms;
+    }
+}
+
+/* Klasy kontroli użytkownika */
+.motion-disabled * {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+}
+
+.motion-reduced * {
+    animation-duration: 0.1s !important;
+    transition-duration: 0.1s !important;
+}</code></pre>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/animation-from-interactions.html"
+                            target="_blank" rel="noopener">Zrozumieć WCAG 2.1: Animacja z interakcji</a></li>
+                    <li><a href="https://vestibular.org/article/managing-motion-sensitivity/" target="_blank"
+                            rel="noopener">Vestibular Disorders Association: Managing Motion Sensitivity</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion"
+                            target="_blank" rel="noopener">MDN: prefers-reduced-motion</a></li>
+                    <li><a href="https://web.dev/prefers-reduced-motion/" target="_blank" rel="noopener">Web.dev:
+                            prefers-reduced-motion</a></li>
+                    <li><a href="https://css-tricks.com/introduction-reduced-motion-media-query/" target="_blank"
+                            rel="noopener">CSS-Tricks: Introduction to Reduced Motion</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.3.2.html">Poprzedni: 2.3.2 Trzy błyski</a></li>
+                    <li><a href="2.4.html">Następny: 2.4 Możliwość nawigacji</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+
+    <style>
+        /* Bezpieczne animacje dla tej strony - zgodne z 2.3.3 */
+
+        /* Animacje niezbędne - wskaźniki statusu */
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        .essential-progress {
+            /* Te animacje są niezbędne */
+        }
+
+        /* Animacje kontrolowane przez użytkownika */
+        .decorative-button {
+            transition: none;
+            /* Domyślnie wyłączone */
+        }
+
+        .transition-demo {
+            transition: none;
+            /* Domyślnie wyłączone */
+        }
+
+        /* Włączane tylko za zgodą */
+        .animations-enabled .decorative-button {
+            transition: all 0.3s ease;
+        }
+
+        .animations-enabled .decorative-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(111, 66, 193, 0.3);
+        }
+
+        .animations-enabled .transition-demo {
+            transition: background-color 0.3s ease;
+        }
+
+        /* Zawsze respektuj preferencje systemowe */
+        @media (prefers-reduced-motion: reduce) {
+
+            .decorative-button,
+            .transition-demo,
+            .controllable-animation {
+                transition: none !important;
+                transform: none !important;
+                animation: none !important;
+            }
+
+            /* Animacje niezbędne - zmodyfikowane */
+            .essential-progress * {
+                animation-duration: 3s !important;
+            }
+        }
+
+        /* System kontroli dostępności będzie zarządzał dodatkowymi stylami */
+    </style>
+
+    <script>
+        // Inicjalizacja systemu kontroli animacji dla tej strony
+        document.addEventListener('DOMContentLoaded', () => {
+            // Sprawdź preferencje systemowe
+            const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+            function updateMotionStatus() {
+                const statusElements = document.querySelectorAll('#motion-preference, #system-motion-status');
+                statusElements.forEach(element => {
+                    if (element) {
+                        if (motionPreference.matches) {
+                            element.textContent = '🔧 Redukcja ruchu włączona w systemie';
+                            element.style.color = '#856404';
+                        } else {
+                            element.textContent = '✅ Brak ograniczeń systemowych';
+                            element.style.color = '#155724';
+                        }
+                    }
+                });
+            }
+
+            // Aktualizuj status preferencji ruchu
+            updateMotionStatus();
+            motionPreference.addListener(updateMotionStatus);
+
+            // Przykład z kontrolką parallax (ograniczony dla bezpieczeństwa)
+            const parallaxContainer = document.getElementById('bad-parallax-container');
+            if (parallaxContainer && !motionPreference.matches) {
+                // Bardzo subtelny efekt dla demonstracji
+                parallaxContainer.addEventListener('scroll', () => {
+                    const scrolled = parallaxContainer.scrollTop;
+                    parallaxContainer.style.backgroundPosition = `center ${scrolled * 0.1}px`;
+                }, { passive: true });
+            }
+        });
+    </script>
+</body>
+
+</html>
