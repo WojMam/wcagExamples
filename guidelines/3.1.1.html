@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.1.1 Język strony (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>3.1.1 Język strony (A)</h1>
+            <p>Główny ludzki język każdej strony internetowej może być określony programowo.</p>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>Strona internetowa musi mieć określony główny język, aby technologie wspomagające mogły prawidłowo
+                interpretować i wypowiadać treść. Język strony określa się za pomocą atrybutu <code>lang</code>
+                w elemencie <code>&lt;html&gt;</code>.</p>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Użytkownicy czytników ekranu</strong> - poprawna wymowa tekstu</li>
+                <li><strong>Osoby z dysleksją</strong> - wsparcie syntez mowy</li>
+                <li><strong>Użytkownicy tłumaczy automatycznych</strong> - rozpoznanie języka źródłowego</li>
+                <li><strong>Osoby uczące się języków</strong> - pomoc w rozumieniu treści</li>
+                <li><strong>Wyszukiwarki</strong> - lepsze indeksowanie dla różnych języków</li>
+            </ul>
+        </section>
+
+        <section class="requirements">
+            <h2>Wymagania</h2>
+            <ul>
+                <li>Element <code>&lt;html&gt;</code> musi mieć atrybut <code>lang</code></li>
+                <li>Wartość atrybutu musi być prawidłowym kodem języka (BCP 47)</li>
+                <li>Kod języka musi odpowiadać głównemu językowi treści strony</li>
+                <li>Atrybut musi być obecny na każdej stronie</li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje</h2>
+            <dl>
+                <dt><strong>Główny język strony</strong></dt>
+                <dd>Język, w którym napisana jest większość treści strony. Jeśli treść jest w równym stopniu w dwóch
+                    językach, można wybrać jeden z nich.</dd>
+
+                <dt><strong>BCP 47</strong></dt>
+                <dd>Standard określający kody języków (Best Current Practice 47). Przykłady: "pl" (polski), "en"
+                    (angielski), "en-US" (angielski amerykański).</dd>
+
+                <dt><strong>Technologie wspomagające</strong></dt>
+                <dd>Oprogramowanie lub urządzenia pomagające osobom z niepełnosprawnościami, takie jak czytniki ekranu,
+                    syntezatory mowy.</dd>
+            </dl>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Brak atrybutu lang</h4>
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt; &lt;!-- Brak atrybutu lang --&gt;
+&lt;head&gt;
+    &lt;title&gt;Moja strona internetowa&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Witamy na naszej stronie&lt;/h1&gt;
+    &lt;p&gt;Oferujemy najlepsze usługi w branży.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p><strong>Problem:</strong> Technologie wspomagające nie wiedzą, w jakim języku przeczytać treść.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Nieprawidłowy kod języka</h4>
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="polish"&gt; &lt;!-- Nieprawidłowy format --&gt;
+&lt;head&gt;
+    &lt;title&gt;Strona firmowa&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;O naszej firmie&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p><strong>Problem:</strong> "polish" nie jest prawidłowym kodem języka według BCP 47.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Błędny język dla treści</h4>
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt; &lt;!-- Angielski, ale treść po polsku --&gt;
+&lt;head&gt;
+    &lt;title&gt;Nasza oferta&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Zapraszamy do zapoznania się z ofertą&lt;/h1&gt;
+    &lt;p&gt;Jesteśmy liderem na polskim rynku.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p><strong>Problem:</strong> Czytnik ekranu będzie próbował przeczytać polską treść z angielską wymową.
+                </p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Strona w języku polskim</h4>
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Przykładowa strona firmowa&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Witamy w naszej firmie&lt;/h1&gt;
+    &lt;p&gt;Specjalizujemy się w tworzeniu dostępnych stron internetowych.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Jasno określony język polski (pl) odpowiada treści strony.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Strona w języku angielskim</h4>
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Our Company Website&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to Our Company&lt;/h1&gt;
+    &lt;p&gt;We specialize in creating accessible web solutions.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Kod "en" prawidłowo określa język angielski.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Specyficzna odmiana języka</h4>
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en-US"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;American English Website&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Color and Flavor&lt;/h1&gt;
+    &lt;p&gt;We use American spelling conventions.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> "en-US" określa amerykańską odmianę języka angielskiego.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Strona wielojęzyczna z przeważającym językiem</h4>
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Firma międzynarodowa&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Nasza międzynarodowa firma&lt;/h1&gt;
+    &lt;p&gt;Działamy na rynku polskim od 20 lat. Oferujemy usługi 
+       również w języku angielskim.&lt;/p&gt;
+    
+    &lt;!-- Fragment w innym języku oznaczony osobno --&gt;
+    &lt;p&gt;Our mission: &lt;span lang="en"&gt;Innovation for everyone&lt;/span&gt;.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Główny język to polski, fragmenty angielskie są oznaczone osobno.
+                </p>
+            </div>
+        </section>
+
+        <section class="language-codes">
+            <h2>Popularne kody języków</h2>
+
+            <div class="language-table">
+                <h3>Podstawowe kody języków</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Język</th>
+                            <th>Kod</th>
+                            <th>Przykład użycia</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Polski</td>
+                            <td>pl</td>
+                            <td>&lt;html lang="pl"&gt;</td>
+                        </tr>
+                        <tr>
+                            <td>Angielski</td>
+                            <td>en</td>
+                            <td>&lt;html lang="en"&gt;</td>
+                        </tr>
+                        <tr>
+                            <td>Niemiecki</td>
+                            <td>de</td>
+                            <td>&lt;html lang="de"&gt;</td>
+                        </tr>
+                        <tr>
+                            <td>Francuski</td>
+                            <td>fr</td>
+                            <td>&lt;html lang="fr"&gt;</td>
+                        </tr>
+                        <tr>
+                            <td>Hiszpański</td>
+                            <td>es</td>
+                            <td>&lt;html lang="es"&gt;</td>
+                        </tr>
+                        <tr>
+                            <td>Włoski</td>
+                            <td>it</td>
+                            <td>&lt;html lang="it"&gt;</td>
+                        </tr>
+                        <tr>
+                            <td>Rosyjski</td>
+                            <td>ru</td>
+                            <td>&lt;html lang="ru"&gt;</td>
+                        </tr>
+                        <tr>
+                            <td>Chiński (uproszczony)</td>
+                            <td>zh-CN</td>
+                            <td>&lt;html lang="zh-CN"&gt;</td>
+                        </tr>
+                        <tr>
+                            <td>Japoński</td>
+                            <td>ja</td>
+                            <td>&lt;html lang="ja"&gt;</td>
+                        </tr>
+                        <tr>
+                            <td>Koreański</td>
+                            <td>ko</td>
+                            <td>&lt;html lang="ko"&gt;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="language-table">
+                <h3>Odmiany regionalne</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Odmiana</th>
+                            <th>Kod</th>
+                            <th>Uwagi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Angielski amerykański</td>
+                            <td>en-US</td>
+                            <td>Amerykańska pisownia i wymowa</td>
+                        </tr>
+                        <tr>
+                            <td>Angielski brytyjski</td>
+                            <td>en-GB</td>
+                            <td>Brytyjska pisownia i wymowa</td>
+                        </tr>
+                        <tr>
+                            <td>Francuski kanadyjski</td>
+                            <td>fr-CA</td>
+                            <td>Quebecki francuski</td>
+                        </tr>
+                        <tr>
+                            <td>Niemiecki austriacki</td>
+                            <td>de-AT</td>
+                            <td>Austriacka odmiana niemieckiego</td>
+                        </tr>
+                        <tr>
+                            <td>Hiszpański meksykański</td>
+                            <td>es-MX</td>
+                            <td>Meksykańska odmiana hiszpańskiego</td>
+                        </tr>
+                        <tr>
+                            <td>Portugalski brazylijski</td>
+                            <td>pt-BR</td>
+                            <td>Brazylijska odmiana portugalskiego</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="interactive-demo">
+            <h2>Interaktywna demonstracja</h2>
+            <p>Przetestuj, jak różne ustawienia języka wpływają na działanie czytników ekranu:</p>
+
+            <div class="demo-container">
+                <h3>Symulator czytnika ekranu</h3>
+                <div class="screen-reader-demo">
+                    <label for="language-select">Wybierz język strony:</label>
+                    <select id="language-select">
+                        <option value="">-- Brak języka --</option>
+                        <option value="pl">Polski (pl)</option>
+                        <option value="en">Angielski (en)</option>
+                        <option value="de">Niemiecki (de)</option>
+                        <option value="fr">Francuski (fr)</option>
+                    </select>
+
+                    <div class="demo-content" id="demo-content">
+                        <h4>Przykładowa treść:</h4>
+                        <p id="demo-text">Witamy na naszej stronie internetowej. Oferujemy profesjonalne usługi webowe.
+                        </p>
+                    </div>
+
+                    <button id="read-aloud" class="demo-button">🔊 Przeczytaj treść</button>
+                    <button id="change-text" class="demo-button">🔄 Zmień treść</button>
+
+                    <div id="speech-feedback" class="demo-feedback"></div>
+                </div>
+            </div>
+
+            <script>
+                const languageSelect = document.getElementById('language-select');
+                const demoContent = document.getElementById('demo-content');
+                const demoText = document.getElementById('demo-text');
+                const readButton = document.getElementById('read-aloud');
+                const changeTextButton = document.getElementById('change-text');
+                const speechFeedback = document.getElementById('speech-feedback');
+
+                const textSamples = {
+                    pl: "Witamy na naszej stronie internetowej. Oferujemy profesjonalne usługi webowe.",
+                    en: "Welcome to our website. We offer professional web services.",
+                    de: "Willkommen auf unserer Website. Wir bieten professionelle Webdienste.",
+                    fr: "Bienvenue sur notre site web. Nous offrons des services web professionnels."
+                };
+
+                let currentTextIndex = 0;
+                const allTexts = [
+                    { pl: "Nasza firma działa od 1995 roku.", en: "Our company has been operating since 1995.", de: "Unser Unternehmen ist seit 1995 tätig.", fr: "Notre entreprise opère depuis 1995." },
+                    { pl: "Specjalizujemy się w dostępności cyfrowej.", en: "We specialize in digital accessibility.", de: "Wir spezialisieren uns auf digitale Zugänglichkeit.", fr: "Nous nous spécialisons dans l'accessibilité numérique." },
+                    { pl: "Kontakt: info@example.com", en: "Contact: info@example.com", de: "Kontakt: info@example.com", fr: "Contact: info@example.com" }
+                ];
+
+                languageSelect.addEventListener('change', function () {
+                    const selectedLang = this.value;
+
+                    if (selectedLang) {
+                        demoContent.setAttribute('lang', selectedLang);
+                        demoText.textContent = textSamples[selectedLang] || textSamples.en;
+                        speechFeedback.innerHTML = `<span style="color: green;">✅ Język ustawiony na: ${selectedLang}</span>`;
+                    } else {
+                        demoContent.removeAttribute('lang');
+                        demoText.textContent = textSamples.pl;
+                        speechFeedback.innerHTML = `<span style="color: red;">❌ Brak określenia języka</span>`;
+                    }
+                });
+
+                changeTextButton.addEventListener('click', function () {
+                    currentTextIndex = (currentTextIndex + 1) % allTexts.length;
+                    const selectedLang = languageSelect.value || 'pl';
+                    demoText.textContent = allTexts[currentTextIndex][selectedLang] || allTexts[currentTextIndex].en;
+                });
+
+                if ('speechSynthesis' in window) {
+                    readButton.addEventListener('click', function () {
+                        const selectedLang = languageSelect.value;
+                        const text = demoText.textContent;
+
+                        speechSynthesis.cancel();
+
+                        const utterance = new SpeechSynthesisUtterance(text);
+
+                        if (selectedLang) {
+                            utterance.lang = selectedLang;
+                            speechFeedback.innerHTML += `<br><span style="color: blue;">🔊 Czytanie w języku: ${selectedLang}</span>`;
+                        } else {
+                            speechFeedback.innerHTML += `<br><span style="color: orange;">🔊 Czytanie bez określenia języka (może być nieprawidłowe)</span>`;
+                        }
+
+                        utterance.onerror = function () {
+                            speechFeedback.innerHTML += `<br><span style="color: red;">❌ Błąd przy czytaniu</span>`;
+                        };
+
+                        speechSynthesis.speak(utterance);
+                    });
+                } else {
+                    readButton.disabled = true;
+                    readButton.textContent = "Synteza mowy niedostępna";
+                }
+            </script>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie</h2>
+
+            <h3>Testy automatyczne</h3>
+            <p>Użyj następującego kodu JavaScript do sprawdzenia obecności atrybutu lang:</p>
+
+            <pre><code class="language-javascript">// Test obecności atrybutu lang
+function testPageLanguage() {
+    const htmlElement = document.documentElement;
+    const langAttr = htmlElement.getAttribute('lang');
+    
+    const results = {
+        hasLangAttribute: !!langAttr,
+        languageCode: langAttr,
+        isValidCode: false,
+        issues: []
+    };
+    
+    if (!langAttr) {
+        results.issues.push('Brak atrybutu lang w elemencie html');
+        return results;
+    }
+    
+    // Podstawowa walidacja kodu języka (BCP 47)
+    const langPattern = /^[a-z]{2,3}(-[A-Z]{2})?(-[a-z]{4})?(-[A-Z]{2})?$/;
+    results.isValidCode = langPattern.test(langAttr);
+    
+    if (!results.isValidCode) {
+        results.issues.push('Nieprawidłowy format kodu języka');
+    }
+    
+    return results;
+}
+
+// Uruchom test
+const testResult = testPageLanguage();
+console.log('Test języka strony:', testResult);
+
+if (testResult.issues.length === 0) {
+    console.log('✅ Test przeszedł pomyślnie');
+} else {
+    console.warn('❌ Znaleziono problemy:', testResult.issues);
+}</code></pre>
+
+            <h3>Testy manualne</h3>
+            <ul>
+                <li><strong>Sprawdź kod źródłowy</strong> - czy element &lt;html&gt; ma atrybut lang</li>
+                <li><strong>Zweryfikuj kod języka</strong> - czy odpowiada głównej treści strony</li>
+                <li><strong>Test z czytnikiem ekranu</strong> - czy wymowa jest prawidłowa</li>
+                <li><strong>Walidator HTML</strong> - sprawdź poprawność kodu</li>
+            </ul>
+
+            <h3>Narzędzia</h3>
+            <ul>
+                <li><strong>WAVE Web Accessibility Evaluator</strong> - wykrywa brak atrybutu lang</li>
+                <li><strong>axe DevTools</strong> - sprawdza obecność i poprawność języka</li>
+                <li><strong>W3C Markup Validator</strong> - walidacja HTML</li>
+                <li><strong>Lighthouse</strong> - audyt dostępności</li>
+            </ul>
+
+            <div class="checklist">
+                <h3>Lista kontrolna</h3>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ Element &lt;html&gt; zawiera atrybut lang</li>
+                    <li>☐ Kod języka jest w formacie BCP 47</li>
+                    <li>☐ Kod odpowiada głównemu językowi treści</li>
+                    <li>☐ Atrybut jest obecny na wszystkich stronach</li>
+                    <li>☐ Czytnik ekranu prawidłowo interpretuje język</li>
+                    <li>☐ Walidator HTML nie zgłasza błędów</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="implementation">
+            <h2>Implementacja</h2>
+
+            <h3>HTML statyczny</h3>
+            <pre><code class="language-html">&lt;!-- Dla strony polskiej --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="pl"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Tytuł strony&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Treść strony --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+            <h3>Systemy CMS</h3>
+
+            <h4>WordPress</h4>
+            <pre><code class="language-php">&lt;!-- W pliku functions.php --&gt;
+function custom_html_lang_attribute() {
+    return 'pl'; // lub inny kod języka
+}
+add_filter('language_attributes', 'custom_html_lang_attribute');
+
+&lt;!-- W szablonie theme --&gt;
+&lt;html &lt;?php language_attributes(); ?&gt;&gt;</code></pre>
+
+            <h4>Drupal</h4>
+            <pre><code class="language-php">&lt;!-- W konfiguracji witryny --&gt;
+// admin/config/regional/language
+// Ustaw domyślny język witryny
+
+&lt;!-- W szablonie Twig --&gt;
+&lt;html{{ html_attributes.setAttribute('lang', language.getId()) }}&gt;</code></pre>
+
+            <h3>Frameworki JavaScript</h3>
+
+            <h4>React</h4>
+            <pre><code class="language-javascript">// W komponencie głównym lub App.js
+useEffect(() => {
+    document.documentElement.lang = 'pl';
+}, []);
+
+// Lub w index.html
+&lt;html lang="pl"&gt;</code></pre>
+
+            <h4>Vue.js</h4>
+            <pre><code class="language-javascript">// W main.js lub komponencie głównym
+mounted() {
+    document.documentElement.setAttribute('lang', 'pl');
+}
+
+// Lub dynamicznie
+computed: {
+    currentLanguage() {
+        return this.$i18n.locale;
+    }
+},
+watch: {
+    currentLanguage(newLang) {
+        document.documentElement.lang = newLang;
+    }
+}</code></pre>
+
+            <h4>Angular</h4>
+            <pre><code class="language-typescript">// W app.component.ts
+import { DOCUMENT } from '@angular/common';
+import { Inject, Component } from '@angular/core';
+
+@Component({...})
+export class AppComponent {
+    constructor(@Inject(DOCUMENT) private document: Document) {
+        this.document.documentElement.lang = 'pl';
+    }
+}</code></pre>
+        </section>
+
+        <section class="dynamic-language">
+            <h2>Dynamiczna zmiana języka</h2>
+            <p>Dla aplikacji wielojęzycznych, które pozwalają użytkownikowi zmieniać język:</p>
+
+            <pre><code class="language-javascript">// Funkcja zmiany języka
+function changePageLanguage(newLanguage) {
+    // Zmień atrybut lang
+    document.documentElement.lang = newLanguage;
+    
+    // Opcjonalnie: zmień kierunek tekstu dla języków RTL
+    if (['ar', 'he', 'fa'].includes(newLanguage)) {
+        document.documentElement.dir = 'rtl';
+    } else {
+        document.documentElement.dir = 'ltr';
+    }
+    
+    // Powiadom technologie wspomagające o zmianie
+    announceLanguageChange(newLanguage);
+}
+
+// Funkcja powiadamiania o zmianie języka
+function announceLanguageChange(language) {
+    const announcement = document.createElement('div');
+    announcement.setAttribute('aria-live', 'polite');
+    announcement.setAttribute('aria-atomic', 'true');
+    announcement.style.position = 'absolute';
+    announcement.style.left = '-10000px';
+    announcement.textContent = `Język strony zmieniony na ${language}`;
+    
+    document.body.appendChild(announcement);
+    
+    setTimeout(() => {
+        document.body.removeChild(announcement);
+    }, 1000);
+}
+
+// Przykład użycia
+document.getElementById('lang-selector').addEventListener('change', function(e) {
+    changePageLanguage(e.target.value);
+});</code></pre>
+        </section>
+
+        <section class="common-mistakes">
+            <h2>Częste błędy</h2>
+
+            <div class="mistake-block">
+                <h3>❌ Używanie niepoprawnych kodów</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe --&gt;
+&lt;html lang="polish"&gt;
+&lt;html lang="POL"&gt;
+&lt;html lang="PL"&gt;
+
+&lt;!-- Prawidłowe --&gt;
+&lt;html lang="pl"&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Umieszczanie lang w niewłaściwym miejscu</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe --&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta lang="pl"&gt;
+&lt;/head&gt;
+&lt;body lang="pl"&gt;
+
+&lt;!-- Prawidłowe --&gt;
+&lt;html lang="pl"&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Brak zgodności treści z językiem</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe --&gt;
+&lt;html lang="en"&gt;
+&lt;body&gt;
+    &lt;h1&gt;Witamy na stronie&lt;/h1&gt; &lt;!-- Polska treść z angielskim lang --&gt;
+&lt;/body&gt;
+
+&lt;!-- Prawidłowe --&gt;
+&lt;html lang="pl"&gt;
+&lt;body&gt;
+    &lt;h1&gt;Witamy na stronie&lt;/h1&gt;
+&lt;/body&gt;</code></pre>
+            </div>
+        </section>
+
+        <section class="resources">
+            <h2>Dodatkowe zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/language-of-page.html" target="_blank"
+                        rel="noopener">Understanding SC 3.1.1: Language of Page (W3C)</a></li>
+                <li><a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry"
+                        target="_blank" rel="noopener">Oficjalny rejestr kodów języków (IANA)</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang" target="_blank"
+                        rel="noopener">MDN: Atrybut lang</a></li>
+                <li><a href="https://webaim.org/techniques/language/" target="_blank" rel="noopener">WebAIM:
+                        Language</a></li>
+                <li><a href="https://www.w3.org/International/questions/qa-choosing-language-tags" target="_blank"
+                        rel="noopener">W3C: Choosing a Language Tag</a></li>
+            </ul>
+        </section>
+
+        <nav class="page-navigation" aria-label="Nawigacja między stronami">
+            <a href="3.1.html" class="nav-link prev-page">
+                <span class="nav-arrow">←</span>
+                <span class="nav-text">
+                    <span class="nav-label">Poprzednia</span>
+                    <span class="nav-title">3.1 Czytelność</span>
+                </span>
+            </a>
+            <a href="3.1.2.html" class="nav-link next-page">
+                <span class="nav-text">
+                    <span class="nav-label">Następna</span>
+                    <span class="nav-title">3.1.2 Język części (w przygotowaniu)</span>
+                </span>
+                <span class="nav-arrow">→</span>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

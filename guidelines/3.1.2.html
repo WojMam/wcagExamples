@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.1.2 Język części (AA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>3.1.2 Język części (AA)</h1>
+            <p>Ludzki język każdego fragmentu lub wyrażenia w treści może być określony programowo, z wyjątkiem nazw
+                własnych, terminów technicznych, słów nieokreślonego języka oraz słów lub wyrażeń, które stały się
+                częścią slangowa tekstu bezpośrednio otaczającego.</p>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>Gdy strona zawiera fragmenty tekstu w języku innym niż główny język strony, te fragmenty muszą być
+                oznaczone odpowiednim atrybutem <code>lang</code>. Pozwala to technologiom wspomagającym na prawidłową
+                interpretację i wymowę różnych części treści.</p>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Użytkownicy czytników ekranu</strong> - prawidłowa wymowa fragmentów w różnych językach</li>
+                <li><strong>Osoby z dysleksją</strong> - lepsze wsparcie syntez mowy</li>
+                <li><strong>Użytkownicy wielojęzyczni</strong> - łatwiejsze rozumienie treści mieszanych językowo</li>
+                <li><strong>Osoby uczące się języków</strong> - możliwość rozróżnienia języków</li>
+                <li><strong>Narzędzia tłumaczące</strong> - dokładniejsze rozpoznawanie fragmentów do tłumaczenia</li>
+            </ul>
+        </section>
+
+        <section class="requirements">
+            <h2>Wymagania</h2>
+            <ul>
+                <li>Fragmenty tekstu w językach innych niż główny język strony muszą mieć atrybut <code>lang</code></li>
+                <li>Kod języka musi być prawidłowy według standardu BCP 47</li>
+                <li>Kod musi odpowiadać językowi fragmentu tekstu</li>
+                <li>Wymaganie nie dotyczy nazw własnych, terminów technicznych i slangu</li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje</h2>
+            <dl>
+                <dt><strong>Fragment tekstu</strong></dt>
+                <dd>Część treści napisana w języku innym niż główny język strony - może to być pojedyncze słowo, fraza,
+                    zdanie lub dłuższy tekst.</dd>
+
+                <dt><strong>Nazwy własne</strong></dt>
+                <dd>Imiona, nazwiska, nazwy firm, miejsc, produktów - zwykle nie wymagają oznaczenia języka.</dd>
+
+                <dt><strong>Terminy techniczne</strong></dt>
+                <dd>Specjalistyczne pojęcia, które są powszechnie używane bez tłumaczenia (np. "email", "software").
+                </dd>
+
+                <dt><strong>Slang otaczającego tekstu</strong></dt>
+                <dd>Obce słowa, które zostały zaadaptowane i są częścią lokalnego slangu lub języka potocznego.</dd>
+
+                <dt><strong>Słowa nieokreślonego języka</strong></dt>
+                <dd>Słowa, których język nie może być jednoznacznie określony lub które nie mają określonego języka.
+                </dd>
+            </dl>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Brak oznaczenia cytatów w obcym języku</h4>
+                <pre><code class="language-html">&lt;html lang="pl"&gt;
+&lt;body&gt;
+    &lt;p&gt;Słynne powiedzenie Shakespeare'a: 
+       &lt;q&gt;To be or not to be, that is the question&lt;/q&gt;
+       nadal jest aktualne.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p><strong>Problem:</strong> Angielski cytat nie jest oznaczony, czytnik ekranu będzie próbował
+                    przeczytać go po polsku.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Nieuznaczone fragmenty w obcym języku</h4>
+                <pre><code class="language-html">&lt;html lang="pl"&gt;
+&lt;body&gt;
+    &lt;p&gt;Nasza firma oferuje najlepszy customer service w branży.&lt;/p&gt;
+    &lt;p&gt;Zapraszamy na naszą stronę: Visit our website for more information.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p><strong>Problem:</strong> Angielskie fragmenty w polskim tekście nie są oznaczone.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Nieprawidłowy kod języka</h4>
+                <pre><code class="language-html">&lt;html lang="pl"&gt;
+&lt;body&gt;
+    &lt;p&gt;We francji mówi się: 
+       &lt;span lang="french"&gt;Bonjour tout le monde&lt;/span&gt;.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p><strong>Problem:</strong> "french" nie jest prawidłowym kodem języka BCP 47.</p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Oznaczony cytat w obcym języku</h4>
+                <pre><code class="language-html">&lt;html lang="pl"&gt;
+&lt;body&gt;
+    &lt;p&gt;Słynne powiedzenie Shakespeare'a: 
+       &lt;q lang="en"&gt;To be or not to be, that is the question&lt;/q&gt;
+       nadal jest aktualne.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Angielski cytat jest prawidłowo oznaczony atrybutem lang="en".</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Różne fragmenty w różnych językach</h4>
+                <pre><code class="language-html">&lt;html lang="pl"&gt;
+&lt;body&gt;
+    &lt;p&gt;Firma powitała klientów słowami 
+       &lt;span lang="en"&gt;"Welcome to our store"&lt;/span&gt;, 
+       następnie po niemiecku: 
+       &lt;span lang="de"&gt;"Willkommen in unserem Geschäft"&lt;/span&gt;
+       i po francusku: 
+       &lt;span lang="fr"&gt;"Bienvenue dans notre magasin"&lt;/span&gt;.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Każdy obcojęzyczny fragment ma właściwy kod języka.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Dłuższy tekst w innym języku</h4>
+                <pre><code class="language-html">&lt;html lang="pl"&gt;
+&lt;body&gt;
+    &lt;h2&gt;Wersja angielska produktu&lt;/h2&gt;
+    &lt;div lang="en"&gt;
+        &lt;h3&gt;Product Description&lt;/h3&gt;
+        &lt;p&gt;This innovative solution provides comprehensive 
+           accessibility features for modern web applications. 
+           Our product ensures WCAG 2.1 compliance.&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Cały blok w języku angielskim jest oznaczony na poziomie kontenera.
+                </p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Prawidłowe wyjątki od reguły</h4>
+                <pre><code class="language-html">&lt;html lang="pl"&gt;
+&lt;body&gt;
+    &lt;p&gt;Spotkanie odbywa się w hotelu Marriott w Warszawie.&lt;/p&gt;
+    &lt;p&gt;Wyślij mi email na adres info@example.com.&lt;/p&gt;
+    &lt;p&gt;Oprogramowanie to dostępne jest jako open source.&lt;/p&gt;
+    &lt;p&gt;Ta aplikacja ma bardzo cool interfejs.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Nazwy własne (Marriott), terminy techniczne (email, open source) i
+                    slang (cool) nie wymagają oznaczenia.</p>
+            </div>
+        </section>
+
+        <section class="language-context">
+            <h2>Kiedy oznaczać język części</h2>
+
+            <h3>✅ Wymagane oznaczenie</h3>
+            <ul>
+                <li><strong>Cytaty i przytoczenia</strong> w obcym języku</li>
+                <li><strong>Fragmenty tekstu</strong> napisane w innym języku</li>
+                <li><strong>Instrukcje i komunikaty</strong> w obcym języku</li>
+                <li><strong>Tytuły dzieł</strong> w oryginalnym języku (opcjonalnie)</li>
+                <li><strong>Bloki treści</strong> w innym języku</li>
+            </ul>
+
+            <h3>❌ Nie wymagane oznaczenie</h3>
+            <ul>
+                <li><strong>Nazwy własne:</strong> Netflix, Microsoft, McDonald's</li>
+                <li><strong>Nazwiska i imiona:</strong> John Smith, Marie Curie</li>
+                <li><strong>Nazwy miejsc:</strong> New York, Los Angeles, London</li>
+                <li><strong>Terminy techniczne:</strong> email, software, hardware, website</li>
+                <li><strong>Zaadaptowane słowa:</strong> weekend, marketing, business</li>
+                <li><strong>Skróty międzynarodowe:</strong> CEO, IT, HR, PR</li>
+                <li><strong>Slang i żargon:</strong> cool, trendy, startup</li>
+            </ul>
+
+            <h3>🤔 Przypadki graniczne</h3>
+            <ul>
+                <li><strong>Tytuły filmów/książek:</strong> można oznaczyć jeśli istotne</li>
+                <li><strong>Nazwy produktów:</strong> zwykle nie wymagają oznaczenia</li>
+                <li><strong>Adresy internetowe:</strong> nie wymagają oznaczenia</li>
+                <li><strong>Kod programistyczny:</strong> nie wymaga oznaczenia</li>
+            </ul>
+        </section>
+
+        <section class="interactive-demo">
+            <h2>Interaktywna demonstracja</h2>
+            <p>Przetestuj oznaczanie różnych fragmentów tekstu:</p>
+
+            <div class="demo-container">
+                <h3>Narzędzie do oznaczania języków</h3>
+                <div class="language-marking-demo">
+                    <div class="demo-input">
+                        <label for="sample-text">Wybierz przykład tekstu:</label>
+                        <select id="sample-text">
+                            <option value="quote">Cytat w języku angielskim</option>
+                            <option value="mixed">Tekst mieszany polsko-angielski</option>
+                            <option value="business">Tekst biznesowy z terminami</option>
+                            <option value="cultural">Tekst kulturowy z cytatami</option>
+                        </select>
+                    </div>
+
+                    <div class="demo-content">
+                        <h4>Przykład do oznaczenia:</h4>
+                        <div id="demo-text-display" class="text-display"></div>
+
+                        <h4>Wersja z oznaczeniami:</h4>
+                        <div id="demo-marked-text" class="marked-text"></div>
+
+                        <button id="show-marking" class="demo-button">Pokaż oznaczenia</button>
+                        <button id="test-speech" class="demo-button">🔊 Test wymowy</button>
+                    </div>
+
+                    <div id="marking-explanation" class="demo-explanation"></div>
+                </div>
+            </div>
+
+            <script>
+                const sampleTexts = {
+                    quote: {
+                        original: 'Winston Churchill powiedział: "Never give up, never surrender" podczas wojny.',
+                        marked: 'Winston Churchill powiedział: <span lang="en">"Never give up, never surrender"</span> podczas wojny.',
+                        explanation: 'Cytat w języku angielskim wymaga oznaczenia lang="en".'
+                    },
+                    mixed: {
+                        original: 'Nasze customer service team oferuje excellent support dla wszystkich klientów.',
+                        marked: 'Nasze <span lang="en">customer service team</span> oferuje <span lang="en">excellent support</span> dla wszystkich klientów.',
+                        explanation: 'Angielskie wyrażenia w polskim tekście wymagają oznaczenia.'
+                    },
+                    business: {
+                        original: 'CEO firmy Microsoft John Smith wysłał email o nowej strategii marketing.',
+                        marked: 'CEO firmy Microsoft John Smith wysłał email o nowej strategii marketing.',
+                        explanation: 'CEO, Microsoft, John Smith, email, marketing to nazwy własne/terminy nie wymagające oznaczenia.'
+                    },
+                    cultural: {
+                        original: 'Francuski film nosił tytuł "La Vie en Rose" i opowiadał o miłości.',
+                        marked: 'Francuski film nosił tytuł <span lang="fr">"La Vie en Rose"</span> i opowiadał o miłości.',
+                        explanation: 'Tytuł w języku francuskim można oznaczyć dla lepszej wymowy.'
+                    }
+                };
+
+                const sampleSelect = document.getElementById('sample-text');
+                const textDisplay = document.getElementById('demo-text-display');
+                const markedText = document.getElementById('demo-marked-text');
+                const showButton = document.getElementById('show-marking');
+                const speechButton = document.getElementById('test-speech');
+                const explanation = document.getElementById('marking-explanation');
+
+                function updateDemo() {
+                    const selected = sampleTexts[sampleSelect.value];
+                    textDisplay.innerHTML = selected.original;
+                    markedText.innerHTML = '';
+                    explanation.innerHTML = '';
+                }
+
+                sampleSelect.addEventListener('change', updateDemo);
+
+                showButton.addEventListener('click', function () {
+                    const selected = sampleTexts[sampleSelect.value];
+                    markedText.innerHTML = selected.marked;
+                    explanation.innerHTML = `<strong>Wyjaśnienie:</strong> ${selected.explanation}`;
+                });
+
+                if ('speechSynthesis' in window) {
+                    speechButton.addEventListener('click', function () {
+                        const selected = sampleTexts[sampleSelect.value];
+                        speechSynthesis.cancel();
+
+                        // Utwórz tymczasowy element z oznaczeniami
+                        const tempDiv = document.createElement('div');
+                        tempDiv.innerHTML = selected.marked;
+                        tempDiv.style.position = 'absolute';
+                        tempDiv.style.left = '-10000px';
+                        document.body.appendChild(tempDiv);
+
+                        const utterance = new SpeechSynthesisUtterance(tempDiv.textContent);
+                        utterance.lang = 'pl';
+
+                        utterance.onend = function () {
+                            document.body.removeChild(tempDiv);
+                        };
+
+                        speechSynthesis.speak(utterance);
+
+                        explanation.innerHTML += '<br><span style="color: blue;">🔊 Test wymowy uruchomiony</span>';
+                    });
+                } else {
+                    speechButton.disabled = true;
+                    speechButton.textContent = "Synteza mowy niedostępna";
+                }
+
+                // Inicjalizuj demo
+                updateDemo();
+            </script>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie</h2>
+
+            <h3>Testy automatyczne</h3>
+            <p>Narzędzie do wykrywania fragmentów wymagających oznaczenia języka:</p>
+
+            <pre><code class="language-javascript">// Wykrywanie potencjalnych fragmentów obcojęzycznych
+function detectForeignLanguageFragments() {
+    const pageLanguage = document.documentElement.lang || 'pl';
+    const textContent = document.body.textContent;
+    
+    // Proste wzorce dla różnych języków
+    const patterns = {
+        en: /\b(the|and|for|are|but|not|you|all|can|had|her|was|one|our|out|day|get|has|him|his|how|its|may|new|now|old|see|two|who|boy|did|man|men|she|use|way|too|any|may|say|try|ask|came|each|even|good|last|long|make|many|over|such|take|than|them|well|what|your|they|this|that|with|have|from|they|been|have|more|much|some|time|very|when|come|here|just|know|life|like|look|made|most|move|must|name|need|only|open|seem|tell|want|ways|year|also|back|call|came|down|find|hand|keep|kind|left|live|mean|play|said|same|show|side|talk|turn|walk|work|year|both|give|does|fact|find|good|great|head|help|high|home|keep|large|late|long|move|night|place|right|small|sound|still|take|think|thing|under|water|where|which|while|world|write|young|being|every|first|found|group|house|light|might|never|often|other|point|right|shall|should|start|state|three|until|wants|white|woman|words|world|write|years|after|again|could|end|even|form|from|given|going|great|human|later|learn|leave|little|local|means|might|music|never|number|order|other|parts|party|place|point|power|public|quite|right|shall|short|since|small|sound|still|story|study|system|their|there|these|thing|think|those|three|under|until|using|water|where|which|while|whole|woman|world|would|write|young|important|including|according|following|community|something|everything|government|development|information|organization)\b/gi,
+        de: /\b(der|die|das|und|ist|ich|du|er|sie|es|wir|ihr|sie|ein|eine|mit|von|auf|für|als|bei|aus|nach|vor|über|unter|durch|ohne|gegen|während|seit|bis|wegen|trotz|statt|außer|innerhalb|außerhalb|oberhalb|unterhalb|diesseits|jenseits|längs|entlang|gegenüber|entsprechend|gemäß|zufolge|laut|kraft|dank|halber|wegen|zwecks|betreffs|hinsichtlich|bezüglich|angesichts|infolge|inmitten|mittels|vermittels|vermöge|zugunsten|zulasten|zuungunsten)\b/gi,
+        fr: /\b(le|la|les|de|et|à|un|une|il|elle|être|avoir|que|ce|je|sur|avec|ne|se|pas|tout|pour|par|te|ta|ton|nous|vous|ils|elles|dans|son|sa|ses|comme|mais|ou|où|quand|qui|quoi|comment|pourquoi|parce|donc|alors|si|oui|non|bien|très|plus|moins|beaucoup|peu|assez|trop|jamais|toujours|souvent|parfois|quelquefois|maintenant|aujourd|hier|demain|avant|après|pendant|depuis|jusqu|vers|chez|entre|parmi|selon|malgré|sauf|excepté|hormis|outre|moyennant|nonobstant|suivant|touchant|concernant|durant|attendu)\b/gi
+    };
+    
+    const results = [];
+    
+    for (const [lang, pattern] of Object.entries(patterns)) {
+        if (lang === pageLanguage) continue;
+        
+        const matches = textContent.match(pattern);
+        if (matches && matches.length > 2) {
+            results.push({
+                language: lang,
+                matchCount: matches.length,
+                samples: matches.slice(0, 5)
+            });
+        }
+    }
+    
+    return results;
+}
+
+// Sprawdzanie obecności atrybutów lang na fragmentach
+function checkLanguageAttributes() {
+    const elements = document.querySelectorAll('p, span, div, blockquote, q, cite');
+    const issues = [];
+    
+    elements.forEach(element => {
+        const text = element.textContent.trim();
+        if (text.length > 10) {
+            const hasLangAttr = element.hasAttribute('lang');
+            const parentLang = element.closest('[lang]')?.getAttribute('lang');
+            
+            if (!hasLangAttr && !parentLang) {
+                // Sprawdź czy element może zawierać obcy tekst
+                const foreignContent = detectForeignLanguageFragments();
+                if (foreignContent.length > 0) {
+                    issues.push({
+                        element: element,
+                        text: text.substring(0, 50) + '...',
+                        potentialLanguages: foreignContent
+                    });
+                }
+            }
+        }
+    });
+    
+    return issues;
+}
+
+// Uruchom analizę
+const foreignFragments = detectForeignLanguageFragments();
+const langIssues = checkLanguageAttributes();
+
+console.log('Wykryte obce fragmenty:', foreignFragments);
+console.log('Potencjalne problemy z oznaczeniem:', langIssues);</code></pre>
+
+            <h3>Testy manualne</h3>
+            <ul>
+                <li><strong>Przegląd treści</strong> - zidentyfikuj fragmenty w obcych językach</li>
+                <li><strong>Sprawdzenie oznaczen</strong> - czy fragmenty mają odpowiednie atrybuty lang</li>
+                <li><strong>Test z czytnikiem ekranu</strong> - czy wymowa jest prawidłowa</li>
+                <li><strong>Weryfikacja wyjątków</strong> - czy nazwy własne nie są niepotrzebnie oznaczone</li>
+            </ul>
+
+            <h3>Narzędzia</h3>
+            <ul>
+                <li><strong>WAVE Web Accessibility Evaluator</strong> - podstawowe sprawdzenie języków</li>
+                <li><strong>axe DevTools</strong> - audyt oznaczen językowych</li>
+                <li><strong>Rozszerzenia przeglądarki</strong> - do podświetlania fragmentów bez lang</li>
+                <li><strong>Czytniki ekranu</strong> - test rzeczywistej wymowy</li>
+            </ul>
+
+            <div class="checklist">
+                <h3>Lista kontrolna</h3>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ Fragmenty w obcych językach są oznaczone</li>
+                    <li>☐ Kody języków są prawidłowe (BCP 47)</li>
+                    <li>☐ Nazwy własne nie są niepotrzebnie oznaczone</li>
+                    <li>☐ Terminy techniczne nie są oznaczone</li>
+                    <li>☐ Cytaty w obcych językach mają oznaczenia</li>
+                    <li>☐ Test z czytnikiem ekranu przeszedł pomyślnie</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="implementation">
+            <h2>Implementacja</h2>
+
+            <h3>Podstawowe oznaczenia</h3>
+            <pre><code class="language-html">&lt;!-- Pojedyncze słowa/frazy --&gt;
+&lt;p&gt;Powiedzial &lt;span lang="en"&gt;"Hello world"&lt;/span&gt; i odszedł.&lt;/p&gt;
+
+&lt;!-- Cytaty --&gt;
+&lt;p&gt;Jak mówił Einstein: &lt;q lang="en"&gt;Imagination is more important than knowledge&lt;/q&gt;.&lt;/p&gt;
+
+&lt;!-- Dłuższe fragmenty --&gt;
+&lt;blockquote lang="en"&gt;
+    &lt;p&gt;Four score and seven years ago our fathers brought forth 
+       on this continent, a new nation...&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+
+            <h3>Dynamiczne oznaczanie</h3>
+            <pre><code class="language-javascript">// Automatyczne oznaczanie cytatów
+function markQuotes() {
+    const quotes = document.querySelectorAll('q, blockquote');
+    
+    quotes.forEach(quote => {
+        const text = quote.textContent.toLowerCase();
+        
+        // Proste wykrywanie języka na podstawie charakterystycznych słów
+        if (text.includes('the ') || text.includes(' and ') || text.includes(' for ')) {
+            quote.setAttribute('lang', 'en');
+        } else if (text.includes(' le ') || text.includes(' la ') || text.includes(' et ')) {
+            quote.setAttribute('lang', 'fr');
+        } else if (text.includes(' der ') || text.includes(' die ') || text.includes(' und ')) {
+            quote.setAttribute('lang', 'de');
+        }
+    });
+}
+
+// Oznaczanie przez użytkownika
+function addLanguageMarking(element, language) {
+    element.setAttribute('lang', language);
+    
+    // Dodaj klasę wizualną dla edytorów
+    element.classList.add('foreign-language');
+    
+    // Opcjonalnie: dodaj tooltip
+    element.title = `Fragment w języku: ${language}`;
+}</code></pre>
+
+            <h3>CMS i edytory</h3>
+
+            <h4>WordPress (Gutenberg)</h4>
+            <pre><code class="language-javascript">// Blok do oznaczania języka
+wp.blocks.registerBlockType('custom/language-block', {
+    title: 'Fragment obcojęzyczny',
+    attributes: {
+        content: { type: 'string' },
+        language: { type: 'string', default: 'en' }
+    },
+    edit: function(props) {
+        return wp.element.createElement('div', {},
+            wp.element.createElement(wp.components.SelectControl, {
+                label: 'Język',
+                value: props.attributes.language,
+                options: [
+                    { value: 'en', label: 'Angielski' },
+                    { value: 'de', label: 'Niemiecki' },
+                    { value: 'fr', label: 'Francuski' }
+                ],
+                onChange: (value) => props.setAttributes({ language: value })
+            }),
+            wp.element.createElement(wp.components.RichText, {
+                value: props.attributes.content,
+                onChange: (value) => props.setAttributes({ content: value }),
+                placeholder: 'Wpisz tekst...'
+            })
+        );
+    },
+    save: function(props) {
+        return wp.element.createElement('div', {
+            lang: props.attributes.language
+        }, props.attributes.content);
+    }
+});</code></pre>
+
+            <h4>Edytor TinyMCE</h4>
+            <pre><code class="language-javascript">// Wtyczka do oznaczania języka
+tinymce.PluginManager.add('languagemarker', function(editor) {
+    editor.addButton('languagemarker', {
+        text: 'Lang',
+        tooltip: 'Oznacz język fragmentu',
+        onclick: function() {
+            const selectedText = editor.selection.getContent();
+            
+            if (selectedText) {
+                const language = prompt('Podaj kod języka (np. en, de, fr):');
+                if (language) {
+                    editor.selection.setContent(
+                        `&lt;span lang="${language}"&gt;${selectedText}&lt;/span&gt;`
+                    );
+                }
+            } else {
+                alert('Zaznacz tekst do oznaczenia.');
+            }
+        }
+    });
+});</code></pre>
+        </section>
+
+        <section class="advanced-techniques">
+            <h2>Zaawansowane techniki</h2>
+
+            <h3>Automatyczne wykrywanie języka</h3>
+            <pre><code class="language-javascript">// Biblioteka do wykrywania języka
+class LanguageDetector {
+    constructor() {
+        // Charakterystyczne słowa dla różnych języków
+        this.patterns = {
+            en: ['the', 'and', 'for', 'are', 'but', 'not', 'you', 'all', 'can'],
+            de: ['der', 'die', 'das', 'und', 'ist', 'ich', 'du', 'er', 'sie'],
+            fr: ['le', 'la', 'les', 'de', 'et', 'à', 'un', 'une', 'il', 'elle'],
+            es: ['el', 'la', 'de', 'que', 'y', 'a', 'en', 'un', 'es', 'se'],
+            it: ['il', 'di', 'che', 'e', 'la', 'per', 'un', 'in', 'con', 'non']
+        };
+    }
+    
+    detectLanguage(text) {
+        const words = text.toLowerCase().split(/\W+/);
+        const scores = {};
+        
+        for (const [lang, patterns] of Object.entries(this.patterns)) {
+            scores[lang] = 0;
+            for (const pattern of patterns) {
+                scores[lang] += words.filter(word => word === pattern).length;
+            }
+        }
+        
+        const maxScore = Math.max(...Object.values(scores));
+        const detectedLang = Object.keys(scores).find(key => scores[key] === maxScore);
+        
+        return maxScore > 2 ? detectedLang : null;
+    }
+}
+
+// Użycie
+const detector = new LanguageDetector();
+const quotes = document.querySelectorAll('q, blockquote');
+
+quotes.forEach(quote => {
+    if (!quote.hasAttribute('lang')) {
+        const detectedLang = detector.detectLanguage(quote.textContent);
+        if (detectedLang && detectedLang !== document.documentElement.lang) {
+            quote.setAttribute('lang', detectedLang);
+            console.log(`Wykryto język ${detectedLang} dla:`, quote.textContent.substring(0, 50));
+        }
+    }
+});</code></pre>
+
+            <h3>Walidacja oznaczen</h3>
+            <pre><code class="language-javascript">// Walidator oznaczen językowych
+class LanguageValidator {
+    constructor() {
+        this.exemptions = [
+            // Nazwy własne
+            /\b[A-Z][a-z]+(\s+[A-Z][a-z]+)*\b/,
+            // Adresy email
+            /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b/,
+            // Adresy URL
+            /https?:\/\/[^\s]+/,
+            // Terminy techniczne
+            /\b(email|software|hardware|website|internet|online|offline|wifi|smartphone|laptop|computer|mouse|keyboard|monitor|printer|scanner|router|server|database|algorithm|application|programming|developer|framework|library|plugin|widget|blog|forum|chat|social|media|streaming|download|upload|cloud|backup|update|install|delete|copy|paste|click|scroll|zoom|login|logout|password|username|profile|settings|preferences|dashboard|menu|toolbar|sidebar|header|footer|navigation|search|filter|sort|category|tag|comment|like|share|follow|subscribe|notification|alert|popup|modal|dropdown|checkbox|radiobutton|slider|button|link|image|video|audio|file|folder|document|spreadsheet|presentation|pdf|txt|doc|docx|xls|xlsx|ppt|pptx|jpg|jpeg|png|gif|svg|mp3|mp4|avi|mov|zip|rar|exe|app|ios|android|windows|macos|linux|chrome|firefox|safari|edge|opera|google|apple|microsoft|amazon|facebook|twitter|instagram|youtube|linkedin|github|stackoverflow|wikipedia)\b/i
+        ];
+    }
+    
+    needsLanguageMarking(text, context) {
+        // Sprawdź wyjątki
+        for (const exemption of this.exemptions) {
+            if (exemption.test(text)) {
+                return false;
+            }
+        }
+        
+        // Sprawdź czy tekst zawiera obce słowa
+        const foreignWords = this.detectForeignWords(text);
+        return foreignWords.length > 0;
+    }
+    
+    detectForeignWords(text) {
+        // Uproszczona implementacja
+        const englishWords = ['the', 'and', 'for', 'are', 'but', 'not', 'you', 'can', 'will', 'would', 'should', 'could', 'may', 'might', 'must'];
+        const words = text.toLowerCase().split(/\W+/);
+        
+        return words.filter(word => 
+            englishWords.includes(word) && 
+            word.length > 2
+        );
+    }
+    
+    validatePage() {
+        const elements = document.querySelectorAll('p, span, div, blockquote, q');
+        const issues = [];
+        
+        elements.forEach(element => {
+            const text = element.textContent.trim();
+            if (text.length > 10 && !element.hasAttribute('lang')) {
+                if (this.needsLanguageMarking(text, element)) {
+                    issues.push({
+                        element: element,
+                        text: text.substring(0, 50) + '...',
+                        foreignWords: this.detectForeignWords(text)
+                    });
+                }
+            }
+        });
+        
+        return issues;
+    }
+}
+
+// Użycie
+const validator = new LanguageValidator();
+const issues = validator.validatePage();
+console.log('Znalezione problemy z oznaczeniem języka:', issues);</code></pre>
+        </section>
+
+        <section class="common-mistakes">
+            <h2>Częste błędy</h2>
+
+            <div class="mistake-block">
+                <h3>❌ Oznaczanie nazw własnych</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe --&gt;
+&lt;p&gt;Spotkanie w &lt;span lang="en"&gt;Microsoft&lt;/span&gt; było owocne.&lt;/p&gt;
+&lt;p&gt;Jadę do &lt;span lang="en"&gt;New York&lt;/span&gt; na urlop.&lt;/p&gt;
+
+&lt;!-- Prawidłowe --&gt;
+&lt;p&gt;Spotkanie w Microsoft było owocne.&lt;/p&gt;
+&lt;p&gt;Jadę do New York na urlop.&lt;/p&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Oznaczanie zaadaptowanych terminów</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe --&gt;
+&lt;p&gt;Wyślij mi &lt;span lang="en"&gt;email&lt;/span&gt; z danymi.&lt;/p&gt;
+&lt;p&gt;Ta aplikacja ma &lt;span lang="en"&gt;cool&lt;/span&gt; interfejs.&lt;/p&gt;
+
+&lt;!-- Prawidłowe --&gt;
+&lt;p&gt;Wyślij mi email z danymi.&lt;/p&gt;
+&lt;p&gt;Ta aplikacja ma cool interfejs.&lt;/p&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Pomijanie prawdziwych obcojęzycznych fragmentów</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe --&gt;
+&lt;p&gt;Francuski przewodnik powiedział: Bonjour tout le monde, comment allez-vous?&lt;/p&gt;
+
+&lt;!-- Prawidłowe --&gt;
+&lt;p&gt;Francuski przewodnik powiedział: &lt;span lang="fr"&gt;Bonjour tout le monde, comment allez-vous?&lt;/span&gt;&lt;/p&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Nieprawidłowe kody języków</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe --&gt;
+&lt;span lang="english"&gt;Hello world&lt;/span&gt;
+&lt;span lang="ENG"&gt;Hello world&lt;/span&gt;
+&lt;span lang="uk"&gt;Hello world&lt;/span&gt; &lt;!-- uk = ukraiński, nie angielski --&gt;
+
+&lt;!-- Prawidłowe --&gt;
+&lt;span lang="en"&gt;Hello world&lt;/span&gt;
+&lt;span lang="en-US"&gt;Hello world&lt;/span&gt;
+&lt;span lang="en-GB"&gt;Hello world&lt;/span&gt;</code></pre>
+            </div>
+        </section>
+
+        <section class="resources">
+            <h2>Dodatkowe zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/language-of-parts.html" target="_blank"
+                        rel="noopener">Understanding SC 3.1.2: Language of Parts (W3C)</a></li>
+                <li><a href="https://www.w3.org/International/questions/qa-when-lang-neg" target="_blank"
+                        rel="noopener">When to use the language attribute (W3C)</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang" target="_blank"
+                        rel="noopener">MDN: lang attribute</a></li>
+                <li><a href="https://webaim.org/techniques/language/" target="_blank" rel="noopener">WebAIM:
+                        Language</a></li>
+                <li><a href="https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry"
+                        target="_blank" rel="noopener">Language Subtag Registry (IANA)</a></li>
+            </ul>
+        </section>
+
+        <nav class="page-navigation" aria-label="Nawigacja między stronami">
+            <a href="3.1.1.html" class="nav-link prev-page">
+                <span class="nav-arrow">←</span>
+                <span class="nav-text">
+                    <span class="nav-label">Poprzednia</span>
+                    <span class="nav-title">3.1.1 Język strony</span>
+                </span>
+            </a>
+            <a href="3.1.3.html" class="nav-link next-page">
+                <span class="nav-text">
+                    <span class="nav-label">Następna</span>
+                    <span class="nav-title">3.1.3 Nietypowe słowa (w przygotowaniu)</span>
+                </span>
+                <span class="nav-arrow">→</span>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

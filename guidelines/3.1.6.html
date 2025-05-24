@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.1.6 Wymowa (AAA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>3.1.6 Wymowa (AAA)</h1>
+            <p>Mechanizm jest dostępny do identyfikacji specyficznej wymowy słów,
+                gdzie znaczenie słów jest niejednoznaczne bez znajomości wymowy.</p>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>To kryterium wymaga dostarczenia informacji o wymowie słów, gdy ich znaczenie
+                nie jest jasne bez znajomości prawidłowej wymowy. Dotyczy to głównie homonimów
+                (słów o identycznej pisowni ale różnej wymowie i znaczeniu), słów obcych
+                o nieoczywistej wymowie oraz nazw własnych o niestandardowej wymowie.</p>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Osoby niewidome</strong> - używające czytników ekranu, które mogą błędnie wymówić słowa</li>
+                <li><strong>Osoby z dysleksją</strong> - trudności z dekodowaniem napisanych słów na dźwięki</li>
+                <li><strong>Osoby z zaburzeniami mowy</strong> - potrzebujące wsparcia w prawidłowej artykulacji</li>
+                <li><strong>Osoby uczące się języka</strong> - nieznające reguł wymowy w nowym języku</li>
+                <li><strong>Osoby z ograniczeniami poznawczymi</strong> - trudności z rozpoznawaniem kontekstu</li>
+                <li><strong>Uczniowie</strong> - poznający nowe słownictwo specjalistyczne</li>
+                <li><strong>Tłumacze</strong> - potrzebujący prawidłowej wymowy nazw własnych</li>
+            </ul>
+        </section>
+
+        <section class="requirements">
+            <h2>Wymagania</h2>
+            <ul>
+                <li>Mechanizm wymowy musi być dostępny dla słów o niejednoznacznym znaczeniu</li>
+                <li>Wymowa może być dostarczona w formie tekstu, audio lub notacji fonetycznej</li>
+                <li>Mechanizm musi być łatwo dostępny i wyraźnie oznaczony</li>
+                <li>Dotyczy tylko słów, gdzie wymowa wpływa na znaczenie</li>
+                <li>Nie dotyczy wszystkich słów, tylko tych o nieoczywistej wymowie</li>
+                <li>Mechanizm może być dostępny na żądanie (nie musi być zawsze widoczny)</li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje</h2>
+            <dl>
+                <dt><strong>Homonim (Homograph)</strong></dt>
+                <dd>Słowo o identycznej pisowni ale różnej wymowie i znaczeniu (np. "bow" - ukłon vs łuk).</dd>
+
+                <dt><strong>Heteronim</strong></dt>
+                <dd>Szczególny typ homonimu - słowa o tej samej pisowni ale różnej wymowie (np. "lead" - prowadzić vs
+                    ołów).</dd>
+
+                <dt><strong>Transkrypcja fonetyczna</strong></dt>
+                <dd>Zapis wymowy słowa przy użyciu symboli fonetycznych (IPA - International Phonetic Alphabet).</dd>
+
+                <dt><strong>Wymowa kontekstowa</strong></dt>
+                <dd>Prawidłowe brzmienie słowa zależne od kontekstu, w którym jest użyte.</dd>
+
+                <dt><strong>Mechanizm wymowy</strong></dt>
+                <dd>Sposób dostarczania informacji o prawidłowej wymowie słowa (tekst, audio, notacja).</dd>
+
+                <dt><strong>Nazwa własna</strong></dt>
+                <dd>Imiona, nazwiska, nazwy miejsc lub organizacji o potencjalnie nieoczywistej wymowie.</dd>
+            </dl>
+        </section>
+
+        <section class="pronunciation-cases">
+            <h2>Przypadki wymagające wymowy</h2>
+
+            <div class="case-card"
+                style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; margin: 10px 0; border-radius: 5px;">
+                <h3 style="color: #004085; margin-top: 0;">🔄 Homonimy polskie</h3>
+                <ul style="color: #004085;">
+                    <li><strong>zamek</strong> - budowla vs mechanizm do zamykania</li>
+                    <li><strong>mora</strong> - kara vs owoc morwy</li>
+                    <li><strong>atlas</strong> - księga map vs tkanina</li>
+                    <li><strong>organ</strong> - instrument vs część ciała</li>
+                </ul>
+            </div>
+
+            <div class="case-card"
+                style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; margin: 10px 0; border-radius: 5px;">
+                <h3 style="color: #155724; margin-top: 0;">🌍 Słowa obce</h3>
+                <ul style="color: #155724;">
+                    <li><strong>cache</strong> - [kasz] w informatyce</li>
+                    <li><strong>niche</strong> - [nisz] w marketingu</li>
+                    <li><strong>genre</strong> - [żanr] w literaturze</li>
+                    <li><strong>facade</strong> - [fasada] w architekturze</li>
+                </ul>
+            </div>
+
+            <div class="case-card"
+                style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; margin: 10px 0; border-radius: 5px;">
+                <h3 style="color: #856404; margin-top: 0;">👥 Nazwy własne</h3>
+                <ul style="color: #856404;">
+                    <li><strong>Cholmondeley</strong> - [Chumley] nazwisko angielskie</li>
+                    <li><strong>Szczecin</strong> - [Szcze-cin] miasto polskie</li>
+                    <li><strong>Siemianowice</strong> - [Sie-ma-no-wi-ce] miasto śląskie</li>
+                    <li><strong>Loire</strong> - [Lwar] rzeka francuska</li>
+                </ul>
+            </div>
+
+            <div class="case-card"
+                style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; margin: 10px 0; border-radius: 5px;">
+                <h3 style="color: #721c24; margin-top: 0;">🔬 Terminy techniczne</h3>
+                <ul style="color: #721c24;">
+                    <li><strong>SQL</strong> - [es-kju-el] lub [sikłel]</li>
+                    <li><strong>AJAX</strong> - [ejdaks] w programowaniu</li>
+                    <li><strong>Poisson</strong> - [pua-son] rozkład statystyczny</li>
+                    <li><strong>SCSI</strong> - [skazi] interfejs komputerowy</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Homonim bez wskazania wymowy</h4>
+                <pre><code class="language-html">&lt;p&gt;Zwiedziliśmy stary zamek w górach.&lt;/p&gt;</code></pre>
+                <p><strong>Problem:</strong> Nie wiadomo czy chodzi o budowlę czy mechanizm zamykający.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Nazwa własna bez pomocy w wymowie</h4>
+                <pre><code class="language-html">&lt;p&gt;Spotkanie odbędzie się w Siemianowicach Śląskich.&lt;/p&gt;</code></pre>
+                <p><strong>Problem:</strong> Brak wskazówek dla prawidłowej wymowy nazwy miasta.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Niejednoznaczny skrót</h4>
+                <pre><code class="language-html">&lt;p&gt;Baza danych używa języka SQL.&lt;/p&gt;</code></pre>
+                <p><strong>Problem:</strong> Brak informacji czy SQL wymawia się "es-kju-el" czy "sikłel".</p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Ruby element z wymową</h4>
+                <pre><code class="language-html">&lt;p&gt;Zwiedziliśmy stary &lt;ruby&gt;zamek&lt;rt&gt;za-mek (budowla)&lt;/rt&gt;&lt;/ruby&gt; w górach.&lt;/p&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Jasne wskazanie wymowy i znaczenia słowa.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Atrybut title z transkrypcją</h4>
+                <pre><code class="language-html">&lt;p&gt;Spotkanie odbędzie się w &lt;span title="wymowa: Sie-ma-no-wi-ce Ślą-skie"&gt;Siemianowicach Śląskich&lt;/span&gt;.&lt;/p&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Dostępna wskazówka wymowy na hover/focus.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Link do audio z wymową</h4>
+                <pre><code class="language-html">&lt;p&gt;Baza danych używa języka 
+&lt;span class="pronunciation-word"&gt;
+    SQL
+    &lt;a href="audio/sql-pronunciation.mp3" class="pronunciation-link" aria-label="Posłuchaj wymowy SQL"&gt;🔊&lt;/a&gt;
+&lt;/span&gt;.&lt;/p&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Bezpośredni dostęp do nagrania z prawidłową wymową.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Interaktywny player wymowy</h4>
+                <pre><code class="language-html">&lt;p&gt;Algorytm &lt;span class="word-with-pronunciation" data-word="Poisson"&gt;Poisson&lt;/span&gt; 
+jest używany w statystyce.&lt;/p&gt;
+
+&lt;script&gt;
+document.querySelectorAll('.word-with-pronunciation').forEach(element =&gt; {
+    element.addEventListener('click', function() {
+        const word = this.dataset.word;
+        playPronunciation(word);
+        showPhoneticTranscription(word);
+    });
+});
+&lt;/script&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Interaktywny dostęp do wymowy z transkrypcją fonetyczną.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Słowniczek wymowy</h4>
+                <pre><code class="language-html">&lt;article&gt;
+    &lt;p&gt;Tekst zawiera terminy: &lt;a href="#cache-pronunciation"&gt;cache&lt;/a&gt;, 
+    &lt;a href="#niche-pronunciation"&gt;niche&lt;/a&gt; i &lt;a href="#genre-pronunciation"&gt;genre&lt;/a&gt;.&lt;/p&gt;
+    
+    &lt;section id="pronunciation-glossary"&gt;
+        &lt;h3&gt;Słowniczek wymowy&lt;/h3&gt;
+        &lt;dl&gt;
+            &lt;dt id="cache-pronunciation"&gt;cache&lt;/dt&gt;
+            &lt;dd&gt;
+                &lt;span class="phonetic"&gt;[kæʃ]&lt;/span&gt; - 
+                &lt;button onclick="playWord('cache')"&gt;🔊 Odtwórz&lt;/button&gt;
+                &lt;br&gt;pamięć podręczna w informatyce
+            &lt;/dd&gt;
+        &lt;/dl&gt;
+    &lt;/section&gt;
+&lt;/article&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Centralne miejsce z wymową wszystkich trudnych słów.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Web Speech API integration</h4>
+                <pre><code class="language-html">&lt;p&gt;Miasto &lt;span class="speakable" data-text="Szczecin" data-rate="0.8"&gt;Szczecin&lt;/span&gt; 
+leży nad Odrą.&lt;/p&gt;
+
+&lt;script&gt;
+if ('speechSynthesis' in window) {
+    document.querySelectorAll('.speakable').forEach(element =&gt; {
+        const button = document.createElement('button');
+        button.innerHTML = '🔊';
+        button.setAttribute('aria-label', 'Wymów słowo');
+        button.onclick = () =&gt; {
+            const utterance = new SpeechSynthesisUtterance(element.dataset.text);
+            utterance.rate = parseFloat(element.dataset.rate) || 1;
+            utterance.lang = 'pl-PL';
+            speechSynthesis.speak(utterance);
+        };
+        element.appendChild(button);
+    });
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Wykorzystanie natywnych możliwości przeglądarki do syntezy mowy.
+                </p>
+            </div>
+        </section>
+
+        <section class="interactive-demo">
+            <h2>Interaktywny generator wymowy</h2>
+            <p>Przetestuj różne sposoby dodawania informacji o wymowie:</p>
+
+            <div class="demo-container">
+                <h3>Narzędzie do zarządzania wymową</h3>
+                <div class="pronunciation-demo">
+                    <div class="demo-input">
+                        <label for="word-input">Wprowadź słowo:</label>
+                        <input type="text" id="word-input" placeholder="np. cache, zamek, SQL">
+
+                        <label for="phonetic-input">Transkrypcja fonetyczna:</label>
+                        <input type="text" id="phonetic-input" placeholder="np. [kæʃ], [za-mek]">
+
+                        <label for="meaning-input">Znaczenie/kontekst:</label>
+                        <input type="text" id="meaning-input" placeholder="np. pamięć podręczna, budowla">
+
+                        <label for="pronunciation-method">Wybierz metodę wymowy:</label>
+                        <select id="pronunciation-method">
+                            <option value="ruby">Element ruby</option>
+                            <option value="title">Atrybut title</option>
+                            <option value="audio-link">Link do audio</option>
+                            <option value="speech-api">Web Speech API</option>
+                            <option value="phonetic-span">Transkrypcja w tekście</option>
+                            <option value="glossary-link">Link do słowniczka</option>
+                        </select>
+
+                        <button id="generate-pronunciation" class="demo-button">Generuj kod</button>
+                        <button id="test-speech" class="demo-button">Test synteza mowy</button>
+                    </div>
+
+                    <div class="demo-output">
+                        <h4>Wygenerowany kod:</h4>
+                        <pre id="generated-pronunciation-code"></pre>
+
+                        <h4>Podgląd:</h4>
+                        <div id="pronunciation-preview-area"></div>
+
+                        <h4>Analiza dostępności:</h4>
+                        <div id="pronunciation-accessibility-results"></div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                const wordInput = document.getElementById('word-input');
+                const phoneticInput = document.getElementById('phonetic-input');
+                const meaningInput = document.getElementById('meaning-input');
+                const pronunciationMethodSelect = document.getElementById('pronunciation-method');
+                const generateButton = document.getElementById('generate-pronunciation');
+                const testSpeechButton = document.getElementById('test-speech');
+                const generatedCode = document.getElementById('generated-pronunciation-code');
+                const previewArea = document.getElementById('pronunciation-preview-area');
+                const accessibilityResults = document.getElementById('pronunciation-accessibility-results');
+
+                const pronunciationTemplates = {
+                    'ruby': (word, phonetic, meaning) =>
+                        `<ruby>${word}<rt>${phonetic}${meaning ? ' (' + meaning + ')' : ''}</rt></ruby>`,
+
+                    'title': (word, phonetic, meaning) =>
+                        `<span title="wymowa: ${phonetic}${meaning ? ', znaczenie: ' + meaning : ''}">${word}</span>`,
+
+                    'audio-link': (word, phonetic, meaning) => `
+<span class="pronunciation-word">
+    ${word}
+    <a href="audio/${word.toLowerCase()}-pronunciation.mp3" 
+       class="pronunciation-link" 
+       aria-label="Posłuchaj wymowy: ${word}">🔊</a>
+</span>`,
+
+                    'speech-api': (word, phonetic, meaning) => `
+<span class="speakable" data-word="${word}" data-phonetic="${phonetic}">
+    ${word}
+    <button onclick="speakWord('${word}')" aria-label="Wymów słowo">🔊</button>
+</span>`,
+
+                    'phonetic-span': (word, phonetic, meaning) =>
+                        `${word} <span class="phonetic">[${phonetic}]</span>${meaning ? ' - ' + meaning : ''}`,
+
+                    'glossary-link': (word, phonetic, meaning) => `
+<a href="#${word.toLowerCase()}-pronunciation">${word}</a>
+
+<!-- W słowniczku: -->
+<dt id="${word.toLowerCase()}-pronunciation">${word}</dt>
+<dd>
+    <span class="phonetic">[${phonetic}]</span>
+    ${meaning ? '- ' + meaning : ''}
+</dd>`
+                };
+
+                generateButton.addEventListener('click', function () {
+                    const word = wordInput.value.trim();
+                    const phonetic = phoneticInput.value.trim();
+                    const meaning = meaningInput.value.trim();
+                    const method = pronunciationMethodSelect.value;
+
+                    if (!word) {
+                        alert('Wprowadź słowo');
+                        return;
+                    }
+
+                    if (!phonetic && method !== 'audio-link') {
+                        alert('Wprowadź transkrypcję fonetyczną');
+                        return;
+                    }
+
+                    const code = pronunciationTemplates[method](word, phonetic, meaning);
+                    generatedCode.textContent = code;
+
+                    // Utwórz podgląd
+                    const preview = createPreview(word, phonetic, meaning, method);
+                    previewArea.innerHTML = preview;
+
+                    // Analiza dostępności
+                    analyzeAccessibility(method, word, phonetic, meaning);
+                });
+
+                function createPreview(word, phonetic, meaning, method) {
+                    switch (method) {
+                        case 'ruby':
+                            return `<p>Przykład: Używamy ${pronunciationTemplates[method](word, phonetic, meaning)} w systemie.</p>`;
+                        case 'title':
+                            return `<p>Przykład: Używamy ${pronunciationTemplates[method](word, phonetic, meaning)} w systemie.</p>`;
+                        case 'speech-api':
+                            return `<p>Przykład: Używamy <span class="speakable">${word} <button onclick="testSpeechSynthesis('${word}')" style="background: none; border: none; font-size: 0.8em;">🔊</button></span> w systemie.</p>`;
+                        case 'phonetic-span':
+                            return `<p>Przykład: Używamy ${pronunciationTemplates[method](word, phonetic, meaning)} w systemie.</p>`;
+                        case 'audio-link':
+                            return `<p>Przykład: Używamy <span>${word} <button onclick="playAudioDemo()" style="background: none; border: none;">🔊</button></span> w systemie.</p>`;
+                        case 'glossary-link':
+                            return `<p>Przykład: Używamy <a href="#" onclick="showGlossaryDemo(); return false;" style="color: #007cba; text-decoration: underline;">${word}</a> w systemie.</p>
+                                   <div id="glossary-demo" style="display: none; background: #f9f9f9; padding: 10px; margin: 10px 0; border-left: 3px solid #007cba;">
+                                   <strong>${word}:</strong> [${phonetic}]${meaning ? ' - ' + meaning : ''}</div>`;
+                    }
+                }
+
+                function analyzeAccessibility(method, word, phonetic, meaning) {
+                    const scores = {
+                        'ruby': {
+                            screenReader: '✅ Doskonałe',
+                            keyboard: '✅ Dostępne',
+                            visual: '✅ Wyraźne',
+                            cognitive: '✅ Pomocne',
+                            notes: 'Najlepsze semantyczne rozwiązanie dla wymowy'
+                        },
+                        'title': {
+                            screenReader: '⚠️ Ograniczone',
+                            keyboard: '✅ Dostępne',
+                            visual: '⚠️ Ukryte',
+                            cognitive: '⚠️ Tylko na hover',
+                            notes: 'Wymaga hover/focus, może być pominięte'
+                        },
+                        'audio-link': {
+                            screenReader: '✅ Doskonałe',
+                            keyboard: '✅ Dostępne',
+                            visual: '✅ Wyraźne',
+                            cognitive: '✅ Intuicyjne',
+                            notes: 'Wymaga plików audio, najlepsze dla wymowy'
+                        },
+                        'speech-api': {
+                            screenReader: '✅ Bardzo dobre',
+                            keyboard: '✅ Dostępne',
+                            visual: '✅ Wyraźne',
+                            cognitive: '✅ Interaktywne',
+                            notes: 'Nowoczesne, ale wymaga obsługi w przeglądarce'
+                        },
+                        'phonetic-span': {
+                            screenReader: '✅ Bardzo dobre',
+                            keyboard: '✅ Dostępne',
+                            visual: '✅ Zawsze widoczne',
+                            cognitive: '✅ Jasne',
+                            notes: 'Proste i niezawodne, ale może zagracać tekst'
+                        },
+                        'glossary-link': {
+                            screenReader: '✅ Dobre',
+                            keyboard: '✅ Dostępne',
+                            visual: '⚠️ Wymaga nawigacji',
+                            cognitive: '⚠️ Dodatkowy krok',
+                            notes: 'Dobre dla wielu słów, ale wymaga dodatkowej nawigacji'
+                        }
+                    };
+
+                    const score = scores[method];
+                    accessibilityResults.innerHTML = `
+                        <h5>Ocena metody: ${method}</h5>
+                        <ul>
+                            <li><strong>Czytniki ekranu:</strong> ${score.screenReader}</li>
+                            <li><strong>Nawigacja klawiaturą:</strong> ${score.keyboard}</li>
+                            <li><strong>Wsparcie wizualne:</strong> ${score.visual}</li>
+                            <li><strong>Łatwość kognitywna:</strong> ${score.cognitive}</li>
+                        </ul>
+                        <p><strong>Uwagi:</strong> ${score.notes}</p>
+                    `;
+                }
+
+                testSpeechButton.addEventListener('click', function () {
+                    const word = wordInput.value.trim();
+                    if (!word) {
+                        alert('Wprowadź słowo do testu');
+                        return;
+                    }
+                    testSpeechSynthesis(word);
+                });
+
+                function testSpeechSynthesis(text) {
+                    if ('speechSynthesis' in window) {
+                        const utterance = new SpeechSynthesisUtterance(text);
+                        utterance.lang = 'pl-PL';
+                        utterance.rate = 0.8;
+                        speechSynthesis.speak(utterance);
+                    } else {
+                        alert('Synteza mowy nie jest obsługiwana w tej przeglądarce');
+                    }
+                }
+
+                function playAudioDemo() {
+                    alert('W rzeczywistej implementacji odtworzyłby się plik audio z wymową');
+                }
+
+                function showGlossaryDemo() {
+                    const demo = document.getElementById('glossary-demo');
+                    if (demo) {
+                        demo.style.display = demo.style.display === 'none' ? 'block' : 'none';
+                    }
+                }
+
+                // Przykładowe dane
+                wordInput.value = 'cache';
+                phoneticInput.value = 'kæʃ';
+                meaningInput.value = 'pamięć podręczna';
+            </script>
+        </section>
+
+        <section class="pronunciation-techniques">
+            <h2>Techniki wskazywania wymowy</h2>
+
+            <h3>🎵 Transkrypcja fonetyczna</h3>
+            <ul>
+                <li><strong>IPA (International Phonetic Alphabet):</strong> [kæʃ], [ˈpɔɪsən], [ʒɑ̃rə]</li>
+                <li><strong>Przybliżenie polskie:</strong> [kasz], [pojsen], [żanr]</li>
+                <li><strong>Podział sylabowy:</strong> Sie-ma-no-wi-ce, Szcze-cin</li>
+                <li><strong>Akcent:</strong> podkreślenie akcentowanej sylaby</li>
+            </ul>
+
+            <h3>🔊 Pliki audio</h3>
+            <ul>
+                <li><strong>Format MP3:</strong> dobra kompresja, szerokie wsparcie</li>
+                <li><strong>Format OGG:</strong> otwarty standard, dobra jakość</li>
+                <li><strong>Krótkość nagrań:</strong> maksymalnie 2-3 sekundy na słowo</li>
+                <li><strong>Jakość dźwięku:</strong> wyraźna artykulacja, brak szumów</li>
+            </ul>
+
+            <h3>📝 Instrukcje tekstowe</h3>
+            <ul>
+                <li><strong>Proste wskazówki:</strong> "wymawiane jak 'kasz'"</li>
+                <li><strong>Porównania:</strong> "podobnie do angielskiego 'cash'"</li>
+                <li><strong>Opisowy tekst:</strong> "z akcentem na pierwszą sylabę"</li>
+                <li><strong>Kontekst znaczeniowy:</strong> "zamek (budowla, nie mechanizm)"</li>
+            </ul>
+
+            <h3>🔄 Metody interaktywne</h3>
+            <ul>
+                <li><strong>Hover tooltips:</strong> informacje na najechaniu myszą</li>
+                <li><strong>Przyciski audio:</strong> bezpośrednie odtwarzanie wymowy</li>
+                <li><strong>Synteza mowy:</strong> wykorzystanie Web Speech API</li>
+                <li><strong>Modalne okna:</strong> szczegółowe informacje o wymowie</li>
+            </ul>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie wymowy</h2>
+
+            <h3>Narzędzia automatyczne</h3>
+            <pre><code class="language-javascript">// Wykrywanie słów wymagających wymowy
+class PronunciationAnalyzer {
+    constructor() {
+        // Słownik homonimów polskich
+        this.polishHomographs = new Map([
+            ['zamek', ['za-mek (budowla)', 'za-mek (mechanizm)']],
+            ['mora', ['mo-ra (kara)', 'mo-ra (owoc)']],
+            ['atlas', ['at-las (książka)', 'at-las (tkanina)']],
+            ['organ', ['or-gan (instrument)', 'or-gan (część ciała)']],
+            ['banda', ['ban-da (grupa)', 'ban-da (pas)']],
+            ['sekunda', ['se-kun-da (czas)', 'se-kun-da (interwał)']],
+            ['plaster', ['plas-ter (opatrunek)', 'plas-ter (plastikowy)']],
+            ['tenor', ['te-nor (głos)', 'te-nor (treść)']]
+        ]);
+        
+        // Słowa obce o nieoczywistej wymowie
+        this.foreignWords = new Map([
+            ['cache', 'kæʃ'],
+            ['niche', 'niːʃ'],
+            ['genre', 'ʒɑ̃ːrə'],
+            ['facade', 'fəˈsɑːd'],
+            ['chassis', 'ʃæsi'],
+            ['debris', 'dəˈbriː'],
+            ['coup', 'kuː'],
+            ['ballet', 'bæˈleɪ']
+        ]);
+        
+        // Skróty o niejednoznacznej wymowie
+        this.ambiguousAcronyms = new Map([
+            ['SQL', ['es-kju-el', 'sikłel']],
+            ['GIF', ['gif', 'dżif']],
+            ['GUI', ['gui', 'dżi-ju-aj']],
+            ['SCSI', ['skazi', 'es-si-es-aj']],
+            ['AJAX', ['ejdaks', 'a-jaks']],
+            ['BIOS', ['bajos', 'bi-os']]
+        ]);
+    }
+    
+    analyzePage(content) {
+        const issues = [];
+        const words = this.extractWords(content);
+        
+        // Sprawdź homonimy
+        words.forEach(word => {
+            const normalizedWord = word.toLowerCase();
+            if (this.polishHomographs.has(normalizedWord)) {
+                if (!this.hasPronunciationInfo(word, content)) {
+                    issues.push({
+                        type: 'homograph',
+                        word: word,
+                        suggestions: this.polishHomographs.get(normalizedWord),
+                        severity: 'high'
+                    });
+                }
+            }
+        });
+        
+        // Sprawdź słowa obce
+        words.forEach(word => {
+            const normalizedWord = word.toLowerCase();
+            if (this.foreignWords.has(normalizedWord)) {
+                if (!this.hasPronunciationInfo(word, content)) {
+                    issues.push({
+                        type: 'foreign_word',
+                        word: word,
+                        pronunciation: this.foreignWords.get(normalizedWord),
+                        severity: 'medium'
+                    });
+                }
+            }
+        });
+        
+        // Sprawdź niejednoznaczne skróty
+        words.forEach(word => {
+            const upperWord = word.toUpperCase();
+            if (this.ambiguousAcronyms.has(upperWord)) {
+                if (!this.hasPronunciationInfo(word, content)) {
+                    issues.push({
+                        type: 'ambiguous_acronym',
+                        word: word,
+                        pronunciations: this.ambiguousAcronyms.get(upperWord),
+                        severity: 'medium'
+                    });
+                }
+            }
+        });
+        
+        return {
+            totalWords: words.length,
+            issuesFound: issues.length,
+            issues: issues,
+            coverage: this.calculateCoverage(words, issues)
+        };
+    }
+    
+    extractWords(content) {
+        // Usuń HTML i pobierz słowa
+        const textContent = content.replace(/<[^>]*>/g, ' ');
+        return textContent.match(/\b[a-zA-ZąęćłńóśźżĄĘĆŁŃÓŚŹŻ]+\b/g) || [];
+    }
+    
+    hasPronunciationInfo(word, content) {
+        // Sprawdź różne sposoby oznaczania wymowy
+        const patterns = [
+            // Element ruby
+            new RegExp(`<ruby[^>]*>${word}[^<]*<rt[^>]*>`, 'i'),
+            // Atrybut title z wymową
+            new RegExp(`title=[^>]*wymowa[^>]*${word}`, 'i'),
+            // Link do audio
+            new RegExp(`href=[^>]*${word}[^>]*pronunciation`, 'i'),
+            // Klasa speakable
+            new RegExp(`class=[^>]*speakable[^>]*>${word}`, 'i'),
+            // Transkrypcja fonetyczna w pobliżu
+            new RegExp(`${word}[^.]*\\[[^\\]]+\\]`, 'i'),
+            // Link do słowniczka
+            new RegExp(`href=[^>]*#[^>]*${word}[^>]*pronunciation`, 'i')
+        ];
+        
+        return patterns.some(pattern => pattern.test(content));
+    }
+    
+    calculateCoverage(words, issues) {
+        const wordsNeedingPronunciation = issues.length;
+        const totalUniqueWords = new Set(words.map(w => w.toLowerCase())).size;
+        
+        return {
+            wordsNeedingHelp: wordsNeedingPronunciation,
+            totalUniqueWords: totalUniqueWords,
+            percentageNeedingHelp: (wordsNeedingPronunciation / totalUniqueWords * 100).toFixed(1)
+        };
+    }
+    
+    generateReport(analysis) {
+        return {
+            summary: `Znaleziono ${analysis.issuesFound} słów wymagających pomocy w wymowie z ${analysis.totalWords} przeanalizowanych`,
+            highPriority: analysis.issues.filter(issue => issue.severity === 'high'),
+            mediumPriority: analysis.issues.filter(issue => issue.severity === 'medium'),
+            recommendations: this.getRecommendations(analysis)
+        };
+    }
+    
+    getRecommendations(analysis) {
+        const recommendations = [];
+        
+        if (analysis.issues.length === 0) {
+            recommendations.push('Nie wykryto słów wymagających pomocy w wymowie. Sprawdź ręcznie nazwy własne i terminy specjalistyczne.');
+        } else {
+            recommendations.push(`Rozważ dodanie informacji o wymowie dla ${analysis.issuesFound} wykrytych słów`);
+            
+            const homographs = analysis.issues.filter(i => i.type === 'homograph').length;
+            if (homographs > 0) {
+                recommendations.push(`${homographs} homonimów wymaga kontekstowego wyjaśnienia znaczenia`);
+            }
+            
+            const foreignWords = analysis.issues.filter(i => i.type === 'foreign_word').length;
+            if (foreignWords > 0) {
+                recommendations.push(`${foreignWords} słów obcych może wymagać transkrypcji fonetycznej`);
+            }
+            
+            const acronyms = analysis.issues.filter(i => i.type === 'ambiguous_acronym').length;
+            if (acronyms > 0) {
+                recommendations.push(`${acronyms} skrótów ma niejednoznaczną wymowę`);
+            }
+        }
+        
+        return recommendations;
+    }
+}
+
+// Użycie
+const analyzer = new PronunciationAnalyzer();
+const pageContent = document.documentElement.outerHTML;
+const analysis = analyzer.analyzePage(pageContent);
+const report = analyzer.generateReport(analysis);
+
+console.log('Analiza wymowy:', report);</code></pre>
+
+            <h3>Testy manualne</h3>
+            <ul>
+                <li><strong>Czytniki ekranu:</strong> test z NVDA/JAWS czy słowa są prawidłowo wymawiane</li>
+                <li><strong>Test z użytkownikami:</strong> czy wymowa jest jasna dla odbiorców</li>
+                <li><strong>Przegląd homonimów:</strong> identyfikacja słów o wielu znaczeniach</li>
+                <li><strong>Weryfikacja nazw własnych:</strong> czy wymowa jest oczywista</li>
+                <li><strong>Test synteza mowy:</strong> sprawdzenie Web Speech API</li>
+            </ul>
+
+            <h3>Narzędzia wspomagające</h3>
+            <ul>
+                <li><strong>IPA translator</strong> - konwersja tekstu na alfabet fonetyczny</li>
+                <li><strong>Słowniki wymowy</strong> - Forvo, Oxford Dictionary</li>
+                <li><strong>Text-to-speech</strong> - Google TTS, Amazon Polly</li>
+                <li><strong>Narzędzia nagrywania</strong> - Audacity, GarageBand</li>
+            </ul>
+
+            <div class="checklist">
+                <h3>Lista kontrolna</h3>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ Zidentyfikowano wszystkie homonimy w tekście</li>
+                    <li>☐ Słowa obce mają wskazówki wymowy</li>
+                    <li>☐ Nazwy własne o nietypowej wymowie są oznaczone</li>
+                    <li>☐ Skróty o niejednoznacznej wymowie są wyjaśnione</li>
+                    <li>☐ Mechanizmy wymowy są dostępne dla czytników ekranu</li>
+                    <li>☐ Informacje o wymowie są łatwo dostępne</li>
+                    <li>☐ Pliki audio (jeśli używane) są w odpowiedniej jakości</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="implementation">
+            <h2>Implementacja w różnych systemach</h2>
+
+            <h3>WordPress - Plugin wymowy</h3>
+            <pre><code class="language-php">// Plugin dodający wsparcie dla wymowy
+class PronunciationSupport {
+    
+    public function __construct() {
+        add_action('init', array($this, 'init'));
+        add_shortcode('pronounce', array($this, 'pronunciation_shortcode'));
+        add_action('wp_enqueue_scripts', array($this, 'enqueue_scripts'));
+        add_action('admin_menu', array($this, 'add_admin_menu'));
+    }
+    
+    public function init() {
+        // Rejestracja custom post type dla słowniczka wymowy
+        register_post_type('pronunciation_entry', array(
+            'labels' => array(
+                'name' => 'Słowniczek wymowy',
+                'singular_name' => 'Wpis wymowy'
+            ),
+            'public' => true,
+            'supports' => array('title', 'editor', 'custom-fields'),
+            'menu_icon' => 'dashicons-microphone'
+        ));
+    }
+    
+    public function pronunciation_shortcode($atts, $content = null) {
+        $atts = shortcode_atts(array(
+            'phonetic' => '',
+            'audio' => '',
+            'meaning' => '',
+            'method' => 'ruby' // ruby, title, audio, speech
+        ), $atts);
+        
+        if (!$content) return '';
+        
+        $word = trim($content);
+        
+        switch ($atts['method']) {
+            case 'ruby':
+                return sprintf(
+                    '&lt;ruby&gt;%s&lt;rt&gt;%s%s&lt;/rt&gt;&lt;/ruby&gt;',
+                    esc_html($word),
+                    esc_html($atts['phonetic']),
+                    $atts['meaning'] ? ' (' . esc_html($atts['meaning']) . ')' : ''
+                );
+                
+            case 'title':
+                return sprintf(
+                    '&lt;span title="wymowa: %s%s"&gt;%s&lt;/span&gt;',
+                    esc_attr($atts['phonetic']),
+                    $atts['meaning'] ? ', znaczenie: ' . esc_attr($atts['meaning']) : '',
+                    esc_html($word)
+                );
+                
+            case 'audio':
+                $audio_url = $atts['audio'] ? $atts['audio'] : $this->get_audio_url($word);
+                return sprintf(
+                    '&lt;span class="pronunciation-word"&gt;%s &lt;a href="%s" class="pronunciation-audio" aria-label="Posłuchaj wymowy: %s"&gt;🔊&lt;/a&gt;&lt;/span&gt;',
+                    esc_html($word),
+                    esc_url($audio_url),
+                    esc_attr($word)
+                );
+                
+            case 'speech':
+                return sprintf(
+                    '&lt;span class="speakable" data-word="%s" data-phonetic="%s"&gt;%s &lt;button class="speak-btn" aria-label="Wymów słowo"&gt;🔊&lt;/button&gt;&lt;/span&gt;',
+                    esc_attr($word),
+                    esc_attr($atts['phonetic']),
+                    esc_html($word)
+                );
+        }
+        
+        return esc_html($word);
+    }
+    
+    private function get_audio_url($word) {
+        // Sprawdź czy istnieje plik audio dla słowa
+        $audio_dir = wp_upload_dir()['baseurl'] . '/pronunciation/';
+        $audio_file = $audio_dir . sanitize_file_name($word) . '.mp3';
+        
+        // Sprawdź czy plik istnieje
+        $audio_path = wp_upload_dir()['basedir'] . '/pronunciation/' . sanitize_file_name($word) . '.mp3';
+        if (file_exists($audio_path)) {
+            return $audio_file;
+        }
+        
+        return '';
+    }
+    
+    public function enqueue_scripts() {
+        wp_enqueue_script(
+            'pronunciation-support',
+            plugin_dir_url(__FILE__) . 'pronunciation.js',
+            array('jquery'),
+            '1.0.0',
+            true
+        );
+        
+        wp_enqueue_style(
+            'pronunciation-support',
+            plugin_dir_url(__FILE__) . 'pronunciation.css',
+            array(),
+            '1.0.0'
+        );
+    }
+    
+    public function add_admin_menu() {
+        add_submenu_page(
+            'edit.php?post_type=pronunciation_entry',
+            'Ustawienia wymowy',
+            'Ustawienia',
+            'manage_options',
+            'pronunciation-settings',
+            array($this, 'admin_page')
+        );
+    }
+    
+    public function admin_page() {
+        // Strona administracyjna z ustawieniami wymowy
+        ?>
+        &lt;div class="wrap"&gt;
+            &lt;h1&gt;Ustawienia wymowy&lt;/h1&gt;
+            &lt;form method="post" action="options.php"&gt;
+                &lt;?php settings_fields('pronunciation_settings'); ?&gt;
+                &lt;table class="form-table"&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;Domyślna metoda wymowy&lt;/th&gt;
+                        &lt;td&gt;
+                            &lt;select name="default_pronunciation_method"&gt;
+                                &lt;option value="ruby"&gt;Element Ruby&lt;/option&gt;
+                                &lt;option value="title"&gt;Atrybut Title&lt;/option&gt;
+                                &lt;option value="audio"&gt;Pliki Audio&lt;/option&gt;
+                                &lt;option value="speech"&gt;Web Speech API&lt;/option&gt;
+                            &lt;/select&gt;
+                        &lt;/td&gt;
+                    &lt;/tr&gt;
+                    &lt;tr&gt;
+                        &lt;th&gt;Katalog plików audio&lt;/th&gt;
+                        &lt;td&gt;&lt;input type="text" name="audio_directory" value="pronunciation/" /&gt;&lt;/td&gt;
+                    &lt;/tr&gt;
+                &lt;/table&gt;
+                &lt;?php submit_button(); ?&gt;
+            &lt;/form&gt;
+        &lt;/div&gt;
+        &lt;?php
+    }
+}
+
+new PronunciationSupport();
+
+// Użycie shortcode:
+// [pronounce phonetic="kæʃ" meaning="pamięć podręczna"]cache[/pronounce]
+// [pronounce method="audio"]SQL[/pronounce]
+// [pronounce phonetic="za-mek" meaning="budowla"]zamek[/pronounce]</code></pre>
+
+            <h3>React - Komponent wymowy</h3>
+            <pre><code class="language-javascript">import React, { useState, useRef } from 'react';
+
+const PronunciationWord = ({ 
+    children, 
+    phonetic, 
+    meaning, 
+    audio, 
+    method = 'ruby',
+    className = '' 
+}) => {
+    const [isPlaying, setIsPlaying] = useState(false);
+    const [showTooltip, setShowTooltip] = useState(false);
+    const audioRef = useRef(null);
+    
+    const playAudio = async () => {
+        if (audio) {
+            try {
+                if (audioRef.current) {
+                    setIsPlaying(true);
+                    await audioRef.current.play();
+                    setIsPlaying(false);
+                }
+            } catch (error) {
+                console.error('Błąd odtwarzania audio:', error);
+                setIsPlaying(false);
+            }
+        }
+    };
+    
+    const speakWord = () => {
+        if ('speechSynthesis' in window) {
+            const utterance = new SpeechSynthesisUtterance(children);
+            utterance.lang = 'pl-PL';
+            utterance.rate = 0.8;
+            speechSynthesis.speak(utterance);
+        }
+    };
+    
+    const renderByMethod = () => {
+        switch (method) {
+            case 'ruby':
+                return (
+                    &lt;ruby className={`pronunciation-ruby ${className}`}&gt;
+                        {children}
+                        &lt;rt&gt;{phonetic}{meaning && ` (${meaning})`}&lt;/rt&gt;
+                    &lt;/ruby&gt;
+                );
+                
+            case 'title':
+                return (
+                    &lt;span 
+                        className={`pronunciation-title ${className}`}
+                        title={`wymowa: ${phonetic}${meaning ? `, znaczenie: ${meaning}` : ''}`}
+                        onMouseEnter={() =&gt; setShowTooltip(true)}
+                        onMouseLeave={() =&gt; setShowTooltip(false)}
+                    &gt;
+                        {children}
+                        {showTooltip && (
+                            &lt;div className="pronunciation-tooltip"&gt;
+                                &lt;strong&gt;Wymowa:&lt;/strong&gt; {phonetic}
+                                {meaning && &lt;&gt;&lt;br/&gt;&lt;strong&gt;Znaczenie:&lt;/strong&gt; {meaning}&lt;/&gt;}
+                            &lt;/div&gt;
+                        )}
+                    &lt;/span&gt;
+                );
+                
+            case 'audio':
+                return (
+                    &lt;span className={`pronunciation-audio ${className}`}&gt;
+                        {children}
+                        {audio && (
+                            &lt;&gt;
+                                &lt;button 
+                                    onClick={playAudio}
+                                    disabled={isPlaying}
+                                    className="pronunciation-play-btn"
+                                    aria-label={`Posłuchaj wymowy: ${children}`}
+                                &gt;
+                                    {isPlaying ? '⏸️' : '🔊'}
+                                &lt;/button&gt;
+                                &lt;audio 
+                                    ref={audioRef}
+                                    src={audio}
+                                    preload="metadata"
+                                /&gt;
+                            &lt;/&gt;
+                        )}
+                    &lt;/span&gt;
+                );
+                
+            case 'speech':
+                return (
+                    &lt;span className={`pronunciation-speech ${className}`}&gt;
+                        {children}
+                        &lt;button 
+                            onClick={speakWord}
+                            className="pronunciation-speak-btn"
+                            aria-label={`Wymów słowo: ${children}`}
+                        &gt;
+                            🔊
+                        &lt;/button&gt;
+                    &lt;/span&gt;
+                );
+                
+            case 'phonetic':
+                return (
+                    &lt;span className={`pronunciation-phonetic ${className}`}&gt;
+                        {children} &lt;span className="phonetic"&gt;[{phonetic}]&lt;/span&gt;
+                        {meaning && &lt;span className="meaning"&gt; - {meaning}&lt;/span&gt;}
+                    &lt;/span&gt;
+                );
+                
+            default:
+                return &lt;span className={className}&gt;{children}&lt;/span&gt;;
+        }
+    };
+    
+    return renderByMethod();
+};
+
+// Hook do zarządzania słowniczkiem wymowy
+const usePronunciationGlossary = () => {
+    const [glossary, setGlossary] = useState(new Map());
+    
+    const addEntry = (word, pronunciation) => {
+        setGlossary(prev => new Map(prev.set(word.toLowerCase(), pronunciation)));
+    };
+    
+    const getEntry = (word) => {
+        return glossary.get(word.toLowerCase());
+    };
+    
+    const removeEntry = (word) => {
+        setGlossary(prev => {
+            const newGlossary = new Map(prev);
+            newGlossary.delete(word.toLowerCase());
+            return newGlossary;
+        });
+    };
+    
+    return { glossary, addEntry, getEntry, removeEntry };
+};
+
+// Komponent słowniczka wymowy
+const PronunciationGlossary = ({ entries, className = '' }) => {
+    return (
+        &lt;section className={`pronunciation-glossary ${className}`}&gt;
+            &lt;h3&gt;Słowniczek wymowy&lt;/h3&gt;
+            &lt;dl&gt;
+                {Array.from(entries).map(([word, data]) =&gt; (
+                    &lt;React.Fragment key={word}&gt;
+                        &lt;dt id={`pronunciation-${word}`}&gt;{word}&lt;/dt&gt;
+                        &lt;dd&gt;
+                            &lt;span className="phonetic"&gt;[{data.phonetic}]&lt;/span&gt;
+                            {data.meaning && &lt;span className="meaning"&gt; - {data.meaning}&lt;/span&gt;}
+                            {data.audio && (
+                                &lt;PronunciationWord method="audio" audio={data.audio}&gt;
+                                    {word}
+                                &lt;/PronunciationWord&gt;
+                            )}
+                        &lt;/dd&gt;
+                    &lt;/React.Fragment&gt;
+                ))}
+            &lt;/dl&gt;
+        &lt;/section&gt;
+    );
+};
+
+// Przykład użycia
+const App = () => {
+    const { glossary, addEntry } = usePronunciationGlossary();
+    
+    React.useEffect(() => {
+        // Dodaj wpisy do słowniczka
+        addEntry('cache', { phonetic: 'kæʃ', meaning: 'pamięć podręczna' });
+        addEntry('niche', { phonetic: 'niːʃ', meaning: 'nisza rynkowa' });
+    }, []);
+    
+    return (
+        &lt;article&gt;
+            &lt;p&gt;
+                Nasz system używa &lt;PronunciationWord 
+                    phonetic="kæʃ" 
+                    meaning="pamięć podręczna"
+                    method="ruby"
+                &gt;
+                    cache
+                &lt;/PronunciationWord&gt; do przyspieszenia działania.
+            &lt;/p&gt;
+            
+            &lt;p&gt;
+                Firma znalazła swoją &lt;PronunciationWord 
+                    phonetic="niːʃ" 
+                    method="speech"
+                &gt;
+                    niche
+                &lt;/PronunciationWord&gt; na rynku.
+            &lt;/p&gt;
+            
+            &lt;PronunciationGlossary entries={glossary} /&gt;
+        &lt;/article&gt;
+    );
+};
+
+export default { PronunciationWord, PronunciationGlossary, usePronunciationGlossary };</code></pre>
+        </section>
+
+        <section class="advanced-features">
+            <h2>Zaawansowane funkcje</h2>
+
+            <h3>System automatycznego wykrywania wymowy</h3>
+            <pre><code class="language-javascript">class AdvancedPronunciationDetector {
+    constructor() {
+        this.pronunciationDatabase = new Map();
+        this.contextAnalyzer = new ContextAnalyzer();
+        this.phoneticTranscriber = new PhoneticTranscriber();
+        
+        this.loadPronunciationDatabase();
+    }
+    
+    async loadPronunciationDatabase() {
+        // Załaduj bazę danych wymowy z zewnętrznego API
+        try {
+            const response = await fetch('/api/pronunciation-database');
+            const data = await response.json();
+            
+            data.forEach(entry => {
+                this.pronunciationDatabase.set(entry.word.toLowerCase(), {
+                    phonetic: entry.phonetic,
+                    variants: entry.variants || [],
+                    language: entry.language || 'pl',
+                    frequency: entry.frequency || 0,
+                    contexts: entry.contexts || []
+                });
+            });
+        } catch (error) {
+            console.warn('Nie udało się załadować bazy wymowy:', error);
+            this.loadFallbackDatabase();
+        }
+    }
+    
+    loadFallbackDatabase() {
+        // Podstawowa baza danych jako fallback
+        const fallbackEntries = [
+            { word: 'cache', phonetic: 'kæʃ', contexts: ['computing'] },
+            { word: 'niche', phonetic: 'niːʃ', contexts: ['business', 'marketing'] },
+            { word: 'genre', phonetic: 'ʒɑ̃ːrə', contexts: ['literature', 'music'] },
+            { word: 'sql', phonetic: 'sikłel', variants: ['es-kju-el'], contexts: ['database'] }
+        ];
+        
+        fallbackEntries.forEach(entry => {
+            this.pronunciationDatabase.set(entry.word.toLowerCase(), entry);
+        });
+    }
+    
+    analyzeDocument(content) {
+        const analysis = {
+            wordsAnalyzed: 0,
+            pronunciationNeeded: [],
+            contextualConflicts: [],
+            suggestions: []
+        };
+        
+        const words = this.extractWordsWithContext(content);
+        
+        words.forEach(({ word, context, element }) => {
+            analysis.wordsAnalyzed++;
+            
+            const pronunciationInfo = this.analyzePronunciationNeed(word, context);
+            
+            if (pronunciationInfo.needsPronunciation) {
+                analysis.pronunciationNeeded.push({
+                    word: word,
+                    reason: pronunciationInfo.reason,
+                    suggestions: pronunciationInfo.suggestions,
+                    element: element,
+                    confidence: pronunciationInfo.confidence
+                });
+            }
+            
+            if (pronunciationInfo.contextualConflict) {
+                analysis.contextualConflicts.push({
+                    word: word,
+                    conflicts: pronunciationInfo.conflicts,
+                    element: element
+                });
+            }
+        });
+        
+        analysis.suggestions = this.generateSuggestions(analysis);
+        
+        return analysis;
+    }
+    
+    extractWordsWithContext(content) {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(content, 'text/html');
+        const words = [];
+        
+        // Znajdź wszystkie węzły tekstowe
+        const walker = document.createTreeWalker(
+            doc.body,
+            NodeFilter.SHOW_TEXT,
+            null,
+            false
+        );
+        
+        let node;
+        while (node = walker.nextNode()) {
+            const text = node.textContent;
+            const matches = text.match(/\b[a-zA-ZąęćłńóśźżĄĘĆŁŃÓŚŹŻ]+\b/g) || [];
+            
+            matches.forEach(word => {
+                const context = this.extractContext(node, word);
+                words.push({
+                    word: word,
+                    context: context,
+                    element: node.parentElement
+                });
+            });
+        }
+        
+        return words;
+    }
+    
+    extractContext(node, word) {
+        // Wyodrębnij kontekst wokół słowa
+        const parentElement = node.parentElement;
+        const nearbyText = this.getNearbyText(node, 50); // 50 znaków kontekstu
+        
+        return {
+            nearbyText: nearbyText,
+            parentTag: parentElement ? parentElement.tagName.toLowerCase() : null,
+            classes: parentElement ? Array.from(parentElement.classList) : [],
+            semanticContext: this.analyzeSemanticContext(nearbyText)
+        };
+    }
+    
+    getNearbyText(node, radius) {
+        const parentText = node.parentElement ? node.parentElement.textContent : node.textContent;
+        const wordIndex = parentText.indexOf(node.textContent);
+        
+        const start = Math.max(0, wordIndex - radius);
+        const end = Math.min(parentText.length, wordIndex + node.textContent.length + radius);
+        
+        return parentText.slice(start, end);
+    }
+    
+    analyzeSemanticContext(text) {
+        const contexts = {
+            technical: /\b(API|system|kod|program|algorytm|baza|serwer)\b/i,
+            business: /\b(firma|rynek|klient|sprzedaż|marketing|strategia)\b/i,
+            medical: /\b(pacjent|diagnoza|leczenie|terapia|choroba|lek)\b/i,
+            academic: /\b(badanie|analiza|teoria|metoda|wyniki|wnioski)\b/i
+        };
+        
+        const detectedContexts = [];
+        
+        Object.entries(contexts).forEach(([context, pattern]) => {
+            if (pattern.test(text)) {
+                detectedContexts.push(context);
+            }
+        });
+        
+        return detectedContexts;
+    }
+    
+    analyzePronunciationNeed(word, context) {
+        const normalizedWord = word.toLowerCase();
+        const analysis = {
+            needsPronunciation: false,
+            reason: null,
+            suggestions: [],
+            confidence: 0,
+            contextualConflict: false,
+            conflicts: []
+        };
+        
+        // Sprawdź czy słowo jest w bazie danych
+        const dbEntry = this.pronunciationDatabase.get(normalizedWord);
+        
+        if (dbEntry) {
+            analysis.needsPronunciation = true;
+            analysis.reason = 'word_in_database';
+            analysis.confidence = 0.9;
+            
+            // Sprawdź warianty wymowy w kontekście
+            if (dbEntry.variants && dbEntry.variants.length > 0) {
+                const contextMatch = this.matchContext(context.semanticContext, dbEntry.contexts);
+                
+                if (!contextMatch) {
+                    analysis.contextualConflict = true;
+                    analysis.conflicts = dbEntry.variants;
+                }
+            }
+            
+            analysis.suggestions = [{
+                type: 'phonetic',
+                value: dbEntry.phonetic,
+                method: 'ruby'
+            }];
+        }
+        
+        // Sprawdź wzorce homografów
+        if (this.isLikelyHomograph(word, context)) {
+            analysis.needsPronunciation = true;
+            analysis.reason = 'likely_homograph';
+            analysis.confidence = 0.7;
+            
+            analysis.suggestions.push({
+                type: 'contextual_meaning',
+                value: 'Dodaj znaczenie kontekstowe',
+                method: 'ruby'
+            });
+        }
+        
+        // Sprawdź obce słowa
+        if (this.isForeignWord(word)) {
+            analysis.needsPronunciation = true;
+            analysis.reason = 'foreign_word';
+            analysis.confidence = 0.8;
+            
+            analysis.suggestions.push({
+                type: 'transcription',
+                value: 'Dodaj transkrypcję fonetyczną',
+                method: 'title'
+            });
+        }
+        
+        return analysis;
+    }
+    
+    isLikelyHomograph(word, context) {
+        // Prosta heurystyka do wykrywania homonimów
+        const commonHomographs = [
+            'zamek', 'mora', 'atlas', 'organ', 'banda', 'sekunda',
+            'plaster', 'tenor', 'bas', 'porta', 'mata'
+        ];
+        
+        return commonHomographs.includes(word.toLowerCase());
+    }
+    
+    isForeignWord(word) {
+        // Wykryj obce słowa na podstawie wzorców
+        const foreignPatterns = [
+            /^[a-z]+$/i, // tylko łacińskie litery
+            /ch$/, // końcówki typu 'cache'
+            /que$/, // francuskie końcówki
+            /tion$/, // angielskie końcówki
+            /^[A-Z]{2,}$/ // skróty wielkie
+        ];
+        
+        return foreignPatterns.some(pattern => pattern.test(word));
+    }
+    
+    matchContext(documentContext, wordContexts) {
+        if (!wordContexts || wordContexts.length === 0) return true;
+        if (!documentContext || documentContext.length === 0) return false;
+        
+        return wordContexts.some(wordContext => 
+            documentContext.includes(wordContext)
+        );
+    }
+    
+    generateSuggestions(analysis) {
+        const suggestions = [];
+        
+        if (analysis.pronunciationNeeded.length > 0) {
+            suggestions.push({
+                type: 'add_pronunciation',
+                priority: 'high',
+                count: analysis.pronunciationNeeded.length,
+                message: `Dodaj informacje o wymowie dla ${analysis.pronunciationNeeded.length} słów`
+            });
+        }
+        
+        if (analysis.contextualConflicts.length > 0) {
+            suggestions.push({
+                type: 'resolve_conflicts',
+                priority: 'medium',
+                count: analysis.contextualConflicts.length,
+                message: `Rozwiąż konflikty kontekstowe dla ${analysis.contextualConflicts.length} słów`
+            });
+        }
+        
+        // Sugestie metodologii
+        const methodSuggestions = this.suggestMethods(analysis);
+        suggestions.push(...methodSuggestions);
+        
+        return suggestions;
+    }
+    
+    suggestMethods(analysis) {
+        const methods = [];
+        
+        const foreignWords = analysis.pronunciationNeeded.filter(item => 
+            item.reason === 'foreign_word'
+        ).length;
+        
+        const homographs = analysis.pronunciationNeeded.filter(item => 
+            item.reason === 'likely_homograph'
+        ).length;
+        
+        if (foreignWords > 0) {
+            methods.push({
+                type: 'method_suggestion',
+                priority: 'low',
+                message: `Rozważ użycie transkrypcji fonetycznej dla ${foreignWords} słów obcych`,
+                method: 'phonetic'
+            });
+        }
+        
+        if (homographs > 0) {
+            methods.push({
+                type: 'method_suggestion',
+                priority: 'low',
+                message: `Rozważ dodanie znaczenia kontekstowego dla ${homographs} homonimów`,
+                method: 'ruby'
+            });
+        }
+        
+        return methods;
+    }
+}
+
+// Użycie
+const detector = new AdvancedPronunciationDetector();
+const pageContent = document.documentElement.outerHTML;
+
+detector.analyzeDocument(pageContent).then(analysis => {
+    console.log('Analiza wymowy:', analysis);
+    
+    // Automatyczne generowanie sugestii
+    analysis.pronunciationNeeded.forEach(item => {
+        console.log(`Słowo "${item.word}" wymaga pomocy w wymowie:`, item.suggestions);
+    });
+});</code></pre>
+
+            <h3>Integracja z API translacji i wymowy</h3>
+            <pre><code class="language-javascript">class PronunciationAPIIntegration {
+    constructor(config = {}) {
+        this.config = {
+            googleTTSKey: config.googleTTSKey,
+            forvoAPIKey: config.forvoAPIKey,
+            ipfifyAPIKey: config.ipfifyAPIKey,
+            cacheExpiry: config.cacheExpiry || 24 * 60 * 60 * 1000, // 24h
+            ...config
+        };
+        
+        this.cache = new Map();
+        this.loadCacheFromStorage();
+    }
+    
+    async getPronunciation(word, options = {}) {
+        const cacheKey = `${word}-${options.lang || 'pl'}`;
+        
+        // Sprawdź cache
+        if (this.cache.has(cacheKey)) {
+            const cached = this.cache.get(cacheKey);
+            if (Date.now() - cached.timestamp < this.config.cacheExpiry) {
+                return cached.data;
+            }
+        }
+        
+        try {
+            // Spróbuj różnych źródeł
+            let result = await this.getFromForvo(word, options);
+            
+            if (!result) {
+                result = await this.getFromIPAAPI(word, options);
+            }
+            
+            if (!result) {
+                result = await this.generateWithTTS(word, options);
+            }
+            
+            // Zapisz w cache
+            if (result) {
+                this.cache.set(cacheKey, {
+                    data: result,
+                    timestamp: Date.now()
+                });
+                this.saveCacheToStorage();
+            }
+            
+            return result;
+            
+        } catch (error) {
+            console.error('Błąd pobierania wymowy:', error);
+            return null;
+        }
+    }
+    
+    async getFromForvo(word, options) {
+        if (!this.config.forvoAPIKey) return null;
+        
+        const url = `https://apifree.forvo.com/key/${this.config.forvoAPIKey}/format/json/action/word-pronunciations/word/${encodeURIComponent(word)}/language/${options.lang || 'pl'}`;
+        
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            
+            if (data.items && data.items.length > 0) {
+                return {
+                    source: 'forvo',
+                    word: word,
+                    phonetic: data.items[0].phonetic || null,
+                    audio: data.items[0].pathmp3 || null,
+                    language: options.lang || 'pl',
+                    quality: 'high'
+                };
+            }
+        } catch (error) {
+            console.warn('Forvo API error:', error);
+        }
+        
+        return null;
+    }
+    
+    async getFromIPAAPI(word, options) {
+        // Przykładowe API do transkrypcji fonetycznej
+        const url = `https://api.phonetics.com/v1/transcribe`;
+        
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${this.config.ipfifyAPIKey}`
+                },
+                body: JSON.stringify({
+                    text: word,
+                    language: options.lang || 'pl',
+                    format: 'ipa'
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (data.transcription) {
+                return {
+                    source: 'ipa_api',
+                    word: word,
+                    phonetic: data.transcription,
+                    audio: null,
+                    language: options.lang || 'pl',
+                    quality: 'medium'
+                };
+            }
+        } catch (error) {
+            console.warn('IPA API error:', error);
+        }
+        
+        return null;
+    }
+    
+    async generateWithTTS(word, options) {
+        if (!this.config.googleTTSKey) return null;
+        
+        try {
+            // Google Text-to-Speech API
+            const url = `https://texttospeech.googleapis.com/v1/text:synthesize?key=${this.config.googleTTSKey}`;
+            
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    input: { text: word },
+                    voice: {
+                        languageCode: options.lang || 'pl-PL',
+                        name: options.voice || 'pl-PL-Wavenet-A'
+                    },
+                    audioConfig: {
+                        audioEncoding: 'MP3',
+                        speakingRate: 0.8,
+                        pitch: 0
+                    }
+                })
+            });
+            
+            const data = await response.json();
+            
+            if (data.audioContent) {
+                // Utwórz blob URL dla audio
+                const audioBlob = this.base64ToBlob(data.audioContent, 'audio/mp3');
+                const audioUrl = URL.createObjectURL(audioBlob);
+                
+                return {
+                    source: 'google_tts',
+                    word: word,
+                    phonetic: null, // TTS nie zwraca transkrypcji
+                    audio: audioUrl,
+                    language: options.lang || 'pl',
+                    quality: 'synthetic'
+                };
+            }
+        } catch (error) {
+            console.warn('Google TTS error:', error);
+        }
+        
+        return null;
+    }
+    
+    base64ToBlob(base64Data, contentType) {
+        const byteCharacters = atob(base64Data);
+        const byteNumbers = new Array(byteCharacters.length);
+        
+        for (let i = 0; i < byteCharacters.length; i++) {
+            byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        
+        const byteArray = new Uint8Array(byteNumbers);
+        return new Blob([byteArray], { type: contentType });
+    }
+    
+    async batchProcess(words, options = {}) {
+        const results = [];
+        const batchSize = options.batchSize || 5;
+        
+        for (let i = 0; i < words.length; i += batchSize) {
+            const batch = words.slice(i, i + batchSize);
+            
+            const batchPromises = batch.map(word => 
+                this.getPronunciation(word, options)
+            );
+            
+            const batchResults = await Promise.allSettled(batchPromises);
+            
+            batchResults.forEach((result, index) => {
+                if (result.status === 'fulfilled' && result.value) {
+                    results.push(result.value);
+                } else {
+                    console.warn(`Nie udało się pobrać wymowy dla: ${batch[index]}`);
+                }
+            });
+            
+            // Odczekaj między batches aby nie przeciążyć API
+            if (i + batchSize < words.length) {
+                await new Promise(resolve => setTimeout(resolve, 1000));
+            }
+        }
+        
+        return results;
+    }
+    
+    loadCacheFromStorage() {
+        try {
+            const stored = localStorage.getItem('pronunciation-cache');
+            if (stored) {
+                const data = JSON.parse(stored);
+                this.cache = new Map(data);
+            }
+        } catch (error) {
+            console.warn('Nie udało się załadować cache:', error);
+        }
+    }
+    
+    saveCacheToStorage() {
+        try {
+            const data = Array.from(this.cache.entries());
+            localStorage.setItem('pronunciation-cache', JSON.stringify(data));
+        } catch (error) {
+            console.warn('Nie udało się zapisać cache:', error);
+        }
+    }
+    
+    clearCache() {
+        this.cache.clear();
+        localStorage.removeItem('pronunciation-cache');
+    }
+}
+
+// Użycie
+const pronunciationAPI = new PronunciationAPIIntegration({
+    forvoAPIKey: 'your-forvo-key',
+    googleTTSKey: 'your-google-key'
+});
+
+// Pojedyncze słowo
+pronunciationAPI.getPronunciation('cache', { lang: 'en' })
+    .then(result => {
+        if (result) {
+            console.log('Wymowa:', result);
+        }
+    });
+
+// Batch processing
+const wordsToProcess = ['cache', 'niche', 'genre', 'SQL'];
+pronunciationAPI.batchProcess(wordsToProcess)
+    .then(results => {
+        console.log('Wszystkie wymowy:', results);
+    });</code></pre>
+        </section>
+
+        <section class="common-mistakes">
+            <h2>Częste błędy</h2>
+
+            <div class="mistake-block">
+                <h3>❌ Brak wymowy dla homonimów</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe --&gt;
+&lt;p&gt;W zamku były cenne skarby.&lt;/p&gt;
+&lt;p&gt;Zamek w drzwiach jest zepsuty.&lt;/p&gt;
+
+&lt;!-- Prawidłowe --&gt;
+&lt;p&gt;W &lt;ruby&gt;zamku&lt;rt&gt;za-mek (budowla)&lt;/rt&gt;&lt;/ruby&gt; były cenne skarby.&lt;/p&gt;
+&lt;p&gt;&lt;ruby&gt;Zamek&lt;rt&gt;za-mek (mechanizm)&lt;/rt&gt;&lt;/ruby&gt; w drzwiach jest zepsuty.&lt;/p&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Nieprawidłowa transkrypcja fonetyczna</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe --&gt;
+&lt;span title="wymowa: kajsz"&gt;cache&lt;/span&gt;
+
+&lt;!-- Prawidłowe --&gt;
+&lt;span title="wymowa: [kæʃ] lub kasz"&gt;cache&lt;/span&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Niedostępne pliki audio</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe --&gt;
+&lt;a href="missing-audio.mp3"&gt;🔊&lt;/a&gt;
+
+&lt;!-- Prawidłowe --&gt;
+&lt;button onclick="playPronunciation('cache')" aria-label="Posłuchaj wymowy"&gt;🔊&lt;/button&gt;
+&lt;script&gt;
+function playPronunciation(word) {
+    if (audioFiles[word]) {
+        const audio = new Audio(audioFiles[word]);
+        audio.play().catch(error => {
+            console.log('Nie można odtworzyć audio dla:', word);
+            // Fallback do syntezy mowy
+            speakWord(word);
+        });
+    }
+}
+&lt;/script&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Przeciążenie informacjami o wymowie</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - zbyt wiele informacji --&gt;
+&lt;p&gt;&lt;ruby&gt;To&lt;rt&gt;to&lt;/rt&gt;&lt;/ruby&gt; &lt;ruby&gt;jest&lt;rt&gt;jest&lt;/rt&gt;&lt;/ruby&gt; 
+&lt;ruby&gt;przykład&lt;rt&gt;przy-kład&lt;/rt&gt;&lt;/ruby&gt; &lt;ruby&gt;tekstu&lt;rt&gt;tek-stu&lt;/rt&gt;&lt;/ruby&gt;.&lt;/p&gt;
+
+&lt;!-- Prawidłowe - tylko słowa wymagające pomocy --&gt;
+&lt;p&gt;To jest &lt;ruby&gt;cache&lt;rt&gt;kæʃ&lt;/rt&gt;&lt;/ruby&gt; systemowy.&lt;/p&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Brak alternatyw dla metod wymowy</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - tylko audio --&gt;
+&lt;span&gt;cache &lt;audio controls&gt;&lt;source src="cache.mp3"&gt;&lt;/audio&gt;&lt;/span&gt;
+
+&lt;!-- Prawidłowe - multiple opcje --&gt;
+&lt;span class="pronunciation-word"&gt;
+    cache
+    &lt;span title="wymowa: [kæʃ]"&gt;ℹ️&lt;/span&gt;
+    &lt;button onclick="playAudio('cache')"&gt;🔊&lt;/button&gt;
+&lt;/span&gt;</code></pre>
+            </div>
+        </section>
+
+        <section class="resources">
+            <h2>Dodatkowe zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/pronunciation.html" target="_blank"
+                        rel="noopener">Understanding SC 3.1.6: Pronunciation (W3C)</a></li>
+                <li><a href="https://webaim.org/techniques/language/#pronunciation" target="_blank"
+                        rel="noopener">WebAIM: Pronunciation</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ruby" target="_blank"
+                        rel="noopener">MDN: Ruby element</a></li>
+                <li><a href="https://www.internationalphoneticalphabet.org/" target="_blank"
+                        rel="noopener">International Phonetic Alphabet</a></li>
+                <li><a href="https://forvo.com/" target="_blank" rel="noopener">Forvo - słownik wymowy</a></li>
+                <li><a href="https://howjsay.com/" target="_blank" rel="noopener">HowJSay - darmowy słownik wymowy</a>
+                </li>
+                <li><a href="https://cloud.google.com/text-to-speech" target="_blank" rel="noopener">Google
+                        Text-to-Speech API</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API" target="_blank"
+                        rel="noopener">Web Speech API</a></li>
+            </ul>
+        </section>
+
+        <nav class="page-navigation" aria-label="Nawigacja między stronami">
+            <a href="3.1.5.html" class="nav-link prev-page">
+                <span class="nav-arrow">←</span>
+                <span class="nav-text">
+                    <span class="nav-label">Poprzednia</span>
+                    <span class="nav-title">3.1.5 Poziom trudności czytania</span>
+                </span>
+            </a>
+            <a href="../wytyczne.html" class="nav-link next-page">
+                <span class="nav-text">
+                    <span class="nav-label">Powrót do</span>
+                    <span class="nav-title">Przeglądu wytycznych</span>
+                </span>
+                <span class="nav-arrow">→</span>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

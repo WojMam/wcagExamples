@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.1 Czytelność - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>3.1 Czytelność</h1>
+            <p>Wytyczna ta zapewnia, że treść tekstowa jest czytelna i zrozumiała dla użytkowników.</p>
+        </div>
+
+        <section class="guideline-description">
+            <h2>Opis wytycznej</h2>
+            <p>Czytelność treści to fundament dostępności cyfrowej. Użytkownicy muszą być w stanie nie tylko
+                odczytać treść, ale także ją zrozumieć. Wytyczna 3.1 koncentruje się na:</p>
+            <ul>
+                <li><strong>Identyfikacji języka</strong> - strony i jej części</li>
+                <li><strong>Wyjaśnianiu trudnych pojęć</strong> - nietypowe słowa, skróty, żargon</li>
+                <li><strong>Dostosowaniu poziomu trudności</strong> - do możliwości odbiorców</li>
+                <li><strong>Pomocy w wymowie</strong> - dla słów o nieoczywistej wymowie</li>
+            </ul>
+
+            <p>Te elementy są szczególnie istotne dla osób:</p>
+            <ul>
+                <li><strong>Z dysleksją</strong> - które mają trudności z czytaniem</li>
+                <li><strong>Z ograniczeniami poznawczymi</strong> - które potrzebują prostego języka</li>
+                <li><strong>Używających czytników ekranu</strong> - które potrzebują informacji o języku</li>
+                <li><strong>Uczących się języka</strong> - które nie znają zaawansowanego słownictwa</li>
+                <li><strong>Starszych</strong> - które mogą mieć trudności z nowoczesnym żargonem</li>
+                <li><strong>Z ograniczoną edukacją</strong> - które preferują prosty język</li>
+            </ul>
+        </section>
+
+        <section class="criteria-overview">
+            <h2>Kryteria sukcesu</h2>
+
+            <div class="criteria-level-section">
+                <h3>Poziom A (podstawowy)</h3>
+                <ul class="criteria-list">
+                    <li><a href="3.1.1.html">3.1.1 Język strony (A)</a> - określenie głównego języka strony</li>
+                </ul>
+            </div>
+
+            <div class="criteria-level-section">
+                <h3>Poziom AA (standardowy)</h3>
+                <ul class="criteria-list">
+                    <li><a href="3.1.2.html">3.1.2 Język części (AA)</a> - oznaczenie fragmentów w innych językach</li>
+                </ul>
+            </div>
+
+            <div class="criteria-level-section">
+                <h3>Poziom AAA (zaawansowany)</h3>
+                <ul class="criteria-list">
+                    <li><a href="3.1.3.html">3.1.3 Nietypowe słowa (AAA)</a> - wyjaśnianie specjalistycznych terminów i
+                        żargonu</li>
+                    <li><a href="3.1.4.html">3.1.4 Skróty (AAA)</a> - mechanizmy wyjaśniania skrótów i akronimów</li>
+                    <li><a href="3.1.5.html">3.1.5 Poziom trudności czytania (AAA)</a> - dostosowanie poziomu tekstu do
+                        umiejętności czytelniczych</li>
+                    <li><a href="3.1.6.html">3.1.6 Wymowa (AAA)</a> - mechanizmy określania wymowy dla słów o
+                        niejednoznacznym znaczeniu</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="language-principles">
+            <h2>Kluczowe zasady czytelności</h2>
+
+            <div class="principle-card"
+                style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 20px; border-radius: 5px; margin: 15px 0;">
+                <h3 style="color: #004085; margin-top: 0;">🌍 Identyfikacja języka</h3>
+                <p style="color: #004085;">Strona i jej części muszą mieć:</p>
+                <ul style="color: #004085;">
+                    <li>Określony główny język strony</li>
+                    <li>Oznaczone fragmenty w innych językach</li>
+                    <li>Prawidłowe atrybuty lang w HTML</li>
+                    <li>Wsparcie dla technologii wspomagających</li>
+                </ul>
+            </div>
+
+            <div class="principle-card"
+                style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 20px; border-radius: 5px; margin: 15px 0;">
+                <h3 style="color: #155724; margin-top: 0;">📚 Jasność komunikacji</h3>
+                <p style="color: #155724;">Treść powinna być:</p>
+                <ul style="color: #155724;">
+                    <li>Napisana prostym, zrozumiałym językiem</li>
+                    <li>Wyjaśniać trudne lub specjalistyczne terminy</li>
+                    <li>Definiować skróty i akronimy</li>
+                    <li>Dostosowana do grupy odbiorców</li>
+                </ul>
+            </div>
+
+            <div class="principle-card"
+                style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 20px; border-radius: 5px; margin: 15px 0;">
+                <h3 style="color: #856404; margin-top: 0;">🎯 Dostosowanie poziomu</h3>
+                <p style="color: #856404;">Trudność tekstu powinna:</p>
+                <ul style="color: #856404;">
+                    <li>Odpowiadać możliwościom odbiorców</li>
+                    <li>Uwzględniać kontekst i cel treści</li>
+                    <li>Oferować alternatywy dla trudnych fragmentów</li>
+                    <li>Zapewniać dodatkowe wyjaśnienia</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="language-features">
+            <h2>Elementy czytelności w web</h2>
+
+            <h3>1. Oznaczanie języka</h3>
+            <pre><code class="language-html">&lt;!-- Główny język strony --&gt;
+&lt;html lang="pl"&gt;
+
+&lt;!-- Fragment w innym języku --&gt;
+&lt;p&gt;Hasło firmy to &lt;span lang="en"&gt;"Innovation for everyone"&lt;/span&gt;.&lt;/p&gt;
+
+&lt;!-- Cytat w obcym języku --&gt;
+&lt;blockquote lang="fr"&gt;
+    &lt;p&gt;L'art de vivre&lt;/p&gt;
+&lt;/blockquote&gt;</code></pre>
+
+            <h3>2. Wyjaśnianie terminów</h3>
+            <pre><code class="language-html">&lt;!-- Definicja terminu --&gt;
+&lt;p&gt;System &lt;dfn&gt;CMS&lt;/dfn&gt; (Content Management System) to oprogramowanie
+do zarządzania treścią strony internetowej.&lt;/p&gt;
+
+&lt;!-- Skrót z rozwinięciem --&gt;
+&lt;p&gt;Organizacja &lt;abbr title="World Wide Web Consortium"&gt;W3C&lt;/abbr&gt; 
+ustala standardy internetowe.&lt;/p&gt;
+
+&lt;!-- Słowniczek terminów --&gt;
+&lt;dl&gt;
+    &lt;dt&gt;API&lt;/dt&gt;
+    &lt;dd&gt;Application Programming Interface - interfejs programistyczny aplikacji&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+
+            <h3>3. Wskazówki wymowy</h3>
+            <pre><code class="language-html">&lt;!-- Wskazówka wymowy --&gt;
+&lt;p&gt;Miasto &lt;span title="wymowa: Szcze-cin"&gt;Szczecin&lt;/span&gt; leży nad Odrą.&lt;/p&gt;
+
+&lt;!-- Transkrypcja fonetyczna --&gt;
+&lt;p&gt;Słowo &lt;i lang="fr"&gt;rendezvous&lt;/i&gt; 
+&lt;span class="pronunciation"&gt;[ˈrɑ̃devu]&lt;/span&gt; pochodzi z francuskiego.&lt;/p&gt;</code></pre>
+        </section>
+
+        <section class="readability-techniques">
+            <h2>Techniki poprawy czytelności</h2>
+
+            <h3>Struktura tekstu</h3>
+            <ul>
+                <li><strong>Nagłówki hierarchiczne</strong> - h1, h2, h3 dla organizacji treści</li>
+                <li><strong>Krótkie akapity</strong> - łatwiejsze do przyswojenia</li>
+                <li><strong>Listy punktowane</strong> - dla lepszej przejrzystości</li>
+                <li><strong>Białe przestrzenie</strong> - dla odpoczynku wzroku</li>
+            </ul>
+
+            <h3>Język i słownictwo</h3>
+            <ul>
+                <li><strong>Proste zdania</strong> - unikanie nadmiernie złożonych konstrukcji</li>
+                <li><strong>Aktywna strona</strong> - zamiast biernej</li>
+                <li><strong>Konkretne słowa</strong> - zamiast abstrakcyjnych</li>
+                <li><strong>Znane terminy</strong> - lub wyjaśnione specjalistyczne</li>
+            </ul>
+
+            <h3>Wsparcie wizualne</h3>
+            <ul>
+                <li><strong>Ikony i symbole</strong> - wspomagające zrozumienie</li>
+                <li><strong>Ilustracje</strong> - wyjaśniające trudne koncepty</li>
+                <li><strong>Tabele i wykresy</strong> - dla danych liczbowych</li>
+                <li><strong>Podkreślenia</strong> - dla ważnych informacji</li>
+            </ul>
+        </section>
+
+        <section class="language-tools">
+            <h2>Narzędzia analizy czytelności</h2>
+
+            <h3>Automatyczne testy</h3>
+            <ul>
+                <li><strong>Indeks mglistości Gunninga</strong> - poziom trudności tekstu</li>
+                <li><strong>Test Flesch-Kinaid</strong> - wymagany poziom edukacji</li>
+                <li><strong>SMOG Index</strong> - lata edukacji potrzebne do zrozumienia</li>
+                <li><strong>ARI (Automated Readability Index)</strong> - wiek czytelnika</li>
+            </ul>
+
+            <h3>Narzędzia online</h3>
+            <ul>
+                <li><strong>Readable.com</strong> - analiza czytelności tekstu</li>
+                <li><strong>Hemingway Editor</strong> - upraszczanie języka</li>
+                <li><strong>Grammarly</strong> - sprawdzanie poprawności</li>
+                <li><strong>Jasnopis</strong> - narzędzie dla języka polskiego</li>
+            </ul>
+
+            <h3>Walidatory HTML</h3>
+            <pre><code class="language-javascript">// Sprawdzenie atrybutu lang
+function checkLanguageAttributes() {
+    const htmlElement = document.documentElement;
+    const langAttr = htmlElement.getAttribute('lang');
+    
+    if (!langAttr) {
+        console.warn('Brak atrybutu lang w elemencie html');
+        return false;
+    }
+    
+    console.log(`Główny język strony: ${langAttr}`);
+    
+    // Sprawdź fragmenty w innych językach
+    const foreignLangElements = document.querySelectorAll('[lang]:not(html)');
+    foreignLangElements.forEach(element => {
+        console.log(`Fragment w języku: ${element.getAttribute('lang')}`);
+    });
+    
+    return true;
+}
+
+// Analiza trudnych słów
+function analyzeComplexWords() {
+    const textContent = document.body.textContent;
+    const words = textContent.split(/\s+/);
+    const complexWords = words.filter(word => word.length > 12);
+    
+    console.log(`Znaleziono ${complexWords.length} potencjalnie trudnych słów`);
+    return complexWords;
+}</code></pre>
+        </section>
+
+        <section class="testing-readability">
+            <h2>Testowanie czytelności</h2>
+
+            <h3>Testy manualne</h3>
+            <ul>
+                <li><strong>Czytanie na głos</strong> - czy tekst brzmi naturalnie</li>
+                <li><strong>Test z użytkownikami</strong> - czy odbiorcy rozumieją treść</li>
+                <li><strong>Sprawdzanie skrótów</strong> - czy wszystkie są wyjaśnione</li>
+                <li><strong>Weryfikacja języka</strong> - czy fragmenty są prawidłowo oznaczone</li>
+            </ul>
+
+            <h3>Testy techniczne</h3>
+            <ul>
+                <li><strong>Walidacja HTML</strong> - sprawdzenie atrybutów lang</li>
+                <li><strong>Czytniki ekranu</strong> - test z różnymi językami</li>
+                <li><strong>Narzędzia czytelności</strong> - analiza poziomu trudności</li>
+                <li><strong>Tłumaczenia automatyczne</strong> - test jakości dla fragmentów obcojęzycznych</li>
+            </ul>
+
+            <h3>Checklist czytelności</h3>
+            <div
+                style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                <h4>✅ Sprawdź czy:</h4>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ Strona ma określony główny język (lang="pl")</li>
+                    <li>☐ Fragmenty w innych językach są oznaczone</li>
+                    <li>☐ Skróty i akronimy są wyjaśnione</li>
+                    <li>☐ Trudne terminy mają definicje</li>
+                    <li>☐ Język jest dostosowany do odbiorców</li>
+                    <li>☐ Struktura tekstu jest logiczna</li>
+                    <li>☐ Zdania nie są nadmiernie długie</li>
+                    <li>☐ Słownictwo jest zrozumiałe</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="additional-resources">
+            <h2>Dodatkowe zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/readable" target="_blank"
+                        rel="noopener">Understanding Guideline 3.1: Readable (W3C)</a></li>
+                <li><a href="https://webaim.org/techniques/language/" target="_blank" rel="noopener">WebAIM:
+                        Language</a>
+                </li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/lang" target="_blank"
+                        rel="noopener">MDN: lang attribute</a></li>
+                <li><a href="https://jasnopis.pl/" target="_blank" rel="noopener">Jasnopis - narzędzie dla języka
+                        polskiego</a></li>
+                <li><a href="https://www.readable.com/" target="_blank" rel="noopener">Readable.com - analiza
+                        czytelności</a></li>
+                <li><a href="https://hemingwayapp.com/" target="_blank" rel="noopener">Hemingway Editor</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

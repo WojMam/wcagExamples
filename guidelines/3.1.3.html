@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.1.3 Nietypowe słowa (AAA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>3.1.3 Nietypowe słowa (AAA)</h1>
+            <p>Mechanizm identyfikacji specyficznych definicji słów lub fraz użytych w nietypowy lub ograniczony sposób,
+                włączając idiomy i żargon, jest dostępny.</p>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>Gdy strona zawiera słowa lub wyrażenia używane w sposób nietypowy, specjalistyczny lub jako żargon,
+                musi być dostępny mechanizm wyjaśniający ich znaczenie. Pomaga to użytkownikom zrozumieć treść,
+                zwłaszcza gdy słowa są używane w kontekście innym niż powszechnie przyjęty.</p>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Osoby z ograniczeniami poznawczymi</strong> - łatwiejsze zrozumienie specjalistycznej
+                    terminologii</li>
+                <li><strong>Osoby z dysleksją</strong> - dodatkowe wsparcie w rozumieniu tekstów</li>
+                <li><strong>Osoby uczące się języka</strong> - pomoc w rozumieniu idiomów i żargonu</li>
+                <li><strong>Młodzi użytkownicy</strong> - wyjaśnienie skomplikowanych pojęć</li>
+                <li><strong>Osoby starsze</strong> - objaśnienie nowoczesnego slangu i terminologii technicznej</li>
+                <li><strong>Specjaliści z innych dziedzin</strong> - zrozumienie branżowego żargonu</li>
+            </ul>
+        </section>
+
+        <section class="requirements">
+            <h2>Wymagania</h2>
+            <ul>
+                <li>Mechanizm definiowania nietypowych słów musi być dostępny</li>
+                <li>Definicje muszą być jasne i zrozumiałe</li>
+                <li>Mechanizm może obejmować różne sposoby dostarczania definicji</li>
+                <li>Wyjaśnienia muszą być dostępne dla technologii wspomagających</li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje</h2>
+            <dl>
+                <dt><strong>Nietypowe słowa</strong></dt>
+                <dd>Słowa używane w sposób odmienny od powszechnie przyjętego znaczenia lub w specjalistycznym
+                    kontekście.</dd>
+
+                <dt><strong>Idiomy</strong></dt>
+                <dd>Wyrażenia, których znaczenie nie wynika bezpośrednio z znaczenia poszczególnych słów (np. "leje jak
+                    z cebra").</dd>
+
+                <dt><strong>Żargon</strong></dt>
+                <dd>Specjalistyczne słownictwo używane w określonej grupie zawodowej lub społecznej.</dd>
+
+                <dt><strong>Mechanizm definicji</strong></dt>
+                <dd>Sposób dostarczania wyjaśnień - może to być słowniczek, linki do definicji, tooltips, lub inne
+                    rozwiązania.</dd>
+
+                <dt><strong>Użycie w ograniczony sposób</strong></dt>
+                <dd>Słowa używane ze znaczeniem specyficznym dla danego kontekstu, dokumentu lub dziedziny.</dd>
+            </dl>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Brak wyjaśnienia żargonu technicznego</h4>
+                <pre><code class="language-html">&lt;p&gt;Nasz API wykorzystuje RESTful endpoints z autentykacją JWT 
+dla seamless integration z Vašymi systemami.&lt;/p&gt;</code></pre>
+                <p><strong>Problem:</strong> Specjalistyczne terminy (API, RESTful, JWT, seamless integration) nie są
+                    wyjaśnione.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Idiomy bez wyjaśnienia</h4>
+                <pre><code class="language-html">&lt;p&gt;Ten projekt to już przeszłość, teraz trzeba iść z duchem czasu 
+i nie sprzedawać skóry na niedźwiedziu.&lt;/p&gt;</code></pre>
+                <p><strong>Problem:</strong> Idiomy mogą być niezrozumiałe dla osób uczących się języka lub młodszych
+                    użytkowników.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Branżowy slang bez kontekstu</h4>
+                <pre><code class="language-html">&lt;p&gt;Frontend developer powinien znać responsive design, 
+cross-browser compatibility i progressive enhancement.&lt;/p&gt;</code></pre>
+                <p><strong>Problem:</strong> Branżowe terminy IT nie są wyjaśnione dla osób spoza branży.</p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Definicje w elemencie dfn</h4>
+                <pre><code class="language-html">&lt;p&gt;Nasz &lt;dfn title="Application Programming Interface - interfejs programistyczny"&gt;API&lt;/dfn&gt; 
+wykorzystuje &lt;dfn title="Architektura oprogramowania zgodna z zasadami REST"&gt;RESTful endpoints&lt;/dfn&gt; 
+z autentykacją &lt;dfn title="JSON Web Token - standard tokenu dostępu"&gt;JWT&lt;/dfn&gt;.&lt;/p&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Każdy termin techniczny ma wyjaśnienie dostępne przez atrybut
+                    title.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Słowniczek terminów</h4>
+                <pre><code class="language-html">&lt;p&gt;Podczas tworzenia aplikacji używamy metodologii 
+&lt;a href="#agile-def"&gt;Agile&lt;/a&gt; i praktyk &lt;a href="#devops-def"&gt;DevOps&lt;/a&gt;.&lt;/p&gt;
+
+&lt;section id="glossary"&gt;
+    &lt;h2&gt;Słowniczek&lt;/h2&gt;
+    &lt;dl&gt;
+        &lt;dt id="agile-def"&gt;Agile&lt;/dt&gt;
+        &lt;dd&gt;Metodologia tworzenia oprogramowania oparta na iteracyjnym 
+            rozwoju i ścisłej współpracy z klientem.&lt;/dd&gt;
+        
+        &lt;dt id="devops-def"&gt;DevOps&lt;/dt&gt;
+        &lt;dd&gt;Zestaw praktyk łączących rozwój oprogramowania (Dev) 
+            z operacjami IT (Ops) w celu skrócenia cyklu życia systemu.&lt;/dd&gt;
+    &lt;/dl&gt;
+&lt;/section&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Terminy są linkowane do szczegółowych definicji w słowniczku.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Wyjaśnienia idiomów</h4>
+                <pre><code class="language-html">&lt;p&gt;Ten projekt to już przeszłość, teraz trzeba 
+&lt;span class="idiom" title="dostosować się do aktualnych trendów"&gt;iść z duchem czasu&lt;/span&gt; 
+i nie &lt;span class="idiom" title="nie planować czegoś przedwcześnie"&gt;sprzedawać skóry na niedźwiedziu&lt;/span&gt;.&lt;/p&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Idiomy mają wyjaśnienia pokazujące ich rzeczywiste znaczenie.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Interaktywne definicje</h4>
+                <pre><code class="language-html">&lt;p&gt;Implementujemy &lt;button type="button" class="term-button" 
+data-term="microservices"&gt;mikrousługi&lt;/button&gt; z wykorzystaniem 
+&lt;button type="button" class="term-button" 
+data-term="containers"&gt;kontenerów&lt;/button&gt;.&lt;/p&gt;
+
+&lt;div class="definitions-panel" hidden&gt;
+    &lt;div id="def-microservices"&gt;
+        &lt;strong&gt;Mikrousługi:&lt;/strong&gt; Architektura aplikacji jako zbioru 
+        małych, niezależnych usług komunikujących się przez API.
+    &lt;/div&gt;
+    &lt;div id="def-containers"&gt;
+        &lt;strong&gt;Kontenery:&lt;/strong&gt; Lekkie, przenośne jednostki oprogramowania 
+        zawierające aplikację i wszystkie jej zależności.
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Interaktywne elementy pozwalają na dostęp do definicji na żądanie.
+                </p>
+            </div>
+        </section>
+
+        <section class="implementation-methods">
+            <h2>Sposoby implementacji</h2>
+
+            <h3>1. Atrybut title</h3>
+            <div class="method-description">
+                <p><strong>Zastosowanie:</strong> Proste, krótkie definicje</p>
+                <p><strong>Zalety:</strong> Łatwe w implementacji, dostępne dla czytników ekranu</p>
+                <p><strong>Wady:</strong> Ograniczona długość, nie wszyscy użytkownicy wiedzą o hover</p>
+            </div>
+            <pre><code class="language-html">&lt;p&gt;Używamy &lt;span title="Rozwój oprogramowania oparty na testach"&gt;TDD&lt;/span&gt; 
+w naszych projektach.&lt;/p&gt;</code></pre>
+
+            <h3>2. Element dfn z linkami</h3>
+            <div class="method-description">
+                <p><strong>Zastosowanie:</strong> Pierwszy raz użyte terminy z definicjami</p>
+                <p><strong>Zalety:</strong> Semantycznie poprawne, linkuje do szczegółowych wyjaśnień</p>
+                <p><strong>Wady:</strong> Wymaga dodatkowej strony lub sekcji z definicjami</p>
+            </div>
+            <pre><code class="language-html">&lt;p&gt;Metodologia &lt;dfn&gt;&lt;a href="glossary.html#scrum"&gt;Scrum&lt;/a&gt;&lt;/dfn&gt; 
+jest popularna w zespołach programistycznych.&lt;/p&gt;</code></pre>
+
+            <h3>3. Słowniczek terminów</h3>
+            <div class="method-description">
+                <p><strong>Zastosowanie:</strong> Strony z wieloma specjalistycznymi terminami</p>
+                <p><strong>Zalety:</strong> Centralny punkt z wszystkimi definicjami</p>
+                <p><strong>Wady:</strong> Użytkownik musi przechodzić do innej sekcji</p>
+            </div>
+            <pre><code class="language-html">&lt;section id="glossary"&gt;
+    &lt;h2&gt;Słowniczek&lt;/h2&gt;
+    &lt;dl&gt;
+        &lt;dt id="ajax"&gt;AJAX&lt;/dt&gt;
+        &lt;dd&gt;Asynchronous JavaScript and XML - technika tworzenia 
+            interaktywnych aplikacji webowych.&lt;/dd&gt;
+    &lt;/dl&gt;
+&lt;/section&gt;</code></pre>
+
+            <h3>4. Tooltips i popovery</h3>
+            <div class="method-description">
+                <p><strong>Zastosowanie:</strong> Interaktywne wyjaśnienia na żądanie</p>
+                <p><strong>Zalety:</strong> Nie zakłócają czytania, dostępne na żądanie</p>
+                <p><strong>Wady:</strong> Wymagają JavaScript, muszą być dostępne dla klawiatury</p>
+            </div>
+            <pre><code class="language-html">&lt;button type="button" class="term-toggle" 
+        aria-describedby="tooltip-rest"&gt;REST&lt;/button&gt;
+&lt;div id="tooltip-rest" role="tooltip" hidden&gt;
+    Representational State Transfer - architektura dla usług webowych
+&lt;/div&gt;</code></pre>
+
+            <h3>5. Sekcje wyjaśnień</h3>
+            <div class="method-description">
+                <p><strong>Zastosowanie:</strong> Szczegółowe wyjaśnienia skomplikowanych konceptów</p>
+                <p><strong>Zalety:</strong> Miejsce na obszerne wyjaśnienia z przykładami</p>
+                <p><strong>Wady:</strong> Mogą przerwać czytanie głównej treści</p>
+            </div>
+            <pre><code class="language-html">&lt;p&gt;Implementujemy architekturę &lt;a href="#microservices-explanation"&gt;mikrousług&lt;/a&gt;.&lt;/p&gt;
+
+&lt;aside id="microservices-explanation"&gt;
+    &lt;h3&gt;Czym są mikrousługi?&lt;/h3&gt;
+    &lt;p&gt;Mikrousługi to podejście do budowy aplikacji jako zestawu 
+       małych usług, z których każda działa w swoim procesie...&lt;/p&gt;
+&lt;/aside&gt;</code></pre>
+        </section>
+
+        <section class="interactive-demo">
+            <h2>Interaktywna demonstracja</h2>
+            <p>Przetestuj różne sposoby wyjaśniania nietypowych słów:</p>
+
+            <div class="demo-container">
+                <h3>Generator mechanizmów definicji</h3>
+                <div class="definition-demo">
+                    <div class="demo-input">
+                        <label for="term-input">Wprowadź termin:</label>
+                        <input type="text" id="term-input" placeholder="np. blockchain">
+
+                        <label for="definition-input">Wprowadź definicję:</label>
+                        <textarea id="definition-input"
+                            placeholder="np. Rozproszona baza danych przechowująca informacje w blokach"></textarea>
+
+                        <label for="method-select">Wybierz metodę wyjaśnienia:</label>
+                        <select id="method-select">
+                            <option value="title">Atrybut title</option>
+                            <option value="dfn">Element dfn</option>
+                            <option value="tooltip">Tooltip</option>
+                            <option value="glossary">Link do słowniczka</option>
+                        </select>
+
+                        <button id="generate-definition" class="demo-button">Generuj przykład</button>
+                    </div>
+
+                    <div class="demo-output">
+                        <h4>Wygenerowany kod:</h4>
+                        <pre id="generated-code"></pre>
+
+                        <h4>Podgląd:</h4>
+                        <div id="preview-area"></div>
+
+                        <button id="test-accessibility" class="demo-button">Test dostępności</button>
+                        <div id="accessibility-results"></div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                const termInput = document.getElementById('term-input');
+                const definitionInput = document.getElementById('definition-input');
+                const methodSelect = document.getElementById('method-select');
+                const generateButton = document.getElementById('generate-definition');
+                const generatedCode = document.getElementById('generated-code');
+                const previewArea = document.getElementById('preview-area');
+                const testButton = document.getElementById('test-accessibility');
+                const accessibilityResults = document.getElementById('accessibility-results');
+
+                const templates = {
+                    title: (term, definition) => `<span title="${definition}">${term}</span>`,
+                    dfn: (term, definition) => `<dfn title="${definition}">${term}</dfn>`,
+                    tooltip: (term, definition) => `
+<button type="button" class="term-button" aria-describedby="tooltip-${term.toLowerCase()}">${term}</button>
+<div id="tooltip-${term.toLowerCase()}" role="tooltip" hidden>${definition}</div>`,
+                    glossary: (term, definition) => `
+<a href="#def-${term.toLowerCase()}">${term}</a>
+
+<!-- W sekcji słowniczka: -->
+<dt id="def-${term.toLowerCase()}">${term}</dt>
+<dd>${definition}</dd>`
+                };
+
+                generateButton.addEventListener('click', function () {
+                    const term = termInput.value.trim();
+                    const definition = definitionInput.value.trim();
+                    const method = methodSelect.value;
+
+                    if (!term || !definition) {
+                        alert('Wprowadź zarówno termin jak i definicję');
+                        return;
+                    }
+
+                    const code = templates[method](term, definition);
+                    generatedCode.textContent = code;
+
+                    // Utwórz podgląd
+                    let preview = '';
+                    switch (method) {
+                        case 'title':
+                        case 'dfn':
+                            preview = `<p>Przykład użycia: ${templates[method](term, definition)} w kontekście.</p>`;
+                            break;
+                        case 'tooltip':
+                            preview = `<p>Przykład użycia: <button type="button" class="term-button" onclick="toggleTooltip('tooltip-${term.toLowerCase()}')">${term}</button> w kontekście.</p>
+                                     <div id="tooltip-${term.toLowerCase()}" style="display: none; background: #f0f0f0; padding: 5px; margin: 5px 0; border: 1px solid #ccc;">${definition}</div>`;
+                            break;
+                        case 'glossary':
+                            preview = `<p>Przykład użycia: <a href="#def-${term.toLowerCase()}" onclick="showGlossary()">${term}</a> w kontekście.</p>
+                                     <div id="glossary-preview" style="display: none; background: #f9f9f9; padding: 10px; margin: 10px 0; border-left: 3px solid #007cba;">
+                                     <strong>${term}:</strong> ${definition}</div>`;
+                            break;
+                    }
+
+                    previewArea.innerHTML = preview;
+                });
+
+                // Funkcje pomocnicze dla podglądu
+                window.toggleTooltip = function (id) {
+                    const tooltip = document.getElementById(id);
+                    if (tooltip) {
+                        tooltip.style.display = tooltip.style.display === 'none' ? 'block' : 'none';
+                    }
+                };
+
+                window.showGlossary = function () {
+                    const glossary = document.getElementById('glossary-preview');
+                    if (glossary) {
+                        glossary.style.display = 'block';
+                    }
+                };
+
+                testButton.addEventListener('click', function () {
+                    const method = methodSelect.value;
+                    let results = [];
+
+                    switch (method) {
+                        case 'title':
+                            results.push('✅ Dostępne dla czytników ekranu');
+                            results.push('✅ Działa bez JavaScript');
+                            results.push('⚠️ Może być niewidoczne dla niektórych użytkowników');
+                            break;
+                        case 'dfn':
+                            results.push('✅ Semantycznie poprawne');
+                            results.push('✅ Dostępne dla czytników ekranu');
+                            results.push('✅ Można stylować z CSS');
+                            break;
+                        case 'tooltip':
+                            results.push('✅ Interaktywne');
+                            results.push('⚠️ Wymaga obsługi klawiatury');
+                            results.push('⚠️ Musi być dostępne dla czytników ekranu');
+                            break;
+                        case 'glossary':
+                            results.push('✅ Szczegółowe wyjaśnienia');
+                            results.push('✅ Centralne miejsce definicji');
+                            results.push('⚠️ Wymaga nawigacji do innej sekcji');
+                            break;
+                    }
+
+                    accessibilityResults.innerHTML = `
+                        <h5>Ocena dostępności:</h5>
+                        <ul>${results.map(result => `<li>${result}</li>`).join('')}</ul>
+                    `;
+                });
+
+                // Wypełnij przykładowe dane
+                termInput.value = 'Blockchain';
+                definitionInput.value = 'Rozproszona baza danych przechowująca informacje w blokach połączonych kryptograficznie';
+            </script>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie</h2>
+
+            <h3>Testy automatyczne</h3>
+            <p>Narzędzie do wykrywania terminów bez definicji:</p>
+
+            <pre><code class="language-javascript">// Wykrywanie potencjalnych terminów technicznych
+function detectTechnicalTerms() {
+    const technicalPatterns = [
+        // Akronimy (3+ wielkie litery)
+        /\b[A-Z]{3,}\b/g,
+        // Terminy IT
+        /\b(API|REST|JSON|XML|HTTP|CSS|HTML|JavaScript|React|Vue|Angular|Node\.js|Docker|Kubernetes|AWS|Azure|GCP)\b/gi,
+        // Terminy biznesowe
+        /\b(ROI|KPI|B2B|B2C|CRM|ERP|SaaS|PaaS|IaaS)\b/gi,
+        // Metodologie
+        /\b(Agile|Scrum|DevOps|CI\/CD|TDD|BDD)\b/gi
+    ];
+    
+    const pageText = document.body.textContent;
+    const foundTerms = new Set();
+    
+    technicalPatterns.forEach(pattern => {
+        const matches = pageText.match(pattern);
+        if (matches) {
+            matches.forEach(match => foundTerms.add(match));
+        }
+    });
+    
+    return Array.from(foundTerms);
+}
+
+// Sprawdzanie czy terminy mają definicje
+function checkTermDefinitions() {
+    const technicalTerms = detectTechnicalTerms();
+    const undefinedTerms = [];
+    
+    technicalTerms.forEach(term => {
+        // Sprawdź czy termin ma definicję
+        const hasDefinition = 
+            document.querySelector(`[title*="${term}"]`) ||
+            document.querySelector(`dfn:contains("${term}")`) ||
+            document.querySelector(`#glossary [id*="${term.toLowerCase()}"]`) ||
+            document.querySelector(`[data-term="${term.toLowerCase()}"]`);
+            
+        if (!hasDefinition) {
+            undefinedTerms.push(term);
+        }
+    });
+    
+    return {
+        totalTerms: technicalTerms.length,
+        undefinedTerms: undefinedTerms,
+        definitionCoverage: ((technicalTerms.length - undefinedTerms.length) / technicalTerms.length * 100).toFixed(1)
+    };
+}
+
+// Walidacja dostępności definicji
+function validateDefinitionAccessibility() {
+    const issues = [];
+    
+    // Sprawdź tooltips
+    const tooltips = document.querySelectorAll('[role="tooltip"]');
+    tooltips.forEach(tooltip => {
+        if (!tooltip.id) {
+            issues.push('Tooltip bez ID: nie może być powiązany z elementem wyzwalającym');
+        }
+        
+        const trigger = document.querySelector(`[aria-describedby="${tooltip.id}"]`);
+        if (!trigger) {
+            issues.push(`Tooltip #${tooltip.id} nie ma elementu wyzwalającego`);
+        }
+    });
+    
+    // Sprawdź interaktywne elementy
+    const termButtons = document.querySelectorAll('.term-button, .term-toggle');
+    termButtons.forEach(button => {
+        if (!button.getAttribute('aria-describedby') && !button.getAttribute('aria-expanded')) {
+            issues.push('Przycisk terminu bez odpowiednich atrybutów ARIA');
+        }
+    });
+    
+    return issues;
+}
+
+// Uruchom wszystkie testy
+const termsAnalysis = checkTermDefinitions();
+const accessibilityIssues = validateDefinitionAccessibility();
+
+console.log('Analiza terminów:', termsAnalysis);
+console.log('Problemy z dostępnością:', accessibilityIssues);</code></pre>
+
+            <h3>Testy manualne</h3>
+            <ul>
+                <li><strong>Przegląd treści</strong> - zidentyfikuj potencjalnie niezrozumiałe terminy</li>
+                <li><strong>Test z użytkownikami</strong> - czy definicje są jasne i pomocne</li>
+                <li><strong>Test nawigacji</strong> - czy można łatwo dotrzeć do definicji</li>
+                <li><strong>Test czytników ekranu</strong> - czy definicje są odczytywane</li>
+                <li><strong>Test klawiatury</strong> - czy interaktywne definicje działają z klawiatury</li>
+            </ul>
+
+            <h3>Narzędzia</h3>
+            <ul>
+                <li><strong>Hemingway Editor</strong> - wykrywa skomplikowane słownictwo</li>
+                <li><strong>Readable.com</strong> - analiza poziomu trudności tekstu</li>
+                <li><strong>axe DevTools</strong> - test dostępności interaktywnych elementów</li>
+                <li><strong>WAVE</strong> - sprawdzenie struktury semantycznej</li>
+            </ul>
+
+            <div class="checklist">
+                <h3>Lista kontrolna</h3>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ Zidentyfikowano wszystkie nietypowe terminy</li>
+                    <li>☐ Każdy termin ma dostępną definicję</li>
+                    <li>☐ Definicje są jasne i zrozumiałe</li>
+                    <li>☐ Mechanizm definicji jest dostępny</li>
+                    <li>☐ Interaktywne elementy działają z klawiatury</li>
+                    <li>☐ Czytniki ekranu mają dostęp do definicji</li>
+                    <li>☐ Idiomy i żargon są wyjaśnione</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="implementation">
+            <h2>Implementacja w różnych systemach</h2>
+
+            <h3>WordPress</h3>
+            <pre><code class="language-php">// Shortcode dla definicji terminów
+function glossary_term_shortcode($atts, $content = null) {
+    $atts = shortcode_atts(array(
+        'term' => '',
+        'definition' => '',
+        'type' => 'title' // title, tooltip, link
+    ), $atts);
+    
+    switch($atts['type']) {
+        case 'tooltip':
+            return sprintf(
+                '&lt;button type="button" class="term-button" aria-describedby="tooltip-%s"&gt;%s&lt;/button&gt;
+                &lt;div id="tooltip-%s" role="tooltip" hidden&gt;%s&lt;/div&gt;',
+                sanitize_title($atts['term']),
+                $content ?: $atts['term'],
+                sanitize_title($atts['term']),
+                esc_html($atts['definition'])
+            );
+        case 'link':
+            return sprintf(
+                '&lt;a href="#def-%s"&gt;%s&lt;/a&gt;',
+                sanitize_title($atts['term']),
+                $content ?: $atts['term']
+            );
+        default:
+            return sprintf(
+                '&lt;dfn title="%s"&gt;%s&lt;/dfn&gt;',
+                esc_attr($atts['definition']),
+                $content ?: $atts['term']
+            );
+    }
+}
+add_shortcode('term', 'glossary_term_shortcode');
+
+// Użycie: [term definition="Application Programming Interface"]API[/term]</code></pre>
+
+            <h3>React Component</h3>
+            <pre><code class="language-javascript">import React, { useState } from 'react';
+
+const GlossaryTerm = ({ 
+    term, 
+    definition, 
+    type = 'title', 
+    children 
+}) => {
+    const [showTooltip, setShowTooltip] = useState(false);
+    
+    const termId = `term-${term.toLowerCase().replace(/\s+/g, '-')}`;
+    const tooltipId = `tooltip-${termId}`;
+    
+    switch(type) {
+        case 'tooltip':
+            return (
+                &lt;&gt;
+                    &lt;button
+                        type="button"
+                        className="term-button"
+                        aria-describedby={tooltipId}
+                        onMouseEnter={() =&gt; setShowTooltip(true)}
+                        onMouseLeave={() =&gt; setShowTooltip(false)}
+                        onFocus={() =&gt; setShowTooltip(true)}
+                        onBlur={() =&gt; setShowTooltip(false)}
+                    &gt;
+                        {children || term}
+                    &lt;/button&gt;
+                    {showTooltip && (
+                        &lt;div
+                            id={tooltipId}
+                            role="tooltip"
+                            className="tooltip"
+                        &gt;
+                            {definition}
+                        &lt;/div&gt;
+                    )}
+                &lt;/&gt;
+            );
+        
+        case 'link':
+            return (
+                &lt;a href={`#def-${termId}`}&gt;
+                    {children || term}
+                &lt;/a&gt;
+            );
+        
+        default:
+            return (
+                &lt;dfn title={definition}&gt;
+                    {children || term}
+                &lt;/dfn&gt;
+            );
+    }
+};
+
+export default GlossaryTerm;</code></pre>
+
+            <h3>Vue.js Component</h3>
+            <pre><code class="language-javascript">// GlossaryTerm.vue
+&lt;template&gt;
+    &lt;dfn 
+        v-if="type === 'title'" 
+        :title="definition"
+    &gt;
+        &lt;slot&gt;{{ term }}&lt;/slot&gt;
+    &lt;/dfn&gt;
+    
+    &lt;div v-else-if="type === 'tooltip'" class="term-wrapper"&gt;
+        &lt;button
+            type="button"
+            class="term-button"
+            :aria-describedby="tooltipId"
+            @mouseenter="showTooltip = true"
+            @mouseleave="showTooltip = false"
+            @focus="showTooltip = true"
+            @blur="showTooltip = false"
+        &gt;
+            &lt;slot&gt;{{ term }}&lt;/slot&gt;
+        &lt;/button&gt;
+        &lt;div
+            v-show="showTooltip"
+            :id="tooltipId"
+            role="tooltip"
+            class="tooltip"
+        &gt;
+            {{ definition }}
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;a v-else :href="`#def-${termSlug}`"&gt;
+        &lt;slot&gt;{{ term }}&lt;/slot&gt;
+    &lt;/a&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+    name: 'GlossaryTerm',
+    props: {
+        term: {
+            type: String,
+            required: true
+        },
+        definition: {
+            type: String,
+            required: true
+        },
+        type: {
+            type: String,
+            default: 'title',
+            validator: value =&gt; ['title', 'tooltip', 'link'].includes(value)
+        }
+    },
+    data() {
+        return {
+            showTooltip: false
+        };
+    },
+    computed: {
+        termSlug() {
+            return this.term.toLowerCase().replace(/\s+/g, '-');
+        },
+        tooltipId() {
+            return `tooltip-${this.termSlug}`;
+        }
+    }
+};
+&lt;/script&gt;</code></pre>
+        </section>
+
+        <section class="advanced-features">
+            <h2>Zaawansowane funkcje</h2>
+
+            <h3>Automatyczne wykrywanie terminów</h3>
+            <pre><code class="language-javascript">class AutoGlossary {
+    constructor(glossaryData) {
+        this.glossary = new Map(Object.entries(glossaryData));
+        this.processed = new Set();
+    }
+    
+    // Automatycznie dodaj definicje do pierwszego wystąpienia terminu
+    autoAnnotate(container = document.body) {
+        this.glossary.forEach((definition, term) => {
+            if (this.processed.has(term)) return;
+            
+            const regex = new RegExp(`\\b${this.escapeRegex(term)}\\b`, 'i');
+            const walker = document.createTreeWalker(
+                container,
+                NodeFilter.SHOW_TEXT,
+                null,
+                false
+            );
+            
+            let node;
+            while (node = walker.nextNode()) {
+                if (regex.test(node.textContent)) {
+                    this.wrapTerm(node, term, definition);
+                    this.processed.add(term);
+                    break;
+                }
+            }
+        });
+    }
+    
+    wrapTerm(textNode, term, definition) {
+        const parent = textNode.parentNode;
+        const text = textNode.textContent;
+        const regex = new RegExp(`\\b(${this.escapeRegex(term)})\\b`, 'i');
+        
+        if (regex.test(text)) {
+            const newHTML = text.replace(regex, 
+                `&lt;dfn title="${this.escapeHtml(definition)}"&gt;$1&lt;/dfn&gt;`
+            );
+            
+            const wrapper = document.createElement('span');
+            wrapper.innerHTML = newHTML;
+            parent.replaceChild(wrapper, textNode);
+        }
+    }
+    
+    escapeRegex(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+    
+    escapeHtml(string) {
+        return string.replace(/[&<>"']/g, (match) => {
+            const escapeMap = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
+            return escapeMap[match];
+        });
+    }
+}
+
+// Użycie
+const glossary = new AutoGlossary({
+    'API': 'Application Programming Interface - interfejs programistyczny',
+    'REST': 'Representational State Transfer - architektura usług webowych',
+    'JSON': 'JavaScript Object Notation - format wymiany danych'
+});
+
+glossary.autoAnnotate();</code></pre>
+
+            <h3>System kontekstowych definicji</h3>
+            <pre><code class="language-javascript">class ContextualGlossary {
+    constructor() {
+        this.definitions = new Map();
+        this.contexts = new Map();
+    }
+    
+    // Dodaj definicję z kontekstem
+    addDefinition(term, definition, context = 'general') {
+        if (!this.definitions.has(term)) {
+            this.definitions.set(term, new Map());
+        }
+        this.definitions.get(term).set(context, definition);
+    }
+    
+    // Pobierz definicję w kontekście
+    getDefinition(term, context = 'general') {
+        const termDefs = this.definitions.get(term);
+        if (!termDefs) return null;
+        
+        // Sprawdź czy jest definicja dla tego kontekstu
+        if (termDefs.has(context)) {
+            return termDefs.get(context);
+        }
+        
+        // Fallback do definicji ogólnej
+        return termDefs.get('general') || null;
+    }
+    
+    // Ustaw kontekst dla sekcji
+    setContext(element, context) {
+        element.setAttribute('data-context', context);
+        
+        // Zaktualizuj wszystkie terminy w tej sekcji
+        const terms = element.querySelectorAll('[data-term]');
+        terms.forEach(term => {
+            const termName = term.getAttribute('data-term');
+            const definition = this.getDefinition(termName, context);
+            if (definition) {
+                term.setAttribute('title', definition);
+            }
+        });
+    }
+}
+
+// Przykład użycia
+const contextGlossary = new ContextualGlossary();
+
+// Różne definicje w różnych kontekstach
+contextGlossary.addDefinition('bank', 'Instytucja finansowa', 'finance');
+contextGlossary.addDefinition('bank', 'Brzeg rzeki', 'geography');
+contextGlossary.addDefinition('bank', 'Miejsce składowania danych', 'it');</code></pre>
+        </section>
+
+        <section class="common-mistakes">
+            <h2>Częste błędy</h2>
+
+            <div class="mistake-block">
+                <h3>❌ Wyjaśnianie oczywistych terminów</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe --&gt;
+&lt;p&gt;&lt;dfn title="elektroniczna poczta"&gt;Email&lt;/dfn&gt; jest powszechny dzisiaj.&lt;/p&gt;
+&lt;p&gt;&lt;span title="sieć światowa"&gt;Internet&lt;/span&gt; łączy ludzi.&lt;/p&gt;
+
+&lt;!-- Prawidłowe --&gt;
+&lt;p&gt;Email jest powszechny dzisiaj.&lt;/p&gt;
+&lt;p&gt;Internet łączy ludzi.&lt;/p&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Nieinteraktywne tooltips</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe --&gt;
+&lt;span onmouseover="showTooltip()" class="term"&gt;Blockchain&lt;/span&gt;
+
+&lt;!-- Prawidłowe --&gt;
+&lt;button type="button" class="term-button" 
+        aria-describedby="tooltip-blockchain"
+        onmouseenter="showTooltip('tooltip-blockchain')"
+        onfocus="showTooltip('tooltip-blockchain')"&gt;
+    Blockchain
+&lt;/button&gt;
+&lt;div id="tooltip-blockchain" role="tooltip" hidden&gt;
+    Rozproszona baza danych
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Definicje tylko przez hover</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - niedostępne dla dotyku --&gt;
+&lt;span class="hover-definition" data-definition="..."&gt;Termin&lt;/span&gt;
+
+&lt;!-- Prawidłowe - dostępne dla wszystkich --&gt;
+&lt;button type="button" aria-describedby="def-term"&gt;Termin&lt;/button&gt;
+&lt;div id="def-term" role="tooltip"&gt;Definicja&lt;/div&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Zbyt skomplikowane definicje</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe --&gt;
+&lt;dfn title="Asymetryczna kryptografia klucza publicznego wykorzystująca 
+funkcje skrótu kryptograficznego w celu weryfikacji integralności"&gt;
+Blockchain&lt;/dfn&gt;
+
+&lt;!-- Prawidłowe --&gt;
+&lt;dfn title="Cyfrowy rejestr transakcji przechowywany w wielu kopiach"&gt;
+Blockchain&lt;/dfn&gt;</code></pre>
+            </div>
+        </section>
+
+        <section class="resources">
+            <h2>Dodatkowe zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/unusual-words.html" target="_blank"
+                        rel="noopener">Understanding SC 3.1.3: Unusual Words (W3C)</a></li>
+                <li><a href="https://webaim.org/techniques/language/#unusual" target="_blank" rel="noopener">WebAIM:
+                        Unusual Words</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dfn" target="_blank"
+                        rel="noopener">MDN: dfn element</a></li>
+                <li><a href="https://www.plainlanguage.gov/" target="_blank" rel="noopener">Plain Language
+                        Guidelines</a></li>
+                <li><a href="https://hemingwayapp.com/" target="_blank" rel="noopener">Hemingway Editor - analiza
+                        czytelności</a></li>
+                <li><a href="https://readable.com/" target="_blank" rel="noopener">Readable.com - test poziomu
+                        trudności</a></li>
+            </ul>
+        </section>
+
+        <nav class="page-navigation" aria-label="Nawigacja między stronami">
+            <a href="3.1.2.html" class="nav-link prev-page">
+                <span class="nav-arrow">←</span>
+                <span class="nav-text">
+                    <span class="nav-label">Poprzednia</span>
+                    <span class="nav-title">3.1.2 Język części</span>
+                </span>
+            </a>
+            <a href="3.1.4.html" class="nav-link next-page">
+                <span class="nav-text">
+                    <span class="nav-label">Następna</span>
+                    <span class="nav-title">3.1.4 Skróty (w przygotowaniu)</span>
+                </span>
+                <span class="nav-arrow">→</span>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.1.4 Skróty (AAA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>3.1.4 Skróty (AAA)</h1>
+            <p>Mechanizm identyfikacji rozwinięcia lub znaczenia skrótów jest dostępny.</p>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>Wszystkie skróty (włączając akronimy i inicjalizmy) muszą mieć dostępne rozwinięcie lub wyjaśnienie
+                ich znaczenia. Pozwala to użytkownikom zrozumieć treść zawierającą specjalistyczne lub branżowe skróty,
+                które mogą być niezrozumiałe dla szerszej publiczności.</p>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Osoby z ograniczeniami poznawczymi</strong> - łatwiejsze zrozumienie skróconych form</li>
+                <li><strong>Osoby z dysleksją</strong> - dodatkowe wsparcie w rozumieniu tekstów</li>
+                <li><strong>Osoby uczące się języka</strong> - pomoc w rozumieniu lokalnych skrótów</li>
+                <li><strong>Nowi użytkownicy w dziedzinie</strong> - wyjaśnienie branżowych skrótów</li>
+                <li><strong>Osoby starsze</strong> - objaśnienie nowoczesnych akronimów</li>
+                <li><strong>Czytniki ekranu</strong> - prawidłowa wymowa i rozumienie skrótów</li>
+                <li><strong>Tłumacze</strong> - lepsze zrozumienie kontekstu dla tłumaczeń</li>
+            </ul>
+        </section>
+
+        <section class="requirements">
+            <h2>Wymagania</h2>
+            <ul>
+                <li>Mechanizm wyjaśniania skrótów musi być dostępny</li>
+                <li>Rozwinięcia muszą być jasne i precyzyjne</li>
+                <li>Mechanizm może obejmować różne sposoby dostarczania wyjaśnień</li>
+                <li>Wyjaśnienia muszą być dostępne dla technologii wspomagających</li>
+                <li>Skróty mogą być wyjaśnione przy pierwszym wystąpieniu lub w dedykowanej sekcji</li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje</h2>
+            <dl>
+                <dt><strong>Skrót</strong></dt>
+                <dd>Skrócona forma słowa lub wyrażenia, utworzona przez pominięcie części liter.</dd>
+
+                <dt><strong>Akronim</strong></dt>
+                <dd>Skrót utworzony z pierwszych liter słów, wymawiane jako słowo (np. "NASA", "radar").</dd>
+
+                <dt><strong>Inicjalizm</strong></dt>
+                <dd>Skrót utworzony z pierwszych liter słów, wymawiane literka po literce (np. "HTML", "CSS").</dd>
+
+                <dt><strong>Rozwinięcie</strong></dt>
+                <dd>Pełna forma skrótu pokazująca, jakie słowa reprezentuje.</dd>
+
+                <dt><strong>Wyjaśnienie znaczenia</strong></dt>
+                <dd>Opis tego, co skrót oznacza lub reprezentuje w danym kontekście.</dd>
+            </dl>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Skróty bez wyjaśnień</h4>
+                <pre><code class="language-html">&lt;p&gt;Nasz system CRM integruje się z API poprzez REST, 
+wykorzystując JSON do wymiany danych z bazą SQL.&lt;/p&gt;</code></pre>
+                <p><strong>Problem:</strong> Skróty CRM, API, REST, JSON, SQL nie są wyjaśnione.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Niejednoznaczne skróty</h4>
+                <pre><code class="language-html">&lt;p&gt;Departament HR współpracuje z IT w zakresie AI.&lt;/p&gt;</code></pre>
+                <p><strong>Problem:</strong> Skróty mogą mieć różne znaczenia w różnych kontekstach.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Skróty tylko w języku obcym</h4>
+                <pre><code class="language-html">&lt;p&gt;&lt;abbr title="Chief Executive Officer"&gt;CEO&lt;/abbr&gt; firmy ogłosił nową strategię.&lt;/p&gt;</code></pre>
+                <p><strong>Problem:</strong> Rozwinięcie tylko w języku angielskim dla polskiej strony.</p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Element abbr z rozwinięciem</h4>
+                <pre><code class="language-html">&lt;p&gt;Nasz system &lt;abbr title="Customer Relationship Management"&gt;CRM&lt;/abbr&gt; 
+integruje się z &lt;abbr title="Application Programming Interface"&gt;API&lt;/abbr&gt; 
+poprzez &lt;abbr title="Representational State Transfer"&gt;REST&lt;/abbr&gt;.&lt;/p&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Każdy skrót ma pełne rozwinięcie w atrybucie title.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Pierwsze wystąpienie z rozwinięciem</h4>
+                <pre><code class="language-html">&lt;p&gt;World Wide Web Consortium (&lt;abbr&gt;W3C&lt;/abbr&gt;) ustala standardy internetowe. 
+Wytyczne &lt;abbr&gt;W3C&lt;/abbr&gt; są powszechnie akceptowane.&lt;/p&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Pierwsze wystąpienie zawiera pełne rozwinięcie, kolejne mogą używać
+                    tylko skrótu.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Słowniczek skrótów</h4>
+                <pre><code class="language-html">&lt;p&gt;Podczas implementacji &lt;a href="#css-def"&gt;CSS&lt;/a&gt; używamy 
+&lt;a href="#sass-def"&gt;SASS&lt;/a&gt; i &lt;a href="#bem-def"&gt;BEM&lt;/a&gt;.&lt;/p&gt;
+
+&lt;section id="abbreviations-glossary"&gt;
+    &lt;h2&gt;Słowniczek skrótów&lt;/h2&gt;
+    &lt;dl&gt;
+        &lt;dt id="css-def"&gt;&lt;abbr&gt;CSS&lt;/abbr&gt;&lt;/dt&gt;
+        &lt;dd&gt;Cascading Style Sheets - język do opisywania wyglądu dokumentów HTML&lt;/dd&gt;
+        
+        &lt;dt id="sass-def"&gt;&lt;abbr&gt;SASS&lt;/abbr&gt;&lt;/dt&gt;
+        &lt;dd&gt;Syntactically Awesome Style Sheets - preprocesor CSS&lt;/dd&gt;
+        
+        &lt;dt id="bem-def"&gt;&lt;abbr&gt;BEM&lt;/abbr&gt;&lt;/dt&gt;
+        &lt;dd&gt;Block Element Modifier - metodologia nazewnictwa w CSS&lt;/dd&gt;
+    &lt;/dl&gt;
+&lt;/section&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Skróty linkują do szczegółowych wyjaśnień w słowniczku.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Kontekstowe wyjaśnienia</h4>
+                <pre><code class="language-html">&lt;p&gt;Firma stosuje metodologię 
+&lt;dfn&gt;&lt;abbr title="Agile Software Development"&gt;Agile&lt;/abbr&gt;&lt;/dfn&gt; 
+do zarządzania projektami programistycznymi.&lt;/p&gt;
+
+&lt;p&gt;W medycynie &lt;dfn&gt;&lt;abbr title="Magnetic Resonance Imaging"&gt;MRI&lt;/abbr&gt;&lt;/dfn&gt; 
+to zaawansowana technika obrazowania.&lt;/p&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Kombinacja dfn i abbr zapewnia semantyczne oznaczenie definicji.
+                </p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Dwujęzyczne wyjaśnienia</h4>
+                <pre><code class="language-html">&lt;p&gt;&lt;abbr title="Chief Executive Officer - Dyrektor Generalny"&gt;CEO&lt;/abbr&gt; 
+firmy &lt;abbr title="International Business Machines - Międzynarodowe Maszyny Biznesowe"&gt;IBM&lt;/abbr&gt; 
+ogłosił nową strategię.&lt;/p&gt;</code></pre>
+                <p><strong>Dlaczego działa:</strong> Rozwinięcie zawiera zarówno oryginalną formę jak i polskie
+                    tłumaczenie.</p>
+            </div>
+        </section>
+
+        <section class="abbreviation-types">
+            <h2>Rodzaje skrótów</h2>
+
+            <h3>📝 Standardowe skróty</h3>
+            <ul>
+                <li><strong>Skróty słów:</strong> dr (doktor), prof. (profesor), ul. (ulica)</li>
+                <li><strong>Skróty jednostek:</strong> kg (kilogram), cm (centymetr), h (godzina)</li>
+                <li><strong>Skróty geograficzne:</strong> woj. (województwo), pow. (powiat)</li>
+                <li><strong>Skróty czasowe:</strong> r. (rok), w. (wiek), dn. (dzień)</li>
+            </ul>
+
+            <h3>🔤 Akronimy</h3>
+            <ul>
+                <li><strong>Organizacje:</strong> NASA, UNESCO, WHO</li>
+                <li><strong>Technologie:</strong> AJAX, JSON, YAML</li>
+                <li><strong>Standardy:</strong> ASCII, JPEG, MPEG</li>
+                <li><strong>Protokoły:</strong> HTTP, SMTP, FTP</li>
+            </ul>
+
+            <h3>📊 Inicjalizmy</h3>
+            <ul>
+                <li><strong>Techniczne:</strong> HTML, CSS, XML, SQL</li>
+                <li><strong>Biznesowe:</strong> CEO, CTO, HR, PR</li>
+                <li><strong>Akademickie:</strong> PhD, MBA, MSc, BSc</li>
+                <li><strong>Medyczne:</strong> MRI, CT, EKG, USG</li>
+            </ul>
+
+            <h3>⚡ Skróty kontekstowe</h3>
+            <ul>
+                <li><strong>IT:</strong> API, SDK, IDE, CLI</li>
+                <li><strong>Marketing:</strong> SEO, SEM, CTR, CPC</li>
+                <li><strong>Finanse:</strong> ROI, KPI, P&L, EBITDA</li>
+                <li><strong>Prawo:</strong> ZUS, NFZ, GUS, UE</li>
+            </ul>
+        </section>
+
+        <section class="interactive-demo">
+            <h2>Interaktywna demonstracja</h2>
+            <p>Przetestuj różne sposoby wyjaśniania skrótów:</p>
+
+            <div class="demo-container">
+                <h3>Generator wyjaśnień skrótów</h3>
+                <div class="abbreviation-demo">
+                    <div class="demo-input">
+                        <label for="abbr-input">Wprowadź skrót:</label>
+                        <input type="text" id="abbr-input" placeholder="np. API">
+
+                        <label for="expansion-input">Pełna forma:</label>
+                        <input type="text" id="expansion-input" placeholder="np. Application Programming Interface">
+
+                        <label for="explanation-input">Wyjaśnienie (opcjonalne):</label>
+                        <textarea id="explanation-input"
+                            placeholder="np. Interfejs programistyczny umożliwiający komunikację między aplikacjami"></textarea>
+
+                        <label for="abbr-method-select">Wybierz metodę wyjaśnienia:</label>
+                        <select id="abbr-method-select">
+                            <option value="abbr-title">Element abbr z title</option>
+                            <option value="first-occurrence">Pierwsze wystąpienie</option>
+                            <option value="dfn-abbr">dfn + abbr</option>
+                            <option value="glossary-link">Link do słowniczka</option>
+                            <option value="inline-expansion">Rozwinięcie w tekście</option>
+                        </select>
+
+                        <button id="generate-abbreviation" class="demo-button">Generuj przykład</button>
+                    </div>
+
+                    <div class="demo-output">
+                        <h4>Wygenerowany kod:</h4>
+                        <pre id="generated-abbr-code"></pre>
+
+                        <h4>Podgląd:</h4>
+                        <div id="abbr-preview-area"></div>
+
+                        <button id="test-abbr-accessibility" class="demo-button">Test dostępności</button>
+                        <div id="abbr-accessibility-results"></div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                const abbrInput = document.getElementById('abbr-input');
+                const expansionInput = document.getElementById('expansion-input');
+                const explanationInput = document.getElementById('explanation-input');
+                const abbrMethodSelect = document.getElementById('abbr-method-select');
+                const generateAbbrButton = document.getElementById('generate-abbreviation');
+                const generatedAbbrCode = document.getElementById('generated-abbr-code');
+                const abbrPreviewArea = document.getElementById('abbr-preview-area');
+                const testAbbrButton = document.getElementById('test-abbr-accessibility');
+                const abbrAccessibilityResults = document.getElementById('abbr-accessibility-results');
+
+                const abbrTemplates = {
+                    'abbr-title': (abbr, expansion, explanation) =>
+                        `<abbr title="${expansion}">${abbr}</abbr>`,
+
+                    'first-occurrence': (abbr, expansion, explanation) =>
+                        `${expansion} (<abbr>${abbr}</abbr>)`,
+
+                    'dfn-abbr': (abbr, expansion, explanation) =>
+                        `<dfn><abbr title="${expansion}">${abbr}</abbr></dfn>`,
+
+                    'glossary-link': (abbr, expansion, explanation) => `
+<a href="#${abbr.toLowerCase()}-def">${abbr}</a>
+
+<!-- W słowniczku: -->
+<dt id="${abbr.toLowerCase()}-def"><abbr>${abbr}</abbr></dt>
+<dd>${expansion}${explanation ? ' - ' + explanation : ''}</dd>`,
+
+                    'inline-expansion': (abbr, expansion, explanation) =>
+                        `<abbr>${abbr}</abbr> (${expansion})`
+                };
+
+                generateAbbrButton.addEventListener('click', function () {
+                    const abbr = abbrInput.value.trim();
+                    const expansion = expansionInput.value.trim();
+                    const explanation = explanationInput.value.trim();
+                    const method = abbrMethodSelect.value;
+
+                    if (!abbr || !expansion) {
+                        alert('Wprowadź skrót i jego pełną formę');
+                        return;
+                    }
+
+                    const code = abbrTemplates[method](abbr, expansion, explanation);
+                    generatedAbbrCode.textContent = code;
+
+                    // Utwórz podgląd
+                    let preview = '';
+                    switch (method) {
+                        case 'abbr-title':
+                            preview = `<p>Przykład: Nasza firma używa ${abbrTemplates[method](abbr, expansion, explanation)} do komunikacji.</p>`;
+                            break;
+                        case 'first-occurrence':
+                            preview = `<p>Przykład: Nasza firma używa ${abbrTemplates[method](abbr, expansion, explanation)} do komunikacji. Kolejne wystąpienia <abbr>${abbr}</abbr> mogą być bez rozwinięcia.</p>`;
+                            break;
+                        case 'dfn-abbr':
+                            preview = `<p>Przykład: ${abbrTemplates[method](abbr, expansion, explanation)} to standard używany w naszej firmie.</p>`;
+                            break;
+                        case 'glossary-link':
+                            preview = `<p>Przykład: Nasza firma używa <a href="#${abbr.toLowerCase()}-def" onclick="showAbbrGlossary()">${abbr}</a> do komunikacji.</p>
+                                     <div id="abbr-glossary-preview" style="display: none; background: #f9f9f9; padding: 10px; margin: 10px 0; border-left: 3px solid #007cba;">
+                                     <strong>${abbr}:</strong> ${expansion}${explanation ? ' - ' + explanation : ''}</div>`;
+                            break;
+                        case 'inline-expansion':
+                            preview = `<p>Przykład: Nasza firma używa ${abbrTemplates[method](abbr, expansion, explanation)} do komunikacji.</p>`;
+                            break;
+                    }
+
+                    abbrPreviewArea.innerHTML = preview;
+                });
+
+                // Funkcja pomocnicza dla podglądu słowniczka
+                window.showAbbrGlossary = function () {
+                    const glossary = document.getElementById('abbr-glossary-preview');
+                    if (glossary) {
+                        glossary.style.display = 'block';
+                    }
+                };
+
+                testAbbrButton.addEventListener('click', function () {
+                    const method = abbrMethodSelect.value;
+                    let results = [];
+
+                    switch (method) {
+                        case 'abbr-title':
+                            results.push('✅ Semantycznie poprawne');
+                            results.push('✅ Dostępne dla czytników ekranu');
+                            results.push('✅ Standardowy element HTML');
+                            results.push('⚠️ Wymaga hover/focus do wyświetlenia');
+                            break;
+                        case 'first-occurrence':
+                            results.push('✅ Jasne dla wszystkich użytkowników');
+                            results.push('✅ Nie wymaga hover');
+                            results.push('✅ Dostępne bez JavaScript');
+                            results.push('⚠️ Może wydłużyć tekst');
+                            break;
+                        case 'dfn-abbr':
+                            results.push('✅ Semantycznie bardzo precyzyjne');
+                            results.push('✅ Oznacza definicję terminu');
+                            results.push('✅ Dostępne dla technologii wspomagających');
+                            results.push('⚠️ Powinno być użyte tylko przy pierwszym wystąpieniu');
+                            break;
+                        case 'glossary-link':
+                            results.push('✅ Szczegółowe wyjaśnienia');
+                            results.push('✅ Centralne miejsce definicji');
+                            results.push('✅ Możliwość kontekstowych wyjaśnień');
+                            results.push('⚠️ Wymaga nawigacji do innej sekcji');
+                            break;
+                        case 'inline-expansion':
+                            results.push('✅ Bardzo jasne');
+                            results.push('✅ Dostępne dla wszystkich');
+                            results.push('✅ Nie wymaga dodatkowych elementów');
+                            results.push('⚠️ Może zakłócać płynność czytania');
+                            break;
+                    }
+
+                    abbrAccessibilityResults.innerHTML = `
+                        <h5>Ocena metody:</h5>
+                        <ul>${results.map(result => `<li>${result}</li>`).join('')}</ul>
+                    `;
+                });
+
+                // Wypełnij przykładowe dane
+                abbrInput.value = 'API';
+                expansionInput.value = 'Application Programming Interface';
+                explanationInput.value = 'Interfejs programistyczny umożliwiający komunikację między aplikacjami';
+            </script>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie</h2>
+
+            <h3>Testy automatyczne</h3>
+            <p>Narzędzie do wykrywania skrótów bez wyjaśnień:</p>
+
+            <pre><code class="language-javascript">// Wykrywanie potencjalnych skrótów
+function detectPotentialAbbreviations() {
+    const patterns = [
+        // Akronimy (2-6 wielkich liter)
+        /\b[A-Z]{2,6}\b/g,
+        // Skróty z kropkami
+        /\b[A-Za-z]+\./g,
+        // Powszechne skróty techniczne
+        /\b(API|SDK|HTML|CSS|XML|JSON|HTTP|HTTPS|FTP|SSH|SQL|NoSQL|REST|SOAP|AJAX|DOM|URL|URI|IP|TCP|UDP|DNS|SSL|TLS|OAuth|JWT|CRUD|MVC|ORM|IDE|CLI|GUI|OS|CPU|GPU|RAM|SSD|HDD|USB|WiFi|LAN|WAN|VPN)\b/gi,
+        // Skróty biznesowe
+        /\b(CEO|CTO|CFO|CMO|HR|PR|ROI|KPI|B2B|B2C|CRM|ERP|SaaS|PaaS|IaaS|AI|ML|IoT|AR|VR|UX|UI)\b/gi
+    ];
+    
+    const pageText = document.body.textContent;
+    const foundAbbreviations = new Set();
+    
+    patterns.forEach(pattern => {
+        const matches = pageText.match(pattern);
+        if (matches) {
+            matches.forEach(match => {
+                // Odfiltruj oczywiste słowa (np. "IT" w "GitHub")
+                if (match.length >= 2 && match !== match.toLowerCase()) {
+                    foundAbbreviations.add(match);
+                }
+            });
+        }
+    });
+    
+    return Array.from(foundAbbreviations);
+}
+
+// Sprawdzanie czy skróty mają wyjaśnienia
+function checkAbbreviationDefinitions() {
+    const potentialAbbrs = detectPotentialAbbreviations();
+    const undefinedAbbrs = [];
+    
+    potentialAbbrs.forEach(abbr => {
+        // Sprawdź różne sposoby definicji
+        const hasDefinition = 
+            // Element abbr z title
+            document.querySelector(`abbr[title]:contains("${abbr}")`) ||
+            // Rozwinięcie w nawiasach
+            document.body.textContent.includes(`(${abbr})`) ||
+            document.body.textContent.includes(`${abbr} (`) ||
+            // Link do słowniczka
+            document.querySelector(`a[href*="${abbr.toLowerCase()}"]`) ||
+            // Definicja w słowniczku
+            document.querySelector(`#glossary [id*="${abbr.toLowerCase()}"], #abbreviations-glossary [id*="${abbr.toLowerCase()}"]`);
+            
+        if (!hasDefinition) {
+            undefinedAbbrs.push(abbr);
+        }
+    });
+    
+    return {
+        totalAbbreviations: potentialAbbrs.length,
+        undefinedAbbreviations: undefinedAbbrs,
+        definitionCoverage: potentialAbbrs.length > 0 ? 
+            ((potentialAbbrs.length - undefinedAbbrs.length) / potentialAbbrs.length * 100).toFixed(1) : 100
+    };
+}
+
+// Walidacja elementów abbr
+function validateAbbrElements() {
+    const issues = [];
+    const abbrElements = document.querySelectorAll('abbr');
+    
+    abbrElements.forEach((abbr, index) => {
+        const title = abbr.getAttribute('title');
+        const content = abbr.textContent.trim();
+        
+        // Sprawdź czy ma title lub inne wyjaśnienie
+        if (!title) {
+            // Sprawdź czy jest w kontekście z rozwinięciem
+            const parent = abbr.parentElement;
+            const parentText = parent ? parent.textContent : '';
+            const hasContextualExpansion = 
+                parentText.includes(`(${content})`) ||
+                parentText.includes(`${content} (`) ||
+                parent.querySelector(`dfn`);
+                
+            if (!hasContextualExpansion) {
+                issues.push(`Element abbr "${content}" nie ma atrybutu title ani kontekstowego wyjaśnienia`);
+            }
+        }
+        
+        // Sprawdź czy title nie jest pusty
+        if (title && title.trim() === '') {
+            issues.push(`Element abbr "${content}" ma pusty atrybut title`);
+        }
+        
+        // Sprawdź czy title różni się od zawartości
+        if (title && title.trim().toLowerCase() === content.toLowerCase()) {
+            issues.push(`Element abbr "${content}" ma identyczną zawartość i title`);
+        }
+    });
+    
+    return issues;
+}
+
+// Sprawdzenie dostępności skrótów
+function checkAbbreviationAccessibility() {
+    const issues = [];
+    
+    // Sprawdź czy skróty są czytelne dla czytników ekranu
+    const abbrWithoutLang = document.querySelectorAll('abbr:not([lang]):not([title])');
+    if (abbrWithoutLang.length > 0) {
+        issues.push(`${abbrWithoutLang.length} elementów abbr bez title - mogą być źle wymawiane`);
+    }
+    
+    // Sprawdź czy długie akronimy mają spacje dla lepszej wymowy
+    const longAcronyms = document.querySelectorAll('abbr');
+    longAcronyms.forEach(abbr => {
+        const content = abbr.textContent;
+        if (content.length > 4 && /^[A-Z]+$/.test(content)) {
+            const title = abbr.getAttribute('title');
+            if (!title || !title.includes(' ')) {
+                issues.push(`Długi akronim "${content}" może być trudny do wymówienia`);
+            }
+        }
+    });
+    
+    return issues;
+}
+
+// Uruchom wszystkie testy
+const abbrAnalysis = checkAbbreviationDefinitions();
+const abbrValidation = validateAbbrElements();
+const accessibilityIssues = checkAbbreviationAccessibility();
+
+console.log('Analiza skrótów:', abbrAnalysis);
+console.log('Problemy z elementami abbr:', abbrValidation);
+console.log('Problemy z dostępnością:', accessibilityIssues);</code></pre>
+
+            <h3>Testy manualne</h3>
+            <ul>
+                <li><strong>Przegląd treści</strong> - zidentyfikuj wszystkie skróty w tekście</li>
+                <li><strong>Sprawdzenie wyjaśnień</strong> - czy każdy skrót ma dostępne rozwinięcie</li>
+                <li><strong>Test zrozumiałości</strong> - czy wyjaśnienia są jasne i precyzyjne</li>
+                <li><strong>Test czytników ekranu</strong> - czy skróty są prawidłowo odczytywane</li>
+                <li><strong>Test kontekstu</strong> - czy znaczenie jest jasne w danym kontekście</li>
+            </ul>
+
+            <h3>Narzędzia</h3>
+            <ul>
+                <li><strong>WAVE Web Accessibility Evaluator</strong> - podstawowe sprawdzenie elementów abbr</li>
+                <li><strong>axe DevTools</strong> - walidacja semantyki</li>
+                <li><strong>Lighthouse</strong> - sprawdzenie podstawowej dostępności</li>
+                <li><strong>Narzędzia regex</strong> - do wykrywania potencjalnych skrótów</li>
+            </ul>
+
+            <div class="checklist">
+                <h3>Lista kontrolna</h3>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ Wszystkie skróty są zidentyfikowane</li>
+                    <li>☐ Każdy skrót ma dostępne wyjaśnienie</li>
+                    <li>☐ Wyjaśnienia są jasne i precyzyjne</li>
+                    <li>☐ Używany jest odpowiedni element HTML (abbr)</li>
+                    <li>☐ Długie akronimy są czytelne dla czytników ekranu</li>
+                    <li>☐ Kontekst wyjaśnień jest odpowiedni dla odbiorców</li>
+                    <li>☐ Słowniczek jest dostępny (jeśli stosowany)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="implementation">
+            <h2>Implementacja w różnych systemach</h2>
+
+            <h3>Podstawowe HTML</h3>
+            <pre><code class="language-html">&lt;!-- Podstawowy element abbr --&gt;
+&lt;p&gt;Nasza &lt;abbr title="Application Programming Interface"&gt;API&lt;/abbr&gt; 
+obsługuje format &lt;abbr title="JavaScript Object Notation"&gt;JSON&lt;/abbr&gt;.&lt;/p&gt;
+
+&lt;!-- Pierwsze wystąpienie z pełnym rozwinięciem --&gt;
+&lt;p&gt;World Wide Web Consortium (&lt;abbr&gt;W3C&lt;/abbr&gt;) to organizacja 
+standardyzacyjna. Wytyczne &lt;abbr&gt;W3C&lt;/abbr&gt; są powszechnie stosowane.&lt;/p&gt;
+
+&lt;!-- Definicja z element dfn --&gt;
+&lt;p&gt;&lt;dfn&gt;&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;&lt;/dfn&gt; 
+to język znaczników używany do tworzenia stron internetowych.&lt;/p&gt;</code></pre>
+
+            <h3>WordPress</h3>
+            <pre><code class="language-php">// Shortcode dla skrótów
+function abbreviation_shortcode($atts, $content = null) {
+    $atts = shortcode_atts(array(
+        'title' => '',
+        'explain' => 'false' // czy pokazać rozwinięcie w tekście
+    ), $atts);
+    
+    if (!$content || !$atts['title']) {
+        return $content;
+    }
+    
+    if ($atts['explain'] === 'true') {
+        return sprintf(
+            '%s (&lt;abbr title="%s"&gt;%s&lt;/abbr&gt;)',
+            esc_html($atts['title']),
+            esc_attr($atts['title']),
+            esc_html($content)
+        );
+    }
+    
+    return sprintf(
+        '&lt;abbr title="%s"&gt;%s&lt;/abbr&gt;',
+        esc_attr($atts['title']),
+        esc_html($content)
+    );
+}
+add_shortcode('abbr', 'abbreviation_shortcode');
+
+// Funkcja automatycznego wykrywania skrótów
+function auto_add_abbreviations($content) {
+    $abbreviations = array(
+        'HTML' => 'HyperText Markup Language',
+        'CSS' => 'Cascading Style Sheets',
+        'JS' => 'JavaScript',
+        'API' => 'Application Programming Interface',
+        'JSON' => 'JavaScript Object Notation',
+        'XML' => 'eXtensible Markup Language'
+    );
+    
+    foreach ($abbreviations as $abbr => $expansion) {
+        // Dodaj abbr tylko do pierwszego wystąpienia
+        $pattern = '/\b' . preg_quote($abbr, '/') . '\b/';
+        $content = preg_replace(
+            $pattern,
+            '&lt;abbr title="' . $expansion . '"&gt;' . $abbr . '&lt;/abbr&gt;',
+            $content,
+            1 // tylko pierwsze wystąpienie
+        );
+    }
+    
+    return $content;
+}
+add_filter('the_content', 'auto_add_abbreviations');
+
+// Użycie shortcode:
+// [abbr title="Application Programming Interface"]API[/abbr]
+// [abbr title="Cascading Style Sheets" explain="true"]CSS[/abbr]</code></pre>
+
+            <h3>React Component</h3>
+            <pre><code class="language-javascript">import React, { createContext, useContext } from 'react';
+
+// Kontekst dla słowniczka skrótów
+const AbbreviationContext = createContext({});
+
+// Provider dla słowniczka
+export const AbbreviationProvider = ({ children, abbreviations = {} }) => {
+    return (
+        &lt;AbbreviationContext.Provider value={abbreviations}&gt;
+            {children}
+        &lt;/AbbreviationContext.Provider&gt;
+    );
+};
+
+// Komponent skrótu
+const Abbreviation = ({ 
+    children, 
+    title, 
+    firstOccurrence = false,
+    definition = false
+}) => {
+    const abbreviations = useContext(AbbreviationContext);
+    
+    // Automatyczne pobieranie definicji ze słowniczka
+    const expansion = title || abbreviations[children] || '';
+    
+    if (firstOccurrence && expansion) {
+        return (
+            &lt;span&gt;
+                {expansion} (&lt;abbr title={expansion}&gt;{children}&lt;/abbr&gt;)
+            &lt;/span&gt;
+        );
+    }
+    
+    if (definition && expansion) {
+        return (
+            &lt;dfn&gt;
+                &lt;abbr title={expansion}&gt;{children}&lt;/abbr&gt;
+            &lt;/dfn&gt;
+        );
+    }
+    
+    return (
+        &lt;abbr title={expansion}&gt;
+            {children}
+        &lt;/abbr&gt;
+    );
+};
+
+// Hook do zarządzania skrótami
+const useAbbreviation = (abbr) => {
+    const abbreviations = useContext(AbbreviationContext);
+    return abbreviations[abbr] || '';
+};
+
+// Przykład użycia
+const App = () => {
+    const abbreviations = {
+        'API': 'Application Programming Interface',
+        'HTML': 'HyperText Markup Language',
+        'CSS': 'Cascading Style Sheets',
+        'JSON': 'JavaScript Object Notation'
+    };
+    
+    return (
+        &lt;AbbreviationProvider abbreviations={abbreviations}&gt;
+            &lt;p&gt;
+                Nauka &lt;Abbreviation firstOccurrence&gt;HTML&lt;/Abbreviation&gt; i{' '}
+                &lt;Abbreviation firstOccurrence&gt;CSS&lt;/Abbreviation&gt; to podstawa 
+                web developmentu. Dane wymieniamy przez &lt;Abbreviation&gt;API&lt;/Abbreviation&gt; 
+                w formacie &lt;Abbreviation&gt;JSON&lt;/Abbreviation&gt;.
+            &lt;/p&gt;
+        &lt;/AbbreviationProvider&gt;
+    );
+};
+
+export default { Abbreviation, AbbreviationProvider, useAbbreviation };</code></pre>
+
+            <h3>Vue.js Component</h3>
+            <pre><code class="language-javascript">// AbbreviationPlugin.js
+export default {
+    install(app, options = {}) {
+        // Globalny słowniczek skrótów
+        app.config.globalProperties.$abbreviations = options.abbreviations || {};
+        
+        // Komponent skrótu
+        app.component('Abbreviation', {
+            props: {
+                title: String,
+                firstOccurrence: Boolean,
+                definition: Boolean
+            },
+            template: `
+                &lt;span v-if="firstOccurrence && expansion"&gt;
+                    {{ expansion }} (&lt;abbr :title="expansion"&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/abbr&gt;)
+                &lt;/span&gt;
+                &lt;dfn v-else-if="definition && expansion"&gt;
+                    &lt;abbr :title="expansion"&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/abbr&gt;
+                &lt;/dfn&gt;
+                &lt;abbr v-else :title="expansion"&gt;
+                    &lt;slot&gt;&lt;/slot&gt;
+                &lt;/abbr&gt;
+            `,
+            computed: {
+                expansion() {
+                    const abbr = this.$slots.default()[0].children;
+                    return this.title || this.$abbreviations[abbr] || '';
+                }
+            }
+        });
+        
+        // Dyrektywa dla automatycznego dodawania skrótów
+        app.directive('abbreviations', {
+            mounted(el) {
+                const abbreviations = app.config.globalProperties.$abbreviations;
+                let html = el.innerHTML;
+                
+                Object.entries(abbreviations).forEach(([abbr, expansion]) => {
+                    const regex = new RegExp(`\\b${abbr}\\b`, 'g');
+                    html = html.replace(
+                        regex,
+                        `&lt;abbr title="${expansion}"&gt;${abbr}&lt;/abbr&gt;`
+                    );
+                });
+                
+                el.innerHTML = html;
+            }
+        });
+    }
+};
+
+// main.js
+import { createApp } from 'vue';
+import AbbreviationPlugin from './AbbreviationPlugin';
+
+const app = createApp(App);
+
+app.use(AbbreviationPlugin, {
+    abbreviations: {
+        'API': 'Application Programming Interface',
+        'HTML': 'HyperText Markup Language',
+        'CSS': 'Cascading Style Sheets'
+    }
+});
+
+// Użycie w komponencie:
+// &lt;Abbreviation first-occurrence&gt;API&lt;/Abbreviation&gt;
+// &lt;div v-abbreviations&gt;Ten tekst zawiera HTML i CSS.&lt;/div&gt;</code></pre>
+        </section>
+
+        <section class="advanced-features">
+            <h2>Zaawansowane funkcje</h2>
+
+            <h3>Kontekstowy słowniczek skrótów</h3>
+            <pre><code class="language-javascript">class ContextualAbbreviationManager {
+    constructor() {
+        this.abbreviations = new Map();
+        this.contexts = new Map();
+        this.processed = new Set();
+    }
+    
+    // Dodaj definicję z kontekstem
+    addAbbreviation(abbr, expansion, context = 'general') {
+        if (!this.abbreviations.has(abbr)) {
+            this.abbreviations.set(abbr, new Map());
+        }
+        this.abbreviations.get(abbr).set(context, expansion);
+    }
+    
+    // Dodaj wiele skrótów jednocześnie
+    addAbbreviations(abbreviations, context = 'general') {
+        Object.entries(abbreviations).forEach(([abbr, expansion]) => {
+            this.addAbbreviation(abbr, expansion, context);
+        });
+    }
+    
+    // Pobierz definicję w kontekście
+    getExpansion(abbr, context = 'general') {
+        const abbrMap = this.abbreviations.get(abbr);
+        if (!abbrMap) return null;
+        
+        return abbrMap.get(context) || abbrMap.get('general') || null;
+    }
+    
+    // Automatycznie dodaj elementy abbr w kontekście
+    processSection(element, context = 'general') {
+        const textNodes = this.getTextNodes(element);
+        
+        this.abbreviations.forEach((contextMap, abbr) => {
+            const expansion = this.getExpansion(abbr, context);
+            if (!expansion) return;
+            
+            const regex = new RegExp(`\\b${this.escapeRegex(abbr)}\\b`, 'g');
+            
+            textNodes.forEach(node => {
+                if (regex.test(node.textContent) && !this.processed.has(node)) {
+                    this.wrapAbbreviation(node, abbr, expansion);
+                    this.processed.add(node);
+                }
+            });
+        });
+    }
+    
+    wrapAbbreviation(textNode, abbr, expansion) {
+        const parent = textNode.parentNode;
+        const text = textNode.textContent;
+        const regex = new RegExp(`\\b(${this.escapeRegex(abbr)})\\b`, 'g');
+        
+        if (regex.test(text)) {
+            const newHTML = text.replace(regex, 
+                `&lt;abbr title="${this.escapeHtml(expansion)}"&gt;$1&lt;/abbr&gt;`
+            );
+            
+            const wrapper = document.createElement('span');
+            wrapper.innerHTML = newHTML;
+            
+            // Zastąp węzeł tekstowy nowym elementem
+            parent.insertBefore(wrapper, textNode);
+            parent.removeChild(textNode);
+        }
+    }
+    
+    getTextNodes(element) {
+        const textNodes = [];
+        const walker = document.createTreeWalker(
+            element,
+            NodeFilter.SHOW_TEXT,
+            null,
+            false
+        );
+        
+        let node;
+        while (node = walker.nextNode()) {
+            if (node.textContent.trim()) {
+                textNodes.push(node);
+            }
+        }
+        
+        return textNodes;
+    }
+    
+    escapeRegex(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+    
+    escapeHtml(string) {
+        return string.replace(/[&<>"']/g, (match) => {
+            const escapeMap = { 
+                '&': '&amp;', '<': '&lt;', '>': '&gt;', 
+                '"': '&quot;', "'": '&#39;' 
+            };
+            return escapeMap[match];
+        });
+    }
+    
+    // Generuj słowniczek dla danego kontekstu
+    generateGlossary(context = 'general') {
+        const glossary = [];
+        
+        this.abbreviations.forEach((contextMap, abbr) => {
+            const expansion = contextMap.get(context) || contextMap.get('general');
+            if (expansion) {
+                glossary.push({ abbr, expansion });
+            }
+        });
+        
+        return glossary.sort((a, b) => a.abbr.localeCompare(b.abbr));
+    }
+}
+
+// Użycie
+const abbrManager = new ContextualAbbreviationManager();
+
+// Skróty ogólne
+abbrManager.addAbbreviations({
+    'HTML': 'HyperText Markup Language',
+    'CSS': 'Cascading Style Sheets',
+    'JS': 'JavaScript'
+}, 'general');
+
+// Skróty IT
+abbrManager.addAbbreviations({
+    'API': 'Application Programming Interface',
+    'SDK': 'Software Development Kit',
+    'IDE': 'Integrated Development Environment'
+}, 'it');
+
+// Skróty medyczne
+abbrManager.addAbbreviations({
+    'MRI': 'Magnetic Resonance Imaging',
+    'CT': 'Computed Tomography',
+    'EKG': 'Elektrokardiogram'
+}, 'medical');
+
+// Przetwórz sekcje
+const itSection = document.querySelector('#it-content');
+if (itSection) {
+    abbrManager.processSection(itSection, 'it');
+}
+
+const medicalSection = document.querySelector('#medical-content');
+if (medicalSection) {
+    abbrManager.processSection(medicalSection, 'medical');
+}</code></pre>
+
+            <h3>System automatycznego słowniczka</h3>
+            <pre><code class="language-javascript">class AutoGlossaryGenerator {
+    constructor(options = {}) {
+        this.minOccurrences = options.minOccurrences || 2;
+        this.commonWords = new Set(options.commonWords || []);
+        this.glossaryContainer = options.container || '#abbreviations-glossary';
+    }
+    
+    // Znajdź wszystkie potencjalne skróty
+    findAbbreviations() {
+        const text = document.body.textContent;
+        const abbreviations = new Map();
+        
+        // Wzorce dla różnych typów skrótów
+        const patterns = [
+            /\b[A-Z]{2,6}\b/g,  // Akronimy
+            /\b[A-Z][a-z]*\.[A-Za-z.]*/g  // Skróty z kropkami
+        ];
+        
+        patterns.forEach(pattern => {
+            const matches = text.match(pattern) || [];
+            matches.forEach(match => {
+                if (!this.commonWords.has(match)) {
+                    abbreviations.set(match, (abbreviations.get(match) || 0) + 1);
+                }
+            });
+        });
+        
+        // Filtruj według minimalnej liczby wystąpień
+        return new Map([...abbreviations].filter(([abbr, count]) => 
+            count >= this.minOccurrences
+        ));
+    }
+    
+    // Próbuj znaleźć definicje w tekście
+    findDefinitions(abbreviations) {
+        const definitions = new Map();
+        const bodyText = document.body.textContent;
+        
+        abbreviations.forEach((count, abbr) => {
+            // Szukaj wzorców: "Full Form (ABBR)" lub "ABBR (Full Form)"
+            const patterns = [
+                new RegExp(`([^(]+)\\s*\\(\\s*${this.escapeRegex(abbr)}\\s*\\)`, 'gi'),
+                new RegExp(`${this.escapeRegex(abbr)}\\s*\\(([^)]+)\\)`, 'gi')
+            ];
+            
+            patterns.forEach(pattern => {
+                const matches = bodyText.match(pattern);
+                if (matches && matches.length > 0) {
+                    const match = matches[0];
+                    const fullForm = match.replace(abbr, '').replace(/[()]/g, '').trim();
+                    if (fullForm && fullForm !== abbr) {
+                        definitions.set(abbr, fullForm);
+                    }
+                }
+            });
+        });
+        
+        return definitions;
+    }
+    
+    // Generuj HTML słowniczka
+    generateGlossaryHTML(definitions) {
+        if (definitions.size === 0) return '';
+        
+        const entries = Array.from(definitions.entries())
+            .sort(([a], [b]) => a.localeCompare(b))
+            .map(([abbr, definition]) => `
+                &lt;dt id="abbr-${abbr.toLowerCase()}"&gt;&lt;abbr&gt;${abbr}&lt;/abbr&gt;&lt;/dt&gt;
+                &lt;dd&gt;${definition}&lt;/dd&gt;
+            `).join('');
+        
+        return `
+            &lt;section id="auto-abbreviations-glossary"&gt;
+                &lt;h2&gt;Słowniczek skrótów&lt;/h2&gt;
+                &lt;dl&gt;
+                    ${entries}
+                &lt;/dl&gt;
+            &lt;/section&gt;
+        `;
+    }
+    
+    // Dodaj linki do słowniczka
+    linkToGlossary(definitions) {
+        definitions.forEach((definition, abbr) => {
+            const regex = new RegExp(`\\b${this.escapeRegex(abbr)}\\b`, 'g');
+            const elements = document.querySelectorAll('p, span, div');
+            
+            elements.forEach(element => {
+                if (element.innerHTML.includes(abbr)) {
+                    element.innerHTML = element.innerHTML.replace(regex, 
+                        `&lt;a href="#abbr-${abbr.toLowerCase()}"&gt;${abbr}&lt;/a&gt;`
+                    );
+                }
+            });
+        });
+    }
+    
+    // Główna funkcja
+    generate() {
+        const abbreviations = this.findAbbreviations();
+        const definitions = this.findDefinitions(abbreviations);
+        
+        if (definitions.size > 0) {
+            const glossaryHTML = this.generateGlossaryHTML(definitions);
+            
+            // Dodaj słowniczek na koniec dokumentu
+            const container = document.querySelector(this.glossaryContainer) || 
+                             document.querySelector('main') || 
+                             document.body;
+            
+            const glossaryElement = document.createElement('div');
+            glossaryElement.innerHTML = glossaryHTML;
+            container.appendChild(glossaryElement);
+            
+            // Dodaj linki
+            this.linkToGlossary(definitions);
+        }
+        
+        return definitions;
+    }
+    
+    escapeRegex(string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+}
+
+// Użycie
+const autoGlossary = new AutoGlossaryGenerator({
+    minOccurrences: 2,
+    commonWords: ['IT', 'OK', 'TV', 'DVD', 'USB'], // Wyklucz powszechne skróty
+    container: 'main'
+});
+
+// Automatycznie generuj słowniczek
+document.addEventListener('DOMContentLoaded', () => {
+    const definitions = autoGlossary.generate();
+    console.log('Wygenerowano definicje dla:', definitions);
+});</code></pre>
+        </section>
+
+        <section class="common-mistakes">
+            <h2>Częste błędy</h2>
+
+            <div class="mistake-block">
+                <h3>❌ Brak wyjaśnień dla skrótów</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe --&gt;
+&lt;p&gt;API REST zwraca dane w formacie JSON.&lt;/p&gt;
+&lt;p&gt;CEO omówił strategię AI z zespołem HR.&lt;/p&gt;
+
+&lt;!-- Prawidłowe --&gt;
+&lt;p&gt;&lt;abbr title="Application Programming Interface"&gt;API&lt;/abbr&gt; 
+&lt;abbr title="Representational State Transfer"&gt;REST&lt;/abbr&gt; 
+zwraca dane w formacie &lt;abbr title="JavaScript Object Notation"&gt;JSON&lt;/abbr&gt;.&lt;/p&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Używanie skrótów jako nazw własnych</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe --&gt;
+&lt;abbr title="International Business Machines"&gt;IBM&lt;/abbr&gt; to znana firma.
+
+&lt;!-- Prawidłowe - IBM to nazwa firmy, nie skrót wymagający wyjaśnienia --&gt;
+&lt;p&gt;IBM to znana firma technologiczna.&lt;/p&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Puste lub nieprecyzyjne atrybuty title</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe --&gt;
+&lt;abbr title=""&gt;API&lt;/abbr&gt;
+&lt;abbr title="API"&gt;API&lt;/abbr&gt;
+&lt;abbr title="To jest API"&gt;API&lt;/abbr&gt;
+
+&lt;!-- Prawidłowe --&gt;
+&lt;abbr title="Application Programming Interface"&gt;API&lt;/abbr&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Nadużywanie elementu abbr</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - każde wystąpienie --&gt;
+&lt;p&gt;&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt; to język znaczników. 
+Każda strona używa &lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt; 
+do strukturyzacji treści &lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt;.&lt;/p&gt;
+
+&lt;!-- Prawidłowe - pierwsze wystąpienie lub wybrane --&gt;
+&lt;p&gt;&lt;abbr title="HyperText Markup Language"&gt;HTML&lt;/abbr&gt; to język znaczników. 
+Każda strona używa HTML do strukturyzacji treści HTML.&lt;/p&gt;</code></pre>
+            </div>
+
+            <div class="mistake-block">
+                <h3>❌ Niewłaściwe tłumaczenia skrótów</h3>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe --&gt;
+&lt;abbr title="Częstowane Pytania"&gt;FAQ&lt;/abbr&gt;
+
+&lt;!-- Prawidłowe --&gt;
+&lt;abbr title="Frequently Asked Questions - Często Zadawane Pytania"&gt;FAQ&lt;/abbr&gt;
+&lt;!-- lub --&gt;
+Frequently Asked Questions (&lt;abbr&gt;FAQ&lt;/abbr&gt;) - Często Zadawane Pytania</code></pre>
+            </div>
+        </section>
+
+        <section class="resources">
+            <h2>Dodatkowe zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/abbreviations.html" target="_blank"
+                        rel="noopener">Understanding SC 3.1.4: Abbreviations (W3C)</a></li>
+                <li><a href="https://webaim.org/techniques/language/#abbreviations" target="_blank"
+                        rel="noopener">WebAIM: Abbreviations</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr" target="_blank"
+                        rel="noopener">MDN: abbr element</a></li>
+                <li><a href="https://www.w3.org/TR/html52/textlevel-semantics.html#the-abbr-element" target="_blank"
+                        rel="noopener">HTML5.2: The abbr element</a></li>
+                <li><a href="https://www.abbreviations.com/" target="_blank" rel="noopener">Abbreviations.com - słownik
+                        skrótów</a></li>
+                <li><a href="https://www.acronymfinder.com/" target="_blank" rel="noopener">Acronym Finder</a></li>
+            </ul>
+        </section>
+
+        <nav class="page-navigation" aria-label="Nawigacja między stronami">
+            <a href="3.1.3.html" class="nav-link prev-page">
+                <span class="nav-arrow">←</span>
+                <span class="nav-text">
+                    <span class="nav-label">Poprzednia</span>
+                    <span class="nav-title">3.1.3 Nietypowe słowa</span>
+                </span>
+            </a>
+            <a href="3.1.5.html" class="nav-link next-page">
+                <span class="nav-text">
+                    <span class="nav-label">Następna</span>
+                    <span class="nav-title">3.1.5 Poziom trudności czytania (w przygotowaniu)</span>
+                </span>
+                <span class="nav-arrow">→</span>
+            </a>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
