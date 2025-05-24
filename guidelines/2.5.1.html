@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.5.1 Gesty wskazujące (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.5.1 Gesty wskazujące</h2>
+                <p class="criterion-level">Poziom A</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#pointer-gestures" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Wszystkie funkcje, które używają gestów wielopunktowych lub opartych na ścieżce do obsługi, mogą być
+                    obsługiwane za pomocą pojedynczego wskaźnika bez gestu opartego na ścieżce, chyba że gest
+                    wielopunktowy
+                    lub oparty na ścieżce jest niezbędny.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest zapewnienie, że treść może być obsługiwana przez osoby, które nie
+                    mogą wykonywać precyzyjnych gestów lub gestów wymagających użycia wielu palców jednocześnie.
+                    Niektórzy
+                    użytkownicy mogą:</p>
+
+                <ul>
+                    <li><strong>Używać protez ręki</strong> - które nie pozwalają na precyzyjne gesty</li>
+                    <li><strong>Mieć drżenie rąk</strong> - utrudniające wykonywanie złożonych gestów</li>
+                    <li><strong>Używać technologii wspomagających</strong> - jak head pointer czy eye tracking</li>
+                    <li><strong>Mieć ograniczenia motoryczne</strong> - pozwalające jedynie na podstawowe dotknięcia
+                    </li>
+                    <li><strong>Używać jednej ręki</strong> - tymczasowo lub na stałe</li>
+                </ul>
+
+                <p>Kryterium nie zabrania używania gestów wielopunktowych, ale wymaga, aby wszystkie funkcje były
+                    dostępne także przez prostsze metody.</p>
+
+                <h3>Definicje</h3>
+                <ul>
+                    <li><strong>Gest wielopunktowy</strong> - wymaga jednoczesnego używania kilku punktów kontaktu
+                        (np. szczypanie dwoma palcami, przeciągnięcie dwoma palcami)</li>
+                    <li><strong>Gest oparty na ścieżce</strong> - zależy od konkretnej ścieżki ruchu, nie tylko punktów
+                        początkowego i końcowego (np. rysowanie kształtu, gest swipe w określonym kierunku)</li>
+                    <li><strong>Pojedynczy wskaźnik</strong> - jeden punkt kontaktu z ekranem (palec, rysik, kursor
+                        myszy)</li>
+                    <li><strong>Niezbędny</strong> - usunięcie tego wymagania fundamentalnie zmieniłoby informację lub
+                        funkcjonalność treści</li>
+                </ul>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - tylko gesty wielopunktowe</h4>
+                        <p>Funkcje dostępne tylko przez złożone gesty bez alternatyw:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #721c24; margin-top: 0;">❌ Problematyczne implementacje:</h5>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #721c24;">1. Galeria zdjęć - tylko pinch-to-zoom</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px; position: relative;">
+                                            <div
+                                                style="width: 200px; height: 150px; background: linear-gradient(45deg, #f0f0f0 25%, transparent 25%), linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f0f0 75%), linear-gradient(-45deg, transparent 75%, #f0f0f0 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+                                                <span style="color: #666;">🖼️ Zdjęcie</span>
+                                            </div>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Powiększanie tylko przez gest szczypania dwoma palcami
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #721c24;">2. Mapa - tylko gesty wielopalcowe</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="width: 250px; height: 150px; background-color: #e8f5e9; border: 1px solid #4caf50; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; position: relative;">
+                                                <span style="color: #4caf50;">🗺️ Mapa</span>
+                                            </div>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Zoom: tylko szczypanie | Przesuwanie: tylko dwoma palcami | Obrót:
+                                                tylko
+                                                gest skręcenia
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #721c24;">3. Karta płatności - gest swipe w określonym
+                                            kierunku</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="width: 200px; height: 120px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; margin-bottom: 10px;">
+                                                💳 **** 1234
+                                            </div>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Usunięcie karty tylko przez gest przeciągnięcia w lewo
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h6 style="color: #721c24;">4. Odtwarzacz wideo - tylko gesty ścieżkowe</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="width: 280px; height: 160px; background-color: #000; border-radius: 4px; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; position: relative;">
+                                                <span style="color: white;">▶️ Wideo</span>
+                                            </div>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Przewijanie tylko przez gest kreślenia kółka | Zmiana głośności tylko
+                                                przez
+                                                pionowe przeciąganie
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #856404; margin-top: 0;">Dlaczego to problematyczne?</h6>
+                                    <ul style="color: #856404; margin-bottom: 0;">
+                                        <li><strong>Wykluczenie użytkowników</strong> - osoby z ograniczeniami
+                                            motorycznymi
+                                            nie mogą korzystać z funkcji</li>
+                                        <li><strong>Brak alternatyw</strong> - jedyny sposób dostępu to złożone gesty
+                                        </li>
+                                        <li><strong>Problemy z technologiami wspomagającymi</strong> - nie wszystkie
+                                            obsługują
+                                            gesty wielopunktowe</li>
+                                        <li><strong>Ograniczenia urządzeń</strong> - niektóre urządzenia nie obsługują
+                                            wszystkich gestów</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- ZŁY PRZYKŁAD - tylko gesty wielopunktowe --&gt;
+
+&lt;!-- 1. Galeria bez alternatyw --&gt;
+&lt;div class="image-gallery"&gt;
+    &lt;img src="photo.jpg" alt="Zdjęcie" id="zoomable-image"&gt;
+    &lt;!-- Brak przycisków zoom --&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// Tylko gest szczypania
+document.getElementById('zoomable-image').addEventListener('gesturechange', function(e) {
+    e.preventDefault();
+    this.style.transform = `scale(${e.scale})`;
+});
+&lt;/script&gt;
+
+&lt;!-- 2. Mapa bez kontrolek --&gt;
+&lt;div id="map" style="width: 400px; height: 300px;"&gt;&lt;/div&gt;
+&lt;script&gt;
+// Tylko gesty wielopalcowe dla map
+var map = new Map({
+    // Wyłączone kontrolki UI
+    zoomControl: false,
+    panControl: false,
+    rotateControl: false
+});
+&lt;/script&gt;
+
+&lt;!-- 3. Lista z gestami swipe --&gt;
+&lt;ul class="swipe-list"&gt;
+    &lt;li data-action="delete"&gt;Element 1&lt;/li&gt;
+    &lt;li data-action="delete"&gt;Element 2&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- Brak przycisków Delete --&gt;
+
+&lt;script&gt;
+// Tylko gest swipe w lewo
+document.querySelector('.swipe-list').addEventListener('touchmove', function(e) {
+    if (swipeLeft) {
+        deleteItem();
+    }
+});
+&lt;/script&gt;</code></pre>
+
+                        <p class="explanation">Problem: Funkcje dostępne tylko przez złożone gesty wykluczają
+                            użytkowników,
+                            którzy nie mogą ich wykonać. Brak alternatywnych metod obsługi sprawia, że treść jest
+                            niedostępna
+                            dla osób z różnymi ograniczeniami.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - alternatywy dla gestów</h4>
+                        <p>Wszystkie funkcje dostępne zarówno przez gesty, jak i przez proste interakcje:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #155724; margin-top: 0;">✅ Dostępne implementacje:</h5>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">1. Galeria z przyciskami zoom</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <div style="position: relative; margin-bottom: 10px;">
+                                                <div
+                                                    style="width: 200px; height: 150px; background: linear-gradient(45deg, #e8f5e9 25%, transparent 25%), linear-gradient(-45deg, #e8f5e9 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #e8f5e9 75%), linear-gradient(-45deg, transparent 75%, #e8f5e9 75%); background-size: 20px 20px; border: 1px solid #28a745; display: flex; align-items: center; justify-content: center;">
+                                                    <span style="color: #28a745;">🖼️ Zdjęcie</span>
+                                                </div>
+                                                <div style="margin-top: 10px; display: flex; gap: 8px;">
+                                                    <button
+                                                        style="padding: 6px 12px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">🔍+</button>
+                                                    <button
+                                                        style="padding: 6px 12px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">🔍-</button>
+                                                    <button
+                                                        style="padding: 6px 12px; background: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer;">↻
+                                                        Reset</button>
+                                                </div>
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 0;">
+                                                ✅ Zoom: gesty + przyciski | Reset: przycisk + podwójne kliknięcie
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">2. Mapa z kompletną kontrolką</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <div style="position: relative;">
+                                                <div
+                                                    style="width: 250px; height: 150px; background-color: #e8f5e9; border: 1px solid #28a745; display: flex; align-items: center; justify-content: center; position: relative;">
+                                                    <span style="color: #28a745;">🗺️ Mapa</span>
+                                                    <div
+                                                        style="position: absolute; top: 5px; right: 5px; display: flex; flex-direction: column; gap: 2px;">
+                                                        <button
+                                                            style="width: 30px; height: 30px; background: white; border: 1px solid #ccc; border-radius: 3px; cursor: pointer; font-size: 14px;">+</button>
+                                                        <button
+                                                            style="width: 30px; height: 30px; background: white; border: 1px solid #ccc; border-radius: 3px; cursor: pointer; font-size: 14px;">-</button>
+                                                    </div>
+                                                    <div
+                                                        style="position: absolute; bottom: 5px; left: 5px; display: flex; gap: 4px;">
+                                                        <button
+                                                            style="padding: 4px 8px; background: white; border: 1px solid #ccc; border-radius: 3px; cursor: pointer; font-size: 12px;">↖️</button>
+                                                        <button
+                                                            style="padding: 4px 8px; background: white; border: 1px solid #ccc; border-radius: 3px; cursor: pointer; font-size: 12px;">⬆️</button>
+                                                        <button
+                                                            style="padding: 4px 8px; background: white; border: 1px solid #ccc; border-radius: 3px; cursor: pointer; font-size: 12px;">↗️</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 10px 0 0 0;">
+                                                ✅ Zoom: gesty + przyciski | Przesuwanie: gesty + kontrolki kierunkowe |
+                                                Dostęp z klawiatury
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">3. Lista z przyciskami akcji</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <div style="border: 1px solid #ddd; border-radius: 4px;">
+                                                <div
+                                                    style="display: flex; justify-content: space-between; align-items: center; padding: 12px; border-bottom: 1px solid #eee;">
+                                                    <span>Element listy 1</span>
+                                                    <div style="display: flex; gap: 6px;">
+                                                        <button
+                                                            style="padding: 4px 8px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer; font-size: 12px;">✏️
+                                                            Edytuj</button>
+                                                        <button
+                                                            style="padding: 4px 8px; background: #dc3545; color: white; border: none; border-radius: 3px; cursor: pointer; font-size: 12px;">🗑️
+                                                            Usuń</button>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    style="display: flex; justify-content: space-between; align-items: center; padding: 12px;">
+                                                    <span>Element listy 2</span>
+                                                    <div style="display: flex; gap: 6px;">
+                                                        <button
+                                                            style="padding: 4px 8px; background: #007bff; color: white; border: none; border-radius: 3px; cursor: pointer; font-size: 12px;">✏️
+                                                            Edytuj</button>
+                                                        <button
+                                                            style="padding: 4px 8px; background: #dc3545; color: white; border: none; border-radius: 3px; cursor: pointer; font-size: 12px;">🗑️
+                                                            Usuń</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 10px 0 0 0;">
+                                                ✅ Usuwanie: gest swipe + przycisk | Edycja: długie naciśnięcie +
+                                                przycisk
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h6 style="color: #155724;">4. Odtwarzacz z kontrolkami</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="width: 280px; height: 160px; background-color: #000; border-radius: 4px; display: flex; align-items: center; justify-content: center; position: relative; margin-bottom: 10px;">
+                                                <span style="color: white;">▶️ Wideo</span>
+                                                <div
+                                                    style="position: absolute; bottom: 10px; left: 10px; right: 10px; background: rgba(0,0,0,0.7); padding: 8px; border-radius: 4px; display: flex; align-items: center; gap: 8px;">
+                                                    <button
+                                                        style="background: none; border: none; color: white; cursor: pointer;">⏸️</button>
+                                                    <input type="range" min="0" max="100" value="30"
+                                                        style="flex: 1; margin: 0 8px;">
+                                                    <button
+                                                        style="background: none; border: none; color: white; cursor: pointer;">🔊</button>
+                                                    <input type="range" min="0" max="100" value="75"
+                                                        style="width: 60px;">
+                                                </div>
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 0;">
+                                                ✅ Przewijanie: gesty + suwak | Głośność: gesty + kontrolka | Dostęp z
+                                                klawiatury
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #004085; margin-top: 0;">Zalety dostępnej implementacji:</h6>
+                                    <ul style="color: #004085; margin-bottom: 0;">
+                                        <li><strong>Uniwersalny dostęp</strong> - każdy może korzystać z funkcji</li>
+                                        <li><strong>Elastyczność</strong> - użytkownicy wybierają preferowaną metodę
+                                        </li>
+                                        <li><strong>Zgodność z AT</strong> - działa z technologiami wspomagającymi</li>
+                                        <li><strong>Lepsze UX</strong> - więcej opcji oznacza lepsze doświadczenia</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - alternatywy dla gestów --&gt;
+
+&lt;!-- 1. Galeria z przyciskami zoom --&gt;
+&lt;div class="accessible-gallery"&gt;
+    &lt;img src="photo.jpg" alt="Zdjęcie" id="zoomable-image"&gt;
+    &lt;div class="zoom-controls"&gt;
+        &lt;button id="zoom-in" aria-label="Powiększ"&gt;🔍+&lt;/button&gt;
+        &lt;button id="zoom-out" aria-label="Pomniejsz"&gt;🔍-&lt;/button&gt;
+        &lt;button id="zoom-reset" aria-label="Resetuj zoom"&gt;Oryginalny rozmiar&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+let currentScale = 1;
+const image = document.getElementById('zoomable-image');
+
+// Gesty + przyciski
+document.getElementById('zoom-in').addEventListener('click', () =&gt; zoomIn());
+document.getElementById('zoom-out').addEventListener('click', () =&gt; zoomOut());
+document.getElementById('zoom-reset').addEventListener('click', () =&gt; resetZoom());
+
+// Obsługa gestów (opcjonalna)
+image.addEventListener('gesturechange', function(e) {
+    e.preventDefault();
+    currentScale = e.scale;
+    updateZoom();
+});
+
+function zoomIn() {
+    currentScale *= 1.2;
+    updateZoom();
+}
+
+function zoomOut() {
+    currentScale /= 1.2;
+    updateZoom();
+}
+
+function resetZoom() {
+    currentScale = 1;
+    updateZoom();
+}
+
+function updateZoom() {
+    image.style.transform = `scale(${currentScale})`;
+}
+&lt;/script&gt;
+
+&lt;!-- 2. Mapa z kontrolkami --&gt;
+&lt;div class="accessible-map"&gt;
+    &lt;div id="map"&gt;&lt;/div&gt;
+    &lt;div class="map-controls"&gt;
+        &lt;div class="zoom-controls"&gt;
+            &lt;button aria-label="Powiększ mapę"&gt;+&lt;/button&gt;
+            &lt;button aria-label="Pomniejsz mapę"&gt;-&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="pan-controls"&gt;
+            &lt;button aria-label="Przesuń w górę"&gt;↑&lt;/button&gt;
+            &lt;button aria-label="Przesuń w lewo"&gt;←&lt;/button&gt;
+            &lt;button aria-label="Przesuń w prawo"&gt;→&lt;/button&gt;
+            &lt;button aria-label="Przesuń w dół"&gt;↓&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 3. Lista z przyciskami akcji --&gt;
+&lt;ul class="accessible-list"&gt;
+    &lt;li class="list-item"&gt;
+        &lt;span class="item-content"&gt;Element 1&lt;/span&gt;
+        &lt;div class="item-actions"&gt;
+            &lt;button class="edit-btn" aria-label="Edytuj element 1"&gt;Edytuj&lt;/button&gt;
+            &lt;button class="delete-btn" aria-label="Usuń element 1"&gt;Usuń&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script&gt;
+// Obsługa przycisków + opcjonalnie gestów
+document.querySelectorAll('.delete-btn').forEach(btn =&gt; {
+    btn.addEventListener('click', deleteItem);
+});
+
+// Opcjonalne gesty swipe (jako dodatek)
+document.querySelectorAll('.list-item').forEach(item =&gt; {
+    let startX = 0;
+    
+    item.addEventListener('touchstart', e =&gt; {
+        startX = e.touches[0].clientX;
+    });
+    
+    item.addEventListener('touchend', e =&gt; {
+        const endX = e.changedTouches[0].clientX;
+        const diff = startX - endX;
+        
+        // Gest swipe jako dodatkowa opcja, nie jedyna
+        if (diff &gt; 100) {
+            showDeleteConfirmation(item);
+        }
+    });
+});
+&lt;/script&gt;</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Wszystkie funkcje mają alternatywy dostępne przez pojedyncze
+                            wskaźniki lub prostsze interakcje. Gesty wielopunktowe pozostają dostępne jako dodatkowa
+                            opcja,
+                            ale nie jako jedyna metoda obsługi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie zgodności z 2.5.1</h3>
+
+                <h4>Procedura testowa</h4>
+                <ol>
+                    <li><strong>Identyfikacja gestów</strong>
+                        <ul>
+                            <li>Znajdź wszystkie funkcje wymagające gestów wielopunktowych</li>
+                            <li>Sprawdź gesty oparte na ścieżce (swipe, rysowanie, kreski)</li>
+                            <li>Przetestuj wszystkie interaktywne elementy</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test pojedynczego wskaźnika</strong>
+                        <ul>
+                            <li>Spróbuj uzyskać dostęp do wszystkich funkcji jednym palcem</li>
+                            <li>Użyj tylko prostych gestów: tap, press, release</li>
+                            <li>Sprawdź dostępność przez przyciski/kontrolki</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test różnych urządzeń</strong>
+                        <ul>
+                            <li>Testuj na telefonie, tablecie, laptopie z touchpadem</li>
+                            <li>Sprawdź działanie z myszą (single pointer)</li>
+                            <li>Przetestuj z klawiaturą jako backup</li>
+                        </ul>
+                    </li>
+                    <li><strong>Weryfikacja wyjątków</strong>
+                        <ul>
+                            <li>Sprawdź czy gest jest rzeczywiście niezbędny</li>
+                            <li>Oceń czy usunięcie gestu zmienia fundamentalnie funkcję</li>
+                            <li>Rozważ alternatywne implementacje</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Narzędzia testowe</h4>
+                <ul>
+                    <li><strong>Simulatory dostępności</strong> - testowanie z ograniczeniami motorycznymi</li>
+                    <li><strong>DevTools</strong> - symulacja różnych urządzeń dotykowych</li>
+                    <li><strong>Switch navigation</strong> - testowanie z przełącznikami</li>
+                    <li><strong>Voice control</strong> - sterowanie głosem zamiast gestów</li>
+                    <li><strong>axe-core</strong> - automatyczna detekcja problemów z gestami</li>
+                </ul>
+
+                <h4>Checklist zgodności</h4>
+                <div
+                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <h5>✅ Kryteria do spełnienia:</h5>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>☐ Wszystkie funkcje dostępne przez pojedynczy wskaźnik</li>
+                        <li>☐ Gesty wielopunktowe mają alternatywy</li>
+                        <li>☐ Gesty oparte na ścieżce mają prostsze opcje</li>
+                        <li>☐ Interfejs działa tylko z klawiszem Tab i Enter</li>
+                        <li>☐ Dostępne są przyciski/kontrolki dla złożonych akcji</li>
+                        <li>☐ Funkcje działają z technologiami wspomagającymi</li>
+                        <li>☐ Wszystkie akcje można wykonać myszą (single click)</li>
+                        <li>☐ Brak funkcji dostępnych TYLKO przez złożone gesty</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="implementation-guidelines">
+                <h3>Wytyczne implementacyjne</h3>
+
+                <h4>Najlepsze praktyki dla gestów:</h4>
+                <ul>
+                    <li><strong>Gesty jako dodatek</strong> - nie jako jedyna opcja dostępu</li>
+                    <li><strong>Proste alternatywy</strong> - przyciski, kontrolki, menu kontekstowe</li>
+                    <li><strong>Dostęp z klawiatury</strong> - wszystkie funkcje dostępne przez Tab</li>
+                    <li><strong>Etykiety opisowe</strong> - jasne informacje o dostępnych akcjach</li>
+                    <li><strong>Spójność</strong> - podobne funkcje mają podobne alternatywy</li>
+                    <li><strong>Testowanie z AT</strong> - sprawdzenie z technologiami wspomagającymi</li>
+                </ul>
+
+                <h4>Wzorce implementacji:</h4>
+                <div
+                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #004085; margin-top: 0;">Galeria zdjęć</h5>
+                    <ul style="color: #004085;">
+                        <li><strong>Zoom:</strong> pinch gesture + przyciski +/- + podwójne kliknięcie</li>
+                        <li><strong>Nawigacja:</strong> swipe + przyciski poprzedni/następny + klawisze strzałek</li>
+                        <li><strong>Pełny ekran:</strong> gest + przycisk + podwójne kliknięcie</li>
+                    </ul>
+                </div>
+
+                <div
+                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #155724; margin-top: 0;">Mapy interaktywne</h5>
+                    <ul style="color: #155724;">
+                        <li><strong>Zoom:</strong> pinch + przyciski +/- + scroll wheel</li>
+                        <li><strong>Przesuwanie:</strong> drag + kontrolki kierunkowe + klawisze strzałek</li>
+                        <li><strong>Obrót:</strong> rotate gesture + przyciski obrotu + klawisze</li>
+                    </ul>
+                </div>
+
+                <div
+                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #856404; margin-top: 0;">Listy z akcjami</h5>
+                    <ul style="color: #856404;">
+                        <li><strong>Usuń:</strong> swipe + przycisk delete + menu kontekstowe</li>
+                        <li><strong>Edytuj:</strong> long press + przycisk edit + podwójne kliknięcie</li>
+                        <li><strong>Zaznacz:</strong> multi-touch + checkboxy + Ctrl+click</li>
+                    </ul>
+                </div>
+
+                <h4>Implementacja krok po kroku:</h4>
+                <ol>
+                    <li><strong>Audit istniejących gestów</strong> - spisz wszystkie złożone interakcje</li>
+                    <li><strong>Zaprojektuj alternatywy</strong> - dla każdego gestu znajdź prostszą opcję</li>
+                    <li><strong>Dodaj kontrolki UI</strong> - przyciski, menu, toolbary</li>
+                    <li><strong>Zaimplementuj obsługę klawiatury</strong> - Tab, Enter, strzałki</li>
+                    <li><strong>Przetestuj z AT</strong> - czytniki ekranu, switch control</li>
+                    <li><strong>Dokumentuj alternatywy</strong> - jasne instrukcje dla użytkowników</li>
+                </ol>
+
+                <h4>Częste błędy do uniknięcia:</h4>
+                <ul>
+                    <li><strong>Gest jako jedyna opcja</strong> - zawsze dodaj alternatywę</li>
+                    <li><strong>Ukryte kontrolki</strong> - alternatywy muszą być widoczne/wykrywalne</li>
+                    <li><strong>Nieopisowe przyciski</strong> - dodaj aria-label i tooltips</li>
+                    <li><strong>Brak obsługi klawiatury</strong> - wszystko musi działać bez myszy</li>
+                    <li><strong>Ignorowanie wyjątków</strong> - zastanów się czy gest jest rzeczywiście niezbędny</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/pointer-gestures.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG 2.1: Gesty wskazujące</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events" target="_blank"
+                            rel="noopener">MDN: Pointer Events API</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G215" target="_blank"
+                            rel="noopener">Techniki WCAG: Zapewnienie alternatyw dla gestów</a></li>
+                    <li><a href="https://inclusive-components.design/" target="_blank" rel="noopener">Inclusive
+                            Components</a></li>
+                    <li><a href="https://webaim.org/articles/motor/" target="_blank" rel="noopener">WebAIM: Motor
+                            Disabilities</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.5.html">Powrót do sekcji: 2.5 Sposoby wprowadzania danych</a></li>
+                    <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

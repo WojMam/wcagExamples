@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.5 Sposoby wprowadzania danych - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>2.5 Sposoby wprowadzania danych</h1>
+            <p>Wytyczna ta zapewnia, że użytkownicy mogą w prosty sposób wprowadzać dane za pomocą różnych urządzeń i
+                metod wejścia.</p>
+        </div>
+
+        <section class="guideline-description">
+            <h2>Opis wytycznej</h2>
+            <p>Nowoczesne urządzenia oferują wiele sposobów wprowadzania danych - od tradycyjnej klawiatury i myszy,
+                przez ekrany dotykowe, po sterowanie gestami i ruchem. Użytkownicy muszą być w stanie:</p>
+            <ul>
+                <li><strong>Używać różnych metod wprowadzania</strong> - nie tylko gestów czy ruchu</li>
+                <li><strong>Kontrolować swoje działania</strong> - móc anulować przypadkowe aktywacje</li>
+                <li><strong>Rozpoznawać elementy interfejsu</strong> - etykiety zgodne z tekstem mówionym</li>
+                <li><strong>Unikać przypadkowych aktywacji</strong> - przez niewłaściwe ruchy urządzeniem</li>
+                <li><strong>Trafić w obszary dotyku</strong> - odpowiednio duże cele</li>
+                <li><strong>Łączyć różne metody wejścia</strong> - jednocześnie używać klawiatury, myszy i dotyku</li>
+            </ul>
+
+            <p>Te elementy są szczególnie istotne dla osób:</p>
+            <ul>
+                <li><strong>Z ograniczeniami motorycznymi</strong> - które mają trudności z precyzyjnymi gestami</li>
+                <li><strong>Z drżeniem rąk</strong> - które mogą przypadkowo aktywować elementy</li>
+                <li><strong>Używających technologii wspomagających</strong> - które mogą inaczej interpretować gesty
+                </li>
+                <li><strong>Z ograniczeniami poznawczymi</strong> - które potrzebują spójnych nazw elementów</li>
+                <li><strong>Starszych</strong> - które mogą mieć problemy z nowymi metodami wprowadzania</li>
+            </ul>
+        </section>
+
+        <section class="criteria-overview">
+            <h2>Kryteria sukcesu</h2>
+
+            <div class="criteria-level-section">
+                <h3>Poziom A (podstawowy)</h3>
+                <ul class="criteria-list">
+                    <li><a href="2.5.1.html">2.5.1 Gesty wskazujące (A)</a> - alternatywy dla wielopunktowych gestów
+                    </li>
+                    <li><a href="2.5.2.html">2.5.2 Anulowanie wskazania (A)</a> - możliwość cofnięcia działań wskaźnika
+                    </li>
+                    <li><a href="2.5.3.html">2.5.3 Etykieta w nazwie (A)</a> - zgodność widocznego tekstu z nazwą
+                        dostępną</li>
+                    <li><a href="2.5.4.html">2.5.4 Aktywacja ruchem (A)</a> - alternatywy dla funkcji sterowanych
+                        ruchem</li>
+                </ul>
+            </div>
+
+            <div class="criteria-level-section">
+                <h3>Poziom AAA (zaawansowany)</h3>
+                <ul class="criteria-list">
+                    <li><a href="2.5.5.html">2.5.5 Rozmiar obszaru dotyku (AAA)</a> - minimalne rozmiary celów
+                        dotyku 44×44 piksele</li>
+                    <li><a href="2.5.6.html">2.5.6 Mechanizmy wprowadzania współbieżnego (AAA)</a> - obsługa wszystkich
+                        dostępnych mechanizmów wprowadzania</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="input-principles">
+            <h2>Kluczowe zasady wprowadzania danych</h2>
+
+            <div class="principle-card"
+                style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 20px; border-radius: 5px; margin: 15px 0;">
+                <h3 style="color: #004085; margin-top: 0;">👆 Elastyczność gestów</h3>
+                <p style="color: #004085;">Interfejs powinien oferować:</p>
+                <ul style="color: #004085;">
+                    <li>Alternatywy dla złożonych gestów</li>
+                    <li>Opcje anulowania działań</li>
+                    <li>Prostsze metody aktywacji</li>
+                    <li>Wsparcie dla różnych urządzeń</li>
+                </ul>
+            </div>
+
+            <div class="principle-card"
+                style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 20px; border-radius: 5px; margin: 15px 0;">
+                <h3 style="color: #155724; margin-top: 0;">🎯 Precyzja i kontrola</h3>
+                <p style="color: #155724;">Użytkownicy muszą mieć:</p>
+                <ul style="color: #155724;">
+                    <li>Kontrolę nad przypadkowymi aktywacjami</li>
+                    <li>Możliwość cofnięcia działań</li>
+                    <li>Odpowiednio duże obszary dotyku</li>
+                    <li>Wyraźne granice elementów interaktywnych</li>
+                </ul>
+            </div>
+
+            <div class="principle-card"
+                style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 20px; border-radius: 5px; margin: 15px 0;">
+                <h3 style="color: #856404; margin-top: 0;">🏷️ Spójność nazewnictwa</h3>
+                <p style="color: #856404;">Etykiety elementów powinny:</p>
+                <ul style="color: #856404;">
+                    <li>Być zgodne z nazwami programowymi</li>
+                    <li>Odzwierciedlać tekst mówiony</li>
+                    <li>Używać zrozumiałego języka</li>
+                    <li>Pozostawać spójne w całym interfejsie</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="input-methods">
+            <h2>Metody wprowadzania danych</h2>
+
+            <h3>1. Wprowadzanie wskazujące</h3>
+            <ul>
+                <li><strong>Mysz</strong> - tradycyjne klikanie i przeciąganie</li>
+                <li><strong>Ekran dotykowy</strong> - dotyk, przeciąganie, gesty wielopunktowe</li>
+                <li><strong>Rysik/stylus</strong> - precyzyjne wskazywanie</li>
+                <li><strong>Trackpad</strong> - gesty wielopalcowe</li>
+            </ul>
+
+            <h3>2. Wprowadzanie ruchem</h3>
+            <ul>
+                <li><strong>Przyspieszeniomierz</strong> - pochylanie urządzenia</li>
+                <li><strong>Żyroskop</strong> - obrót urządzenia</li>
+                <li><strong>Kamera</strong> - śledzenie ruchu ciała</li>
+                <li><strong>Mikrofon</strong> - komenty głosowe</li>
+            </ul>
+
+            <h3>3. Wprowadzanie alternatywne</h3>
+            <ul>
+                <li><strong>Klawiatura</strong> - nawigacja klawiszami</li>
+                <li><strong>Przełączniki</strong> - dla osób z ograniczeniami motorycznymi</li>
+                <li><strong>Śledzenie wzroku</strong> - kontrola oczami</li>
+                <li><strong>Sterowanie głosem</strong> - komendy mówione</li>
+            </ul>
+        </section>
+
+        <section class="accessibility-features">
+            <h2>Funkcje dostępności w wprowadzaniu danych</h2>
+
+            <h3>Alternatywy dla gestów</h3>
+            <pre><code class="language-html">&lt;!-- Przycisk z alternatywą dla gestu --&gt;
+&lt;div class="image-gallery"&gt;
+    &lt;button id="prev" aria-label="Poprzednie zdjęcie"&gt;‹&lt;/button&gt;
+    &lt;img src="image.jpg" alt="Opis zdjęcia"&gt;
+    &lt;button id="next" aria-label="Następne zdjęcie"&gt;›&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Zamiast tylko gestu swipe --&gt;
+&lt;script&gt;
+// Obsługa gestów z alternatywą
+element.addEventListener('click', handleNavigation);
+element.addEventListener('touchstart', handleGesture);
+&lt;/script&gt;</code></pre>
+
+            <h3>Anulowanie działań</h3>
+            <pre><code class="language-javascript">// Anulowanie na up event zamiast down
+button.addEventListener('pointerdown', function(e) {
+    // Wizualna informacja o naciśnięciu
+    this.classList.add('pressed');
+});
+
+button.addEventListener('pointerup', function(e) {
+    this.classList.remove('pressed');
+    // Faktyczne działanie dopiero tutaj
+    performAction();
+});
+
+// Możliwość anulowania przez przeciągnięcie poza element
+button.addEventListener('pointerleave', function(e) {
+    this.classList.remove('pressed');
+    // Anuluj działanie
+});</code></pre>
+
+            <h3>Dostępne obszary dotyku</h3>
+            <pre><code class="language-css">/* Minimalne rozmiary obszarów dotyku */
+.touch-target {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 8px;
+}
+
+/* Dodatkowy obszar kliknięcia */
+.small-icon {
+    position: relative;
+}
+
+.small-icon::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
+}</code></pre>
+        </section>
+
+        <section class="testing-input">
+            <h2>Testowanie sposobów wprowadzania</h2>
+
+            <h3>Testy manualne</h3>
+            <ul>
+                <li><strong>Różne urządzenia</strong> - testuj na telefonie, tablecie, laptopie</li>
+                <li><strong>Tylko jeden palec</strong> - sprawdź czy można używać bez gestów wielopunktowych</li>
+                <li><strong>Tylko klawiatura</strong> - czy wszystkie funkcje są dostępne</li>
+                <li><strong>Symulacja drżenia</strong> - testuj z nieustabilizowanymi ruchami</li>
+                <li><strong>Różne rozmiary palców</strong> - czy obszary dotyku są wystarczające</li>
+            </ul>
+
+            <h3>Narzędzia automatyczne</h3>
+            <ul>
+                <li><strong>axe-core</strong> - sprawdza rozmiary obszarów dotyku</li>
+                <li><strong>WAVE</strong> - analizuje etykiety i nazwy</li>
+                <li><strong>Lighthouse</strong> - audit dostępności mobilnej</li>
+                <li><strong>DevTools</strong> - symulacja różnych urządzeń</li>
+            </ul>
+
+            <h3>Checklist wprowadzania danych</h3>
+            <div
+                style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                <h4>✅ Sprawdź czy:</h4>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li>☐ Złożone gesty mają alternatywy</li>
+                    <li>☐ Można anulować przypadkowe aktywacje</li>
+                    <li>☐ Etykiety zawierają tekst mówiony</li>
+                    <li>☐ Ruch urządzenia nie jest jedynym sposobem aktywacji</li>
+                    <li>☐ Obszary dotyku mają minimum 44×44 piksele</li>
+                    <li>☐ Można używać różnych metod wprowadzania jednocześnie</li>
+                    <li>☐ Interfejs działa bez gestów wielopunktowych</li>
+                    <li>☐ Wszystkie funkcje dostępne są z klawiatury</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="additional-resources">
+            <h2>Dodatkowe zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/input-modalities" target="_blank"
+                        rel="noopener">Understanding Guideline 2.5: Input Modalities (W3C)</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events" target="_blank"
+                        rel="noopener">MDN: Pointer Events</a></li>
+                <li><a href="https://inclusive-components.design/" target="_blank" rel="noopener">Inclusive
+                        Components</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/target-size.html" target="_blank"
+                        rel="noopener">W3C: Understanding Target Size</a></li>
+                <li><a href="https://material.io/design/usability/accessibility.html#interaction" target="_blank"
+                        rel="noopener">Material Design: Accessible Interaction</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

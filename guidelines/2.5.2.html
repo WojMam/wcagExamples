@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.5.2 Anulowanie wskazania (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.5.2 Anulowanie wskazania</h2>
+                <p class="criterion-level">Poziom A</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#pointer-cancellation" target="_blank"
+                            rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Dla funkcjonalności, która może być obsługiwana za pomocą pojedynczego wskaźnika, co najmniej jedno
+                    z następujących stwierdzeń jest prawdziwe: brak down-event, przerwanie lub cofnięcie, odwrócenie
+                    up-event,
+                    niezbędność.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest ułatwienie użytkownikom zapobiegania przypadkowym lub błędnym
+                    aktywacjom wskaźnika. Niektórzy użytkownicy mogą:</p>
+
+                <ul>
+                    <li><strong>Mieć drżenie rąk</strong> - powodujące przypadkowe dotknięcia</li>
+                    <li><strong>Używać większych palców</strong> - które mogą aktywować niepożądane elementy</li>
+                    <li><strong>Mieć ograniczenia motoryczne</strong> - utrudniające precyzyjną kontrolę</li>
+                    <li><strong>Używać technologii wspomagających</strong> - które mogą powodować przypadkowe aktywacje
+                    </li>
+                    <li><strong>Korzystać z małych ekranów</strong> - gdzie łatwo o pomyłki</li>
+                    <li><strong>Znajdować się w ruchu</strong> - np. w transporcie publicznym</li>
+                </ul>
+
+                <p>Kryterium zapewnia, że użytkownicy mają możliwość anulowania działań przed ich wykonaniem lub
+                    cofnięcia ich po wykonaniu.</p>
+
+                <h3>Wymagania</h3>
+                <p>Co najmniej jedno z poniższych musi być spełnione:</p>
+                <ul>
+                    <li><strong>Brak down-event</strong> - funkcja nie jest wykonywana na down-event wskaźnika</li>
+                    <li><strong>Przerwanie lub cofnięcie</strong> - funkcja kończy się na up-event i dostępny jest
+                        mechanizm przerwania przed zakończeniem lub cofnięcia po zakończeniu</li>
+                    <li><strong>Odwrócenie up-event</strong> - up-event odwraca wynik poprzedniego down-event</li>
+                    <li><strong>Niezbędność</strong> - wykonanie funkcji na down-event jest niezbędne</li>
+                </ul>
+
+                <h3>Definicje</h3>
+                <ul>
+                    <li><strong>Down-event</strong> - zdarzenie wskaźnika wywoływane gdy urządzenie wskazujące
+                        "naciska" cel (mousedown, touchstart, pointerdown)</li>
+                    <li><strong>Up-event</strong> - zdarzenie wskaźnika wywoływane gdy urządzenie wskazujące
+                        "zwalnia" cel (mouseup, touchend, pointerup)</li>
+                    <li><strong>Click-event</strong> - zdarzenie wysokiego poziomu składające się z down-event
+                        następowanego przez up-event</li>
+                    <li><strong>Niezbędny</strong> - usunięcie tego wymagania fundamentalnie zmieniłoby
+                        informację lub funkcjonalność treści</li>
+                </ul>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - brak możliwości anulowania</h4>
+                        <p>Funkcje aktywowane na down-event bez możliwości anulowania:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #721c24; margin-top: 0;">❌ Problematyczne implementacje:</h5>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #721c24;">1. Przycisk działający na mousedown</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <button id="bad-button-1"
+                                                style="padding: 12px 24px; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 10px;">
+                                                ❌ Usuń konto (aktywny na naciśnięcie)
+                                            </button>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Działanie wykonuje się natychmiast po naciśnięciu, bez możliwości
+                                                anulowania
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #721c24;">2. Link aktywowany na touchstart</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <a href="#" id="bad-link-1"
+                                                style="display: inline-block; padding: 10px 20px; background: #dc3545; color: white; text-decoration: none; border-radius: 4px; margin-bottom: 10px;">
+                                                ❌ Przejdź do płatnej usługi
+                                            </a>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Nawigacja uruchamiana przy pierwszym dotyku, nie można cofnąć
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #721c24;">3. Menu kontekstowe bez anulowania</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px; position: relative;">
+                                            <div id="bad-context-area"
+                                                style="padding: 20px; background: #f8f9fa; border: 1px solid #dee2e6; border-radius: 4px; margin-bottom: 10px; cursor: context-menu;">
+                                                Kliknij prawym przyciskiem myszy
+                                            </div>
+                                            <div id="bad-context-menu"
+                                                style="display: none; position: absolute; background: white; border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 10;">
+                                                <button
+                                                    style="display: block; width: 100%; padding: 8px 16px; border: none; background: none; text-align: left; cursor: pointer;">Usuń
+                                                    plik</button>
+                                                <button
+                                                    style="display: block; width: 100%; padding: 8px 16px; border: none; background: none; text-align: left; cursor: pointer;">Przenieś
+                                                    do kosza</button>
+                                            </div>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Akcje wykonywane natychmiast po kliknięciu bez możliwości cofnięcia
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h6 style="color: #721c24;">4. Przeciąganie bez możliwości anulowania</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="display: flex; gap: 20px; align-items: center; margin-bottom: 10px;">
+                                                <div id="bad-drag-item"
+                                                    style="width: 80px; height: 80px; background: #dc3545; color: white; display: flex; align-items: center; justify-content: center; border-radius: 4px; cursor: move;">
+                                                    📁
+                                                </div>
+                                                <div
+                                                    style="width: 100px; height: 80px; border: 2px dashed #6c757d; display: flex; align-items: center; justify-content: center; border-radius: 4px;">
+                                                    🗑️ Kosz
+                                                </div>
+                                            </div>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Rozpoczęcie przeciągania powoduje natychmiastowe przeniesienie do
+                                                kosza
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #856404; margin-top: 0;">Dlaczego to problematyczne?</h6>
+                                    <ul style="color: #856404; margin-bottom: 0;">
+                                        <li><strong>Przypadkowe aktywacje</strong> - użytkownicy mogą nieumyślnie
+                                            wywołać
+                                            destrukcyjne działania</li>
+                                        <li><strong>Brak kontroli</strong> - niemożność cofnięcia lub anulowania
+                                            działania</li>
+                                        <li><strong>Frustration</strong> - szczególnie dla osób z ograniczeniami
+                                            motorycznymi</li>
+                                        <li><strong>Utrata danych</strong> - nieodwracalne działania bez ostrzeżenia
+                                        </li>
+                                        <li><strong>Złe UX</strong> - brak możliwości poprawienia błędów</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- ZŁY PRZYKŁAD - brak możliwości anulowania --&gt;
+
+&lt;!-- 1. Przycisk działający na mousedown --&gt;
+&lt;button id="delete-account"&gt;Usuń konto&lt;/button&gt;
+&lt;script&gt;
+// Problematyczne - działanie na down-event
+document.getElementById('delete-account').addEventListener('mousedown', function() {
+    deleteUserAccount(); // Wykonywane natychmiast!
+});
+&lt;/script&gt;
+
+&lt;!-- 2. Link aktywowany na touchstart --&gt;
+&lt;a href="/premium" id="premium-link"&gt;Aktywuj premium&lt;/a&gt;
+&lt;script&gt;
+// Problematyczne - nawigacja na touchstart
+document.getElementById('premium-link').addEventListener('touchstart', function(e) {
+    e.preventDefault();
+    window.location.href = '/premium'; // Natychmiastowa nawigacja
+});
+&lt;/script&gt;
+
+&lt;!-- 3. Drag and drop bez anulowania --&gt;
+&lt;div class="file" draggable="true"&gt;Ważny dokument&lt;/div&gt;
+&lt;div class="trash-bin"&gt;Kosz&lt;/div&gt;
+&lt;script&gt;
+// Problematyczne - natychmiastowe usuwanie
+document.querySelector('.file').addEventListener('dragstart', function() {
+    this.remove(); // Usunięcie od razu przy dragstart
+});
+&lt;/script&gt;
+
+&lt;!-- 4. Menu kontekstowe bez możliwości anulowania --&gt;
+&lt;div id="file-area"&gt;Kliknij prawym przyciskiem&lt;/div&gt;
+&lt;script&gt;
+document.getElementById('file-area').addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+    showContextMenu();
+});
+
+function showContextMenu() {
+    // Menu wykonuje akcje natychmiast po wyborze
+    const action = prompt('Wybierz: delete, move, copy');
+    if (action === 'delete') {
+        deleteFile(); // Brak możliwości cofnięcia
+    }
+}
+&lt;/script&gt;</code></pre>
+
+                        <p class="explanation">Problem: Funkcje wykonywane na down-event lub bez możliwości anulowania
+                            mogą prowadzić do przypadkowych aktywacji. Użytkownicy nie mają możliwości cofnięcia
+                            błędnych
+                            działań, co szczególnie problematyczne dla osób z ograniczeniami motorycznymi.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - możliwość anulowania działań</h4>
+                        <p>Implementacje umożliwiające anulowanie lub cofnięcie działań:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #155724; margin-top: 0;">✅ Dostępne implementacje:</h5>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">1. Przycisk z możliwością anulowania</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <button id="good-button-1"
+                                                style="padding: 12px 24px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 10px; position: relative; transition: transform 0.1s;">
+                                                ✅ Usuń konto (trzymaj i zwolnij)
+                                            </button>
+                                            <div id="cancel-hint-1"
+                                                style="display: none; color: #28a745; font-size: 0.8em; margin-top: 5px;">
+                                                💡 Przeciągnij poza przycisk aby anulować
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 10px 0 0 0;">
+                                                ✅ Działanie na up-event, możliwość anulowania przez przeciągnięcie poza
+                                                przycisk
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">2. Link z potwierdzeniem</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <a href="#" id="good-link-1"
+                                                style="display: inline-block; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 4px; margin-bottom: 10px;">
+                                                ✅ Aktywuj premium (z potwierdzeniem)
+                                            </a>
+                                            <div id="confirmation-dialog-1"
+                                                style="display: none; background: #fff; border: 1px solid #ccc; padding: 15px; border-radius: 4px; margin-top: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+                                                <p style="margin: 0 0 10px 0;">Czy na pewno chcesz aktywować premium?
+                                                </p>
+                                                <button id="confirm-premium"
+                                                    style="padding: 6px 12px; background: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer; margin-right: 8px;">Tak</button>
+                                                <button id="cancel-premium"
+                                                    style="padding: 6px 12px; background: #6c757d; color: white; border: none; border-radius: 3px; cursor: pointer;">Anuluj</button>
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 10px 0 0 0;">
+                                                ✅ Wyświetla dialog potwierdzenia z możliwością anulowania
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">3. Menu kontekstowe z cofnięciem</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px; position: relative;">
+                                            <div id="good-context-area"
+                                                style="padding: 20px; background: #f8f9fa; border: 1px solid #28a745; border-radius: 4px; margin-bottom: 10px; cursor: context-menu;">
+                                                Kliknij prawym przyciskiem myszy
+                                            </div>
+                                            <div id="good-context-menu"
+                                                style="display: none; position: absolute; background: white; border: 1px solid #ccc; border-radius: 4px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 10;">
+                                                <button id="context-delete"
+                                                    style="display: block; width: 100%; padding: 8px 16px; border: none; background: none; text-align: left; cursor: pointer;">Usuń
+                                                    plik</button>
+                                                <button
+                                                    style="display: block; width: 100%; padding: 8px 16px; border: none; background: none; text-align: left; cursor: pointer;">Przenieś
+                                                    do kosza</button>
+                                            </div>
+                                            <div id="undo-notification"
+                                                style="display: none; background: #fff3cd; border: 1px solid #ffeaa7; padding: 10px; border-radius: 4px; margin-top: 10px;">
+                                                <span>Plik został usunięty.</span>
+                                                <button id="undo-delete"
+                                                    style="padding: 4px 8px; background: #ffc107; border: none; border-radius: 3px; cursor: pointer; margin-left: 10px;">Cofnij</button>
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 10px 0 0 0;">
+                                                ✅ Wykonuje akcję z możliwością cofnięcia w ciągu 5 sekund
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h6 style="color: #155724;">4. Przeciąganie z anulowaniem</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="display: flex; gap: 20px; align-items: center; margin-bottom: 10px;">
+                                                <div id="good-drag-item"
+                                                    style="width: 80px; height: 80px; background: #28a745; color: white; display: flex; align-items: center; justify-content: center; border-radius: 4px; cursor: move; transition: transform 0.2s;">
+                                                    📁
+                                                </div>
+                                                <div id="good-trash-bin"
+                                                    style="width: 100px; height: 80px; border: 2px dashed #6c757d; display: flex; align-items: center; justify-content: center; border-radius: 4px;">
+                                                    🗑️ Kosz
+                                                </div>
+                                            </div>
+                                            <div id="drag-feedback"
+                                                style="color: #28a745; font-size: 0.8em; margin-top: 5px; min-height: 20px;">
+                                                Przeciągnij plik do kosza (puść poza koszem aby anulować)
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 10px 0 0 0;">
+                                                ✅ Akcja wykonywana dopiero na drop, możliwość anulowania przez
+                                                puszczenie poza celem
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #004085; margin-top: 0;">Zalety dostępnej implementacji:</h6>
+                                    <ul style="color: #004085; margin-bottom: 0;">
+                                        <li><strong>Kontrola użytkownika</strong> - możliwość anulowania przed
+                                            wykonaniem</li>
+                                        <li><strong>Zapobieganie błędom</strong> - redukcja przypadkowych aktywacji</li>
+                                        <li><strong>Opcja cofnięcia</strong> - możliwość przywrócenia stanu po działaniu
+                                        </li>
+                                        <li><strong>Lepsza dostępność</strong> - szczególnie dla osób z ograniczeniami
+                                            motorycznymi</li>
+                                        <li><strong>Increased confidence</strong> - użytkownicy mogą eksperymentować bez
+                                            strachu</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - możliwość anulowania --&gt;
+
+&lt;!-- 1. Przycisk z anulowaniem przez przeciągnięcie --&gt;
+&lt;button id="delete-account-safe"&gt;Usuń konto&lt;/button&gt;
+&lt;script&gt;
+let isPressed = false;
+const button = document.getElementById('delete-account-safe');
+
+// Działanie na up-event, nie down-event
+button.addEventListener('pointerdown', function(e) {
+    isPressed = true;
+    this.classList.add('pressed');
+    this.textContent = 'Zwolnij aby potwierdzić...';
+});
+
+button.addEventListener('pointerup', function(e) {
+    if (isPressed) {
+        // Sprawdź czy cursor jest wciąż nad przyciskiem
+        const rect = this.getBoundingClientRect();
+        const x = e.clientX;
+        const y = e.clientY;
+        
+        if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+            // Wykonaj działanie tylko jeśli up-event nastąpił nad przyciskiem
+            deleteUserAccount();
+        }
+    }
+    resetButton();
+});
+
+// Anulowanie przez opuszczenie przycisku
+button.addEventListener('pointerleave', function() {
+    if (isPressed) {
+        resetButton();
+    }
+});
+
+function resetButton() {
+    isPressed = false;
+    button.classList.remove('pressed');
+    button.textContent = 'Usuń konto';
+}
+&lt;/script&gt;
+
+&lt;!-- 2. Link z dialogiem potwierdzenia --&gt;
+&lt;a href="/premium" id="premium-link-safe"&gt;Aktywuj premium&lt;/a&gt;
+&lt;script&gt;
+document.getElementById('premium-link-safe').addEventListener('click', function(e) {
+    e.preventDefault(); // Zatrzymaj domyślną nawigację
+    
+    // Pokaż dialog potwierdzenia
+    const confirmed = confirm('Czy na pewno chcesz aktywować premium za $9.99/miesiąc?');
+    if (confirmed) {
+        window.location.href = this.href;
+    }
+    // Jeśli nie potwierdzone - nic się nie dzieje
+});
+&lt;/script&gt;
+
+&lt;!-- 3. Akcje z możliwością cofnięcia --&gt;
+&lt;button id="delete-file-safe"&gt;Usuń plik&lt;/button&gt;
+&lt;div id="undo-container" style="display: none;"&gt;
+    &lt;span&gt;Plik został usunięty. &lt;/span&gt;
+    &lt;button id="undo-delete"&gt;Cofnij&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+let deletedFileData = null;
+
+document.getElementById('delete-file-safe').addEventListener('click', function() {
+    // Zapisz dane przed usunięciem
+    deletedFileData = getCurrentFileData();
+    
+    // Wykonaj usunięcie
+    deleteFile();
+    
+    // Pokaż opcję cofnięcia
+    showUndoOption();
+    
+    // Automatycznie ukryj po 10 sekundach
+    setTimeout(hideUndoOption, 10000);
+});
+
+document.getElementById('undo-delete').addEventListener('click', function() {
+    if (deletedFileData) {
+        restoreFile(deletedFileData);
+        deletedFileData = null;
+        hideUndoOption();
+    }
+});
+
+function showUndoOption() {
+    document.getElementById('undo-container').style.display = 'block';
+}
+
+function hideUndoOption() {
+    document.getElementById('undo-container').style.display = 'none';
+    deletedFileData = null;
+}
+&lt;/script&gt;
+
+&lt;!-- 4. Drag and drop z anulowaniem --&gt;
+&lt;div class="file" draggable="true" id="draggable-file"&gt;Ważny dokument&lt;/div&gt;
+&lt;div class="trash-bin" id="trash-zone"&gt;Kosz&lt;/div&gt;
+
+&lt;script&gt;
+let draggedElement = null;
+
+document.getElementById('draggable-file').addEventListener('dragstart', function(e) {
+    draggedElement = this;
+    this.style.opacity = '0.5';
+    // Nie wykonuj żadnej akcji przy dragstart
+});
+
+document.getElementById('draggable-file').addEventListener('dragend', function(e) {
+    this.style.opacity = '1';
+    draggedElement = null;
+    // Reset bez wykonywania akcji jeśli nie upuszczono na celu
+});
+
+document.getElementById('trash-zone').addEventListener('dragover', function(e) {
+    e.preventDefault(); // Pozwól na drop
+});
+
+document.getElementById('trash-zone').addEventListener('drop', function(e) {
+    e.preventDefault();
+    if (draggedElement) {
+        // Dopiero teraz wykonaj akcję
+        moveToTrash(draggedElement);
+    }
+});
+&lt;/script&gt;</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Działania wykonywane na up-event z możliwością anulowania
+                            przez przeciągnięcie poza element, dialogi potwierdzenia, lub mechanizmy cofnięcia.
+                            Użytkownicy
+                            mają pełną kontrolę nad swoimi działaniami.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie zgodności z 2.5.2</h3>
+
+                <h4>Procedura testowa</h4>
+                <ol>
+                    <li><strong>Identyfikacja zdarzeń wskaźnika</strong>
+                        <ul>
+                            <li>Znajdź wszystkie elementy używające down-event (mousedown, touchstart, pointerdown)</li>
+                            <li>Sprawdź funkcje aktywowane przez pojedyncze wskaźniki</li>
+                            <li>Zidentyfikuj destrukcyjne lub nieodwracalne działania</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test anulowania</strong>
+                        <ul>
+                            <li>Naciśnij element i przeciągnij poza jego obszar przed zwolnieniem</li>
+                            <li>Sprawdź czy działanie zostało anulowane</li>
+                            <li>Przetestuj na różnych urządzeniach (mysz, dotyk)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test mechanizmów cofnięcia</strong>
+                        <ul>
+                            <li>Wykonaj działania i sprawdź dostępność opcji "Cofnij"</li>
+                            <li>Zweryfikuj działanie przycisków "Undo" lub "Anuluj"</li>
+                            <li>Sprawdź dialogi potwierdzenia</li>
+                        </ul>
+                    </li>
+                    <li><strong>Weryfikacja wyjątków</strong>
+                        <ul>
+                            <li>Sprawdź czy down-event jest rzeczywiście niezbędny</li>
+                            <li>Oceń funkcje jak klawiatura ekranowa, instrumenty muzyczne</li>
+                            <li>Zweryfikuj gry wymagające natychmiastowej reakcji</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Narzędzia testowe</h4>
+                <ul>
+                    <li><strong>DevTools</strong> - monitorowanie zdarzeń wskaźnika</li>
+                    <li><strong>Lighthouse</strong> - audit dostępności interakcji</li>
+                    <li><strong>Simulatory drżenia</strong> - testowanie z niestabilnymi ruchami</li>
+                    <li><strong>Mobile testing</strong> - sprawdzanie na urządzeniach dotykowych</li>
+                    <li><strong>Automated testing</strong> - skrypty sprawdzające event handlery</li>
+                </ul>
+
+                <h4>Checklist zgodności</h4>
+                <div
+                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <h5>✅ Kryteria do spełnienia:</h5>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>☐ Funkcje wykonywane na up-event, nie down-event</li>
+                        <li>☐ Możliwość anulowania przez przeciągnięcie poza element</li>
+                        <li>☐ Dialogi potwierdzenia dla destrukcyjnych działań</li>
+                        <li>☐ Mechanizmy cofnięcia (Undo) dostępne po wykonaniu</li>
+                        <li>☐ Up-event odwraca skutki down-event</li>
+                        <li>☐ Down-event używane tylko gdy niezbędne</li>
+                        <li>☐ Brak przypadkowych aktywacji przy lekkim dotyku</li>
+                        <li>☐ Działania odwracalne w rozsądnym czasie</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="implementation-guidelines">
+                <h3>Wytyczne implementacyjne</h3>
+
+                <h4>Najlepsze praktyki anulowania:</h4>
+                <ul>
+                    <li><strong>Preferuj up-event</strong> - używaj click, mouseup, touchend zamiast down-event</li>
+                    <li><strong>Implementuj drag-to-cancel</strong> - pozwól anulować przez przeciągnięcie</li>
+                    <li><strong>Dodaj konfirmacje</strong> - dla destrukcyjnych działań używaj dialogów</li>
+                    <li><strong>Oferuj Undo</strong> - mechanizmy cofnięcia w rozsądnym czasie</li>
+                    <li><strong>Wyraźne feedback</strong> - informuj o możliwości anulowania</li>
+                    <li><strong>Testuj z różnymi urządzeniami</strong> - mysz, dotyk, rysik</li>
+                </ul>
+
+                <h4>Wzorce implementacji:</h4>
+                <div
+                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #004085; margin-top: 0;">Drag-to-cancel pattern</h5>
+                    <pre style="color: #004085; font-size: 0.9em;"><code>button.addEventListener('pointerdown', startAction);
+button.addEventListener('pointerup', completeAction);
+button.addEventListener('pointerleave', cancelAction);</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #155724; margin-top: 0;">Confirmation dialog pattern</h5>
+                    <pre style="color: #155724; font-size: 0.9em;"><code>function performDestructiveAction() {
+    if (confirm('Czy na pewno?')) {
+        executeAction();
+    }
+}</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #856404; margin-top: 0;">Undo mechanism pattern</h5>
+                    <pre style="color: #856404; font-size: 0.9em;"><code>function deleteWithUndo(item) {
+    const backup = saveItemState(item);
+    removeItem(item);
+    showUndoNotification(() => restoreItem(backup));
+}</code></pre>
+                </div>
+
+                <h4>Przypadki wymagające down-event (wyjątki):</h4>
+                <ul>
+                    <li><strong>Klawiatura ekranowa</strong> - natychmiastowa reakcja na naciśnięcie</li>
+                    <li><strong>Instrumenty muzyczne</strong> - ważny timing dźwięku</li>
+                    <li><strong>Gry reakcyjne</strong> - szybka odpowiedź kluczowa dla rozgrywki</li>
+                    <li><strong>Rysowanie/malowanie</strong> - śledzenie ruchu od pierwszego kontaktu</li>
+                    <li><strong>Przewijanie</strong> - natychmiastowa reakcja na drag</li>
+                </ul>
+
+                <h4>Implementacja krok po kroku:</h4>
+                <ol>
+                    <li><strong>Audit istniejących event handlers</strong> - znajdź wszystkie down-event</li>
+                    <li><strong>Przenieś logikę na up-event</strong> - zmień mousedown na click</li>
+                    <li><strong>Dodaj drag-to-cancel</strong> - obsługa pointerleave</li>
+                    <li><strong>Implementuj dialogi</strong> - dla destrukcyjnych działań</li>
+                    <li><strong>Dodaj mechanizmy Undo</strong> - dla nieodwracalnych akcji</li>
+                    <li><strong>Przetestuj na urządzeniach</strong> - sprawdź wszystkie scenariusze</li>
+                </ol>
+
+                <h4>Częste błędy do uniknięcia:</h4>
+                <ul>
+                    <li><strong>Używanie mousedown dla wszystkich akcji</strong> - preferuj click</li>
+                    <li><strong>Brak feedback'u o możliwości anulowania</strong> - informuj użytkowników</li>
+                    <li><strong>Nieodwracalne działania bez potwierdzenia</strong> - dodaj dialogi</li>
+                    <li><strong>Krótki czas na Undo</strong> - daj użytkownikom wystarczająco czasu</li>
+                    <li><strong>Ignorowanie touch events</strong> - testuj na urządzeniach mobilnych</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/pointer-cancellation.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG 2.1: Anulowanie wskazania</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events" target="_blank"
+                            rel="noopener">MDN: Pointer Events API</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G210" target="_blank"
+                            rel="noopener">Techniki WCAG: Zapewnienie anulowania dla działań wskaźnika</a></li>
+                    <li><a href="https://inclusive-components.design/" target="_blank" rel="noopener">Inclusive
+                            Components</a></li>
+                    <li><a href="https://webaim.org/articles/motor/" target="_blank" rel="noopener">WebAIM: Motor
+                            Disabilities</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.5.1.html">Poprzedni: 2.5.1 Gesty wskazujące</a></li>
+                    <li><a href="2.5.html">Powrót do sekcji: 2.5 Sposoby wprowadzania danych</a></li>
+                    <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+
+    <script>
+        // Demo funkcjonalność dla przykładów anulowania wskazania
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // === PRZYKŁAD ZŁEGO PRZYCISKU (mousedown) ===
+            const badButton1 = document.getElementById('bad-button-1');
+            if (badButton1) {
+                badButton1.addEventListener('mousedown', function () {
+                    this.style.background = '#a71e2a';
+                    this.textContent = '❌ Usunięto konto!';
+                    setTimeout(() => {
+                        this.style.background = '#dc3545';
+                        this.textContent = '❌ Usuń konto (aktywny na naciśnięcie)';
+                    }, 2000);
+                });
+            }
+
+            // === PRZYKŁAD ZŁEGO LINKU (touchstart) ===
+            const badLink1 = document.getElementById('bad-link-1');
+            if (badLink1) {
+                badLink1.addEventListener('touchstart', function (e) {
+                    e.preventDefault();
+                    this.style.background = '#a71e2a';
+                    this.textContent = '❌ Przekierowanie...';
+                    setTimeout(() => {
+                        this.style.background = '#dc3545';
+                        this.textContent = '❌ Przejdź do płatnej usługi';
+                    }, 2000);
+                });
+            }
+
+            // === PRZYKŁAD ZŁEGO MENU KONTEKSTOWEGO ===
+            const badContextArea = document.getElementById('bad-context-area');
+            const badContextMenu = document.getElementById('bad-context-menu');
+            if (badContextArea && badContextMenu) {
+                badContextArea.addEventListener('contextmenu', function (e) {
+                    e.preventDefault();
+                    badContextMenu.style.display = 'block';
+                    badContextMenu.style.left = e.offsetX + 'px';
+                    badContextMenu.style.top = e.offsetY + 'px';
+                });
+
+                badContextMenu.addEventListener('click', function (e) {
+                    if (e.target.tagName === 'BUTTON') {
+                        alert('❌ ' + e.target.textContent + ' - wykonano bez możliwości cofnięcia!');
+                        this.style.display = 'none';
+                    }
+                });
+
+                document.addEventListener('click', function () {
+                    badContextMenu.style.display = 'none';
+                });
+            }
+
+            // === PRZYKŁAD DOBREGO PRZYCISKU Z ANULOWANIEM ===
+            const goodButton1 = document.getElementById('good-button-1');
+            const cancelHint1 = document.getElementById('cancel-hint-1');
+            let isPressed = false;
+
+            if (goodButton1) {
+                goodButton1.addEventListener('pointerdown', function (e) {
+                    e.preventDefault();
+                    isPressed = true;
+                    this.style.transform = 'scale(0.95)';
+                    this.style.background = '#1e7e34';
+                    this.textContent = '✅ Zwolnij aby potwierdzić...';
+                    cancelHint1.style.display = 'block';
+                });
+
+                goodButton1.addEventListener('pointerup', function (e) {
+                    if (isPressed) {
+                        const rect = this.getBoundingClientRect();
+                        const x = e.clientX;
+                        const y = e.clientY;
+
+                        if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+                            // Wykonaj działanie
+                            this.textContent = '✅ Konto zostało usunięte!';
+                            setTimeout(() => resetButton(), 2000);
+                        } else {
+                            // Anulowano
+                            this.textContent = '✅ Anulowano!';
+                            setTimeout(() => resetButton(), 1000);
+                        }
+                    }
+                    isPressed = false;
+                });
+
+                goodButton1.addEventListener('pointerleave', function () {
+                    if (isPressed) {
+                        this.textContent = '✅ Anulowano przez przeciągnięcie!';
+                        setTimeout(() => resetButton(), 1000);
+                        isPressed = false;
+                    }
+                });
+
+                function resetButton() {
+                    goodButton1.style.transform = 'scale(1)';
+                    goodButton1.style.background = '#28a745';
+                    goodButton1.textContent = '✅ Usuń konto (trzymaj i zwolnij)';
+                    cancelHint1.style.display = 'none';
+                }
+            }
+
+            // === PRZYKŁAD DOBREGO LINKU Z POTWIERDZENIEM ===
+            const goodLink1 = document.getElementById('good-link-1');
+            const confirmationDialog1 = document.getElementById('confirmation-dialog-1');
+            const confirmPremium = document.getElementById('confirm-premium');
+            const cancelPremium = document.getElementById('cancel-premium');
+
+            if (goodLink1 && confirmationDialog1) {
+                goodLink1.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    confirmationDialog1.style.display = 'block';
+                });
+
+                confirmPremium.addEventListener('click', function () {
+                    alert('✅ Premium zostało aktywowane!');
+                    confirmationDialog1.style.display = 'none';
+                });
+
+                cancelPremium.addEventListener('click', function () {
+                    confirmationDialog1.style.display = 'none';
+                });
+            }
+
+            // === PRZYKŁAD DOBREGO MENU Z COFNIĘCIEM ===
+            const goodContextArea = document.getElementById('good-context-area');
+            const goodContextMenu = document.getElementById('good-context-menu');
+            const contextDelete = document.getElementById('context-delete');
+            const undoNotification = document.getElementById('undo-notification');
+            const undoDelete = document.getElementById('undo-delete');
+
+            if (goodContextArea && goodContextMenu) {
+                goodContextArea.addEventListener('contextmenu', function (e) {
+                    e.preventDefault();
+                    goodContextMenu.style.display = 'block';
+                    goodContextMenu.style.left = e.offsetX + 'px';
+                    goodContextMenu.style.top = e.offsetY + 'px';
+                });
+
+                contextDelete.addEventListener('click', function () {
+                    goodContextMenu.style.display = 'none';
+                    undoNotification.style.display = 'block';
+                    setTimeout(() => {
+                        undoNotification.style.display = 'none';
+                    }, 5000);
+                });
+
+                undoDelete.addEventListener('click', function () {
+                    undoNotification.style.display = 'none';
+                    alert('✅ Plik został przywrócony!');
+                });
+
+                document.addEventListener('click', function (e) {
+                    if (!goodContextMenu.contains(e.target) && e.target !== goodContextArea) {
+                        goodContextMenu.style.display = 'none';
+                    }
+                });
+            }
+
+            // === PRZYKŁAD DOBREGO DRAG AND DROP ===
+            const goodDragItem = document.getElementById('good-drag-item');
+            const goodTrashBin = document.getElementById('good-trash-bin');
+            const dragFeedback = document.getElementById('drag-feedback');
+            let isDragging = false;
+
+            if (goodDragItem && goodTrashBin) {
+                goodDragItem.addEventListener('dragstart', function (e) {
+                    isDragging = true;
+                    this.style.opacity = '0.5';
+                    this.style.transform = 'rotate(5deg)';
+                    dragFeedback.textContent = '📁 Przeciąganie w toku... Puść nad koszem aby usunąć';
+                    dragFeedback.style.color = '#007bff';
+                });
+
+                goodDragItem.addEventListener('dragend', function (e) {
+                    this.style.opacity = '1';
+                    this.style.transform = 'rotate(0deg)';
+                    if (isDragging) {
+                        dragFeedback.textContent = '✅ Przeciąganie anulowane';
+                        dragFeedback.style.color = '#28a745';
+                        setTimeout(() => {
+                            dragFeedback.textContent = 'Przeciągnij plik do kosza (puść poza koszem aby anulować)';
+                            dragFeedback.style.color = '#28a745';
+                        }, 2000);
+                    }
+                    isDragging = false;
+                });
+
+                goodTrashBin.addEventListener('dragover', function (e) {
+                    e.preventDefault();
+                    this.style.borderColor = '#dc3545';
+                    this.style.background = '#ffe6e6';
+                    dragFeedback.textContent = '🗑️ Puść tutaj aby usunąć plik';
+                    dragFeedback.style.color = '#dc3545';
+                });
+
+                goodTrashBin.addEventListener('dragleave', function (e) {
+                    this.style.borderColor = '#6c757d';
+                    this.style.background = 'transparent';
+                    dragFeedback.textContent = '📁 Przeciąganie w toku...';
+                    dragFeedback.style.color = '#007bff';
+                });
+
+                goodTrashBin.addEventListener('drop', function (e) {
+                    e.preventDefault();
+                    this.style.borderColor = '#6c757d';
+                    this.style.background = 'transparent';
+                    isDragging = false;
+                    dragFeedback.textContent = '✅ Plik został usunięty! (możliwość cofnięcia przez 10 sekund)';
+                    dragFeedback.style.color = '#dc3545';
+
+                    setTimeout(() => {
+                        dragFeedback.textContent = 'Przeciągnij plik do kosza (puść poza koszem aby anulować)';
+                        dragFeedback.style.color = '#28a745';
+                    }, 3000);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

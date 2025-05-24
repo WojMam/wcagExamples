@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.5.5 Rozmiar obszaru dotyku (AAA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.5.5 Rozmiar obszaru dotyku</h2>
+                <p class="criterion-level">Poziom AAA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#target-size" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Rozmiar celu dla wejścia wskaźnikowego wynosi co najmniej 44 na 44 piksele CSS, z wyjątkiem gdy:</p>
+                <ul>
+                    <li><strong>Równoważnik</strong> - cel jest dostępny poprzez równoważny link lub kontrolkę na tej
+                        samej stronie, która ma rozmiar co najmniej 44 na 44 piksele CSS</li>
+                    <li><strong>W tekście</strong> - cel jest w zdaniu lub bloku tekstu</li>
+                    <li><strong>Kontrola user agent</strong> - rozmiar celu jest określony przez user agent i nie jest
+                        modyfikowany przez autora</li>
+                    <li><strong>Niezbędna prezentacja</strong> - szczególna prezentacja celu jest niezbędna dla
+                        przekazania informacji</li>
+                </ul>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest zapewnienie, że cele dotyku są wystarczająco duże, aby użytkownicy
+                    mogli je łatwo aktywować bez przypadkowego dotknięcia sąsiednich celów. Pomaga to użytkownikom:</p>
+
+                <ul>
+                    <li><strong>Z ograniczeniami motorycznymi</strong> - którzy mogą mieć trudności z precyzyjnym
+                        dotykaniem</li>
+                    <li><strong>Z drżeniem rąk</strong> - którzy potrzebują większych obszarów dotyku</li>
+                    <li><strong>Używającymi grubych palców</strong> - większe obszary redukują błędy</li>
+                    <li><strong>Starszym</strong> - którzy mogą mieć zmniejszoną precyzję dotyku</li>
+                    <li><strong>Używającymi urządzeń jedną ręką</strong> - trudniejsze precyzyjne pozycjonowanie</li>
+                    <li><strong>W ruchu</strong> - w pojazdach, podczas chodzenia</li>
+                </ul>
+
+                <p>Kryterium zapewnia komfort użytkowania i zmniejsza frustrację związaną z przypadkowymi aktywacjami.
+                </p>
+
+                <h3>Wymagania</h3>
+                <p>Cele dotyku muszą mieć:</p>
+                <ul>
+                    <li><strong>Minimalny rozmiar 44×44 piksele CSS</strong> - dla wszystkich interaktywnych elementów
+                    </li>
+                    <li><strong>Odpowiednie odstępy</strong> - między sąsiednimi celami dotyku</li>
+                    <li><strong>Wyraźne granice</strong> - użytkownicy muszą widzieć obszar dotyku</li>
+                    <li><strong>Spójność</strong> - podobne elementy mają podobne rozmiary</li>
+                </ul>
+
+                <h3>Definicje</h3>
+                <ul>
+                    <li><strong>Cel dotyku</strong> - obszar interfejsu, który reaguje na wejście wskaźnikowe</li>
+                    <li><strong>Piksele CSS</strong> - jednostka miary niezależna od urządzenia</li>
+                    <li><strong>Wejście wskaźnikowe</strong> - dotyk, kliknięcie myszą, rysik</li>
+                    <li><strong>Równoważny cel</strong> - alternatywny sposób wykonania tej samej akcji</li>
+                </ul>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - za małe obszary dotyku</h4>
+                        <p>Cele dotyku poniżej zalecanego minimum 44×44 piksele:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #721c24; margin-top: 0;">❌ Problematyczne rozmiary:</h5>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #721c24;">1. Małe przyciski bez odstępów</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <div style="display: flex; gap: 2px; margin-bottom: 10px;">
+                                                <button
+                                                    style="background: #dc3545; color: white; border: none; width: 20px; height: 20px; font-size: 0.7em; cursor: pointer;">×</button>
+                                                <button
+                                                    style="background: #dc3545; color: white; border: none; width: 20px; height: 20px; font-size: 0.7em; cursor: pointer;">✓</button>
+                                                <button
+                                                    style="background: #dc3545; color: white; border: none; width: 20px; height: 20px; font-size: 0.7em; cursor: pointer;">?</button>
+                                                <button
+                                                    style="background: #dc3545; color: white; border: none; width: 20px; height: 20px; font-size: 0.7em; cursor: pointer;">⚙</button>
+                                            </div>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Rozmiar: 20×20px | Odstępy: 2px<br>
+                                                Za małe dla precyzyjnego dotykania
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #721c24;">2. Zagęszczone linki w menu</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <nav style="background: #dc3545; padding: 5px; border-radius: 3px;">
+                                                <a href="#"
+                                                    style="color: white; text-decoration: none; padding: 2px 4px; font-size: 0.8em; display: inline-block;">Home</a>
+                                                <a href="#"
+                                                    style="color: white; text-decoration: none; padding: 2px 4px; font-size: 0.8em; display: inline-block;">About</a>
+                                                <a href="#"
+                                                    style="color: white; text-decoration: none; padding: 2px 4px; font-size: 0.8em; display: inline-block;">Products</a>
+                                                <a href="#"
+                                                    style="color: white; text-decoration: none; padding: 2px 4px; font-size: 0.8em; display: inline-block;">Contact</a>
+                                            </nav>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 10px 0 0 0;">
+                                                ❌ Wysokość linków: ~18px | Padding: 2px<br>
+                                                Trudne do trafienia na urządzeniach dotykowych
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #721c24;">3. Miniaturowe kontrolki formularza</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <div style="margin-bottom: 10px;">
+                                                <label
+                                                    style="font-size: 0.8em; display: flex; align-items: center; gap: 4px;">
+                                                    <input type="checkbox" style="width: 12px; height: 12px;">
+                                                    Akceptuję regulamin
+                                                </label>
+                                                <label
+                                                    style="font-size: 0.8em; display: flex; align-items: center; gap: 4px;">
+                                                    <input type="radio" name="bad-radio"
+                                                        style="width: 12px; height: 12px;">
+                                                    Opcja A
+                                                </label>
+                                                <label
+                                                    style="font-size: 0.8em; display: flex; align-items: center; gap: 4px;">
+                                                    <input type="radio" name="bad-radio"
+                                                        style="width: 12px; height: 12px;">
+                                                    Opcja B
+                                                </label>
+                                            </div>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Rozmiar checkboxów/radio: 12×12px<br>
+                                                Za małe dla wygodnego zaznaczania
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h6 style="color: #721c24;">4. Bardzo małe ikony działań</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="background: #f8f9fa; padding: 10px; border-radius: 3px; margin-bottom: 10px;">
+                                                <div
+                                                    style="display: flex; justify-content: space-between; align-items: center;">
+                                                    <span style="font-size: 0.9em;">Dokument.pdf</span>
+                                                    <div style="display: flex; gap: 1px;">
+                                                        <button
+                                                            style="background: #dc3545; color: white; border: none; width: 16px; height: 16px; font-size: 0.6em; cursor: pointer;"
+                                                            title="Edytuj">✏</button>
+                                                        <button
+                                                            style="background: #dc3545; color: white; border: none; width: 16px; height: 16px; font-size: 0.6em; cursor: pointer;"
+                                                            title="Kopiuj">📋</button>
+                                                        <button
+                                                            style="background: #dc3545; color: white; border: none; width: 16px; height: 16px; font-size: 0.6em; cursor: pointer;"
+                                                            title="Usuń">🗑</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Rozmiar ikon: 16×16px | Odstępy: 1px<br>
+                                                Ryzyko przypadkowych aktywacji
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #856404; margin-top: 0;">Dlaczego to problematyczne?</h6>
+                                    <ul style="color: #856404; margin-bottom: 0;">
+                                        <li><strong>Trudność trafienia</strong> - małe cele wymagają większej precyzji
+                                        </li>
+                                        <li><strong>Przypadkowe aktywacje</strong> - łatwe pomylenie sąsiednich
+                                            elementów</li>
+                                        <li><strong>Frustracja użytkowników</strong> - wielokrotne próby trafienia</li>
+                                        <li><strong>Wykluczenie grup</strong> - osoby z ograniczeniami motorycznymi</li>
+                                        <li><strong>Zmęczenie</strong> - większy wysiłek przy małych celach</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- ZŁY PRZYKŁAD - za małe obszary dotyku --&gt;
+
+&lt;!-- 1. Małe przyciski bez odpowiednich odstępów --&gt;
+&lt;div class="small-buttons"&gt;
+    &lt;button style="width: 20px; height: 20px;"&gt;×&lt;/button&gt;
+    &lt;button style="width: 20px; height: 20px;"&gt;✓&lt;/button&gt;
+    &lt;button style="width: 20px; height: 20px;"&gt;?&lt;/button&gt;
+&lt;/div&gt;
+&lt;!-- Problem: za małe dla komfortowego dotykania --&gt;
+
+&lt;!-- 2. Zagęszczone menu z małymi linkami --&gt;
+&lt;nav class="compact-nav"&gt;
+    &lt;a href="#" style="padding: 2px 4px; font-size: 12px;"&gt;Home&lt;/a&gt;
+    &lt;a href="#" style="padding: 2px 4px; font-size: 12px;"&gt;About&lt;/a&gt;
+    &lt;a href="#" style="padding: 2px 4px; font-size: 12px;"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
+&lt;!-- Problem: obszary dotyku poniżej 44px --&gt;
+
+&lt;!-- 3. Małe kontrolki formularza --&gt;
+&lt;form&gt;
+    &lt;label&gt;
+        &lt;input type="checkbox" style="width: 12px; height: 12px;"&gt;
+        Zgoda na regulamin
+    &lt;/label&gt;
+&lt;/form&gt;
+&lt;!-- Problem: checkbox za mały do wygodnego zaznaczenia --&gt;
+
+&lt;!-- 4. Miniaturowe ikony bez odpowiedniej przestrzeni --&gt;
+&lt;div class="file-actions"&gt;
+    &lt;button class="icon-btn" style="width: 16px; height: 16px;"&gt;✏&lt;/button&gt;
+    &lt;button class="icon-btn" style="width: 16px; height: 16px;"&gt;📋&lt;/button&gt;
+    &lt;button class="icon-btn" style="width: 16px; height: 16px;"&gt;🗑&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- 5. Słabo dostępny slider --&gt;
+&lt;input type="range" style="height: 8px; width: 200px;"&gt;
+&lt;!-- Problem: trudny do precyzyjnego ustawienia --&gt;
+
+&lt;style&gt;
+/* Błędne style - za małe obszary dotyku */
+.small-buttons button {
+    margin: 1px; /* za małe odstępy */
+}
+
+.compact-nav a {
+    line-height: 16px; /* za niska linia */
+}
+
+.icon-btn {
+    margin: 0; /* brak odstępów między elementami */
+}
+&lt;/style&gt;</code></pre>
+
+                        <p class="explanation">Problem: Cele dotyku są znacznie mniejsze niż zalecane 44×44 piksele,
+                            co sprawia, że są trudne do trafienia, szczególnie dla osób z ograniczeniami motorycznymi
+                            lub na urządzeniach dotykowych. Małe odstępy zwiększają ryzyko przypadkowych aktywacji.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - odpowiednie rozmiary obszarów dotyku</h4>
+                        <p>Cele dotyku spełniające wymóg minimum 44×44 piksele z odpowiednimi odstępami:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #155724; margin-top: 0;">✅ Dostępne rozmiary:</h5>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">1. Odpowiednio duże przyciski z odstępami</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <div style="display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap;">
+                                                <button id="target-btn1"
+                                                    style="background: #28a745; color: white; border: none; min-width: 44px; min-height: 44px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center;">×</button>
+                                                <button id="target-btn2"
+                                                    style="background: #28a745; color: white; border: none; min-width: 44px; min-height: 44px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center;">✓</button>
+                                                <button id="target-btn3"
+                                                    style="background: #28a745; color: white; border: none; min-width: 44px; min-height: 44px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center;">?</button>
+                                                <button id="target-btn4"
+                                                    style="background: #28a745; color: white; border: none; min-width: 44px; min-height: 44px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center;">⚙</button>
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 0;">
+                                                ✅ Rozmiar: 44×44px | Odstępy: 8px<br>
+                                                Łatwe do trafienia na wszystkich urządzeniach
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">2. Przestronne menu nawigacyjne</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <nav style="background: #28a745; padding: 10px; border-radius: 3px;">
+                                                <a href="#"
+                                                    style="color: white; text-decoration: none; padding: 12px 16px; font-size: 1em; display: inline-block; min-height: 44px; box-sizing: border-box; line-height: 20px;">Home</a>
+                                                <a href="#"
+                                                    style="color: white; text-decoration: none; padding: 12px 16px; font-size: 1em; display: inline-block; min-height: 44px; box-sizing: border-box; line-height: 20px;">About</a>
+                                                <a href="#"
+                                                    style="color: white; text-decoration: none; padding: 12px 16px; font-size: 1em; display: inline-block; min-height: 44px; box-sizing: border-box; line-height: 20px;">Products</a>
+                                                <a href="#"
+                                                    style="color: white; text-decoration: none; padding: 12px 16px; font-size: 1em; display: inline-block; min-height: 44px; box-sizing: border-box; line-height: 20px;">Contact</a>
+                                            </nav>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 10px 0 0 0;">
+                                                ✅ Wysokość linków: 44px | Padding: 12px<br>
+                                                Komfortowa nawigacja na dotykowych ekranach
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">3. Duże kontrolki formularza</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <div style="margin-bottom: 15px;">
+                                                <label
+                                                    style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 8px; cursor: pointer;">
+                                                    <input type="checkbox"
+                                                        style="width: 20px; height: 20px; cursor: pointer;">
+                                                    <span>Akceptuję regulamin</span>
+                                                </label>
+                                                <label
+                                                    style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 8px; cursor: pointer;">
+                                                    <input type="radio" name="good-radio"
+                                                        style="width: 20px; height: 20px; cursor: pointer;">
+                                                    <span>Opcja A</span>
+                                                </label>
+                                                <label
+                                                    style="display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 8px; cursor: pointer;">
+                                                    <input type="radio" name="good-radio"
+                                                        style="width: 20px; height: 20px; cursor: pointer;">
+                                                    <span>Opcja B</span>
+                                                </label>
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 0;">
+                                                ✅ Obszar dotyku: min 44×44px | Większe kontrolki<br>
+                                                Całe etykiety są kliklane
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h6 style="color: #155724;">4. Przestronne ikony działań</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="background: #f8f9fa; padding: 15px; border-radius: 3px; margin-bottom: 10px;">
+                                                <div
+                                                    style="display: flex; justify-content: space-between; align-items: center;">
+                                                    <span style="font-size: 1em;">Dokument.pdf</span>
+                                                    <div style="display: flex; gap: 8px;">
+                                                        <button
+                                                            style="background: #28a745; color: white; border: none; min-width: 44px; min-height: 44px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center;"
+                                                            title="Edytuj">✏</button>
+                                                        <button
+                                                            style="background: #28a745; color: white; border: none; min-width: 44px; min-height: 44px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center;"
+                                                            title="Kopiuj">📋</button>
+                                                        <button
+                                                            style="background: #28a745; color: white; border: none; min-width: 44px; min-height: 44px; border-radius: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center;"
+                                                            title="Usuń">🗑</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 0;">
+                                                ✅ Rozmiar ikon: 44×44px | Odstępy: 8px<br>
+                                                Bezpieczne używanie bez pomyłek
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #004085; margin-top: 0;">Zalety odpowiednich rozmiarów:</h6>
+                                    <ul style="color: #004085; margin-bottom: 0;">
+                                        <li><strong>Łatwość użycia</strong> - proste trafienie w cel bez wysiłku</li>
+                                        <li><strong>Mniej błędów</strong> - zmniejszone ryzyko przypadkowych aktywacji
+                                        </li>
+                                        <li><strong>Większa dostępność</strong> - komfort dla osób z ograniczeniami</li>
+                                        <li><strong>Lepsze doświadczenie</strong> - mniej frustracji i zmęczenia</li>
+                                        <li><strong>Uniwersalność</strong> - działa na wszystkich urządzeniach</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - odpowiednie rozmiary obszarów dotyku --&gt;
+
+&lt;!-- 1. Przyciski spełniające minimum 44×44px --&gt;
+&lt;div class="accessible-buttons"&gt;
+    &lt;button class="touch-target"&gt;Zamknij&lt;/button&gt;
+    &lt;button class="touch-target"&gt;Zatwierdź&lt;/button&gt;
+    &lt;button class="touch-target"&gt;Pomoc&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- 2. Dostępne menu nawigacyjne --&gt;
+&lt;nav class="accessible-nav"&gt;
+    &lt;a href="#" class="nav-link"&gt;Home&lt;/a&gt;
+    &lt;a href="#" class="nav-link"&gt;About&lt;/a&gt;
+    &lt;a href="#" class="nav-link"&gt;Products&lt;/a&gt;
+    &lt;a href="#" class="nav-link"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;
+
+&lt;!-- 3. Dostępne kontrolki formularza --&gt;
+&lt;form class="accessible-form"&gt;
+    &lt;label class="checkbox-label"&gt;
+        &lt;input type="checkbox" class="large-checkbox"&gt;
+        Akceptuję warunki i regulamin
+    &lt;/label&gt;
+    
+    &lt;fieldset class="radio-group"&gt;
+        &lt;legend&gt;Wybierz opcję:&lt;/legend&gt;
+        &lt;label class="radio-label"&gt;
+            &lt;input type="radio" name="option" class="large-radio"&gt;
+            Pierwsza opcja
+        &lt;/label&gt;
+        &lt;label class="radio-label"&gt;
+            &lt;input type="radio" name="option" class="large-radio"&gt;
+            Druga opcja
+        &lt;/label&gt;
+    &lt;/fieldset&gt;
+&lt;/form&gt;
+
+&lt;!-- 4. Dostępne ikony działań --&gt;
+&lt;div class="file-item"&gt;
+    &lt;span class="file-name"&gt;dokument.pdf&lt;/span&gt;
+    &lt;div class="file-actions"&gt;
+        &lt;button class="action-btn" aria-label="Edytuj plik"&gt;✏&lt;/button&gt;
+        &lt;button class="action-btn" aria-label="Kopiuj plik"&gt;📋&lt;/button&gt;
+        &lt;button class="action-btn" aria-label="Usuń plik"&gt;🗑&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 5. Dostępny zakres (slider) --&gt;
+&lt;div class="range-container"&gt;
+    &lt;label for="volume"&gt;Głośność:&lt;/label&gt;
+    &lt;input type="range" id="volume" class="accessible-range" min="0" max="100"&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+/* Dostępne style - odpowiednie rozmiary celów dotyku */
+.touch-target {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 12px 16px;
+    margin: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.nav-link {
+    display: inline-block;
+    min-height: 44px;
+    padding: 12px 16px;
+    line-height: 20px;
+    text-decoration: none;
+}
+
+.checkbox-label,
+.radio-label {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 8px;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.large-checkbox,
+.large-radio {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.action-btn {
+    min-width: 44px;
+    min-height: 44px;
+    margin: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.accessible-range {
+    min-height: 44px;
+    cursor: pointer;
+}
+
+/* Zapewnienie odpowiednich odstępów */
+.accessible-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.file-actions {
+    display: flex;
+    gap: 8px;
+}
+
+/* Responsywność zachowuje rozmiary dotyku */
+@media (max-width: 768px) {
+    .touch-target {
+        min-width: 48px; /* jeszcze większe na mobile */
+        min-height: 48px;
+    }
+}
+&lt;/style&gt;</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Wszystkie cele dotyku mają minimum 44×44 piksele z
+                            odpowiednimi odstępami między elementami. Etykiety formularzy są kliklane w całości,
+                            zwiększając obszar dotyku. Implementacja zapewnia komfort użytkowania na wszystkich
+                            urządzeniach.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie zgodności z 2.5.5</h3>
+
+                <h4>Procedura testowa</h4>
+                <ol>
+                    <li><strong>Identyfikacja celów dotyku</strong>
+                        <ul>
+                            <li>Znajdź wszystkie interaktywne elementy (przyciski, linki, kontrolki)</li>
+                            <li>Sprawdź ikony, przyciski nawigacyjne, kontrolki formularzy</li>
+                            <li>Zidentyfikuj elementy z małymi obszarami dotyku</li>
+                        </ul>
+                    </li>
+                    <li><strong>Pomiar rozmiarów</strong>
+                        <ul>
+                            <li>Użyj narzędzi deweloperskich do pomiaru rzeczywistych wymiarów</li>
+                            <li>Sprawdź CSS padding i margin wpływający na obszar dotyku</li>
+                            <li>Przetestuj na różnych rozmiarach ekranów</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test odstępów</strong>
+                        <ul>
+                            <li>Sprawdź odległości między sąsiednimi celami dotyku</li>
+                            <li>Zweryfikuj czy nie ma nakładających się obszarów</li>
+                            <li>Przetestuj na urządzeniach dotykowych</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test funkcjonalności</strong>
+                        <ul>
+                            <li>Sprawdź czy wszystkie cele są łatwo dostępne</li>
+                            <li>Przetestuj z różnymi rozmiarami palców</li>
+                            <li>Zweryfikuj brak przypadkowych aktywacji</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Narzędzia testowe</h4>
+                <ul>
+                    <li><strong>Chrome DevTools</strong> - pomiar elementów w pikselach CSS</li>
+                    <li><strong>Firefox Developer Tools</strong> - inspector z wymiarami</li>
+                    <li><strong>WAVE</strong> - sprawdzanie dostępności elementów</li>
+                    <li><strong>Accessibility Insights</strong> - testy rozmiaru celów</li>
+                    <li><strong>Lighthouse</strong> - audit dostępności</li>
+                    <li><strong>Rzeczywiste urządzenia</strong> - telefony, tablety</li>
+                </ul>
+
+                <h4>Pomiar w narzędziach deweloperskich</h4>
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;"><code>// Sprawdzenie rozmiarów elementów w konsoli
+function checkTargetSizes() {
+    const interactiveElements = document.querySelectorAll(
+        'button, a, input[type="checkbox"], input[type="radio"], ' +
+        'input[type="range"], select, [role="button"], [onclick]'
+    );
+    
+    const minSize = 44; // minimum w pikselach CSS
+    const issues = [];
+    
+    interactiveElements.forEach((element, index) => {
+        const rect = element.getBoundingClientRect();
+        const computedStyle = window.getComputedStyle(element);
+        
+        // Uwzględnij padding w rozmiarze dotyku
+        const totalWidth = rect.width;
+        const totalHeight = rect.height;
+        
+        if (totalWidth < minSize || totalHeight < minSize) {
+            issues.push({
+                element: element,
+                index: index,
+                width: totalWidth,
+                height: totalHeight,
+                tagName: element.tagName,
+                classes: element.className
+            });
+        }
+    });
+    
+    if (issues.length > 0) {
+        console.warn(`Znaleziono ${issues.length} elementów poniżej 44x44px:`);
+        console.table(issues);
+    } else {
+        console.log('✅ Wszystkie cele dotyku spełniają wymóg 44x44px');
+    }
+    
+    return issues;
+}
+
+// Uruchom test
+checkTargetSizes();
+
+// Sprawdź konkretny element
+function checkElementSize(selector) {
+    const element = document.querySelector(selector);
+    if (element) {
+        const rect = element.getBoundingClientRect();
+        console.log(`Element ${selector}:`, {
+            width: rect.width,
+            height: rect.height,
+            meetsRequirement: rect.width >= 44 && rect.height >= 44
+        });
+    }
+}
+
+// Przykład użycia
+checkElementSize('button');
+</code></pre>
+
+                <h4>Checklist zgodności</h4>
+                <div
+                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <h5>✅ Kryteria do spełnienia:</h5>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>☐ Wszystkie cele dotyku mają minimum 44×44 piksele CSS</li>
+                        <li>☐ Odpowiednie odstępy między sąsiednimi celami (min 8px)</li>
+                        <li>☐ Obszary dotyku obejmują padding i margin elementów</li>
+                        <li>☐ Elementy nie nakładają się na siebie</li>
+                        <li>☐ Rozmiary zachowane na różnych urządzeniach</li>
+                        <li>☐ Etykiety formularzy są kliklane (zwiększają obszar dotyku)</li>
+                        <li>☐ Ikony mają wystarczający obszar dotyku wokół siebie</li>
+                        <li>☐ Menu i nawigacja łatwe do użycia na dotykowych ekranach</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="implementation-guidelines">
+                <h3>Wytyczne implementacyjne</h3>
+
+                <h4>Najlepsze praktyki dla rozmiarów celów dotyku:</h4>
+                <ul>
+                    <li><strong>Minimum 44×44 piksele</strong> - nigdy nie schodź poniżej tego rozmiaru</li>
+                    <li><strong>Preferuj 48×48 piksele</strong> - na urządzeniach mobilnych</li>
+                    <li><strong>Uwzględnij padding</strong> - padding liczy się do obszaru dotyku</li>
+                    <li><strong>Zachowaj odstępy</strong> - minimum 8px między celami</li>
+                    <li><strong>Testuj na urządzeniach</strong> - rzeczywiste testy dotykowe</li>
+                    <li><strong>Używaj względnych jednostek</strong> - em, rem, % dla responsywności</li>
+                </ul>
+
+                <h4>Wzorce implementacji:</h4>
+                <div
+                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #004085; margin-top: 0;">Podstawowe rozmiary przycisków</h5>
+                    <pre style="color: #004085; font-size: 0.9em;"><code>.touch-target {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 12px 16px;
+    margin: 4px;
+}</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #155724; margin-top: 0;">Dostępne kontrolki formularza</h5>
+                    <pre style="color: #155724; font-size: 0.9em;"><code>/* Zwiększenie obszaru dotyku przez etykiety */
+.form-control-label {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 8px;
+    cursor: pointer;
+    gap: 12px;
+}
+
+.form-control-label input {
+    width: 20px;
+    height: 20px;
+}</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #856404; margin-top: 0;">Responsywne rozmiary dotyku</h5>
+                    <pre style="color: #856404; font-size: 0.9em;"><code>/* Desktop */
+.touch-target {
+    min-width: 44px;
+    min-height: 44px;
+}
+
+/* Mobile - większe rozmiary */
+@media (max-width: 768px) {
+    .touch-target {
+        min-width: 48px;
+        min-height: 48px;
+        padding: 14px 18px;
+    }
+}</code></pre>
+                </div>
+
+                <h4>Implementacja krok po kroku:</h4>
+                <ol>
+                    <li><strong>Audit obecnych rozmiarów</strong> - znajdź elementy poniżej 44px</li>
+                    <li><strong>Ustaw minimalne rozmiary</strong> - min-width, min-height w CSS</li>
+                    <li><strong>Dodaj odpowiedni padding</strong> - zwiększ obszar dotyku</li>
+                    <li><strong>Sprawdź odstępy</strong> - margin/gap między elementami</li>
+                    <li><strong>Przetestuj na urządzeniach</strong> - rzeczywiste testy dotykowe</li>
+                    <li><strong>Zoptymalizuj dla mobile</strong> - większe rozmiary na małych ekranach</li>
+                    <li><strong>Dokumentuj standardy</strong> - wytyczne dla zespołu</li>
+                </ol>
+
+                <h4>Specjalne przypadki i wyjątki:</h4>
+                <ul>
+                    <li><strong>Linki w tekście</strong> - mogą być mniejsze, jeśli są częścią zdania</li>
+                    <li><strong>Kontrolki systemu</strong> - domyślne style przeglądarki (ale lepiej je dostosować)</li>
+                    <li><strong>Równoważne cele</strong> - jeśli istnieje większa alternatywa na tej samej stronie</li>
+                    <li><strong>Niezbędna prezentacja</strong> - gdy rozmiar ma znaczenie semantyczne (np. mapa)</li>
+                </ul>
+
+                <h4>CSS dla różnych typów elementów:</h4>
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;"><code>/* Przyciski */
+button, .btn {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 12px 16px;
+    touch-action: manipulation; /* zapobiega zoom na double-tap */
+}
+
+/* Linki nawigacyjne */
+nav a {
+    display: inline-block;
+    min-height: 44px;
+    padding: 12px 16px;
+    line-height: 20px;
+}
+
+/* Kontrolki formularza - zwiększenie przez etykiety */
+.checkbox-wrapper,
+.radio-wrapper {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+/* Ikony z odpowiednim obszarem dotyku */
+.icon-button {
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+
+/* Sliders */
+input[type="range"] {
+    min-height: 44px;
+    cursor: pointer;
+}
+
+/* Dropdown */
+select {
+    min-height: 44px;
+    padding: 12px;
+}
+</code></pre>
+
+                <h4>Częste błędy do uniknięcia:</h4>
+                <ul>
+                    <li><strong>Liczenie tylko contentu</strong> - padding i border też liczą się do obszaru dotyku</li>
+                    <li><strong>Za małe odstępy</strong> - sąsiednie elementy za blisko siebie</li>
+                    <li><strong>Ignorowanie mobile</strong> - małe cele na urządzeniach dotykowych</li>
+                    <li><strong>Nakładające się obszary</strong> - konflikty między sąsiednimi celami</li>
+                    <li><strong>Nieresponzywne rozmiary</strong> - stałe piksele zamiast względnych jednostek</li>
+                    <li><strong>Tylko width bez height</strong> - oba wymiary muszą spełniać minimum</li>
+                </ul>
+
+                <h4>Testowanie rozmiarów:</h4>
+                <ul>
+                    <li><strong>Rzeczywiste urządzenia</strong> - telefony, tablety różnych rozmiarów</li>
+                    <li><strong>Różne grupy użytkowników</strong> - osoby z większymi palcami</li>
+                    <li><strong>Symulatory</strong> - narzędzia do testowania touch targets</li>
+                    <li><strong>Automatyczne testy</strong> - skrypty sprawdzające rozmiary</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/target-size.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG 2.1: Rozmiar obszaru dotyku</a></li>
+                    <li><a href="https://developer.apple.com/design/human-interface-guidelines/inputs/touch-and-gestures/"
+                            target="_blank" rel="noopener">Apple HIG: Touch and Gestures</a></li>
+                    <li><a href="https://material.io/design/usability/accessibility.html#layout-and-typography"
+                            target="_blank" rel="noopener">Material Design: Accessibility Layout</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G212" target="_blank"
+                            rel="noopener">Techniki WCAG: Rozmiar obszaru dotyku</a></li>
+                    <li><a href="https://webaim.org/articles/motor/motordisabilities" target="_blank"
+                            rel="noopener">WebAIM:
+                            Motor Disabilities</a></li>
+                    <li><a href="https://inclusive-components.design/" target="_blank" rel="noopener">Inclusive
+                            Components</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.5.4.html">Poprzedni: 2.5.4 Aktywacja ruchem</a></li>
+                    <li><a href="2.5.html">Powrót do sekcji: 2.5 Sposoby wprowadzania danych</a></li>
+                    <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+
+    <script>
+        // Demo funkcjonalność dla przykładów rozmiaru obszaru dotyku
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // === PRZYKŁADY DOBRYCH IMPLEMENTACJI Z INTERAKTYWNOŚCIĄ ===
+
+            // Przyciski dotyku z informacjami o rozmiarze
+            const targetButtons = document.querySelectorAll('[id^="target-btn"]');
+            targetButtons.forEach((button, index) => {
+                button.addEventListener('click', function () {
+                    const rect = this.getBoundingClientRect();
+                    const icons = ['Zamknij', 'Zatwierdź', 'Pomoc', 'Ustawienia'];
+                    alert(`✅ ${icons[index]} - Obszar dotyku!\n\nRozmiar: ${Math.round(rect.width)}×${Math.round(rect.height)}px\nMinimum WCAG: 44×44px\n\nStatus: ${rect.width >= 44 && rect.height >= 44 ? '✅ Spełnia wymogi' : '❌ Za mały'}`);
+                });
+            });
+
+            // Demonstracja pomiaru rozmiarów
+            function showTargetSizeInfo() {
+                const interactiveElements = document.querySelectorAll(
+                    'button, a[href], input[type="checkbox"], input[type="radio"]'
+                );
+
+                let compliantCount = 0;
+                let totalCount = 0;
+
+                interactiveElements.forEach((element) => {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.width > 0 && rect.height > 0) { // tylko widoczne elementy
+                        totalCount++;
+                        if (rect.width >= 44 && rect.height >= 44) {
+                            compliantCount++;
+                        }
+                    }
+                });
+
+                return {
+                    total: totalCount,
+                    compliant: compliantCount,
+                    percentage: Math.round((compliantCount / totalCount) * 100)
+                };
+            }
+
+            // Pokaż statystyki zgodności po 3 sekundach
+            setTimeout(() => {
+                const stats = showTargetSizeInfo();
+
+                const statsNotification = document.createElement('div');
+                statsNotification.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #17a2b8; color: white; padding: 15px; border-radius: 5px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.15); max-width: 300px;';
+                statsNotification.innerHTML = `
+                    <h6 style="margin: 0 0 10px 0;">📏 Analiza obszarów dotyku</h6>
+                    <p style="margin: 0; font-size: 0.9em;">
+                        Zgodne z WCAG 2.5.5: ${stats.compliant}/${stats.total} elementów (${stats.percentage}%)<br>
+                        <small>Minimum: 44×44 piksele CSS</small>
+                    </p>
+                `;
+                document.body.appendChild(statsNotification);
+
+                setTimeout(() => {
+                    if (statsNotification.parentElement) {
+                        statsNotification.remove();
+                    }
+                }, 8000);
+            }, 3000);
+
+            // Narzędzie do sprawdzania rozmiarów - overlay
+            function createTargetSizeChecker() {
+                const checker = document.createElement('div');
+                checker.style.cssText = 'position: fixed; bottom: 20px; left: 20px; background: #fff; border: 2px solid #007bff; padding: 15px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; max-width: 280px; font-family: monospace; font-size: 0.8em;';
+                checker.innerHTML = `
+                    <h6 style="margin: 0 0 10px 0; color: #007bff;">🔍 Target Size Checker</h6>
+                    <p style="margin: 0 0 10px 0;">Najedź na element aby sprawdzić rozmiar:</p>
+                    <div id="size-display" style="background: #f8f9fa; padding: 8px; border-radius: 4px; margin-bottom: 10px; min-height: 20px;">
+                        Wybierz element...
+                    </div>
+                    <button onclick="this.parentElement.remove()" style="background: #6c757d; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; width: 100%;">Zamknij</button>
+                `;
+
+                document.body.appendChild(checker);
+
+                // Obsługa hovera nad elementami
+                let activeOverlay = null;
+
+                function handleMouseOver(event) {
+                    const target = event.target;
+                    if (target.matches('button, a[href], input, select, [role="button"], [onclick]')) {
+                        const rect = target.getBoundingClientRect();
+                        const sizeDisplay = document.getElementById('size-display');
+
+                        if (sizeDisplay) {
+                            const width = Math.round(rect.width);
+                            const height = Math.round(rect.height);
+                            const isCompliant = width >= 44 && height >= 44;
+
+                            sizeDisplay.innerHTML = `
+                                <strong>${target.tagName.toLowerCase()}</strong><br>
+                                Rozmiar: ${width}×${height}px<br>
+                                Status: ${isCompliant ? '✅ OK' : '❌ Za mały'}
+                            `;
+                            sizeDisplay.style.color = isCompliant ? '#155724' : '#721c24';
+                            sizeDisplay.style.backgroundColor = isCompliant ? '#d4edda' : '#f8d7da';
+                        }
+
+                        // Dodaj overlay wizualny
+                        if (activeOverlay) {
+                            activeOverlay.remove();
+                        }
+
+                        activeOverlay = document.createElement('div');
+                        activeOverlay.style.cssText = `
+                            position: fixed;
+                            top: ${rect.top}px;
+                            left: ${rect.left}px;
+                            width: ${rect.width}px;
+                            height: ${rect.height}px;
+                            border: 2px solid ${isCompliant ? '#28a745' : '#dc3545'};
+                            background: ${isCompliant ? 'rgba(40, 167, 69, 0.1)' : 'rgba(220, 53, 69, 0.1)'};
+                            pointer-events: none;
+                            z-index: 999;
+                            box-sizing: border-box;
+                        `;
+                        document.body.appendChild(activeOverlay);
+                    }
+                }
+
+                function handleMouseOut() {
+                    if (activeOverlay) {
+                        activeOverlay.remove();
+                        activeOverlay = null;
+                    }
+                }
+
+                document.addEventListener('mouseover', handleMouseOver);
+                document.addEventListener('mouseout', handleMouseOut);
+
+                // Cleanup po usunięciu checkera
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        mutation.removedNodes.forEach((node) => {
+                            if (node === checker) {
+                                document.removeEventListener('mouseover', handleMouseOver);
+                                document.removeEventListener('mouseout', handleMouseOut);
+                                if (activeOverlay) {
+                                    activeOverlay.remove();
+                                }
+                                observer.disconnect();
+                            }
+                        });
+                    });
+                });
+
+                observer.observe(document.body, { childList: true });
+
+                return checker;
+            }
+
+            // Dodaj checker po 6 sekundach
+            setTimeout(() => {
+                createTargetSizeChecker();
+            }, 6000);
+
+            // Funkcja do testowania rozmiarów w konsoli (dostępna globalnie)
+            window.checkAllTargetSizes = function () {
+                const elements = document.querySelectorAll('button, a[href], input, select, [role="button"], [onclick]');
+                const results = [];
+
+                elements.forEach((element, index) => {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.width > 0 && rect.height > 0) {
+                        results.push({
+                            index: index,
+                            tag: element.tagName.toLowerCase(),
+                            id: element.id || 'brak',
+                            classes: element.className || 'brak',
+                            width: Math.round(rect.width),
+                            height: Math.round(rect.height),
+                            compliant: rect.width >= 44 && rect.height >= 44 ? '✅' : '❌'
+                        });
+                    }
+                });
+
+                console.table(results);
+                console.log(`\nPodsumowanie: ${results.filter(r => r.compliant === '✅').length}/${results.length} elementów spełnia wymóg 44×44px`);
+            };
+
+            // Pokaż instrukcję użycia checkera w konsoli
+            setTimeout(() => {
+                console.log(`
+🔍 Target Size Checker dostępny!
+
+Użyj w konsoli:
+- checkAllTargetSizes() - sprawdź wszystkie elementy
+- document.querySelector('button').getBoundingClientRect() - sprawdź konkretny element
+
+Narzędzie wizualne pojawi się na stronie po 6 sekundach.
+                `);
+            }, 1000);
+        });
+    </script>
+</body>
+
+</html>

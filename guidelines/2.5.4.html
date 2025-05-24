@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.5.4 Aktywacja ruchem (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.5.4 Aktywacja ruchem</h2>
+                <p class="criterion-level">Poziom A</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#motion-actuation" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Funkcjonalność, która może być obsługiwana przez ruch urządzenia lub ruch użytkownika, może być
+                    również
+                    obsługiwana przez komponenty interfejsu użytkownika. Reakcja na ruch może zostać wyłączona, aby
+                    zapobiec
+                    przypadkowym aktywacjom, z wyjątkiem sytuacji gdy ruch jest niezbędny dla funkcji, a wyłączenie
+                    ruchu
+                    unieważniłoby aktywność.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest zapewnienie, że funkcje aktywowane przez ruch urządzenia lub
+                    użytkownika mają alternatywę i mogą być wyłączone. Pomaga to użytkownikom:</p>
+
+                <ul>
+                    <li><strong>Z niepełnosprawnościami motorycznymi</strong> - którzy mogą nie być w stanie wykonać
+                        gestów</li>
+                    <li><strong>Z drżeniem rąk</strong> - którzy mogą przypadkowo aktywować funkcje ruchem</li>
+                    <li><strong>Używającymi wózków inwalidzkich</strong> - gdzie ruch urządzenia może być
+                        nieprzewidywalny</li>
+                    <li><strong>W niestabilnych środowiskach</strong> - w pojazdach, podczas chodzenia</li>
+                    <li><strong>Z zaburzeniami równowagi</strong> - którzy nie mogą kontrolować ruchu ciała</li>
+                    <li><strong>Starszym</strong> - którzy mogą mieć problemy z precyzyjnymi gestami</li>
+                </ul>
+
+                <p>Kryterium chroni przed przypadkowymi aktywacjami i zapewnia alternatywne sposoby interakcji
+                    dla osób, które nie mogą wykonywać gestów ruchowych.</p>
+
+                <h3>Wymagania</h3>
+                <p>Dla funkcji aktywowanych ruchem:</p>
+                <ul>
+                    <li><strong>Alternatywna obsługa</strong> - przez komponenty interfejsu (przyciski, linki)</li>
+                    <li><strong>Możliwość wyłączenia</strong> - reakcji na ruch w ustawieniach</li>
+                    <li><strong>Kontrola użytkownika</strong> - nad tym kiedy ruch jest używany</li>
+                    <li><strong>Wyjątki dla niezbędnego ruchu</strong> - gdy ruch jest kluczowy dla funkcjonalności</li>
+                </ul>
+
+                <h3>Definicje</h3>
+                <ul>
+                    <li><strong>Ruch urządzenia</strong> - przyspieszenie, pochylenie, rotacja urządzenia</li>
+                    <li><strong>Ruch użytkownika</strong> - gesty w powietrzu, ruchy ciała śledzonych przez kamerę</li>
+                    <li><strong>Niezbędny ruch</strong> - ruch wymagany dla podstawowego działania funkcji</li>
+                    <li><strong>Komponenty interfejsu</strong> - przyciski, linki, pola formularzy</li>
+                </ul>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - brak alternatyw dla ruchu</h4>
+                        <p>Funkcje dostępne tylko przez ruch bez alternatywnej obsługi:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #721c24; margin-top: 0;">❌ Problematyczne implementacje:</h5>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #721c24;">1. Wstrząśnięcie urządzenia bez alternatywy</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <div id="shake-demo"
+                                                style="background: #dc3545; color: white; padding: 20px; border-radius: 4px; text-align: center; margin-bottom: 10px;">
+                                                <p style="margin: 0; font-weight: bold;">📱 Wstrząśnij urządzeniem aby
+                                                    odświeżyć</p>
+                                                <p style="margin: 5px 0 0 0; font-size: 0.9em;">Brak przycisku
+                                                    odświeżania</p>
+                                            </div>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Tylko ruch urządzenia - brak alternatywnej obsługi<br>
+                                                Problematyczne dla osób z drżeniem rąk lub w wózkach inwalidzkich
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #721c24;">2. Pochylenie urządzenia bez kontroli</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="background: #dc3545; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px; text-align: center;">
+                                                <p style="margin: 0; font-weight: bold;">🔄 Obróć urządzenie aby
+                                                    przewinąć</p>
+                                                <div
+                                                    style="background: #a71e2a; margin: 10px 0; padding: 10px; border-radius: 3px;">
+                                                    <div id="tilt-content" style="color: white;">Treść przesuwa się przy
+                                                        pochyleniu</div>
+                                                </div>
+                                                <p style="margin: 5px 0 0 0; font-size: 0.8em;">Brak scroll barów lub
+                                                    przycisków</p>
+                                            </div>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Jedyny sposób przewijania - pochylenie urządzenia<br>
+                                                Niestabilne dla osób w ruchu lub z problemami motorycznymi
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #721c24;">3. Gesty w powietrzu bez alternatywy</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="background: #dc3545; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px; text-align: center;">
+                                                <p style="margin: 0; font-weight: bold;">👋 Macha ręką aby przejść dalej
+                                                </p>
+                                                <div
+                                                    style="background: #a71e2a; margin: 10px auto; width: 100px; height: 60px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                                                    <span style="font-size: 2em;">👋</span>
+                                                </div>
+                                                <p style="margin: 5px 0 0 0; font-size: 0.8em;">Jedyny sposób nawigacji
+                                                </p>
+                                            </div>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Tylko gesty powietrzne - brak przycisków nawigacyjnych<br>
+                                                Niedostępne dla osób z ograniczeniami motorycznymi rąk
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h6 style="color: #721c24;">4. Brak możliwości wyłączenia ruchu</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="background: #dc3545; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px; text-align: center;">
+                                                <p style="margin: 0; font-weight: bold;">🎮 Sterowanie ruchem zawsze
+                                                    aktywne</p>
+                                                <div
+                                                    style="background: #a71e2a; margin: 10px 0; padding: 10px; border-radius: 3px;">
+                                                    <div>Gra reaguje na każdy ruch urządzenia</div>
+                                                    <div style="font-size: 0.8em; margin-top: 5px;">Brak opcji
+                                                        wyłączenia w ustawieniach</div>
+                                                </div>
+                                            </div>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Brak kontroli nad aktywacją ruchem<br>
+                                                Przypadkowe aktywacje dla osób z drżeniem lub w ruchu
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #856404; margin-top: 0;">Dlaczego to problematyczne?</h6>
+                                    <ul style="color: #856404; margin-bottom: 0;">
+                                        <li><strong>Wykluczenie użytkowników</strong> - osoby nie mogące wykonać gestów
+                                        </li>
+                                        <li><strong>Przypadkowe aktywacje</strong> - u osób z drżeniem lub w ruchu</li>
+                                        <li><strong>Niestabilność</strong> - w wózkach inwalidzkich, pojazdach</li>
+                                        <li><strong>Brak kontroli</strong> - użytkownicy nie mogą wyłączyć funkcji</li>
+                                        <li><strong>Frustracja</strong> - niemożność użycia podstawowych funkcji</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- ZŁY PRZYKŁAD - tylko aktywacja ruchem --&gt;
+
+&lt;!-- 1. Tylko wstrząśnięcie urządzenia --&gt;
+&lt;div class="refresh-area"&gt;
+    &lt;p&gt;Wstrząśnij urządzeniem aby odświeżyć&lt;/p&gt;
+    &lt;!-- Brak przycisku odświeżania --&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+window.addEventListener('devicemotion', function(e) {
+    if (e.acceleration.x &gt; 15 || e.acceleration.y &gt; 15) {
+        location.reload(); // Tylko ten sposób odświeżania
+    }
+});
+&lt;/script&gt;
+
+&lt;!-- 2. Tylko pochylenie dla przewijania --&gt;
+&lt;div class="tilt-scroll"&gt;
+    &lt;div class="content"&gt;Treść do przewinięcia&lt;/div&gt;
+    &lt;!-- Brak scroll barów lub przycisków --&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+window.addEventListener('deviceorientation', function(e) {
+    const content = document.querySelector('.content');
+    content.scrollTop += e.gamma * 2; // Tylko tilt
+});
+&lt;/script&gt;
+
+&lt;!-- 3. Tylko gesty powietrzne --&gt;
+&lt;div class="gesture-nav"&gt;
+    &lt;p&gt;Machaj ręką aby przejść dalej&lt;/p&gt;
+    &lt;!-- Brak przycisków nawigacji --&gt;
+&lt;/div&gt;
+
+&lt;!-- 4. Brak kontroli wyłączenia --&gt;
+&lt;div class="motion-game"&gt;
+    &lt;!-- Gra zawsze reaguje na ruch --&gt;
+    &lt;!-- Brak opcji wyłączenia ruchu --&gt;
+&lt;/div&gt;
+
+&lt;!-- 5. Tylko potrząsanie dla cofania --&gt;
+&lt;button onclick="alert('Potrząśnij aby cofnąć')"&gt;
+    Wykonaj akcję
+&lt;/button&gt;
+&lt;!-- Brak przycisku "Cofnij" --&gt;</code></pre>
+
+                        <p class="explanation">Problem: Funkcje są dostępne tylko przez ruch urządzenia lub gesty,
+                            bez alternatywnych sposobów obsługi. Brak możliwości wyłączenia aktywacji ruchem powoduje
+                            przypadkowe uruchomienia i wyklucza użytkowników z ograniczeniami motorycznymi.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - alternatywy dla aktywacji ruchem</h4>
+                        <p>Funkcje z ruchem mają alternatywną obsługę i możliwość wyłączenia:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #155724; margin-top: 0;">✅ Dostępne implementacje:</h5>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">1. Wstrząśnięcie z przyciskiem alternatywnym</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="background: #28a745; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px;">
+                                                <p style="margin: 0 0 10px 0; font-weight: bold;">📱 Odświeżanie treści
+                                                </p>
+                                                <p style="margin: 0 0 10px 0; font-size: 0.9em;">Wstrząśnij urządzeniem
+                                                    LUB:</p>
+                                                <button id="refresh-btn"
+                                                    style="background: #1e7e34; border: none; color: white; padding: 8px 16px; border-radius: 3px; cursor: pointer;">
+                                                    🔄 Odśwież
+                                                </button>
+                                                <div style="margin-top: 10px;">
+                                                    <label style="font-size: 0.8em;">
+                                                        <input type="checkbox" id="motion-toggle" checked>
+                                                        Włącz sterowanie ruchem
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 0;">
+                                                ✅ Alternatywny przycisk + możliwość wyłączenia ruchu<br>
+                                                Dostępne dla wszystkich użytkowników
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">2. Pochylenie z tradycyjną nawigacją</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="background: #28a745; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px;">
+                                                <div
+                                                    style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                                                    <p style="margin: 0; font-weight: bold;">🔄 Galeria zdjęć</p>
+                                                    <div>
+                                                        <button
+                                                            style="background: #1e7e34; border: none; color: white; padding: 4px 8px; border-radius: 3px; margin: 0 2px; cursor: pointer;">‹</button>
+                                                        <button
+                                                            style="background: #1e7e34; border: none; color: white; padding: 4px 8px; border-radius: 3px; margin: 0 2px; cursor: pointer;">›</button>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    style="background: #1e7e34; padding: 20px; border-radius: 3px; text-align: center;">
+                                                    <span style="font-size: 3em;">📷</span>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.8em;">Pochyl urządzenie
+                                                        LUB użyj przycisków</p>
+                                                </div>
+                                                <div style="margin-top: 10px; text-align: center;">
+                                                    <label style="font-size: 0.8em;">
+                                                        <input type="checkbox" checked>
+                                                        Nawigacja ruchem
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 0;">
+                                                ✅ Tradycyjne przyciski + opcjonalny ruch<br>
+                                                Każdy użytkownik może wybrać preferowany sposób
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">3. Gesty powietrzne z przyciskami</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="background: #28a745; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px;">
+                                                <p style="margin: 0 0 10px 0; font-weight: bold;">👋 Interaktywna
+                                                    prezentacja</p>
+                                                <div
+                                                    style="display: flex; justify-content: space-between; align-items: center;">
+                                                    <button
+                                                        style="background: #1e7e34; border: none; color: white; padding: 8px 12px; border-radius: 3px; cursor: pointer;">«
+                                                        Poprzedni</button>
+                                                    <div
+                                                        style="background: #1e7e34; padding: 15px; border-radius: 3px; text-align: center; flex: 1; margin: 0 10px;">
+                                                        <span style="font-size: 2em;">📊</span>
+                                                        <p style="margin: 5px 0 0 0; font-size: 0.8em;">Slajd 1/5</p>
+                                                    </div>
+                                                    <button
+                                                        style="background: #1e7e34; border: none; color: white; padding: 8px 12px; border-radius: 3px; cursor: pointer;">Następny
+                                                        »</button>
+                                                </div>
+                                                <div style="margin-top: 10px; text-align: center; font-size: 0.8em;">
+                                                    <p style="margin: 5px 0;">Opcjonalnie: machaj ręką przed kamerą</p>
+                                                    <label>
+                                                        <input type="checkbox">
+                                                        Włącz sterowanie gestami
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 0;">
+                                                ✅ Pełna nawigacja przyciskami + opcjonalne gesty<br>
+                                                Wszyscy mogą korzystać z prezentacji
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h6 style="color: #155724;">4. Kompleksowe ustawienia ruchu</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="background: #28a745; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px;">
+                                                <h6 style="margin: 0 0 15px 0; color: white;">⚙️ Ustawienia dostępności
+                                                </h6>
+                                                <div style="background: #1e7e34; padding: 15px; border-radius: 3px;">
+                                                    <div style="margin-bottom: 15px;">
+                                                        <h6 style="margin: 0 0 10px 0; color: white;">Sterowanie ruchem
+                                                        </h6>
+                                                        <label
+                                                            style="display: block; margin-bottom: 8px; font-size: 0.9em;">
+                                                            <input type="radio" name="motion-pref" value="off" checked>
+                                                            Wyłączone (tylko przyciski)
+                                                        </label>
+                                                        <label
+                                                            style="display: block; margin-bottom: 8px; font-size: 0.9em;">
+                                                            <input type="radio" name="motion-pref" value="reduced">
+                                                            Ograniczone (tylko celowe gesty)
+                                                        </label>
+                                                        <label style="display: block; font-size: 0.9em;">
+                                                            <input type="radio" name="motion-pref" value="full">
+                                                            Pełne (wszystkie gesty aktywne)
+                                                        </label>
+                                                    </div>
+                                                    <div>
+                                                        <h6 style="margin: 0 0 10px 0; color: white;">Czułość ruchu</h6>
+                                                        <input type="range" min="1" max="10" value="5"
+                                                            style="width: 100%;">
+                                                        <p style="margin: 5px 0 0 0; font-size: 0.8em;">Niska ← → Wysoka
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <button
+                                                    style="background: #fff; color: #28a745; border: none; padding: 8px 16px; border-radius: 3px; margin-top: 10px; cursor: pointer;">
+                                                    Zapisz ustawienia
+                                                </button>
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 0;">
+                                                ✅ Pełna kontrola użytkownika nad aktywacją ruchem<br>
+                                                Personalizacja według potrzeb i możliwości
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #004085; margin-top: 0;">Zalety dostępnej implementacji:</h6>
+                                    <ul style="color: #004085; margin-bottom: 0;">
+                                        <li><strong>Uniwersalny dostęp</strong> - każdy może używać wszystkich funkcji
+                                        </li>
+                                        <li><strong>Kontrola użytkownika</strong> - wybór sposobu interakcji</li>
+                                        <li><strong>Zapobieganie przypadkom</strong> - możliwość wyłączenia ruchu</li>
+                                        <li><strong>Elastyczność</strong> - różne preferencje dla różnych sytuacji</li>
+                                        <li><strong>Zgodność z AT</strong> - działanie z technologiami wspomagającymi
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - alternatywy dla aktywacji ruchem --&gt;
+
+&lt;!-- 1. Wstrząśnięcie z przyciskiem alternatywnym --&gt;
+&lt;div class="refresh-section"&gt;
+    &lt;p&gt;Odśwież treść:&lt;/p&gt;
+    &lt;button id="refresh-button"&gt;🔄 Odśwież&lt;/button&gt;
+    &lt;p&gt;&lt;small&gt;Lub wstrząśnij urządzeniem (można wyłączyć w ustawieniach)&lt;/small&gt;&lt;/p&gt;
+    
+    &lt;label&gt;
+        &lt;input type="checkbox" id="enable-shake" checked&gt;
+        Włącz odświeżanie wstrząśnięciem
+    &lt;/label&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+const enableShake = document.getElementById('enable-shake');
+const refreshButton = document.getElementById('refresh-button');
+
+// Alternatywny przycisk (zawsze dostępny)
+refreshButton.addEventListener('click', refreshContent);
+
+// Opcjonalny ruch (można wyłączyć)
+window.addEventListener('devicemotion', function(e) {
+    if (enableShake.checked && 
+        (e.acceleration.x &gt; 15 || e.acceleration.y &gt; 15)) {
+        refreshContent();
+    }
+});
+
+function refreshContent() {
+    // Logika odświeżania
+    console.log('Treść odświeżona');
+}
+&lt;/script&gt;
+
+&lt;!-- 2. Galeria z podwójną nawigacją --&gt;
+&lt;div class="gallery"&gt;
+    &lt;div class="gallery-controls"&gt;
+        &lt;button id="prev-btn" aria-label="Poprzednie zdjęcie"&gt;‹&lt;/button&gt;
+        &lt;span class="image-counter"&gt;1 / 5&lt;/span&gt;
+        &lt;button id="next-btn" aria-label="Następne zdjęcie"&gt;›&lt;/button&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="gallery-image"&gt;
+        &lt;img src="image1.jpg" alt="Opis zdjęcia"&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="gallery-settings"&gt;
+        &lt;label&gt;
+            &lt;input type="checkbox" id="tilt-navigation"&gt;
+            Nawigacja pochyleniem urządzenia
+        &lt;/label&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// Zawsze dostępne przyciski
+document.getElementById('prev-btn').addEventListener('click', showPrevImage);
+document.getElementById('next-btn').addEventListener('click', showNextImage);
+
+// Opcjonalne sterowanie pochyleniem
+window.addEventListener('deviceorientation', function(e) {
+    const tiltEnabled = document.getElementById('tilt-navigation').checked;
+    
+    if (tiltEnabled) {
+        if (e.gamma &gt; 30) showNextImage();
+        if (e.gamma &lt; -30) showPrevImage();
+    }
+});
+
+// Ustawienia dostępności
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.getElementById('tilt-navigation').checked = false;
+}
+&lt;/script&gt;
+
+&lt;!-- 3. Ustawienia ruchu w aplikacji --&gt;
+&lt;div class="motion-settings"&gt;
+    &lt;h3&gt;Ustawienia ruchu i gestów&lt;/h3&gt;
+    
+    &lt;fieldset&gt;
+        &lt;legend&gt;Aktywacja ruchem&lt;/legend&gt;
+        &lt;label&gt;
+            &lt;input type="radio" name="motion" value="disabled" checked&gt;
+            Wyłączona - tylko przyciski
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type="radio" name="motion" value="reduced"&gt;
+            Ograniczona - tylko celowe gesty
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type="radio" name="motion" value="enabled"&gt;
+            Włączona - wszystkie gesty
+        &lt;/label&gt;
+    &lt;/fieldset&gt;
+    
+    &lt;div class="sensitivity-control"&gt;
+        &lt;label for="motion-sensitivity"&gt;Czułość ruchu:&lt;/label&gt;
+        &lt;input type="range" id="motion-sensitivity" min="1" max="10" value="5"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 4. Progressive enhancement dla ruchu --&gt;
+&lt;div class="progressive-motion"&gt;
+    &lt;!-- Podstawowa funkcjonalność bez ruchu --&gt;
+    &lt;button class="action-button"&gt;Wykonaj akcję&lt;/button&gt;
+    &lt;button class="undo-button"&gt;Cofnij&lt;/button&gt;
+    
+    &lt;!-- Dodatkowe funkcje ruchem (enhancement) --&gt;
+    &lt;div class="motion-hint" hidden&gt;
+        &lt;p&gt;Podpowiedź: możesz też potrząsnąć urządzeniem aby cofnąć&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// Sprawdź czy urządzenie obsługuje motion i czy użytkownik nie woli reduce-motion
+if ('DeviceMotionEvent' in window && 
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    
+    // Pokaż podpowiedź o dostępności ruchu
+    document.querySelector('.motion-hint').hidden = false;
+    
+    // Dodaj obsługę ruchu jako enhancement
+    window.addEventListener('devicemotion', handleMotion);
+}
+
+function handleMotion(e) {
+    // Obsługa z warunkami i możliwością wyłączenia
+    if (userSettings.motionEnabled && 
+        e.acceleration.x &gt; threshold) {
+        performUndo();
+    }
+}
+&lt;/script&gt;</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Wszystkie funkcje aktywowane ruchem mają alternatywną
+                            obsługę przez komponenty interfejsu. Użytkownicy mogą wyłączyć reakcję na ruch w
+                            ustawieniach. Implementacja respektuje preferencje dostępności systemu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie zgodności z 2.5.4</h3>
+
+                <h4>Procedura testowa</h4>
+                <ol>
+                    <li><strong>Identyfikacja funkcji ruchowych</strong>
+                        <ul>
+                            <li>Znajdź wszystkie funkcje aktywowane ruchem urządzenia</li>
+                            <li>Sprawdź gesty w powietrzu i ruchy ciała</li>
+                            <li>Przetestuj wstrząśnięcie, pochylenie, obrót</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test alternatywnej obsługi</strong>
+                        <ul>
+                            <li>Sprawdź czy każda funkcja ma alternatywny przycisk/link</li>
+                            <li>Przetestuj dostępność z klawiatury</li>
+                            <li>Zweryfikuj działanie z technologiami wspomagającymi</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test możliwości wyłączenia</strong>
+                        <ul>
+                            <li>Znajdź ustawienia kontroli ruchu</li>
+                            <li>Sprawdź czy funkcje nadal działają po wyłączeniu ruchu</li>
+                            <li>Przetestuj różne poziomy czułości</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test przypadkowych aktywacji</strong>
+                        <ul>
+                            <li>Symuluj niewielkie ruchy i drżenia</li>
+                            <li>Sprawdź czy nie ma fałszywych alarmów</li>
+                            <li>Przetestuj w różnych pozycjach urządzenia</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Narzędzia testowe</h4>
+                <ul>
+                    <li><strong>Chrome DevTools</strong> - symulacja orientacji urządzenia</li>
+                    <li><strong>Firefox Responsive Design</strong> - testowanie gestów</li>
+                    <li><strong>Symulatory urządzeń</strong> - iOS Simulator, Android Emulator</li>
+                    <li><strong>Rzeczywiste urządzenia</strong> - telefony, tablety</li>
+                    <li><strong>Testy z użytkownikami</strong> - osoby z różnymi ograniczeniami</li>
+                </ul>
+
+                <h4>Skrypty testowe w przeglądarce</h4>
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;"><code>// Test dostępności funkcji ruchowych
+function testMotionAccessibility() {
+    // Sprawdź czy są elementy motion-tylko
+    const motionElements = document.querySelectorAll('[data-motion-only]');
+    if (motionElements.length > 0) {
+        console.warn('Znaleziono elementy dostępne tylko przez ruch:', motionElements);
+    }
+    
+    // Sprawdź ustawienia ruchu
+    const motionSettings = document.querySelector('[data-motion-settings]');
+    if (!motionSettings) {
+        console.warn('Brak ustawień kontroli ruchu');
+    }
+    
+    // Sprawdź alternatywne kontrolki
+    const motionFunctions = document.querySelectorAll('[data-motion-function]');
+    motionFunctions.forEach(element => {
+        const alternativeId = element.getAttribute('data-alternative');
+        const alternative = document.getElementById(alternativeId);
+        if (!alternative) {
+            console.warn('Brak alternatywy dla:', element);
+        }
+    });
+}
+
+// Sprawdź preferencje reduce-motion
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    console.log('Użytkownik preferuje ograniczony ruch');
+} else {
+    console.log('Brak preferencji reduce-motion');
+}
+
+// Test EventListenerów motion
+function checkMotionListeners() {
+    // Symuluj event devicemotion
+    const motionEvent = new DeviceMotionEvent('devicemotion', {
+        acceleration: { x: 20, y: 5, z: 0 },
+        accelerationIncludingGravity: { x: 20, y: 5, z: 9.8 },
+        rotationRate: { alpha: 0, beta: 0, gamma: 0 },
+        interval: 16
+    });
+    
+    window.dispatchEvent(motionEvent);
+    console.log('Test motion event wysłany');
+}
+</code></pre>
+
+                <h4>Checklist zgodności</h4>
+                <div
+                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <h5>✅ Kryteria do spełnienia:</h5>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>☐ Wszystkie funkcje ruchowe mają alternatywną obsługę</li>
+                        <li>☐ Użytkownik może wyłączyć aktywację ruchem</li>
+                        <li>☐ Alternatywne kontrolki są równie dostępne</li>
+                        <li>☐ Nie ma przypadkowych aktywacji przy małych ruchach</li>
+                        <li>☐ Ustawienia ruchu są łatwo dostępne</li>
+                        <li>☐ Respektowane są preferencje reduce-motion</li>
+                        <li>☐ Funkcje działają z technologiami wspomagającymi</li>
+                        <li>☐ Dokumentacja opisuje alternatywne sposoby</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="implementation-guidelines">
+                <h3>Wytyczne implementacyjne</h3>
+
+                <h4>Najlepsze praktyki dla aktywacji ruchem:</h4>
+                <ul>
+                    <li><strong>Zawsze zapewniaj alternatywy</strong> - przyciski, linki, kontrolki klawiatury</li>
+                    <li><strong>Domyślnie wyłącz ruch</strong> - aktywuj tylko za zgodą użytkownika</li>
+                    <li><strong>Rispektuj preferencje systemu</strong> - reduce-motion, accessibility settings</li>
+                    <li><strong>Unikaj przypadkowych aktywacji</strong> - wysokie progi, timeouty</li>
+                    <li><strong>Udostępnij ustawienia</strong> - kontrola czułości i włączenia</li>
+                    <li><strong>Testuj z użytkownikami</strong> - osoby z różnymi ograniczeniami</li>
+                </ul>
+
+                <h4>Wzorce implementacji:</h4>
+                <div
+                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #004085; margin-top: 0;">Progressive enhancement dla ruchu</h5>
+                    <pre style="color: #004085; font-size: 0.9em;"><code>// 1. Podstawowa funkcjonalność (zawsze dostępna)
+button.addEventListener('click', performAction);
+
+// 2. Enhancement ruchem (opcjonalny)
+if (motionSupported && userConsent && !reducedMotion) {
+    window.addEventListener('devicemotion', handleMotion);
+}</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #155724; margin-top: 0;">Kontrola użytkownika nad ruchem</h5>
+                    <pre style="color: #155724; font-size: 0.9em;"><code>// Ustawienia dostępności
+const motionSettings = {
+    enabled: false, // Domyślnie wyłączone
+    sensitivity: 5,
+    types: ['shake', 'tilt', 'gesture']
+};
+
+// Sprawdź preferencje systemu
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    motionSettings.enabled = false;
+}</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #856404; margin-top: 0;">Zapobieganie przypadkowym aktywacjom</h5>
+                    <pre style="color: #856404; font-size: 0.9em;"><code>function handleMotionEvent(event) {
+    // Wysokie progi dla ruchu
+    const threshold = 15; // Znaczny ruch
+    const cooldown = 1000; // 1s między aktywacjami
+    
+    if (Date.now() - lastActivation < cooldown) return;
+    if (Math.abs(event.acceleration.x) > threshold) {
+        performAction();
+        lastActivation = Date.now();
+    }
+}</code></pre>
+                </div>
+
+                <h4>Implementacja krok po kroku:</h4>
+                <ol>
+                    <li><strong>Audit funkcji ruchowych</strong> - znajdź wszystkie aktywacje ruchem</li>
+                    <li><strong>Dodaj alternatywne kontrolki</strong> - przyciski dla każdej funkcji</li>
+                    <li><strong>Implementuj ustawienia</strong> - możliwość wyłączenia ruchu</li>
+                    <li><strong>Sprawdź preferencje systemu</strong> - reduce-motion support</li>
+                    <li><strong>Ustaw bezpieczne progi</strong> - unikaj przypadkowych aktywacji</li>
+                    <li><strong>Przetestuj z użytkownikami</strong> - różne grupy, różne urządzenia</li>
+                    <li><strong>Dokumentuj alternatywy</strong> - instrukcje dla wszystkich sposobów</li>
+                </ol>
+
+                <h4>Rodzaje ruchu do uwzględnienia:</h4>
+                <ul>
+                    <li><strong>DeviceMotion</strong> - przyspieszenie, wstrząśnięcie</li>
+                    <li><strong>DeviceOrientation</strong> - pochylenie, obrót</li>
+                    <li><strong>Gesty powietrzne</strong> - śledzenie przez kamerę</li>
+                    <li><strong>Ruchy ciała</strong> - full body tracking</li>
+                    <li><strong>Gesty głosu</strong> - aktywacja dźwiękiem</li>
+                </ul>
+
+                <h4>Wyjątki (niezbędny ruch):</h4>
+                <ul>
+                    <li><strong>Aplikacje fitness</strong> - śledzenie aktywności fizycznej</li>
+                    <li><strong>Gry ruchowe</strong> - gdzie ruch jest podstawą rozgrywki</li>
+                    <li><strong>AR/VR</strong> - naturalne ruchy w wirtualnym środowisku</li>
+                    <li><strong>Instrumenty muzyczne</strong> - sterowanie gestami</li>
+                </ul>
+
+                <h4>Częste błędy do uniknięcia:</h4>
+                <ul>
+                    <li><strong>Tylko ruch jako sposób obsługi</strong> - zawsze dodaj alternatywy</li>
+                    <li><strong>Brak kontroli wyłączenia</strong> - użytkownicy muszą móc wyłączyć</li>
+                    <li><strong>Zbyt niskie progi</strong> - przypadkowe aktywacje</li>
+                    <li><strong>Ignorowanie reduce-motion</strong> - nie rispektowanie preferencji</li>
+                    <li><strong>Brak dostępnych alternatyw</strong> - alternatywy nie działają z AT</li>
+                    <li><strong>Ukryte ustawienia</strong> - kontrola ruchu musi być łatwo dostępna</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/motion-actuation.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG 2.1: Aktywacja ruchem</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/DeviceMotionEvent" target="_blank"
+                            rel="noopener">MDN: DeviceMotionEvent API</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/DeviceOrientationEvent"
+                            target="_blank" rel="noopener">MDN: DeviceOrientationEvent API</a></li>
+                    <li><a href="https://web.dev/prefers-reduced-motion/" target="_blank" rel="noopener">Web.dev:
+                            prefers-reduced-motion</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G213" target="_blank"
+                            rel="noopener">Techniki WCAG: Alternatywy dla aktywacji ruchem</a></li>
+                    <li><a href="https://inclusive-components.design/" target="_blank" rel="noopener">Inclusive
+                            Components</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.5.3.html">Poprzedni: 2.5.3 Etykieta w nazwie</a></li>
+                    <li><a href="2.5.html">Powrót do sekcji: 2.5 Sposoby wprowadzania danych</a></li>
+                    <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+
+    <script>
+        // Demo funkcjonalność dla przykładów aktywacji ruchem
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // === PRZYKŁADY DOBRYCH IMPLEMENTACJI ===
+
+            // Przycisk odświeżania z opcjonalnym ruchem
+            const refreshBtn = document.getElementById('refresh-btn');
+            const motionToggle = document.getElementById('motion-toggle');
+
+            if (refreshBtn) {
+                refreshBtn.addEventListener('click', function () {
+                    const isMotionEnabled = motionToggle ? motionToggle.checked : false;
+                    alert(`✅ Treść odświeżona!\n\nSterowanie ruchem: ${isMotionEnabled ? 'Włączone' : 'Wyłączone'}\nAlternatywny przycisk: Zawsze dostępny`);
+                });
+            }
+
+            // Obsługa checkboxów ustawień ruchu
+            if (motionToggle) {
+                motionToggle.addEventListener('change', function () {
+                    const status = this.checked ? 'włączone' : 'wyłączone';
+
+                    // Symulacja zmiany ustawień
+                    const notification = document.createElement('div');
+                    notification.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #28a745; color: white; padding: 15px; border-radius: 5px; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.15);';
+                    notification.innerHTML = `
+                        <h6 style="margin: 0 0 5px 0;">⚙️ Ustawienia zaktualizowane</h6>
+                        <p style="margin: 0;">Sterowanie ruchem: ${status}</p>
+                    `;
+                    document.body.appendChild(notification);
+
+                    setTimeout(() => notification.remove(), 3000);
+                });
+            }
+
+            // Obsługa radio buttonów preferencji ruchu
+            const motionPrefs = document.querySelectorAll('input[name="motion-pref"]');
+            motionPrefs.forEach(radio => {
+                radio.addEventListener('change', function () {
+                    if (this.checked) {
+                        const labels = {
+                            'off': 'Sterowanie ruchem wyłączone - tylko przyciski',
+                            'reduced': 'Ograniczone sterowanie ruchem - tylko celowe gesty',
+                            'full': 'Pełne sterowanie ruchem - wszystkie gesty aktywne'
+                        };
+
+                        const notification = document.createElement('div');
+                        notification.style.cssText = 'position: fixed; top: 20px; left: 20px; background: #17a2b8; color: white; padding: 15px; border-radius: 5px; z-index: 1000; max-width: 300px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);';
+                        notification.innerHTML = `
+                            <h6 style="margin: 0 0 8px 0;">✨ Preferencje ruchu</h6>
+                            <p style="margin: 0; font-size: 0.9em;">${labels[this.value]}</p>
+                        `;
+                        document.body.appendChild(notification);
+
+                        setTimeout(() => notification.remove(), 4000);
+                    }
+                });
+            });
+
+            // Demo dla ustawień czułości
+            const sensitivityRange = document.querySelector('input[type="range"]');
+            if (sensitivityRange) {
+                sensitivityRange.addEventListener('input', function () {
+                    const value = this.value;
+                    const sensitivity = value <= 3 ? 'Niska' : value <= 7 ? 'Średnia' : 'Wysoka';
+
+                    // Aktualizacja etykiety
+                    const parent = this.parentElement;
+                    let label = parent.querySelector('.sensitivity-label');
+                    if (!label) {
+                        label = document.createElement('span');
+                        label.className = 'sensitivity-label';
+                        label.style.cssText = 'display: block; margin-top: 5px; font-size: 0.8em; color: #666; font-weight: bold;';
+                        parent.appendChild(label);
+                    }
+                    label.textContent = `Aktualna czułość: ${sensitivity} (${value}/10)`;
+                });
+            }
+
+            // Demonstracja bezpiecznych progów dla ruchu
+            let lastMotionDemo = 0;
+            const motionThreshold = 15;
+            const motionCooldown = 2000; // 2 sekundy
+
+            // Symulowany listener devicemotion (dla celów demo)
+            function simulateMotionEvent(strength) {
+                const now = Date.now();
+
+                if (now - lastMotionDemo < motionCooldown) {
+                    alert(`⏱️ Cooldown aktywny!\n\nOstatnia aktywacja: ${Math.round((now - lastMotionDemo) / 1000)}s temu\nPróg czasowy: ${motionCooldown / 1000}s\n\nZapobiega przypadkowym wielokrotnym aktywacjom.`);
+                    return;
+                }
+
+                if (Math.abs(strength) >= motionThreshold) {
+                    lastMotionDemo = now;
+                    alert(`✅ Aktywacja ruchem!\n\nSiła ruchu: ${Math.abs(strength)}\nPróg aktywacji: ${motionThreshold}\n\nBezpieczne progi zapobiegają przypadkowym aktywacjom.`);
+                } else {
+                    alert(`📱 Ruch za słaby\n\nSiła ruchu: ${Math.abs(strength)}\nPróg aktywacji: ${motionThreshold}\n\nPotrzebny większy ruch dla bezpieczeństwa.`);
+                }
+            }
+
+            // Dodaj przyciski demo dla testowania progów
+            const demoSection = document.createElement('div');
+            demoSection.style.cssText = 'position: fixed; bottom: 20px; right: 20px; background: #fff; border: 2px solid #007bff; padding: 15px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; max-width: 250px;';
+            demoSection.innerHTML = `
+                <h6 style="margin: 0 0 10px 0; color: #007bff;">🧪 Test progów ruchu</h6>
+                <p style="margin: 0 0 10px 0; font-size: 0.8em;">Symuluj różne siły ruchu:</p>
+                <div style="display: flex; gap: 5px; margin-bottom: 10px;">
+                    <button onclick="simulateMotionEvent(5)" style="background: #28a745; color: white; border: none; padding: 4px 8px; border-radius: 3px; font-size: 0.7em; cursor: pointer;">Słaby (5)</button>
+                    <button onclick="simulateMotionEvent(20)" style="background: #ffc107; color: black; border: none; padding: 4px 8px; border-radius: 3px; font-size: 0.7em; cursor: pointer;">Silny (20)</button>
+                </div>
+                <button onclick="this.parentElement.remove()" style="background: #6c757d; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer; font-size: 0.8em; width: 100%;">Zamknij</button>
+            `;
+
+            // Dodaj globalne funkcje do window dla onclick
+            window.simulateMotionEvent = simulateMotionEvent;
+
+            // Dodaj demo po 3 sekundach
+            setTimeout(() => {
+                document.body.appendChild(demoSection);
+
+                // Auto-usunięcie po 15 sekundach
+                setTimeout(() => {
+                    if (demoSection.parentElement) {
+                        demoSection.remove();
+                    }
+                }, 15000);
+            }, 3000);
+
+            // Sprawdź i pokaż preferencje reduce-motion
+            const reducedMotionDemo = document.createElement('div');
+            reducedMotionDemo.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #17a2b8; color: white; padding: 12px 20px; border-radius: 5px; z-index: 1000; font-size: 0.9em; text-align: center;';
+
+            if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                reducedMotionDemo.innerHTML = '🔄 Wykryto preferencję reduce-motion - funkcje ruchu domyślnie wyłączone';
+            } else {
+                reducedMotionDemo.innerHTML = '⚡ Brak preferencji reduce-motion - funkcje ruchu mogą być dostępne';
+            }
+
+            document.body.appendChild(reducedMotionDemo);
+
+            setTimeout(() => {
+                if (reducedMotionDemo.parentElement) {
+                    reducedMotionDemo.remove();
+                }
+            }, 5000);
+        });
+    </script>
+</body>
+
+</html>

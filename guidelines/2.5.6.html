@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.5.6 Mechanizmy wprowadzania współbieżnego (AAA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.5.6 Mechanizmy wprowadzania współbieżnego</h2>
+                <p class="criterion-level">Poziom AAA</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#concurrent-input-mechanisms" target="_blank"
+                            rel="noopener">Oficjalna dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Treść nie ogranicza korzystania z mechanizmów wprowadzania dostępnych na platformie, z wyjątkiem
+                    sytuacji gdy ograniczenie jest niezbędne dla zapewnienia bezpieczeństwa treści lub gdy jest wymagane
+                    przez user agent.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest zapewnienie, że użytkownicy mogą swobodnie korzystać z dowolnych
+                    mechanizmów wprowadzania dostępnych na ich urządzeniu i przełączać się między nimi według potrzeb.
+                    Pomaga to użytkownikom:</p>
+
+                <ul>
+                    <li><strong>Z różnymi ograniczeniami</strong> - którzy używają technologii wspomagających</li>
+                    <li><strong>W różnych kontekstach</strong> - w ruchu, w różnych pozycjach</li>
+                    <li><strong>Z preferencjami użytkowania</strong> - którzy preferują określone metody wprowadzania
+                    </li>
+                    <li><strong>Używającymi hybrydowych urządzeń</strong> - laptop z ekranem dotykowym</li>
+                    <li><strong>Z czasowymi ograniczeniami</strong> - złamana ręka, zmęczenie</li>
+                    <li><strong>W środowiskach specjalnych</strong> - hałaśliwe, publiczne miejsca</li>
+                </ul>
+
+                <p>Kryterium zapewnia elastyczność interakcji i dostosowanie do różnych potrzeb i sytuacji.</p>
+
+                <h3>Wymagania</h3>
+                <p>Treść musi:</p>
+                <ul>
+                    <li><strong>Obsługiwać wszystkie dostępne mechanizmy</strong> - klawiatura, mysz, dotyk, głos</li>
+                    <li><strong>Pozwalać na przełączanie</strong> - między metodami wprowadzania w trakcie użytkowania
+                    </li>
+                    <li><strong>Nie wykrywać ani ograniczać</strong> - dostępnych mechanizmów wprowadzania</li>
+                    <li><strong>Zapewniać równoważną funkcjonalność</strong> - dla wszystkich mechanizmów</li>
+                </ul>
+
+                <h3>Definicje</h3>
+                <ul>
+                    <li><strong>Mechanizm wprowadzania</strong> - sposób interakcji z treścią (klawiatura, dotyk, głos,
+                        ruch)</li>
+                    <li><strong>Wprowadzanie współbieżne</strong> - możliwość używania wielu mechanizmów jednocześnie
+                    </li>
+                    <li><strong>Ograniczenie platformy</strong> - limitacje narzucone przez system operacyjny</li>
+                    <li><strong>Niezbędne ograniczenie</strong> - konieczne dla bezpieczeństwa lub funkcjonalności</li>
+                </ul>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - ograniczanie mechanizmów wprowadzania</h4>
+                        <p>Treść, która blokuje lub ogranicza dostępne mechanizmy wprowadzania:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #721c24; margin-top: 0;">❌ Problematyczne ograniczenia:</h5>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #721c24;">1. Wymuszanie tylko dotyku</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="background: #dc3545; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px;">
+                                                <p style="margin: 0 0 10px 0; font-weight: bold;">📱 Aplikacja tylko
+                                                    dotykowa</p>
+                                                <div
+                                                    style="background: #a71e2a; padding: 15px; border-radius: 3px; text-align: center; position: relative;">
+                                                    <span style="font-size: 2em;">📱</span>
+                                                    <p style="margin: 5px 0; font-size: 0.9em;">Dotknij aby kontynuować
+                                                    </p>
+                                                    <div
+                                                        style="position: absolute; top: 5px; right: 5px; background: #721c24; padding: 2px 6px; border-radius: 2px; font-size: 0.7em;">
+                                                        Tylko dotyk</div>
+                                                </div>
+                                                <p style="margin: 10px 0 0 0; font-size: 0.8em;">Klawiatura i mysz
+                                                    wyłączone programowo</p>
+                                            </div>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Blokowanie dostępu z klawiatury i myszy<br>
+                                                Wyklucza użytkowników bez ekranów dotykowych
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #721c24;">2. Detekcja i ograniczanie urządzeń</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="background: #dc3545; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px;">
+                                                <p style="margin: 0 0 10px 0; font-weight: bold;">🖥️ Detekcja
+                                                    urządzenia</p>
+                                                <div
+                                                    style="background: #a71e2a; padding: 10px; border-radius: 3px; margin-bottom: 10px;">
+                                                    <p style="margin: 0; font-size: 0.9em;">Wykryto urządzenie mobilne
+                                                    </p>
+                                                    <p style="margin: 5px 0 0 0; font-size: 0.8em;">Przełączanie na
+                                                        interfejs dotykowy...</p>
+                                                </div>
+                                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                                                    <div
+                                                        style="background: #721c24; padding: 8px; border-radius: 3px; font-size: 0.8em; text-align: center;">
+                                                        <div>🖱️</div>
+                                                        <div>Mysz - WYŁĄCZONA</div>
+                                                    </div>
+                                                    <div
+                                                        style="background: #721c24; padding: 8px; border-radius: 3px; font-size: 0.8em; text-align: center;">
+                                                        <div>⌨️</div>
+                                                        <div>Klawiatura - WYŁĄCZONA</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Automatyczne wyłączanie mechanizmów wprowadzania<br>
+                                                Założenia o preferencjach użytkownika
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #721c24;">3. Różne funkcje dla różnych mechanizmów</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="background: #dc3545; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px;">
+                                                <p style="margin: 0 0 10px 0; font-weight: bold;">🎮 Galeria zdjęć</p>
+                                                <div
+                                                    style="background: #a71e2a; padding: 15px; border-radius: 3px; margin-bottom: 10px; position: relative;">
+                                                    <div style="text-align: center; margin-bottom: 10px;">
+                                                        <span style="font-size: 3em;">📷</span>
+                                                        <p style="margin: 5px 0; font-size: 0.9em;">Zdjęcie 1/10</p>
+                                                    </div>
+                                                    <div
+                                                        style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                                        <button
+                                                            style="background: #721c24; color: white; border: none; padding: 8px 12px; border-radius: 3px; font-size: 0.8em;">‹
+                                                            Poprzedni</button>
+                                                        <button
+                                                            style="background: #721c24; color: white; border: none; padding: 8px 12px; border-radius: 3px; font-size: 0.8em;">Następny
+                                                            ›</button>
+                                                    </div>
+                                                    <div style="font-size: 0.7em; text-align: center;">
+                                                        Dotyk: Przewijanie + Zoom<br>
+                                                        Klawiatura: Tylko przewijanie<br>
+                                                        Mysz: Tylko podstawowa nawigacja
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Różne możliwości dla różnych mechanizmów<br>
+                                                Nierówny dostęp do funkcjonalności
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h6 style="color: #721c24;">4. Blokowanie przełączania</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="background: #dc3545; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px;">
+                                                <p style="margin: 0 0 10px 0; font-weight: bold;">🔒 Tryb zablokowany
+                                                </p>
+                                                <div
+                                                    style="background: #a71e2a; padding: 15px; border-radius: 3px; text-align: center;">
+                                                    <div style="font-size: 2em; margin-bottom: 10px;">🔒</div>
+                                                    <p style="margin: 0; font-size: 0.9em; font-weight: bold;">Aktywny
+                                                        tryb głosowy</p>
+                                                    <p style="margin: 5px 0; font-size: 0.8em;">Inne mechanizmy
+                                                        wprowadzania zablokowane</p>
+                                                    <div
+                                                        style="margin: 10px 0; padding: 8px; background: #721c24; border-radius: 3px; font-size: 0.7em;">
+                                                        Powiedz "zamknij tryb głosowy" aby odblokować
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Wymuszanie tylko jednego mechanizmu na raz<br>
+                                                Brak możliwości przełączania się
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #856404; margin-top: 0;">Dlaczego to problematyczne?</h6>
+                                    <ul style="color: #856404; margin-bottom: 0;">
+                                        <li><strong>Wykluczenie użytkowników</strong> - niektórzy nie mogą używać
+                                            ograniczonych mechanizmów</li>
+                                        <li><strong>Brak elastyczności</strong> - nie można dostosować do sytuacji</li>
+                                        <li><strong>Założenia o preferencjach</strong> - błędne domniemania o
+                                            urządzeniach</li>
+                                        <li><strong>Ograniczona dostępność</strong> - technologie wspomagające mogą nie
+                                            działać</li>
+                                        <li><strong>Słabe doświadczenie</strong> - frustracja przy zmianie kontekstu
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- ZŁY PRZYKŁAD - ograniczanie mechanizmów wprowadzania --&gt;
+
+&lt;!-- 1. Wymuszanie tylko dotyku --&gt;
+&lt;div class="touch-only-app"&gt;
+    &lt;div class="touch-instruction"&gt;Dotknij aby kontynuować&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// BŁĄD: Wyłączanie innych mechanizmów wprowadzania
+document.addEventListener('keydown', function(e) {
+    e.preventDefault(); // Blokowanie klawiatury
+    showTouchOnlyMessage();
+});
+
+document.addEventListener('mousedown', function(e) {
+    e.preventDefault(); // Blokowanie myszy
+    showTouchOnlyMessage();
+});
+
+function showTouchOnlyMessage() {
+    alert('Ta aplikacja działa tylko z ekranem dotykowym');
+}
+&lt;/script&gt;
+
+&lt;!-- 2. Detekcja urządzenia i ograniczanie --&gt;
+&lt;script&gt;
+// BŁĄD: Założenia oparte na typie urządzenia
+if (isMobile()) {
+    // Wyłącz obsługę klawiatury i myszy
+    disableKeyboardInput();
+    disableMouseInput();
+    enableTouchOnly();
+} else {
+    // Wyłącz obsługę dotyku
+    disableTouchInput();
+}
+
+function isMobile() {
+    return /Android|iPhone|iPad|iPod|BlackBerry|IEMobile/.test(navigator.userAgent);
+}
+&lt;/script&gt;
+
+&lt;!-- 3. Różne funkcje dla różnych mechanizmów --&gt;
+&lt;div class="gallery"&gt;
+    &lt;div class="image-container"&gt;
+        &lt;img src="photo.jpg" alt="Zdjęcie"&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// BŁĄD: Różne możliwości dla różnych mechanizmów
+const gallery = document.querySelector('.gallery');
+
+// Tylko dotyk ma pełne możliwości
+gallery.addEventListener('touchstart', function() {
+    enableZoom();
+    enableSwipeNavigation();
+    enablePinchToZoom();
+});
+
+// Klawiatura ma ograniczone możliwości
+gallery.addEventListener('keydown', function() {
+    enableBasicNavigation(); // tylko strzałki
+    // Brak zoom i innych funkcji
+});
+
+// Mysz ma inne ograniczenia
+gallery.addEventListener('mousedown', function() {
+    enableClickNavigation();
+    // Brak gestów i zoom
+});
+&lt;/script&gt;
+
+&lt;!-- 4. Blokowanie przełączania między mechanizmami --&gt;
+&lt;div class="voice-mode"&gt;
+    &lt;button onclick="enableVoiceMode()"&gt;Włącz tryb głosowy&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function enableVoiceMode() {
+    // BŁĄD: Blokowanie wszystkich innych mechanizmów
+    document.removeEventListener('keydown', handleKeyboard);
+    document.removeEventListener('click', handleMouse);
+    document.removeEventListener('touchstart', handleTouch);
+    
+    // Tylko głos aktywny
+    voiceMode = true;
+    showVoiceOnlyInterface();
+}
+
+// Brak możliwości łatwego przełączenia z powrotem
+&lt;/script&gt;
+
+&lt;!-- 5. Ignorowanie mechanizmów wspomagających --&gt;
+&lt;style&gt;
+/* BŁĄD: Ukrywanie elementów dostępnych z klawiatury */
+.keyboard-navigation {
+    display: none !important;
+}
+
+.screen-reader-only {
+    display: none !important;
+}
+&lt;/style&gt;</code></pre>
+
+                        <p class="explanation">Problem: Treść ogranicza lub blokuje dostępne mechanizmy wprowadzania,
+                            wykluczając użytkowników, którzy mogą potrzebować alternatywnych sposobów interakcji.
+                            Brak możliwości przełączania między mechanizmami ogranicza elastyczność użytkowania.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - obsługa wszystkich mechanizmów wprowadzania</h4>
+                        <p>Treść, która obsługuje wszystkie dostępne mechanizmy i pozwala na swobodne przełączanie:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #155724; margin-top: 0;">✅ Uniwersalna obsługa mechanizmów:</h5>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">1. Równoczesna obsługa wszystkich mechanizmów</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="background: #28a745; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px;">
+                                                <p style="margin: 0 0 10px 0; font-weight: bold;">📱💻 Uniwersalna
+                                                    aplikacja</p>
+                                                <div
+                                                    style="background: #1e7e34; padding: 15px; border-radius: 3px; text-align: center; margin-bottom: 10px;">
+                                                    <span style="font-size: 2em;">🎯</span>
+                                                    <p style="margin: 5px 0; font-size: 0.9em;">Wszystkie mechanizmy
+                                                        aktywne</p>
+                                                </div>
+                                                <div
+                                                    style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; font-size: 0.8em;">
+                                                    <div
+                                                        style="background: #155724; padding: 6px; border-radius: 3px; text-align: center;">
+                                                        <div>⌨️</div>
+                                                        <div>Klawiatura</div>
+                                                    </div>
+                                                    <div
+                                                        style="background: #155724; padding: 6px; border-radius: 3px; text-align: center;">
+                                                        <div>🖱️</div>
+                                                        <div>Mysz</div>
+                                                    </div>
+                                                    <div
+                                                        style="background: #155724; padding: 6px; border-radius: 3px; text-align: center;">
+                                                        <div>📱</div>
+                                                        <div>Dotyk</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 0;">
+                                                ✅ Wszystkie mechanizmy dostępne jednocześnie<br>
+                                                Użytkownik wybiera preferowaną metodę
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">2. Adaptacyjny interfejs bez ograniczeń</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="background: #28a745; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px;">
+                                                <p style="margin: 0 0 10px 0; font-weight: bold;">🔄 Inteligentna
+                                                    adaptacja</p>
+                                                <div
+                                                    style="background: #1e7e34; padding: 10px; border-radius: 3px; margin-bottom: 10px; text-align: center;">
+                                                    <p style="margin: 0; font-size: 0.9em;">Wykryto dostępne mechanizmy:
+                                                    </p>
+                                                    <div id="detected-inputs"
+                                                        style="margin: 8px 0; font-size: 0.8em; color: #ffffff;">
+                                                        Ładowanie...
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    style="font-size: 0.8em; text-align: center; padding: 8px; background: #155724; border-radius: 3px;">
+                                                    Wszystkie mechanizmy pozostają dostępne
+                                                </div>
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 0;">
+                                                ✅ Adaptacja UI bez blokowania mechanizmów<br>
+                                                Zachowanie wszystkich możliwości interakcji
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">3. Równoważne funkcje dla wszystkich mechanizmów
+                                        </h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="background: #28a745; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px;">
+                                                <p style="margin: 0 0 10px 0; font-weight: bold;">🎮 Galeria
+                                                    multimodalna</p>
+                                                <div
+                                                    style="background: #1e7e34; padding: 15px; border-radius: 3px; margin-bottom: 10px; position: relative;">
+                                                    <div style="text-align: center; margin-bottom: 10px;">
+                                                        <span style="font-size: 2.5em;">📸</span>
+                                                        <p style="margin: 5px 0; font-size: 0.9em;">Zdjęcie 3/10</p>
+                                                    </div>
+                                                    <div
+                                                        style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                                        <button
+                                                            style="background: #155724; color: white; border: none; padding: 6px 10px; border-radius: 3px; font-size: 0.8em;">‹
+                                                            Poprzedni</button>
+                                                        <button
+                                                            style="background: #155724; color: white; border: none; padding: 6px 10px; border-radius: 3px; font-size: 0.8em;">Powiększ</button>
+                                                        <button
+                                                            style="background: #155724; color: white; border: none; padding: 6px 10px; border-radius: 3px; font-size: 0.8em;">Następny
+                                                            ›</button>
+                                                    </div>
+                                                    <div id="input-methods"
+                                                        style="font-size: 0.7em; text-align: center; color: #ffffff;">
+                                                        Wszystkie mechanizmy: Pełna funkcjonalność
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 0;">
+                                                ✅ Identyczne możliwości dla wszystkich mechanizmów<br>
+                                                Równy dostęp do wszystkich funkcji
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h6 style="color: #155724;">4. Swobodne przełączanie mechanizmów</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <div
+                                                style="background: #28a745; color: white; padding: 15px; border-radius: 4px; margin-bottom: 10px;">
+                                                <p style="margin: 0 0 10px 0; font-weight: bold;">🔄 Tryby współbieżne
+                                                </p>
+                                                <div
+                                                    style="background: #1e7e34; padding: 10px; border-radius: 3px; margin-bottom: 10px;">
+                                                    <div
+                                                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                                                        <span style="font-size: 0.9em;">Aktywne mechanizmy:</span>
+                                                        <span id="active-count"
+                                                            style="background: #155724; padding: 2px 6px; border-radius: 2px; font-size: 0.8em;">3/3</span>
+                                                    </div>
+                                                    <div style="display: flex; gap: 5px; justify-content: center;">
+                                                        <button id="toggle-kbd"
+                                                            style="background: #155724; color: white; border: 1px solid #28a745; padding: 4px 8px; border-radius: 2px; font-size: 0.7em;">⌨️
+                                                            Klawiatura</button>
+                                                        <button id="toggle-mouse"
+                                                            style="background: #155724; color: white; border: 1px solid #28a745; padding: 4px 8px; border-radius: 2px; font-size: 0.7em;">🖱️
+                                                            Mysz</button>
+                                                        <button id="toggle-touch"
+                                                            style="background: #155724; color: white; border: 1px solid #28a745; padding: 4px 8px; border-radius: 2px; font-size: 0.7em;">📱
+                                                            Dotyk</button>
+                                                    </div>
+                                                </div>
+                                                <div style="font-size: 0.8em; text-align: center; color: #ffffff;">
+                                                    Przełączaj dowolnie - wszystkie pozostają dostępne
+                                                </div>
+                                            </div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 0;">
+                                                ✅ Możliwość włączania/wyłączania bez blokowania<br>
+                                                Użytkownik kontroluje preferencje
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #004085; margin-top: 0;">Zalety uniwersalnej obsługi:</h6>
+                                    <ul style="color: #004085; margin-bottom: 0;">
+                                        <li><strong>Maksymalna dostępność</strong> - każdy może używać preferowanej
+                                            metody</li>
+                                        <li><strong>Elastyczność kontekstowa</strong> - przełączanie w zależności od
+                                            sytuacji</li>
+                                        <li><strong>Wsparcie AT</strong> - technologie wspomagające mogą działać</li>
+                                        <li><strong>Lepsze doświadczenie</strong> - komfort użytkowania dla wszystkich
+                                        </li>
+                                        <li><strong>Przyszłościowość</strong> - gotowość na nowe mechanizmy</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - obsługa wszystkich mechanizmów wprowadzania --&gt;
+
+&lt;!-- 1. Uniwersalna obsługa bez ograniczeń --&gt;
+&lt;div class="universal-app"&gt;
+    &lt;div class="content" 
+         tabindex="0" 
+         role="button"
+         aria-label="Interaktywna treść - dostępna ze wszystkich mechanizmów"&gt;
+        Uniwersalna treść
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// DOBRE: Obsługa wszystkich mechanizmów równocześnie
+const content = document.querySelector('.content');
+
+// Klawiatura
+content.addEventListener('keydown', handleKeyboardInput);
+
+// Mysz
+content.addEventListener('click', handleMouseInput);
+content.addEventListener('mouseenter', handleMouseHover);
+
+// Dotyk
+content.addEventListener('touchstart', handleTouchInput);
+content.addEventListener('touchmove', handleTouchMove);
+
+// Wszystkie mają dostęp do tych samych funkcji
+function handleKeyboardInput(e) {
+    performAction(e, 'keyboard');
+}
+
+function handleMouseInput(e) {
+    performAction(e, 'mouse');
+}
+
+function handleTouchInput(e) {
+    performAction(e, 'touch');
+}
+
+// Jednolita logika dla wszystkich mechanizmów
+function performAction(event, inputType) {
+    // Ta sama funkcjonalność niezależnie od mechanizmu
+    console.log(`Akcja wykonana przez: ${inputType}`);
+    executeCommonFunction();
+}
+&lt;/script&gt;
+
+&lt;!-- 2. Adaptacyjny interfejs zachowujący dostępność --&gt;
+&lt;div class="adaptive-interface"&gt;
+    &lt;div class="controls"&gt;
+        &lt;button class="control-btn" data-action="previous"&gt;‹ Poprzedni&lt;/button&gt;
+        &lt;button class="control-btn" data-action="zoom"&gt;🔍 Powiększ&lt;/button&gt;
+        &lt;button class="control-btn" data-action="next"&gt;Następny ›&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// DOBRE: Adaptacja bez ograniczania mechanizmów
+function setupAdaptiveInterface() {
+    const controls = document.querySelectorAll('.control-btn');
+    
+    // Konfiguruj dla wszystkich mechanizmów jednocześnie
+    controls.forEach(btn => {
+        // Klawiatura - zawsze dostępna
+        btn.setAttribute('tabindex', '0');
+        btn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                handleAction(btn.dataset.action);
+            }
+        });
+        
+        // Mysz - zawsze dostępna
+        btn.addEventListener('click', () => {
+            handleAction(btn.dataset.action);
+        });
+        
+        // Dotyk - zawsze dostępny
+        btn.addEventListener('touchend', (e) => {
+            e.preventDefault();
+            handleAction(btn.dataset.action);
+        });
+    });
+}
+
+// Adaptacja UI bez blokowania mechanizmów
+function adaptInterface() {
+    const hasTouch = 'ontouchstart' in window;
+    const hasKeyboard = true; // Zawsze dostępna
+    const hasMouse = window.matchMedia('(pointer: fine)').matches;
+    
+    // Dostosuj UI ale zachowaj wszystkie mechanizmy
+    if (hasTouch) {
+        document.body.classList.add('touch-capable');
+    }
+    if (hasMouse) {
+        document.body.classList.add('mouse-capable');
+    }
+    
+    // Wszystkie mechanizmy pozostają aktywne
+    console.log('Interface adapted while preserving all input methods');
+}
+&lt;/script&gt;
+
+&lt;!-- 3. Równoważne funkcje dla wszystkich mechanizmów --&gt;
+&lt;div class="media-gallery"&gt;
+    &lt;div class="media-viewer" role="img" aria-label="Galeria zdjęć"&gt;
+        &lt;img src="image.jpg" alt="Opis zdjęcia"&gt;
+    &lt;/div&gt;
+    &lt;div class="media-controls"&gt;
+        &lt;button data-action="prev" aria-label="Poprzednie zdjęcie"&gt;‹&lt;/button&gt;
+        &lt;button data-action="zoom" aria-label="Powiększ/Pomniejsz"&gt;🔍&lt;/button&gt;
+        &lt;button data-action="next" aria-label="Następne zdjęcie"&gt;›&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// DOBRE: Równoważne funkcje dla wszystkich mechanizmów
+class MediaGallery {
+    constructor() {
+        this.setupUniversalControls();
+    }
+    
+    setupUniversalControls() {
+        const viewer = document.querySelector('.media-viewer');
+        
+        // Wszystkie mechanizmy mają dostęp do wszystkich funkcji:
+        
+        // 1. Nawigacja
+        this.setupNavigation(viewer);
+        
+        // 2. Zoom
+        this.setupZoom(viewer);
+        
+        // 3. Gesty i skróty
+        this.setupGestures(viewer);
+    }
+    
+    setupNavigation(viewer) {
+        // Klawiatura: strzałki
+        viewer.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') this.navigate('prev');
+            if (e.key === 'ArrowRight') this.navigate('next');
+        });
+        
+        // Mysz: kliknięcie na boki
+        viewer.addEventListener('click', (e) => {
+            const rect = viewer.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            if (x < rect.width / 3) this.navigate('prev');
+            if (x > rect.width * 2/3) this.navigate('next');
+        });
+        
+        // Dotyk: swipe
+        this.setupSwipe(viewer);
+    }
+    
+    setupZoom(viewer) {
+        // Klawiatura: +/-
+        viewer.addEventListener('keydown', (e) => {
+            if (e.key === '+' || e.key === '=') this.zoom('in');
+            if (e.key === '-') this.zoom('out');
+        });
+        
+        // Mysz: scroll wheel
+        viewer.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            this.zoom(e.deltaY > 0 ? 'out' : 'in');
+        });
+        
+        // Dotyk: pinch
+        this.setupPinchZoom(viewer);
+    }
+}
+
+// Inicjalizacja z pełną obsługą
+new MediaGallery();
+&lt;/script&gt;
+
+&lt;!-- 4. Preferencje użytkownika bez blokowania --&gt;
+&lt;div class="accessibility-settings"&gt;
+    &lt;h3&gt;Preferencje wprowadzania&lt;/h3&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Dostępne mechanizmy (wszystkie pozostają aktywne):&lt;/legend&gt;
+        &lt;label&gt;
+            &lt;input type="checkbox" id="prefer-keyboard" checked&gt;
+            Preferuj skróty klawiaturowe
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type="checkbox" id="prefer-mouse" checked&gt;
+            Pokaż wskazówki myszy
+        &lt;/label&gt;
+        &lt;label&gt;
+            &lt;input type="checkbox" id="prefer-touch" checked&gt;
+            Większe obszary dotyku
+        &lt;/label&gt;
+    &lt;/fieldset&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// DOBRE: Preferencje bez ograniczania dostępu
+function setupInputPreferences() {
+    const preferences = {
+        keyboard: document.getElementById('prefer-keyboard'),
+        mouse: document.getElementById('prefer-mouse'),
+        touch: document.getElementById('prefer-touch')
+    };
+    
+    Object.entries(preferences).forEach(([type, checkbox]) => {
+        checkbox.addEventListener('change', () => {
+            // Zmień UI ale zachowaj funkcjonalność
+            updateUIPreferences(type, checkbox.checked);
+            // Mechanizm pozostaje dostępny!
+        });
+    });
+}
+
+function updateUIPreferences(inputType, enabled) {
+    if (enabled) {
+        document.body.classList.add(`enhance-${inputType}`);
+    } else {
+        document.body.classList.remove(`enhance-${inputType}`);
+    }
+    
+    // Ważne: mechanizmy pozostają funkcjonalne
+    console.log(`UI preference for ${inputType}: ${enabled ? 'enhanced' : 'standard'}`);
+    console.log('All input mechanisms remain available');
+}
+&lt;/script&gt;</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Treść obsługuje wszystkie dostępne mechanizmy wprowadzania
+                            jednocześnie,
+                            pozwalając użytkownikom swobodnie przełączać się między nimi. Każdy mechanizm ma dostęp do
+                            pełnej
+                            funkcjonalności, a adaptacja interfejsu nie ogranicza dostępności.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie zgodności z 2.5.6</h3>
+
+                <h4>Procedura testowa</h4>
+                <ol>
+                    <li><strong>Identyfikacja mechanizmów wprowadzania</strong>
+                        <ul>
+                            <li>Sprawdź jakie mechanizmy są dostępne na urządzeniu</li>
+                            <li>Przetestuj każdy mechanizm osobno</li>
+                            <li>Sprawdź czy wszystkie mechanizmy są aktywne jednocześnie</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test funkcjonalności</strong>
+                        <ul>
+                            <li>Zweryfikuj czy wszystkie funkcje dostępne są z każdego mechanizmu</li>
+                            <li>Sprawdź czy nie ma różnic w możliwościach</li>
+                            <li>Przetestuj przełączanie między mechanizmami</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test ograniczeń</strong>
+                        <ul>
+                            <li>Sprawdź czy treść nie blokuje żadnego mechanizmu</li>
+                            <li>Zweryfikuj czy nie ma wymuszania konkretnego mechanizmu</li>
+                            <li>Przetestuj czy można używać mechanizmów jednocześnie</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test technologii wspomagających</strong>
+                        <ul>
+                            <li>Sprawdź działanie z czytnikami ekranu</li>
+                            <li>Przetestuj z oprogramowaniem rozpoznawania mowy</li>
+                            <li>Zweryfikuj z narzędziami switch navigation</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Narzędzia testowe</h4>
+                <ul>
+                    <li><strong>Chrome DevTools</strong> - symulacja różnych urządzeń i mechanizmów</li>
+                    <li><strong>Firefox Developer Tools</strong> - testowanie responsywności i mechanizmów</li>
+                    <li><strong>Screen readers</strong> - NVDA, JAWS, VoiceOver</li>
+                    <li><strong>Voice control</strong> - Dragon NaturallySpeaking, Windows Speech Recognition</li>
+                    <li><strong>Switch navigation</strong> - narzędzia dla osób z ograniczeniami motorycznymi</li>
+                    <li><strong>Rzeczywiste urządzenia</strong> - różne kombinacje mechanizmów</li>
+                </ul>
+
+                <h4>Skrypty testowe</h4>
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;"><code>// Test dostępności mechanizmów wprowadzania
+function testInputMechanisms() {
+    const mechanisms = {
+        keyboard: false,
+        mouse: false,
+        touch: false,
+        voice: false,
+        gamepad: false
+    };
+    
+    // Sprawdź dostępne mechanizmy
+    mechanisms.keyboard = true; // Zawsze dostępna
+    mechanisms.mouse = window.matchMedia('(pointer: fine)').matches;
+    mechanisms.touch = 'ontouchstart' in window;
+    mechanisms.voice = 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window;
+    mechanisms.gamepad = 'getGamepads' in navigator;
+    
+    console.log('Dostępne mechanizmy:', mechanisms);
+    
+    // Test czy strona blokuje jakieś mechanizmy
+    testMechanismBlocking();
+    
+    return mechanisms;
+}
+
+function testMechanismBlocking() {
+    const issues = [];
+    
+    // Test blokowania klawiatury
+    if (document.querySelector('[onkeydown*="preventDefault"]')) {
+        issues.push('Potencjalne blokowanie klawiatury');
+    }
+    
+    // Test blokowania myszy
+    if (document.querySelector('[onmousedown*="preventDefault"]')) {
+        issues.push('Potencjalne blokowanie myszy');
+    }
+    
+    // Test blokowania dotyku
+    if (document.querySelector('[ontouchstart*="preventDefault"]')) {
+        issues.push('Potencjalne blokowanie dotyku');
+    }
+    
+    if (issues.length > 0) {
+        console.warn('Znaleziono potencjalne problemy:', issues);
+    } else {
+        console.log('✅ Brak blokowania mechanizmów');
+    }
+    
+    return issues;
+}
+
+// Test równoważności funkcji
+function testFunctionalEquivalence() {
+    const interactiveElements = document.querySelectorAll('button, a[href], [role="button"], [onclick]');
+    const results = [];
+    
+    interactiveElements.forEach((element, index) => {
+        const hasKeyboard = element.hasAttribute('tabindex') || element.tagName === 'BUTTON' || element.tagName === 'A';
+        const hasClick = element.onclick || element.addEventListener;
+        const hasFocus = element.onfocus || element.onblur;
+        
+        results.push({
+            element: element.tagName.toLowerCase(),
+            index: index,
+            keyboard: hasKeyboard ? '✅' : '❌',
+            mouse: hasClick ? '✅' : '❌',
+            accessible: hasKeyboard && hasClick ? '✅' : '❌'
+        });
+    });
+    
+    console.table(results);
+    return results;
+}
+
+// Test przełączania mechanizmów
+function testInputSwitching() {
+    let keyboardActive = false;
+    let mouseActive = false;
+    let touchActive = false;
+    
+    // Nasłuchiwanie użycia różnych mechanizmów
+    document.addEventListener('keydown', () => {
+        keyboardActive = true;
+        console.log('Klawiatura aktywna');
+    });
+    
+    document.addEventListener('mousedown', () => {
+        mouseActive = true;
+        console.log('Mysz aktywna');
+    });
+    
+    document.addEventListener('touchstart', () => {
+        touchActive = true;
+        console.log('Dotyk aktywny');
+    });
+    
+    // Sprawdź po 5 sekundach
+    setTimeout(() => {
+        console.log('Mechanizmy użyte w teście:', {
+            keyboard: keyboardActive,
+            mouse: mouseActive,
+            touch: touchActive
+        });
+        
+        if (keyboardActive && mouseActive) {
+            console.log('✅ Możliwe przełączanie między mechanizmami');
+        }
+    }, 5000);
+}
+
+// Uruchom testy
+testInputMechanisms();
+testFunctionalEquivalence();
+testInputSwitching();
+</code></pre>
+
+                <h4>Checklist zgodności</h4>
+                <div
+                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <h5>✅ Kryteria do spełnienia:</h5>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>☐ Wszystkie dostępne mechanizmy wprowadzania są obsługiwane</li>
+                        <li>☐ Brak blokowania lub wyłączania mechanizmów programowo</li>
+                        <li>☐ Równoważne funkcje dostępne z każdego mechanizmu</li>
+                        <li>☐ Możliwość swobodnego przełączania między mechanizmami</li>
+                        <li>☐ Brak wymuszania konkretnego mechanizmu</li>
+                        <li>☐ Technologie wspomagające mogą działać</li>
+                        <li>☐ Interface adaptatywny ale nie ograniczający</li>
+                        <li>☐ Preferencje użytkownika respektowane bez blokowania</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="implementation-guidelines">
+                <h3>Wytyczne implementacyjne</h3>
+
+                <h4>Najlepsze praktyki dla obsługi mechanizmów wprowadzania:</h4>
+                <ul>
+                    <li><strong>Obsługuj wszystkie mechanizmy</strong> - nie zakładaj że użytkownik ma określone
+                        urządzenie</li>
+                    <li><strong>Nie blokuj mechanizmów</strong> - unikaj preventDefault() bez uzasadnionej potrzeby</li>
+                    <li><strong>Zapewnij równoważność</strong> - ta sama funkcjonalność dla wszystkich mechanizmów</li>
+                    <li><strong>Pozwalaj na przełączanie</strong> - użytkownicy mogą zmieniać preferencje</li>
+                    <li><strong>Testuj z AT</strong> - sprawdź działanie z technologiami wspomagającymi</li>
+                    <li><strong>Adaptuj UI, nie funkcjonalność</strong> - zmiana wyglądu, nie możliwości</li>
+                </ul>
+
+                <h4>Wzorce implementacji:</h4>
+                <div
+                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #004085; margin-top: 0;">Uniwersalna obsługa mechanizmów</h5>
+                    <pre style="color: #004085; font-size: 0.9em;"><code>// Obsługa wszystkich mechanizmów jednocześnie
+function setupUniversalInput(element) {
+    // Klawiatura
+    element.addEventListener('keydown', handleInput);
+    
+    // Mysz
+    element.addEventListener('click', handleInput);
+    
+    // Dotyk
+    element.addEventListener('touchend', handleInput);
+    
+    // Głos (przez focus)
+    element.addEventListener('focus', handleInput);
+}</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #155724; margin-top: 0;">Adaptacja bez ograniczania</h5>
+                    <pre style="color: #155724; font-size: 0.9em;"><code>// Dostosuj UI ale zachowaj wszystkie mechanizmy
+function adaptInterface() {
+    const hasTouch = 'ontouchstart' in window;
+    
+    if (hasTouch) {
+        // Większe obszary dotyku
+        document.body.classList.add('touch-enhanced');
+    }
+    
+    // Wszystkie mechanizmy pozostają aktywne
+    // Nie usuwamy event listenerów
+}</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #856404; margin-top: 0;">Preferencje bez blokowania</h5>
+                    <pre style="color: #856404; font-size: 0.9em;"><code>// Preferencje UI, nie funkcjonalności
+function setInputPreferences(preferences) {
+    // Zmień wygląd
+    if (preferences.enhanceKeyboard) {
+        showKeyboardHints();
+    }
+    
+    // NIE blokuj mechanizmów
+    // Wszystkie pozostają dostępne
+}</code></pre>
+                </div>
+
+                <h4>Implementacja krok po kroku:</h4>
+                <ol>
+                    <li><strong>Audit mechanizmów</strong> - sprawdź jakie są obsługiwane</li>
+                    <li><strong>Usuń blokady</strong> - znajdź i usuń preventDefault() bez potrzeby</li>
+                    <li><strong>Dodaj brakujące obsługi</strong> - dołącz event listenery dla wszystkich mechanizmów
+                    </li>
+                    <li><strong>Zapewnij równoważność</strong> - ta sama logika dla wszystkich ścieżek</li>
+                    <li><strong>Przetestuj przełączanie</strong> - sprawdź czy można używać mechanizmów wymiennie</li>
+                    <li><strong>Przetestuj z AT</strong> - sprawdź działanie z technologiami wspomagającymi</li>
+                    <li><strong>Dokumentuj obsługę</strong> - opisz dostępne mechanizmy w instrukcji</li>
+                </ol>
+
+                <h4>Niezbędne ograniczenia (wyjątki):</h4>
+                <ul>
+                    <li><strong>Bezpieczeństwo</strong> - zabezpieczenia przed atakami (np. clickjacking)</li>
+                    <li><strong>Ograniczenia platformy</strong> - limitacje narzucone przez system</li>
+                    <li><strong>Ograniczenia user agent</strong> - zachowania przeglądarki</li>
+                    <li><strong>Kontekst specjalny</strong> - gry wymagające konkretnych mechanizmów</li>
+                </ul>
+
+                <h4>JavaScript patterns dla różnych mechanizmów:</h4>
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;"><code>class UniversalInput {
+    constructor(element) {
+        this.element = element;
+        this.setupAllMechanisms();
+    }
+    
+    setupAllMechanisms() {
+        // Klawiatura - zawsze obsługiwana
+        this.element.addEventListener('keydown', (e) => {
+            this.handleKeyboard(e);
+        });
+        
+        // Mysz - zawsze obsługiwana
+        this.element.addEventListener('click', (e) => {
+            this.handleMouse(e);
+        });
+        
+        // Dotyk - jeśli dostępny
+        if ('ontouchstart' in window) {
+            this.element.addEventListener('touchstart', (e) => {
+                this.handleTouch(e);
+            });
+        }
+        
+        // Głos - przez focus z AT
+        this.element.addEventListener('focus', (e) => {
+            this.handleFocus(e);
+        });
+        
+        // Gamepad - jeśli dostępny
+        if ('getGamepads' in navigator) {
+            this.setupGamepad();
+        }
+    }
+    
+    // Jednolita logika dla wszystkich mechanizmów
+    handleKeyboard(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            this.executeAction('keyboard');
+        }
+    }
+    
+    handleMouse(e) {
+        this.executeAction('mouse');
+    }
+    
+    handleTouch(e) {
+        // Zapobiegaj podwójnej aktywacji
+        e.preventDefault();
+        this.executeAction('touch');
+    }
+    
+    handleFocus(e) {
+        // Dla technologii wspomagających
+        this.executeAction('assistive');
+    }
+    
+    executeAction(inputType) {
+        // Ta sama funkcjonalność niezależnie od mechanizmu
+        console.log(`Action triggered by: ${inputType}`);
+        this.performAction();
+    }
+}
+
+// Adaptacyjne zachowania bez ograniczania
+class AdaptiveInterface {
+    constructor() {
+        this.detectCapabilities();
+        this.adaptUI();
+        // Zachowaj wszystkie mechanizmy!
+    }
+    
+    detectCapabilities() {
+        this.capabilities = {
+            keyboard: true, // Zawsze dostępna
+            finePointer: window.matchMedia('(pointer: fine)').matches,
+            coarsePointer: window.matchMedia('(pointer: coarse)').matches,
+            touch: 'ontouchstart' in window,
+            voice: 'webkitSpeechRecognition' in window
+        };
+    }
+    
+    adaptUI() {
+        // Dostosuj wygląd, nie funkcjonalność
+        if (this.capabilities.touch) {
+            document.body.classList.add('touch-capable');
+        }
+        
+        if (this.capabilities.finePointer) {
+            document.body.classList.add('fine-pointer');
+        }
+        
+        // Wszystkie mechanizmy pozostają aktywne!
+    }
+}
+</code></pre>
+
+                <h4>Częste błędy do uniknięcia:</h4>
+                <ul>
+                    <li><strong>Wykrywanie urządzenia</strong> - założenia o mechanizmach na podstawie user agent</li>
+                    <li><strong>Blokowanie mechanizmów</strong> - preventDefault() bez uzasadnienia</li>
+                    <li><strong>Nierówna funkcjonalność</strong> - różne możliwości dla różnych mechanizmów</li>
+                    <li><strong>Wymuszanie mechanizmu</strong> - instrukcje "użyj tylko dotyku"</li>
+                    <li><strong>Ignorowanie AT</strong> - brak wsparcia dla technologii wspomagających</li>
+                    <li><strong>Brak elastyczności</strong> - nie można przełączać mechanizmów</li>
+                </ul>
+
+                <h4>CSS dla adaptacyjnego UI:</h4>
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;"><code>/* Adaptacja dla różnych mechanizmów bez ograniczania */
+
+/* Większe obszary dotyku gdy dostępny */
+@media (pointer: coarse) {
+    .interactive-element {
+        min-height: 44px;
+        padding: 12px;
+    }
+}
+
+/* Subtelniejsze efekty hover dla precyzyjnych wskaźników */
+@media (pointer: fine) {
+    .interactive-element:hover {
+        background-color: #f0f0f0;
+    }
+}
+
+/* Dodatkowe wskazówki gdy klawiatura aktywna */
+.keyboard-user .interactive-element:focus {
+    outline: 2px solid #0066cc;
+    outline-offset: 2px;
+}
+
+/* Wszystkie mechanizmy pozostają funkcjonalne */
+.interactive-element {
+    /* Dostępne z klawiatury */
+    cursor: pointer;
+    
+    /* Dostępne dla dotyku */
+    touch-action: manipulation;
+    
+    /* Dostępne dla myszy */
+    user-select: none;
+}</code></pre>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/concurrent-input-mechanisms.html"
+                            target="_blank" rel="noopener">Zrozumieć WCAG 2.1: Mechanizmy wprowadzania współbieżnego</a>
+                    </li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Pointer_events" target="_blank"
+                            rel="noopener">MDN: Pointer Events API</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G216" target="_blank"
+                            rel="noopener">Techniki WCAG: Obsługa mechanizmów wprowadzania</a></li>
+                    <li><a href="https://inclusive-components.design/" target="_blank" rel="noopener">Inclusive
+                            Components</a></li>
+                    <li><a href="https://webaim.org/articles/motor/" target="_blank" rel="noopener">WebAIM: Motor
+                            Disabilities</a></li>
+                    <li><a href="https://developer.apple.com/design/human-interface-guidelines/inputs/" target="_blank"
+                            rel="noopener">Apple HIG: Input Methods</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.5.5.html">Poprzedni: 2.5.5 Rozmiar obszaru dotyku</a></li>
+                    <li><a href="2.5.html">Powrót do sekcji: 2.5 Sposoby wprowadzania danych</a></li>
+                    <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+
+    <script>
+        // Demo funkcjonalność dla przykładów mechanizmów wprowadzania współbieżnego
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // === DEMONSTRACJA UNIWERSALNEJ OBSŁUGI MECHANIZMÓW ===
+
+            // Detekcja dostępnych mechanizmów
+            function detectInputMechanisms() {
+                return {
+                    keyboard: true, // Zawsze dostępna
+                    mouse: window.matchMedia('(pointer: fine)').matches,
+                    touch: 'ontouchstart' in window,
+                    voice: 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window,
+                    gamepad: 'getGamepads' in navigator
+                };
+            }
+
+            // Aktualizacja wyświetlania dostępnych mechanizmów
+            function updateDetectedInputs() {
+                const mechanisms = detectInputMechanisms();
+                const detectedElement = document.getElementById('detected-inputs');
+
+                if (detectedElement) {
+                    const available = Object.entries(mechanisms)
+                        .filter(([, available]) => available)
+                        .map(([name]) => {
+                            const icons = {
+                                keyboard: '⌨️',
+                                mouse: '🖱️',
+                                touch: '📱',
+                                voice: '🎤',
+                                gamepad: '🎮'
+                            };
+                            return `${icons[name]} ${name}`;
+                        })
+                        .join(', ');
+
+                    detectedElement.textContent = available || 'Brak wykrytych mechanizmów';
+                }
+            }
+
+            // Aktualizuj informacje o mechanizmach
+            updateDetectedInputs();
+
+            // Demonstracja równoważnych funkcji
+            const inputMethodsElement = document.getElementById('input-methods');
+            if (inputMethodsElement) {
+                const usedMethods = new Set();
+
+                function updateUsedMethods(method) {
+                    usedMethods.add(method);
+                    inputMethodsElement.textContent = `Użyte: ${Array.from(usedMethods).join(', ')}`;
+                }
+
+                // Nasłuchiwanie różnych mechanizmów
+                document.addEventListener('keydown', () => updateUsedMethods('⌨️ Klawiatura'));
+                document.addEventListener('mousedown', () => updateUsedMethods('🖱️ Mysz'));
+                document.addEventListener('touchstart', () => updateUsedMethods('📱 Dotyk'));
+            }
+
+            // Demonstracja przełączania mechanizmów
+            const toggleButtons = ['toggle-kbd', 'toggle-mouse', 'toggle-touch'];
+            const activeCountElement = document.getElementById('active-count');
+            let activeMechanisms = 3;
+
+            toggleButtons.forEach(id => {
+                const button = document.getElementById(id);
+                if (button) {
+                    button.addEventListener('click', function () {
+                        const isActive = !this.classList.contains('disabled');
+
+                        if (isActive) {
+                            this.classList.add('disabled');
+                            this.style.opacity = '0.5';
+                            this.style.textDecoration = 'line-through';
+                            activeMechanisms--;
+                        } else {
+                            this.classList.remove('disabled');
+                            this.style.opacity = '1';
+                            this.style.textDecoration = 'none';
+                            activeMechanisms++;
+                        }
+
+                        if (activeCountElement) {
+                            activeCountElement.textContent = `${activeMechanisms}/3`;
+                        }
+
+                        // Pokaż komunikat o zachowaniu dostępności
+                        const mechanism = this.textContent.trim();
+                        const status = isActive ? 'ukryte' : 'przywrócone';
+
+                        showNotification(
+                            `${mechanism} - UI ${status}`,
+                            `Mechanizm pozostaje funkcjonalny! To tylko demonstracja preferencji interfejsu.`,
+                            isActive ? '#ffc107' : '#28a745'
+                        );
+                    });
+                }
+            });
+
+            // Funkcja pokazywania powiadomień
+            function showNotification(title, message, color = '#17a2b8') {
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: ${color};
+                    color: white;
+                    padding: 15px;
+                    border-radius: 5px;
+                    z-index: 1000;
+                    max-width: 300px;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                `;
+                notification.innerHTML = `
+                    <h6 style="margin: 0 0 8px 0;">${title}</h6>
+                    <p style="margin: 0; font-size: 0.9em;">${message}</p>
+                `;
+
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    if (notification.parentElement) {
+                        notification.remove();
+                    }
+                }, 4000);
+            }
+
+            // Test mechanizmów wprowadzania - dostępne globalnie
+            window.testInputMechanisms = function () {
+                const mechanisms = detectInputMechanisms();
+                console.log('🔍 Test mechanizmów wprowadzania:');
+                console.table(mechanisms);
+
+                const available = Object.values(mechanisms).filter(Boolean).length;
+                const total = Object.keys(mechanisms).length;
+
+                console.log(`\n✅ Dostępne mechanizmy: ${available}/${total}`);
+
+                if (available >= 2) {
+                    console.log('✅ Strona może obsługiwać współbieżne mechanizmy wprowadzania');
+                } else {
+                    console.log('⚠️ Ograniczone mechanizmy wprowadzania');
+                }
+
+                return mechanisms;
+            };
+
+            // Test funkcjonalności równoważnej
+            window.testFunctionalEquivalence = function () {
+                const elements = document.querySelectorAll('button, a[href], [role="button"], [tabindex]');
+                const results = [];
+
+                elements.forEach((element, index) => {
+                    const hasKeyboard = element.hasAttribute('tabindex') ||
+                        ['BUTTON', 'A', 'INPUT'].includes(element.tagName);
+                    const hasClick = element.onclick !== null || element.getAttribute('onclick');
+                    const hasFocus = element.onfocus !== null || element.getAttribute('onfocus');
+
+                    results.push({
+                        element: `${element.tagName.toLowerCase()}${element.id ? '#' + element.id : ''}`,
+                        keyboard: hasKeyboard ? '✅' : '❌',
+                        mouse: '✅', // Wszystkie elementy obsługują click
+                        touch: '✅', // Touch events są mapowane na click
+                        accessible: hasKeyboard ? '✅' : '❌'
+                    });
+                });
+
+                console.log('🎯 Test równoważności funkcjonalnej:');
+                console.table(results);
+
+                const accessible = results.filter(r => r.accessible === '✅').length;
+                console.log(`\n✅ Dostępne elementy: ${accessible}/${results.length}`);
+
+                return results;
+            };
+
+            // Pokazuj informacje o dostępnych testach w konsoli
+            setTimeout(() => {
+                console.log(`
+🎮 Concurrent Input Mechanisms - Narzędzia testowe:
+
+Użyj w konsoli:
+- testInputMechanisms() - sprawdź dostępne mechanizmy
+- testFunctionalEquivalence() - sprawdź równoważność funkcji
+
+Przetestuj na stronie:
+- Użyj klawiatury (Tab, Enter, strzałki)
+- Użyj myszy (kliknięcia, hover)  
+- Użyj dotyku (jeśli dostępny)
+- Sprawdź czy można przełączać między mechanizmami
+
+Wszystkie mechanizmy powinny zapewniać ten sam dostęp do funkcjonalności.
+                `);
+            }, 2000);
+
+            // Przykład obsługi wydarzeń z różnych mechanizmów
+            const demoButtons = document.querySelectorAll('button[id^="target-btn"], button[id^="toggle-"]');
+
+            demoButtons.forEach(button => {
+                let lastInputType = '';
+
+                // Klawiatura
+                button.addEventListener('keydown', function (e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        lastInputType = 'keyboard';
+                    }
+                });
+
+                // Mysz
+                button.addEventListener('mousedown', function () {
+                    lastInputType = 'mouse';
+                });
+
+                // Dotyk
+                button.addEventListener('touchstart', function () {
+                    lastInputType = 'touch';
+                });
+
+                // Wspólna obsługa
+                button.addEventListener('click', function () {
+                    if (lastInputType) {
+                        console.log(`Button "${this.textContent.trim()}" activated by: ${lastInputType}`);
+                    }
+                });
+            });
+
+            // Pokazuj statistyki po 5 sekundach
+            setTimeout(() => {
+                const mechanisms = detectInputMechanisms();
+                const mechanismCount = Object.values(mechanisms).filter(Boolean).length;
+
+                showNotification(
+                    '📊 Analiza mechanizmów wprowadzania',
+                    `Wykryto ${mechanismCount} dostępnych mechanizmów. Wszystkie powinny być obsługiwane jednocześnie zgodnie z WCAG 2.5.6.`,
+                    '#6f42c1'
+                );
+            }, 5000);
+        });
+    </script>
+</body>
+
+</html>

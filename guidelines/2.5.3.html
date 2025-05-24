@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2.5.3 Etykieta w nazwie (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <article class="criterion-detail">
+            <div class="criterion-header">
+                <h2>2.5.3 Etykieta w nazwie</h2>
+                <p class="criterion-level">Poziom A</p>
+                <div class="meta">
+                    <p><a href="https://www.w3.org/TR/WCAG21/#label-in-name" target="_blank" rel="noopener">Oficjalna
+                            dokumentacja W3C</a></p>
+                </div>
+            </div>
+
+            <div class="criterion-description">
+                <h3>Opis kryterium</h3>
+                <p>Dla komponentów interfejsu użytkownika z etykietami, które zawierają tekst lub obrazy tekstu,
+                    nazwa zawiera tekst, który jest przedstawiony wizualnie.</p>
+
+                <h3>Intencja</h3>
+                <p>Celem tego kryterium sukcesu jest zapewnienie, że słowa widoczne dla użytkowników są również
+                    obecne w dostępnej nazwie komponentu. Pomaga to użytkownikom:</p>
+
+                <ul>
+                    <li><strong>Sterowania głosem</strong> - mogą mówić to, co widzą na ekranie</li>
+                    <li><strong>Korzystania z czytników ekranu</strong> - nazwa odpowiada temu, co widzą inni</li>
+                    <li><strong>Z dysleksją</strong> - spójność między tym co widzą a słyszą</li>
+                    <li><strong>Uczenia się interfejsu</strong> - przewidywalne nazewnictwo</li>
+                    <li><strong>Z ograniczeniami poznawczymi</strong> - mniej mylące nazwy</li>
+                </ul>
+
+                <p>Kryterium jest szczególnie ważne dla software'u sterowania głosem, który pozwala użytkownikom
+                    mówić "Kliknij Wyślij" aby aktywować przycisk z napisem "Wyślij".</p>
+
+                <h3>Wymagania</h3>
+                <p>Nazwa dostępna (accessible name) musi:</p>
+                <ul>
+                    <li><strong>Zawierać widoczny tekst</strong> - wszystkie słowa z etykiety wizualnej</li>
+                    <li><strong>Rozpoczynać się od widocznego tekstu</strong> - preferowana kolejność</li>
+                    <li><strong>Zachowywać kolejność słów</strong> - tak jak w etykiecie wizualnej</li>
+                    <li><strong>Uwzględniać obrazy tekstu</strong> - tekst w obrazach także się liczy</li>
+                </ul>
+
+                <h3>Definicje</h3>
+                <ul>
+                    <li><strong>Etykieta</strong> - tekst lub inne komponenty prezentujące nazwę lub opis komponentu
+                    </li>
+                    <li><strong>Nazwa dostępna</strong> - nazwa komponentu obliczona przez accessibility API</li>
+                    <li><strong>Tekst wizualny</strong> - tekst widoczny na ekranie dla wszystkich użytkowników</li>
+                    <li><strong>Obraz tekstu</strong> - tekst renderowany w formie graficznej</li>
+                </ul>
+            </div>
+
+            <div class="examples">
+                <h3>Przykłady</h3>
+
+                <div class="example-container">
+                    <div class="example bad">
+                        <h4>Zły przykład - niezgodność etykiety z nazwą</h4>
+                        <p>Komponenty gdzie widoczny tekst nie pasuje do nazwy dostępnej:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #721c24; margin-top: 0;">❌ Problematyczne implementacje:</h5>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #721c24;">1. Przycisk z niezgodną nazwą dostępną</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <button id="bad-button-1" aria-label="Prześlij formularz"
+                                                style="padding: 12px 24px; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 10px;">
+                                                ❌ Wyślij
+                                            </button>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Widoczny tekst: "Wyślij" | Nazwa dostępna: "Prześlij formularz"<br>
+                                                Sterowanie głosem: "Kliknij Wyślij" nie zadziała
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #721c24;">2. Link z mylącą etykietą</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <a href="#" id="bad-link-1" aria-labelledby="hidden-label-1"
+                                                style="display: inline-block; padding: 10px 20px; background: #dc3545; color: white; text-decoration: none; border-radius: 4px; margin-bottom: 10px;">
+                                                ❌ Czytaj więcej
+                                            </a>
+                                            <span id="hidden-label-1" style="display: none;">Dowiedz się więcej o
+                                                produktach</span>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Widoczny tekst: "Czytaj więcej" | Nazwa dostępna: "Dowiedz się więcej
+                                                o produktach"<br>
+                                                Brak "Czytaj więcej" w nazwie dostępnej
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #721c24;">3. Pole formularza z niezgodną etykietą</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <label for="bad-input-1"
+                                                style="display: block; margin-bottom: 5px; color: #333;">
+                                                ❌ Adres e-mail
+                                            </label>
+                                            <input type="email" id="bad-input-1" aria-label="Wprowadź swój email"
+                                                style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 200px; margin-bottom: 10px;">
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Widoczny tekst: "Adres e-mail" | Nazwa dostępna: "Wprowadź swój
+                                                email"<br>
+                                                aria-label zastępuje tekst etykiety
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h6 style="color: #721c24;">4. Przycisk z obrazem tekstu bez nazwy</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px dashed #dc3545; padding: 15px; border-radius: 4px;">
+                                            <button id="bad-button-2" aria-label="Wyszukaj"
+                                                style="padding: 12px; background: #dc3545; color: white; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                                                🔍
+                                                <span
+                                                    style="background: #a71e2a; color: white; padding: 2px 6px; border-radius: 2px; font-size: 0.8em;">SZUKAJ</span>
+                                            </button>
+                                            <p style="color: #dc3545; font-size: 0.9em; margin: 0;">
+                                                ❌ Widoczny tekst w obrazie: "SZUKAJ" | Nazwa dostępna: "Wyszukaj"<br>
+                                                Tekst w komponencie nie jest uwzględniony w nazwie
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #856404; margin-top: 0;">Dlaczego to problematyczne?</h6>
+                                    <ul style="color: #856404; margin-bottom: 0;">
+                                        <li><strong>Sterowanie głosem nie działa</strong> - użytkownicy nie mogą
+                                            powiedzieć tego co widzą</li>
+                                        <li><strong>Mylące dla czytników ekranu</strong> - różne informacje dla różnych
+                                            użytkowników</li>
+                                        <li><strong>Problemy z uczeniem się</strong> - nieprzewidywalne nazewnictwo</li>
+                                        <li><strong>Frustracja użytkowników</strong> - komendy głosowe nie działają</li>
+                                        <li><strong>Problemy z testowaniem</strong> - narzędzia AT nie znajdą elementów
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- ZŁY PRZYKŁAD - niezgodność etykiety z nazwą --&gt;
+
+&lt;!-- 1. Przycisk z aria-label zastępującym widoczny tekst --&gt;
+&lt;button aria-label="Prześlij formularz"&gt;Wyślij&lt;/button&gt;
+&lt;!-- Problem: aria-label całkowicie zastępuje "Wyślij" --&gt;
+
+&lt;!-- 2. Link z aria-labelledby ignorującym widoczny tekst --&gt;
+&lt;a href="/more" aria-labelledby="hidden-description"&gt;Czytaj więcej&lt;/a&gt;
+&lt;span id="hidden-description" style="display: none;"&gt;Dowiedz się więcej&lt;/span&gt;
+&lt;!-- Problem: nazwa nie zawiera "Czytaj więcej" --&gt;
+
+&lt;!-- 3. Pole z etykietą zastąpioną przez aria-label --&gt;
+&lt;label for="email"&gt;Adres e-mail&lt;/label&gt;
+&lt;input type="email" id="email" aria-label="Wprowadź email"&gt;
+&lt;!-- Problem: aria-label ignoruje tekst etykiety --&gt;
+
+&lt;!-- 4. Przycisk z tekstem w obrazie nieuważanym w nazwie --&gt;
+&lt;button aria-label="Wyszukaj"&gt;
+    &lt;img src="search-button.png" alt=""&gt;
+&lt;/button&gt;
+&lt;!-- Problem: jeśli obraz zawiera tekst "SZUKAJ", nie jest w nazwie --&gt;
+
+&lt;!-- 5. Niezgodna kolejność słów --&gt;
+&lt;button aria-label="produkty wyszukaj"&gt;Wyszukaj produkty&lt;/button&gt;
+&lt;!-- Problem: inna kolejność słów --&gt;
+
+&lt;!-- 6. Brakujące słowa z widocznego tekstu --&gt;
+&lt;button aria-label="Zapisz"&gt;Zapisz zmiany&lt;/button&gt;
+&lt;!-- Problem: "zmiany" nie jest w nazwie dostępnej --&gt;</code></pre>
+
+                        <p class="explanation">Problem: Widoczny tekst nie jest zawarty w nazwie dostępnej, co
+                            uniemożliwia
+                            użytkownikom sterowania głosem używanie komend jak "Kliknij Wyślij". Niezgodność między tym
+                            co
+                            użytkownicy widzą a tym co słyszą czytniki ekranu powoduje zamieszanie.</p>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <div class="example good">
+                        <h4>Dobry przykład - zgodność etykiety z nazwą</h4>
+                        <p>Komponenty gdzie widoczny tekst jest prawidłowo zawarty w nazwie dostępnej:</p>
+
+                        <div class="preview">
+                            <div class="preview-content"
+                                style="border: 1px solid #ccc; padding: 20px; border-radius: 5px; background-color: #fff;">
+                                <div
+                                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                    <h5 style="color: #155724; margin-top: 0;">✅ Dostępne implementacje:</h5>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">1. Przycisk z zgodną nazwą</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <button id="good-button-1" aria-label="Wyślij formularz kontaktowy"
+                                                style="padding: 12px 24px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 10px;">
+                                                ✅ Wyślij
+                                            </button>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 0;">
+                                                ✅ Widoczny tekst: "Wyślij" | Nazwa dostępna: "Wyślij formularz
+                                                kontaktowy"<br>
+                                                Sterowanie głosem: "Kliknij Wyślij" działa ✓
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">2. Link z rozszerzoną ale zawierającą nazwą</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <a href="#" id="good-link-1" aria-label="Czytaj więcej o naszych produktach"
+                                                style="display: inline-block; padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 4px; margin-bottom: 10px;">
+                                                ✅ Czytaj więcej
+                                            </a>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 0;">
+                                                ✅ Widoczny tekst: "Czytaj więcej" | Nazwa dostępna: "Czytaj więcej o
+                                                naszych produktach"<br>
+                                                Zawiera pełny widoczny tekst na początku
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">3. Pole formularza z poprawną etykietą</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <label for="good-input-1"
+                                                style="display: block; margin-bottom: 5px; color: #333;">
+                                                ✅ Adres e-mail
+                                            </label>
+                                            <input type="email" id="good-input-1" aria-describedby="email-help"
+                                                style="padding: 8px; border: 1px solid #28a745; border-radius: 4px; width: 200px; margin-bottom: 5px;">
+                                            <div id="email-help" style="font-size: 0.8em; color: #666;">Wprowadź swój
+                                                adres email</div>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 10px 0 0 0;">
+                                                ✅ Widoczny tekst: "Adres e-mail" | Nazwa dostępna: "Adres e-mail"<br>
+                                                aria-describedby dodaje kontekst bez zmiany nazwy
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <h6 style="color: #155724;">4. Przycisk z tekstem i ikoną</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <button id="good-button-2" aria-label="Szukaj produkty w katalogu"
+                                                style="padding: 12px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+                                                🔍
+                                                <span>Szukaj</span>
+                                            </button>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 0;">
+                                                ✅ Widoczny tekst: "Szukaj" | Nazwa dostępna: "Szukaj produkty w
+                                                katalogu"<br>
+                                                Widoczny tekst na początku, dodatkowy kontekst na końcu
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <h6 style="color: #155724;">5. Automatyczna zgodność z domyślną nazwą</h6>
+                                        <div
+                                            style="background-color: #fff; border: 2px solid #28a745; padding: 15px; border-radius: 4px;">
+                                            <button id="good-button-3"
+                                                style="padding: 12px 24px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; margin-bottom: 10px;">
+                                                ✅ Zapisz zmiany
+                                            </button>
+                                            <p style="color: #28a745; font-size: 0.9em; margin: 0;">
+                                                ✅ Widoczny tekst: "Zapisz zmiany" | Nazwa dostępna: "Zapisz zmiany"<br>
+                                                Bez aria-label - automatyczna zgodność tekstu
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div
+                                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px;">
+                                    <h6 style="color: #004085; margin-top: 0;">Zalety dostępnej implementacji:</h6>
+                                    <ul style="color: #004085; margin-bottom: 0;">
+                                        <li><strong>Sterowanie głosem działa</strong> - użytkownicy mogą powiedzieć to
+                                            co widzą</li>
+                                        <li><strong>Spójność dla wszystkich</strong> - czytniki ekranu zgadzają się z
+                                            tym co widać</li>
+                                        <li><strong>Przewidywalność</strong> - użytkownicy wiedzą jak aktywować elementy
+                                        </li>
+                                        <li><strong>Lepsze testowanie</strong> - narzędzia AT łatwo znajdą elementy</li>
+                                        <li><strong>Zgodność z standardami</strong> - przestrzeganie najlepszych praktyk
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <pre><code class="language-html">&lt;!-- DOBRY PRZYKŁAD - zgodność etykiety z nazwą --&gt;
+
+&lt;!-- 1. Przycisk z aria-label zawierającym widoczny tekst --&gt;
+&lt;button aria-label="Wyślij formularz kontaktowy"&gt;Wyślij&lt;/button&gt;
+&lt;!-- ✓ "Wyślij" jest na początku nazwy dostępnej --&gt;
+
+&lt;!-- 2. Link z rozszerzoną nazwą zachowującą widoczny tekst --&gt;
+&lt;a href="/more" aria-label="Czytaj więcej o naszych usługach"&gt;Czytaj więcej&lt;/a&gt;
+&lt;!-- ✓ "Czytaj więcej" jest zawarte w nazwie --&gt;
+
+&lt;!-- 3. Pole z etykietą jako podstawą nazwy --&gt;
+&lt;label for="email"&gt;Adres e-mail&lt;/label&gt;
+&lt;input type="email" id="email" aria-describedby="email-help"&gt;
+&lt;div id="email-help"&gt;Wprowadź swój adres email&lt;/div&gt;
+&lt;!-- ✓ aria-describedby dodaje kontekst bez zmiany nazwy --&gt;
+
+&lt;!-- 4. Przycisk bez aria-label (automatyczna zgodność) --&gt;
+&lt;button&gt;Zapisz zmiany&lt;/button&gt;
+&lt;!-- ✓ Tekst automatycznie staje się nazwą dostępną --&gt;
+
+&lt;!-- 5. Przycisk z aria-labelledby zawierającym widoczny tekst --&gt;
+&lt;button aria-labelledby="btn-text additional-context"&gt;
+    &lt;span id="btn-text"&gt;Pobierz&lt;/span&gt;
+&lt;/button&gt;
+&lt;span id="additional-context" style="display: none;"&gt;plik PDF&lt;/span&gt;
+&lt;!-- ✓ Nazwa: "Pobierz plik PDF" zawiera widoczny "Pobierz" --&gt;
+
+&lt;!-- 6. Zgodność z obrazami tekstu --&gt;
+&lt;button aria-label="Szukaj produkty"&gt;
+    &lt;img src="search-icon.png" alt=""&gt;
+    &lt;span&gt;Szukaj&lt;/span&gt;
+&lt;/button&gt;
+&lt;!-- ✓ Widoczny "Szukaj" jest na początku nazwy --&gt;
+
+&lt;!-- 7. Pole z dodatkowym kontekstem --&gt;
+&lt;label for="password"&gt;Hasło&lt;/label&gt;
+&lt;input type="password" id="password" 
+       aria-label="Hasło - minimum 8 znaków z liczbą"&gt;
+&lt;!-- ✓ Rozpoczyna się od "Hasło" z widocznej etykiety --&gt;</code></pre>
+
+                        <p class="explanation">Rozwiązanie: Wszystkie nazwy dostępne zawierają widoczny tekst,
+                            najlepiej na początku. Dodatkowy kontekst może być dodany po widocznym tekście.
+                            Sterowanie głosem działa mówiąc to co widać na ekranie.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testing">
+                <h3>Testowanie zgodności z 2.5.3</h3>
+
+                <h4>Procedura testowa</h4>
+                <ol>
+                    <li><strong>Identyfikacja komponentów z etykietami</strong>
+                        <ul>
+                            <li>Znajdź wszystkie przyciski, linki, pola formularzy z widocznym tekstem</li>
+                            <li>Sprawdź komponenty z obrazami zawierającymi tekst</li>
+                            <li>Zidentyfikuj elementy z ikonami i tekstem</li>
+                        </ul>
+                    </li>
+                    <li><strong>Porównanie widocznego tekstu z nazwą dostępną</strong>
+                        <ul>
+                            <li>Użyj narzędzi deweloperskich do sprawdzenia accessible name</li>
+                            <li>Sprawdź czy widoczny tekst jest zawarty w nazwie</li>
+                            <li>Zweryfikuj kolejność słów</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test sterowania głosem</strong>
+                        <ul>
+                            <li>Spróbuj powiedzieć "Kliknij [widoczny tekst]"</li>
+                            <li>Sprawdź czy komendy działają</li>
+                            <li>Przetestuj z różnymi narzędziami voice control</li>
+                        </ul>
+                    </li>
+                    <li><strong>Test czytników ekranu</strong>
+                        <ul>
+                            <li>Posłuchaj co czytają czytniki ekranu</li>
+                            <li>Porównaj z widocznym tekstem</li>
+                            <li>Sprawdź spójność informacji</li>
+                        </ul>
+                    </li>
+                </ol>
+
+                <h4>Narzędzia testowe</h4>
+                <ul>
+                    <li><strong>Chrome DevTools</strong> - Accessibility panel pokazuje computed name</li>
+                    <li><strong>Firefox Developer Tools</strong> - Accessibility inspector</li>
+                    <li><strong>axe DevTools</strong> - sprawdzanie nazw dostępnych</li>
+                    <li><strong>WAVE</strong> - analiza etykiet i nazw</li>
+                    <li><strong>Voice Control (iOS/macOS)</strong> - test sterowania głosem</li>
+                    <li><strong>Dragon NaturallySpeaking</strong> - Windows voice control</li>
+                    <li><strong>NVDA/JAWS</strong> - czytniki ekranu</li>
+                </ul>
+
+                <h4>Sprawdzanie przez DevTools</h4>
+                <pre style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin: 15px 0;"><code>// W konsoli przeglądarki:
+// Sprawdź nazwę dostępną elementu
+const element = document.querySelector('#my-button');
+const accessibleName = element.getAttribute('aria-label') || 
+                       element.textContent || 
+                       element.getAttribute('title');
+console.log('Accessible name:', accessibleName);
+
+// Użyj Accessibility API
+const accName = element.computedName || 
+               window.getComputedAccessibleNode?.(element)?.name;
+console.log('Computed accessible name:', accName);</code></pre>
+
+                <h4>Checklist zgodności</h4>
+                <div
+                    style="background-color: #f8f9fa; border: 1px solid #dee2e6; padding: 20px; border-radius: 5px; margin: 20px 0;">
+                    <h5>✅ Kryteria do spełnienia:</h5>
+                    <ul style="list-style: none; padding-left: 0;">
+                        <li>☐ Widoczny tekst jest zawarty w nazwie dostępnej</li>
+                        <li>☐ Nazwa dostępna rozpoczyna się od widocznego tekstu</li>
+                        <li>☐ Kolejność słów jest zachowana</li>
+                        <li>☐ Tekst w obrazach jest uwzględniony w nazwie</li>
+                        <li>☐ Sterowanie głosem działa z widocznym tekstem</li>
+                        <li>☐ Czytniki ekranu czytają spójnie z widocznym tekstem</li>
+                        <li>☐ aria-label nie zastępuje całkowicie widocznego tekstu</li>
+                        <li>☐ aria-labelledby uwzględnia widoczne elementy</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="implementation-guidelines">
+                <h3>Wytyczne implementacyjne</h3>
+
+                <h4>Najlepsze praktyki dla zgodności etykiet:</h4>
+                <ul>
+                    <li><strong>Unikaj nadpisywania aria-label</strong> - jeśli możliwe, pozwól na automatyczną nazwę
+                    </li>
+                    <li><strong>Rozpoczynaj od widocznego tekstu</strong> - dodatkowy kontekst na końcu</li>
+                    <li><strong>Zachowuj kolejność słów</strong> - tak jak w etykiecie wizualnej</li>
+                    <li><strong>Uwzględniaj obrazy tekstu</strong> - tekst w grafikach też się liczy</li>
+                    <li><strong>Testuj z voice control</strong> - sprawdź czy komendy działają</li>
+                    <li><strong>Używaj aria-describedby dla kontekstu</strong> - zamiast zmieniać nazwę</li>
+                </ul>
+
+                <h4>Wzorce implementacji:</h4>
+                <div
+                    style="background-color: #e7f3ff; border: 1px solid #b8daff; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #004085; margin-top: 0;">Rozszerzenie nazwy (zalecane)</h5>
+                    <pre style="color: #004085; font-size: 0.9em;"><code>&lt;button aria-label="Zapisz zmiany w dokumencie"&gt;Zapisz&lt;/button&gt;
+// Widoczny "Zapisz" + dodatkowy kontekst</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #d4edda; border: 1px solid #c3e6cb; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #155724; margin-top: 0;">Automatyczna nazwa (najlepsze)</h5>
+                    <pre style="color: #155724; font-size: 0.9em;"><code>&lt;button&gt;Zapisz zmiany&lt;/button&gt;
+// Tekst automatycznie staje się nazwą</code></pre>
+                </div>
+
+                <div
+                    style="background-color: #fff3cd; border: 1px solid #ffeaa7; padding: 15px; border-radius: 5px; margin: 15px 0;">
+                    <h5 style="color: #856404; margin-top: 0;">Użycie aria-describedby dla kontekstu</h5>
+                    <pre style="color: #856404; font-size: 0.9em;"><code>&lt;label for="pwd"&gt;Hasło&lt;/label&gt;
+&lt;input id="pwd" aria-describedby="pwd-help"&gt;
+&lt;div id="pwd-help"&gt;Minimum 8 znaków&lt;/div&gt;</code></pre>
+                </div>
+
+                <h4>Algorytm obliczania nazwy dostępnej:</h4>
+                <ol>
+                    <li><strong>aria-labelledby</strong> - jeśli obecne, użyj tekstu z wskazanych elementów</li>
+                    <li><strong>aria-label</strong> - jeśli obecne, użyj tej wartości</li>
+                    <li><strong>Etykieta label</strong> - dla pól formularzy</li>
+                    <li><strong>Tekst zawartości</strong> - dla przycisków, linków</li>
+                    <li><strong>title</strong> - jako ostatnia opcja</li>
+                    <li><strong>alt</strong> - dla obrazów</li>
+                </ol>
+
+                <h4>Implementacja krok po kroku:</h4>
+                <ol>
+                    <li><strong>Audit istniejących komponentów</strong> - znajdź wszystkie z etykietami</li>
+                    <li><strong>Sprawdź nazwy dostępne</strong> - użyj narzędzi deweloperskich</li>
+                    <li><strong>Popraw niezgodne nazwy</strong> - dodaj widoczny tekst do aria-label</li>
+                    <li><strong>Usuń niepotrzebne aria-label</strong> - gdzie tekst automatyczny wystarczy</li>
+                    <li><strong>Przetestuj z voice control</strong> - sprawdź czy komendy działają</li>
+                    <li><strong>Zweryfikuj z czytnikami ekranu</strong> - czy nazwa brzmi naturalnie</li>
+                </ol>
+
+                <h4>Częste błędy do uniknięcia:</h4>
+                <ul>
+                    <li><strong>aria-label zastępuje widoczny tekst</strong> - zawsze uwzględnij widoczne słowa</li>
+                    <li><strong>Inna kolejność słów</strong> - zachowaj kolejność z etykiety vizualnej</li>
+                    <li><strong>Brakujące słowa z etykiety</strong> - uwzględnij wszystkie widoczne słowa</li>
+                    <li><strong>Ignorowanie obrazów tekstu</strong> - tekst w grafikach też się liczy</li>
+                    <li><strong>Zbyt kreatywne nazwy</strong> - trzymaj się tego co widać</li>
+                    <li><strong>Nietestowanie z voice control</strong> - zawsze sprawdź czy komendy działają</li>
+                </ul>
+
+                <h4>Specjalne przypadki:</h4>
+                <ul>
+                    <li><strong>Przyciski tylko z ikonami</strong> - muszą mieć dostępną nazwę</li>
+                    <li><strong>Linki "więcej" czy "czytaj dalej"</strong> - potrzebują kontekstu ale zachować widoczny
+                        tekst</li>
+                    <li><strong>Obrazy z tekstem</strong> - alt powinien zawierać tekst z obrazu</li>
+                    <li><strong>Komponenty wielojęzyczne</strong> - nazwa w tym samym języku co etykieta</li>
+                </ul>
+            </div>
+
+            <div class="resources">
+                <h3>Dodatkowe zasoby</h3>
+                <ul>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/label-in-name.html" target="_blank"
+                            rel="noopener">Zrozumieć WCAG 2.1: Etykieta w nazwie</a></li>
+                    <li><a href="https://www.w3.org/TR/accname-1.1/" target="_blank" rel="noopener">Accessible Name and
+                            Description Computation</a></li>
+                    <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-label"
+                            target="_blank" rel="noopener">MDN: aria-label</a></li>
+                    <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G208" target="_blank"
+                            rel="noopener">Techniki WCAG: Uwzględnienie widocznego tekstu w nazwie</a></li>
+                    <li><a href="https://webaim.org/articles/voiceover/" target="_blank" rel="noopener">WebAIM: Voice
+                            Control Testing</a></li>
+                    <li><a href="https://inclusive-components.design/" target="_blank" rel="noopener">Inclusive
+                            Components</a></li>
+                </ul>
+            </div>
+
+            <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+                <ul>
+                    <li><a href="2.5.2.html">Poprzedni: 2.5.2 Anulowanie wskazania</a></li>
+                    <li><a href="2.5.html">Powrót do sekcji: 2.5 Sposoby wprowadzania danych</a></li>
+                    <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                </ul>
+            </nav>
+        </article>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+
+    <script>
+        // Demo funkcjonalność dla przykładów etykiety w nazwie
+        document.addEventListener('DOMContentLoaded', function () {
+
+            // Funkcja do pokazania dostępnej nazwy elementu
+            function showAccessibleName(element, displayElement) {
+                let accessibleName = '';
+
+                // Algorytm obliczania nazwy dostępnej (uproszczony)
+                if (element.getAttribute('aria-labelledby')) {
+                    const ids = element.getAttribute('aria-labelledby').split(' ');
+                    accessibleName = ids.map(id => {
+                        const el = document.getElementById(id);
+                        return el ? el.textContent.trim() : '';
+                    }).join(' ');
+                } else if (element.getAttribute('aria-label')) {
+                    accessibleName = element.getAttribute('aria-label');
+                } else if (element.tagName === 'BUTTON' || element.tagName === 'A') {
+                    accessibleName = element.textContent.trim();
+                } else if (element.tagName === 'INPUT' && element.labels && element.labels.length > 0) {
+                    accessibleName = element.labels[0].textContent.trim();
+                    if (element.getAttribute('aria-label')) {
+                        accessibleName = element.getAttribute('aria-label');
+                    }
+                }
+
+                if (displayElement) {
+                    displayElement.textContent = `Nazwa dostępna: "${accessibleName}"`;
+                }
+
+                return accessibleName;
+            }
+
+            // === PRZYKŁADY ZŁYCH IMPLEMENTACJI ===
+
+            // Przycisk z niezgodną nazwą
+            const badButton1 = document.getElementById('bad-button-1');
+            if (badButton1) {
+                badButton1.addEventListener('click', function () {
+                    const visibleText = this.textContent.replace('❌ ', '').trim();
+                    const accessibleName = this.getAttribute('aria-label');
+                    alert(`❌ PROBLEM:\nWidoczny tekst: "${visibleText}"\nNazwa dostępna: "${accessibleName}"\n\nKomenda "Kliknij ${visibleText}" nie zadziała!`);
+                });
+            }
+
+            // Link z mylącą etykietą
+            const badLink1 = document.getElementById('bad-link-1');
+            if (badLink1) {
+                badLink1.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const visibleText = this.textContent.replace('❌ ', '').trim();
+                    const labelId = this.getAttribute('aria-labelledby');
+                    const accessibleName = document.getElementById(labelId).textContent;
+                    alert(`❌ PROBLEM:\nWidoczny tekst: "${visibleText}"\nNazwa dostępna: "${accessibleName}"\n\nBrak "${visibleText}" w nazwie dostępnej!`);
+                });
+            }
+
+            // Pole z niezgodną etykietą
+            const badInput1 = document.getElementById('bad-input-1');
+            if (badInput1) {
+                badInput1.addEventListener('focus', function () {
+                    const label = document.querySelector('label[for="bad-input-1"]');
+                    const visibleText = label ? label.textContent.replace('❌ ', '').trim() : '';
+                    const accessibleName = this.getAttribute('aria-label');
+
+                    const info = document.createElement('div');
+                    info.style.cssText = 'position: absolute; background: #f8d7da; border: 1px solid #f5c6cb; padding: 10px; border-radius: 4px; margin-top: 5px; font-size: 0.8em; color: #721c24; z-index: 1000;';
+                    info.textContent = `❌ Etykieta: "${visibleText}" | Nazwa dostępna: "${accessibleName}"`;
+                    this.parentNode.appendChild(info);
+
+                    setTimeout(() => info.remove(), 3000);
+                });
+            }
+
+            // === PRZYKŁADY DOBRYCH IMPLEMENTACJI ===
+
+            // Przycisk z zgodną nazwą
+            const goodButton1 = document.getElementById('good-button-1');
+            if (goodButton1) {
+                goodButton1.addEventListener('click', function () {
+                    const visibleText = this.textContent.replace('✅ ', '').trim();
+                    const accessibleName = this.getAttribute('aria-label');
+                    alert(`✅ PRAWIDŁOWO:\nWidoczny tekst: "${visibleText}"\nNazwa dostępna: "${accessibleName}"\n\nKomenda "Kliknij ${visibleText}" działa!`);
+                });
+            }
+
+            // Link z rozszerzoną nazwą
+            const goodLink1 = document.getElementById('good-link-1');
+            if (goodLink1) {
+                goodLink1.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const visibleText = this.textContent.replace('✅ ', '').trim();
+                    const accessibleName = this.getAttribute('aria-label');
+                    alert(`✅ PRAWIDŁOWO:\nWidoczny tekst: "${visibleText}"\nNazwa dostępna: "${accessibleName}"\n\nWidoczny tekst jest na początku nazwy!`);
+                });
+            }
+
+            // Pole z poprawną etykietą
+            const goodInput1 = document.getElementById('good-input-1');
+            if (goodInput1) {
+                goodInput1.addEventListener('focus', function () {
+                    const label = document.querySelector('label[for="good-input-1"]');
+                    const visibleText = label ? label.textContent.replace('✅ ', '').trim() : '';
+
+                    const info = document.createElement('div');
+                    info.style.cssText = 'position: absolute; background: #d4edda; border: 1px solid #c3e6cb; padding: 10px; border-radius: 4px; margin-top: 5px; font-size: 0.8em; color: #155724; z-index: 1000;';
+                    info.textContent = `✅ Etykieta i nazwa dostępna: "${visibleText}" - perfect match!`;
+                    this.parentNode.appendChild(info);
+
+                    setTimeout(() => info.remove(), 3000);
+                });
+            }
+
+            // Przycisk z tekstem i ikoną
+            const goodButton2 = document.getElementById('good-button-2');
+            if (goodButton2) {
+                goodButton2.addEventListener('click', function () {
+                    const visibleText = this.querySelector('span').textContent;
+                    const accessibleName = this.getAttribute('aria-label');
+                    alert(`✅ PRAWIDŁOWO:\nWidoczny tekst: "${visibleText}"\nNazwa dostępna: "${accessibleName}"\n\nWidoczny tekst "${visibleText}" jest na początku!`);
+                });
+            }
+
+            // Przycisk z automatyczną zgodność
+            const goodButton3 = document.getElementById('good-button-3');
+            if (goodButton3) {
+                goodButton3.addEventListener('click', function () {
+                    const textContent = this.textContent.replace('✅ ', '').trim();
+                    alert(`✅ NAJLEPSZE:\nWidoczny tekst: "${textContent}"\nNazwa dostępna: "${textContent}"\n\nAutomatyczna zgodność - brak aria-label!`);
+                });
+            }
+
+            // Demonstracja narzędzi deweloperskich
+            const devToolsDemo = document.createElement('div');
+            devToolsDemo.style.cssText = 'position: fixed; top: 10px; right: 10px; background: #fff; border: 2px solid #007bff; padding: 15px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; max-width: 300px; font-family: monospace; font-size: 0.8em;';
+            devToolsDemo.innerHTML = `
+                <h4 style="margin: 0 0 10px 0; color: #007bff;">🔧 Dev Tools Demo</h4>
+                <p style="margin: 0 0 10px 0;">Naciśnij F12 i w konsoli wpisz:</p>
+                <code style="display: block; background: #f8f9fa; padding: 8px; border-radius: 4px; margin-bottom: 10px;">
+                $0.computedName<br>
+                // lub<br>
+                getComputedAccessibleNode($0)
+                </code>
+                <button onclick="this.parentElement.remove()" style="background: #007bff; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Zamknij</button>
+            `;
+
+            // Dodaj demo po 2 sekundach
+            setTimeout(() => {
+                document.body.appendChild(devToolsDemo);
+                setTimeout(() => {
+                    if (devToolsDemo.parentElement) {
+                        devToolsDemo.remove();
+                    }
+                }, 10000);
+            }, 2000);
+        });
+    </script>
+</body>
+
+</html>
