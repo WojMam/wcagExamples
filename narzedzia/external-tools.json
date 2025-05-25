@@ -1,0 +1,220 @@
+{
+	"tools": [
+		{
+			"name": "WAVE",
+			"icon": "fa-solid fa-wave-square",
+			"description": "Kompleksowe narzędzie do oceny dostępności stron internetowych, dostępne jako rozszerzenie do popularnych przeglądarek. Analizuje stronę pod kątem błędów dostępności i sugeruje poprawki.",
+			"types": ["extension", "online"],
+			"typeLabels": ["Wtyczka", "Web App"],
+			"mainLink": "https://wave.webaim.org/",
+			"additionalLink": null
+		},
+		{
+			"name": "Screen Reader NVDA",
+			"icon": "fa-solid fa-universal-access",
+			"description": "Darmowy czytnik ekranu dla systemu Windows, który pozwala testować, jak Twoja strona będzie odczytywana przez osoby niewidome lub słabowidzące.",
+			"types": ["app", "screenreader"],
+			"typeLabels": ["Aplikacja", "Screen Reader"],
+			"mainLink": "https://www.nvaccess.org/",
+			"additionalLink": null
+		},
+		{
+			"name": "JAWS Screen Reader",
+			"icon": "fa-solid fa-universal-access",
+			"description": "Profesjonalny czytnik ekranu dla systemu Windows, szeroko wykorzystywany przez osoby niewidome. Pozwala na zaawansowane testowanie dostępności stron i aplikacji internetowych w warunkach zbliżonych do rzeczywistych.",
+			"types": ["app", "screenreader"],
+			"typeLabels": ["Aplikacja", "Screen Reader"],
+			"mainLink": "https://www.freedomscientific.com/products/software/jaws/",
+			"additionalLink": null
+		},
+		{
+			"name": "VoiceOver",
+			"icon": "fa-brands fa-apple",
+			"description": "Wbudowany czytnik ekranu w systemie macOS i iOS. Doskonałe narzędzie do testowania dostępności stron na urządzeniach Apple, szczególnie ważne ze względu na dużą popularność wśród użytkowników niewidomych i słabowidzących.",
+			"types": ["app", "screenreader"],
+			"typeLabels": ["Aplikacja", "Screen Reader"],
+			"mainLink": "https://www.apple.com/accessibility/mac/vision/",
+			"additionalLink": null
+		},
+		{
+			"name": "Axe DevTools",
+			"icon": "fa-solid fa-code-branch",
+			"description": "Zestaw narzędzi dla deweloperów do testowania dostępności, zintegrowany z przeglądarkami. Umożliwia wykrywanie problemów z dostępnością podczas procesu rozwoju.",
+			"types": ["extension", "library"],
+			"typeLabels": ["Wtyczka", "Biblioteka"],
+			"mainLink": "https://www.deque.com/axe/",
+			"additionalLink": null
+		},
+		{
+			"name": "Lighthouse",
+			"icon": "fa-solid fa-magnifying-glass-chart",
+			"description": "Narzędzie wbudowane w Chrome DevTools, które analizuje strony internetowe pod kątem wydajności, SEO, dobrych praktyk i dostępności.",
+			"types": ["online", "extension"],
+			"typeLabels": ["Wbudowane", "CLI"],
+			"mainLink": "https://developers.google.com/web/tools/lighthouse",
+			"additionalLink": null
+		},
+		{
+			"name": "Accessibility Insights",
+			"icon": "fa-brands fa-microsoft",
+			"description": "Rozszerzenie do przeglądarek od Microsoft, które oferuje testy dostępności dla stron i aplikacji internetowych, w tym szczegółowe analizy i wskazówki.",
+			"types": ["extension", "app"],
+			"typeLabels": ["Wtyczka", "Aplikacja"],
+			"mainLink": "https://accessibilityinsights.io/",
+			"additionalLink": null
+		},
+		{
+			"name": "IBM Accessibility Checker",
+			"icon": "fa-solid fa-square-check",
+			"description": "Narzędzie do testowania dostępności od IBM, które pomaga wykrywać i naprawiać problemy z dostępnością w aplikacjach webowych. Dostępne jako wtyczka do przeglądarki i jako usługa online.",
+			"types": ["extension", "online"],
+			"typeLabels": ["Wtyczka", "Web App"],
+			"mainLink": "https://www.ibm.com/able/toolkit/verify",
+			"additionalLink": null
+		},
+		{
+			"name": "ARC Toolkit",
+			"icon": "fa-solid fa-universal-access",
+			"description": "Rozszerzenie do przeglądarek, które pozwala sprawdzać dostępność stron internetowych bezpośrednio podczas przeglądania. Zawiera zestaw testów opartych na WCAG 2.1.",
+			"types": ["extension"],
+			"typeLabels": ["Wtyczka"],
+			"mainLink": "https://www.tpgi.com/arc-platform/arc-toolkit/",
+			"additionalLink": null
+		},
+		{
+			"name": "Colour Contrast Analyser",
+			"icon": "fa-solid fa-palette",
+			"description": "Darmowe narzędzie do sprawdzania kontrastu kolorów tworzone przez TPGi. Umożliwia testowanie zgodności z WCAG 2.0, 2.1 i 2.2 na poziomach AA i AAA. Dostępne jako aplikacja desktopowa oraz narzędzie online z symulatorami różnych dysfunkcji wzroku.",
+			"types": ["app", "online"],
+			"typeLabels": ["Aplikacja", "Web App"],
+			"mainLink": "https://www.tpgi.com/color-contrast-checker/",
+			"additionalLink": null
+		},
+		{
+			"name": "PDF Accessibility Checker (PAC)",
+			"icon": "fa-solid fa-file-pdf",
+			"description": "Darmowe narzędzie do sprawdzania dostępności dokumentów PDF, globalnie używane od 2010 roku. Sprawdza zgodność z PDF/UA i WCAG, oferuje podgląd struktury oraz symulację czytnika ekranu. Nie wymaga instalacji - wystarczy pobrać i uruchomić.",
+			"types": ["app"],
+			"typeLabels": ["Aplikacja"],
+			"mainLink": "https://pac.pdf-accessibility.org/en",
+			"additionalLink": null
+		},
+		{
+			"name": "Web Developer",
+			"icon": "fa-solid fa-code",
+			"description": "Rozszerzenie dodające pasek narzędzi do przeglądarki z różnymi narzędziami dla programistów stron internetowych. Umożliwia m.in. wyłączanie stylów CSS, JavaScript, sprawdzanie formularzy, obrazów oraz inspekcję elementów HTML.",
+			"types": ["extension"],
+			"typeLabels": ["Wtyczka"],
+			"mainLink": "https://chromewebstore.google.com/detail/web-developer/bfbameneiokkgbdmiekhjnmfkcnldhhm",
+			"additionalLink": null
+		},
+		{
+			"name": "ANDI",
+			"icon": "fa-solid fa-sitemap",
+			"description": "Narzędzie od U.S. Social Security Administration, które instaluje się jako bookmarklet i analizuje stronę pod kątem dostępności, w tym testuje elementy formularzy, tabele, obrazy i nawigację.",
+			"types": ["online"],
+			"typeLabels": ["Skrypt"],
+			"mainLink": "https://www.ssa.gov/accessibility/andi/help/install.html",
+			"additionalLink": null
+		},
+		{
+			"name": "Badacz",
+			"icon": "fa-solid fa-magnifying-glass",
+			"description": "Aplikacja od firmy Logos dostępna na urządzenia z systemem iOS, która umożliwia badanie dostępności witryn internetowych. Pozwala testować zgodność stron z WCAG oraz analizować strukturę serwisów.",
+			"types": ["app"],
+			"typeLabels": ["Aplikacja"],
+			"mainLink": "https://logios.dev/badacz/",
+			"additionalLink": null
+		},
+		{
+			"name": "cypress-accessibility-checker",
+			"icon": "fa-solid fa-vial-circle-check",
+			"description": "Biblioteka integrująca IBM Accessibility Checker z frameworkiem testowym Cypress. Umożliwia automatyczne testowanie dostępności w ramach testów end-to-end aplikacji internetowych.",
+			"types": ["library", "repo"],
+			"typeLabels": ["Biblioteka", "GitHub"],
+			"mainLink": "https://github.com/IBMa/equal-access/tree/master/cypress-accessibility-checker",
+			"additionalLink": null
+		},
+		{
+			"name": "Accessibility Audit",
+			"icon": "fa-solid fa-clipboard-check",
+			"description": "Narzędzie internetowe wykorzystujące Playwright, axe-core i Lighthouse do skanowania stron pod kątem problemów z dostępnością. Generuje szczegółowe raporty zgodności z WCAG na różnych poziomach (A/AA/AAA).",
+			"types": ["online"],
+			"typeLabels": ["Web App"],
+			"mainLink": "https://a11yaudit.up.railway.app/",
+			"additionalLink": null
+		},
+		{
+			"name": "Hoverify",
+			"icon": "fa-solid fa-wand-magic-sparkles",
+			"description": "Wszechstronne rozszerzenie dla twórców stron internetowych oferujące szereg narzędzi w jednym miejscu. Umożliwia inspekcję elementów poprzez najechanie kursorem, testowanie responsywności na wielu urządzeniach, wyodrębnianie zasobów, analizę stosów technologicznych oraz narzędzia SEO - wszystko bez konieczności otwierania DevTools.",
+			"types": ["extension"],
+			"typeLabels": ["Wtyczka"],
+			"mainLink": "https://tryhoverify.com/",
+			"additionalLink": null
+		},
+		{
+			"name": "Silktide",
+			"icon": "fa-solid fa-magnifying-glass-chart",
+			"description": "Kompleksowa platforma do zarządzania jakością stron internetowych, która automatycznie wykrywa i pomaga naprawiać problemy z dostępnością, treścią, SEO i doświadczeniem użytkownika. Silktide pozwala monitorować zgodność z WCAG 2.2 i ADA.",
+			"types": ["online", "app"],
+			"typeLabels": ["Web App", "Aplikacja"],
+			"mainLink": "https://silktide.com/",
+			"additionalLink": null
+		},
+		{
+			"name": "HTML_CodeSniffer PL",
+			"icon": "fa-solid fa-code",
+			"description": "Polska wersja narzędzia HTML_CodeSniffer, które sprawdza kod źródłowy HTML i wykrywa naruszenia zdefiniowanego standardu kodowania. Pozwala sprawdzić zgodność z WCAG 2.1 na poziomach A, AA i AAA oraz przepisami Sekcji 508.",
+			"types": ["online", "repo"],
+			"typeLabels": ["Web App", "Skrypt"],
+			"mainLink": "https://www.irdpl.pl/HTML_CodeSniffer/",
+			"additionalLink": null
+		},
+		{
+			"name": "HTML_CodeSniffer EN",
+			"icon": "fa-solid fa-code",
+			"description": "Oryginalna wersja narzędzia HTML_CodeSniffer, które sprawdza kod źródłowy HTML i wykrywa naruszenia zdefiniowanego standardu kodowania. Dostępne jako skryptozakładka i aplikacja webowa umożliwiająca audyt stron pod kątem zgodności z WCAG 2.1.",
+			"types": ["online", "repo"],
+			"typeLabels": ["Web App", "Skrypt"],
+			"mainLink": "https://squizlabs.github.io/HTML_CodeSniffer/",
+			"additionalLink": null
+		},
+		{
+			"name": "HTML_CodeSniffer kod",
+			"icon": "fa-brands fa-github",
+			"description": "Oficjalne repozytorium kodu źródłowego HTML_CodeSniffer. Biblioteka JavaScript do sprawdzania zgodności z WCAG 2.0/2.1 oraz przepisami Sekcji 508. Dostępna na licencji BSD 3-Clause, z możliwością rozszerzenia o własne \"sniffy\".",
+			"types": ["repo", "library"],
+			"typeLabels": ["GitHub", "Biblioteka"],
+			"mainLink": "https://github.com/squizlabs/HTML_CodeSniffer",
+			"additionalLink": null
+		},
+		{
+			"name": "TabA11y",
+			"icon": "fa-solid fa-keyboard",
+			"description": "Rozszerzenie do przeglądarki Chrome, które wizualizuje porządek nawigacji tabulatorem na stronie internetowej. Pomaga zidentyfikować i naprawić problemy z dostępnością związane z kolejnością tabulacji, co jest kluczowe dla użytkowników korzystających z klawiatury.",
+			"types": ["extension"],
+			"typeLabels": ["Wtyczka"],
+			"mainLink": "https://chromewebstore.google.com/detail/taba11y-tab-order-accessi/aocppmckdocdjkphmofnklcjhdidgmga",
+			"additionalLink": null
+		},
+		{
+			"name": "Power Mapper",
+			"icon": "fa-solid fa-sitemap",
+			"description": "Profesjonalne narzędzie do mapowania i testowania stron internetowych, które pomaga w identyfikacji problemów z dostępnością, mapowaniu struktury strony i analizie zgodności z WCAG.",
+			"types": ["app", "online"],
+			"typeLabels": ["Aplikacja", "Web App"],
+			"mainLink": "https://www.powermapper.com/",
+			"additionalLink": null
+		},
+		{
+			"name": "axe DevTools",
+			"icon": "fa-solid fa-code",
+			"description": "Rozszerzenie do przeglądarki Chrome, które umożliwia szybkie testowanie dostępności stron internetowych. Wykorzystuje silnik axe-core do wykrywania problemów z dostępnością i dostarcza szczegółowe raporty.",
+			"types": ["extension", "library"],
+			"typeLabels": ["Wtyczka", "Biblioteka"],
+			"mainLink": "https://chromewebstore.google.com/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd",
+			"additionalLink": null
+		}
+	]
+}

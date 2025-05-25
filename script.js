@@ -138,9 +138,15 @@ function loadHeader() {
 		} else if (
 			path.includes("/videos/") ||
 			path.includes("/images/") ||
-			path.includes("/audio/")
+			path.includes("/audio/") ||
+			path.includes("/narzedzia/")
 		) {
-			headerPath = "../header.html";
+			// Sprawdź czy jesteśmy w podkatalogu narzędzi (np. /narzedzia/wewnetrzne/)
+			if (path.includes("/narzedzia/wewnetrzne/")) {
+				headerPath = "../../header.html";
+			} else {
+				headerPath = "../header.html";
+			}
 			isSubdirectory = true;
 			console.log("Wykryto inny podkatalog, ustawiam ścieżkę:", headerPath);
 		} else {
@@ -164,9 +170,23 @@ function loadHeader() {
 
 				// Dostosuj ścieżki do obrazów i linków w zależności od lokalizacji
 				if (isSubdirectory) {
-					html = html.replace(/href="index.html/g, 'href="../index.html');
-					html = html.replace(/href="wytyczne.html/g, 'href="../wytyczne.html');
-					html = html.replace(/src="images\//g, 'src="../images/');
+					if (path.includes("/narzedzia/wewnetrzne/")) {
+						// Dla głębszych podkatalogów (np. /narzedzia/wewnetrzne/)
+						html = html.replace(/href="index.html/g, 'href="../../index.html');
+						html = html.replace(
+							/href="wytyczne.html/g,
+							'href="../../wytyczne.html'
+						);
+						html = html.replace(/src="images\//g, 'src="../../images/');
+					} else {
+						// Dla zwykłych podkatalogów
+						html = html.replace(/href="index.html/g, 'href="../index.html');
+						html = html.replace(
+							/href="wytyczne.html/g,
+							'href="../wytyczne.html'
+						);
+						html = html.replace(/src="images\//g, 'src="../images/');
+					}
 					console.log("Dostosowano ścieżki dla podkatalogu");
 				}
 
@@ -181,7 +201,31 @@ function loadHeader() {
 			console.error("Błąd ładowania nagłówka:", error);
 			// W przypadku błędu, wstaw bezpośrednio zawartość nagłówka
 			const headerContent = isSubdirectory
-				? `
+				? path.includes("/narzedzia/wewnetrzne/")
+					? `
+				<h1>WCAG 2.1 - Nieoficjalny przewodnik dostępności</h1>
+				<p class="subtitle">Praktyczne przykłady implementacji wytycznych WCAG 2.1</p>
+
+				<div class="disclaimer-banner" role="alert">
+					<img src="../../images/under-development-banner.png" alt="Projekt w trakcie rozwoju" width="80" height="80"
+						style="float: left; margin-right: 20px; margin-bottom: 10px;">
+					<div style="overflow: hidden;">
+						<strong>Uwaga! To nie jest oficjalna strona WCAG!</strong>
+						Ta strona służy jedynie do celów edukacyjnych i ćwiczeniowych. Nie jest to oficjalna dokumentacja WCAG 2.1.
+						Na stronie mogą występować błędy lub niektóre funkcje mogą nie działać poprawnie, ponieważ projekt jest w
+						trakcie rozwoju.
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+
+				<nav aria-label="Główna nawigacja">
+					<ul class="main-nav">
+						<li><a href="../../index.html">Strona główna</a></li>
+						<li><a href="../../wytyczne.html">Przykłady wytycznych</a></li>
+					</ul>
+				</nav>
+			`
+					: `
 				<h1>WCAG 2.1 - Nieoficjalny przewodnik dostępności</h1>
 				<p class="subtitle">Praktyczne przykłady implementacji wytycznych WCAG 2.1</p>
 
@@ -255,9 +299,15 @@ function loadFooter() {
 		} else if (
 			window.location.pathname.includes("/videos/") ||
 			window.location.pathname.includes("/images/") ||
-			window.location.pathname.includes("/audio/")
+			window.location.pathname.includes("/audio/") ||
+			window.location.pathname.includes("/narzedzia/")
 		) {
-			footerPath = "../footer.html";
+			// Sprawdź czy jesteśmy w podkatalogu narzędzi (np. /narzedzia/wewnetrzne/)
+			if (window.location.pathname.includes("/narzedzia/wewnetrzne/")) {
+				footerPath = "../../footer.html";
+			} else {
+				footerPath = "../footer.html";
+			}
 			isSubdirectory = true;
 		}
 

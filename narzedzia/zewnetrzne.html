@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narzędzia zewnętrzne - Nieoficjalny przewodnik dostępności</title>
+    <link rel="stylesheet" href="../styles.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .tile {
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-type {
+            position: absolute;
+            top: 0;
+            right: 0;
+            font-size: 0.7em;
+            padding: 4px 8px;
+            border-radius: 0 0 0 8px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-weight: 500;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+
+        .tool-type-item {
+            margin-bottom: 2px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .tool-type-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .tool-type-item.extension {
+            background-color: #4285F4;
+        }
+
+        .tool-type-item.app {
+            background-color: #34A853;
+        }
+
+        .tool-type-item.repo {
+            background-color: #800080;
+        }
+
+        .tool-type-item.online {
+            background-color: #EA4335;
+        }
+
+        .tool-type-item.library {
+            background-color: #FBBC05;
+            color: #000;
+        }
+
+        .tool-type-item.screenreader {
+            background-color: #9C27B0;
+        }
+
+        .tile:hover,
+        .tile:focus-within {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .tile-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+
+        .tile-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+            display: block;
+            text-align: center;
+        }
+
+        .tile-content {
+            padding: 20px;
+            flex: 1;
+        }
+
+        .tile-description {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .tile-footer {
+            padding: 15px 20px;
+            text-align: right;
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .tile-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 15px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.9em;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            min-width: 110px;
+            height: 36px;
+        }
+
+        .tile-link:hover,
+        .tile-link:focus {
+            background-color: var(--secondary-color);
+            outline: none;
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .tile-link.disabled {
+            background-color: #e0e0e0;
+            color: #888888;
+            cursor: not-allowed;
+            pointer-events: none;
+            box-shadow: none;
+            border: 1px solid #d0d0d0;
+        }
+
+        .page-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        .page-intro h2 {
+            font-size: 1.8em;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb {
+            margin-bottom: 30px;
+            font-size: 0.9em;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .note {
+            font-size: 0.9em;
+            color: #666;
+            margin: 0.5em 0 1em 0;
+            padding-left: 1em;
+            border-left: 3px solid #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Style dla trybu wysokiego kontrastu */
+        body.high-contrast .tile {
+            background-color: #000;
+            border: 2px solid #fff;
+            box-shadow: none;
+        }
+
+        body.high-contrast .tile-header {
+            background-color: #000;
+            color: #ffff00;
+            border-bottom: 2px solid #fff;
+        }
+
+        body.high-contrast .tile-content {
+            color: #fff;
+        }
+
+        body.high-contrast .tile-footer {
+            background-color: #222;
+            border-top: 2px solid #fff;
+        }
+
+        body.high-contrast .tile-link {
+            background-color: #000;
+            color: #ffff00;
+            border: 2px solid #ffff00;
+            font-weight: bold;
+            box-shadow: none;
+        }
+
+        body.high-contrast .tile-link:hover,
+        body.high-contrast .tile-link:focus {
+            background-color: #ffff00;
+            color: #000;
+            transform: translateY(-2px);
+        }
+
+        body.high-contrast .tile-link.disabled {
+            background-color: #333;
+            color: #999;
+            border: 2px solid #999;
+            transform: none;
+        }
+
+        body.high-contrast .note {
+            color: #fff;
+            border-left: 3px solid #ffff00;
+        }
+
+        body.high-contrast .tool-type {
+            border: 1px solid #fff;
+            color: #ffff00;
+        }
+
+        body.high-contrast .tool-type-item.extension,
+        body.high-contrast .tool-type-item.app,
+        body.high-contrast .tool-type-item.repo,
+        body.high-contrast .tool-type-item.online,
+        body.high-contrast .tool-type-item.library,
+        body.high-contrast .tool-type-item.screenreader {
+            background-color: #000;
+            border: 1px solid #fff;
+            color: #ffff00;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="breadcrumb">
+            <a href="../index.html">Strona główna</a> &gt; <a href="index.html">Narzędzia i zasoby</a> &gt; Narzędzia
+            zewnętrzne
+        </div>
+
+        <div class="page-intro">
+            <h2>Narzędzia zewnętrzne</h2>
+            <p>Starannie wyselekcjonowane narzędzia zewnętrzne, które autor przewodnika uznał za godne polecenia.
+                Są to rozszerzenia przeglądarek, aplikacje desktopowe oraz serwisy online, które wspomogą Cię w
+                testowaniu
+                i poprawie dostępności Twoich stron internetowych.</p>
+        </div>
+
+        <div class="dashboard">
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item extension">Wtyczka</span>
+                    <span class="tool-type-item online">Web App</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-wave-square"></i></span>
+                    WAVE
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Kompleksowe narzędzie do oceny dostępności stron internetowych,
+                        dostępne jako rozszerzenie do popularnych przeglądarek. Analizuje stronę pod kątem błędów
+                        dostępności i sugeruje poprawki.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://wave.webaim.org/" class="tile-link" target="_blank" rel="noopener">Strona
+                        narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item app">Aplikacja</span>
+                    <span class="tool-type-item screenreader">Screen Reader</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-universal-access"></i></span>
+                    Screen Reader NVDA
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Darmowy czytnik ekranu dla systemu Windows, który pozwala testować,
+                        jak Twoja strona będzie odczytywana przez osoby niewidome lub słabowidzące.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://www.nvaccess.org/" class="tile-link" target="_blank" rel="noopener">Strona
+                        narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item app">Aplikacja</span>
+                    <span class="tool-type-item screenreader">Screen Reader</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-universal-access"></i></span>
+                    JAWS Screen Reader
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Profesjonalny czytnik ekranu dla systemu Windows, szeroko
+                        wykorzystywany przez osoby niewidome. Pozwala na zaawansowane testowanie dostępności stron
+                        i aplikacji internetowych w warunkach zbliżonych do rzeczywistych.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://www.freedomscientific.com/products/software/jaws/" class="tile-link"
+                        target="_blank" rel="noopener">Strona
+                        narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item app">Aplikacja</span>
+                    <span class="tool-type-item screenreader">Screen Reader</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-brands fa-apple"></i></span>
+                    VoiceOver
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Wbudowany czytnik ekranu w systemie macOS i iOS. Doskonałe narzędzie
+                        do testowania dostępności stron na urządzeniach Apple, szczególnie ważne ze względu na dużą
+                        popularność wśród użytkowników niewidomych i słabowidzących.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://www.apple.com/accessibility/mac/vision/" class="tile-link" target="_blank"
+                        rel="noopener">Strona
+                        narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item extension">Wtyczka</span>
+                    <span class="tool-type-item library">Biblioteka</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-code-branch"></i></span>
+                    Axe DevTools
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Zestaw narzędzi dla deweloperów do testowania dostępności,
+                        zintegrowany z przeglądarkami. Umożliwia wykrywanie problemów z dostępnością podczas procesu
+                        rozwoju.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://www.deque.com/axe/" class="tile-link" target="_blank" rel="noopener">Strona
+                        narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item online">Wbudowane</span>
+                    <span class="tool-type-item extension">CLI</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></span>
+                    Lighthouse
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Narzędzie wbudowane w Chrome DevTools, które analizuje strony
+                        internetowe pod kątem wydajności, SEO, dobrych praktyk i dostępności.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://developers.google.com/web/tools/lighthouse" class="tile-link" target="_blank"
+                        rel="noopener">Strona narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item extension">Wtyczka</span>
+                    <span class="tool-type-item app">Aplikacja</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-brands fa-microsoft"></i></span>
+                    Accessibility Insights
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Rozszerzenie do przeglądarek od Microsoft, które oferuje testy
+                        dostępności dla stron i aplikacji internetowych, w tym szczegółowe analizy i wskazówki.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://accessibilityinsights.io/" class="tile-link" target="_blank" rel="noopener">Strona
+                        narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item extension">Wtyczka</span>
+                    <span class="tool-type-item online">Web App</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-square-check"></i></span>
+                    IBM Accessibility Checker
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Narzędzie do testowania dostępności od IBM, które pomaga wykrywać i
+                        naprawiać problemy z dostępnością w aplikacjach webowych. Dostępne jako wtyczka do
+                        przeglądarki i jako usługa online.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://www.ibm.com/able/toolkit/verify" class="tile-link" target="_blank"
+                        rel="noopener">Strona narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item extension">Wtyczka</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-universal-access"></i></span>
+                    ARC Toolkit
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Rozszerzenie do przeglądarek, które pozwala sprawdzać dostępność
+                        stron internetowych bezpośrednio podczas przeglądania. Zawiera zestaw testów opartych na
+                        WCAG 2.1.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://www.tpgi.com/arc-platform/arc-toolkit/" class="tile-link" target="_blank"
+                        rel="noopener">Strona narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item app">Aplikacja</span>
+                    <span class="tool-type-item online">Web App</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-palette"></i></span>
+                    Colour Contrast Analyser
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Darmowe narzędzie do sprawdzania kontrastu kolorów tworzone przez
+                        TPGi. Umożliwia testowanie zgodności z WCAG 2.0, 2.1 i 2.2 na poziomach AA i AAA. Dostępne
+                        jako aplikacja desktopowa oraz narzędzie online z symulatorami różnych dysfunkcji wzroku.
+                    </p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://www.tpgi.com/color-contrast-checker/" class="tile-link" target="_blank"
+                        rel="noopener">Strona narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item app">Aplikacja</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-file-pdf"></i></span>
+                    PDF Accessibility Checker (PAC)
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Darmowe narzędzie do sprawdzania dostępności dokumentów PDF,
+                        globalnie używane od 2010 roku. Sprawdza zgodność z PDF/UA i WCAG, oferuje podgląd struktury
+                        oraz symulację czytnika ekranu. Nie wymaga instalacji - wystarczy pobrać i uruchomić.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://pac.pdf-accessibility.org/en" class="tile-link" target="_blank"
+                        rel="noopener">Strona narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item extension">Wtyczka</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-code"></i></span>
+                    Web Developer
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Rozszerzenie dodające pasek narzędzi do przeglądarki z różnymi
+                        narzędziami dla programistów stron internetowych. Umożliwia m.in. wyłączanie stylów CSS,
+                        JavaScript, sprawdzanie formularzy, obrazów oraz inspekcję elementów HTML.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://chromewebstore.google.com/detail/web-developer/bfbameneiokkgbdmiekhjnmfkcnldhhm"
+                        class="tile-link" target="_blank" rel="noopener">Strona narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item online">Skrypt</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-sitemap"></i></span>
+                    ANDI
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Narzędzie od U.S. Social Security Administration, które instaluje
+                        się jako bookmarklet i analizuje stronę pod kątem dostępności, w tym testuje elementy
+                        formularzy, tabele, obrazy i nawigację.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://www.ssa.gov/accessibility/andi/help/install.html" class="tile-link" target="_blank"
+                        rel="noopener">Strona narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item app">Aplikacja</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    Badacz
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Aplikacja od firmy Logos dostępna na urządzenia z systemem iOS,
+                        która umożliwia badanie dostępności witryn internetowych. Pozwala testować zgodność stron z
+                        WCAG oraz analizować strukturę serwisów.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://logios.dev/badacz/" class="tile-link" target="_blank" rel="noopener">Strona
+                        narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item library">Biblioteka</span>
+                    <span class="tool-type-item repo">GitHub</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-vial-circle-check"></i></span>
+                    cypress-accessibility-checker
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Biblioteka integrująca IBM Accessibility Checker z frameworkiem
+                        testowym Cypress. Umożliwia automatyczne testowanie dostępności w ramach testów end-to-end
+                        aplikacji internetowych.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://github.com/IBMa/equal-access/tree/master/cypress-accessibility-checker"
+                        class="tile-link" target="_blank" rel="noopener">Strona narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item online">Web App</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-clipboard-check"></i></span>
+                    Accessibility Audit
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Narzędzie internetowe wykorzystujące Playwright, axe-core i
+                        Lighthouse do skanowania stron pod kątem problemów z dostępnością. Generuje szczegółowe
+                        raporty zgodności z WCAG na różnych poziomach (A/AA/AAA).</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://a11yaudit.up.railway.app/" class="tile-link" target="_blank" rel="noopener">Strona
+                        narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item extension">Wtyczka</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+                    Hoverify
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Wszechstronne rozszerzenie dla twórców stron internetowych oferujące
+                        szereg narzędzi w jednym miejscu. Umożliwia inspekcję elementów poprzez najechanie kursorem,
+                        testowanie responsywności na wielu urządzeniach, wyodrębnianie zasobów, analizę stosów
+                        technologicznych oraz narzędzia SEO - wszystko bez konieczności otwierania DevTools.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://tryhoverify.com/" class="tile-link" target="_blank" rel="noopener">Strona
+                        narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item online">Web App</span>
+                    <span class="tool-type-item app">Aplikacja</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></span>
+                    Silktide
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Kompleksowa platforma do zarządzania jakością stron internetowych,
+                        która automatycznie wykrywa i pomaga naprawiać problemy z dostępnością, treścią, SEO i
+                        doświadczeniem użytkownika. Silktide pozwala monitorować zgodność z WCAG 2.2 i ADA.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://silktide.com/" class="tile-link" target="_blank" rel="noopener">Strona
+                        narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item online">Web App</span>
+                    <span class="tool-type-item repo">Skrypt</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-code"></i></span>
+                    HTML_CodeSniffer PL
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Polska wersja narzędzia HTML_CodeSniffer, które sprawdza kod
+                        źródłowy HTML i wykrywa naruszenia zdefiniowanego standardu kodowania. Pozwala sprawdzić
+                        zgodność z WCAG 2.1 na poziomach A, AA i AAA oraz przepisami Sekcji 508.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://www.irdpl.pl/HTML_CodeSniffer/" class="tile-link" target="_blank"
+                        rel="noopener">Strona narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item online">Web App</span>
+                    <span class="tool-type-item repo">Skrypt</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-code"></i></span>
+                    HTML_CodeSniffer EN
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Oryginalna wersja narzędzia HTML_CodeSniffer, które sprawdza kod
+                        źródłowy HTML i wykrywa naruszenia zdefiniowanego standardu kodowania. Dostępne jako
+                        skryptozakładka i aplikacja webowa umożliwiająca audyt stron pod kątem zgodności z WCAG 2.1.
+                    </p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://squizlabs.github.io/HTML_CodeSniffer/" class="tile-link" target="_blank"
+                        rel="noopener">Strona narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item repo">GitHub</span>
+                    <span class="tool-type-item library">Biblioteka</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-brands fa-github"></i></span>
+                    HTML_CodeSniffer kod
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Oficjalne repozytorium kodu źródłowego HTML_CodeSniffer. Biblioteka
+                        JavaScript do sprawdzania zgodności z WCAG 2.0/2.1 oraz przepisami Sekcji 508. Dostępna na
+                        licencji BSD 3-Clause, z możliwością rozszerzenia o własne "sniffy".</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://github.com/squizlabs/HTML_CodeSniffer" class="tile-link" target="_blank"
+                        rel="noopener">Strona narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item extension">Wtyczka</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-keyboard"></i></span>
+                    TabA11y
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Rozszerzenie do przeglądarki Chrome, które wizualizuje porządek
+                        nawigacji tabulatorem na stronie internetowej. Pomaga zidentyfikować i naprawić problemy z
+                        dostępnością związane z kolejnością tabulacji, co jest kluczowe dla użytkowników
+                        korzystających z klawiatury.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://chromewebstore.google.com/detail/taba11y-tab-order-accessi/aocppmckdocdjkphmofnklcjhdidgmga"
+                        class="tile-link" target="_blank" rel="noopener">Strona narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item app">Aplikacja</span>
+                    <span class="tool-type-item online">Web App</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-sitemap"></i></span>
+                    Power Mapper
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Profesjonalne narzędzie do mapowania i testowania stron
+                        internetowych, które pomaga w identyfikacji problemów z dostępnością, mapowaniu struktury
+                        strony i analizie zgodności z WCAG.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://www.powermapper.com/" class="tile-link" target="_blank" rel="noopener">Strona
+                        narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+
+            <div class="tile">
+                <div class="tool-type">
+                    <span class="tool-type-item extension">Wtyczka</span>
+                    <span class="tool-type-item library">Biblioteka</span>
+                </div>
+                <div class="tile-header">
+                    <span class="tile-icon"><i class="fa-solid fa-code"></i></span>
+                    axe DevTools
+                </div>
+                <div class="tile-content">
+                    <p class="tile-description">Rozszerzenie do przeglądarki Chrome, które umożliwia szybkie
+                        testowanie dostępności stron internetowych. Wykorzystuje silnik axe-core do wykrywania
+                        problemów z dostępnością i dostarcza szczegółowe raporty.</p>
+                </div>
+                <div class="tile-footer">
+                    <a href="https://chromewebstore.google.com/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd"
+                        class="tile-link" target="_blank" rel="noopener">Strona narzędzia</a>
+                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
