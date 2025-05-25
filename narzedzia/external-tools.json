@@ -274,6 +274,39 @@
 			"platformLabels": ["Windows", "macOS", "Linux"],
 			"mainLink": "https://www.adobe.com/pl/acrobat/acrobat-pro.html",
 			"additionalLink": null
+		},
+		{
+			"name": "W3C Markup Validation Service",
+			"icon": "fa-solid fa-code",
+			"description": "Oficjalny walidator znaczników W3C do sprawdzania poprawności składni dokumentów webowych w formatach HTML, XHTML, SMIL, MathML i innych. Oferuje walidację przez URL, przesyłanie pliku lub bezpośrednie wprowadzenie kodu. Niezbędne narzędzie do zapewnienia zgodności ze standardami web i podstawą dostępności.",
+			"types": ["online"],
+			"typeLabels": ["Web App"],
+			"platforms": ["windows", "mac", "linux"],
+			"platformLabels": ["Windows", "macOS", "Linux"],
+			"mainLink": "https://validator.w3.org/",
+			"additionalLink": null
+		},
+		{
+			"name": "Utilitia",
+			"icon": "fa-solid fa-clipboard-check",
+			"description": "Kompleksowy polski walidator dostępności oferujący szczegółowe analizy zgodności z WCAG na poziomach A, AA i AAA. Sprawdza HTML, CSS, kontrast, dostępność PDF, formularze, nawigację i wiele innych aspektów dostępności. Oferuje archiwum analiz dla zarejestrowanych użytkowników, umożliwiając monitorowanie postępów w czasie.",
+			"types": ["online"],
+			"typeLabels": ["Web App"],
+			"platforms": ["windows", "mac", "linux"],
+			"platformLabels": ["Windows", "macOS", "Linux"],
+			"mainLink": "https://validator.utilitia.pl/analyses/new",
+			"additionalLink": null
+		},
+		{
+			"name": "WCAG-EM Report Tool",
+			"icon": "fa-solid fa-file-contract",
+			"description": "Oficjalne narzędzie W3C WAI do tworzenia raportów audytu dostępności zgodnie z metodologią WCAG-EM (Website Accessibility Conformance Evaluation Methodology). Pomaga w strukturyzowaniu procesu oceny dostępności, dokumentowaniu wyników testów i generowaniu profesjonalnych raportów zgodności z WCAG. Niezbędne dla audytorów i specjalistów ds. dostępności.",
+			"types": ["online"],
+			"typeLabels": ["Web App"],
+			"platforms": ["windows", "mac", "linux"],
+			"platformLabels": ["Windows", "macOS", "Linux"],
+			"mainLink": "https://www.w3.org/WAI/eval/report-tool",
+			"additionalLink": null
 		}
 	]
 }
