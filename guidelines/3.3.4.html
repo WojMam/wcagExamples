@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.3.4 Zapobieganie błędom (prawne, finansowe, dane) (AA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>3.3.4 Zapobieganie błędom (prawne, finansowe, dane) (AA)</h1>
+            <p>Dla stron internetowych, które powodują powstanie zobowiązań prawnych lub transakcji finansowych
+                użytkownika, które modyfikują lub usuwają dane kontrolowane przez użytkownika w systemach przechowywania
+                danych, lub które przesyłają odpowiedzi użytkownika w testach, prawdziwe jest co najmniej jedno z
+                poniższych:</p>
+            <ul>
+                <li><strong>Odwracalność:</strong> Przesłane dane są odwracalne</li>
+                <li><strong>Sprawdzanie:</strong> Dane wprowadzone przez użytkownika są sprawdzane pod kątem błędów i
+                    użytkownik ma możliwość ich poprawienia</li>
+                <li><strong>Potwierdzenie:</strong> Dostępny jest mechanizm do przeglądu, potwierdzenia i poprawienia
+                    informacji przed finalizacją przesłania</li>
+            </ul>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>To kryterium poziomu AA ma na celu pomóc użytkownikom z niepełnosprawnościami uniknąć poważnych
+                konsekwencji wynikających z błędów podczas wykonywania działań, których nie można cofnąć. Kluczowe
+                obszary zastosowania to:</p>
+
+            <h3>Sytuacje wymagające szczególnej ochrony</h3>
+            <ul>
+                <li><strong>Zobowiązania prawne</strong> - umowy, testamenty, adopcje, registracje</li>
+                <li><strong>Transakcje finansowe</strong> - zakupy, inwestycje, przelewy, płatności</li>
+                <li><strong>Modyfikacja danych</strong> - edycja profili, aktualizacja ustawień</li>
+                <li><strong>Usuwanie danych</strong> - kasowanie plików, usuwanie rekordów</li>
+                <li><strong>Testy i egzaminy</strong> - przesyłanie odpowiedzi w testach</li>
+            </ul>
+
+            <h3>Trzy sposoby zapobiegania błędom</h3>
+            <div class="prevention-methods">
+                <div class="method">
+                    <h4>1. Odwracalność</h4>
+                    <p>Użytkownik może cofnąć lub anulować akcję w określonym czasie po jej wykonaniu.</p>
+                </div>
+                <div class="method">
+                    <h4>2. Sprawdzanie</h4>
+                    <p>System sprawdza dane przed finalizacją i oferuje możliwość poprawienia błędów.</p>
+                </div>
+                <div class="method">
+                    <h4>3. Potwierdzenie</h4>
+                    <p>Użytkownik może przejrzeć wszystkie dane przed ostatecznym zatwierdzeniem.</p>
+                </div>
+            </div>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Osoby z dysleksją</strong> - mogą pomylić cyfry lub litery w danych finansowych</li>
+                <li><strong>Osoby z ograniczeniami motorycznymi</strong> - mogą przypadkowo nacisnąć niewłaściwe
+                    przyciski</li>
+                <li><strong>Osoby z ograniczeniami poznawczymi</strong> - mogą mieć trudności z oceną konsekwencji</li>
+                <li><strong>Osoby niewidome</strong> - mogą nie zauważyć błędów w danych</li>
+                <li><strong>Wszyscy użytkownicy</strong> - mają dodatkową ochronę przed kosztownymi błędami</li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje</h2>
+            <dl>
+                <dt><strong>Zobowiązania prawne</strong></dt>
+                <dd>Transakcje, które powodują powstanie prawnie wiążących obowiązków lub korzyści</dd>
+
+                <dt><strong>Transakcje finansowe</strong></dt>
+                <dd>Działania związane z przepływem środków finansowych lub zobowiązaniami finansowymi</dd>
+
+                <dt><strong>Dane kontrolowane przez użytkownika</strong></dt>
+                <dd>Dane widoczne dla użytkownika, które może on zmieniać i/lub usuwać przez celowe działanie</dd>
+
+                <dt><strong>Mechanizm odwracalności</strong></dt>
+                <dd>Sposób cofnięcia lub anulowania akcji w określonym czasie po jej wykonaniu</dd>
+
+                <dt><strong>Sprawdzanie błędów</strong></dt>
+                <dd>Automatyczna walidacja danych z możliwością poprawienia przed finalizacją</dd>
+            </dl>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Transakcja bez możliwości weryfikacji</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - bezpośrednia transakcja --&gt;
+&lt;form action="/purchase" method="post"&gt;
+    &lt;input type="hidden" name="product_id" value="123"&gt;
+    &lt;input type="hidden" name="amount" value="1999.99"&gt;
+    &lt;button type="submit"&gt;Kup teraz za 1999.99 zł&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- Brak możliwości przeglądu przed zakupem --&gt;</code></pre>
+                <p><strong>Problem:</strong> Użytkownik może przypadkowo dokonać kosztownej transakcji bez możliwości
+                    weryfikacji.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Usuwanie bez potwierdzenia</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - usuwanie jednym kliknięciem --&gt;
+&lt;button onclick="deleteAllData()"&gt;Usuń wszystkie dane&lt;/button&gt;
+
+&lt;script&gt;
+function deleteAllData() {
+    // Natychmiastowe usunięcie bez ostrzeżenia
+    fetch('/api/delete-all', { method: 'DELETE' });
+    alert('Wszystkie dane zostały usunięte');
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Problem:</strong> Nieodwracalna utrata danych bez żadnego ostrzeżenia czy potwierdzenia.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Test bez możliwości przeglądu</h4>
+                <pre><code class="language-html">&lt;!-- Brak możliwości sprawdzenia odpowiedzi --&gt;
+&lt;form action="/submit-exam" method="post"&gt;
+    &lt;p&gt;Pytanie 1: Ile to 2+2?&lt;/p&gt;
+    &lt;input type="radio" name="q1" value="3"&gt; 3
+    &lt;input type="radio" name="q1" value="4"&gt; 4
+    &lt;input type="radio" name="q1" value="5"&gt; 5
+    
+    &lt;button type="submit"&gt;Zakończ egzamin&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                <p><strong>Problem:</strong> Brak możliwości przeglądu odpowiedzi przed finalnym przesłaniem.</p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Transakcja z potwierdzeniem (metoda: Potwierdzenie)</h4>
+                <pre><code class="language-html">&lt;!-- Krok 1: Formularz zamówienia --&gt;
+&lt;form id="order-form"&gt;
+    &lt;h2&gt;Finalizuj zamówienie&lt;/h2&gt;
+    
+    &lt;div class="order-summary"&gt;
+        &lt;h3&gt;Podsumowanie zamówienia&lt;/h3&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Laptop Dell XPS 13 - 4999.99 zł&lt;/li&gt;
+            &lt;li&gt;Dostawa kurierem - 19.99 zł&lt;/li&gt;
+            &lt;li&gt;&lt;strong&gt;Razem: 5019.98 zł&lt;/strong&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="payment-details"&gt;
+        &lt;h3&gt;Dane płatności&lt;/h3&gt;
+        &lt;label for="card-number"&gt;Numer karty:&lt;/label&gt;
+        &lt;input type="text" id="card-number" name="card-number"&gt;
+        
+        &lt;label for="expiry"&gt;Data ważności:&lt;/label&gt;
+        &lt;input type="text" id="expiry" name="expiry"&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="confirmation-section"&gt;
+        &lt;input type="checkbox" id="confirm-order" required&gt;
+        &lt;label for="confirm-order"&gt;
+            &lt;strong&gt;Potwierdzam, że sprawdziłem dane zamówienia i płatności. 
+            Rozumiem, że po kliknięciu "Złóż zamówienie" zostanie pobrana 
+            kwota 5019.98 zł z mojej karty.&lt;/strong&gt;
+        &lt;/label&gt;
+    &lt;/div&gt;
+    
+    &lt;button type="submit" disabled id="submit-order"&gt;
+        Złóż zamówienie za 5019.98 zł
+    &lt;/button&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+document.getElementById('confirm-order').addEventListener('change', function() {
+    document.getElementById('submit-order').disabled = !this.checked;
+});
+&lt;/script&gt;</code></pre>
+                <p><strong>Zalety:</strong> Jasne podsumowanie, wymagane potwierdzenie świadomości, przycisk aktywny
+                    tylko po zaznaczeniu zgody.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Transakcja z okresem odwracalności (metoda: Odwracalność)</h4>
+                <pre><code class="language-html">&lt;!-- Potwierdzenie zakupu z opcją anulowania --&gt;
+&lt;div class="purchase-confirmation"&gt;
+    &lt;h2&gt;Zakup został zrealizowany&lt;/h2&gt;
+    &lt;div class="order-details"&gt;
+        &lt;p&gt;&lt;strong&gt;Numer zamówienia:&lt;/strong&gt; #ORD-2024-001234&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Produkt:&lt;/strong&gt; Laptop Dell XPS 13&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Kwota:&lt;/strong&gt; 4999.99 zł&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Data zakupu:&lt;/strong&gt; 15.03.2024, 14:30&lt;/p&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="cancellation-period" role="alert"&gt;
+        &lt;h3&gt;Możliwość anulowania&lt;/h3&gt;
+        &lt;p&gt;Masz &lt;strong&gt;24 godziny&lt;/strong&gt; na anulowanie tego zamówienia bez ponoszenia kosztów.&lt;/p&gt;
+        &lt;p&gt;Deadline anulowania: &lt;strong&gt;16.03.2024, 14:30&lt;/strong&gt;&lt;/p&gt;
+        
+        &lt;div class="countdown" id="countdown"&gt;
+            Pozostały czas: &lt;span id="time-left"&gt;23:45:30&lt;/span&gt;
+        &lt;/div&gt;
+        
+        &lt;button type="button" class="cancel-button" onclick="showCancelConfirmation()"&gt;
+            Anuluj zamówienie
+        &lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Modal potwierdzenia anulowania --&gt;
+&lt;div id="cancel-modal" class="modal" hidden&gt;
+    &lt;div class="modal-content"&gt;
+        &lt;h3&gt;Potwierdź anulowanie&lt;/h3&gt;
+        &lt;p&gt;Czy na pewno chcesz anulować zamówienie #ORD-2024-001234?&lt;/p&gt;
+        &lt;p&gt;Środki zostaną zwrócone na kartę w ciągu 3-5 dni roboczych.&lt;/p&gt;
+        
+        &lt;div class="modal-actions"&gt;
+            &lt;button type="button" onclick="cancelOrder()"&gt;Tak, anuluj zamówienie&lt;/button&gt;
+            &lt;button type="button" onclick="closeCancelModal()"&gt;Nie, zachowaj zamówienie&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <p><strong>Zalety:</strong> Jasno określony okres anulowania, odliczanie czasu, dodatkowe potwierdzenie
+                    anulowania.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Usuwanie danych z potwierdzeniem (metoda: Potwierdzenie)</h4>
+                <pre><code class="language-html">&lt;!-- Bezpieczne usuwanie danych --&gt;
+&lt;div class="data-management"&gt;
+    &lt;h2&gt;Zarządzanie danymi konta&lt;/h2&gt;
+    
+    &lt;div class="danger-zone"&gt;
+        &lt;h3&gt;Strefa niebezpieczna&lt;/h3&gt;
+        &lt;p&gt;Poniższe działania są &lt;strong&gt;nieodwracalne&lt;/strong&gt; i spowodują &lt;strong&gt;trwałą utratę danych&lt;/strong&gt;.&lt;/p&gt;
+        
+        &lt;div class="delete-options"&gt;
+            &lt;div class="delete-option"&gt;
+                &lt;h4&gt;Usuń wszystkie zdjęcia&lt;/h4&gt;
+                &lt;p&gt;Usuwa wszystkie zdjęcia z Twojego konta (obecnie: 1,247 zdjęć).&lt;/p&gt;
+                &lt;button type="button" onclick="confirmDeletion('photos')"&gt;Usuń zdjęcia&lt;/button&gt;
+            &lt;/div&gt;
+            
+            &lt;div class="delete-option"&gt;
+                &lt;h4&gt;Usuń całe konto&lt;/h4&gt;
+                &lt;p&gt;Usuwa konto wraz z wszystkimi danymi. Tej operacji nie można cofnąć.&lt;/p&gt;
+                &lt;button type="button" onclick="confirmDeletion('account')"&gt;Usuń konto&lt;/button&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Modal potwierdzenia usunięcia --&gt;
+&lt;div id="delete-modal" class="modal" hidden&gt;
+    &lt;div class="modal-content"&gt;
+        &lt;h3 id="delete-title"&gt;Potwierdź usunięcie&lt;/h3&gt;
+        &lt;div id="delete-content"&gt;&lt;/div&gt;
+        
+        &lt;div class="confirmation-steps"&gt;
+            &lt;p&gt;&lt;strong&gt;Aby potwierdzić, wykonaj następujące kroki:&lt;/strong&gt;&lt;/p&gt;
+            
+            &lt;label for="confirm-text"&gt;
+                Wpisz "&lt;span id="confirmation-text"&gt;&lt;/span&gt;" aby potwierdzić:
+            &lt;/label&gt;
+            &lt;input type="text" id="confirm-text" placeholder="Wpisz tekst potwierdzenia"&gt;
+            
+            &lt;label&gt;
+                &lt;input type="checkbox" id="understand-consequences"&gt;
+                Rozumiem konsekwencje tego działania i że jest ono nieodwracalne
+            &lt;/label&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="modal-actions"&gt;
+            &lt;button type="button" id="confirm-delete" disabled&gt;Usuń definitywnie&lt;/button&gt;
+            &lt;button type="button" onclick="closeDeleteModal()"&gt;Anuluj&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function confirmDeletion(type) {
+    const modal = document.getElementById('delete-modal');
+    const title = document.getElementById('delete-title');
+    const content = document.getElementById('delete-content');
+    const confirmationText = document.getElementById('confirmation-text');
+    
+    if (type === 'photos') {
+        title.textContent = 'Usuń wszystkie zdjęcia';
+        content.innerHTML = `
+            &lt;p&gt;Zamierzasz usunąć &lt;strong&gt;wszystkie 1,247 zdjęć&lt;/strong&gt; z konta.&lt;/p&gt;
+            &lt;p&gt;Ta operacja jest &lt;strong&gt;nieodwracalna&lt;/strong&gt;. Zdjęcia zostaną trwale usunięte z naszych serwerów.&lt;/p&gt;
+        `;
+        confirmationText.textContent = 'USUŃ ZDJĘCIA';
+    } else if (type === 'account') {
+        title.textContent = 'Usuń konto';
+        content.innerHTML = `
+            &lt;p&gt;Zamierzasz &lt;strong&gt;usunąć całe konto&lt;/strong&gt; wraz z wszystkimi danymi:&lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;1,247 zdjęć&lt;/li&gt;
+                &lt;li&gt;324 wiadomości&lt;/li&gt;
+                &lt;li&gt;Profil użytkownika&lt;/li&gt;
+                &lt;li&gt;Historia aktywności&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;&lt;strong&gt;Tej operacji nie można cofnąć!&lt;/strong&gt;&lt;/p&gt;
+        `;
+        confirmationText.textContent = 'USUŃ KONTO';
+    }
+    
+    modal.hidden = false;
+    
+    // Walidacja formularza potwierdzenia
+    const confirmText = document.getElementById('confirm-text');
+    const checkbox = document.getElementById('understand-consequences');
+    const confirmButton = document.getElementById('confirm-delete');
+    
+    function validateConfirmation() {
+        const textMatches = confirmText.value === confirmationText.textContent;
+        const checkboxChecked = checkbox.checked;
+        confirmButton.disabled = !(textMatches && checkboxChecked);
+    }
+    
+    confirmText.addEventListener('input', validateConfirmation);
+    checkbox.addEventListener('change', validateConfirmation);
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Zalety:</strong> Wielopoziomowe potwierdzenie, wymóg wpisania tekstu, jasne ostrzeżenia o
+                    konsekwencjach.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Test z możliwością przeglądu (metoda: Sprawdzanie + Potwierdzenie)</h4>
+                <pre><code class="language-html">&lt;!-- Egzamin z przeglądem odpowiedzi --&gt;
+&lt;div class="exam-interface"&gt;
+    &lt;div class="exam-progress"&gt;
+        &lt;h2&gt;Egzamin z matematyki&lt;/h2&gt;
+        &lt;p&gt;Pytanie 3 z 10 | Pozostały czas: 45:30&lt;/p&gt;
+        &lt;div class="progress-bar"&gt;
+            &lt;div class="progress" style="width: 30%"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;form id="exam-form"&gt;
+        &lt;div class="question"&gt;
+            &lt;h3&gt;Pytanie 3&lt;/h3&gt;
+            &lt;p&gt;Ile wynosi pierwiastek kwadratowy z 144?&lt;/p&gt;
+            
+            &lt;div class="answers"&gt;
+                &lt;label&gt;
+                    &lt;input type="radio" name="q3" value="10"&gt;
+                    A) 10
+                &lt;/label&gt;
+                &lt;label&gt;
+                    &lt;input type="radio" name="q3" value="12"&gt;
+                    B) 12
+                &lt;/label&gt;
+                &lt;label&gt;
+                    &lt;input type="radio" name="q3" value="14"&gt;
+                    C) 14
+                &lt;/label&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="exam-navigation"&gt;
+            &lt;button type="button" onclick="previousQuestion()"&gt;← Poprzednie&lt;/button&gt;
+            &lt;button type="button" onclick="showReviewPage()"&gt;Przegląd odpowiedzi&lt;/button&gt;
+            &lt;button type="button" onclick="nextQuestion()"&gt;Następne →&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+
+&lt;!-- Strona przeglądu odpowiedzi --&gt;
+&lt;div id="review-page" class="review-interface" hidden&gt;
+    &lt;h2&gt;Przegląd odpowiedzi&lt;/h2&gt;
+    &lt;p&gt;Sprawdź swoje odpowiedzi przed finalnym przesłaniem egzaminu.&lt;/p&gt;
+    
+    &lt;div class="answers-summary"&gt;
+        &lt;div class="question-review"&gt;
+            &lt;h4&gt;Pytanie 1: Ile to 2 + 2?&lt;/h4&gt;
+            &lt;p&gt;&lt;strong&gt;Twoja odpowiedź:&lt;/strong&gt; B) 4&lt;/p&gt;
+            &lt;button type="button" onclick="goToQuestion(1)"&gt;Edytuj&lt;/button&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="question-review incomplete"&gt;
+            &lt;h4&gt;Pytanie 2: Ile to 5 × 3?&lt;/h4&gt;
+            &lt;p&gt;&lt;strong&gt;Twoja odpowiedź:&lt;/strong&gt; &lt;em&gt;Brak odpowiedzi&lt;/em&gt;&lt;/p&gt;
+            &lt;button type="button" onclick="goToQuestion(2)"&gt;Odpowiedz&lt;/button&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="question-review"&gt;
+            &lt;h4&gt;Pytanie 3: Pierwiastek z 144?&lt;/h4&gt;
+            &lt;p&gt;&lt;strong&gt;Twoja odpowiedź:&lt;/strong&gt; B) 12&lt;/p&gt;
+            &lt;button type="button" onclick="goToQuestion(3)"&gt;Edytuj&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="submission-check"&gt;
+        &lt;div class="incomplete-warning" role="alert"&gt;
+            &lt;h3&gt;⚠️ Uwaga&lt;/h3&gt;
+            &lt;p&gt;Nie udzieliłeś odpowiedzi na &lt;strong&gt;1 pytanie&lt;/strong&gt;. Możesz przesłać egzamin, ale te pytania będą ocenione jako błędne.&lt;/p&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="final-confirmation"&gt;
+            &lt;label&gt;
+                &lt;input type="checkbox" id="final-confirm" required&gt;
+                Sprawdziłem wszystkie odpowiedzi i jestem gotowy do przesłania egzaminu. 
+                Rozumiem, że po przesłaniu nie będę mógł wprowadzać zmian.
+            &lt;/label&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="submission-actions"&gt;
+            &lt;button type="button" onclick="goBackToExam()"&gt;Wróć do egzaminu&lt;/button&gt;
+            &lt;button type="button" id="submit-exam" disabled&gt;Prześlij egzamin&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+document.getElementById('final-confirm').addEventListener('change', function() {
+    document.getElementById('submit-exam').disabled = !this.checked;
+});
+&lt;/script&gt;</code></pre>
+                <p><strong>Zalety:</strong> Pełny przegląd odpowiedzi, ostrzeżenia o brakujących odpowiedziach, wymagane
+                    ostateczne potwierdzenie.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Inwestycje finansowe z weryfikacją (metoda: Sprawdzanie + Potwierdzenie)</h4>
+                <pre><code class="language-html">&lt;!-- Bezpieczne składanie zleceń giełdowych --&gt;
+&lt;div class="trading-interface"&gt;
+    &lt;h2&gt;Złóż zlecenie giełdowe&lt;/h2&gt;
+    
+    &lt;form id="trading-form"&gt;
+        &lt;div class="stock-selection"&gt;
+            &lt;label for="stock-symbol"&gt;Akcje:&lt;/label&gt;
+            &lt;select id="stock-symbol" name="stock" required&gt;
+                &lt;option value=""&gt;Wybierz akcje&lt;/option&gt;
+                &lt;option value="PKN"&gt;PKN Orlen (PKN) - 52.30 zł&lt;/option&gt;
+                &lt;option value="PZU"&gt;PZU (PZU) - 45.80 zł&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="order-details"&gt;
+            &lt;label for="order-type"&gt;Rodzaj zlecenia:&lt;/label&gt;
+            &lt;select id="order-type" name="type" required&gt;
+                &lt;option value="buy"&gt;Kup&lt;/option&gt;
+                &lt;option value="sell"&gt;Sprzedaj&lt;/option&gt;
+            &lt;/select&gt;
+            
+            &lt;label for="quantity"&gt;Ilość akcji:&lt;/label&gt;
+            &lt;input type="number" id="quantity" name="quantity" min="1" required&gt;
+            
+            &lt;label for="price"&gt;Cena za akcję (zł):&lt;/label&gt;
+            &lt;input type="number" id="price" name="price" step="0.01" min="0.01" required&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="order-summary" id="order-summary"&gt;
+            &lt;h3&gt;Podsumowanie zlecenia&lt;/h3&gt;
+            &lt;div id="summary-content"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;button type="button" onclick="reviewOrder()"&gt;Sprawdź zlecenie&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+
+&lt;!-- Modal przeglądu zlecenia --&gt;
+&lt;div id="order-review-modal" class="modal" hidden&gt;
+    &lt;div class="modal-content"&gt;
+        &lt;h3&gt;Przegląd zlecenia giełdowego&lt;/h3&gt;
+        
+        &lt;div class="order-verification"&gt;
+            &lt;h4&gt;Szczegóły zlecenia&lt;/h4&gt;
+            &lt;table&gt;
+                &lt;tr&gt;&lt;td&gt;Akcje:&lt;/td&gt;&lt;td id="review-stock"&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td&gt;Operacja:&lt;/td&gt;&lt;td id="review-operation"&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td&gt;Ilość:&lt;/td&gt;&lt;td id="review-quantity"&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td&gt;Cena za akcję:&lt;/td&gt;&lt;td id="review-price"&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Wartość całkowita:&lt;/strong&gt;&lt;/td&gt;&lt;td id="review-total"&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td&gt;Prowizja:&lt;/td&gt;&lt;td id="review-commission"&gt;&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td&gt;&lt;strong&gt;Do zapłaty:&lt;/strong&gt;&lt;/td&gt;&lt;td id="review-final-amount"&gt;&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="market-warnings" id="market-warnings"&gt;
+            &lt;!-- Ostrzeżenia będą dodawane dynamicznie --&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="risk-acknowledgment"&gt;
+            &lt;h4&gt;Potwierdzenie ryzyka&lt;/h4&gt;
+            &lt;label&gt;
+                &lt;input type="checkbox" id="acknowledge-risk" required&gt;
+                Rozumiem ryzyko związane z inwestycjami i że mogę stracić zainwestowane środki
+            &lt;/label&gt;
+            
+            &lt;label&gt;
+                &lt;input type="checkbox" id="confirm-order-details" required&gt;
+                Potwierdzam poprawność wszystkich danych zlecenia
+            &lt;/label&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="modal-actions"&gt;
+            &lt;button type="button" onclick="closeOrderReview()"&gt;Popraw zlecenie&lt;/button&gt;
+            &lt;button type="button" id="execute-order" disabled&gt;Wykonaj zlecenie&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function reviewOrder() {
+    // Walidacja danych
+    const form = document.getElementById('trading-form');
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+    
+    // Pobranie danych
+    const stock = document.getElementById('stock-symbol').value;
+    const type = document.getElementById('order-type').value;
+    const quantity = parseInt(document.getElementById('quantity').value);
+    const price = parseFloat(document.getElementById('price').value);
+    
+    // Obliczenia
+    const totalValue = quantity * price;
+    const commission = totalValue * 0.0039; // 0.39% prowizji
+    const finalAmount = totalValue + commission;
+    
+    // Wypełnienie modalu
+    document.getElementById('review-stock').textContent = stock;
+    document.getElementById('review-operation').textContent = type === 'buy' ? 'Kupno' : 'Sprzedaż';
+    document.getElementById('review-quantity').textContent = quantity + ' szt.';
+    document.getElementById('review-price').textContent = price.toFixed(2) + ' zł';
+    document.getElementById('review-total').textContent = totalValue.toFixed(2) + ' zł';
+    document.getElementById('review-commission').textContent = commission.toFixed(2) + ' zł';
+    document.getElementById('review-final-amount').textContent = finalAmount.toFixed(2) + ' zł';
+    
+    // Sprawdzenie ostrzeżeń rynkowych
+    checkMarketConditions();
+    
+    // Pokazanie modalu
+    document.getElementById('order-review-modal').hidden = false;
+    
+    // Walidacja checkboxów
+    const riskBox = document.getElementById('acknowledge-risk');
+    const confirmBox = document.getElementById('confirm-order-details');
+    const executeButton = document.getElementById('execute-order');
+    
+    function validateConfirmation() {
+        executeButton.disabled = !(riskBox.checked && confirmBox.checked);
+    }
+    
+    riskBox.addEventListener('change', validateConfirmation);
+    confirmBox.addEventListener('change', validateConfirmation);
+}
+
+function checkMarketConditions() {
+    const warnings = document.getElementById('market-warnings');
+    const currentTime = new Date();
+    const hour = currentTime.getHours();
+    
+    if (hour < 9 || hour >= 17) {
+        warnings.innerHTML = `
+            &lt;div class="warning" role="alert"&gt;
+                &lt;h4&gt;⚠️ Ostrzeżenie - rynek zamknięty&lt;/h4&gt;
+                &lt;p&gt;Giełda jest obecnie zamknięta. Twoje zlecenie zostanie wykonane na otwarciu następnej sesji. 
+                Cena może się znacznie różnić od aktualnej ceny rynkowej.&lt;/p&gt;
+            &lt;/div&gt;
+        `;
+    }
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Zalety:</strong> Szczegółowa weryfikacja danych, ostrzeżenia o warunkach rynkowych, wymagane
+                    potwierdzenie ryzyka.</p>
+            </div>
+        </section>
+
+        <section class="implementation-methods">
+            <h2>Metody implementacji</h2>
+
+            <h3>1. Odwracalność (Reversible)</h3>
+            <div class="method-description">
+                <h4>Zastosowanie</h4>
+                <p>Najlepsze dla transakcji, które można cofnąć w określonym czasie</p>
+
+                <h4>Przykłady implementacji</h4>
+                <ul>
+                    <li>Okres 24-godzinny na anulowanie zamówienia</li>
+                    <li>14-dniowy okres na zwrot towaru</li>
+                    <li>30-minutowy okres na cofnięcie przelewu</li>
+                    <li>Kosz w systemie plików (przed ostatecznym usunięciem)</li>
+                </ul>
+
+                <h4>Wymagania</h4>
+                <ul>
+                    <li>Jasno określony czas na cofnięcie</li>
+                    <li>Prosty mechanizm anulowania</li>
+                    <li>Powiadomienie o możliwości cofnięcia</li>
+                    <li>Status operacji w czasie rzeczywistym</li>
+                </ul>
+            </div>
+
+            <h3>2. Sprawdzanie (Checked)</h3>
+            <div class="method-description">
+                <h4>Zastosowanie</h4>
+                <p>Automatyczna walidacja danych przed wykonaniem operacji</p>
+
+                <h4>Przykłady implementacji</h4>
+                <ul>
+                    <li>Sprawdzenie dostępności środków przed płatnością</li>
+                    <li>Walidacja numeru karty kredytowej</li>
+                    <li>Kontrola formatu danych osobowych</li>
+                    <li>Weryfikacja uprawnień przed usunięciem</li>
+                </ul>
+
+                <h4>Wymagania</h4>
+                <ul>
+                    <li>Walidacja w czasie rzeczywistym</li>
+                    <li>Jasne komunikaty o błędach</li>
+                    <li>Możliwość poprawienia przed przesłaniem</li>
+                    <li>Sprawdzenie wszystkich krytycznych danych</li>
+                </ul>
+            </div>
+
+            <h3>3. Potwierdzenie (Confirmed)</h3>
+            <div class="method-description">
+                <h4>Zastosowanie</h4>
+                <p>Przegląd i akceptacja danych przed finalizacją</p>
+
+                <h4>Przykłady implementacji</h4>
+                <ul>
+                    <li>Strona podsumowania zamówienia</li>
+                    <li>Przegląd odpowiedzi w teście</li>
+                    <li>Potwierdzenie danych do usunięcia</li>
+                    <li>Weryfikacja szczegółów transakcji</li>
+                </ul>
+
+                <h4>Wymagania</h4>
+                <ul>
+                    <li>Kompletny przegląd wszystkich danych</li>
+                    <li>Możliwość edycji przed finalizacją</li>
+                    <li>Jasne oznaczenie finalnego kroku</li>
+                    <li>Wyraźne potwierdzenie świadomości konsekwencji</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="technical-implementation">
+            <h2>Implementacja techniczna</h2>
+
+            <h3>HTML - struktura formularzy z walidacją</h3>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;!-- Formularz z wieloetapową walidacją --&gt;
+&lt;form id="critical-form" novalidate&gt;
+    &lt;div class="form-step" data-step="1"&gt;
+        &lt;h3&gt;Krok 1: Dane podstawowe&lt;/h3&gt;
+        &lt;input type="email" name="email" required 
+               aria-describedby="email-error"&gt;
+        &lt;div id="email-error" class="error" role="alert"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="form-step" data-step="2" hidden&gt;
+        &lt;h3&gt;Krok 2: Przegląd danych&lt;/h3&gt;
+        &lt;div class="data-review"&gt;&lt;/div&gt;
+        &lt;label&gt;
+            &lt;input type="checkbox" required&gt;
+            Potwierdzam poprawność danych
+        &lt;/label&gt;
+    &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+            </div>
+
+            <h3>JavaScript - logika zabezpieczeń</h3>
+            <div class="code-example">
+                <pre><code class="language-javascript">class ErrorPrevention {
+    constructor() {
+        this.confirmationRequired = false;
+        this.validationErrors = [];
+    }
+    
+    // Metoda 1: Odwracalność
+    enableReversibility(action, timeLimit = 24 * 60 * 60 * 1000) {
+        const actionId = this.generateActionId();
+        const expiryTime = Date.now() + timeLimit;
+        
+        // Zapisz możliwość cofnięcia
+        this.saveReversibleAction(actionId, action, expiryTime);
+        
+        // Pokaż powiadomienie
+        this.showReversibilityNotice(actionId, expiryTime);
+        
+        return actionId;
+    }
+    
+    // Metoda 2: Sprawdzanie
+    validateCriticalData(data, rules) {
+        this.validationErrors = [];
+        
+        for (const [field, rule] of Object.entries(rules)) {
+            const value = data[field];
+            const result = this.applyValidationRule(value, rule);
+            
+            if (!result.valid) {
+                this.validationErrors.push({
+                    field,
+                    message: result.message,
+                    suggestion: result.suggestion
+                });
+            }
+        }
+        
+        return this.validationErrors.length === 0;
+    }
+    
+    // Metoda 3: Potwierdzenie
+    requireConfirmation(data, riskLevel = 'medium') {
+        const confirmationModal = this.createConfirmationModal(data, riskLevel);
+        
+        return new Promise((resolve, reject) => {
+            confirmationModal.onConfirm = () => resolve(true);
+            confirmationModal.onCancel = () => reject(false);
+            confirmationModal.show();
+        });
+    }
+    
+    createConfirmationModal(data, riskLevel) {
+        const modal = document.createElement('div');
+        modal.className = `confirmation-modal risk-${riskLevel}`;
+        
+        const content = this.generateConfirmationContent(data, riskLevel);
+        modal.innerHTML = content;
+        
+        document.body.appendChild(modal);
+        return modal;
+    }
+    
+    generateConfirmationContent(data, riskLevel) {
+        const riskMessages = {
+            low: 'Ta operacja może być cofnięta.',
+            medium: 'Ta operacja jest trudna do cofnięcia.',
+            high: 'Ta operacja jest nieodwracalna.'
+        };
+        
+        return `
+            &lt;div class="modal-content"&gt;
+                &lt;h3&gt;Potwierdź operację&lt;/h3&gt;
+                &lt;div class="risk-notice"&gt;${riskMessages[riskLevel]}&lt;/div&gt;
+                &lt;div class="data-summary"&gt;${this.formatDataSummary(data)}&lt;/div&gt;
+                &lt;div class="confirmation-controls"&gt;
+                    ${this.generateConfirmationControls(riskLevel)}
+                &lt;/div&gt;
+            &lt;/div&gt;
+        `;
+    }
+}
+
+// Użycie
+const errorPrevention = new ErrorPrevention();
+
+// Przykład transakcji finansowej
+async function processPayment(paymentData) {
+    // Sprawdzenie danych
+    if (!errorPrevention.validateCriticalData(paymentData, PAYMENT_RULES)) {
+        throw new Error('Błędy walidacji: ' + JSON.stringify(errorPrevention.validationErrors));
+    }
+    
+    // Wymaganie potwierdzenia
+    try {
+        await errorPrevention.requireConfirmation(paymentData, 'high');
+    } catch {
+        throw new Error('Płatność anulowana przez użytkownika');
+    }
+    
+    // Wykonanie płatności
+    const result = await executePayment(paymentData);
+    
+    // Włączenie możliwości cofnięcia (jeśli możliwe)
+    if (result.reversible) {
+        errorPrevention.enableReversibility(result, 24 * 60 * 60 * 1000);
+    }
+    
+    return result;
+}</code></pre>
+            </div>
+
+            <h3>CSS - stylowanie ostrzeżeń i potwierdzeń</h3>
+            <div class="code-example">
+                <pre><code class="language-css">/* Stylowanie różnych poziomów ryzyka */
+.risk-low {
+    border-left: 4px solid #4caf50;
+    background-color: #f1f8e9;
+}
+
+.risk-medium {
+    border-left: 4px solid #ff9800;
+    background-color: #fff3e0;
+}
+
+.risk-high {
+    border-left: 4px solid #f44336;
+    background-color: #ffebee;
+}
+
+/* Modal potwierdzenia */
+.confirmation-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Ostrzeżenia o nieodwracalności */
+.irreversible-warning {
+    background: #ffebee;
+    border: 2px solid #f44336;
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+.irreversible-warning::before {
+    content: "⚠️ ";
+    font-size: 1.2rem;
+}
+
+/* Countdown timer */
+.reversal-countdown {
+    background: #e3f2fd;
+    border: 1px solid #2196f3;
+    padding: 1rem;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.time-remaining {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1976d2;
+}</code></pre>
+            </div>
+        </section>
+
+        <section class="best-practices">
+            <h2>Najlepsze praktyki</h2>
+
+            <div class="best-practice-section">
+                <h3>Projektowanie interfejsu</h3>
+                <ul>
+                    <li>Używaj jasnych etykiet dla krytycznych akcji</li>
+                    <li>Oddzielaj destrukcyjne akcje od normalnych</li>
+                    <li>Stosuj kolory ostrzegawcze dla nieodwracalnych operacji</li>
+                    <li>Umieszczaj potwierdzenia tuż przed finalizacją</li>
+                    <li>Pokazuj obliczone koszty/konsekwencje</li>
+                </ul>
+            </div>
+
+            <div class="best-practice-section">
+                <h3>Komunikacja z użytkownikiem</h3>
+                <ul>
+                    <li>Używaj jasnego, zrozumiałego języka</li>
+                    <li>Wyjaśniaj konsekwencje każdej akcji</li>
+                    <li>Podawaj konkretne przykłady ryzyka</li>
+                    <li>Informuj o możliwościach cofnięcia</li>
+                    <li>Ostrzegaj przed nieodwracalnymi operacjami</li>
+                </ul>
+            </div>
+
+            <div class="best-practice-section">
+                <h3>Implementacja techniczna</h3>
+                <ul>
+                    <li>Implementuj walidację po stronie serwera</li>
+                    <li>Używaj transakcji bazodanowych dla spójności</li>
+                    <li>Loguj wszystkie krytyczne operacje</li>
+                    <li>Implementuj mechanizmy rollback</li>
+                    <li>Testuj scenariusze błędów</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie</h2>
+
+            <h3>Metody testowania</h3>
+            <ul>
+                <li><strong>Test scenariuszy błędów</strong> - sprawdź czy system chroni przed błędami</li>
+                <li><strong>Test użyteczności</strong> - czy użytkownicy rozumieją konsekwencje</li>
+                <li><strong>Test dostępności</strong> - czy ostrzeżenia są dostępne dla technologii asystujących</li>
+                <li><strong>Test funkcjonalny</strong> - czy wszystkie mechanizmy działają poprawnie</li>
+                <li><strong>Test z różnymi grupami</strong> - szczególnie osoby z niepełnosprawnościami</li>
+            </ul>
+
+            <h3>Lista kontrolna</h3>
+            <ul>
+                <li>Czy każda krytyczna operacja ma co najmniej jeden z trzech mechanizmów?</li>
+                <li>Czy mechanizmy odwracalności mają jasno określony czas?</li>
+                <li>Czy sprawdzanie danych jest kompletne i dokładne?</li>
+                <li>Czy potwierdzenia zawierają wszystkie istotne informacje?</li>
+                <li>Czy użytkownicy rozumieją konsekwencje swoich działań?</li>
+                <li>Czy ostrzeżenia są dostępne dla czytników ekranu?</li>
+                <li>Czy mechanizmy działają dla wszystkich typów niepełnosprawności?</li>
+            </ul>
+
+            <h3>Narzędzia pomocne w testowaniu</h3>
+            <ul>
+                <li><strong>Testy automatyczne</strong> - sprawdzanie walidacji i zabezpieczeń</li>
+                <li><strong>NVDA/JAWS</strong> - dostępność ostrzeżeń i potwierdzeń</li>
+                <li><strong>Testy manualne</strong> - symulacja błędów użytkowników</li>
+                <li><strong>Monitoring logów</strong> - śledzenie krytycznych operacji</li>
+                <li><strong>User testing</strong> - obserwacja rzeczywistego użytkowania</li>
+            </ul>
+        </section>
+
+        <section class="related-criteria">
+            <h2>Powiązane kryteria</h2>
+            <ul>
+                <li><a href="3.3.1.html">3.3.1 Identyfikacja błędu (A)</a> - podstawa identyfikacji problemów</li>
+                <li><a href="3.3.2.html">3.3.2 Etykiety lub instrukcje (A)</a> - jasne instrukcje zapobiegają błędom
+                </li>
+                <li><a href="3.3.3.html">3.3.3 Sugestia korekty błędu (AA)</a> - pomaga w naprawianiu błędów</li>
+                <li><a href="2.4.6.html">2.4.6 Nagłówki i etykiety (AA)</a> - jasne oznaczenie krytycznych akcji</li>
+                <li><a href="1.4.3.html">1.4.3 Kontrast (minimalny) (AA)</a> - czytelność ostrzeżeń</li>
+            </ul>
+        </section>
+
+        <section class="resources">
+            <h2>Zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/error-prevention-legal-financial-data.html">WCAG
+                        2.1: Understanding Error Prevention (Legal, Financial, Data)</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G98">Technika G98: Providing the ability
+                        for the user to review and correct answers before submitting</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G155">Technika G155: Providing a checkbox
+                        in addition to a submit button</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G164">Technika G164: Providing a stated
+                        time within which an online request may be amended or canceled</a></li>
+                <li><a href="https://webaim.org/techniques/formvalidation/">WebAIM: Form Validation and Error
+                        Recovery</a></li>
+            </ul>
+        </section>
+
+        <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+            <ul>
+                <li><a href="3.3.3.html">Poprzedni: 3.3.3 Sugestia korekty błędu</a></li>
+                <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                <li><a href="3.3.5.html">Następny: 3.3.5 Pomoc</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

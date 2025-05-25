@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.3.2 Etykiety lub instrukcje (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>3.3.2 Etykiety lub instrukcje (A)</h1>
+            <p>Etykiety lub instrukcje są dostępne, gdy zawartość wymaga wprowadzenia danych przez użytkownika.</p>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>To kryterium poziomu A zapewnia, że użytkownicy wiedzą, jakie informacje należy wprowadzić w formularzach
+                i kontrolkach. Kluczowe jest, aby:</p>
+            <ul>
+                <li><strong>Każde pole wymagające danych miało etykietę lub instrukcję</strong></li>
+                <li><strong>Etykiety były opisowe i zrozumiałe</strong></li>
+                <li><strong>Instrukcje były dostępne gdy potrzebne</strong></li>
+                <li><strong>Formaty danych były jasno określone</strong></li>
+                <li><strong>Wymagane pola były oznaczone</strong></li>
+            </ul>
+
+            <p>Etykiety lub instrukcje powinny pomagać użytkownikom w zrozumieniu:</p>
+            <ul>
+                <li>Jakiego typu dane należy wprowadzić</li>
+                <li>W jakim formacie wprowadzić dane</li>
+                <li>Które pola są wymagane</li>
+                <li>Jakie są reguły walidacji</li>
+                <li>Jak używać kontrolek interfejsu</li>
+            </ul>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Osoby z ograniczeniami poznawczymi</strong> - otrzymują jasne wskazówki co robić</li>
+                <li><strong>Osoby niewidome</strong> - mogą poznać przeznaczenie pól przez czytniki ekranu</li>
+                <li><strong>Osoby z trudnościami językowymi</strong> - otrzymują jasne instrukcje</li>
+                <li><strong>Osoby z dysleksją</strong> - mają dostęp do formatów i przykładów</li>
+                <li><strong>Seniorzy</strong> - otrzymują dodatkowe wsparcie przy nowych technologiach</li>
+                <li><strong>Wszyscy użytkownicy</strong> - mogą szybciej i dokładniej wypełnić formularze</li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje</h2>
+            <dl>
+                <dt><strong>Etykieta</strong></dt>
+                <dd>Tekst lub inny komponent z alternatywą tekstową prezentowany użytkownikowi w celu identyfikacji
+                    komponentu w treści internetowej</dd>
+
+                <dt><strong>Instrukcja</strong></dt>
+                <dd>Wskazówka lub wyjaśnienie dotyczące sposobu wprowadzania danych lub używania kontrolki</dd>
+
+                <dt><strong>Kontrolka formularza</strong></dt>
+                <dd>Element interfejsu, który pozwala użytkownikowi na wprowadzenie danych lub dokonanie wyboru</dd>
+
+                <dt><strong>Dane wprowadzane przez użytkownika</strong></dt>
+                <dd>Informacje, które użytkownik musi wprowadzić w celu ukończenia zadania</dd>
+
+                <dt><strong>Format danych</strong></dt>
+                <dd>Określony wzorzec lub struktura, w jakiej dane powinny być wprowadzone</dd>
+            </dl>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Brak etykiet w polach</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - pola bez etykiet --&gt;
+&lt;form&gt;
+    &lt;input type="text" placeholder="Wpisz tutaj..." /&gt;
+    &lt;input type="email" placeholder="email@example.com" /&gt;
+    &lt;input type="tel" /&gt;
+    &lt;textarea&gt;&lt;/textarea&gt;
+    &lt;button type="submit"&gt;Wyślij&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;!-- Placeholder nie zastępuje etykiety --&gt;
+&lt;input type="text" placeholder="Imię i nazwisko" /&gt;</code></pre>
+                <p><strong>Problem:</strong> Użytkownicy nie wiedzą, jakiego typu danych się od nich oczekuje.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Niejasne etykiety</h4>
+                <pre><code class="language-html">&lt;!-- Zbyt ogólne etykiety --&gt;
+&lt;label for="data"&gt;Data:&lt;/label&gt;
+&lt;input type="text" id="data" /&gt;
+
+&lt;label for="nazwa"&gt;Nazwa:&lt;/label&gt;
+&lt;input type="text" id="nazwa" /&gt;
+
+&lt;!-- Brak instrukcji dla skomplikowanych formatów --&gt;
+&lt;label for="phone"&gt;Telefon:&lt;/label&gt;
+&lt;input type="tel" id="phone" /&gt;</code></pre>
+                <p><strong>Problem:</strong> Nie ma jasności co do oczekiwanego formatu lub typu danych.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Brak oznaczenia wymaganych pól</h4>
+                <pre><code class="language-html">&lt;!-- Nie wiadomo które pola są wymagane --&gt;
+&lt;form&gt;
+    &lt;div&gt;
+        &lt;label for="first-name"&gt;Imię&lt;/label&gt;
+        &lt;input type="text" id="first-name" required /&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;label for="last-name"&gt;Nazwisko&lt;/label&gt;
+        &lt;input type="text" id="last-name" required /&gt;
+    &lt;/div&gt;
+    &lt;div&gt;
+        &lt;label for="middle-name"&gt;Drugie imię&lt;/label&gt;
+        &lt;input type="text" id="middle-name" /&gt;
+    &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+                <p><strong>Problem:</strong> Użytkownik nie wie które pola musi wypełnić.</p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Jasne etykiety z oznaczeniem wymaganych pól</h4>
+                <pre><code class="language-html">&lt;!-- Prawidłowe etykiety z oznaczeniem wymaganych pól --&gt;
+&lt;form&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label for="first-name"&gt;
+            Imię: &lt;span aria-label="wymagane"&gt;*&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;input type="text" 
+               id="first-name" 
+               aria-required="true" 
+               required /&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="form-group"&gt;
+        &lt;label for="last-name"&gt;
+            Nazwisko: &lt;span aria-label="wymagane"&gt;*&lt;/span&gt;
+        &lt;/label&gt;
+        &lt;input type="text" 
+               id="last-name" 
+               aria-required="true" 
+               required /&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="form-group"&gt;
+        &lt;label for="middle-name"&gt;Drugie imię: (opcjonalne)&lt;/label&gt;
+        &lt;input type="text" id="middle-name" /&gt;
+    &lt;/div&gt;
+    
+    &lt;p class="form-note"&gt;
+        &lt;span aria-hidden="true"&gt;*&lt;/span&gt; Pola oznaczone gwiazdką są wymagane
+    &lt;/p&gt;
+&lt;/form&gt;</code></pre>
+                <p><strong>Zalety:</strong> Jasne oznaczenie wymaganych pól, dostępne dla technologii asystujących.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Instrukcje formatów danych</h4>
+                <pre><code class="language-html">&lt;!-- Pola z instrukcjami formatów --&gt;
+&lt;div class="form-group"&gt;
+    &lt;label for="birth-date"&gt;Data urodzenia: *&lt;/label&gt;
+    &lt;input type="date" 
+           id="birth-date" 
+           aria-describedby="birth-date-help" 
+           aria-required="true" 
+           required /&gt;
+    &lt;div id="birth-date-help" class="help-text"&gt;
+        Format: DD/MM/RRRR (np. 15/03/1990)
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+    &lt;label for="phone"&gt;Numer telefonu: *&lt;/label&gt;
+    &lt;input type="tel" 
+           id="phone" 
+           aria-describedby="phone-help" 
+           aria-required="true" 
+           pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}" 
+           required /&gt;
+    &lt;div id="phone-help" class="help-text"&gt;
+        Format: 123-456-789 (cyfry z myślnikami)
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+    &lt;label for="postal-code"&gt;Kod pocztowy: *&lt;/label&gt;
+    &lt;input type="text" 
+           id="postal-code" 
+           aria-describedby="postal-help" 
+           aria-required="true" 
+           pattern="[0-9]{2}-[0-9]{3}" 
+           required /&gt;
+    &lt;div id="postal-help" class="help-text"&gt;
+        Format: 00-000 (np. 30-001)
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <p><strong>Zalety:</strong> Jasne instrukcje formatów, przykłady, powiązanie z polami przez
+                    aria-describedby.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Grupowanie powiązanych pól</h4>
+                <pre><code class="language-html">&lt;!-- Grupowanie adresu --&gt;
+&lt;fieldset&gt;
+    &lt;legend&gt;Adres zamieszkania: *&lt;/legend&gt;
+    
+    &lt;div class="form-group"&gt;
+        &lt;label for="street"&gt;Ulica i numer: *&lt;/label&gt;
+        &lt;input type="text" 
+               id="street" 
+               aria-required="true" 
+               required /&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="form-row"&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label for="city"&gt;Miasto: *&lt;/label&gt;
+            &lt;input type="text" 
+                   id="city" 
+                   aria-required="true" 
+                   required /&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="form-group"&gt;
+            &lt;label for="postal"&gt;Kod pocztowy: *&lt;/label&gt;
+            &lt;input type="text" 
+                   id="postal" 
+                   aria-describedby="postal-format"
+                   aria-required="true" 
+                   pattern="[0-9]{2}-[0-9]{3}"
+                   required /&gt;
+            &lt;div id="postal-format" class="help-text"&gt;Format: 00-000&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/fieldset&gt;
+
+&lt;!-- Grupowanie danych kontaktowych --&gt;
+&lt;fieldset&gt;
+    &lt;legend&gt;Dane kontaktowe&lt;/legend&gt;
+    
+    &lt;div class="form-group"&gt;
+        &lt;label for="email"&gt;Adres email: *&lt;/label&gt;
+        &lt;input type="email" 
+               id="email" 
+               aria-describedby="email-help"
+               aria-required="true" 
+               required /&gt;
+        &lt;div id="email-help" class="help-text"&gt;
+            Wprowadź poprawny adres email (nazwa@domena.pl)
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="form-group"&gt;
+        &lt;label for="phone-contact"&gt;Telefon: (opcjonalny)&lt;/label&gt;
+        &lt;input type="tel" 
+               id="phone-contact" 
+               aria-describedby="phone-contact-help" /&gt;
+        &lt;div id="phone-contact-help" class="help-text"&gt;
+            Format: +48 123 456 789 lub 123-456-789
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/fieldset&gt;</code></pre>
+                <p><strong>Zalety:</strong> Logiczne grupowanie pól, jasne legendy, różne formaty instrukcji.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Kontrolki wyboru z jasnymi etykietami</h4>
+                <pre><code class="language-html">&lt;!-- Grupa przycisków radio --&gt;
+&lt;fieldset&gt;
+    &lt;legend&gt;Preferowany sposób kontaktu: *&lt;/legend&gt;
+    &lt;div class="radio-group"&gt;
+        &lt;input type="radio" 
+               id="contact-email" 
+               name="contact-method" 
+               value="email" 
+               required /&gt;
+        &lt;label for="contact-email"&gt;Email&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="radio-group"&gt;
+        &lt;input type="radio" 
+               id="contact-phone" 
+               name="contact-method" 
+               value="phone" 
+               required /&gt;
+        &lt;label for="contact-phone"&gt;Telefon&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="radio-group"&gt;
+        &lt;input type="radio" 
+               id="contact-sms" 
+               name="contact-method" 
+               value="sms" 
+               required /&gt;
+        &lt;label for="contact-sms"&gt;SMS&lt;/label&gt;
+    &lt;/div&gt;
+&lt;/fieldset&gt;
+
+&lt;!-- Lista wyboru z instrukcją --&gt;
+&lt;div class="form-group"&gt;
+    &lt;label for="country"&gt;Kraj: *&lt;/label&gt;
+    &lt;select id="country" 
+            aria-describedby="country-help"
+            aria-required="true" 
+            required&gt;
+        &lt;option value=""&gt;-- Wybierz kraj --&lt;/option&gt;
+        &lt;option value="pl"&gt;Polska&lt;/option&gt;
+        &lt;option value="de"&gt;Niemcy&lt;/option&gt;
+        &lt;option value="fr"&gt;Francja&lt;/option&gt;
+        &lt;option value="gb"&gt;Wielka Brytania&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;div id="country-help" class="help-text"&gt;
+        Wybierz kraj, w którym obecnie mieszkasz
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Pole wyboru z jasną etykietą --&gt;
+&lt;div class="form-group"&gt;
+    &lt;input type="checkbox" 
+           id="newsletter" 
+           name="newsletter" 
+           value="yes" /&gt;
+    &lt;label for="newsletter"&gt;
+        Chcę otrzymywać newsletter z informacjami o nowych produktach 
+        (maksymalnie raz w tygodniu)
+    &lt;/label&gt;
+&lt;/div&gt;</code></pre>
+                <p><strong>Zalety:</strong> Jasne etykiety dla wszystkich opcji, dodatkowe instrukcje gdzie potrzebne.
+                </p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Formularz z instrukcjami wprowadzającymi</h4>
+                <pre><code class="language-html">&lt;form&gt;
+    &lt;div class="form-instructions"&gt;
+        &lt;h2&gt;Formularz rejestracji&lt;/h2&gt;
+        &lt;p&gt;Wypełnij wszystkie pola oznaczone gwiazdką (*). 
+           Formularz składa się z trzech sekcji: dane osobowe, 
+           adres i preferencje kontaktu.&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Pola obowiązkowe są oznaczone gwiazdką (*)&lt;/li&gt;
+            &lt;li&gt;Hasło musi mieć minimum 8 znaków&lt;/li&gt;
+            &lt;li&gt;Data urodzenia w formacie DD/MM/RRRR&lt;/li&gt;
+            &lt;li&gt;Po wypełnieniu kliknij "Zarejestruj się"&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Sekcja danych osobowych --&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Dane osobowe&lt;/legend&gt;
+        
+        &lt;div class="form-group"&gt;
+            &lt;label for="username"&gt;Nazwa użytkownika: *&lt;/label&gt;
+            &lt;input type="text" 
+                   id="username" 
+                   aria-describedby="username-help"
+                   aria-required="true" 
+                   required /&gt;
+            &lt;div id="username-help" class="help-text"&gt;
+                3-20 znaków, tylko litery, cyfry i podkreślenia
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="form-group"&gt;
+            &lt;label for="password"&gt;Hasło: *&lt;/label&gt;
+            &lt;input type="password" 
+                   id="password" 
+                   aria-describedby="password-requirements"
+                   aria-required="true" 
+                   required /&gt;
+            &lt;div id="password-requirements" class="help-text"&gt;
+                Minimum 8 znaków, w tym co najmniej jedna wielka litera, 
+                jedna mała litera i jedna cyfra
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/fieldset&gt;
+    
+    &lt;div class="form-actions"&gt;
+        &lt;button type="submit"&gt;Zarejestruj się&lt;/button&gt;
+        &lt;button type="reset"&gt;Wyczyść formularz&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+                <p><strong>Zalety:</strong> Instrukcje wprowadzające, jasne sekcje, szczegółowe wymagania.</p>
+            </div>
+        </section>
+
+        <section class="label-types">
+            <h2>Rodzaje etykiet i instrukcji</h2>
+
+            <h3>Etykiety wizualne</h3>
+            <div class="pattern-description">
+                <p><strong>Zastosowanie:</strong> Standardowe etykiety widoczne dla wszystkich użytkowników</p>
+                <p><strong>Implementacja:</strong> Element <code>&lt;label&gt;</code> powiązany z polem przez
+                    <code>for</code>
+                </p>
+                <p><strong>Zalety:</strong> Uniwersalne, intuicyjne, dostępne</p>
+            </div>
+
+            <h3>Instrukcje kontekstowe</h3>
+            <div class="pattern-description">
+                <p><strong>Zastosowanie:</strong> Dodatkowe wskazówki dotyczące formatów lub reguł</p>
+                <p><strong>Implementacja:</strong> Powiązane z polami przez <code>aria-describedby</code></p>
+                <p><strong>Zalety:</strong> Szczegółowe informacje bez zaśmiecania interfejsu</p>
+            </div>
+
+            <h3>Etykiety grupowe</h3>
+            <div class="pattern-description">
+                <p><strong>Zastosowanie:</strong> Opisywanie grup powiązanych pól</p>
+                <p><strong>Implementacja:</strong> <code>&lt;fieldset&gt;</code> z <code>&lt;legend&gt;</code></p>
+                <p><strong>Zalety:</strong> Logiczne grupowanie, kontekst dla całej sekcji</p>
+            </div>
+
+            <h3>Instrukcje globalne</h3>
+            <div class="pattern-description">
+                <p><strong>Zastosowanie:</strong> Ogólne wskazówki dotyczące całego formularza</p>
+                <p><strong>Implementacja:</strong> Na początku formularza lub sekcji</p>
+                <p><strong>Zalety:</strong> Przygotowanie użytkownika, zmniejszenie błędów</p>
+            </div>
+        </section>
+
+        <section class="technical-implementation">
+            <h2>Implementacja techniczna</h2>
+
+            <h3>HTML - podstawowe etykiety</h3>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;!-- Standardowa etykieta --&gt;
+&lt;label for="field-id"&gt;Nazwa pola&lt;/label&gt;
+&lt;input type="text" id="field-id" /&gt;
+
+&lt;!-- Etykieta z instrukcją --&gt;
+&lt;label for="email"&gt;Adres email:&lt;/label&gt;
+&lt;input type="email" 
+       id="email" 
+       aria-describedby="email-help" /&gt;
+&lt;div id="email-help"&gt;Format: nazwa@domena.pl&lt;/div&gt;</code></pre>
+            </div>
+
+            <h3>ARIA - dodatkowe powiązania</h3>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;!-- Powiązanie z wieloma opisami --&gt;
+&lt;input type="password" 
+       id="password" 
+       aria-labelledby="password-label"
+       aria-describedby="password-help password-requirements" /&gt;
+&lt;label id="password-label"&gt;Hasło&lt;/label&gt;
+&lt;div id="password-help"&gt;Wprowadź bezpieczne hasło&lt;/div&gt;
+&lt;div id="password-requirements"&gt;Min. 8 znaków, litery i cyfry&lt;/div&gt;
+
+&lt;!-- Aria-label dla przypadków specjalnych --&gt;
+&lt;input type="search" 
+       aria-label="Wyszukaj produkty" 
+       placeholder="Wpisz nazwę produktu..." /&gt;</code></pre>
+            </div>
+
+            <h3>CSS - stylowanie etykiet</h3>
+            <div class="code-example">
+                <pre><code class="language-css">/* Podstawowe stylowanie etykiet */
+label {
+    display: block;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Oznaczenie wymaganych pól */
+.required::after {
+    content: " *";
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+/* Instrukcje pomocnicze */
+.help-text {
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.25rem;
+    line-height: 1.4;
+}
+
+/* Legendy dla fieldset */
+legend {
+    font-weight: bold;
+    margin-bottom: 1rem;
+    padding: 0 0.5rem;
+}
+
+/* Etykiety dla radio i checkbox */
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+    display: inline;
+    margin-left: 0.5rem;
+    font-weight: normal;
+}</code></pre>
+            </div>
+        </section>
+
+        <section class="best-practices">
+            <h2>Najlepsze praktyki</h2>
+
+            <div class="best-practice-section">
+                <h3>Tworzenie etykiet</h3>
+                <ul>
+                    <li>Używaj jasnych, opisowych etykiet</li>
+                    <li>Umieszczaj etykiety przed polami (nad lub z lewej strony)</li>
+                    <li>Unikaj stosowania placeholder jako jedynej etykiety</li>
+                    <li>Oznaczaj wymagane pola w sposób dostępny</li>
+                    <li>Grupuj powiązane pola w fieldset z legend</li>
+                </ul>
+            </div>
+
+            <div class="best-practice-section">
+                <h3>Pisanie instrukcji</h3>
+                <ul>
+                    <li>Podawaj konkretne przykłady formatów danych</li>
+                    <li>Używaj prostego, zrozumiałego języka</li>
+                    <li>Umieszczaj instrukcje blisko pól których dotyczą</li>
+                    <li>Zawieraj informacje o ograniczeniach i regułach</li>
+                    <li>Testuj instrukcje z prawdziwymi użytkownikami</li>
+                </ul>
+            </div>
+
+            <div class="best-practice-section">
+                <h3>Dostępność</h3>
+                <ul>
+                    <li>Zawsze wiąż etykiety z polami przez id</li>
+                    <li>Używaj aria-describedby dla dodatkowych instrukcji</li>
+                    <li>Sprawdzaj dostępność z czytnikami ekranu</li>
+                    <li>Testuj nawigację tylko klawiaturą</li>
+                    <li>Zapewniaj odpowiedni kontrast kolorów</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie</h2>
+
+            <h3>Metody testowania</h3>
+            <ul>
+                <li><strong>Test z czytnikiem ekranu</strong> - sprawdź czy etykiety są poprawnie odczytywane</li>
+                <li><strong>Test nawigacji klawiaturą</strong> - upewnij się o dostępności wszystkich pól</li>
+                <li><strong>Test z wyłączonymi stylami</strong> - sprawdź czy etykiety są nadal widoczne</li>
+                <li><strong>Test z użytkownikami</strong> - obserwuj rzeczywiste trudności</li>
+                <li><strong>Walidacja HTML</strong> - sprawdź poprawność powiązań etykiet</li>
+            </ul>
+
+            <h3>Lista kontrolna</h3>
+            <ul>
+                <li>Czy każde pole ma odpowiednią etykietę?</li>
+                <li>Czy etykiety są jasne i opisowe?</li>
+                <li>Czy wymagane pola są właściwie oznaczone?</li>
+                <li>Czy instrukcje formatów są dostępne gdy potrzebne?</li>
+                <li>Czy grupy pól mają odpowiednie legendy?</li>
+                <li>Czy etykiety są powiązane z polami programowo?</li>
+                <li>Czy instrukcje są zrozumiałe dla użytkowników?</li>
+            </ul>
+
+            <h3>Narzędzia pomocne w testowaniu</h3>
+            <ul>
+                <li><strong>NVDA/JAWS</strong> - czytniki ekranu do testowania etykiet</li>
+                <li><strong>axe DevTools</strong> - automatyczna analiza dostępności formularzy</li>
+                <li><strong>WAVE</strong> - walidator etykiet i powiązań</li>
+                <li><strong>Lighthouse</strong> - audit dostępności formularzy</li>
+                <li><strong>W3C Markup Validator</strong> - sprawdzenie poprawności HTML</li>
+            </ul>
+        </section>
+
+        <section class="related-criteria">
+            <h2>Powiązane kryteria</h2>
+            <ul>
+                <li><a href="1.3.1.html">1.3.1 Informacje i relacje (A)</a> - zapewnia programowe powiązanie etykiet z
+                    polami</li>
+                <li><a href="2.4.6.html">2.4.6 Nagłówki i etykiety (AA)</a> - wymaga aby etykiety były opisowe</li>
+                <li><a href="3.3.1.html">3.3.1 Identyfikacja błędu (A)</a> - współpracuje z etykietami w raportowaniu
+                    błędów</li>
+                <li><a href="4.1.2.html">4.1.2 Nazwa, rola, wartość (A)</a> - zapewnia programową dostępność nazw pól
+                </li>
+                <li><a href="1.4.3.html">1.4.3 Kontrast (minimalny) (AA)</a> - zapewnia czytelność etykiet</li>
+            </ul>
+        </section>
+
+        <section class="resources">
+            <h2>Zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html">WCAG 2.1:
+                        Understanding Labels or Instructions</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/html/H44">Technika H44: Using label elements to
+                        associate text labels with form controls</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/html/H71">Technika H71: Providing a description
+                        for groups of form controls using fieldset and legend</a></li>
+                <li><a href="https://www.w3.org/WAI/tutorials/forms/labels/">W3C: Form Labels Tutorial</a></li>
+                <li><a href="https://webaim.org/techniques/forms/controls">WebAIM: Creating Accessible Forms - Form
+                        Controls</a></li>
+            </ul>
+        </section>
+
+        <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+            <ul>
+                <li><a href="3.3.1.html">Poprzedni: 3.3.1 Identyfikacja błędu</a></li>
+                <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                <li><a href="3.3.3.html">Następny: 3.3.3 Sugestia korekty błędu</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

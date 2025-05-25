@@ -1,0 +1,2057 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.3.6 Zapobieganie błędom (wszystkie) (AAA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>3.3.6 Zapobieganie błędom (wszystkie) (AAA)</h1>
+            <p>Na stronach internetowych, które wymagają od użytkownika przesłania informacji, spełniony jest
+                przynajmniej jeden z następujących warunków: możliwość cofnięcia, sprawdzanie danych lub potwierdzanie.
+            </p>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>To kryterium poziomu AAA rozszerza wymagania kryterium 3.3.4, stosując je do <strong>wszystkich</strong>
+                formularzy, które wymagają przesłania informacji przez użytkownika. Podczas gdy kryterium 3.3.4 dotyczy
+                tylko danych prawnych, finansowych i osobowych, kryterium 3.3.6 obejmuje wszystkie rodzaje formularzy.
+            </p>
+
+            <h3>Trzy sposoby zapobiegania błędom</h3>
+            <div class="prevention-methods">
+                <div class="method">
+                    <h4>1. Możliwość cofnięcia (Reversible)</h4>
+                    <p>Użytkownik może cofnąć przesłane dane lub akcję</p>
+                    <ul>
+                        <li>Kosz w systemie e-mail</li>
+                        <li>Funkcja "Cofnij" w edytorach</li>
+                        <li>Możliwość anulowania zamówienia</li>
+                    </ul>
+                </div>
+
+                <div class="method">
+                    <h4>2. Sprawdzanie danych (Checked)</h4>
+                    <p>System sprawdza wprowadzone dane i daje możliwość korekty</p>
+                    <ul>
+                        <li>Walidacja w czasie rzeczywistym</li>
+                        <li>Sprawdzanie formatu danych</li>
+                        <li>Kontrola poprawności informacji</li>
+                    </ul>
+                </div>
+
+                <div class="method">
+                    <h4>3. Potwierdzanie (Confirmed)</h4>
+                    <p>Mechanizm przeglądu i potwierdzenia przed finalizacją</p>
+                    <ul>
+                        <li>Strona podsumowania przed wysłaniem</li>
+                        <li>Dialog potwierdzenia</li>
+                        <li>Podwójne potwierdzenie akcji</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Osoby z trudnościami motorycznymi</strong> - mogą popełniać błędy przez przypadkowe
+                    naciśnięcia</li>
+                <li><strong>Osoby z ograniczeniami poznawczymi</strong> - potrzebują więcej czasu na sprawdzenie danych
+                </li>
+                <li><strong>Osoby z dysleksją</strong> - mogą przestawiać litery i cyfry</li>
+                <li><strong>Seniorzy</strong> - mogą potrzebować dodatkowej walidacji</li>
+                <li><strong>Wszyscy użytkownicy</strong> - każdy może popełnić błąd</li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje</h2>
+            <dl>
+                <dt><strong>Przesłanie informacji</strong></dt>
+                <dd>Wysłanie danych do systemu poprzez formularz lub inny mechanizm wprowadzania</dd>
+
+                <dt><strong>Możliwość cofnięcia</strong></dt>
+                <dd>Funkcjonalność pozwalająca na anulowanie lub wycofanie wcześniej przesłanych danych</dd>
+
+                <dt><strong>Sprawdzanie danych</strong></dt>
+                <dd>Automatyczna lub manulna weryfikacja poprawności wprowadzonych informacji</dd>
+
+                <dt><strong>Mechanizm potwierdzania</strong></dt>
+                <dd>Proces wymagający od użytkownika świadomego potwierdzenia przed finalizacją akcji</dd>
+            </dl>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Brak zabezpieczeń w prostym formularzu</h4>
+                <pre><code class="language-html"><!-- Nieprawidłowe - brak jakiejkolwiek ochrony przed błędami -->
+<form method="post" action="/submit-comment">
+    <label for="comment">Twój komentarz:</label>
+    <textarea id="comment" name="comment" required></textarea>
+    
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    
+    <button type="submit">Wyślij komentarz</button>
+</form></code></pre>
+                <p><strong>Problem:</strong> Natychmiastowe wysłanie bez możliwości sprawdzenia, cofnięcia lub
+                    potwierdzenia.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Nieodwracalne akcje bez ostrzeżenia</h4>
+                <pre><code class="language-html"><!-- Nieprawidłowe - nieodwracalne usunięcie bez potwierdzenia -->
+<div class="file-item">
+    <span>dokument.pdf</span>
+    <button onclick="deleteFile('123')" class="delete-btn">Usuń</button>
+</div>
+
+<script>
+    function deleteFile(fileId) {
+        // Natychmiastowe usunięcie bez potwierdzenia
+        fetch('/delete-file/' + fileId, { method: 'DELETE' })
+            .then(() => location.reload());
+    }
+</script></code></pre>
+                <p><strong>Problem:</strong> Nieodwracalne usunięcie pliku bez możliwości cofnięcia lub potwierdzenia.
+                </p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Formularz kontaktowy z walidacją i potwierdzeniem</h4>
+                <pre><code class="language-html"><!-- Implementacja z wszystkimi trzema metodami zapobiegania -->
+<form id="contact-form" novalidate>
+    <fieldset>
+        <legend>Formularz kontaktowy</legend>
+        
+        <div class="form-group">
+            <label for="name">Imię i nazwisko: *</label>
+            <input type="text" id="name" name="name" required 
+                   aria-describedby="name-error" 
+                   oninput="validateField('name')">
+            <div id="name-error" class="error-message" hidden></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Adres email: *</label>
+            <input type="email" id="email" name="email" required 
+                   aria-describedby="email-error" 
+                   oninput="validateField('email')">
+            <div id="email-error" class="error-message" hidden></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Telefon:</label>
+            <input type="tel" id="phone" name="phone" 
+                   aria-describedby="phone-error phone-help" 
+                   oninput="validateField('phone')">
+            <div id="phone-help" class="field-help">Format: +48 123 456 789</div>
+            <div id="phone-error" class="error-message" hidden></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="subject">Temat: *</label>
+            <select id="subject" name="subject" required 
+                    aria-describedby="subject-error" 
+                    onchange="validateField('subject')">
+                <option value="">Wybierz temat</option>
+                <option value="info">Informacja</option>
+                <option value="support">Wsparcie techniczne</option>
+                <option value="complaint">Reklamacja</option>
+                <option value="other">Inne</option>
+            </select>
+            <div id="subject-error" class="error-message" hidden></div>
+        </div>
+        
+        <div class="form-group">
+            <label for="message">Wiadomość: *</label>
+            <textarea id="message" name="message" required rows="5" 
+                      aria-describedby="message-error message-counter" 
+                      oninput="validateField('message')" 
+                      maxlength="1000"></textarea>
+            <div id="message-counter" class="character-counter">0 / 1000 znaków</div>
+            <div id="message-error" class="error-message" hidden></div>
+        </div>
+        
+        <div class="form-group checkbox-group">
+            <label>
+                <input type="checkbox" id="privacy-consent" name="privacy-consent" required 
+                       onchange="validateField('privacy-consent')">
+                Wyrażam zgodę na przetwarzanie danych osobowych *
+            </label>
+            <div id="privacy-consent-error" class="error-message" hidden></div>
+        </div>
+    </fieldset>
+    
+    <div class="form-actions">
+        <button type="button" onclick="clearForm()" class="secondary-btn">Wyczyść formularz</button>
+        <button type="button" onclick="saveDraft()" class="secondary-btn">Zapisz wersję roboczą</button>
+        <button type="submit" id="submit-btn" disabled>Sprawdź i wyślij</button>
+    </div>
+</form>
+
+<!-- Modal potwierdzenia -->
+<div id="confirmation-modal" class="modal" hidden>
+    <div class="modal-content">
+        <h3>Potwierdź wysłanie wiadomości</h3>
+        
+        <div class="confirmation-summary">
+            <h4>Sprawdź swoje dane:</h4>
+            <dl>
+                <dt>Imię i nazwisko:</dt>
+                <dd id="confirm-name"></dd>
+                
+                <dt>Email:</dt>
+                <dd id="confirm-email"></dd>
+                
+                <dt>Telefon:</dt>
+                <dd id="confirm-phone"></dd>
+                
+                <dt>Temat:</dt>
+                <dd id="confirm-subject"></dd>
+                
+                <dt>Wiadomość:</dt>
+                <dd id="confirm-message"></dd>
+            </dl>
+        </div>
+        
+        <div class="modal-actions">
+            <button type="button" onclick="editForm()" class="secondary-btn">Edytuj</button>
+            <button type="button" onclick="finalSubmit()" class="primary-btn">Potwierdź i wyślij</button>
+            <button type="button" onclick="cancelSubmission()" class="danger-btn">Anuluj</button>
+        </div>
+    </div>
+</div>
+
+<!-- Komunikat o sukcesie -->
+<div id="success-message" class="success-banner" hidden>
+    <h3>✅ Wiadomość wysłana pomyślnie!</h3>
+    <p>Twoja wiadomość została przesłana. Odpowiemy w ciągu 24 godzin.</p>
+    <button type="button" onclick="sendAnother()" class="secondary-btn">Wyślij kolejną wiadomość</button>
+</div>
+
+<script>
+    class ContactFormValidator {
+        constructor() {
+            this.form = document.getElementById('contact-form');
+            this.isValid = false;
+            this.draftData = this.loadDraft();
+            this.init();
+        }
+
+        init() {
+            // Przywróć dane z wersji roboczej
+            if (this.draftData) {
+                this.restoreDraft();
+            }
+
+            // Event handlery
+            this.form.addEventListener('submit', this.handleSubmit.bind(this));
+
+            // Automatyczne zapisywanie wersji roboczej
+            setInterval(() => this.autoSaveDraft(), 30000); // co 30 sekund
+        }
+
+        validateField(fieldName) {
+            const field = document.getElementById(fieldName);
+            const errorDiv = document.getElementById(fieldName + '-error');
+            let isFieldValid = true;
+            let errorMessage = '';
+
+            // Sprawdź czy pole jest wymagane i puste
+            if (field.required && !field.value.trim()) {
+                isFieldValid = false;
+                errorMessage = 'To pole jest wymagane.';
+            } else {
+                // Specjalna walidacja dla poszczególnych pól
+                switch (fieldName) {
+                    case 'name':
+                        if (field.value.length < 2) {
+                            isFieldValid = false;
+                            errorMessage = 'Imię i nazwisko musi mieć co najmniej 2 znaki.';
+                        }
+                        break;
+
+                    case 'email':
+                        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                        if (!emailRegex.test(field.value)) {
+                            isFieldValid = false;
+                            errorMessage = 'Wprowadź poprawny adres email.';
+                        }
+                        break;
+
+                    case 'phone':
+                        if (field.value && !/^(\+48\s?)?[\d\s\-]{9,}$/.test(field.value)) {
+                            isFieldValid = false;
+                            errorMessage = 'Wprowadź poprawny numer telefonu (np. +48 123 456 789).';
+                        }
+                        break;
+
+                    case 'message':
+                        if (field.value.length < 10) {
+                            isFieldValid = false;
+                            errorMessage = 'Wiadomość musi mieć co najmniej 10 znaków.';
+                        }
+                        this.updateCharacterCounter();
+                        break;
+                }
+            }
+
+            // Pokaż/ukryj błąd
+            if (isFieldValid) {
+                errorDiv.hidden = true;
+                field.classList.remove('error');
+                field.setAttribute('aria-invalid', 'false');
+            } else {
+                errorDiv.textContent = errorMessage;
+                errorDiv.hidden = false;
+                field.classList.add('error');
+                field.setAttribute('aria-invalid', 'true');
+            }
+
+            // Zaktualizuj stan formularza
+            this.updateFormValidity();
+
+            return isFieldValid;
+        }
+
+        updateCharacterCounter() {
+            const messageField = document.getElementById('message');
+            const counter = document.getElementById('message-counter');
+            const length = messageField.value.length;
+            const maxLength = 1000;
+
+            counter.textContent = `${length} / ${maxLength} znaków`;
+
+            if (length > maxLength * 0.9) {
+                counter.classList.add('warning');
+            } else {
+                counter.classList.remove('warning');
+            }
+        }
+
+        updateFormValidity() {
+            const requiredFields = ['name', 'email', 'subject', 'message', 'privacy-consent'];
+            const submitBtn = document.getElementById('submit-btn');
+
+            let allValid = true;
+
+            for (const fieldName of requiredFields) {
+                if (!this.validateField(fieldName)) {
+                    allValid = false;
+                }
+            }
+
+            this.isValid = allValid;
+            submitBtn.disabled = !allValid;
+
+            if (allValid) {
+                submitBtn.textContent = 'Sprawdź i wyślij';
+                submitBtn.classList.remove('disabled');
+            } else {
+                submitBtn.textContent = 'Uzupełnij wymagane pola';
+                submitBtn.classList.add('disabled');
+            }
+        }
+
+        handleSubmit(event) {
+            event.preventDefault();
+
+            if (!this.isValid) {
+                // Fokus na pierwszy błędny element
+                const firstError = this.form.querySelector('.error');
+                if (firstError) {
+                    firstError.focus();
+                }
+                return;
+            }
+
+            // Pokaż modal potwierdzenia
+            this.showConfirmationModal();
+        }
+
+        showConfirmationModal() {
+            const modal = document.getElementById('confirmation-modal');
+            const formData = new FormData(this.form);
+
+            // Wypełnij podsumowanie
+            document.getElementById('confirm-name').textContent = formData.get('name');
+            document.getElementById('confirm-email').textContent = formData.get('email');
+            document.getElementById('confirm-phone').textContent = formData.get('phone') || 'Nie podano';
+
+            const subjectSelect = document.getElementById('subject');
+            const selectedOption = subjectSelect.options[subjectSelect.selectedIndex];
+            document.getElementById('confirm-subject').textContent = selectedOption.text;
+
+            const message = formData.get('message');
+            document.getElementById('confirm-message').textContent =
+                message.length > 100 ? message.substring(0, 100) + '...' : message;
+
+            modal.hidden = false;
+            modal.querySelector('.primary-btn').focus();
+        }
+
+        editForm() {
+            document.getElementById('confirmation-modal').hidden = true;
+            // Fokus na pierwszy element formularza
+            document.getElementById('name').focus();
+        }
+
+        cancelSubmission() {
+            document.getElementById('confirmation-modal').hidden = true;
+            // Fokus z powrotem na przycisk submit
+            document.getElementById('submit-btn').focus();
+        }
+
+        async finalSubmit() {
+            const modal = document.getElementById('confirmation-modal');
+            const formData = new FormData(this.form);
+
+            try {
+                const response = await fetch('/send-contact', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (response.ok) {
+                    modal.hidden = true;
+                    this.showSuccessMessage();
+                    this.clearDraft(); // Usuń wersję roboczą po sukcesie
+                } else {
+                    throw new Error('Błąd podczas wysyłania');
+                }
+            } catch (error) {
+                alert('Wystąpił błąd podczas wysyłania wiadomości. Spróbuj ponownie.');
+            }
+        }
+
+        showSuccessMessage() {
+            this.form.hidden = true;
+            document.getElementById('success-message').hidden = false;
+        }
+
+        sendAnother() {
+            this.form.hidden = false;
+            document.getElementById('success-message').hidden = true;
+            this.clearForm();
+            document.getElementById('name').focus();
+        }
+
+        clearForm() {
+            this.form.reset();
+            this.updateFormValidity();
+            this.clearDraft();
+
+            // Ukryj wszystkie błędy
+            this.form.querySelectorAll('.error-message').forEach(el => el.hidden = true);
+            this.form.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+        }
+
+        saveDraft() {
+            const formData = new FormData(this.form);
+            const draftData = {};
+
+            for (const [key, value] of formData.entries()) {
+                draftData[key] = value;
+            }
+
+            localStorage.setItem('contact-form-draft', JSON.stringify(draftData));
+
+            // Pokaż komunikat
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '✓ Zapisano';
+            setTimeout(() => {
+                btn.textContent = originalText;
+            }, 2000);
+        }
+
+        autoSaveDraft() {
+            if (this.hasUserInput()) {
+                this.saveDraft();
+            }
+        }
+
+        hasUserInput() {
+            const inputs = this.form.querySelectorAll('input, textarea, select');
+            return Array.from(inputs).some(input => input.value.trim());
+        }
+
+        loadDraft() {
+            const saved = localStorage.getItem('contact-form-draft');
+            return saved ? JSON.parse(saved) : null;
+        }
+
+        restoreDraft() {
+            for (const [key, value] of Object.entries(this.draftData)) {
+                const field = document.querySelector(`[name="${key}"]`);
+                if (field) {
+                    if (field.type === 'checkbox') {
+                        field.checked = value === 'on';
+                    } else {
+                        field.value = value;
+                    }
+                }
+            }
+
+            // Waliduj przywrócone dane
+            setTimeout(() => this.updateFormValidity(), 100);
+
+            // Pokaż informację
+            if (confirm('Znaleziono zapisaną wersję roboczą. Czy chcesz ją przywrócić?')) {
+                // Użytkownik potwierdził - dane już zostały przywrócone
+            } else {
+                this.clearForm();
+            }
+        }
+
+        clearDraft() {
+            localStorage.removeItem('contact-form-draft');
+        }
+    }
+
+    // Globalne funkcje dla prostszej integracji z HTML
+    let formValidator;
+
+    function validateField(fieldName) {
+        return formValidator.validateField(fieldName);
+    }
+
+    function clearForm() {
+        formValidator.clearForm();
+    }
+
+    function saveDraft() {
+        formValidator.saveDraft();
+    }
+
+    function editForm() {
+        formValidator.editForm();
+    }
+
+    function cancelSubmission() {
+        formValidator.cancelSubmission();
+    }
+
+    function finalSubmit() {
+        formValidator.finalSubmit();
+    }
+
+    function sendAnother() {
+        formValidator.sendAnother();
+    }
+
+    // Inicjalizacja po załadowaniu strony
+    document.addEventListener('DOMContentLoaded', () => {
+        formValidator = new ContactFormValidator();
+    });
+</script></code></pre>
+                <p><strong>Zalety:</strong> Pełne sprawdzanie danych, mechanizm potwierdzenia, automatyczne zapisywanie
+                    wersji roboczej.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>System komentarzy z możliwością cofnięcia</h4>
+                <pre><code class="language-html"><!-- System komentarzy z funkcją cofnięcia -->
+<div class="comment-system">
+    <form id="comment-form">
+        <fieldset>
+            <legend>Dodaj komentarz</legend>
+            
+            <div class="form-group">
+                <label for="comment-author">Twoje imię:</label>
+                <input type="text" id="comment-author" name="author" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="comment-email">Email (nie będzie publikowany):</label>
+                <input type="email" id="comment-email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="comment-text">Komentarz:</label>
+                <textarea id="comment-text" name="comment" required rows="4" 
+                          placeholder="Napisz swój komentarz..."></textarea>
+                <div class="comment-guidelines">
+                    <strong>Zasady:</strong> Bądź uprzejmy, nie używaj wulgaryzmów, szanuj innych użytkowników.
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button type="submit">Opublikuj komentarz</button>
+                <button type="button" onclick="previewComment()">Podgląd</button>
+            </div>
+        </fieldset>
+    </form>
+    
+    <!-- Podgląd komentarza -->
+    <div id="comment-preview" class="comment-preview" hidden>
+        <h4>Podgląd komentarza:</h4>
+        <div class="comment-item preview">
+            <div class="comment-header">
+                <strong id="preview-author"></strong>
+                <time id="preview-date"></time>
+            </div>
+            <div class="comment-content" id="preview-content"></div>
+        </div>
+        <div class="preview-actions">
+            <button onclick="confirmComment()" class="primary-btn">Potwierdź i opublikuj</button>
+            <button onclick="editComment()" class="secondary-btn">Edytuj</button>
+            <button onclick="cancelComment()" class="danger-btn">Anuluj</button>
+        </div>
+    </div>
+    
+    <!-- Lista komentarzy -->
+    <div class="comments-list">
+        <h3>Komentarze:</h3>
+        <div id="comments-container">
+            <!-- Komentarze będą dodawane dynamicznie -->
+        </div>
+    </div>
+    
+    <!-- Kosz - usunięte komentarze -->
+    <div id="trash-section" class="trash-section" hidden>
+        <h4>🗑️ Kosz (usunięte komentarze)</h4>
+        <p>Usunięte komentarze są przechowywane przez 30 dni i mogą zostać przywrócone.</p>
+        <div id="trash-container"></div>
+        <button onclick="emptyTrash()" class="danger-btn">Opróżnij kosz</button>
+    </div>
+</div>
+
+<script>
+    class CommentSystem {
+        constructor() {
+            this.comments = this.loadComments();
+            this.trashedComments = this.loadTrashedComments();
+            this.nextId = this.getNextId();
+            this.init();
+        }
+
+        init() {
+            // Event handlery
+            document.getElementById('comment-form').addEventListener('submit', this.handleSubmit.bind(this));
+
+            // Wyświetl istniejące komentarze
+            this.renderComments();
+            this.renderTrash();
+        }
+
+        handleSubmit(event) {
+            event.preventDefault();
+
+            // Sprawdź i waliduj dane
+            if (!this.validateForm()) {
+                return;
+            }
+
+            // Pokaż podgląd
+            this.showPreview();
+        }
+
+        validateForm() {
+            const form = document.getElementById('comment-form');
+            const author = form.author.value.trim();
+            const email = form.email.value.trim();
+            const comment = form.comment.value.trim();
+
+            // Podstawowa walidacja
+            if (!author || author.length < 2) {
+                alert('Imię musi mieć co najmniej 2 znaki.');
+                form.author.focus();
+                return false;
+            }
+
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                alert('Wprowadź poprawny adres email.');
+                form.email.focus();
+                return false;
+            }
+
+            if (!comment || comment.length < 10) {
+                alert('Komentarz musi mieć co najmniej 10 znaków.');
+                form.comment.focus();
+                return false;
+            }
+
+            // Sprawdzenie na spam/obraźliwe treści (symulowane)
+            const forbiddenWords = ['spam', 'reklama', 'klikaj tutaj'];
+            if (forbiddenWords.some(word => comment.toLowerCase().includes(word))) {
+                alert('Komentarz zawiera niedozwolone treści. Sprawdź i popraw tekst.');
+                form.comment.focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        showPreview() {
+            const form = document.getElementById('comment-form');
+            const preview = document.getElementById('comment-preview');
+
+            // Wypełnij podgląd
+            document.getElementById('preview-author').textContent = form.author.value;
+            document.getElementById('preview-date').textContent = new Date().toLocaleString('pl-PL');
+            document.getElementById('preview-content').textContent = form.comment.value;
+
+            // Pokaż podgląd, ukryj formularz
+            form.style.display = 'none';
+            preview.hidden = false;
+        }
+
+        confirmComment() {
+            const form = document.getElementById('comment-form');
+
+            // Utwórz nowy komentarz
+            const comment = {
+                id: this.nextId++,
+                author: form.author.value.trim(),
+                email: form.email.value.trim(), // Nie będzie wyświetlany
+                content: form.comment.value.trim(),
+                date: new Date(),
+                canDelete: true // Oznacz że można usunąć przez pierwsze 10 minut
+            };
+
+            // Dodaj do listy
+            this.comments.unshift(comment);
+            this.saveComments();
+
+            // Wyświetl komunikat sukcesu
+            this.showSuccessMessage(comment);
+
+            // Wyczyść formularz i wróć do normalnego widoku
+            this.resetForm();
+            this.renderComments();
+
+            // Ustaw timer na usunięcie możliwości kasowania
+            setTimeout(() => {
+                const storedComment = this.comments.find(c => c.id === comment.id);
+                if (storedComment) {
+                    storedComment.canDelete = false;
+                    this.saveComments();
+                    this.renderComments();
+                }
+            }, 10 * 60 * 1000); // 10 minut
+        }
+
+        editComment() {
+            const preview = document.getElementById('comment-preview');
+            const form = document.getElementById('comment-form');
+
+            // Wróć do formularza
+            preview.hidden = true;
+            form.style.display = 'block';
+
+            // Fokus na textarea
+            form.comment.focus();
+        }
+
+        cancelComment() {
+            this.resetForm();
+        }
+
+        resetForm() {
+            const form = document.getElementById('comment-form');
+            const preview = document.getElementById('comment-preview');
+
+            form.reset();
+            form.style.display = 'block';
+            preview.hidden = true;
+        }
+
+        showSuccessMessage(comment) {
+            const message = document.createElement('div');
+            message.className = 'success-message';
+            message.innerHTML = `
+            <h4>✅ Komentarz opublikowany!</h4>
+            <p>Twój komentarz został dodany. ${comment.canDelete ? 'Możesz go usunąć przez najbliższe 10 minut.' : ''}</p>
+        `;
+
+            // Wstaw przed formularzem
+            const form = document.getElementById('comment-form');
+            form.parentNode.insertBefore(message, form);
+
+            // Usuń komunikat po 5 sekundach
+            setTimeout(() => {
+                if (message.parentNode) {
+                    message.parentNode.removeChild(message);
+                }
+            }, 5000);
+        }
+
+        renderComments() {
+            const container = document.getElementById('comments-container');
+
+            if (this.comments.length === 0) {
+                container.innerHTML = '<p class="no-comments">Brak komentarzy. Dodaj pierwszy!</p>';
+                return;
+            }
+
+            container.innerHTML = this.comments.map(comment => `
+            <div class="comment-item" data-id="${comment.id}">
+                <div class="comment-header">
+                    <strong>${this.escapeHtml(comment.author)}</strong>
+                    <time>${new Date(comment.date).toLocaleString('pl-PL')}</time>
+                    ${comment.canDelete ? `
+                        <button onclick="commentSystem.deleteComment(${comment.id})" 
+                                class="delete-btn" 
+                                title="Usuń komentarz (możliwe przez 10 minut od publikacji)">
+                            🗑️ Usuń
+                        </button>
+                    ` : ''}
+                </div>
+                <div class="comment-content">${this.escapeHtml(comment.content)}</div>
+            </div>
+        `).join('');
+        }
+
+        deleteComment(commentId) {
+            if (!confirm('Czy na pewno chcesz usunąć ten komentarz? Zostanie przeniesiony do kosza.')) {
+                return;
+            }
+
+            // Znajdź komentarz
+            const commentIndex = this.comments.findIndex(c => c.id === commentId);
+            if (commentIndex === -1) return;
+
+            const comment = this.comments[commentIndex];
+
+            // Przenieś do kosza
+            comment.deletedDate = new Date();
+            this.trashedComments.push(comment);
+
+            // Usuń z aktywnych
+            this.comments.splice(commentIndex, 1);
+
+            // Zapisz i odśwież
+            this.saveComments();
+            this.saveTrashedComments();
+            this.renderComments();
+            this.renderTrash();
+
+            // Pokaż komunikat
+            this.showUndoMessage(comment);
+        }
+
+        showUndoMessage(deletedComment) {
+            const message = document.createElement('div');
+            message.className = 'undo-message';
+            message.innerHTML = `
+            <p>Komentarz został usunięty. 
+            <button onclick="commentSystem.restoreComment(${deletedComment.id})" class="undo-btn">
+                Cofnij usunięcie
+            </button></p>
+        `;
+
+            const container = document.getElementById('comments-container');
+            container.insertBefore(message, container.firstChild);
+
+            // Usuń komunikat po 10 sekundach
+            setTimeout(() => {
+                if (message.parentNode) {
+                    message.parentNode.removeChild(message);
+                }
+            }, 10000);
+        }
+
+        restoreComment(commentId) {
+            // Znajdź w koszu
+            const trashIndex = this.trashedComments.findIndex(c => c.id === commentId);
+            if (trashIndex === -1) return;
+
+            const comment = this.trashedComments[trashIndex];
+
+            // Przywróć do aktywnych
+            delete comment.deletedDate;
+            this.comments.unshift(comment);
+
+            // Usuń z kosza
+            this.trashedComments.splice(trashIndex, 1);
+
+            // Zapisz i odśwież
+            this.saveComments();
+            this.saveTrashedComments();
+            this.renderComments();
+            this.renderTrash();
+
+            // Usuń komunikat undo
+            const undoMessage = document.querySelector('.undo-message');
+            if (undoMessage) {
+                undoMessage.remove();
+            }
+        }
+
+        renderTrash() {
+            const trashSection = document.getElementById('trash-section');
+            const container = document.getElementById('trash-container');
+
+            if (this.trashedComments.length === 0) {
+                trashSection.hidden = true;
+                return;
+            }
+
+            trashSection.hidden = false;
+            container.innerHTML = this.trashedComments.map(comment => `
+            <div class="trashed-comment" data-id="${comment.id}">
+                <div class="comment-header">
+                    <strong>${this.escapeHtml(comment.author)}</strong>
+                    <time>Usunięto: ${new Date(comment.deletedDate).toLocaleString('pl-PL')}</time>
+                </div>
+                <div class="comment-content">${this.escapeHtml(comment.content)}</div>
+                <div class="trash-actions">
+                    <button onclick="commentSystem.restoreComment(${comment.id})" class="restore-btn">
+                        Przywróć
+                    </button>
+                    <button onclick="commentSystem.permanentDelete(${comment.id})" class="permanent-delete-btn">
+                        Usuń na stałe
+                    </button>
+                </div>
+            </div>
+        `).join('');
+        }
+
+        permanentDelete(commentId) {
+            if (!confirm('Czy na pewno chcesz trwale usunąć ten komentarz? Ta akcja jest nieodwracalna.')) {
+                return;
+            }
+
+            const trashIndex = this.trashedComments.findIndex(c => c.id === commentId);
+            if (trashIndex !== -1) {
+                this.trashedComments.splice(trashIndex, 1);
+                this.saveTrashedComments();
+                this.renderTrash();
+            }
+        }
+
+        emptyTrash() {
+            if (!confirm('Czy na pewno chcesz opróżnić kosz? Wszystkie komentarze zostaną trwale usunięte.')) {
+                return;
+            }
+
+            this.trashedComments = [];
+            this.saveTrashedComments();
+            this.renderTrash();
+        }
+
+        // Utility methods
+        escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        loadComments() {
+            const saved = localStorage.getItem('comments');
+            return saved ? JSON.parse(saved) : [];
+        }
+
+        saveComments() {
+            localStorage.setItem('comments', JSON.stringify(this.comments));
+        }
+
+        loadTrashedComments() {
+            const saved = localStorage.getItem('trashedComments');
+            return saved ? JSON.parse(saved) : [];
+        }
+
+        saveTrashedComments() {
+            localStorage.setItem('trashedComments', JSON.stringify(this.trashedComments));
+        }
+
+        getNextId() {
+            const allComments = [...this.comments, ...this.trashedComments];
+            return allComments.length > 0 ? Math.max(...allComments.map(c => c.id)) + 1 : 1;
+        }
+    }
+
+    // Globalne funkcje
+    let commentSystem;
+
+    function previewComment() {
+        if (commentSystem.validateForm()) {
+            commentSystem.showPreview();
+        }
+    }
+
+    function confirmComment() {
+        commentSystem.confirmComment();
+    }
+
+    function editComment() {
+        commentSystem.editComment();
+    }
+
+    function cancelComment() {
+        commentSystem.cancelComment();
+    }
+
+    // Inicjalizacja
+    document.addEventListener('DOMContentLoaded', () => {
+        commentSystem = new CommentSystem();
+    });
+</script></code></pre>
+                <p><strong>Zalety:</strong> Podgląd przed publikacją, możliwość cofnięcia usunięcia, kosz z opcją
+                    przywracania.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>System ankiet z automatycznym zapisywaniem</h4>
+                <pre><code class="language-html"><!-- Zaawansowany system ankiet z zabezpieczeniami -->
+<div class="survey-system">
+    <div class="survey-progress">
+        <div class="progress-bar">
+            <div id="progress-fill" class="progress-fill"></div>
+        </div>
+        <span id="progress-text">Krok 1 z 5</span>
+    </div>
+    
+    <form id="survey-form">
+        <!-- Krok 1: Dane podstawowe -->
+        <fieldset id="step-1" class="survey-step active">
+            <legend>Krok 1: Informacje podstawowe</legend>
+            
+            <div class="form-group">
+                <label>Wiek:</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="age" value="18-25"> 18-25 lat</label>
+                    <label><input type="radio" name="age" value="26-35"> 26-35 lat</label>
+                    <label><input type="radio" name="age" value="36-45"> 36-45 lat</label>
+                    <label><input type="radio" name="age" value="46+"> 46+ lat</label>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Wykształcenie:</label>
+                <select name="education" required>
+                    <option value="">Wybierz poziom</option>
+                    <option value="podstawowe">Podstawowe</option>
+                    <option value="srednie">Średnie</option>
+                    <option value="wyzsze">Wyższe</option>
+                </select>
+            </div>
+        </fieldset>
+        
+        <!-- Krok 2: Doświadczenie -->
+        <fieldset id="step-2" class="survey-step" hidden>
+            <legend>Krok 2: Doświadczenie zawodowe</legend>
+            
+            <div class="form-group">
+                <label>Branża:</label>
+                <select name="industry" required>
+                    <option value="">Wybierz branżę</option>
+                    <option value="it">IT/Technologie</option>
+                    <option value="finance">Finanse</option>
+                    <option value="healthcare">Ochrona zdrowia</option>
+                    <option value="education">Edukacja</option>
+                    <option value="other">Inna</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Lata doświadczenia:</label>
+                <input type="range" name="experience" min="0" max="30" value="5" 
+                       oninput="updateExperienceDisplay(this.value)">
+                <output id="experience-display">5 lat</output>
+            </div>
+        </fieldset>
+        
+        <!-- Krok 3: Oceny -->
+        <fieldset id="step-3" class="survey-step" hidden>
+            <legend>Krok 3: Oceń nasze usługi</legend>
+            
+            <div class="rating-group">
+                <label>Jakość obsługi:</label>
+                <div class="star-rating" data-field="service-quality">
+                    <button type="button" class="star" data-value="1">★</button>
+                    <button type="button" class="star" data-value="2">★</button>
+                    <button type="button" class="star" data-value="3">★</button>
+                    <button type="button" class="star" data-value="4">★</button>
+                    <button type="button" class="star" data-value="5">★</button>
+                </div>
+                <input type="hidden" name="service-quality" required>
+            </div>
+            
+            <div class="rating-group">
+                <label>Łatwość użytkowania:</label>
+                <div class="star-rating" data-field="usability">
+                    <button type="button" class="star" data-value="1">★</button>
+                    <button type="button" class="star" data-value="2">★</button>
+                    <button type="button" class="star" data-value="3">★</button>
+                    <button type="button" class="star" data-value="4">★</button>
+                    <button type="button" class="star" data-value="5">★</button>
+                </div>
+                <input type="hidden" name="usability" required>
+            </div>
+        </fieldset>
+        
+        <!-- Krok 4: Komentarze -->
+        <fieldset id="step-4" class="survey-step" hidden>
+            <legend>Krok 4: Twoje opinie</legend>
+            
+            <div class="form-group">
+                <label for="comments">Dodatkowe komentarze:</label>
+                <textarea id="comments" name="comments" rows="4" 
+                          placeholder="Podziel się swoimi uwagami..."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Czy poleciłbyś nas znajomym?</label>
+                <div class="radio-group">
+                    <label><input type="radio" name="recommend" value="yes" required> Tak</label>
+                    <label><input type="radio" name="recommend" value="no" required> Nie</label>
+                    <label><input type="radio" name="recommend" value="maybe" required> Może</label>
+                </div>
+            </div>
+        </fieldset>
+        
+        <!-- Krok 5: Podsumowanie -->
+        <fieldset id="step-5" class="survey-step" hidden>
+            <legend>Krok 5: Sprawdź swoje odpowiedzi</legend>
+            
+            <div id="survey-summary" class="survey-summary">
+                <!-- Podsumowanie zostanie wygenerowane dynamicznie -->
+            </div>
+            
+            <div class="consent-section">
+                <label>
+                    <input type="checkbox" name="consent" required>
+                    Wyrażam zgodę na przetwarzanie moich odpowiedzi w celach statystycznych
+                </label>
+            </div>
+        </fieldset>
+        
+        <div class="survey-navigation">
+            <button type="button" id="prev-btn" onclick="previousStep()" disabled>← Poprzedni</button>
+            <button type="button" id="save-draft-btn" onclick="saveDraft()">💾 Zapisz wersję roboczą</button>
+            <button type="button" id="next-btn" onclick="nextStep()">Następny →</button>
+            <button type="submit" id="submit-btn" hidden>Wyślij ankietę</button>
+        </div>
+    </form>
+    
+    <!-- Komunikaty -->
+    <div id="auto-save-indicator" class="auto-save-indicator" hidden>
+        ✓ Automatycznie zapisano
+    </div>
+    
+    <div id="draft-restored-message" class="info-message" hidden>
+        Przywrócono zapisaną wersję roboczą ankiety.
+        <button onclick="clearDraft()" class="link-button">Zacznij od nowa</button>
+    </div>
+</div>
+
+<script>
+    class SurveySystem {
+        constructor() {
+            this.currentStep = 1;
+            this.totalSteps = 5;
+            this.responses = {};
+            this.draftKey = 'survey-draft';
+            this.autoSaveInterval = null;
+            this.init();
+        }
+
+        init() {
+            // Przywróć draft jeśli istnieje
+            this.loadDraft();
+
+            // Obsługa gwiazdek
+            this.initStarRatings();
+
+            // Automatyczne zapisywanie co 30 sekund
+            this.startAutoSave();
+
+            // Event handlers
+            document.getElementById('survey-form').addEventListener('submit', this.handleSubmit.bind(this));
+            document.getElementById('survey-form').addEventListener('change', this.collectResponses.bind(this));
+
+            // Pierwsze zbieranie odpowiedzi
+            this.collectResponses();
+            this.updateProgress();
+        }
+
+        initStarRatings() {
+            document.querySelectorAll('.star-rating').forEach(rating => {
+                const stars = rating.querySelectorAll('.star');
+                const field = rating.dataset.field;
+                const hiddenInput = document.querySelector(`input[name="${field}"]`);
+
+                stars.forEach((star, index) => {
+                    star.addEventListener('click', () => {
+                        const value = index + 1;
+                        hiddenInput.value = value;
+
+                        // Podświetl gwiazdy
+                        stars.forEach((s, i) => {
+                            s.classList.toggle('active', i < value);
+                        });
+
+                        this.collectResponses();
+                    });
+
+                    // Hover effect
+                    star.addEventListener('mouseenter', () => {
+                        stars.forEach((s, i) => {
+                            s.classList.toggle('hover', i <= index);
+                        });
+                    });
+
+                    rating.addEventListener('mouseleave', () => {
+                        stars.forEach(s => s.classList.remove('hover'));
+                    });
+                });
+            });
+        }
+
+        updateExperienceDisplay(value) {
+            document.getElementById('experience-display').textContent = `${value} lat`;
+            this.collectResponses();
+        }
+
+        collectResponses() {
+            const formData = new FormData(document.getElementById('survey-form'));
+            this.responses = {};
+
+            for (const [key, value] of formData.entries()) {
+                this.responses[key] = value;
+            }
+
+            // Zbierz wartości range inputów osobno
+            document.querySelectorAll('input[type="range"]').forEach(input => {
+                this.responses[input.name] = input.value;
+            });
+        }
+
+        validateCurrentStep() {
+            const currentFieldset = document.getElementById(`step-${this.currentStep}`);
+            const requiredFields = currentFieldset.querySelectorAll('[required]');
+
+            for (const field of requiredFields) {
+                if (field.type === 'radio') {
+                    const radioGroup = currentFieldset.querySelectorAll(`[name="${field.name}"]`);
+                    const isChecked = Array.from(radioGroup).some(radio => radio.checked);
+                    if (!isChecked) {
+                        alert(`Proszę wybrać opcję w polu "${field.closest('.form-group, .rating-group').querySelector('label').textContent}"`);
+                        return false;
+                    }
+                } else if (!field.value.trim()) {
+                    field.focus();
+                    alert(`Proszę wypełnić pole "${field.closest('.form-group, .rating-group').querySelector('label').textContent}"`);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        nextStep() {
+            if (!this.validateCurrentStep()) {
+                return;
+            }
+
+            this.collectResponses();
+
+            if (this.currentStep < this.totalSteps) {
+                this.showStep(this.currentStep + 1);
+            }
+        }
+
+        previousStep() {
+            if (this.currentStep > 1) {
+                this.showStep(this.currentStep - 1);
+            }
+        }
+
+        showStep(stepNumber) {
+            // Ukryj obecny krok
+            document.getElementById(`step-${this.currentStep}`).hidden = true;
+            document.getElementById(`step-${this.currentStep}`).classList.remove('active');
+
+            // Pokaż nowy krok
+            this.currentStep = stepNumber;
+            const newStep = document.getElementById(`step-${this.currentStep}`);
+            newStep.hidden = false;
+            newStep.classList.add('active');
+
+            // Jeśli to ostatni krok, wygeneruj podsumowanie
+            if (this.currentStep === this.totalSteps) {
+                this.generateSummary();
+            }
+
+            this.updateNavigation();
+            this.updateProgress();
+
+            // Fokus na pierwszy element nowego kroku
+            const firstInput = newStep.querySelector('input, select, textarea, button');
+            if (firstInput) {
+                firstInput.focus();
+            }
+        }
+
+        updateNavigation() {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const submitBtn = document.getElementById('submit-btn');
+
+            prevBtn.disabled = (this.currentStep === 1);
+
+            if (this.currentStep === this.totalSteps) {
+                nextBtn.hidden = true;
+                submitBtn.hidden = false;
+            } else {
+                nextBtn.hidden = false;
+                submitBtn.hidden = true;
+            }
+        }
+
+        updateProgress() {
+            const progress = (this.currentStep / this.totalSteps) * 100;
+            document.getElementById('progress-fill').style.width = `${progress}%`;
+            document.getElementById('progress-text').textContent = `Krok ${this.currentStep} z ${this.totalSteps}`;
+        }
+
+        generateSummary() {
+            const summary = document.getElementById('survey-summary');
+            const responses = this.responses;
+
+            const summaryHTML = `
+            <h4>Twoje odpowiedzi:</h4>
+            <dl class="summary-list">
+                <dt>Wiek:</dt>
+                <dd>${responses.age || 'Nie podano'}</dd>
+                
+                <dt>Wykształcenie:</dt>
+                <dd>${this.getEducationLabel(responses.education)}</dd>
+                
+                <dt>Branża:</dt>
+                <dd>${this.getIndustryLabel(responses.industry)}</dd>
+                
+                <dt>Doświadczenie:</dt>
+                <dd>${responses.experience || '0'} lat</dd>
+                
+                <dt>Jakość obsługi:</dt>
+                <dd>${this.getStarDisplay(responses['service-quality'])}</dd>
+                
+                <dt>Łatwość użytkowania:</dt>
+                <dd>${this.getStarDisplay(responses.usability)}</dd>
+                
+                <dt>Polecenie znajomym:</dt>
+                <dd>${this.getRecommendLabel(responses.recommend)}</dd>
+                
+                ${responses.comments ? `
+                <dt>Komentarze:</dt>
+                <dd>${responses.comments}</dd>
+                ` : ''}
+            </dl>
+            
+            <div class="summary-actions">
+                <button type="button" onclick="surveySystem.editResponses()" class="secondary-btn">
+                    Edytuj odpowiedzi
+                </button>
+            </div>
+        `;
+
+            summary.innerHTML = summaryHTML;
+        }
+
+        getEducationLabel(value) {
+            const labels = {
+                'podstawowe': 'Podstawowe',
+                'srednie': 'Średnie',
+                'wyzsze': 'Wyższe'
+            };
+            return labels[value] || 'Nie podano';
+        }
+
+        getIndustryLabel(value) {
+            const labels = {
+                'it': 'IT/Technologie',
+                'finance': 'Finanse',
+                'healthcare': 'Ochrona zdrowia',
+                'education': 'Edukacja',
+                'other': 'Inna'
+            };
+            return labels[value] || 'Nie podano';
+        }
+
+        getRecommendLabel(value) {
+            const labels = {
+                'yes': 'Tak',
+                'no': 'Nie',
+                'maybe': 'Może'
+            };
+            return labels[value] || 'Nie podano';
+        }
+
+        getStarDisplay(value) {
+            if (!value) return 'Nie oceniono';
+            return '★'.repeat(parseInt(value)) + '☆'.repeat(5 - parseInt(value)) + ` (${value}/5)`;
+        }
+
+        editResponses() {
+            // Pozwól wrócić do edycji
+            this.showStep(1);
+        }
+
+        handleSubmit(event) {
+            event.preventDefault();
+
+            if (!this.validateCurrentStep()) {
+                return;
+            }
+
+            this.collectResponses();
+
+            // Pokaż dialog potwierdzenia
+            if (confirm('Czy na pewno chcesz wysłać ankietę? Po wysłaniu nie będzie możliwości edycji odpowiedzi.')) {
+                this.submitSurvey();
+            }
+        }
+
+        async submitSurvey() {
+            try {
+                const response = await fetch('/submit-survey', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(this.responses)
+                });
+
+                if (response.ok) {
+                    this.showSuccessMessage();
+                    this.clearDraft();
+                    this.stopAutoSave();
+                } else {
+                    throw new Error('Błąd podczas wysyłania');
+                }
+            } catch (error) {
+                alert('Wystąpił błąd podczas wysyłania ankiety. Twoje odpowiedzi zostały zapisane lokalnie. Spróbuj ponownie później.');
+                this.saveDraft(); // Zapisz na wszelki wypadek
+            }
+        }
+
+        showSuccessMessage() {
+            const form = document.getElementById('survey-form');
+            form.innerHTML = `
+            <div class="success-message">
+                <h3>✅ Ankieta wysłana pomyślnie!</h3>
+                <p>Dziękujemy za udział w ankiecie. Twoje odpowiedzi pomogą nam ulepszyć nasze usługi.</p>
+                <button onclick="location.reload()" class="primary-btn">Wypełnij ponownie</button>
+            </div>
+        `;
+        }
+
+        // System zapisywania wersji roboczej
+        startAutoSave() {
+            this.autoSaveInterval = setInterval(() => {
+                this.autoSave();
+            }, 30000); // co 30 sekund
+        }
+
+        stopAutoSave() {
+            if (this.autoSaveInterval) {
+                clearInterval(this.autoSaveInterval);
+            }
+        }
+
+        autoSave() {
+            this.collectResponses();
+            const draftData = {
+                responses: this.responses,
+                currentStep: this.currentStep,
+                timestamp: new Date().toISOString()
+            };
+
+            localStorage.setItem(this.draftKey, JSON.stringify(draftData));
+            this.showAutoSaveIndicator();
+        }
+
+        saveDraft() {
+            this.collectResponses();
+            const draftData = {
+                responses: this.responses,
+                currentStep: this.currentStep,
+                timestamp: new Date().toISOString()
+            };
+
+            localStorage.setItem(this.draftKey, JSON.stringify(draftData));
+
+            // Pokaż komunikat
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '✓ Zapisano';
+            setTimeout(() => {
+                btn.textContent = originalText;
+            }, 2000);
+        }
+
+        loadDraft() {
+            const saved = localStorage.getItem(this.draftKey);
+            if (!saved) return;
+
+            try {
+                const draftData = JSON.parse(saved);
+
+                // Przywróć odpowiedzi
+                for (const [key, value] of Object.entries(draftData.responses)) {
+                    const field = document.querySelector(`[name="${key}"]`);
+                    if (field) {
+                        if (field.type === 'radio') {
+                            const radio = document.querySelector(`[name="${key}"][value="${value}"]`);
+                            if (radio) radio.checked = true;
+                        } else if (field.type === 'checkbox') {
+                            field.checked = value === 'on';
+                        } else {
+                            field.value = value;
+                        }
+                    }
+                }
+
+                // Przywróć stan gwiazdek
+                document.querySelectorAll('.star-rating').forEach(rating => {
+                    const field = rating.dataset.field;
+                    const value = draftData.responses[field];
+                    if (value) {
+                        const stars = rating.querySelectorAll('.star');
+                        stars.forEach((star, index) => {
+                            star.classList.toggle('active', index < parseInt(value));
+                        });
+                    }
+                });
+
+                // Przywróć krok
+                this.showStep(draftData.currentStep || 1);
+
+                // Pokaż komunikat
+                document.getElementById('draft-restored-message').hidden = false;
+
+            } catch (error) {
+                console.error('Błąd podczas przywracania wersji roboczej:', error);
+            }
+        }
+
+        clearDraft() {
+            localStorage.removeItem(this.draftKey);
+            document.getElementById('draft-restored-message').hidden = true;
+            location.reload();
+        }
+
+        showAutoSaveIndicator() {
+            const indicator = document.getElementById('auto-save-indicator');
+            indicator.hidden = false;
+            setTimeout(() => {
+                indicator.hidden = true;
+            }, 2000);
+        }
+    }
+
+    // Globalne funkcje
+    let surveySystem;
+
+    function updateExperienceDisplay(value) {
+        surveySystem.updateExperienceDisplay(value);
+    }
+
+    function nextStep() {
+        surveySystem.nextStep();
+    }
+
+    function previousStep() {
+        surveySystem.previousStep();
+    }
+
+    function saveDraft() {
+        surveySystem.saveDraft();
+    }
+
+    function clearDraft() {
+        surveySystem.clearDraft();
+    }
+
+    // Inicjalizacja
+    document.addEventListener('DOMContentLoaded', () => {
+        surveySystem = new SurveySystem();
+    });
+</script></code></pre>
+                <p><strong>Zalety:</strong> Automatyczne zapisywanie, podgląd podsumowania, możliwość edycji,
+                    potwierdzenie przed wysłaniem.</p>
+            </div>
+        </section>
+
+        <section class="implementation-guidance">
+            <h2>Wskazówki implementacyjne</h2>
+
+            <h3>Wybór odpowiedniej metody</h3>
+            <div class="guidance-grid">
+                <div class="guidance-item">
+                    <h4>Użyj "Możliwość cofnięcia" gdy:</h4>
+                    <ul>
+                        <li>Akcja ma długotrwałe skutki</li>
+                        <li>Dane można odwrócić bez szkody</li>
+                        <li>Użytkownik może nie być pewien decyzji</li>
+                        <li>System pozwala na przechowywanie historii</li>
+                    </ul>
+                </div>
+
+                <div class="guidance-item">
+                    <h4>Użyj "Sprawdzanie danych" gdy:</h4>
+                    <ul>
+                        <li>Można automatycznie wykryć błędy</li>
+                        <li>Format danych jest ściśle określony</li>
+                        <li>Błędy są częste i przewidywalne</li>
+                        <li>Korekta jest możliwa natychmiast</li>
+                    </ul>
+                </div>
+
+                <div class="guidance-item">
+                    <h4>Użyj "Potwierdzanie" gdy:</h4>
+                    <ul>
+                        <li>Akcja jest nieodwracalna</li>
+                        <li>Ma poważne konsekwencje</li>
+                        <li>Dotyczy krytycznych danych</li>
+                        <li>Użytkownik może chcieć sprawdzić dane</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="technical-implementation">
+            <h2>Implementacja techniczna</h2>
+
+            <h3>CSS - stylowanie elementów zabezpieczających</h3>
+            <div class="code-example">
+                <pre><code class="language-css">/* Podstawowe style dla formularzy z zabezpieczeniami */
+.form-with-validation {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.error-message {
+    color: #d73502;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.field-help {
+    color: #666;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+}
+
+.character-counter {
+    text-align: right;
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+.character-counter.warning {
+    color: #ff6b00;
+    font-weight: bold;
+}
+
+/* Style dla modalów potwierdzenia */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.confirmation-summary {
+    background: #f8f9fa;
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+.confirmation-summary dl {
+    margin: 0;
+}
+
+.confirmation-summary dt {
+    font-weight: bold;
+    margin-top: 0.5rem;
+}
+
+.confirmation-summary dd {
+    margin: 0 0 0.5rem 1rem;
+}
+
+/* Przyciski akcji */
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+}
+
+.primary-btn {
+    background: #007cba;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.primary-btn:hover {
+    background: #005a87;
+}
+
+.secondary-btn {
+    background: #6c757d;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.secondary-btn:hover {
+    background: #5a6268;
+}
+
+.danger-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.danger-btn:hover {
+    background: #c82333;
+}
+
+/* Komunikaty */
+.success-message {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+.undo-message {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    color: #856404;
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+}
+
+.undo-btn {
+    background: none;
+    border: none;
+    color: #007cba;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: inherit;
+}
+
+.undo-btn:hover {
+    color: #005a87;
+}
+
+/* Auto-save indicator */
+.auto-save-indicator {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: #28a745;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    z-index: 1001;
+}
+
+/* Survey-specific styles */
+.survey-progress {
+    margin-bottom: 2rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: #e9ecef;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #007cba;
+    transition: width 0.3s ease;
+}
+
+.survey-step {
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+.survey-navigation {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+.star-rating {
+    display: flex;
+    gap: 0.25rem;
+    margin: 0.5rem 0;
+}
+
+.star {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star:hover,
+.star.hover {
+    color: #ffc107;
+}
+
+.star.active {
+    color: #ff8f00;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .modal-content {
+        padding: 1rem;
+        margin: 1rem;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+    }
+    
+    .survey-navigation {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .star {
+        font-size: 1.25rem;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .error-message {
+        border: 2px solid #d73502;
+        padding: 0.5rem;
+        background: #fff;
+    }
+    
+    .modal {
+        background: rgba(0, 0, 0, 0.8);
+    }
+    
+    .modal-content {
+        border: 3px solid #000;
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .progress-fill {
+        transition: none;
+    }
+    
+    .star {
+        transition: none;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .modal-content {
+        background: #2a2a2a;
+        color: #fff;
+    }
+    
+    .confirmation-summary {
+        background: #3a3a3a;
+        border: 1px solid #555;
+    }
+    
+    .field-help {
+        color: #ccc;
+    }
+    
+    .character-counter {
+        color: #ccc;
+    }
+}</code></pre>
+            </div>
+        </section>
+
+        <section class="best-practices">
+            <h2>Najlepsze praktyki</h2>
+
+            <div class="best-practice-section">
+                <h3>Projektowanie zabezpieczeń</h3>
+                <ul>
+                    <li>Zawsze implementuj przynajmniej jedną z trzech metod</li>
+                    <li>Wybierz metodę odpowiednią do typu danych i konsekwencji błędów</li>
+                    <li>Kombinuj metody dla krytycznych operacji</li>
+                    <li>Testuj z prawdziwymi użytkownikami</li>
+                    <li>Dokumentuj proces obsługi błędów</li>
+                </ul>
+            </div>
+
+            <div class="best-practice-section">
+                <h3>Użyteczność zabezpieczeń</h3>
+                <ul>
+                    <li>Nie przeszkadzaj zbyt często</li>
+                    <li>Używaj jasnego języka w komunikatach</li>
+                    <li>Pokaż dokładnie co zostanie zmienione</li>
+                    <li>Daj użytkownikowi kontrolę nad procesem</li>
+                    <li>Przewiduj typowe błędy i pomóż je uniknąć</li>
+                </ul>
+            </div>
+
+            <div class="best-practice-section">
+                <h3>Implementacja techniczna</h3>
+                <ul>
+                    <li>Używaj odpowiednich atrybutów ARIA</li>
+                    <li>Zapewnij dostępność klawiatury</li>
+                    <li>Optymalizuj dla urządzeń mobilnych</li>
+                    <li>Implementuj automatyczne zapisywanie</li>
+                    <li>Testuj wydajność przy dużej ilości danych</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie</h2>
+
+            <h3>Metody testowania</h3>
+            <ul>
+                <li><strong>Test scenariuszy błędów</strong> - symuluj typowe błędy użytkowników</li>
+                <li><strong>Test dostępności</strong> - sprawdź działanie z technologiami asystującymi</li>
+                <li><strong>Test użyteczności</strong> - obserwuj rzeczywistych użytkowników</li>
+                <li><strong>Test wydajności</strong> - sprawdź działanie przy dużej ilości danych</li>
+                <li><strong>Test urządzeń mobilnych</strong> - weryfikuj na różnych ekranach</li>
+            </ul>
+
+            <h3>Lista kontrolna</h3>
+            <ul>
+                <li>Czy każdy formularz ma przynajmniej jedną metodę zapobiegania błędom?</li>
+                <li>Czy walidacja działa w czasie rzeczywistym?</li>
+                <li>Czy użytkownik może sprawdzić dane przed wysłaniem?</li>
+                <li>Czy komunikaty błędów są jasne i pomocne?</li>
+                <li>Czy możliwe jest cofnięcie akcji?</li>
+                <li>Czy system automatycznie zapisuje wersje robocze?</li>
+                <li>Czy zabezpieczenia działają z klawiaturą?</li>
+                <li>Czy wszystko jest dostępne dla czytników ekranu?</li>
+            </ul>
+
+            <h3>Narzędzia pomocne w testowaniu</h3>
+            <ul>
+                <li><strong>NVDA/JAWS</strong> - test dostępności</li>
+                <li><strong>Browser dev tools</strong> - test walidacji</li>
+                <li><strong>Mobile testing</strong> - test na urządzeniach</li>
+                <li><strong>User testing</strong> - obserwacja użytkowników</li>
+                <li><strong>Automated testing</strong> - testy jednostkowe form</li>
+            </ul>
+        </section>
+
+        <section class="related-criteria">
+            <h2>Powiązane kryteria</h2>
+            <ul>
+                <li><a href="3.3.1.html">3.3.1 Identyfikacja błędu (A)</a> - wykrywanie błędów</li>
+                <li><a href="3.3.2.html">3.3.2 Etykiety lub instrukcje (A)</a> - jasne instrukcje</li>
+                <li><a href="3.3.3.html">3.3.3 Sugestia korekty błędu (AA)</a> - pomoc w naprawie</li>
+                <li><a href="3.3.4.html">3.3.4 Zapobieganie błędom (prawne, finansowe, dane) (AA)</a> - zapobieganie w
+                    krytycznych przypadkach</li>
+                <li><a href="3.3.5.html">3.3.5 Pomoc (AAA)</a> - dostęp do pomocy</li>
+            </ul>
+        </section>
+
+        <section class="resources">
+            <h2>Zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/error-prevention-all.html">WCAG 2.1:
+                        Understanding Error Prevention (All)</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G98">Technika G98: Providing the ability
+                        for the user to review and correct answers</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G155">Technika G155: Providing a checkbox
+                        in addition to a submit button</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G164">Technika G164: Providing a stated
+                        time within which an online request may be amended</a></li>
+                <li><a href="https://webaim.org/techniques/forms/">WebAIM: Creating Accessible Forms</a></li>
+            </ul>
+        </section>
+
+        <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+            <ul>
+                <li><a href="3.3.5.html">Poprzedni: 3.3.5 Pomoc</a></li>
+                <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                <li><span class="nav-placeholder">Następny: (kończy się tutaj grupa 3.3)</span></li>
+            </ul>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

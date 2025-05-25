@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.1.3 Komunikaty o stanie (AA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>4.1.3 Komunikaty o stanie (AA)</h1>
+            <p>W treściach wdrożonych przy użyciu języków znaczników, komunikaty o stanie mogą być
+                programowo określone poprzez rolę lub właściwości, tak aby mogły być prezentowane
+                użytkownikowi przez technologie wspomagające bez otrzymywania fokusu.</p>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>Kryterium 4.1.3 "Komunikaty o stanie" ma na celu uświadomienie użytkownikom ważnych
+                zmian w treści, które nie otrzymują fokusu, w sposób, który nie przerywa niepotrzebnie
+                ich pracy.</p>
+
+            <p>Głównymi beneficjentami są osoby niewidome i słabowidzące korzystające z technologii
+                wspomagających z możliwościami czytników ekranu. Dodatkową korzyścią jest to, że
+                technologie wspomagające dla użytkowników z dysfunkcjami poznawczymi mogą uzyskać
+                alternatywny sposób wskazywania (lub nawet opóźniania lub pomijania) komunikatów
+                o stanie, zgodnie z preferencjami użytkownika.</p>
+
+            <h3>Czym jest komunikat o stanie?</h3>
+            <p>Komunikat o stanie to specjalny termin w WCAG. Aby coś zostało uznane za komunikat
+                o stanie, musi spełnić dwa główne kryteria:</p>
+
+            <div class="definition-grid">
+                <div class="definition-item">
+                    <h4><strong>1. Treść komunikatu</strong></h4>
+                    <p>Komunikat dostarcza informacji użytkownikowi o:</p>
+                    <ul>
+                        <li>Sukcesie lub wynikach działania</li>
+                        <li>Stanie oczekiwania aplikacji</li>
+                        <li>Postępie procesu</li>
+                        <li>Istnieniu błędów</li>
+                    </ul>
+                </div>
+
+                <div class="definition-item">
+                    <h4><strong>2. Sposób dostarczenia</strong></h4>
+                    <p>Komunikat nie jest dostarczany poprzez zmianę kontekstu:</p>
+                    <ul>
+                        <li>Nie pobiera fokusu</li>
+                        <li>Nie otwiera nowego okna</li>
+                        <li>Nie przechodzi do nowej strony</li>
+                        <li>Nie zmienia kontekstu użytkownika</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Użytkownicy czytników ekranu</strong> - otrzymują informacje o ważnych zmianach
+                    bez konieczności przeszukiwania strony</li>
+                <li><strong>Osoby słabowidzące</strong> - mogą być informowani o zmianach, które mogą
+                    przegapić wizualnie</li>
+                <li><strong>Użytkownicy z dysfunkcjami poznawczymi</strong> - mogą skonfigurować sposób
+                    otrzymywania powiadomień</li>
+                <li><strong>Wszyscy użytkownicy</strong> - dzięki jaśniejszym informacjom zwrotnym</li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje i pojęcia</h2>
+            <dl>
+                <dt><strong>Komunikat o stanie (Status message)</strong></dt>
+                <dd>Zmiana w treści, która nie jest zmianą kontekstu i która dostarcza informacji
+                    użytkownikowi o sukcesie lub wynikach działania, o stanie oczekiwania aplikacji,
+                    o postępie procesu lub o istnieniu błędów</dd>
+
+                <dt><strong>Zmiana kontekstu (Change of context)</strong></dt>
+                <dd>Poważne zmiany, które bez świadomości użytkownika mogą zdezorientować użytkowników,
+                    którzy nie są w stanie zobaczyć całej strony jednocześnie</dd>
+
+                <dt><strong>Regiony na żywo (Live regions)</strong></dt>
+                <dd>Obszary na stronie, które mogą być dynamicznie aktualizowane i które technologie
+                    wspomagające mogą automatycznie ogłaszać</dd>
+
+                <dt><strong>Programowo określone (Programmatically determined)</strong></dt>
+                <dd>Określone przez oprogramowanie na podstawie danych dostarczonych przez autora
+                    w sposób umożliwiający technologiom wspomagającym wyodrębnienie i prezentację
+                    tych informacji</dd>
+            </dl>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="good-practice">✅ Przykłady komunikatów o stanie</h3>
+
+            <div class="example-block good-example">
+                <h4>1. Wyniki wyszukiwania</h4>
+                <pre><code class="language-html"><!-- Po naciśnięciu przycisku wyszukiwania -->
+<div role="status" aria-atomic="true">
+    Znaleziono 5 wyników
+</div>
+
+<!-- Lub podczas wyszukiwania -->
+<div role="status" aria-live="polite">
+    Wyszukiwanie...
+</div></code></pre>
+                <p><strong>Zastosowanie:</strong> Informuje o liczbie wyników lub stanie wyszukiwania
+                    bez zmiany fokusu.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>2. Koszyk zakupów</h4>
+                <pre><code class="language-html"><!-- Po dodaniu produktu do koszyka -->
+<p role="status" aria-atomic="true">
+    <img src="cart-icon.png" alt="Koszyk">
+    <span id="cart-count">3 produkty</span>
+</p>
+
+<script>
+    function addToCart() {
+        // Logika dodawania do koszyka
+        document.getElementById('cart-count').textContent = '4 produkty';
+        // Status zostanie automatycznie ogłoszony
+    }
+</script></code></pre>
+                <p><strong>Zastosowanie:</strong> Informuje o zmianie liczby produktów w koszyku.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>3. Walidacja formularza</h4>
+                <pre><code class="language-html"><!-- Komunikat o błędzie bez zmiany fokusu -->
+<div role="alert" aria-atomic="true">
+    Nieprawidłowy kod pocztowy
+</div>
+
+<!-- Komunikat o sukcesie -->
+<div role="status" aria-atomic="true">
+    Formularz został pomyślnie wysłany
+</div></code></pre>
+                <p><strong>Zastosowanie:</strong> Informuje o błędach lub sukcesie bez przenoszenia fokusu.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>4. Pasek postępu</h4>
+                <pre><code class="language-html"><!-- Pasek postępu z komunikatami -->
+<div role="progressbar" 
+     aria-valuemin="0" 
+     aria-valuemax="100" 
+     aria-valuenow="65" 
+     aria-label="Postęp aktualizacji">
+    65%
+</div>
+
+<!-- Dodatkowy komunikat o stanie -->
+<div role="status" aria-live="polite">
+    Aktualizacja w toku: 65% ukończone
+</div></code></pre>
+                <p><strong>Zastosowanie:</strong> Informuje o postępie długotrwałego procesu.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>5. Powiadomienia aplikacji</h4>
+                <pre><code class="language-html"><!-- Snackbar/toast notification -->
+<div role="status" aria-atomic="true" class="snackbar">
+    Zdjęcie zostało zapisane w albumie 'Wakacje'
+</div>
+
+<!-- Stan aplikacji -->
+<div role="status" aria-live="polite">
+    Aplikacja jest zajęta
+</div></code></pre>
+                <p><strong>Zastosowanie:</strong> Krótkie powiadomienia o akcjach użytkownika.</p>
+            </div>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Komunikat bez odpowiedniej roli</h4>
+                <pre><code class="language-html"><!-- Nieprawidłowe - brak roli dla komunikatu o stanie -->
+<div id="search-results">
+    Znaleziono 5 wyników
+</div>
+
+<script>
+    function updateResults(count) {
+        document.getElementById('search-results').textContent =
+            `Znaleziono ${count} wyników`;
+        // Czytnik ekranu nie ogłosi tej zmiany
+    }
+</script></code></pre>
+                <p><strong>Problem:</strong> Zmiana treści nie będzie ogłoszona przez czytniki ekranu.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Dodawanie roli po aktualizacji treści</h4>
+                <pre><code class="language-html"><!-- Nieprawidłowe - rola dodana po zmianie treści -->
+<div id="status-container"></div>
+
+<script>
+    function showStatus(message) {
+        const container = document.getElementById('status-container');
+        container.textContent = message;
+        container.setAttribute('role', 'status'); // Za późno!
+    }
+</script></code></pre>
+                <p><strong>Problem:</strong> Rola musi być ustawiona przed dodaniem treści.</p>
+            </div>
+
+            <h3>Co NIE jest komunikatem o stanie</h3>
+
+            <div class="example-block">
+                <h4>Przykłady zmian, które nie są komunikatami o stanie:</h4>
+                <ul>
+                    <li><strong>Okna dialogowe</strong> - pobierają fokus (zmiana kontekstu)</li>
+                    <li><strong>Rozwijane menu</strong> - są częścią interakcji z komponentem</li>
+                    <li><strong>Nowe treści z fokusem</strong> - zmiana kontekstu</li>
+                    <li><strong>Lista wyników wyszukiwania</strong> - to nie komunikat, a treść</li>
+                    <li><strong>Rozwijane sekcje</strong> - kontrolowane przez role komponentów</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="aria-roles">
+            <h2>Role ARIA dla komunikatów o stanie</h2>
+
+            <div class="role-explanation">
+                <h3>Dostępne role i właściwości</h3>
+
+                <div class="role-grid">
+                    <div class="role-item">
+                        <h4><code>role="status"</code></h4>
+                        <ul>
+                            <li><strong>Użycie:</strong> Ogólne komunikaty o stanie</li>
+                            <li><strong>aria-live:</strong> "polite" (domyślnie)</li>
+                            <li><strong>aria-atomic:</strong> "true" (zalecane)</li>
+                            <li><strong>Priorytet:</strong> Niski - nie przerywa</li>
+                        </ul>
+                    </div>
+
+                    <div class="role-item">
+                        <h4><code>role="alert"</code></h4>
+                        <ul>
+                            <li><strong>Użycie:</strong> Ważne błędy i ostrzeżenia</li>
+                            <li><strong>aria-live:</strong> "assertive" (domyślnie)</li>
+                            <li><strong>aria-atomic:</strong> "true" (domyślnie)</li>
+                            <li><strong>Priorytet:</strong> Wysoki - przerywa</li>
+                        </ul>
+                    </div>
+
+                    <div class="role-item">
+                        <h4><code>role="log"</code></h4>
+                        <ul>
+                            <li><strong>Użycie:</strong> Sekwencyjne aktualizacje</li>
+                            <li><strong>aria-live:</strong> "polite" (domyślnie)</li>
+                            <li><strong>aria-atomic:</strong> "false" (domyślnie)</li>
+                            <li><strong>Priorytet:</strong> Niski - tylko nowe treści</li>
+                        </ul>
+                    </div>
+
+                    <div class="role-item">
+                        <h4><code>aria-live</code></h4>
+                        <ul>
+                            <li><strong>"polite":</strong> Czeka na przerwę</li>
+                            <li><strong>"assertive":</strong> Przerywa natychmiast</li>
+                            <li><strong>"off":</strong> Wyłącza ogłaszanie</li>
+                            <li><strong>Elastyczność:</strong> Można używać z dowolnym elementem</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Przykłady zastosowania poszczególnych ról</h3>
+
+            <div class="code-example">
+                <h4>role="status" - komunikaty ogólne</h4>
+                <pre><code class="language-html"><!-- Dla informacji o sukcesie, postępie, stanie -->
+<div role="status" aria-atomic="true">
+    Dane zostały zapisane
+</div>
+
+<div role="status" aria-live="polite">
+    Ładowanie danych: 75%
+</div></code></pre>
+            </div>
+
+            <div class="code-example">
+                <h4>role="alert" - komunikaty pilne</h4>
+                <pre><code class="language-html"><!-- Dla błędów wymagających natychmiastowej uwagi -->
+<div role="alert" aria-atomic="true">
+    Błąd: Sesja wygasła
+</div>
+
+<div role="alert">
+    5 błędów w formularzu
+</div></code></pre>
+            </div>
+
+            <div class="code-example">
+                <h4>role="log" - strumień aktualizacji</h4>
+                <pre><code class="language-html"><!-- Dla czatów, logów, sekwencyjnych komunikatów -->
+<div role="log" aria-live="polite" aria-label="Historia czatu">
+    <div>Jan: Cześć!</div>
+    <div>Anna: Witaj!</div>
+    <!-- Nowe wiadomości będą dodawane i ogłaszane -->
+</div></code></pre>
+            </div>
+        </section>
+
+        <section class="implementation">
+            <h2>Implementacja</h2>
+
+            <h3>Najlepsze praktyki</h3>
+            <div class="practice-group">
+                <h4>1. Przygotowanie kontenerów</h4>
+                <ul>
+                    <li>Ustaw rolę lub aria-live PRZED dodaniem treści</li>
+                    <li>Używaj aria-atomic="true" dla pełnego kontekstu</li>
+                    <li>Umieszczaj kontenery w odpowiednich miejscach w DOM</li>
+                    <li>Nadawaj opisowe aria-label dla kontenerów</li>
+                </ul>
+            </div>
+
+            <div class="practice-group">
+                <h4>2. Zarządzanie treścią</h4>
+                <ul>
+                    <li>Czyść poprzednie komunikaty przed dodaniem nowych</li>
+                    <li>Używaj krótkich, jasnych komunikatów</li>
+                    <li>Unikaj zbyt częstych aktualizacji</li>
+                    <li>Testuj z czytnikami ekranu</li>
+                </ul>
+            </div>
+
+            <h3>Przykład kompletnej implementacji</h3>
+            <div class="code-example">
+                <pre><code class="language-html"><!-- HTML -->
+<form id="contact-form">
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+    </div>
+    <button type="submit">Wyślij</button>
+    
+    <!-- Kontenery dla komunikatów -->
+    <div id="form-status" role="status" aria-atomic="true" aria-live="polite"></div>
+    <div id="form-errors" role="alert" aria-atomic="true"></div>
+</form>
+
+<script>
+    const form = document.getElementById('contact-form');
+    const statusContainer = document.getElementById('form-status');
+    const errorContainer = document.getElementById('form-errors');
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        // Wyczyść poprzednie komunikaty
+        statusContainer.textContent = '';
+        errorContainer.textContent = '';
+
+        // Pokaż komunikat o ładowaniu
+        statusContainer.textContent = 'Wysyłanie formularza...';
+
+        try {
+            // Symulacja wysyłania
+            await submitForm();
+
+            // Komunikat o sukcesie
+            statusContainer.textContent = 'Formularz został pomyślnie wysłany';
+
+        } catch (error) {
+            // Komunikat o błędzie
+            errorContainer.textContent = 'Błąd: Nie udało się wysłać formularza';
+        }
+    });
+
+    function submitForm() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                Math.random() > 0.5 ? resolve() : reject();
+            }, 2000);
+        });
+    }
+</script></code></pre>
+            </div>
+        </section>
+
+        <section class="common-mistakes">
+            <h2>Częste błędy</h2>
+
+            <div class="mistake-item">
+                <h3>❌ Brak roli dla komunikatów dynamicznych</h3>
+                <p>Dodawanie komunikatów bez odpowiednich ról ARIA.</p>
+                <div class="example bad-example">
+                    <pre><code>&lt;div id="message"&gt;&lt;/div&gt;
+// Bez roli - nie będzie ogłoszone</code></pre>
+                </div>
+                <p><strong>Rozwiązanie:</strong> Dodaj odpowiednią rolę:</p>
+                <div class="example good-example">
+                    <pre><code>&lt;div id="message" role="status" aria-atomic="true"&gt;&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mistake-item">
+                <h3>❌ Dodawanie roli po aktualizacji treści</h3>
+                <p>Ustawianie roli po dodaniu komunikatu zamiast przed.</p>
+                <div class="example bad-example">
+                    <pre><code>element.textContent = "Sukces!";
+element.setAttribute('role', 'status'); // Za późno!</code></pre>
+                </div>
+                <p><strong>Rozwiązanie:</strong> Ustaw rolę wcześniej:</p>
+                <div class="example good-example">
+                    <pre><code>element.setAttribute('role', 'status');
+element.textContent = "Sukces!";</code></pre>
+                </div>
+            </div>
+
+            <div class="mistake-item">
+                <h3>❌ Nadużywanie role="alert"</h3>
+                <p>Używanie alert dla wszystkich komunikatów.</p>
+                <div class="example bad-example">
+                    <pre><code>&lt;div role="alert"&gt;Dane zostały zapisane&lt;/div&gt;</code></pre>
+                </div>
+                <p><strong>Rozwiązanie:</strong> Użyj odpowiedniej roli:</p>
+                <div class="example good-example">
+                    <pre><code>&lt;div role="status"&gt;Dane zostały zapisane&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mistake-item">
+                <h3>❌ Zbyt częste aktualizacje</h3>
+                <p>Tworzenie "gadatliwej" aplikacji z nadmiarem komunikatów.</p>
+                <div class="example bad-example">
+                    <pre><code>// Aktualizacja co sekundę
+setInterval(() => {
+    status.textContent = `Aktualny czas: ${new Date()}`;
+}, 1000);</code></pre>
+                </div>
+                <p><strong>Rozwiązanie:</strong> Ogranicz częstotliwość komunikatów:</p>
+                <div class="example good-example">
+                    <pre><code>// Aktualizacja tylko przy ważnych zmianach
+if (importantChange) {
+    status.textContent = "Ważna aktualizacja";
+}</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie</h2>
+
+            <h3>Lista kontrolna</h3>
+            <ul>
+                <li>Czy wszystkie komunikaty o stanie mają odpowiednie role ARIA?</li>
+                <li>Czy role są ustawione przed dodaniem treści?</li>
+                <li>Czy używana jest właściwa rola (status/alert/log)?</li>
+                <li>Czy komunikaty są ogłaszane przez czytniki ekranu?</li>
+                <li>Czy komunikaty nie są zbyt częste lub "gadatliwe"?</li>
+                <li>Czy treść komunikatów jest jasna i zrozumiała?</li>
+                <li>Czy używany jest aria-atomic gdy potrzebny jest pełny kontekst?</li>
+                <li>Czy komunikaty nie przerywa niepotrzebnie pracy użytkownika?</li>
+            </ul>
+
+            <h3>Metody testowania</h3>
+            <div class="testing-methods">
+                <div class="method-group">
+                    <h4>1. Testowanie z czytnikiem ekranu</h4>
+                    <ul>
+                        <li>Używaj NVDA, JAWS lub VoiceOver</li>
+                        <li>Sprawdź czy komunikaty są automatycznie ogłaszane</li>
+                        <li>Testuj różne typy komunikatów (status, alert, log)</li>
+                        <li>Sprawdź czy nie ma zbyt dużo komunikatów</li>
+                    </ul>
+                </div>
+
+                <div class="method-group">
+                    <h4>2. Narzędzia automatyczne</h4>
+                    <ul>
+                        <li><strong>axe DevTools</strong> - wykrywa brak ról dla komunikatów</li>
+                        <li><strong>WAVE</strong> - sprawdza role ARIA</li>
+                        <li><strong>Lighthouse</strong> - audyt dostępności</li>
+                        <li><strong>Accessibility Insights</strong> - szczegółowa analiza</li>
+                    </ul>
+                </div>
+
+                <div class="method-group">
+                    <h4>3. Testowanie ręczne</h4>
+                    <ul>
+                        <li>Sprawdź drzewo dostępności w DevTools</li>
+                        <li>Testuj scenariusze użytkownika</li>
+                        <li>Sprawdź różne przeglądarki</li>
+                        <li>Testuj na urządzeniach mobilnych</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Narzędzia do testowania</h3>
+            <ul>
+                <li><strong>NVDA (Windows)</strong> - darmowy czytnik ekranu</li>
+                <li><strong>JAWS (Windows)</strong> - profesjonalny czytnik ekranu</li>
+                <li><strong>VoiceOver (macOS/iOS)</strong> - wbudowany czytnik ekranu</li>
+                <li><strong>TalkBack (Android)</strong> - czytnik ekranu Android</li>
+                <li><strong>axe DevTools</strong> - rozszerzenie przeglądarki</li>
+                <li><strong>Accessibility Tree</strong> - w narzędziach deweloperskich</li>
+            </ul>
+        </section>
+
+        <section class="related-criteria">
+            <h2>Powiązane kryteria</h2>
+            <ul>
+                <li><a href="1.3.1.html">1.3.1 Informacje i relacje (A)</a> - struktura i semantyka treści</li>
+                <li><a href="3.3.1.html">3.3.1 Identyfikacja błędu (A)</a> - identyfikacja błędów w formularzach</li>
+                <li><a href="3.3.3.html">3.3.3 Sugestia korekty błędu (AA)</a> - sugestie naprawy błędów</li>
+                <li><a href="4.1.2.html">4.1.2 Nazwa, rola, wartość (A)</a> - właściwości elementów interfejsu</li>
+            </ul>
+        </section>
+
+        <section class="resources">
+            <h2>Zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/status-messages.html">WCAG 2.1: Understanding
+                        Status Messages</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA22">ARIA22: Using role=status to present
+                        status messages</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA19">ARIA19: Using ARIA role=alert or Live
+                        Regions to Identify Errors</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions">MDN:
+                        ARIA Live Regions</a></li>
+                <li><a href="https://www.w3.org/WAI/ARIA/apg/">WAI-ARIA Authoring Practices Guide</a></li>
+            </ul>
+        </section>
+
+        <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+            <ul>
+                <li><a href="4.1.2.html">Poprzedni: 4.1.2 Nazwa, rola, wartość</a></li>
+                <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                <li><span class="criteria-placeholder">Koniec wytycznej 4.1</span></li>
+            </ul>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

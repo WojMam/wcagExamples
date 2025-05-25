@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.3.3 Sugestia korekty błędu (AA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>3.3.3 Sugestia korekty błędu (AA)</h1>
+            <p>Jeśli błąd wprowadzania danych zostanie automatycznie wykryty i znane są sugestie korekty, to sugestie te
+                są dostarczane użytkownikowi, chyba że mogłoby to zagrozić bezpieczeństwu lub celowi treści.</p>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>To kryterium poziomu AA zapewnia, że użytkownicy otrzymują pomocne sugestie jak naprawić błędy w
+                formularzach, gdy jest to możliwe i bezpieczne. Kluczowe jest, aby:</p>
+            <ul>
+                <li><strong>Błędy były automatycznie wykrywane przez system</strong></li>
+                <li><strong>Sugestie korekty były znane systemowi</strong></li>
+                <li><strong>Sugestie były dostarczane użytkownikowi</strong></li>
+                <li><strong>Bezpieczeństwo i cel treści były zachowane</strong></li>
+                <li><strong>Sugestie były konkretne i użyteczne</strong></li>
+            </ul>
+
+            <p>Sugestie korekty powinny pomagać użytkownikom w:</p>
+            <ul>
+                <li>Zrozumieniu natury błędu</li>
+                <li>Znajomości konkretnych kroków naprawy</li>
+                <li>Poznaniu właściwego formatu danych</li>
+                <li>Wyborze z dostępnych opcji</li>
+                <li>Uniknięciu podobnych błędów w przyszłości</li>
+            </ul>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Osoby z ograniczeniami poznawczymi</strong> - otrzymują jasne instrukcje naprawy</li>
+                <li><strong>Osoby niewidome</strong> - rozumieją dokładnie co trzeba zmienić</li>
+                <li><strong>Osoby z trudnościami motorycznymi</strong> - zmniejszają liczbę prób korygowania</li>
+                <li><strong>Osoby z trudnościami językowymi</strong> - otrzymują konkretne przykłady</li>
+                <li><strong>Seniorzy</strong> - mają dodatkowe wsparcie przy poprawkach</li>
+                <li><strong>Wszyscy użytkownicy</strong> - szybciej i łatwiej naprawiają błędy</li>
+            </ul>
+
+            <h3>Wyjątki bezpieczeństwa</h3>
+            <p>Sugestie nie powinny być dostarczane gdy mogłoby to:</p>
+            <ul>
+                <li>Narażać bezpieczeństwo systemu</li>
+                <li>Ułatwiać ataki na konta użytkowników</li>
+                <li>Ujawniać wrażliwe informacje</li>
+                <li>Podważać cel formularza (np. testy, quizy)</li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje</h2>
+            <dl>
+                <dt><strong>Błąd wprowadzania danych</strong></dt>
+                <dd>Informacja dostarczona przez użytkownika, która nie jest akceptowana przez system</dd>
+
+                <dt><strong>Sugestia korekty</strong></dt>
+                <dd>Konkretna wskazówka lub instrukcja jak naprawić wykryty błąd</dd>
+
+                <dt><strong>Automatyczne wykrywanie</strong></dt>
+                <dd>Proces identyfikacji błędów przez oprogramowanie bez interwencji operatora</dd>
+
+                <dt><strong>Znane sugestie</strong></dt>
+                <dd>Możliwości naprawy, które system może określić i przedstawić użytkownikowi</dd>
+
+                <dt><strong>Bezpieczeństwo treści</strong></dt>
+                <dd>Ochrona przed ujawnieniem wrażliwych informacji lub osłabieniem zabezpieczeń</dd>
+            </dl>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Błędy bez sugestii naprawy</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - tylko informacja o błędzie --&gt;
+&lt;div class="error"&gt;
+    Nieprawidłowy format daty
+&lt;/div&gt;
+
+&lt;div class="error"&gt;
+    Błąd w adresie email
+&lt;/div&gt;
+
+&lt;div class="error"&gt;
+    Niedozwolona wartość
+&lt;/div&gt;</code></pre>
+                <p><strong>Problem:</strong> Użytkownik wie że jest błąd, ale nie wie jak go naprawić.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Niejasne sugestie</h4>
+                <pre><code class="language-html">&lt;!-- Zbyt ogólne sugestie --&gt;
+&lt;div class="error"&gt;
+    Sprawdź format daty i spróbuj ponownie
+&lt;/div&gt;
+
+&lt;div class="error"&gt;
+    Wprowadź poprawny email
+&lt;/div&gt;
+
+&lt;div class="error"&gt;
+    Wybierz właściwą opcję
+&lt;/div&gt;</code></pre>
+                <p><strong>Problem:</strong> Sugestie są zbyt ogólne i nie pomagają w konkretnej naprawie.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Naruszenie bezpieczeństwa</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - ujawnia informacje o istniejących kontach --&gt;
+&lt;div class="error"&gt;
+    Konto o emailu jan.kowalski@example.com już istnieje. 
+    Spróbuj zalogować się zamiast rejestrować.
+&lt;/div&gt;
+
+&lt;!-- Ujawnia informacje o regułach haseł --&gt;
+&lt;div class="error"&gt;
+    Hasło nie może zawierać: admin, password, 123456, 
+    data urodzenia ani imienia użytkownika
+&lt;/div&gt;</code></pre>
+                <p><strong>Problem:</strong> Sugestie ujawniają wrażliwe informacje systemowe.</p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Konkretne sugestie formatów</h4>
+                <pre><code class="language-html">&lt;!-- Prawidłowe sugestie z przykładami --&gt;
+&lt;div class="form-group"&gt;
+    &lt;label for="birth-date"&gt;Data urodzenia: *&lt;/label&gt;
+    &lt;input type="text" 
+           id="birth-date" 
+           aria-describedby="birth-date-error" 
+           aria-invalid="true" /&gt;
+    &lt;div id="birth-date-error" class="error" role="alert"&gt;
+        &lt;strong&gt;Błąd:&lt;/strong&gt; Nieprawidłowy format daty.
+        &lt;br&gt;&lt;strong&gt;Sugestia:&lt;/strong&gt; Wprowadź datę w formacie DD/MM/RRRR, 
+        na przykład: 15/03/1990
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+    &lt;label for="phone"&gt;Telefon: *&lt;/label&gt;
+    &lt;input type="tel" 
+           id="phone" 
+           value="123456789"
+           aria-describedby="phone-error" 
+           aria-invalid="true" /&gt;
+    &lt;div id="phone-error" class="error" role="alert"&gt;
+        &lt;strong&gt;Błąd:&lt;/strong&gt; Brakuje myślników w numerze telefonu.
+        &lt;br&gt;&lt;strong&gt;Sugestia:&lt;/strong&gt; Dodaj myślniki: 123-456-789
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+    &lt;label for="email"&gt;Email: *&lt;/label&gt;
+    &lt;input type="email" 
+           id="email" 
+           value="jan@"
+           aria-describedby="email-error" 
+           aria-invalid="true" /&gt;
+    &lt;div id="email-error" class="error" role="alert"&gt;
+        &lt;strong&gt;Błąd:&lt;/strong&gt; Niekompletny adres email.
+        &lt;br&gt;&lt;strong&gt;Sugestia:&lt;/strong&gt; Dodaj domenę po znaku @, 
+        na przykład: jan@example.com
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <p><strong>Zalety:</strong> Konkretne wskazówki z przykładami, jasne instrukcje naprawy.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Sugestie z listy dozwolonych wartości</h4>
+                <pre><code class="language-html">&lt;!-- Sugestie dla ograniczonych zestawów wartości --&gt;
+&lt;div class="form-group"&gt;
+    &lt;label for="month"&gt;Miesiąc: *&lt;/label&gt;
+    &lt;input type="text" 
+           id="month" 
+           value="12"
+           aria-describedby="month-error" 
+           aria-invalid="true" /&gt;
+    &lt;div id="month-error" class="error" role="alert"&gt;
+        &lt;strong&gt;Błąd:&lt;/strong&gt; Wprowadzono numer zamiast nazwy miesiąca.
+        &lt;br&gt;&lt;strong&gt;Sugestia:&lt;/strong&gt; Czy chodziło o "Grudzień"? 
+        &lt;br&gt;Dozwolone nazwy: Styczeń, Luty, Marzec, Kwiecień, Maj, Czerwiec, 
+        Lipiec, Sierpień, Wrzesień, Październik, Listopad, Grudzień.
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+    &lt;label for="country"&gt;Kraj: *&lt;/label&gt;
+    &lt;input type="text" 
+           id="country" 
+           value="Pol"
+           aria-describedby="country-error" 
+           aria-invalid="true" /&gt;
+    &lt;div id="country-error" class="error" role="alert"&gt;
+        &lt;strong&gt;Błąd:&lt;/strong&gt; Nierozpoznana nazwa kraju.
+        &lt;br&gt;&lt;strong&gt;Sugestia:&lt;/strong&gt; Czy chodziło o "Polska"? 
+        &lt;br&gt;Podobne kraje: Polska, Portugalia
+        &lt;br&gt;&lt;a href="#country-list"&gt;Zobacz pełną listę krajów&lt;/a&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+    &lt;label for="skill-level"&gt;Poziom umiejętności: *&lt;/label&gt;
+    &lt;input type="text" 
+           id="skill-level" 
+           value="sredni"
+           aria-describedby="skill-error" 
+           aria-invalid="true" /&gt;
+    &lt;div id="skill-error" class="error" role="alert"&gt;
+        &lt;strong&gt;Błąd:&lt;/strong&gt; Nierozpoznany poziom umiejętności.
+        &lt;br&gt;&lt;strong&gt;Sugestia:&lt;/strong&gt; Wybierz jeden z: Początkujący, Średniozaawansowany, Zaawansowany, Ekspert
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <p><strong>Zalety:</strong> Inteligentne dopasowanie, sugerowane alternatywy, pełne listy opcji.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Automatyczne poprawki i sugestie</h4>
+                <pre><code class="language-html">&lt;!-- Formularz z inteligentnymi sugestiami --&gt;
+&lt;div class="form-group"&gt;
+    &lt;label for="website"&gt;Strona internetowa:&lt;/label&gt;
+    &lt;input type="url" 
+           id="website" 
+           value="google.com"
+           aria-describedby="website-suggestion" 
+           aria-invalid="false" /&gt;
+    &lt;div id="website-suggestion" class="suggestion" role="status"&gt;
+        &lt;strong&gt;Sugestia:&lt;/strong&gt; Dodano automatycznie "https://" przed adresem.
+        &lt;br&gt;Pełny adres: https://google.com
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+    &lt;label for="postal-code"&gt;Kod pocztowy: *&lt;/label&gt;
+    &lt;input type="text" 
+           id="postal-code" 
+           value="00001"
+           aria-describedby="postal-suggestion" 
+           aria-invalid="false" /&gt;
+    &lt;div id="postal-suggestion" class="suggestion" role="status"&gt;
+        &lt;strong&gt;Sugestia:&lt;/strong&gt; Dodano automatycznie myślnik.
+        &lt;br&gt;Sformatowany kod: 00-001
+        &lt;br&gt;&lt;button type="button"&gt;Zaakceptuj&lt;/button&gt; &lt;button type="button"&gt;Odrzuć&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <p><strong>Zalety:</strong> Proaktywne sugestie, automatyczne poprawki z możliwością akceptacji.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Bezpieczne sugestie dla haseł</h4>
+                <pre><code class="language-html">&lt;!-- Sugestie bez ujawniania szczegółów bezpieczeństwa --&gt;
+&lt;div class="form-group"&gt;
+    &lt;label for="password"&gt;Hasło: *&lt;/label&gt;
+    &lt;input type="password" 
+           id="password" 
+           aria-describedby="password-error" 
+           aria-invalid="true" /&gt;
+    &lt;div id="password-error" class="error" role="alert"&gt;
+        &lt;strong&gt;Błąd:&lt;/strong&gt; Hasło nie spełnia wymagań bezpieczeństwa.
+        &lt;br&gt;&lt;strong&gt;Sugestie:&lt;/strong&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Użyj co najmniej 8 znaków&lt;/li&gt;
+            &lt;li&gt;Dodaj wielką literę&lt;/li&gt;
+            &lt;li&gt;Dodaj cyfrę&lt;/li&gt;
+            &lt;li&gt;Dodaj znak specjalny (!@#$%^&amp;*)&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+    &lt;label for="username"&gt;Nazwa użytkownika: *&lt;/label&gt;
+    &lt;input type="text" 
+           id="username" 
+           value="admin"
+           aria-describedby="username-error" 
+           aria-invalid="true" /&gt;
+    &lt;div id="username-error" class="error" role="alert"&gt;
+        &lt;strong&gt;Błąd:&lt;/strong&gt; Ta nazwa użytkownika jest niedostępna.
+        &lt;br&gt;&lt;strong&gt;Sugestie:&lt;/strong&gt; Spróbuj dodać cyfry lub rok urodzenia na końcu nazwy.
+        &lt;br&gt;Przykład: admin2024, admin_user
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <p><strong>Zalety:</strong> Konkretne wskazówki bez ujawniania wrażliwych informacji systemowych.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Sugestie dla formularzy płatności</h4>
+                <pre><code class="language-html">&lt;!-- Formularz płatności z pomocnymi sugestiami --&gt;
+&lt;div class="form-group"&gt;
+    &lt;label for="card-number"&gt;Numer karty: *&lt;/label&gt;
+    &lt;input type="text" 
+           id="card-number" 
+           value="4532 1234 5678"
+           aria-describedby="card-error" 
+           aria-invalid="true" /&gt;
+    &lt;div id="card-error" class="error" role="alert"&gt;
+        &lt;strong&gt;Błąd:&lt;/strong&gt; Numer karty jest niekompletny.
+        &lt;br&gt;&lt;strong&gt;Sugestia:&lt;/strong&gt; Dodaj brakujące 4 cyfry na końcu.
+        &lt;br&gt;Pełny numer powinien mieć 16 cyfr (4532 1234 5678 ----).
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+    &lt;label for="expiry"&gt;Data ważności: *&lt;/label&gt;
+    &lt;input type="text" 
+           id="expiry" 
+           value="13/25"
+           aria-describedby="expiry-error" 
+           aria-invalid="true" /&gt;
+    &lt;div id="expiry-error" class="error" role="alert"&gt;
+        &lt;strong&gt;Błąd:&lt;/strong&gt; Nieprawidłowy miesiąc (13).
+        &lt;br&gt;&lt;strong&gt;Sugestia:&lt;/strong&gt; Wprowadź miesiąc od 01 do 12.
+        &lt;br&gt;Format: MM/RR (np. 01/25 dla stycznia 2025)
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <p><strong>Zalety:</strong> Precyzyjne wskazówki dla danych finansowych z zachowaniem bezpieczeństwa.
+                </p>
+            </div>
+        </section>
+
+        <section class="suggestion-types">
+            <h2>Rodzaje sugestii korekty</h2>
+
+            <h3>Sugestie formatów</h3>
+            <div class="pattern-description">
+                <p><strong>Zastosowanie:</strong> Błędy w formatach dat, telefonów, kodów pocztowych</p>
+                <p><strong>Przykład:</strong> "Wprowadź datę w formacie DD/MM/RRRR"</p>
+                <p><strong>Implementacja:</strong> Konkretne przykłady z poprawnymi formatami</p>
+            </div>
+
+            <h3>Sugestie wyboru</h3>
+            <div class="pattern-description">
+                <p><strong>Zastosowanie:</strong> Błędy w wyborze z ograniczonego zestawu opcji</p>
+                <p><strong>Przykład:</strong> "Wybierz jeden z: Opcja A, Opcja B, Opcja C"</p>
+                <p><strong>Implementacja:</strong> Lista dostępnych wartości lub podobnych opcji</p>
+            </div>
+
+            <h3>Sugestie naprawy</h3>
+            <div class="pattern-description">
+                <p><strong>Zastosowanie:</strong> Błędy w częściowo poprawnych danych</p>
+                <p><strong>Przykład:</strong> "Czy chodziło o 'Grudzień'?"</p>
+                <p><strong>Implementacja:</strong> Inteligentne dopasowanie i sugerowane poprawki</p>
+            </div>
+
+            <h3>Sugestie uzupełnienia</h3>
+            <div class="pattern-description">
+                <p><strong>Zastosowanie:</strong> Niekompletne dane</p>
+                <p><strong>Przykład:</strong> "Dodaj brakujące 4 cyfry"</p>
+                <p><strong>Implementacja:</strong> Wskazanie co dokładnie należy dodać</p>
+            </div>
+        </section>
+
+        <section class="technical-implementation">
+            <h2>Implementacja techniczna</h2>
+
+            <h3>HTML i ARIA - podstawowe sugestie</h3>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;!-- Podstawowa struktura z sugestią --&gt;
+&lt;input type="email" 
+       id="email" 
+       aria-describedby="email-error" 
+       aria-invalid="true" /&gt;
+&lt;div id="email-error" role="alert"&gt;
+    &lt;strong&gt;Błąd:&lt;/strong&gt; Nieprawidłowy format email.
+    &lt;br&gt;&lt;strong&gt;Sugestia:&lt;/strong&gt; Dodaj domenę po znaku @.
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <h3>JavaScript - dynamiczne sugestie</h3>
+            <div class="code-example">
+                <pre><code class="language-javascript">function showErrorWithSuggestion(fieldId, message, suggestion) {
+    const field = document.getElementById(fieldId);
+    const errorId = fieldId + '-error';
+    
+    // Utwórz komunikat błędu z sugestią
+    let errorElement = document.getElementById(errorId);
+    if (!errorElement) {
+        errorElement = document.createElement('div');
+        errorElement.id = errorId;
+        errorElement.className = 'error';
+        errorElement.setAttribute('role', 'alert');
+        field.parentNode.appendChild(errorElement);
+    }
+    
+    // Ustaw treść z sugestią
+    errorElement.innerHTML = `
+        &lt;strong&gt;Błąd:&lt;/strong&gt; ${message}
+        &lt;br&gt;&lt;strong&gt;Sugestia:&lt;/strong&gt; ${suggestion}
+    `;
+    
+    field.setAttribute('aria-describedby', errorId);
+    field.setAttribute('aria-invalid', 'true');
+}
+
+// Przykłady użycia
+function validateEmail(email) {
+    if (!email.includes('@')) {
+        return {
+            valid: false,
+            message: 'Brak znaku @ w adresie email',
+            suggestion: 'Dodaj @ i domenę, np: nazwa@example.com'
+        };
+    }
+    if (!email.includes('.')) {
+        return {
+            valid: false,
+            message: 'Brak domeny w adresie email',
+            suggestion: 'Dodaj domenę po @, np: nazwa@example.com'
+        };
+    }
+    return { valid: true };
+}
+
+function validateDate(dateString) {
+    const dateRegex = /^\d{2}\/\d{2}\/\d{4}$/;
+    if (!dateRegex.test(dateString)) {
+        return {
+            valid: false,
+            message: 'Nieprawidłowy format daty',
+            suggestion: 'Użyj formatu DD/MM/RRRR, np: 15/03/1990'
+        };
+    }
+    return { valid: true };
+}</code></pre>
+            </div>
+
+            <h3>CSS - stylowanie sugestii</h3>
+            <div class="code-example">
+                <pre><code class="language-css">/* Stylowanie błędów z sugestiami */
+.error {
+    color: #d32f2f;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    padding: 0.5rem;
+    border-left: 4px solid #d32f2f;
+    background-color: #fef2f2;
+    border-radius: 4px;
+}
+
+/* Wyróżnienie sugestii */
+.error strong {
+    font-weight: bold;
+}
+
+/* Pozytywne sugestie */
+.suggestion {
+    color: #2e7d32;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+    padding: 0.5rem;
+    border-left: 4px solid #2e7d32;
+    background-color: #f1f8e9;
+    border-radius: 4px;
+}
+
+/* Linki w sugestiach */
+.error a, .suggestion a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+.error a:hover, .suggestion a:hover {
+    text-decoration: none;
+}</code></pre>
+            </div>
+        </section>
+
+        <section class="security-considerations">
+            <h2>Zagadnienia bezpieczeństwa</h2>
+
+            <div class="security-section">
+                <h3>Kiedy NIE podawać sugestii</h3>
+                <ul>
+                    <li><strong>Logowanie</strong> - nie ujawniaj istnienia kont użytkowników</li>
+                    <li><strong>Hasła</strong> - nie podawaj szczegółów o regułach bezpieczeństwa</li>
+                    <li><strong>Dane finansowe</strong> - nie podawaj informacji o systemach walidacji</li>
+                    <li><strong>Testy i quizy</strong> - nie ujawniaj poprawnych odpowiedzi</li>
+                    <li><strong>Systemy captcha</strong> - nie ułatwiaj automatyzacji</li>
+                </ul>
+            </div>
+
+            <div class="security-section">
+                <h3>Bezpieczne alternatywy</h3>
+                <ul>
+                    <li>Używaj ogólnych komunikatów o błędach logowania</li>
+                    <li>Podawaj wskazówki formatów bez ujawniania ograniczeń</li>
+                    <li>Oferuj pomoc kontekstową zamiast konkretnych sugestii</li>
+                    <li>Implementuj stopniowe ujawnianie informacji</li>
+                    <li>Używaj zewnętrznych kanałów dla wrażliwych sugestii</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="best-practices">
+            <h2>Najlepsze praktyki</h2>
+
+            <div class="best-practice-section">
+                <h3>Tworzenie sugestii</h3>
+                <ul>
+                    <li>Bądź konkretny i precyzyjny</li>
+                    <li>Podawaj przykłady poprawnych formatów</li>
+                    <li>Używaj prostego, zrozumiałego języka</li>
+                    <li>Unikaj żargonu technicznego</li>
+                    <li>Oferuj wielopoziomowe wskazówki</li>
+                </ul>
+            </div>
+
+            <div class="best-practice-section">
+                <h3>Prezentacja sugestii</h3>
+                <ul>
+                    <li>Umieszczaj sugestie blisko błędnych pól</li>
+                    <li>Używaj kontrastowych kolorów dla uwagi</li>
+                    <li>Strukturyzuj sugestie logicznie</li>
+                    <li>Wyróżniaj najważniejsze wskazówki</li>
+                    <li>Zapewniaj dostępność dla technologii asystujących</li>
+                </ul>
+            </div>
+
+            <div class="best-practice-section">
+                <h3>Inteligentne sugestie</h3>
+                <ul>
+                    <li>Analizuj wzorce błędów użytkowników</li>
+                    <li>Oferuj automatyczne poprawki gdzie to możliwe</li>
+                    <li>Implementuj funkcje "Czy chodziło o...?"</li>
+                    <li>Udostępniaj listy dozwolonych wartości</li>
+                    <li>Ucz się z zachowań użytkowników</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie</h2>
+
+            <h3>Metody testowania</h3>
+            <ul>
+                <li><strong>Test użyteczności sugestii</strong> - czy użytkownicy potrafią naprawić błędy</li>
+                <li><strong>Test z czytnikami ekranu</strong> - czy sugestie są właściwie odczytywane</li>
+                <li><strong>Test bezpieczeństwa</strong> - czy sugestie nie ujawniają wrażliwych danych</li>
+                <li><strong>Test z różnymi typami błędów</strong> - czy wszystkie błędy mają sugestie</li>
+                <li><strong>Test z użytkownikami docelowymi</strong> - osoby z różnymi niepełnosprawnościami</li>
+            </ul>
+
+            <h3>Lista kontrolna</h3>
+            <ul>
+                <li>Czy wszystkie automatycznie wykryte błędy mają sugestie?</li>
+                <li>Czy sugestie są konkretne i użyteczne?</li>
+                <li>Czy sugestie nie naruszają bezpieczeństwa?</li>
+                <li>Czy sugestie są dostępne dla technologii asystujących?</li>
+                <li>Czy użytkownicy potrafią zastosować sugestie?</li>
+                <li>Czy sugestie są umieszczone blisko błędów?</li>
+                <li>Czy język sugestii jest jasny i zrozumiały?</li>
+            </ul>
+
+            <h3>Narzędzia pomocne w testowaniu</h3>
+            <ul>
+                <li><strong>Testy użyteczności</strong> - obserwacja rzeczywistych użytkowników</li>
+                <li><strong>NVDA/JAWS</strong> - testowanie dostępności sugestii</li>
+                <li><strong>Narzędzia security testing</strong> - sprawdzanie nie ujawniania danych</li>
+                <li><strong>Analytics formularzy</strong> - analiza wzorców błędów</li>
+                <li><strong>A/B testing</strong> - porównywanie skuteczności różnych sugestii</li>
+            </ul>
+        </section>
+
+        <section class="related-criteria">
+            <h2>Powiązane kryteria</h2>
+            <ul>
+                <li><a href="3.3.1.html">3.3.1 Identyfikacja błędu (A)</a> - podstawa do budowania sugestii</li>
+                <li><a href="3.3.2.html">3.3.2 Etykiety lub instrukcje (A)</a> - zapobiega błędom przez jasne instrukcje
+                </li>
+                <li><a href="3.3.4.html">3.3.4 Zapobieganie błędom (AA)</a> - dodaje mechanizmy weryfikacji przed
+                    wysłaniem</li>
+                <li><a href="2.4.6.html">2.4.6 Nagłówki i etykiety (AA)</a> - zapewnia jasność instrukcji</li>
+                <li><a href="1.4.3.html">1.4.3 Kontrast (minimalny) (AA)</a> - zapewnia czytelność sugestii</li>
+            </ul>
+        </section>
+
+        <section class="resources">
+            <h2>Zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/error-suggestion.html">WCAG 2.1: Understanding
+                        Error Suggestion</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G85">Technika G85: Providing a text
+                        description when user input falls outside the required format or values</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G177">Technika G177: Providing suggested
+                        correction text</a></li>
+                <li><a href="https://www.w3.org/WAI/tutorials/forms/validation/">W3C: Form Validation Tutorial</a></li>
+                <li><a href="https://webaim.org/techniques/formvalidation/">WebAIM: Creating Accessible Forms -
+                        Validation</a></li>
+            </ul>
+        </section>
+
+        <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+            <ul>
+                <li><a href="3.3.2.html">Poprzedni: 3.3.2 Etykiety lub instrukcje</a></li>
+                <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                <li><a href="3.3.4.html">Następny: 3.3.4 Zapobieganie błędom</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

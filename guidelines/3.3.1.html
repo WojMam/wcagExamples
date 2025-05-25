@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.3.1 Identyfikacja błędu (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>3.3.1 Identyfikacja błędu (A)</h1>
+            <p>Jeśli błąd wprowadzania danych zostanie automatycznie wykryty, element zawierający błąd jest
+                identyfikowany, a błąd opisywany użytkownikowi w formie tekstowej.</p>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>To kryterium poziomu A zapewnia, że użytkownicy są świadomi wystąpienia błędu i mogą określić, co jest
+                nie tak. Kluczowe jest, aby:</p>
+            <ul>
+                <li><strong>Błędy były wykrywane automatycznie</strong> przez system</li>
+                <li><strong>Problematyczne elementy były jasno wskazane</strong></li>
+                <li><strong>Opis błędu był przedstawiony w formie tekstowej</strong></li>
+                <li><strong>Komunikaty były dostępne dla technologii asystujących</strong></li>
+                <li><strong>Informacje były wystarczająco szczegółowe</strong> dla użytkownika</li>
+            </ul>
+
+            <p>Błąd wprowadzania danych to informacja dostarczona przez użytkownika, która nie jest akceptowana.
+                Obejmuje to:</p>
+            <ul>
+                <li>Informacje wymagane przez stronę, ale pominięte przez użytkownika</li>
+                <li>Informacje w nieprawidłowym formacie lub poza dozwoloną wartością</li>
+                <li>Dane niespójne z innymi polami formularza</li>
+                <li>Wartości naruszające reguły biznesowe</li>
+            </ul>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Osoby niewidome</strong> - mogą poznać błędy dzięki czytnikom ekranu</li>
+                <li><strong>Osoby słabowidzące</strong> - otrzymują tekstowe opisy niezależnie od wizualnych wskaźników
+                </li>
+                <li><strong>Osoby z daltonizmem</strong> - nie są uzależnione od rozróżniania kolorów</li>
+                <li><strong>Osoby z ograniczeniami poznawczymi</strong> - otrzymują jasne wyjaśnienia błędów</li>
+                <li><strong>Osoby z trudnościami językowymi</strong> - mogą lepiej zrozumieć konkretne problemy</li>
+                <li><strong>Użytkownicy technologii asystujących</strong> - błędy są dostępne programowo</li>
+                <li><strong>Wszyscy użytkownicy</strong> - łatwiej identyfikują i naprawiają problemy</li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje</h2>
+            <dl>
+                <dt><strong>Błąd wprowadzania danych</strong></dt>
+                <dd>Informacja dostarczona przez użytkownika, która nie jest akceptowana przez system. Obejmuje:</dd>
+                <ul>
+                    <li>Wymagane informacje pominięte przez użytkownika</li>
+                    <li>Informacje poza wymaganym formatem lub dozwolonymi wartościami</li>
+                </ul>
+
+                <dt><strong>Automatyczne wykrywanie</strong></dt>
+                <dd>Proces identyfikacji błędów przez oprogramowanie bez interwencji operatora ludzkiego</dd>
+
+                <dt><strong>Identyfikacja elementu</strong></dt>
+                <dd>Wskazanie konkretnego pola formularza lub elementu interfejsu, w którym wystąpił błąd</dd>
+
+                <dt><strong>Opis tekstowy</strong></dt>
+                <dd>Wyjaśnienie błędu w formie tekstu, dostępne dla wszystkich użytkowników i technologii asystujących
+                </dd>
+
+                <dt><strong>Programowe udostępnienie</strong></dt>
+                <dd>Przygotowanie informacji o błędach w sposób umożliwiających ich odczytanie przez technologie
+                    asystujące</dd>
+            </dl>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Błędy tylko wizualne</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - błąd sygnalizowany tylko kolorem --&gt;
+&lt;div class="form-group"&gt;
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input type="email" id="email" style="border-color: red;" /&gt;
+    &lt;!-- Brak tekstowego opisu błędu --&gt;
+&lt;/div&gt;
+
+&lt;!-- Tylko ikona bez tekstowego opisu --&gt;
+&lt;div class="form-group"&gt;
+    &lt;label for="phone"&gt;Telefon:&lt;/label&gt;
+    &lt;input type="tel" id="phone" /&gt;
+    &lt;span class="error-icon"&gt;❌&lt;/span&gt; &lt;!-- Tylko ikona --&gt;
+&lt;/div&gt;</code></pre>
+                <p><strong>Problem:</strong> Osoby niewidome i słabowidzące nie otrzymują informacji o błędzie.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Niejasne komunikaty błędów</h4>
+                <pre><code class="language-html">&lt;!-- Zbyt ogólne komunikaty --&gt;
+&lt;div class="error"&gt;Błąd!&lt;/div&gt;
+&lt;div class="error"&gt;Nieprawidłowe dane&lt;/div&gt;
+&lt;div class="error"&gt;Spróbuj ponownie&lt;/div&gt;
+
+&lt;!-- Komunikat odłączony od pól --&gt;
+&lt;form&gt;
+    &lt;input type="email" name="email" /&gt;
+    &lt;input type="text" name="name" /&gt;
+    &lt;input type="tel" name="phone" /&gt;
+    &lt;div class="error"&gt;Niektóre pola są nieprawidłowe&lt;/div&gt;
+&lt;/form&gt;</code></pre>
+                <p><strong>Problem:</strong> Użytkownik nie wie, które pole zawiera błąd ani jak go naprawić.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Błędy niedostępne programowo</h4>
+                <pre><code class="language-html">&lt;!-- Błędy generowane dynamicznie przez JavaScript bez ARIA --&gt;
+&lt;script&gt;
+function showError(fieldId) {
+    // Dodaje klasę CSS, ale nie informuje technologii asystujących
+    document.getElementById(fieldId).classList.add('error');
+    
+    // Tooltip tylko na hover - niedostępny dla klawiatury
+    document.getElementById(fieldId).title = 'Błędne dane';
+}
+&lt;/script&gt;
+
+&lt;!-- Alert modalny bez właściwej struktury --&gt;
+&lt;div style="position: fixed; top: 50%; left: 50%;"&gt;
+    Wystąpił błąd w formularzu
+&lt;/div&gt;</code></pre>
+                <p><strong>Problem:</strong> Czytniki ekranu mogą nie wykryć błędów lub nie powiązać ich z konkretnymi
+                    polami.</p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Jasna identyfikacja błędów w polach</h4>
+                <pre><code class="language-html">&lt;!-- Prawidłowa implementacja z ARIA --&gt;
+&lt;div class="form-group"&gt;
+    &lt;label for="email"&gt;Adres email: *&lt;/label&gt;
+    &lt;input type="email" 
+           id="email" 
+           aria-describedby="email-error" 
+           aria-invalid="true" 
+           aria-required="true" /&gt;
+    &lt;div id="email-error" class="error" role="alert"&gt;
+        &lt;strong&gt;Błąd:&lt;/strong&gt; Nieprawidłowy format adresu email. 
+        Poprawny format to: nazwa@domena.pl
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+    &lt;label for="phone"&gt;Numer telefonu: *&lt;/label&gt;
+    &lt;input type="tel" 
+           id="phone" 
+           aria-describedby="phone-help phone-error" 
+           aria-invalid="true" 
+           aria-required="true" /&gt;
+    &lt;div id="phone-help" class="help-text"&gt;
+        Format: 123-456-789 lub +48 123 456 789
+    &lt;/div&gt;
+    &lt;div id="phone-error" class="error" role="alert"&gt;
+        &lt;strong&gt;Błąd:&lt;/strong&gt; Numer telefonu może zawierać tylko cyfry, spacje, myślniki i znak plus.
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <p><strong>Zalety:</strong> Jasna identyfikacja błędu, konkretny opis problemu, dostępność dla
+                    technologii asystujących.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Podsumowanie błędów na górze formularza</h4>
+                <pre><code class="language-html">&lt;!-- Podsumowanie błędów z linkami do pól --&gt;
+&lt;div class="error-summary" role="alert" aria-labelledby="error-heading"&gt;
+    &lt;h2 id="error-heading"&gt;
+        &lt;span aria-hidden="true"&gt;⚠️&lt;/span&gt;
+        Znaleziono 3 błędy w formularzu
+    &lt;/h2&gt;
+    &lt;p&gt;Przejrzyj i popraw następujące błędy:&lt;/p&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+            &lt;a href="#name"&gt;Imię i nazwisko&lt;/a&gt;: 
+            To pole jest wymagane
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href="#email"&gt;Adres email&lt;/a&gt;: 
+            Nieprawidłowy format email
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href="#age"&gt;Wiek&lt;/a&gt;: 
+            Wartość musi być między 18 a 120
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;form novalidate&gt;
+    &lt;!-- Pola formularza z błędami --&gt;
+    &lt;div class="form-group"&gt;
+        &lt;label for="name"&gt;Imię i nazwisko: *&lt;/label&gt;
+        &lt;input type="text" 
+               id="name" 
+               aria-describedby="name-error" 
+               aria-invalid="true" 
+               aria-required="true" /&gt;
+        &lt;div id="name-error" class="error"&gt;
+            &lt;strong&gt;Błąd:&lt;/strong&gt; To pole jest wymagane
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;!-- Inne pola... --&gt;
+&lt;/form&gt;</code></pre>
+                <p><strong>Zalety:</strong> Przegląd wszystkich błędów, łatwa nawigacja do problemowych pól, dostępne
+                    linki.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Walidacja w czasie rzeczywistym</h4>
+                <pre><code class="language-html">&lt;!-- Formularz z walidacją na żywo --&gt;
+&lt;div class="form-group"&gt;
+    &lt;label for="password"&gt;Hasło: *&lt;/label&gt;
+    &lt;input type="password" 
+           id="password" 
+           aria-describedby="password-requirements password-feedback" 
+           aria-required="true" /&gt;
+    
+    &lt;div id="password-requirements" class="help-text"&gt;
+        &lt;p&gt;Hasło musi zawierać:&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li id="length-req"&gt;Co najmniej 8 znaków&lt;/li&gt;
+            &lt;li id="upper-req"&gt;Wielką literę&lt;/li&gt;
+            &lt;li id="lower-req"&gt;Małą literę&lt;/li&gt;
+            &lt;li id="number-req"&gt;Cyfrę&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    
+    &lt;div id="password-feedback" class="feedback" aria-live="polite"&gt;
+        &lt;!-- Komunikaty o błędach będą tutaj dynamicznie aktualizowane --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+document.getElementById('password').addEventListener('input', function(e) {
+    const password = e.target.value;
+    const feedback = document.getElementById('password-feedback');
+    const errors = [];
+    
+    // Sprawdzanie wymagań i aktualizacja komunikatów
+    if (password.length &lt; 8) {
+        errors.push('Hasło jest za krótkie');
+        document.getElementById('length-req').setAttribute('aria-label', 'Niespełnione: Co najmniej 8 znaków');
+    } else {
+        document.getElementById('length-req').setAttribute('aria-label', 'Spełnione: Co najmniej 8 znaków');
+    }
+    
+    // Aktualizacja feedback
+    if (errors.length &gt; 0) {
+        feedback.innerHTML = '&lt;div class="error"&gt;' + errors.join(', ') + '&lt;/div&gt;';
+        e.target.setAttribute('aria-invalid', 'true');
+    } else {
+        feedback.innerHTML = '&lt;div class="success"&gt;Hasło spełnia wszystkie wymagania&lt;/div&gt;';
+        e.target.setAttribute('aria-invalid', 'false');
+    }
+});
+&lt;/script&gt;</code></pre>
+                <p><strong>Zalety:</strong> Natychmiastowa informacja zwrotna, stopniowa walidacja, dostępność dla
+                    czytników ekranu.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Obsługa błędów wyboru opcji</h4>
+                <pre><code class="language-html">&lt;!-- Grupa przycisków radio z błędem --&gt;
+&lt;fieldset aria-describedby="gender-error" aria-invalid="true"&gt;
+    &lt;legend&gt;Płeć: *&lt;/legend&gt;
+    &lt;div class="radio-group"&gt;
+        &lt;input type="radio" id="male" name="gender" value="male" /&gt;
+        &lt;label for="male"&gt;Mężczyzna&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="radio-group"&gt;
+        &lt;input type="radio" id="female" name="gender" value="female" /&gt;
+        &lt;label for="female"&gt;Kobieta&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div class="radio-group"&gt;
+        &lt;input type="radio" id="other" name="gender" value="other" /&gt;
+        &lt;label for="other"&gt;Inna&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;div id="gender-error" class="error" role="alert"&gt;
+        &lt;strong&gt;Błąd:&lt;/strong&gt; Wybór płci jest wymagany
+    &lt;/div&gt;
+&lt;/fieldset&gt;
+
+&lt;!-- Lista wyboru z błędem --&gt;
+&lt;div class="form-group"&gt;
+    &lt;label for="country"&gt;Kraj: *&lt;/label&gt;
+    &lt;select id="country" 
+            aria-describedby="country-error" 
+            aria-invalid="true" 
+            aria-required="true"&gt;
+        &lt;option value=""&gt;-- Wybierz kraj --&lt;/option&gt;
+        &lt;option value="pl"&gt;Polska&lt;/option&gt;
+        &lt;option value="de"&gt;Niemcy&lt;/option&gt;
+        &lt;option value="fr"&gt;Francja&lt;/option&gt;
+    &lt;/select&gt;
+    &lt;div id="country-error" class="error" role="alert"&gt;
+        &lt;strong&gt;Błąd:&lt;/strong&gt; Musisz wybrać kraj z listy
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                <p><strong>Zalety:</strong> Właściwe grupowanie elementów, jasne komunikaty dla różnych typów kontrolek.
+                </p>
+            </div>
+        </section>
+
+        <section class="error-patterns">
+            <h2>Wzorce identyfikacji błędów</h2>
+
+            <h3>1. Błędy inline (przy polach)</h3>
+            <div class="pattern-description">
+                <p><strong>Zastosowanie:</strong> Najczęściej używany wzorzec dla pojedynczych pól</p>
+                <p><strong>Zalety:</strong> Bezpośrednie powiązanie błędu z polem, natychmiastowa widoczność</p>
+                <p><strong>Implementacja:</strong> Użyj <code>aria-describedby</code> do połączenia pola z komunikatem
+                    błędu</p>
+            </div>
+
+            <h3>2. Podsumowanie błędów</h3>
+            <div class="pattern-description">
+                <p><strong>Zastosowanie:</strong> Długie formularze z wieloma błędami</p>
+                <p><strong>Zalety:</strong> Przegląd wszystkich problemów, łatwa nawigacja</p>
+                <p><strong>Implementacja:</strong> Umieść na górze formularza z <code>role="alert"</code></p>
+            </div>
+
+            <h3>3. Walidacja progresywna</h3>
+            <div class="pattern-description">
+                <p><strong>Zastosowanie:</strong> Kompleksowe formularze wymagające sprawdzania krok po kroku</p>
+                <p><strong>Zalety:</strong> Natychmiastowa informacja zwrotna, lepsze doświadczenie użytkownika</p>
+                <p><strong>Implementacja:</strong> Użyj <code>aria-live="polite"</code> dla dynamicznych aktualizacji
+                </p>
+            </div>
+
+            <h3>4. Grupowanie błędów</h3>
+            <div class="pattern-description">
+                <p><strong>Zastosowanie:</strong> Błędy dotyczące grupy powiązanych pól</p>
+                <p><strong>Zalety:</strong> Logiczne grupowanie problemów</p>
+                <p><strong>Implementacja:</strong> Użyj <code>fieldset</code> z <code>aria-describedby</code></p>
+            </div>
+        </section>
+
+        <section class="technical-implementation">
+            <h2>Implementacja techniczna</h2>
+
+            <h3>HTML i ARIA</h3>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;!-- Podstawowa struktura --&gt;
+&lt;input type="email" 
+       id="email" 
+       aria-describedby="email-error" 
+       aria-invalid="true" /&gt;
+&lt;div id="email-error" role="alert"&gt;
+    Komunikat błędu
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <h3>CSS dla dostępności</h3>
+            <div class="code-example">
+                <pre><code class="language-css">/* Stylowanie błędów */
+.error {
+    color: #d32f2f;
+    font-weight: bold;
+    margin-top: 0.25rem;
+}
+
+/* Nie polegaj tylko na kolorze */
+.error::before {
+    content: "⚠️ ";
+    margin-right: 0.25rem;
+}
+
+/* Stan błędu dla pola */
+[aria-invalid="true"] {
+    border-color: #d32f2f;
+    border-width: 2px;
+}
+
+/* Fokus dla pól z błędami */
+[aria-invalid="true"]:focus {
+    outline: 2px solid #d32f2f;
+    outline-offset: 2px;
+}</code></pre>
+            </div>
+
+            <h3>JavaScript dla dynamicznych błędów</h3>
+            <div class="code-example">
+                <pre><code class="language-javascript">function showError(fieldId, message) {
+    const field = document.getElementById(fieldId);
+    const errorId = fieldId + '-error';
+    
+    // Utwórz lub zaktualizuj komunikat błędu
+    let errorElement = document.getElementById(errorId);
+    if (!errorElement) {
+        errorElement = document.createElement('div');
+        errorElement.id = errorId;
+        errorElement.className = 'error';
+        errorElement.setAttribute('role', 'alert');
+        field.parentNode.appendChild(errorElement);
+    }
+    
+    // Ustaw komunikat i powiąż z polem
+    errorElement.textContent = message;
+    field.setAttribute('aria-describedby', errorId);
+    field.setAttribute('aria-invalid', 'true');
+    
+    // Przenieś fokus do pola (opcjonalnie)
+    field.focus();
+}
+
+function clearError(fieldId) {
+    const field = document.getElementById(fieldId);
+    const errorElement = document.getElementById(fieldId + '-error');
+    
+    if (errorElement) {
+        errorElement.remove();
+    }
+    
+    field.removeAttribute('aria-describedby');
+    field.setAttribute('aria-invalid', 'false');
+}</code></pre>
+            </div>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie</h2>
+
+            <h3>Metody testowania</h3>
+            <ul>
+                <li><strong>Test z czytnikiem ekranu</strong> - sprawdź czy błędy są poprawnie oznajmiane</li>
+                <li><strong>Test nawigacji klawiaturą</strong> - upewnij się, że można nawigować do wszystkich błędów
+                </li>
+                <li><strong>Test z wyłączonymi stylami</strong> - sprawdź czy błędy są nadal widoczne i zrozumiałe</li>
+                <li><strong>Test kolorów</strong> - sprawdź czy błędy są widoczne bez rozróżniania kolorów</li>
+                <li><strong>Test z różnymi przeglądarkami</strong> - upewnij się o kompatybilności</li>
+            </ul>
+
+            <h3>Lista kontrolna</h3>
+            <ul>
+                <li>Czy wszystkie automatycznie wykryte błędy są opisane tekstowo?</li>
+                <li>Czy komunikaty błędów są jasne i konkretne?</li>
+                <li>Czy błędne pola są właściwie zidentyfikowane?</li>
+                <li>Czy błędy są dostępne dla czytników ekranu?</li>
+                <li>Czy można nawigować do wszystkich błędnych pól?</li>
+                <li>Czy błędy są widoczne bez polegania na kolorze?</li>
+                <li>Czy dynamiczne błędy są właściwie oznajmiane?</li>
+            </ul>
+
+            <h3>Narzędzia pomocne w testowaniu</h3>
+            <ul>
+                <li><strong>NVDA/JAWS</strong> - czytniki ekranu do testowania dostępności</li>
+                <li><strong>axe DevTools</strong> - automatyczna analiza dostępności</li>
+                <li><strong>WAVE</strong> - walidator dostępności stron</li>
+                <li><strong>Lighthouse</strong> - audit dostępności w Chrome</li>
+                <li><strong>aXe Browser Extension</strong> - szybkie testy w przeglądarce</li>
+            </ul>
+        </section>
+
+        <section class="related-criteria">
+            <h2>Powiązane kryteria</h2>
+            <ul>
+                <li><a href="3.3.2.html">3.3.2 Etykiety lub instrukcje (A)</a> - zapewnia, że pola mają odpowiednie
+                    etykiety</li>
+                <li><a href="3.3.3.html">3.3.3 Sugestia korekty błędu (AA)</a> - rozszerza identyfikację o konkretne
+                    sugestie naprawy</li>
+                <li><a href="3.3.4.html">3.3.4 Zapobieganie błędom (AA)</a> - dodaje mechanizmy sprawdzania i
+                    potwierdzania</li>
+                <li><a href="4.1.2.html">4.1.2 Nazwa, rola, wartość (A)</a> - zapewnia programową dostępność elementów
+                </li>
+                <li><a href="1.4.3.html">1.4.3 Kontrast (minimalny) (AA)</a> - zapewnia wystarczający kontrast
+                    komunikatów błędów</li>
+            </ul>
+        </section>
+
+        <section class="resources">
+            <h2>Zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/error-identification.html">WCAG 2.1:
+                        Understanding Error Identification</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G83">Technika G83: Providing text
+                        descriptions to identify required fields</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA21">Technika ARIA21: Using aria-invalid
+                        to Indicate An Error Field</a></li>
+                <li><a href="https://www.w3.org/WAI/tutorials/forms/validation/">W3C: Form Validation Tutorial</a></li>
+                <li><a href="https://webaim.org/techniques/formvalidation/">WebAIM: Creating Accessible Forms</a></li>
+            </ul>
+        </section>
+
+        <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+            <ul>
+                <li><a href="3.3.html">Poprzedni: 3.3 Pomoc przy wpisywaniu</a></li>
+                <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                <li><a href="3.3.2.html">Następny: 3.3.2 Etykiety lub instrukcje</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.1 Zgodność - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>4.1 Zgodność</h1>
+            <p>Maksymalizacja zgodności z obecnymi i przyszłymi programami użytkownika, w tym z technologiami
+                wspomagającymi.</p>
+        </div>
+
+        <section class="guideline-description">
+            <h2>Opis wytycznej</h2>
+            <p>Wytyczna 4.1 "Zgodność" jest częścią czwartej zasady WCAG 2.1 - <strong>Solidność</strong>.
+                Jej celem jest zapewnienie, że treść internetowa jest wystarczająco solidna, aby mogła być
+                niezawodnie interpretowana przez różnorodne programy użytkownika, w szczególności przez
+                technologie wspomagające.</p>
+
+            <p>Ta wytyczna koncentruje się na zapewnieniu maksymalnej zgodności treści nie tylko z obecnymi
+                programami użytkownika (takimi jak przeglądarki), ale także z przyszłymi rozwiązaniami.
+                Osiąga się to przez:</p>
+
+            <ul>
+                <li><strong>Zapobieganie działaniom</strong> które mogłyby uszkodzić technologie wspomagające
+                    (np. źle sformułowany kod HTML)</li>
+                <li><strong>Unikanie obchodzenia</strong> technologii wspomagających (np. przez używanie
+                    niestandardowego kodu)</li>
+                <li><strong>Udostępnianie informacji</strong> w treści w sposób standardowy, który technologie
+                    wspomagające mogą rozpoznać i z którym mogą wchodzić w interakcję</li>
+            </ul>
+
+            <h3>Dlaczego zgodność jest ważna?</h3>
+            <p>Technologie zmieniają się szybko, a deweloperzy technologii wspomagających mają trudności
+                z nadążaniem za szybko zmieniającymi się technologiami. Dlatego ważne jest, aby treść:</p>
+
+            <ul>
+                <li>Była zgodna z konwencjami i standardami</li>
+                <li>Była kompatybilna z interfejsami API</li>
+                <li>Umożliwiała technologiom wspomagającym łatwiejszą pracę z nowymi technologiami w miarę ich rozwoju
+                </li>
+            </ul>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Użytkownicy technologii wspomagających</strong> - czytniki ekranu, lupy ekranowe,
+                    oprogramowanie rozpoznawania mowy</li>
+                <li><strong>Osoby niewidome i słabowidzące</strong> - dzięki lepszej kompatybilności z czytnikami ekranu
+                </li>
+                <li><strong>Osoby z ograniczeniami motorycznymi</strong> - przez zgodność z alternatywnymi urządzeniami
+                    wejściowymi</li>
+                <li><strong>Deweloperzy</strong> - łatwiejsze utrzymanie i rozwój kodu</li>
+                <li><strong>Wszyscy użytkownicy</strong> - lepsza funkcjonalność i niezawodność stron internetowych</li>
+            </ul>
+        </section>
+
+        <section class="success-criteria">
+            <h2>Kryteria sukcesu</h2>
+            <p>Wytyczna 4.1 obejmuje następujące kryteria sukcesu:</p>
+
+            <div class="criteria-list">
+                <div class="criterion-card level-a">
+                    <h3><a href="4.1.1.html">4.1.1 Parsowanie (A)</a></h3>
+                    <p>W treściach zaimplementowanych przy użyciu języków znaczników elementy mają kompletne tagi
+                        początkowe i końcowe, elementy są zagnieżdżone zgodnie ze swoimi specyfikacjami, elementy
+                        nie zawierają zduplikowanych atrybutów, a wszystkie identyfikatory są unikalne.</p>
+                    <p><strong>Cel:</strong> Zapewnienie, że kod HTML można poprawnie analizować.</p>
+                </div>
+
+                <div class="criterion-card level-a">
+                    <h3><a href="4.1.2.html">4.1.2 Nazwa, rola, wartość (A)</a></h3>
+                    <p>Dla wszystkich komponentów interfejsu użytkownika nazwa i rola mogą być określone programowo;
+                        stany, właściwości i wartości, które mogą być ustawiane przez użytkownika, mogą być ustawiane
+                        programowo; oraz powiadomienia o zmianach tych elementów są dostępne dla programów użytkownika.
+                    </p>
+                    <p><strong>Cel:</strong> Umożliwienie technologiom wspomagającym rozpoznawania i kontrolowania
+                        elementów interfejsu.</p>
+                </div>
+
+                <div class="criterion-card level-aa">
+                    <h3><a href="4.1.3.html">4.1.3 Komunikaty o stanie (AA)</a></h3>
+                    <p>W treściach zaimplementowanych przy użyciu języków znaczników komunikaty o stanie mogą być
+                        określone programowo poprzez role lub właściwości, tak aby mogły być prezentowane użytkownikowi
+                        przez technologie wspomagające bez otrzymywania fokusa.</p>
+                    <p><strong>Cel:</strong> Informowanie użytkowników technologii wspomagających o zmianach stanu
+                        na stronie.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="implementation-principles">
+            <h2>Zasady implementacji</h2>
+
+            <h3>1. Używaj standardowych technologii</h3>
+            <ul>
+                <li>Preferuj standardowe elementy HTML zamiast niestandardowych rozwiązań</li>
+                <li>Używaj semantycznych znaczników zgodnie z ich przeznaczeniem</li>
+                <li>Waliduj kod HTML i CSS</li>
+                <li>Stosuj się do specyfikacji W3C</li>
+            </ul>
+
+            <h3>2. Zapewnij dostępność programową</h3>
+            <ul>
+                <li>Używaj odpowiednich ról ARIA dla niestandardowych komponentów</li>
+                <li>Dostarczaj nazwy dla wszystkich elementów interfejsu</li>
+                <li>Komunikuj zmiany stanu programowo</li>
+                <li>Zapewnij dostęp do wszystkich funkcji przez interfejsy API dostępności</li>
+            </ul>
+
+            <h3>3. Testuj z technologiami wspomagającymi</h3>
+            <ul>
+                <li>Testuj z różnymi czytnikami ekranu</li>
+                <li>Sprawdzaj funkcjonalność z nawigacją klawiaturową</li>
+                <li>Używaj narzędzi do walidacji dostępności</li>
+                <li>Testuj na różnych przeglądarkach i platformach</li>
+            </ul>
+        </section>
+
+        <section class="common-mistakes">
+            <h2>Częste błędy</h2>
+
+            <div class="mistake-item">
+                <h3>❌ Używanie <code>div</code> i <code>span</code> jako przycisków</h3>
+                <p>Tworzenie interaktywnych elementów z niebędących przyciskami tagów bez odpowiednich ról ARIA.</p>
+                <div class="example bad-example">
+                    <pre><code>&lt;div onclick="doSomething()"&gt;Kliknij mnie&lt;/div&gt;</code></pre>
+                </div>
+                <p><strong>Rozwiązanie:</strong> Użyj odpowiedniego elementu lub dodaj rolę:</p>
+                <div class="example good-example">
+                    <pre><code>&lt;button onclick="doSomething()"&gt;Kliknij mnie&lt;/button&gt;
+&lt;!-- lub --&gt;
+&lt;div role="button" tabindex="0" onclick="doSomething()" onkeydown="handleKeyDown(event)"&gt;Kliknij mnie&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mistake-item">
+                <h3>❌ Brak nazw dla elementów formularza</h3>
+                <p>Pola formularza bez etykiet lub dostępnych nazw.</p>
+                <div class="example bad-example">
+                    <pre><code>&lt;input type="text" placeholder="Wprowadź nazwę"&gt;</code></pre>
+                </div>
+                <p><strong>Rozwiązanie:</strong> Dodaj odpowiednie etykiety:</p>
+                <div class="example good-example">
+                    <pre><code>&lt;label for="name"&gt;Nazwa:&lt;/label&gt;
+&lt;input type="text" id="name" placeholder="Wprowadź nazwę"&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mistake-item">
+                <h3>❌ Nieaktualizowanie komunikatów o stanie</h3>
+                <p>Zmiany na stronie, które nie są komunikowane technologiom wspomagającym.</p>
+                <div class="example bad-example">
+                    <pre><code>// Tylko wizualna zmiana bez powiadomienia AT
+document.getElementById('message').textContent = 'Zapisano!';</code></pre>
+                </div>
+                <p><strong>Rozwiązanie:</strong> Użyj regionów live lub ról ARIA:</p>
+                <div class="example good-example">
+                    <pre><code>&lt;div id="message" aria-live="polite"&gt;&lt;/div&gt;
+&lt;script&gt;
+document.getElementById('message').textContent = 'Zapisano!';
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="testing-tools">
+            <h2>Narzędzia testowe</h2>
+
+            <h3>Walidatory kodu</h3>
+            <ul>
+                <li><a href="https://validator.w3.org/">Walidator HTML W3C</a></li>
+                <li><a href="https://jigsaw.w3.org/css-validator/">Walidator CSS W3C</a></li>
+                <li><a href="https://webhint.io/">webhint</a> - kompleksowe narzędzie do testowania</li>
+            </ul>
+
+            <h3>Narzędzia dostępności</h3>
+            <ul>
+                <li><a href="https://wave.webaim.org/">WAVE Web Accessibility Evaluator</a></li>
+                <li><a href="https://www.deque.com/axe/">axe DevTools</a></li>
+                <li><a href="https://www.paciellogroup.com/toolkit/">Colour Contrast Analyser</a></li>
+                <li><a href="https://www.nvaccess.org/">NVDA</a> - darmowy czytnik ekranu</li>
+            </ul>
+
+            <h3>Testowanie ręczne</h3>
+            <ul>
+                <li>Nawigacja tylko klawiaturą (Tab, Enter, Escape, strzałki)</li>
+                <li>Test z czytnikiem ekranu</li>
+                <li>Sprawdzenie w różnych przeglądarkach</li>
+                <li>Test na urządzeniach mobilnych</li>
+            </ul>
+        </section>
+
+        <section class="best-practices">
+            <h2>Najlepsze praktyki</h2>
+
+            <div class="practice-group">
+                <h3>Kod i struktura</h3>
+                <ul>
+                    <li>Pisz semantyczny HTML zgodny ze specyfikacją</li>
+                    <li>Używaj odpowiednich nagłówków (h1-h6) do struktury treści</li>
+                    <li>Oznaczaj landmarki strony (main, nav, aside, footer)</li>
+                    <li>Dodawaj alt tekst do wszystkich obrazów informacyjnych</li>
+                    <li>Używaj list dla grup powiązanych elementów</li>
+                </ul>
+            </div>
+
+            <div class="practice-group">
+                <h3>Formularze</h3>
+                <ul>
+                    <li>Każde pole ma odpowiednią etykietę (label)</li>
+                    <li>Grupuj powiązane pola w fieldset z legend</li>
+                    <li>Używaj odpowiednich typów input (email, tel, date)</li>
+                    <li>Dodawaj instrukcje i komunikaty błędów</li>
+                    <li>Oznaczaj wymagane pola</li>
+                </ul>
+            </div>
+
+            <div class="practice-group">
+                <h3>Interaktywne elementy</h3>
+                <ul>
+                    <li>Wszystkie elementy interaktywne są dostępne z klawiatury</li>
+                    <li>Fokus jest wyraźnie widoczny</li>
+                    <li>Używaj button dla akcji i a dla nawigacji</li>
+                    <li>Dodawaj role ARIA dla niestandardowych komponentów</li>
+                    <li>Komunikuj zmiany stanu (expanded, selected, pressed)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="related-guidelines">
+            <h2>Powiązane wytyczne</h2>
+            <ul>
+                <li><a href="1.3.html">1.3 Możliwość adaptacji</a> - struktura i relacje w treści</li>
+                <li><a href="2.1.html">2.1 Dostępność z klawiatury</a> - obsługa klawiaturą</li>
+                <li><a href="2.4.html">2.4 Możliwość nawigacji</a> - nawigacja i znajdowanie treści</li>
+                <li><a href="3.2.html">3.2 Przewidywalność</a> - przewidywalne zachowanie</li>
+            </ul>
+        </section>
+
+        <section class="resources">
+            <h2>Zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/compatible.html">WCAG 2.1: Understanding
+                        Guideline 4.1 Compatible</a></li>
+                <li><a href="https://www.w3.org/WAI/ARIA/">WAI-ARIA Authoring Practices</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility">MDN Web Docs: Accessibility</a>
+                </li>
+                <li><a href="https://www.w3.org/TR/html-aria/">ARIA in HTML</a></li>
+                <li><a href="https://webaim.org/articles/screenreader_testing/">WebAIM: Testing with Screen Readers</a>
+                </li>
+            </ul>
+        </section>
+
+        <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+            <ul>
+                <li><a href="3.3.html">Poprzednia: 3.3 Pomoc przy wpisywaniu</a></li>
+                <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                <li><a href="4.1.1.html">Następna: 4.1.1 Parsowanie</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

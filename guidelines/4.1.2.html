@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.1.2 Nazwa, rola, wartość (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>4.1.2 Nazwa, rola, wartość (A)</h1>
+            <p>Dla wszystkich komponentów interfejsu użytkownika (w tym między innymi: elementów formularzy,
+                linków i komponentów generowanych przez skrypty) nazwa i rola mogą być określone programowo;
+                stany, właściwości i wartości, które mogą być ustawiane przez użytkownika, mogą być ustawiane
+                programowo; oraz powiadomienia o zmianach tych elementów są dostępne dla programów użytkownika,
+                w tym technologii wspomagających.</p>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>Kryterium 4.1.2 "Nazwa, rola, wartość" ma na celu zapewnienie, że technologie wspomagające (AT)
+                mogą zbierać odpowiednie informacje o komponentach interfejsu użytkownika, aktywować je (lub
+                ustawiać) oraz być na bieżąco informowane o stanie elementów sterujących interfejsem użytkownika
+                w treści.</p>
+
+            <p>Gdy używane są standardowe elementy sterujące z dostępnych technologii, proces ten jest prosty.
+                Jeśli elementy interfejsu użytkownika są używane zgodnie ze specyfikacją, warunki tego kryterium
+                zostaną spełnione. Jeśli jednak tworzone są niestandardowe elementy sterujące lub elementy interfejsu
+                są programowane (w kodzie lub skrypcie) tak, aby miały inną rolę i/lub funkcję niż zwykle, należy
+                podjąć dodatkowe kroki.</p>
+
+            <h3>Główne komponenty</h3>
+            <div class="definition-grid">
+                <div class="definition-item">
+                    <h4><strong>Nazwa (Name)</strong></h4>
+                    <p>Tekst, za pomocą którego oprogramowanie może zidentyfikować komponent dla użytkownika.
+                        Nazwa może być ukryta i dostępna tylko przez technologie wspomagające.</p>
+                </div>
+
+                <div class="definition-item">
+                    <h4><strong>Rola (Role)</strong></h4>
+                    <p>Tekst lub liczba, za pomocą której oprogramowanie może zidentyfikować funkcję komponentu.
+                        Na przykład czy element działa jako przycisk, pole wyboru czy link.</p>
+                </div>
+
+                <div class="definition-item">
+                    <h4><strong>Wartość (Value)</strong></h4>
+                    <p>Bieżąca wartość lub stan komponentu, na przykład czy pole wyboru jest zaznaczone,
+                        czy tekst w polu tekstowym.</p>
+                </div>
+
+                <div class="definition-item">
+                    <h4><strong>Stan (State)</strong></h4>
+                    <p>Dynamiczne właściwości wyrażające charakterystyki komponentu, które mogą się zmieniać
+                        w odpowiedzi na działania użytkownika, np. fokus, rozwinięcie, zaznaczenie.</p>
+                </div>
+            </div>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Użytkownicy czytników ekranu</strong> - mogą zrozumieć cel i stan wszystkich elementów
+                    interfejsu</li>
+                <li><strong>Osoby używające oprogramowania rozpoznawania mowy</strong> - mogą aktywować elementy głosowo
+                </li>
+                <li><strong>Użytkownicy lupek ekranowych</strong> - otrzymują informacje o elementach podczas nawigacji
+                </li>
+                <li><strong>Osoby z dysfunkcjami poznawczymi</strong> - dzięki jasnym nazwom i rolom elementów</li>
+                <li><strong>Użytkownicy nawigacji klawiaturowej</strong> - dzięki właściwemu przekazywaniu stanów fokusa
+                </li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje i pojęcia</h2>
+            <dl>
+                <dt><strong>Programowo określone (Programmatically determined)</strong></dt>
+                <dd>Określone przez oprogramowanie na podstawie danych dostarczonych przez autora w sposób,
+                    który pozwala różnym programom użytkownika, w tym technologiom wspomagającym, na wyodrębnienie
+                    i prezentację tych informacji użytkownikom w różnych modalach</dd>
+
+                <dt><strong>Programowo ustawiane (Programmatically set)</strong></dt>
+                <dd>Ustawiane przez oprogramowanie przy użyciu metod obsługiwanych przez programy użytkownika,
+                    w tym technologie wspomagające</dd>
+
+                <dt><strong>Komponent interfejsu użytkownika</strong></dt>
+                <dd>Część treści postrzegana przez użytkowników jako pojedynczy element sterujący
+                    o określonej funkcji</dd>
+
+                <dt><strong>Dostępność programowa (Accessibility Supported)</strong></dt>
+                <dd>Obsługiwana przez technologie wspomagające użytkowników oraz przez funkcje dostępności
+                    w przeglądarkach i innych programach użytkownika</dd>
+            </dl>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Niestandardowy przycisk bez roli</h4>
+                <pre><code class="language-html"><!-- Nieprawidłowe - div działający jak przycisk bez odpowiedniej roli -->
+<div onclick="submitForm()" style="cursor: pointer; padding: 10px; background: blue; color: white;">
+    Wyślij formularz
+</div></code></pre>
+                <p><strong>Problem:</strong> Czytniki ekranu nie rozpoznają tego elementu jako przycisku
+                    i użytkownicy nie będą wiedzieli, że można go aktywować.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Brak nazwy dla elementu formularza</h4>
+                <pre><code class="language-html"><!-- Nieprawidłowe - pole bez etykiety -->
+<input type="text" placeholder="Wprowadź swoje imię">
+
+<!-- Nieprawidłowe - przycisk bez dostępnej nazwy -->
+<button onclick="save()">
+    <img src="save-icon.png">
+</button></code></pre>
+                <p><strong>Problem:</strong> Pole tekstowe i przycisk nie mają programowo określonych nazw,
+                    co utrudnia identyfikację przez technologie wspomagające.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Brak komunikowania zmian stanu</h4>
+                <pre><code class="language-html"><!-- Nieprawidłowe - stan rozwinięcia nie jest komunikowany -->
+<div id="menu-button" onclick="toggleMenu()">Menu</div>
+<div id="menu" style="display: none;">
+    <a href="/home">Strona główna</a>
+    <a href="/about">O nas</a>
+</div>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('menu');
+        if (menu.style.display === 'none') {
+            menu.style.display = 'block';
+        } else {
+            menu.style.display = 'none';
+        }
+    }
+</script></code></pre>
+                <p><strong>Problem:</strong> Technologie wspomagające nie wiedzą, czy menu jest rozwinięte czy zwinięte.
+                </p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Prawidłowy niestandardowy przycisk</h4>
+                <pre><code class="language-html"><!-- Prawidłowe - div z odpowiednią rolą i nazwą -->
+<div role="button" 
+     tabindex="0" 
+     aria-label="Wyślij formularz"
+     onclick="submitForm()" 
+     onkeydown="handleKeyDown(event)"
+     style="cursor: pointer; padding: 10px; background: blue; color: white;">
+    Wyślij formularz
+</div>
+
+<script>
+    function handleKeyDown(event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            submitForm();
+        }
+    }
+</script></code></pre>
+                <p><strong>Zalety:</strong> Element ma jasno określoną rolę, nazwę i jest dostępny z klawiatury.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Prawidłowe etykietowanie formularzy</h4>
+                <pre><code class="language-html"><!-- Prawidłowe - pole z etykietą -->
+<label for="firstName">Imię:</label>
+<input type="text" id="firstName" name="firstName" required>
+
+<!-- Prawidłowe - przycisk z dostępną nazwą -->
+<button type="submit" aria-label="Zapisz dokument">
+    <img src="save-icon.png" alt="" role="presentation">
+    Zapisz
+</button>
+
+<!-- Prawidłowe - pole wyboru z etykietą -->
+<input type="checkbox" id="newsletter" name="newsletter">
+<label for="newsletter">Chcę otrzymywać newsletter</label></code></pre>
+                <p><strong>Zalety:</strong> Wszystkie elementy mają programowo określone nazwy przez etykiety
+                    lub atrybuty aria-label.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Prawidłowe komunikowanie stanu</h4>
+                <pre><code class="language-html"><!-- Prawidłowe - menu z odpowiednimi atrybutami ARIA -->
+<button id="menu-button" 
+        aria-expanded="false" 
+        aria-haspopup="true" 
+        aria-controls="menu"
+        onclick="toggleMenu()">
+    Menu
+</button>
+<ul id="menu" role="menu" aria-labelledby="menu-button" hidden>
+    <li role="menuitem"><a href="/home">Strona główna</a></li>
+    <li role="menuitem"><a href="/about">O nas</a></li>
+</ul>
+
+<script>
+    function toggleMenu() {
+        const button = document.getElementById('menu-button');
+        const menu = document.getElementById('menu');
+        const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+        button.setAttribute('aria-expanded', !isExpanded);
+        menu.hidden = isExpanded;
+    }
+</script></code></pre>
+                <p><strong>Zalety:</strong> Stan rozwinięcia jest programowo określony i komunikowany technologiom
+                    wspomagającym.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Złożone komponenty z ARIA</h4>
+                <pre><code class="language-html"><!-- Prawidłowe - slider z kompletną implementacją ARIA -->
+<div class="slider-container">
+    <label for="volume-slider">Głośność:</label>
+    <div id="volume-slider" 
+         role="slider" 
+         aria-valuemin="0" 
+         aria-valuemax="100" 
+         aria-valuenow="50" 
+         aria-labelledby="volume-label"
+         tabindex="0"
+         onkeydown="handleSliderKeyDown(event)">
+        <div class="slider-track">
+            <div class="slider-thumb" style="left: 50%"></div>
+        </div>
+    </div>
+    <span id="volume-value">50%</span>
+</div>
+
+<script>
+    function updateSliderValue(newValue) {
+        const slider = document.getElementById('volume-slider');
+        const thumb = slider.querySelector('.slider-thumb');
+        const valueDisplay = document.getElementById('volume-value');
+
+        slider.setAttribute('aria-valuenow', newValue);
+        thumb.style.left = newValue + '%';
+        valueDisplay.textContent = newValue + '%';
+    }
+</script></code></pre>
+                <p><strong>Zalety:</strong> Slider ma kompletną implementację ARIA z rolą, wartościami i aktualizacją
+                    stanu.</p>
+            </div>
+        </section>
+
+        <section class="aria-implementation">
+            <h2>Implementacja z WAI-ARIA</h2>
+
+            <h3>Podstawowe atrybuty ARIA</h3>
+            <div class="aria-attributes">
+                <div class="attribute-group">
+                    <h4>Nazwy (Names)</h4>
+                    <ul>
+                        <li><code>aria-label</code> - bezpośrednia nazwa elementu</li>
+                        <li><code>aria-labelledby</code> - odniesienie do elementów zawierających nazwę</li>
+                        <li><code>aria-describedby</code> - odniesienie do opisów</li>
+                    </ul>
+                </div>
+
+                <div class="attribute-group">
+                    <h4>Role (Roles)</h4>
+                    <ul>
+                        <li><code>role="button"</code> - element funkcjonuje jako przycisk</li>
+                        <li><code>role="checkbox"</code> - pole wyboru</li>
+                        <li><code>role="slider"</code> - suwak</li>
+                        <li><code>role="dialog"</code> - okno dialogowe</li>
+                        <li><code>role="menu"</code> - menu</li>
+                    </ul>
+                </div>
+
+                <div class="attribute-group">
+                    <h4>Stany i właściwości</h4>
+                    <ul>
+                        <li><code>aria-expanded</code> - czy element jest rozwinięty</li>
+                        <li><code>aria-checked</code> - czy element jest zaznaczony</li>
+                        <li><code>aria-disabled</code> - czy element jest wyłączony</li>
+                        <li><code>aria-selected</code> - czy element jest wybrany</li>
+                        <li><code>aria-pressed</code> - czy przycisk jest wciśnięty</li>
+                    </ul>
+                </div>
+
+                <div class="attribute-group">
+                    <h4>Wartości</h4>
+                    <ul>
+                        <li><code>aria-valuenow</code> - bieżąca wartość</li>
+                        <li><code>aria-valuemin</code> - minimalna wartość</li>
+                        <li><code>aria-valuemax</code> - maksymalna wartość</li>
+                        <li><code>aria-valuetext</code> - tekstowa reprezentacja wartości</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Przykłady użycia ARIA</h3>
+            <div class="code-example">
+                <h4>Przycisk przełączania</h4>
+                <pre><code class="language-html"><!-- Przycisk do włączania/wyłączania funkcji -->
+<button id="sound-toggle" 
+        aria-pressed="false" 
+        onclick="toggleSound()">
+    <span class="icon">🔇</span>
+    <span class="text">Dźwięk wyłączony</span>
+</button>
+
+<script>
+    function toggleSound() {
+        const button = document.getElementById('sound-toggle');
+        const isPressed = button.getAttribute('aria-pressed') === 'true';
+        const icon = button.querySelector('.icon');
+        const text = button.querySelector('.text');
+
+        button.setAttribute('aria-pressed', !isPressed);
+        icon.textContent = isPressed ? '🔇' : '🔊';
+        text.textContent = isPressed ? 'Dźwięk wyłączony' : 'Dźwięk włączony';
+    }
+</script></code></pre>
+            </div>
+
+            <div class="code-example">
+                <h4>Lista opcji z możliwością wyboru</h4>
+                <pre><code class="language-html"><!-- Lista z opcjami do wyboru -->
+<ul role="listbox" aria-label="Wybierz motyw">
+    <li role="option" 
+        aria-selected="true" 
+        tabindex="0" 
+        onclick="selectTheme('light')">
+        Jasny motyw
+    </li>
+    <li role="option" 
+        aria-selected="false" 
+        tabindex="-1" 
+        onclick="selectTheme('dark')">
+        Ciemny motyw
+    </li>
+    <li role="option" 
+        aria-selected="false" 
+        tabindex="-1" 
+        onclick="selectTheme('auto')">
+        Automatyczny
+    </li>
+</ul></code></pre>
+            </div>
+        </section>
+
+        <section class="common-mistakes">
+            <h2>Częste błędy</h2>
+
+            <div class="mistake-item">
+                <h3>❌ Używanie elementów bez semantycznego znaczenia</h3>
+                <p>Tworzenie interaktywnych elementów z <code>div</code> lub <code>span</code> bez dodania odpowiedniej
+                    roli.</p>
+                <div class="example bad-example">
+                    <pre><code>&lt;div onclick="doSomething()"&gt;Kliknij&lt;/div&gt;</code></pre>
+                </div>
+                <p><strong>Rozwiązanie:</strong> Dodaj odpowiednią rolę i obsługę klawiatury:</p>
+                <div class="example good-example">
+                    <pre><code>&lt;div role="button" tabindex="0" onclick="doSomething()" onkeydown="handleKeyDown(event)"&gt;Kliknij&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mistake-item">
+                <h3>❌ Brak nazw dla elementów formularza</h3>
+                <p>Pola formularza bez etykiet lub dostępnych nazw.</p>
+                <div class="example bad-example">
+                    <pre><code>&lt;input type="email" placeholder="Adres email"&gt;</code></pre>
+                </div>
+                <p><strong>Rozwiązanie:</strong> Dodaj etykietę lub aria-label:</p>
+                <div class="example good-example">
+                    <pre><code>&lt;label for="email"&gt;Adres email:&lt;/label&gt;
+&lt;input type="email" id="email" placeholder="np. jan@example.com"&gt;</code></pre>
+                </div>
+            </div>
+
+            <div class="mistake-item">
+                <h3>❌ Nieaktualizowanie stanów dynamicznych</h3>
+                <p>Brak komunikowania zmian stanu elementów interaktywnych.</p>
+                <div class="example bad-example">
+                    <pre><code>// Tylko zmiana CSS bez informowania AT
+element.classList.toggle('expanded');</code></pre>
+                </div>
+                <p><strong>Rozwiązanie:</strong> Aktualizuj atrybuty ARIA:</p>
+                <div class="example good-example">
+                    <pre><code>const isExpanded = element.getAttribute('aria-expanded') === 'true';
+element.setAttribute('aria-expanded', !isExpanded);
+element.classList.toggle('expanded');</code></pre>
+                </div>
+            </div>
+
+            <div class="mistake-item">
+                <h3>❌ Nieprawidłowe nazwy dla obrazów w linkach</h3>
+                <p>Obrazy w linkach bez odpowiednich tekstów alternatywnych.</p>
+                <div class="example bad-example">
+                    <pre><code>&lt;a href="/profil"&gt;&lt;img src="user.png"&gt;&lt;/a&gt;</code></pre>
+                </div>
+                <p><strong>Rozwiązanie:</strong> Dodaj opisowy tekst alternatywny:</p>
+                <div class="example good-example">
+                    <pre><code>&lt;a href="/profil"&gt;&lt;img src="user.png" alt="Przejdź do profilu użytkownika"&gt;&lt;/a&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie</h2>
+
+            <h3>Metody testowania</h3>
+            <div class="testing-methods">
+                <div class="method-group">
+                    <h4>1. Testowanie z czytnikiem ekranu</h4>
+                    <ul>
+                        <li>Używaj NVDA, JAWS lub ORCA do nawigacji po stronie</li>
+                        <li>Sprawdź czy wszystkie elementy są prawidłowo ogłaszane</li>
+                        <li>Zweryfikuj czy zmiany stanu są komunikowane</li>
+                        <li>Testuj nawigację tabulatorem i strzałkami</li>
+                    </ul>
+                </div>
+
+                <div class="method-group">
+                    <h4>2. Narzędzia automatyczne</h4>
+                    <ul>
+                        <li><strong>axe DevTools</strong> - wykrywa brakujące nazwy i role</li>
+                        <li><strong>WAVE</strong> - sprawdza etykiety i strukturę</li>
+                        <li><strong>Lighthouse</strong> - audyt dostępności</li>
+                        <li><strong>Accessibility Insights</strong> - szczegółowa analiza</li>
+                    </ul>
+                </div>
+
+                <div class="method-group">
+                    <h4>3. Testowanie ręczne</h4>
+                    <ul>
+                        <li>Nawigacja tylko klawiaturą</li>
+                        <li>Sprawdzenie drzewa dostępności w DevTools</li>
+                        <li>Weryfikacja nazw obliczanych (computed names)</li>
+                        <li>Test z różnymi technologiami wspomagającymi</li>
+                    </ul>
+                </div>
+
+                <div class="method-group">
+                    <h4>4. Walidacja kodu</h4>
+                    <ul>
+                        <li>Sprawdzenie poprawności HTML</li>
+                        <li>Walidacja atrybutów ARIA</li>
+                        <li>Kontrola duplikatów ID</li>
+                        <li>Weryfikacja związków etykieta-pole</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Lista kontrolna</h3>
+            <ul>
+                <li>Czy wszystkie elementy interaktywne mają programowo określone nazwy?</li>
+                <li>Czy role wszystkich komponentów są jasno zdefiniowane?</li>
+                <li>Czy stany elementów (fokus, wybór, rozwinięcie) są komunikowane?</li>
+                <li>Czy wartości elementów (pola tekstowe, suwaki) są dostępne programowo?</li>
+                <li>Czy zmiany stanów i wartości są powiadamiane technologiom wspomagającym?</li>
+                <li>Czy niestandardowe komponenty używają odpowiednich ról ARIA?</li>
+                <li>Czy wszystkie elementy formularza mają poprawne etykiety?</li>
+                <li>Czy obrazy w linkach mają opisowe teksty alternatywne?</li>
+                <li>Czy elementy wieloczęściowe (np. numer telefonu) mają nazwy dla każdej części?</li>
+                <li>Czy fokus jest programowo określalny i widoczny?</li>
+            </ul>
+        </section>
+
+        <section class="best-practices">
+            <h2>Najlepsze praktyki</h2>
+
+            <div class="practice-group">
+                <h3>1. Używanie standardowych elementów HTML</h3>
+                <ul>
+                    <li>Preferuj natywne elementy HTML przed niestandardowymi rozwiązaniami</li>
+                    <li>Używaj <code>&lt;button&gt;</code> zamiast <code>&lt;div&gt;</code> dla przycisków</li>
+                    <li>Stosuj <code>&lt;a&gt;</code> dla linków nawigacyjnych</li>
+                    <li>Wykorzystuj semantyczne elementy formularzy</li>
+                </ul>
+            </div>
+
+            <div class="practice-group">
+                <h3>2. Właściwe etykietowanie</h3>
+                <ul>
+                    <li>Każdy element formularza powinien mieć etykietę</li>
+                    <li>Używaj <code>aria-label</code> gdy wizualna etykieta nie jest możliwa</li>
+                    <li>Grupuj powiązane pola w <code>fieldset</code> z <code>legend</code></li>
+                    <li>Dodawaj opisy do złożonych komponentów</li>
+                </ul>
+            </div>
+
+            <div class="practice-group">
+                <h3>3. Komunikowanie stanów</h3>
+                <ul>
+                    <li>Aktualizuj atrybuty ARIA przy zmianach stanu</li>
+                    <li>Używaj <code>aria-expanded</code> dla elementów rozwijanych</li>
+                    <li>Komunikuj stan zaznaczenia przez <code>aria-checked</code></li>
+                    <li>Informuj o wyłączeniu elementów przez <code>aria-disabled</code></li>
+                </ul>
+            </div>
+
+            <div class="practice-group">
+                <h3>4. Testowanie i walidacja</h3>
+                <ul>
+                    <li>Regularnie testuj z czytnikami ekranu</li>
+                    <li>Używaj narzędzi automatycznych do wykrywania problemów</li>
+                    <li>Sprawdzaj drzewo dostępności w narzędziach deweloperskich</li>
+                    <li>Testuj na różnych platformach i przeglądarkach</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="tools">
+            <h2>Narzędzia deweloperskie</h2>
+
+            <h3>Narzędzia przeglądarki</h3>
+            <ul>
+                <li><strong>Chrome DevTools</strong> - zakładka Accessibility w Elements</li>
+                <li><strong>Firefox Developer Tools</strong> - panel Accessibility</li>
+                <li><strong>Safari Web Inspector</strong> - informacje o dostępności</li>
+                <li><strong>Edge DevTools</strong> - audyty dostępności</li>
+            </ul>
+
+            <h3>Rozszerzenia i narzędzia</h3>
+            <ul>
+                <li><a href="https://www.deque.com/axe/devtools/">axe DevTools</a> - kompleksowe testowanie</li>
+                <li><a href="https://wave.webaim.org/">WAVE</a> - analiza dostępności</li>
+                <li><a href="https://accessibilityinsights.io/">Accessibility Insights</a> - szczegółowa ocena</li>
+                <li><a href="https://www.tpgi.com/color-contrast-checker/">Colour Contrast Analyser</a> - sprawdzanie
+                    kontrastu</li>
+            </ul>
+
+            <h3>Czytniki ekranu do testowania</h3>
+            <ul>
+                <li><strong>NVDA</strong> (Windows) - darmowy, open-source</li>
+                <li><strong>JAWS</strong> (Windows) - profesjonalny, płatny</li>
+                <li><strong>VoiceOver</strong> (macOS/iOS) - wbudowany w system</li>
+                <li><strong>Orca</strong> (Linux) - darmowy, open-source</li>
+                <li><strong>TalkBack</strong> (Android) - wbudowany w system</li>
+            </ul>
+        </section>
+
+        <section class="related-criteria">
+            <h2>Powiązane kryteria</h2>
+            <ul>
+                <li><a href="1.3.1.html">1.3.1 Informacje i relacje (A)</a> - struktura i powiązania treści</li>
+                <li><a href="2.1.1.html">2.1.1 Klawiatura (A)</a> - dostępność wszystkich funkcji z klawiatury</li>
+                <li><a href="2.4.6.html">2.4.6 Nagłówki i etykiety (AA)</a> - opisowe nagłówki i etykiety</li>
+                <li><a href="3.3.2.html">3.3.2 Etykiety lub instrukcje (A)</a> - etykiety dla pól wymagających
+                    wprowadzenia danych</li>
+                <li><a href="4.1.3.html">4.1.3 Komunikaty o stanie (AA)</a> - powiadamianie o zmianach stanu</li>
+            </ul>
+        </section>
+
+        <section class="resources">
+            <h2>Zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/name-role-value.html">WCAG 2.1: Understanding
+                        Name, Role, Value</a></li>
+                <li><a href="https://www.w3.org/WAI/ARIA/">WAI-ARIA Authoring Practices Guide</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA">MDN: ARIA
+                        Documentation</a></li>
+                <li><a href="https://webaim.org/techniques/formvalidation/">WebAIM: Creating Accessible Forms</a></li>
+                <li><a href="https://www.levelaccess.com/wcag-2-1-name-role-value/">Level Access: Name, Role, Value
+                        Guide</a></li>
+            </ul>
+        </section>
+
+        <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+            <ul>
+                <li><a href="4.1.1.html">Poprzedni: 4.1.1 Parsowanie</a></li>
+                <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                <li><a href="4.1.3.html">Następny: 4.1.3 Komunikaty o stanie</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

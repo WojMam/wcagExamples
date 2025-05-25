@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4.1.1 Parsowanie (A) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>4.1.1 Parsowanie (A)</h1>
+            <p>W treściach zaimplementowanych przy użyciu języków znaczników elementy mają kompletne tagi
+                początkowe i końcowe, elementy są zagnieżdżone zgodnie ze swoimi specyfikacjami, elementy
+                nie zawierają zduplikowanych atrybutów, a wszystkie identyfikatory są unikalne,
+                z wyjątkiem przypadków, w których specyfikacje pozwalają na te funkcje.</p>
+        </div>
+
+        <div class="info-box warning">
+            <h2>⚠️ Ważna informacja o tym kryterium</h2>
+            <p><strong>W WCAG 2.2 to kryterium zostało uznane za przestarzałe i usunięte.</strong>
+                Nowoczesne przeglądarki i technologie wspomagające radzą sobie z błędami parsowania znacznie lepiej
+                niż w przeszłości. Niemniej jednak, w WCAG 2.1 kryterium to nadal obowiązuje i dobre praktyki
+                związane z poprawnym kodem HTML pozostają ważne dla dostępności.</p>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>Kryterium 4.1.1 "Parsowanie" ma na celu zapewnienie, że programy użytkownika, w tym technologie
+                wspomagające, mogą dokładnie interpretować i analizować treść. Jeśli treść nie może być przeanalizowana
+                w strukturę danych, różne programy użytkownika mogą prezentować ją różnie lub być całkowicie
+                niezdolne do jej przeanalizowania.</p>
+
+            <h3>Główne wymagania</h3>
+            <ul>
+                <li><strong>Kompletne tagi początkowe i końcowe</strong> - gdzie są wymagane przez specyfikację</li>
+                <li><strong>Prawidłowe zagnieżdżenie elementów</strong> - zgodnie z regułami HTML</li>
+                <li><strong>Unikalne identyfikatory</strong> - każdy ID może wystąpić tylko raz na stronie</li>
+                <li><strong>Brak duplikatów atrybutów</strong> - ten sam atrybut nie może powtarzać się w elemencie</li>
+            </ul>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Użytkownicy czytników ekranu</strong> - prawidłowy kod umożliwia dokładne odczytywanie
+                    treści</li>
+                <li><strong>Osoby używające technologii wspomagających</strong> - wszystkie AT działają lepiej z
+                    poprawnym kodem</li>
+                <li><strong>Użytkownicy starszych przeglądarek</strong> - lepsze wsparcie dla różnych wersji</li>
+                <li><strong>Wszyscy użytkownicy</strong> - stabilniejsze i bardziej przewidywalne działanie stron</li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje</h2>
+            <dl>
+                <dt><strong>Parsowanie</strong></dt>
+                <dd>Proces analizowania i interpretowania kodu przez oprogramowanie w celu utworzenia struktury danych
+                </dd>
+
+                <dt><strong>Języki znaczników</strong></dt>
+                <dd>Języki takie jak HTML, XML, SVG, które używają tagów do definiowania struktury i znaczenia treści
+                </dd>
+
+                <dt><strong>Zagnieżdżenie zgodne ze specyfikacją</strong></dt>
+                <dd>Umieszczanie elementów wewnątrz innych elementów zgodnie z regułami HTML (np. &lt;li&gt; tylko w
+                    &lt;ul&gt; lub &lt;ol&gt;)</dd>
+
+                <dt><strong>Unikalne identyfikatory</strong></dt>
+                <dd>Atrybuty id, które występują tylko raz na całej stronie internetowej</dd>
+            </dl>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Brakujące tagi końcowe</h4>
+                <pre><code class="language-html"><!-- Nieprawidłowe - brak tagu końcowego -->
+<div>
+    <p>To jest paragraf
+    <p>To jest drugi paragraf
+</div>
+
+<!-- Nieprawidłowe - źle zagnieżdżone tagi -->
+<p>To jest <strong>pogrubiony <em>tekst</strong> z kursywą</em></p></code></pre>
+                <p><strong>Problem:</strong> Brakujące tagi końcowe i nieprawidłowe zagnieżdżenie może powodować
+                    problemy z interpretacją przez technologie wspomagające.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Duplikaty identyfikatorów</h4>
+                <pre><code class="language-html"><!-- Nieprawidłowe - powtarzające się ID -->
+<form>
+    <label for="name">Imię:</label>
+    <input type="text" id="name" name="firstName">
+    
+    <label for="name">Nazwisko:</label>
+    <input type="text" id="name" name="lastName">
+</form></code></pre>
+                <p><strong>Problem:</strong> Duplikaty ID powodują, że czytniki ekranu mogą odczytywać nieprawidłowe
+                    etykiety dla pól formularza.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Duplikaty atrybutów</h4>
+                <pre><code class="language-html"><!-- Nieprawidłowe - powtarzający się atrybut -->
+<img src="image.jpg" alt="Opis obrazu" alt="Inny opis" width="100">
+
+<!-- Nieprawidłowe - nieprawidłowe zagnieżdżenie list -->
+<ul>
+    <div>Element bez li</div>
+    <li>Prawidłowy element listy</li>
+</ul></code></pre>
+                <p><strong>Problem:</strong> Duplikaty atrybutów i nieprawidłowa struktura mogą powodować
+                    nieprzewidywalne zachowanie.</p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Prawidłowa struktura HTML</h4>
+                <pre><code class="language-html"><!-- Prawidłowe - kompletne tagi i prawidłowe zagnieżdżenie -->
+<div>
+    <p>To jest paragraf z <strong>pogrubionym</strong> tekstem.</p>
+    <p>To jest drugi paragraf z <em>kursywą</em> i <strong><em>pogrubionym tekstem w kursywie</em></strong>.</p>
+</div>
+
+<!-- Prawidłowa struktura nagłówków -->
+<article>
+    <h2>Tytuł artykułu</h2>
+    <p>Treść artykułu...</p>
+    
+    <section>
+        <h3>Podsekcja</h3>
+        <p>Treść podsekcji...</p>
+    </section>
+</article></code></pre>
+                <p><strong>Zalety:</strong> Wszystkie tagi są prawidłowo zamknięte i zagnieżdżone zgodnie ze
+                    specyfikacją HTML.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Unikalne identyfikatory w formularzu</h4>
+                <pre><code class="language-html"><!-- Prawidłowe - unikalne ID dla każdego pola -->
+<form>
+    <div class="form-group">
+        <label for="firstName">Imię:</label>
+        <input type="text" id="firstName" name="firstName" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="lastName">Nazwisko:</label>
+        <input type="text" id="lastName" name="lastName" required>
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Adres email:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+    
+    <button type="submit">Wyślij</button>
+</form></code></pre>
+                <p><strong>Zalety:</strong> Każde pole ma unikalny identyfikator, umożliwiając czytniikom ekranu
+                    prawidłowe kojarzenie etykiet z polami.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Prawidłowa struktura list</h4>
+                <pre><code class="language-html"><!-- Prawidłowa lista nieuporządkowana -->
+<ul>
+    <li>Pierwszy element listy</li>
+    <li>Drugi element listy
+        <ul>
+            <li>Zagnieżdżony element</li>
+            <li>Kolejny zagnieżdżony element</li>
+        </ul>
+    </li>
+    <li>Trzeci element listy</li>
+</ul>
+
+<!-- Prawidłowa lista opisów -->
+<dl>
+    <dt>HTML</dt>
+    <dd>Język znaczników do tworzenia stron internetowych</dd>
+    
+    <dt>CSS</dt>
+    <dd>Język arkuszy stylów do definiowania wyglądu</dd>
+    
+    <dt>JavaScript</dt>
+    <dd>Język programowania do interaktywności</dd>
+</dl></code></pre>
+                <p><strong>Zalety:</strong> Listy są prawidłowo strukturyzowane, co umożliwia technologiom wspomagającym
+                    poprawne ogłaszanie liczby elementów i nawigację po nich.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Prawidłowe atrybuty obrazów</h4>
+                <pre><code class="language-html"><!-- Prawidłowe obrazy z unikalnymi atrybutami -->
+<img src="logo.png" alt="Logo firmy ABC" width="200" height="100" class="logo">
+
+<img src="chart.jpg" alt="Wykres sprzedaży pokazujący wzrost o 25% w ostatnim kwartale" 
+     width="400" height="300" class="chart">
+
+<!-- Obrazy dekoracyjne -->
+<img src="decoration.png" alt="" role="presentation" width="50" height="50"></code></pre>
+                <p><strong>Zalety:</strong> Każdy obraz ma odpowiedni tekst alternatywny i nie ma duplikatów atrybutów.
+                </p>
+            </div>
+        </section>
+
+        <section class="validation-tools">
+            <h2>Narzędzia walidacji</h2>
+
+            <h3>Walidatory online</h3>
+            <div class="tool-list">
+                <div class="tool-item">
+                    <h4><a href="https://validator.w3.org/">W3C Markup Validator</a></h4>
+                    <p>Oficjalny walidator HTML od W3C - sprawdza poprawność składni HTML.</p>
+                    <ul>
+                        <li>Wykrywa błędy parsowania</li>
+                        <li>Sprawdza zagnieżdżenie elementów</li>
+                        <li>Identyfikuje duplikaty atrybutów</li>
+                    </ul>
+                </div>
+
+                <div class="tool-item">
+                    <h4><a href="https://validator.w3.org/nu/">Nu Html Checker</a></h4>
+                    <p>Nowoczesny walidator HTML5 - bardziej aktualny od klasycznego walidatora.</p>
+                    <ul>
+                        <li>Obsługuje najnowsze standardy HTML5</li>
+                        <li>Lepsze komunikaty błędów</li>
+                        <li>API do automatyzacji</li>
+                    </ul>
+                </div>
+
+                <div class="tool-item">
+                    <h4><a href="https://jigsaw.w3.org/css-validator/">CSS Validator</a></h4>
+                    <p>Walidator CSS od W3C - sprawdza poprawność arkuszy stylów.</p>
+                    <ul>
+                        <li>Wykrywa błędy składni CSS</li>
+                        <li>Sprawdza wsparcie dla właściwości</li>
+                        <li>Ostrzeżenia o deprecated funkcjach</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Narzędzia dla deweloperów</h3>
+            <ul>
+                <li><strong>Narzędzia deweloperskie przeglądarki</strong> - sprawdzenie konsoli pod kątem błędów</li>
+                <li><strong>Rozszerzenia przeglądarki</strong> - HTML Validator, Web Developer</li>
+                <li><strong>Linterы kodu</strong> - HTMLHint, W3C Validator w IDE</li>
+                <li><strong>Automated testing</strong> - włączenie walidacji do CI/CD</li>
+            </ul>
+
+            <h3>Sprawdzanie duplikatów ID</h3>
+            <div class="code-example">
+                <h4>JavaScript do wykrywania duplikatów ID</h4>
+                <pre><code class="language-javascript">// Funkcja do sprawdzania duplikatów ID na stronie
+function checkDuplicateIds() {
+    const allElements = document.querySelectorAll('[id]');
+    const ids = [];
+    const duplicates = [];
+    
+    allElements.forEach(element => {
+        if (ids.includes(element.id)) {
+            duplicates.push(element.id);
+        } else {
+            ids.push(element.id);
+        }
+    });
+    
+    if (duplicates.length > 0) {
+        console.error('Znaleziono duplikaty ID:', duplicates);
+        return false;
+    } else {
+        console.log('Wszystkie ID są unikalne');
+        return true;
+    }
+}
+
+// Uruchom sprawdzenie
+checkDuplicateIds();</code></pre>
+                <p>Ta funkcja można uruchomić w konsoli przeglądarki, aby sprawdzić czy na stronie są duplikaty ID.</p>
+            </div>
+        </section>
+
+        <section class="common-errors">
+            <h2>Najczęstsze błędy</h2>
+
+            <h3>1. Nieprawidłowe zagnieżdżenie elementów</h3>
+            <div class="error-example">
+                <h4>❌ Nieprawidłowe:</h4>
+                <pre><code class="language-html"><!-- Div wewnątrz p - niedozwolone -->
+<p>To jest paragraf <div>z divem w środku</div></p>
+
+<!-- Table bez tbody -->
+<table>
+    <tr>
+        <td>Komórka</td>
+    </tr>
+</table></code></pre>
+
+                <h4>✅ Prawidłowe:</h4>
+                <pre><code class="language-html"><!-- Oddzielne elementy blokowe -->
+<p>To jest paragraf</p>
+<div>To jest div</div>
+
+<!-- Prawidłowa struktura tabeli -->
+<table>
+    <tbody>
+        <tr>
+            <td>Komórka</td>
+        </tr>
+    </tbody>
+</table></code></pre>
+            </div>
+
+            <h3>2. Duplikaty ID w dynamicznej treści</h3>
+            <div class="error-example">
+                <h4>❌ Częsty problem z szablonami:</h4>
+                <pre><code class="language-html"><!-- Szablon powtarzany wielokrotnie -->
+<div class="item">
+    <h3 id="title">Tytuł</h3>
+    <p id="description">Opis</p>
+</div>
+<div class="item">
+    <h3 id="title">Inny tytuł</h3> <!-- Duplikat ID! -->
+    <p id="description">Inny opis</p> <!-- Duplikat ID! -->
+</div></code></pre>
+
+                <h4>✅ Rozwiązanie z unikalnymi ID:</h4>
+                <pre><code class="language-html"><!-- Unikalne ID dla każdego elementu -->
+<div class="item">
+    <h3 id="title-1">Tytuł</h3>
+    <p id="description-1">Opis</p>
+</div>
+<div class="item">
+    <h3 id="title-2">Inny tytuł</h3>
+    <p id="description-2">Inny opis</p>
+</div></code></pre>
+            </div>
+
+            <h3>3. Nieprawidłowe atrybuty ARIA</h3>
+            <div class="error-example">
+                <h4>❌ Duplikaty w ARIA:</h4>
+                <pre><code class="language-html"><!-- Duplikat atrybutu aria-label -->
+<button aria-label="Zamknij" aria-label="Anuluj">X</button></code></pre>
+
+                <h4>✅ Jeden atrybut z odpowiednią wartością:</h4>
+                <pre><code class="language-html"><!-- Jeden, jasny atrybut -->
+<button aria-label="Zamknij okno dialogowe">X</button></code></pre>
+            </div>
+        </section>
+
+        <section class="best-practices">
+            <h2>Najlepsze praktyki</h2>
+
+            <div class="practice-section">
+                <h3>1. Systematyczna walidacja</h3>
+                <ul>
+                    <li>Waliduj kod HTML na każdym etapie rozwoju</li>
+                    <li>Włącz walidację do procesu CI/CD</li>
+                    <li>Używaj linterów w IDE do natychmiastowego wykrywania błędów</li>
+                    <li>Regularnie sprawdzaj strony po aktualizacjach</li>
+                </ul>
+            </div>
+
+            <div class="practice-section">
+                <h3>2. Generowanie unikalnych ID</h3>
+                <ul>
+                    <li>Używaj prefiksów lub namespace dla komponentów</li>
+                    <li>W aplikacjach SPA generuj ID dynamicznie</li>
+                    <li>Dokumentuj konwencje nazewnictwa ID w zespole</li>
+                    <li>Używaj narzędzi do automatycznego generowania unikalnych ID</li>
+                </ul>
+            </div>
+
+            <div class="practice-section">
+                <h3>3. Semantyczny HTML</h3>
+                <ul>
+                    <li>Używaj odpowiednich elementów HTML dla treści</li>
+                    <li>Nie używaj div/span tam, gdzie są dostępne semantyczne elementy</li>
+                    <li>Stosuj prawidłową hierarchię nagłówków (h1-h6)</li>
+                    <li>Używaj list dla treści prezentowanych jako listy</li>
+                </ul>
+            </div>
+
+            <div class="practice-section">
+                <h3>4. Testowanie w różnych środowiskach</h3>
+                <ul>
+                    <li>Testuj w różnych przeglądarkach</li>
+                    <li>Sprawdzaj działanie z czytnikami ekranu</li>
+                    <li>Używaj narzędzi deweloperskich do debugowania</li>
+                    <li>Testuj na urządzeniach mobilnych</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="modern-context">
+            <h2>Nowoczesny kontekst</h2>
+
+            <h3>Dlaczego kryterium zostało uznane za przestarzałe?</h3>
+            <p>W WCAG 2.2 kryterium 4.1.1 zostało usunięte z następujących powodów:</p>
+
+            <ul>
+                <li><strong>Lepsza obsługa błędów przez przeglądarki</strong> - nowoczesne przeglądarki skutecznie
+                    radzą sobie z błędami parsowania</li>
+                <li><strong>Standaryzacja parsowania</strong> - HTML Living Standard definiuje jak przeglądarki
+                    powinny obsługiwać błędy</li>
+                <li><strong>Zmiana architektury AT</strong> - technologie wspomagające już nie parsują HTML
+                    bezpośrednio, lecz polegają na przeglądarkach</li>
+                <li><strong>Pokrywanie się z innymi kryteriami</strong> - większość problemów jest teraz
+                    objęta innymi kryteriami</li>
+            </ul>
+
+            <h3>Czy nadal warto przestrzegać tych zasad?</h3>
+            <p><strong>Tak!</strong> Mimo że kryterium zostało usunięte, dobry kod HTML nadal jest ważny dla:</p>
+
+            <ul>
+                <li><strong>Zgodności z WCAG 2.1</strong> - jeśli musisz spełniać WCAG 2.1</li>
+                <li><strong>Stabilności</strong> - poprawny kod działa bardziej przewidywalnie</li>
+                <li><strong>Wydajności</strong> - przeglądarki szybciej przetwarzają poprawny kod</li>
+                <li><strong>Łatwości utrzymania</strong> - czysty kod jest łatwiejszy do modyfikacji</li>
+                <li><strong>Przyszłościowości</strong> - poprawny kod będzie działać w przyszłych przeglądarkach</li>
+            </ul>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie</h2>
+
+            <h3>Lista kontrolna</h3>
+            <ul>
+                <li>Czy strona przechodzi walidację HTML W3C?</li>
+                <li>Czy wszystkie elementy mają kompletne tagi początkowe i końcowe?</li>
+                <li>Czy elementy są prawidłowo zagnieżdżone?</li>
+                <li>Czy wszystkie ID na stronie są unikalne?</li>
+                <li>Czy żaden element nie ma duplikatów atrybutów?</li>
+                <li>Czy struktura list jest prawidłowa (li tylko w ul/ol)?</li>
+                <li>Czy tabele mają prawidłową strukturę?</li>
+                <li>Czy formularze mają poprawnie zdefiniowane etykiety?</li>
+            </ul>
+
+            <h3>Narzędzia automatycznego testowania</h3>
+            <ul>
+                <li><strong>axe-core</strong> - wykrywa duplikaty ID</li>
+                <li><strong>WAVE</strong> - sprawdza podstawowe błędy HTML</li>
+                <li><strong>Lighthouse</strong> - audyt dostępności zawiera sprawdzenie HTML</li>
+                <li><strong>Pa11y</strong> - command-line accessibility testing</li>
+            </ul>
+
+            <h3>Testowanie ręczne</h3>
+            <ol>
+                <li>Otwórz narzędzia deweloperskie przeglądarki</li>
+                <li>Sprawdź konsolę pod kątem błędów HTML</li>
+                <li>Używaj walidatora W3C do szczegółowej analizy</li>
+                <li>Sprawdź źródło strony pod kątem oczywistych błędów</li>
+                <li>Testuj funkcjonalność z czytnikiem ekranu</li>
+            </ol>
+        </section>
+
+        <section class="related-criteria">
+            <h2>Powiązane kryteria</h2>
+            <ul>
+                <li><a href="1.3.1.html">1.3.1 Informacje i relacje (A)</a> - struktura treści</li>
+                <li><a href="4.1.2.html">4.1.2 Nazwa, rola, wartość (A)</a> - właściwości elementów interfejsu</li>
+                <li><a href="4.1.3.html">4.1.3 Komunikaty o stanie (AA)</a> - informowanie o zmianach</li>
+                <li><a href="2.4.6.html">2.4.6 Nagłówki i etykiety (AA)</a> - opisowe nagłówki i etykiety</li>
+            </ul>
+        </section>
+
+        <section class="resources">
+            <h2>Zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/parsing.html">WCAG 2.1: Understanding
+                        Parsing</a></li>
+                <li><a href="https://validator.w3.org/">W3C Markup Validator</a></li>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML">MDN: HTML Documentation</a></li>
+                <li><a href="https://html.spec.whatwg.org/">HTML Living Standard</a></li>
+                <li><a href="https://webaim.org/techniques/semanticstructure/">WebAIM: Semantic Structure</a></li>
+            </ul>
+        </section>
+
+        <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+            <ul>
+                <li><a href="4.1.html">Poprzedni: 4.1 Zgodność</a></li>
+                <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                <li><a href="4.1.2.html">Następny: 4.1.2 Nazwa, rola, wartość</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

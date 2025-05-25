@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3.3.5 Pomoc (AAA) - Nieoficjalny przewodnik WCAG 2.1</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <a href="#main" class="skip-link">Przejdź do treści głównej</a>
+
+    <header>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </header>
+
+    <main id="main">
+        <div class="page-intro">
+            <h1>3.3.5 Pomoc (AAA)</h1>
+            <p>Dostępna jest pomoc kontekstowa.</p>
+        </div>
+
+        <section class="criterion-description">
+            <h2>Opis kryterium</h2>
+            <p>To kryterium poziomu AAA ma na celu pomóc użytkownikom uniknąć błędów poprzez zapewnienie dostępu do
+                pomocy kontekstowej. Osoby z niepełnosprawnościami mogą być bardziej skłonne do popełniania błędów niż
+                użytkownicy bez niepełnosprawności. Dzięki pomocy kontekstowej użytkownicy dowiadują się, jak wykonać
+                operację, nie tracąc z oczu tego, co robią.</p>
+
+            <h3>Charakterystyka pomocy kontekstowej</h3>
+            <ul>
+                <li><strong>Kontekstowa</strong> - związana z aktualnie wykonywaną funkcją</li>
+                <li><strong>Dostępna na żądanie</strong> - użytkownik może ją uzyskać, kiedy jej potrzebuje</li>
+                <li><strong>Oczywista w istnieniu</strong> - użytkownik musi wiedzieć, że pomoc jest dostępna</li>
+                <li><strong>Nie przerwająca</strong> - nie zmusza do opuszczenia bieżącego kontekstu</li>
+                <li><strong>Wsparcie dla etykiet</strong> - uzupełnia etykiety, gdy są niewystarczające</li>
+            </ul>
+
+            <h3>Kiedy wymagana jest pomoc kontekstowa</h3>
+            <p>Pomoc kontekstowa jest wymagana tylko wtedy, gdy sama etykieta nie wystarcza do opisania wszystkich
+                funkcji. Główne sytuacje to:</p>
+            <ul>
+                <li>Formularze wymagające wprowadzania tekstu</li>
+                <li>Pola z oczekiwanym formatem danych</li>
+                <li>Złożone operacje lub procedury</li>
+                <li>Specjalistyczne terminy lub koncepcie</li>
+                <li>Nietypowe sposoby interakcji</li>
+            </ul>
+
+            <h3>Kto odnosi korzyść</h3>
+            <ul>
+                <li><strong>Osoby z trudnościami w pisaniu</strong> - otrzymują wsparcie przy wprowadzaniu tekstu</li>
+                <li><strong>Osoby z ograniczeniami intelektualnymi</strong> - lepiej rozumieją wymagania</li>
+                <li><strong>Osoby z trudnościami w czytaniu</strong> - otrzymują dodatkowe wyjaśnienia</li>
+                <li><strong>Seniorzy</strong> - mają dostęp do dodatkowych instrukcji</li>
+                <li><strong>Osoby z ograniczeniami poznawczymi</strong> - otrzymują wsparcie w podejmowaniu decyzji</li>
+                <li><strong>Wszyscy użytkownicy</strong> - mogą lepiej zrozumieć złożone funkcje</li>
+            </ul>
+        </section>
+
+        <section class="definitions">
+            <h2>Definicje</h2>
+            <dl>
+                <dt><strong>Pomoc kontekstowa</strong></dt>
+                <dd>Tekst pomocy, który dostarcza informacji związanych z funkcją aktualnie wykonywaną</dd>
+
+                <dt><strong>Etykieta</strong></dt>
+                <dd>Tekst lub inne komponenty prezentowane użytkownikowi w celu identyfikacji składnika treści
+                    internetowych</dd>
+
+                <dt><strong>Funkcja</strong></dt>
+                <dd>Działanie lub operacja, którą użytkownik może wykonać za pomocą elementu interfejsu</dd>
+
+                <dt><strong>Kontekst</strong></dt>
+                <dd>Otoczenie lub sytuacja, w której użytkownik wykonuje określoną czynność</dd>
+            </dl>
+        </section>
+
+        <section class="examples">
+            <h2>Przykłady</h2>
+
+            <h3 class="bad-practice">❌ Nieprawidłowe implementacje</h3>
+
+            <div class="example-block bad-example">
+                <h4>Brak pomocy dla złożonych pól</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - brak pomocy dla złożonego pola --&gt;
+&lt;label for="tax-id"&gt;Numer identyfikacyjny:&lt;/label&gt;
+&lt;input type="text" id="tax-id" name="tax-id" required&gt;
+
+&lt;label for="reference-number"&gt;Numer referencyjny dokumentu:&lt;/label&gt;
+&lt;input type="text" id="reference-number" name="reference-number"&gt;
+
+&lt;label for="classification-code"&gt;Kod klasyfikacji:&lt;/label&gt;
+&lt;input type="text" id="classification-code" name="classification-code"&gt;</code></pre>
+                <p><strong>Problem:</strong> Użytkownik nie wie, który dokument ma podać ani gdzie znaleźć wymagane
+                    informacje.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Pomoc niedostępna w kontekście</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - pomoc wymaga opuszczenia formularza --&gt;
+&lt;form&gt;
+    &lt;label for="iban"&gt;Numer IBAN:&lt;/label&gt;
+    &lt;input type="text" id="iban" name="iban" required&gt;
+    
+    &lt;label for="swift"&gt;Kod SWIFT:&lt;/label&gt;
+    &lt;input type="text" id="swift" name="swift" required&gt;
+    
+    &lt;p&gt;Aby uzyskać pomoc z numerem IBAN i kodem SWIFT, 
+    &lt;a href="/help/banking-info" target="_blank"&gt;kliknij tutaj&lt;/a&gt;.&lt;/p&gt;
+    
+    &lt;button type="submit"&gt;Wyślij&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                <p><strong>Problem:</strong> Pomoc wymaga opuszczenia formularza i otworzenia nowej strony, co przerywa
+                    proces.</p>
+            </div>
+
+            <div class="example-block bad-example">
+                <h4>Nieoczywista dostępność pomocy</h4>
+                <pre><code class="language-html">&lt;!-- Nieprawidłowe - ukryta pomoc --&gt;
+&lt;label for="password"&gt;Hasło:&lt;/label&gt;
+&lt;input type="password" id="password" name="password" 
+       title="Hasło musi mieć minimum 8 znaków, zawierać wielką literę, cyfrę i znak specjalny"&gt;
+
+&lt;label for="confirm-password"&gt;Potwierdź hasło:&lt;/label&gt;
+&lt;input type="password" id="confirm-password" name="confirm-password"&gt;</code></pre>
+                <p><strong>Problem:</strong> Pomoc ukryta w atrybucie title nie jest oczywista i może być niedostępna
+                    dla niektórych użytkowników.</p>
+            </div>
+
+            <h3 class="good-practice">✅ Prawidłowe implementacje</h3>
+
+            <div class="example-block good-example">
+                <h4>Pomoc kontekstowa z ikonami i tooltipami</h4>
+                <pre><code class="language-html">&lt;!-- Prawidłowe - oczywista pomocy kontekstowa --&gt;
+&lt;div class="form-group"&gt;
+    &lt;label for="pesel"&gt;
+        Numer PESEL: *
+        &lt;button type="button" class="help-button" aria-describedby="pesel-help" onclick="toggleHelp('pesel-help')"&gt;
+            &lt;span class="visually-hidden"&gt;Pomoc dla pola PESEL&lt;/span&gt;
+            &lt;svg aria-hidden="true" class="help-icon"&gt;
+                &lt;use href="#icon-help"&gt;&lt;/use&gt;
+            &lt;/svg&gt;
+        &lt;/button&gt;
+    &lt;/label&gt;
+    &lt;input type="text" id="pesel" name="pesel" required 
+           aria-describedby="pesel-help" maxlength="11"&gt;
+    
+    &lt;div id="pesel-help" class="help-text" hidden&gt;
+        &lt;h4&gt;Czym jest numer PESEL?&lt;/h4&gt;
+        &lt;p&gt;PESEL to 11-cyfrowy numer identyfikujący osobę fizyczną.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Gdzie znajdziesz swój PESEL:&lt;/strong&gt;&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Dowód osobisty&lt;/li&gt;
+            &lt;li&gt;Paszport&lt;/li&gt;
+            &lt;li&gt;Akt urodzenia&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p&gt;&lt;strong&gt;Format:&lt;/strong&gt; 11 cyfr bez spacji, np. 80010112345&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="form-group"&gt;
+    &lt;label for="nip"&gt;
+        Numer NIP: *
+        &lt;button type="button" class="help-button" aria-describedby="nip-help" onclick="toggleHelp('nip-help')"&gt;
+            &lt;span class="visually-hidden"&gt;Pomoc dla pola NIP&lt;/span&gt;
+            &lt;svg aria-hidden="true" class="help-icon"&gt;
+                &lt;use href="#icon-help"&gt;&lt;/use&gt;
+            &lt;/svg&gt;
+        &lt;/button&gt;
+    &lt;/label&gt;
+    &lt;input type="text" id="nip" name="nip" required 
+           aria-describedby="nip-help" maxlength="10"&gt;
+    
+    &lt;div id="nip-help" class="help-text" hidden&gt;
+        &lt;h4&gt;Numer NIP dla firm&lt;/h4&gt;
+        &lt;p&gt;NIP to 10-cyfrowy Numer Identyfikacji Podatkowej.&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Gdzie znajdziesz NIP:&lt;/strong&gt;&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li&gt;Zaświadczenie o wpisie do ewidencji&lt;/li&gt;
+            &lt;li&gt;Faktury wystawione przez firmę&lt;/li&gt;
+            &lt;li&gt;KRS lub CEIDG&lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;p&gt;&lt;strong&gt;Format:&lt;/strong&gt; 10 cyfr, np. 1234567890&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function toggleHelp(helpId) {
+    const helpElement = document.getElementById(helpId);
+    const isHidden = helpElement.hidden;
+    
+    // Ukryj wszystkie inne pomocs
+    document.querySelectorAll('.help-text').forEach(help =&gt; {
+        help.hidden = true;
+    });
+    
+    // Pokaż/ukryj aktualną pomoc
+    helpElement.hidden = !isHidden;
+    helpElement.focus();
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Zalety:</strong> Oczywista dostępność pomocy, kontekstowe informacje, nie przerywa procesu
+                    wypełniania.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Formularz aplikacji o pracę z pomocą</h4>
+                <pre><code class="language-html">&lt;!-- Kompleksowy formularz z pomocą kontekstową --&gt;
+&lt;form class="job-application"&gt;
+    &lt;h2&gt;Aplikacja o pracę - Programista JavaScript&lt;/h2&gt;
+    
+    &lt;div class="form-section"&gt;
+        &lt;h3&gt;Doświadczenie zawodowe&lt;/h3&gt;
+        
+        &lt;div class="form-group"&gt;
+            &lt;label for="experience-years"&gt;
+                Lata doświadczenia w JavaScript:
+                &lt;span class="help-trigger" onclick="showInlineHelp('experience-help')"&gt;
+                    &lt;span class="help-icon" aria-hidden="true"&gt;?&lt;/span&gt;
+                    &lt;span class="visually-hidden"&gt;Zobacz pomoc&lt;/span&gt;
+                &lt;/span&gt;
+            &lt;/label&gt;
+            &lt;select id="experience-years" name="experience-years" aria-describedby="experience-help"&gt;
+                &lt;option value=""&gt;Wybierz poziom&lt;/option&gt;
+                &lt;option value="0-1"&gt;0-1 rok&lt;/option&gt;
+                &lt;option value="1-3"&gt;1-3 lata&lt;/option&gt;
+                &lt;option value="3-5"&gt;3-5 lat&lt;/option&gt;
+                &lt;option value="5+"&gt;Ponad 5 lat&lt;/option&gt;
+            &lt;/select&gt;
+            
+            &lt;div id="experience-help" class="inline-help" hidden&gt;
+                &lt;strong&gt;Jak liczyć doświadczenie:&lt;/strong&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Uwzględnij wszystkie projekty komercyjne&lt;/li&gt;
+                    &lt;li&gt;Licz staże i praktyki&lt;/li&gt;
+                    &lt;li&gt;Nie licz projektów edukacyjnych&lt;/li&gt;
+                    &lt;li&gt;W razie wątpliwości wybierz niższą opcję&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="form-group"&gt;
+            &lt;label for="portfolio-url"&gt;
+                Link do portfolio/GitHub:
+                &lt;span class="help-trigger" onclick="showInlineHelp('portfolio-help')"&gt;
+                    &lt;span class="help-icon" aria-hidden="true"&gt;?&lt;/span&gt;
+                    &lt;span class="visually-hidden"&gt;Zobacz pomoc&lt;/span&gt;
+                &lt;/span&gt;
+            &lt;/label&gt;
+            &lt;input type="url" id="portfolio-url" name="portfolio-url" 
+                   aria-describedby="portfolio-help" placeholder="https://"&gt;
+            
+            &lt;div id="portfolio-help" class="inline-help" hidden&gt;
+                &lt;strong&gt;Co powinno zawierać portfolio:&lt;/strong&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;2-3 najlepsze projekty&lt;/li&gt;
+                    &lt;li&gt;Opis użytych technologii&lt;/li&gt;
+                    &lt;li&gt;Link do działającej aplikacji (jeśli możliwe)&lt;/li&gt;
+                    &lt;li&gt;Kod źródłowy (GitHub, GitLab itp.)&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;p&gt;&lt;strong&gt;Przykłady dobrych linków:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;github.com/twojnick&lt;/li&gt;
+                    &lt;li&gt;twojasrona-portfolio.com&lt;/li&gt;
+                    &lt;li&gt;codepen.io/twojnick&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="form-group"&gt;
+            &lt;label for="salary-expectation"&gt;
+                Oczekiwania finansowe (brutto miesięcznie):
+                &lt;span class="help-trigger" onclick="showInlineHelp('salary-help')"&gt;
+                    &lt;span class="help-icon" aria-hidden="true"&gt;?&lt;/span&gt;
+                    &lt;span class="visually-hidden"&gt;Zobacz pomoc&lt;/span&gt;
+                &lt;/span&gt;
+            &lt;/label&gt;
+            &lt;input type="text" id="salary-expectation" name="salary-expectation" 
+                   aria-describedby="salary-help" placeholder="np. 8000 PLN"&gt;
+            
+            &lt;div id="salary-help" class="inline-help" hidden&gt;
+                &lt;strong&gt;Wskazówki dotyczące wynagrodzenia:&lt;/strong&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Podaj kwotę brutto (przed podatkami)&lt;/li&gt;
+                    &lt;li&gt;Kwota miesięczna, nie roczna&lt;/li&gt;
+                    &lt;li&gt;Możesz podać widełki, np. "7000-9000 PLN"&lt;/li&gt;
+                    &lt;li&gt;To tylko wstępne oczekiwania - można negocjować&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;p&gt;&lt;strong&gt;Średnie zarobki w branży (JavaScript):&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Junior: 4000-7000 PLN&lt;/li&gt;
+                    &lt;li&gt;Mid: 7000-12000 PLN&lt;/li&gt;
+                    &lt;li&gt;Senior: 12000-20000+ PLN&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="form-section"&gt;
+        &lt;h3&gt;Dodatkowe informacje&lt;/h3&gt;
+        
+        &lt;div class="form-group"&gt;
+            &lt;label for="motivation-letter"&gt;
+                List motywacyjny:
+                &lt;span class="help-trigger" onclick="showInlineHelp('motivation-help')"&gt;
+                    &lt;span class="help-icon" aria-hidden="true"&gt;?&lt;/span&gt;
+                    &lt;span class="visually-hidden"&gt;Zobacz pomoc&lt;/span&gt;
+                &lt;/span&gt;
+            &lt;/label&gt;
+            &lt;textarea id="motivation-letter" name="motivation-letter" 
+                      aria-describedby="motivation-help" rows="6" 
+                      placeholder="Dlaczego chcesz u nas pracować?"&gt;&lt;/textarea&gt;
+            
+            &lt;div id="motivation-help" class="inline-help" hidden&gt;
+                &lt;strong&gt;Jak napisać dobry list motywacyjny:&lt;/strong&gt;
+                &lt;ol&gt;
+                    &lt;li&gt;&lt;strong&gt;Dlaczego ta firma?&lt;/strong&gt; - Co Cię w nas interesuje?&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;Twoje mocne strony&lt;/strong&gt; - Jakie masz umiejętności?&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;Konkretne przykłady&lt;/strong&gt; - Jakie projekty realizowałeś?&lt;/li&gt;
+                    &lt;li&gt;&lt;strong&gt;Plany rozwoju&lt;/strong&gt; - Czego chcesz się nauczyć?&lt;/li&gt;
+                &lt;/ol&gt;
+                &lt;p&gt;&lt;strong&gt;Długość:&lt;/strong&gt; 200-500 słów (1-2 akapity)&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;Ton:&lt;/strong&gt; Profesjonalny, ale nie sztywny&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    
+    &lt;div class="form-actions"&gt;
+        &lt;button type="submit"&gt;Wyślij aplikację&lt;/button&gt;
+        &lt;button type="button" onclick="showGeneralHelp()"&gt;Ogólna pomoc&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/form&gt;
+
+&lt;!-- Modal z ogólną pomocą --&gt;
+&lt;div id="general-help-modal" class="modal" hidden&gt;
+    &lt;div class="modal-content"&gt;
+        &lt;h3&gt;Pomoc - Aplikacja o pracę&lt;/h3&gt;
+        &lt;div class="help-content"&gt;
+            &lt;h4&gt;Jak wypełnić formularz?&lt;/h4&gt;
+            &lt;p&gt;Przy każdym polu znajdziesz ikonę "?" - kliknij, aby otrzymać szczegółową pomoc.&lt;/p&gt;
+            
+            &lt;h4&gt;Problemy techniczne&lt;/h4&gt;
+            &lt;p&gt;Jeśli formularz nie działa prawidłowo:&lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;Odśwież stronę&lt;/li&gt;
+                &lt;li&gt;Spróbuj w innej przeglądarce&lt;/li&gt;
+                &lt;li&gt;Skontaktuj się z nami: rekrutacja@firma.pl&lt;/li&gt;
+            &lt;/ul&gt;
+            
+            &lt;h4&gt;Pytania o proces rekrutacji&lt;/h4&gt;
+            &lt;p&gt;Email: rekrutacja@firma.pl&lt;/p&gt;
+            &lt;p&gt;Telefon: 123-456-789 (pon-pt, 9-17)&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;button type="button" onclick="closeGeneralHelp()"&gt;Zamknij&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+function showInlineHelp(helpId) {
+    const helpElement = document.getElementById(helpId);
+    
+    // Ukryj wszystkie inne pomoce inline
+    document.querySelectorAll('.inline-help').forEach(help =&gt; {
+        if (help.id !== helpId) {
+            help.hidden = true;
+        }
+    });
+    
+    // Toggle aktualnej pomocy
+    helpElement.hidden = !helpElement.hidden;
+    
+    if (!helpElement.hidden) {
+        helpElement.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+function showGeneralHelp() {
+    document.getElementById('general-help-modal').hidden = false;
+}
+
+function closeGeneralHelp() {
+    document.getElementById('general-help-modal').hidden = true;
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Zalety:</strong> Szczegółowa pomoc kontekstowa, praktyczne wskazówki, kombinacja pomocy
+                    inline i modalnej.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>System pomocy z asystentem wirtualnym</h4>
+                <pre><code class="language-html">&lt;!-- Zaawansowany system pomocy kontekstowej --&gt;
+&lt;div class="form-with-assistant"&gt;
+    &lt;form id="tax-form"&gt;
+        &lt;h2&gt;Rozliczenie podatkowe online&lt;/h2&gt;
+        
+        &lt;div class="form-group"&gt;
+            &lt;label for="income-type"&gt;Rodzaj przychodu:&lt;/label&gt;
+            &lt;select id="income-type" name="income-type" required 
+                    onchange="updateContextualHelp('income-type')"&gt;
+                &lt;option value=""&gt;Wybierz rodzaj&lt;/option&gt;
+                &lt;option value="employment"&gt;Umowa o pracę&lt;/option&gt;
+                &lt;option value="contract"&gt;Umowa zlecenie&lt;/option&gt;
+                &lt;option value="business"&gt;Działalność gospodarcza&lt;/option&gt;
+                &lt;option value="rental"&gt;Wynajem nieruchomości&lt;/option&gt;
+            &lt;/select&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="form-group"&gt;
+            &lt;label for="annual-income"&gt;Roczny przychód (brutto):&lt;/label&gt;
+            &lt;input type="number" id="annual-income" name="annual-income" 
+                   oninput="updateContextualHelp('annual-income')"&gt;
+            &lt;span class="currency"&gt;PLN&lt;/span&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="form-group"&gt;
+            &lt;label for="tax-deductions"&gt;Odliczenia podatkowe:&lt;/label&gt;
+            &lt;input type="number" id="tax-deductions" name="tax-deductions" 
+                   onfocus="updateContextualHelp('tax-deductions')"&gt;
+            &lt;span class="currency"&gt;PLN&lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+    
+    &lt;!-- Asystent kontekstowy --&gt;
+    &lt;div class="context-assistant" id="context-assistant"&gt;
+        &lt;div class="assistant-header"&gt;
+            &lt;h3&gt;Asystent podatkowy&lt;/h3&gt;
+            &lt;button type="button" onclick="minimizeAssistant()" class="minimize-btn"&gt;−&lt;/button&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="assistant-content" id="assistant-content"&gt;
+            &lt;div class="assistant-message"&gt;
+                &lt;p&gt;👋 Witaj! Pomogę Ci wypełnić rozliczenie podatkowe.&lt;/p&gt;
+                &lt;p&gt;Kliknij na dowolne pole formularza, aby otrzymać szczegółową pomoc.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="assistant-actions"&gt;
+            &lt;button type="button" onclick="showCommonQuestions()"&gt;Częste pytania&lt;/button&gt;
+            &lt;button type="button" onclick="contactSupport()"&gt;Kontakt z ekspertem&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Modal z częstymi pytaniami --&gt;
+&lt;div id="faq-modal" class="modal" hidden&gt;
+    &lt;div class="modal-content"&gt;
+        &lt;h3&gt;Najczęściej zadawane pytania&lt;/h3&gt;
+        
+        &lt;div class="faq-list"&gt;
+            &lt;details&gt;
+                &lt;summary&gt;Jak rozróżnić umowę o pracę od zlecenia?&lt;/summary&gt;
+                &lt;div class="faq-answer"&gt;
+                    &lt;p&gt;&lt;strong&gt;Umowa o pracę:&lt;/strong&gt;&lt;/p&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;Stałe godziny pracy&lt;/li&gt;
+                        &lt;li&gt;Comiesięczne wynagrodzenie&lt;/li&gt;
+                        &lt;li&gt;Podległość służbowa&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;p&gt;&lt;strong&gt;Umowa zlecenie:&lt;/strong&gt;&lt;/p&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;Wykonanie konkretnego zadania&lt;/li&gt;
+                        &lt;li&gt;Swoboda w sposobie wykonania&lt;/li&gt;
+                        &lt;li&gt;Wynagrodzenie za efekt&lt;/li&gt;
+                    &lt;/ul&gt;
+                &lt;/div&gt;
+            &lt;/details&gt;
+            
+            &lt;details&gt;
+                &lt;summary&gt;Co można odliczyć od podatku?&lt;/summary&gt;
+                &lt;div class="faq-answer"&gt;
+                    &lt;p&gt;&lt;strong&gt;Popularne odliczenia:&lt;/strong&gt;&lt;/p&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;Darowizny na cele charytatywne (do 6% dochodu)&lt;/li&gt;
+                        &lt;li&gt;Wydatki rehabilitacyjne&lt;/li&gt;
+                        &lt;li&gt;Składki na ubezpieczenie zdrowotne&lt;/li&gt;
+                        &lt;li&gt;Wpłaty na PPK/IKE (do limitu)&lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;p&gt;&lt;strong&gt;Ważne:&lt;/strong&gt; Zachowaj wszystkie dokumenty!&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/details&gt;
+            
+            &lt;details&gt;
+                &lt;summary&gt;Co zrobić jeśli nie mam PIT-11?&lt;/summary&gt;
+                &lt;div class="faq-answer"&gt;
+                    &lt;p&gt;Jeśli nie otrzymałeś PIT-11 od pracodawcy:&lt;/p&gt;
+                    &lt;ol&gt;
+                        &lt;li&gt;Skontaktuj się z działem kadr&lt;/li&gt;
+                        &lt;li&gt;Sprawdź Twój e-PIT na gov.pl&lt;/li&gt;
+                        &lt;li&gt;W ostateczności użyj danych z pasków wypłat&lt;/li&gt;
+                    &lt;/ol&gt;
+                &lt;/div&gt;
+            &lt;/details&gt;
+        &lt;/div&gt;
+        
+        &lt;button type="button" onclick="closeFAQ()"&gt;Zamknij&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+const contextualHelp = {
+    'income-type': {
+        'employment': {
+            title: 'Umowa o pracę',
+            content: `
+                &lt;p&gt;Wybrałeś umowę o pracę. To oznacza:&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Podatek jest potrącany automatycznie&lt;/li&gt;
+                    &lt;li&gt;Możesz otrzymać zwrot nadpłaty&lt;/li&gt;
+                    &lt;li&gt;Sprawdź PIT-11 od pracodawcy&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;p&gt;&lt;strong&gt;Następny krok:&lt;/strong&gt; Wprowadź kwotę z pola "Przychody" z PIT-11.&lt;/p&gt;
+            `
+        },
+        'business': {
+            title: 'Działalność gospodarcza',
+            content: `
+                &lt;p&gt;Prowadzisz działalność gospodarczą. Ważne informacje:&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Musisz rozliczać się samodzielnie&lt;/li&gt;
+                    &lt;li&gt;Możesz odliczyć koszty prowadzenia działalności&lt;/li&gt;
+                    &lt;li&gt;Sprawdź czy jesteś na podatku liniowym czy progresywnym&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;p&gt;&lt;strong&gt;Potrzebujesz:&lt;/strong&gt; Ewidencji przychodów i kosztów&lt;/p&gt;
+            `
+        },
+        'rental': {
+            title: 'Wynajem nieruchomości',
+            content: `
+                &lt;p&gt;Wynajmujesz nieruchomość. Pamiętaj o:&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Możliwości odliczenia kosztów (remonty, podatek od nieruchomości)&lt;/li&gt;
+                    &lt;li&gt;Amortyzacji nieruchomości&lt;/li&gt;
+                    &lt;li&gt;Podatku od czynności cywilnoprawnych (przy pierwszym wynajmie)&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;p&gt;&lt;strong&gt;Wskazówka:&lt;/strong&gt; Zachowaj faktury za wszystkie naprawy i usprawnienia&lt;/p&gt;
+            `
+        }
+    },
+    'annual-income': {
+        title: 'Roczny przychód',
+        content: `
+            &lt;p&gt;Wprowadź swój całkowity przychód za rok podatkowy.&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Gdzie znajdziesz tę informację:&lt;/strong&gt;&lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;PIT-11 (umowa o pracę) - pole "Przychody"&lt;/li&gt;
+                &lt;li&gt;PIT-11A (zlecenia) - suma wszystkich przychodów&lt;/li&gt;
+                &lt;li&gt;Ewidencja (działalność) - suma miesięcznych przychodów&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;&lt;strong&gt;Uwaga:&lt;/strong&gt; To kwota BRUTTO (przed potrąceniem podatku)&lt;/p&gt;
+        `
+    },
+    'tax-deductions': {
+        title: 'Odliczenia podatkowe',
+        content: `
+            &lt;p&gt;Tutaj wprowadź kwoty, które możesz odliczyć od podstawy opodatkowania.&lt;/p&gt;
+            &lt;p&gt;&lt;strong&gt;Najczęstsze odliczenia:&lt;/strong&gt;&lt;/p&gt;
+            &lt;ul&gt;
+                &lt;li&gt;Darowizny (max 6% dochodu)&lt;/li&gt;
+                &lt;li&gt;Wydatki rehabilitacyjne&lt;/li&gt;
+                &lt;li&gt;Wpłaty na PPK/IKE&lt;/li&gt;
+                &lt;li&gt;Składki na dodatkowe ubezpieczenia&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;p&gt;&lt;strong&gt;Ważne:&lt;/strong&gt; Potrzebujesz dokumentów potwierdzających (faktury, potwierdzenienia)&lt;/p&gt;
+            &lt;button type="button" onclick="showDeductionCalculator()"&gt;Kalkulator odliczeń&lt;/button&gt;
+        `
+    }
+};
+
+function updateContextualHelp(fieldName) {
+    const assistantContent = document.getElementById('assistant-content');
+    const fieldValue = document.getElementById(fieldName).value;
+    
+    let helpContent = '';
+    
+    if (fieldName === 'income-type' && fieldValue && contextualHelp[fieldName][fieldValue]) {
+        const help = contextualHelp[fieldName][fieldValue];
+        helpContent = `
+            &lt;div class="assistant-message"&gt;
+                &lt;h4&gt;💡 ${help.title}&lt;/h4&gt;
+                ${help.content}
+            &lt;/div&gt;
+        `;
+    } else if (contextualHelp[fieldName]) {
+        const help = contextualHelp[fieldName];
+        helpContent = `
+            &lt;div class="assistant-message"&gt;
+                &lt;h4&gt;💡 ${help.title}&lt;/h4&gt;
+                ${help.content}
+            &lt;/div&gt;
+        `;
+    }
+    
+    if (helpContent) {
+        assistantContent.innerHTML = helpContent;
+    }
+}
+
+function showCommonQuestions() {
+    document.getElementById('faq-modal').hidden = false;
+}
+
+function closeFAQ() {
+    document.getElementById('faq-modal').hidden = true;
+}
+
+function minimizeAssistant() {
+    const assistant = document.getElementById('context-assistant');
+    assistant.classList.toggle('minimized');
+}
+
+function contactSupport() {
+    alert('Funkcja kontaktu z ekspertem zostanie wkrótce dodana. Na razie skorzystaj z FAQ lub napisz na: pomoc@portal-podatkowy.pl');
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Zalety:</strong> Inteligentny asystent kontekstowy, dynamiczna pomoc, FAQ, kontakt z
+                    ekspertem.</p>
+            </div>
+
+            <div class="example-block good-example">
+                <h4>Pomoc z automatycznym sprawdzaniem pisowni</h4>
+                <pre><code class="language-html">&lt;!-- Formularz z zaawansowaną pomocą przy wprowadzaniu tekstu --&gt;
+&lt;div class="text-input-assistance"&gt;
+    &lt;form&gt;
+        &lt;div class="form-group"&gt;
+            &lt;label for="city-name"&gt;
+                Miasto urodzenia:
+                &lt;span class="help-info"&gt;Wpisz pełną nazwę miasta&lt;/span&gt;
+            &lt;/label&gt;
+            &lt;input type="text" id="city-name" name="city-name" 
+                   aria-describedby="city-help" 
+                   oninput="provideCitySuggestions(this.value)"
+                   autocomplete="address-level2"&gt;
+            
+            &lt;div id="city-suggestions" class="suggestions-list" hidden&gt;
+                &lt;!-- Sugestie będą dodawane dynamicznie --&gt;
+            &lt;/div&gt;
+            
+            &lt;div id="city-help" class="field-help"&gt;
+                &lt;p&gt;&lt;strong&gt;Wskazówki:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Wprowadź pełną nazwę (np. "Warszawa", nie "W-wa")&lt;/li&gt;
+                    &lt;li&gt;System podpowie podobne nazwy&lt;/li&gt;
+                    &lt;li&gt;Dla miast za granicą: "Nazwa, Kraj"&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div class="form-group"&gt;
+            &lt;label for="description"&gt;
+                Opis doświadczenia zawodowego:
+                &lt;span class="help-info"&gt;Minimum 100 słów&lt;/span&gt;
+            &lt;/label&gt;
+            &lt;textarea id="description" name="description" 
+                      aria-describedby="description-help description-counter"
+                      oninput="updateWordCount(this)" 
+                      onblur="checkSpelling(this)"
+                      rows="6" minlength="100"&gt;&lt;/textarea&gt;
+            
+            &lt;div id="description-counter" class="word-counter"&gt;
+                Słów: &lt;span id="word-count"&gt;0&lt;/span&gt; / 100 (minimum)
+            &lt;/div&gt;
+            
+            &lt;div id="spelling-suggestions" class="spelling-help" hidden&gt;
+                &lt;!-- Sugestie pisowni będą dodawane tutaj --&gt;
+            &lt;/div&gt;
+            
+            &lt;div id="description-help" class="field-help"&gt;
+                &lt;p&gt;&lt;strong&gt;Co opisać:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Główne obowiązki na poprzednich stanowiskach&lt;/li&gt;
+                    &lt;li&gt;Osiągnięcia i sukcesy&lt;/li&gt;
+                    &lt;li&gt;Wykorzystywane technologie i narzędzia&lt;/li&gt;
+                    &lt;li&gt;Kompetencje miękkie&lt;/li&gt;
+                &lt;/ul&gt;
+                &lt;details&gt;
+                    &lt;summary&gt;Zobacz przykład opisu&lt;/summary&gt;
+                    &lt;div class="example-text"&gt;
+                        &lt;p&gt;&lt;em&gt;"Przez 3 lata pracowałem jako frontend developer w firmie technologicznej. 
+                        Odpowiadałem za tworzenie aplikacji webowych w React.js, współpracowałem 
+                        z zespołem UX/UI przy projektowaniu interfejsów użytkownika. Zrealizowałem 
+                        projekty dla klientów z branży e-commerce, co pozwoliło mi nabyć doświadczenie 
+                        w integracji z systemami płatności i zarządzaniu dużym ruchem na stronie."&lt;/em&gt;&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/details&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+// Symulowane dane miast polskich
+const polishCities = [
+    'Warszawa', 'Kraków', 'Łódź', 'Wrocław', 'Poznań', 'Gdańsk', 'Szczecin', 
+    'Bydgoszcz', 'Lublin', 'Katowice', 'Białystok', 'Gdynia', 'Częstochowa',
+    'Radom', 'Sosnowiec', 'Toruń', 'Kielce', 'Gliwice', 'Zabrze', 'Bytom'
+];
+
+function provideCitySuggestions(input) {
+    const suggestionsContainer = document.getElementById('city-suggestions');
+    
+    if (input.length &lt; 2) {
+        suggestionsContainer.hidden = true;
+        return;
+    }
+    
+    const matches = polishCities.filter(city =&gt; 
+        city.toLowerCase().includes(input.toLowerCase())
+    );
+    
+    if (matches.length &gt; 0) {
+        suggestionsContainer.innerHTML = `
+            &lt;h4&gt;Sugestie miast:&lt;/h4&gt;
+            &lt;ul&gt;
+                ${matches.slice(0, 5).map(city =&gt; `
+                    &lt;li&gt;
+                        &lt;button type="button" onclick="selectCity('${city}')"&gt;${city}&lt;/button&gt;
+                    &lt;/li&gt;
+                `).join('')}
+            &lt;/ul&gt;
+        `;
+        suggestionsContainer.hidden = false;
+    } else {
+        suggestionsContainer.innerHTML = `
+            &lt;p&gt;Nie znaleziono miasta "${input}". Sprawdź pisownię lub wprowadź pełną nazwę.&lt;/p&gt;
+            &lt;p&gt;Dla miast zagranicznych użyj formatu: "Nazwa, Kraj" (np. "Berlin, Niemcy")&lt;/p&gt;
+        `;
+        suggestionsContainer.hidden = false;
+    }
+}
+
+function selectCity(cityName) {
+    document.getElementById('city-name').value = cityName;
+    document.getElementById('city-suggestions').hidden = true;
+}
+
+function updateWordCount(textarea) {
+    const text = textarea.value.trim();
+    const wordCount = text ? text.split(/\s+/).length : 0;
+    const counter = document.getElementById('word-count');
+    const container = document.getElementById('description-counter');
+    
+    counter.textContent = wordCount;
+    
+    if (wordCount &gt;= 100) {
+        container.className = 'word-counter sufficient';
+    } else if (wordCount &gt;= 50) {
+        container.className = 'word-counter partial';
+    } else {
+        container.className = 'word-counter insufficient';
+    }
+}
+
+// Symulowane sprawdzanie pisowni
+function checkSpelling(textarea) {
+    const text = textarea.value.toLowerCase();
+    const suggestionContainer = document.getElementById('spelling-suggestions');
+    
+    // Symulowane częste błędy
+    const commonMistakes = {
+        'javascript': 'JavaScript',
+        'react': 'React',
+        'node.js': 'Node.js',
+        'html': 'HTML',
+        'css': 'CSS',
+        'responsywny': 'responsywny (sprawdź pisownię)',
+        'technologi': 'technologie',
+        'skillow': 'umiejętności'
+    };
+    
+    const suggestions = [];
+    
+    for (const [mistake, correction] of Object.entries(commonMistakes)) {
+        if (text.includes(mistake) && mistake !== correction.toLowerCase()) {
+            suggestions.push(`"${mistake}" → "${correction}"`);
+        }
+    }
+    
+    if (suggestions.length &gt; 0) {
+        suggestionContainer.innerHTML = `
+            &lt;h4&gt;💡 Sugestie poprawek:&lt;/h4&gt;
+            &lt;ul&gt;
+                ${suggestions.map(suggestion =&gt; `&lt;li&gt;${suggestion}&lt;/li&gt;`).join('')}
+            &lt;/ul&gt;
+            &lt;p&gt;&lt;small&gt;To są tylko sugestie - sprawdź dokładnie przed wprowadzeniem zmian.&lt;/small&gt;&lt;/p&gt;
+        `;
+        suggestionContainer.hidden = false;
+    } else {
+        suggestionContainer.hidden = true;
+    }
+}
+&lt;/script&gt;</code></pre>
+                <p><strong>Zalety:</strong> Inteligentne sugestie, automatyczne sprawdzanie pisowni, licznik słów,
+                    praktyczne wskazówki.</p>
+            </div>
+        </section>
+
+        <section class="help-types">
+            <h2>Rodzaje pomocy kontekstowej</h2>
+
+            <h3>1. Pomoc inline (w miejscu)</h3>
+            <div class="help-description">
+                <h4>Charakterystyka</h4>
+                <p>Pomoc wyświetlana bezpośrednio obok pola formularza</p>
+
+                <h4>Zastosowanie</h4>
+                <ul>
+                    <li>Krótkie wskazówki i instrukcje</li>
+                    <li>Formaty danych i przykłady</li>
+                    <li>Ostrzeżenia i ważne informacje</li>
+                </ul>
+
+                <h4>Zalety</h4>
+                <ul>
+                    <li>Natychmiastowa dostępność</li>
+                    <li>Nie przerywa procesu</li>
+                    <li>Łatwa implementacja</li>
+                </ul>
+            </div>
+
+            <h3>2. Pomoc na żądanie (tooltips, modals)</h3>
+            <div class="help-description">
+                <h4>Charakterystyka</h4>
+                <p>Pomoc wyświetlana po kliknięciu ikony lub linku pomocy</p>
+
+                <h4>Zastosowanie</h4>
+                <ul>
+                    <li>Szczegółowe wyjaśnienia</li>
+                    <li>Złożone instrukcje</li>
+                    <li>Przykłady i wzorce</li>
+                </ul>
+
+                <h4>Zalety</h4>
+                <ul>
+                    <li>Nie zajmuje miejsca na ekranie</li>
+                    <li>Pozwala na obszerną treść</li>
+                    <li>Użytkownik kontroluje wyświetlanie</li>
+                </ul>
+            </div>
+
+            <h3>3. Inteligentna pomoc adaptacyjna</h3>
+            <div class="help-description">
+                <h4>Charakterystyka</h4>
+                <p>Pomoc dostosowująca się do działań użytkownika</p>
+
+                <h4>Zastosowanie</h4>
+                <ul>
+                    <li>Dynamiczne sugestie</li>
+                    <li>Asystenci wirtualni</li>
+                    <li>Kontekstowe rekomendacje</li>
+                </ul>
+
+                <h4>Zalety</h4>
+                <ul>
+                    <li>Najwyższa użyteczność</li>
+                    <li>Personalizowane doświadczenie</li>
+                    <li>Proaktywne wsparcie</li>
+                </ul>
+            </div>
+
+            <h3>4. Pomoc tekstowa z przykładami</h3>
+            <div class="help-description">
+                <h4>Charakterystyka</h4>
+                <p>Instrukcje tekstowe z konkretnymi przykładami</p>
+
+                <h4>Zastosowanie</h4>
+                <ul>
+                    <li>Formaty danych (daty, numery)</li>
+                    <li>Wzory dokumentów</li>
+                    <li>Szabłony tekstu</li>
+                </ul>
+
+                <h4>Zalety</h4>
+                <ul>
+                    <li>Jasność i precyzja</li>
+                    <li>Łatwość zrozumienia</li>
+                    <li>Uniwersalność</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="technical-implementation">
+            <h2>Implementacja techniczna</h2>
+
+            <h3>HTML - semantyczna struktura pomocy</h3>
+            <div class="code-example">
+                <pre><code class="language-html">&lt;!-- Podstawowa struktura pomocy kontekstowej --&gt;
+&lt;div class="form-field-with-help"&gt;
+    &lt;label for="field" id="field-label"&gt;
+        Etykieta pola:
+        &lt;button type="button" 
+                class="help-trigger"
+                aria-describedby="field-help"
+                onclick="toggleHelp('field-help')"&gt;
+            &lt;span class="visually-hidden"&gt;Pomoc dla tego pola&lt;/span&gt;
+            &lt;span aria-hidden="true"&gt;?&lt;/span&gt;
+        &lt;/button&gt;
+    &lt;/label&gt;
+    
+    &lt;input type="text" 
+           id="field"
+           aria-describedby="field-help field-instructions"
+           aria-labelledby="field-label"&gt;
+    
+    &lt;div id="field-instructions" class="field-instructions"&gt;
+        Krótka instrukcja widoczna zawsze
+    &lt;/div&gt;
+    
+    &lt;div id="field-help" 
+         class="contextual-help" 
+         role="region"
+         aria-label="Pomoc kontekstowa"
+         hidden&gt;
+        &lt;h4&gt;Szczegółowa pomoc&lt;/h4&gt;
+        &lt;p&gt;Obszerny opis i instrukcje...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+
+            <h3>JavaScript - logika zarządzania pomocą</h3>
+            <div class="code-example">
+                <pre><code class="language-javascript">class ContextualHelp {
+    constructor() {
+        this.activeHelp = null;
+        this.helpData = new Map();
+        this.init();
+    }
+    
+    init() {
+        // Inicjalizacja eventów
+        document.addEventListener('click', this.handleHelpClick.bind(this));
+        document.addEventListener('focus', this.handleFieldFocus.bind(this), true);
+        document.addEventListener('keydown', this.handleKeyDown.bind(this));
+    }
+    
+    // Rejestracja pomocy dla pola
+    registerHelp(fieldId, helpConfig) {
+        this.helpData.set(fieldId, {
+            content: helpConfig.content,
+            trigger: helpConfig.trigger || 'click',
+            type: helpConfig.type || 'tooltip',
+            position: helpConfig.position || 'below'
+        });
+    }
+    
+    // Pokazanie pomocy
+    showHelp(fieldId, triggerElement) {
+        const helpConfig = this.helpData.get(fieldId);
+        if (!helpConfig) return;
+        
+        // Ukryj aktualną pomoc
+        this.hideCurrentHelp();
+        
+        // Utwórz element pomocy
+        const helpElement = this.createHelpElement(fieldId, helpConfig);
+        
+        // Umieść pomoc w odpowiednim miejscu
+        this.positionHelp(helpElement, triggerElement, helpConfig.position);
+        
+        // Pokaż pomoc
+        this.displayHelp(helpElement, helpConfig.type);
+        
+        this.activeHelp = helpElement;
+    }
+    
+    createHelpElement(fieldId, config) {
+        const helpElement = document.createElement('div');
+        helpElement.className = `contextual-help contextual-help--${config.type}`;
+        helpElement.id = `help-${fieldId}-${Date.now()}`;
+        helpElement.setAttribute('role', 'tooltip');
+        helpElement.setAttribute('aria-live', 'polite');
+        
+        // Dodaj przycisk zamknięcia
+        helpElement.innerHTML = `
+            &lt;div class="help-content"&gt;
+                &lt;button type="button" class="help-close" aria-label="Zamknij pomoc"&gt;×&lt;/button&gt;
+                ${config.content}
+            &lt;/div&gt;
+        `;
+        
+        // Event dla zamknięcia
+        helpElement.querySelector('.help-close').addEventListener('click', () =&gt; {
+            this.hideHelp(helpElement);
+        });
+        
+        return helpElement;
+    }
+    
+    positionHelp(helpElement, triggerElement, position) {
+        document.body.appendChild(helpElement);
+        
+        const triggerRect = triggerElement.getBoundingClientRect();
+        const helpRect = helpElement.getBoundingClientRect();
+        const viewport = {
+            width: window.innerWidth,
+            height: window.innerHeight
+        };
+        
+        let top, left;
+        
+        switch (position) {
+            case 'above':
+                top = triggerRect.top - helpRect.height - 10;
+                left = triggerRect.left;
+                break;
+            case 'below':
+                top = triggerRect.bottom + 10;
+                left = triggerRect.left;
+                break;
+            case 'left':
+                top = triggerRect.top;
+                left = triggerRect.left - helpRect.width - 10;
+                break;
+            case 'right':
+                top = triggerRect.top;
+                left = triggerRect.right + 10;
+                break;
+            default:
+                top = triggerRect.bottom + 10;
+                left = triggerRect.left;
+        }
+        
+        // Sprawdź czy pomoc mieści się w viewport
+        if (left + helpRect.width &gt; viewport.width) {
+            left = viewport.width - helpRect.width - 20;
+        }
+        if (left &lt; 20) {
+            left = 20;
+        }
+        if (top + helpRect.height &gt; viewport.height) {
+            top = triggerRect.top - helpRect.height - 10;
+        }
+        if (top &lt; 20) {
+            top = 20;
+        }
+        
+        helpElement.style.position = 'fixed';
+        helpElement.style.top = `${top}px`;
+        helpElement.style.left = `${left}px`;
+        helpElement.style.zIndex = '1000';
+    }
+    
+    displayHelp(helpElement, type) {
+        switch (type) {
+            case 'tooltip':
+                helpElement.classList.add('help-tooltip');
+                break;
+            case 'modal':
+                helpElement.classList.add('help-modal');
+                this.createOverlay();
+                break;
+            case 'inline':
+                helpElement.classList.add('help-inline');
+                break;
+        }
+        
+        helpElement.hidden = false;
+        
+        // Animacja wejścia
+        requestAnimationFrame(() =&gt; {
+            helpElement.classList.add('help-visible');
+        });
+        
+        // Focus na pierwszym focusable element
+        const firstFocusable = helpElement.querySelector('button, a, input, [tabindex]');
+        if (firstFocusable) {
+            firstFocusable.focus();
+        }
+    }
+    
+    hideCurrentHelp() {
+        if (this.activeHelp) {
+            this.hideHelp(this.activeHelp);
+        }
+    }
+    
+    hideHelp(helpElement) {
+        if (!helpElement) return;
+        
+        helpElement.classList.remove('help-visible');
+        
+        setTimeout(() =&gt; {
+            if (helpElement.parentNode) {
+                helpElement.parentNode.removeChild(helpElement);
+            }
+            if (this.activeHelp === helpElement) {
+                this.activeHelp = null;
+            }
+        }, 300);
+        
+        this.removeOverlay();
+    }
+    
+    createOverlay() {
+        if (document.querySelector('.help-overlay')) return;
+        
+        const overlay = document.createElement('div');
+        overlay.className = 'help-overlay';
+        overlay.addEventListener('click', () =&gt; this.hideCurrentHelp());
+        document.body.appendChild(overlay);
+    }
+    
+    removeOverlay() {
+        const overlay = document.querySelector('.help-overlay');
+        if (overlay) {
+            overlay.parentNode.removeChild(overlay);
+        }
+    }
+    
+    handleHelpClick(event) {
+        if (event.target.matches('.help-trigger, .help-trigger *')) {
+            event.preventDefault();
+            const trigger = event.target.closest('.help-trigger');
+            const fieldId = trigger.getAttribute('aria-describedby')?.replace('-help', '');
+            if (fieldId) {
+                this.showHelp(fieldId, trigger);
+            }
+        }
+    }
+    
+    handleFieldFocus(event) {
+        if (event.target.matches('input, select, textarea')) {
+            const fieldId = event.target.id;
+            const helpConfig = this.helpData.get(fieldId);
+            if (helpConfig && helpConfig.trigger === 'focus') {
+                this.showHelp(fieldId, event.target);
+            }
+        }
+    }
+    
+    handleKeyDown(event) {
+        if (event.key === 'Escape' && this.activeHelp) {
+            this.hideCurrentHelp();
+        }
+    }
+}
+
+// Inicjalizacja systemu pomocy
+const helpSystem = new ContextualHelp();
+
+// Przykłady rejestracji pomocy
+helpSystem.registerHelp('email', {
+    content: `
+        &lt;h4&gt;Format adresu email&lt;/h4&gt;
+        &lt;p&gt;Wprowadź poprawny adres email w formacie: nazwa@domena.com&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;Przykłady:&lt;/strong&gt;&lt;/p&gt;
+        &lt;ul&gt;
+            &lt;li&gt;jan.kowalski@example.com&lt;/li&gt;
+            &lt;li&gt;kontakt@firma.pl&lt;/li&gt;
+        &lt;/ul&gt;
+    `,
+    type: 'tooltip',
+    trigger: 'click'
+});
+
+helpSystem.registerHelp('phone', {
+    content: `
+        &lt;h4&gt;Numer telefonu&lt;/h4&gt;
+        &lt;p&gt;Wprowadź numer w formacie: +48 123 456 789&lt;/p&gt;
+        &lt;p&gt;Możesz używać spacji, myślników lub nawiasów.&lt;/p&gt;
+    `,
+    type: 'tooltip',
+    trigger: 'focus'
+});</code></pre>
+            </div>
+
+            <h3>CSS - stylowanie pomocy kontekstowej</h3>
+            <div class="code-example">
+                <pre><code class="language-css">/* Podstawowe styles pomocy */
+.help-trigger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #007cba;
+    border-radius: 50%;
+    background: #007cba;
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+}
+
+.help-trigger:hover,
+.help-trigger:focus {
+    background: #005a87;
+    border-color: #005a87;
+    outline: 2px solid #005a87;
+    outline-offset: 2px;
+}
+
+/* Kontekstowa pomoc - tooltip */
+.contextual-help {
+    position: fixed;
+    max-width: 400px;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.contextual-help.help-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.help-content {
+    padding: 1rem;
+    position: relative;
+}
+
+.help-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #666;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.help-close:hover {
+    color: #000;
+    background: #f0f0f0;
+    border-radius: 4px;
+}
+
+/* Tooltip styles */
+.help-tooltip {
+    max-width: 300px;
+}
+
+.help-tooltip::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #ddd;
+}
+
+.help-tooltip::after {
+    content: '';
+    position: absolute;
+    top: -7px;
+    left: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid white;
+}
+
+/* Modal styles */
+.help-modal {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    width: 90vw;
+}
+
+.help-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+/* Inline help */
+.help-inline {
+    position: static !important;
+    max-width: none !important;
+    margin-top: 0.5rem;
+    box-shadow: none;
+    border: 1px solid #e0e0e0;
+    background: #f9f9f9;
+}
+
+/* Instrukcje pola */
+.field-instructions {
+    font-size: 0.875rem;
+    color: #666;
+    margin-top: 0.25rem;
+}
+
+/* Responsywność */
+@media (max-width: 768px) {
+    .contextual-help {
+        max-width: calc(100vw - 2rem);
+        margin: 1rem;
+    }
+    
+    .help-modal {
+        width: calc(100vw - 2rem);
+        max-height: calc(100vh - 2rem);
+    }
+}
+
+/* Accessibility - wysokie kontrast */
+@media (prefers-contrast: high) {
+    .contextual-help {
+        border-width: 2px;
+        border-color: #000;
+    }
+    
+    .help-trigger {
+        border-width: 2px;
+    }
+}
+
+/* Accessibility - redukcja ruchu */
+@media (prefers-reduced-motion: reduce) {
+    .contextual-help {
+        transition: none;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .contextual-help {
+        background: #2a2a2a;
+        border-color: #555;
+        color: #fff;
+    }
+    
+    .help-tooltip::after {
+        border-bottom-color: #2a2a2a;
+    }
+    
+    .help-close {
+        color: #ccc;
+    }
+    
+    .help-close:hover {
+        color: #fff;
+        background: #444;
+    }
+}</code></pre>
+            </div>
+        </section>
+
+        <section class="best-practices">
+            <h2>Najlepsze praktyki</h2>
+
+            <div class="best-practice-section">
+                <h3>Projektowanie pomocy</h3>
+                <ul>
+                    <li>Uczynić pomoc oczywistą - ikony, linki, przyciski</li>
+                    <li>Umieszczać pomoc blisko pól, których dotyczy</li>
+                    <li>Używać jasnego, zrozumiałego języka</li>
+                    <li>Podawać konkretne przykłady i wzorce</li>
+                    <li>Testować z prawdziwymi użytkownikami</li>
+                </ul>
+            </div>
+
+            <div class="best-practice-section">
+                <h3>Treść pomocy</h3>
+                <ul>
+                    <li>Być zwięzłym ale kompletnym</li>
+                    <li>Skupić się na działaniu, nie na technologii</li>
+                    <li>Używać pozytywnego języka</li>
+                    <li>Podawać alternatywne rozwiązania</li>
+                    <li>Aktualizować regularnie</li>
+                </ul>
+            </div>
+
+            <div class="best-practice-section">
+                <h3>Implementacja techniczna</h3>
+                <ul>
+                    <li>Zapewnić dostępność dla czytników ekranu</li>
+                    <li>Implementować obsługę klawiatury</li>
+                    <li>Optymalizować dla urządzeń mobilnych</li>
+                    <li>Używać semantycznego HTML</li>
+                    <li>Testować wydajność</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="testing">
+            <h2>Testowanie</h2>
+
+            <h3>Metody testowania</h3>
+            <ul>
+                <li><strong>Test użyteczności</strong> - czy użytkownicy potrafią znaleźć i używać pomocy</li>
+                <li><strong>Test dostępności</strong> - czy pomoc działa z technologiami asystującymi</li>
+                <li><strong>Test z różnymi grupami</strong> - osoby z różnymi niepełnosprawnościami</li>
+                <li><strong>Test mobilny</strong> - czy pomoc działa na urządzeniach dotykowych</li>
+                <li><strong>Test wydajności</strong> - czy pomoc nie spowalnia strony</li>
+            </ul>
+
+            <h3>Lista kontrolna</h3>
+            <ul>
+                <li>Czy pomoc jest dostępna tam, gdzie etykiety są niewystarczające?</li>
+                <li>Czy istnienie pomocy jest oczywiste dla użytkownika?</li>
+                <li>Czy pomoc można uzyskać bez opuszczania kontekstu?</li>
+                <li>Czy pomoc jest dostępna za pomocą klawiatury?</li>
+                <li>Czy pomoc jest czytelna dla czytników ekranu?</li>
+                <li>Czy treść pomocy jest jasna i użyteczna?</li>
+                <li>Czy pomoc działa na urządzeniach mobilnych?</li>
+            </ul>
+
+            <h3>Narzędzia pomocne w testowaniu</h3>
+            <ul>
+                <li><strong>NVDA/JAWS</strong> - testowanie dostępności pomocy</li>
+                <li><strong>Keyboard navigation</strong> - test obsługi klawiatury</li>
+                <li><strong>Mobile testing</strong> - test na różnych urządzeniach</li>
+                <li><strong>User testing</strong> - obserwacja rzeczywistego użytkowania</li>
+                <li><strong>Analytics</strong> - analiza korzystania z pomocy</li>
+            </ul>
+        </section>
+
+        <section class="related-criteria">
+            <h2>Powiązane kryteria</h2>
+            <ul>
+                <li><a href="3.3.1.html">3.3.1 Identyfikacja błędu (A)</a> - pomoc w rozpoznawaniu problemów</li>
+                <li><a href="3.3.2.html">3.3.2 Etykiety lub instrukcje (A)</a> - podstawowe instrukcje dla pól</li>
+                <li><a href="3.3.3.html">3.3.3 Sugestia korekty błędu (AA)</a> - pomoc w naprawianiu błędów</li>
+                <li><a href="2.4.6.html">2.4.6 Nagłówki i etykiety (AA)</a> - jasne oznaczenie funkcji</li>
+                <li><a href="1.4.3.html">1.4.3 Kontrast (minimalny) (AA)</a> - czytelność pomocy</li>
+            </ul>
+        </section>
+
+        <section class="resources">
+            <h2>Zasoby</h2>
+            <ul>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/help.html">WCAG 2.1: Understanding Help</a>
+                </li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G71">Technika G71: Providing a help link
+                        on every Web page</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G193">Technika G193: Providing help by an
+                        assistant in the Web page</a></li>
+                <li><a href="https://www.w3.org/WAI/WCAG21/Techniques/general/G194">Technika G194: Providing spell
+                        checking and suggestions for text input</a></li>
+                <li><a href="https://webaim.org/techniques/forms/">WebAIM: Creating Accessible Forms</a></li>
+            </ul>
+        </section>
+
+        <nav class="criterion-nav" aria-label="Nawigacja kryteriów">
+            <ul>
+                <li><a href="3.3.4.html">Poprzedni: 3.3.4 Zapobieganie błędom</a></li>
+                <li><a href="../wytyczne.html">Powrót do listy wytycznych</a></li>
+                <li><a href="3.3.6.html">Następny: 3.3.6 Zapobieganie błędom (wszystkie)</a></li>
+            </ul>
+        </nav>
+    </main>
+
+    <footer>
+        <!-- Zawartość zostanie załadowana dynamicznie przez JavaScript -->
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
