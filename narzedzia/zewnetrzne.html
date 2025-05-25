@@ -81,6 +81,52 @@
             background-color: #9C27B0;
         }
 
+        .tool-type-item.script {
+            background-color: #FF9800;
+        }
+
+        .tool-platforms {
+            margin-top: 15px;
+            padding: 8px 12px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border-left: 3px solid #6c757d;
+            font-size: 0.85em;
+            color: #495057;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tool-platforms i {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+
+        .platform-item {
+            font-weight: 500;
+        }
+
+        .platform-item.windows {
+            color: #0078d4;
+        }
+
+        .platform-item.mac {
+            color: #007aff;
+        }
+
+        .platform-item.linux {
+            color: #f57c00;
+        }
+
+        .platform-item.ios {
+            color: #007aff;
+        }
+
+        .platform-item.android {
+            color: #3ddc84;
+        }
+
         .tile:hover,
         .tile:focus-within {
             transform: translateY(-5px);
@@ -193,13 +239,407 @@
             border-left: 3px solid #ccc;
         }
 
+        .loading {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .error {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.1em;
+            color: #d32f2f;
+            background-color: #ffebee;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        /* Zaawansowane filtry */
+        .filters-container {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e9ecef;
+        }
+
+        .filters-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .filters-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .filters-toggle {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            cursor: pointer;
+            font-size: 1.2em;
+            padding: 5px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .filters-toggle:hover,
+        .filters-toggle:focus {
+            background-color: var(--primary-color);
+            color: white;
+            outline: none;
+        }
+
+        .filters-content {
+            display: grid;
+            gap: 20px;
+        }
+
+        .filters-content.collapsed {
+            display: none;
+        }
+
+        .filter-section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: #495057;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: all 0.2s ease;
+            background-color: white;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #6c757d;
+            pointer-events: none;
+        }
+
+        .clear-search {
+            position: absolute;
+            right: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #6c757d;
+            cursor: pointer;
+            padding: 2px;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8em;
+        }
+
+        .clear-search:hover {
+            background-color: #e9ecef;
+            color: #495057;
+        }
+
+        .clear-search.visible {
+            display: flex;
+        }
+
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag-filter {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 12px;
+            background-color: white;
+            border: 2px solid #dee2e6;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9em;
+            font-weight: 500;
+            user-select: none;
+            position: relative;
+        }
+
+        .tag-filter:hover {
+            border-color: var(--primary-color);
+            background-color: #f8f9ff;
+            transform: translateY(-1px);
+        }
+
+        .tag-filter.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .tag-filter.active:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .tag-icon {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .tag-icon.extension {
+            background-color: #4285F4;
+        }
+
+        .tag-icon.app {
+            background-color: #34A853;
+        }
+
+        .tag-icon.repo {
+            background-color: #800080;
+        }
+
+        .tag-icon.online {
+            background-color: #EA4335;
+        }
+
+        .tag-icon.library {
+            background-color: #FBBC05;
+        }
+
+        .tag-icon.screenreader {
+            background-color: #9C27B0;
+        }
+
+        .tag-icon.script {
+            background-color: #FF9800;
+        }
+
+        .tag-count {
+            background-color: rgba(0, 0, 0, 0.1);
+            color: #495057;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-weight: 600;
+            min-width: 18px;
+            text-align: center;
+        }
+
+        .tag-filter.active .tag-count {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+
+        .filter-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-end;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #dee2e6;
+        }
+
+        .filter-button {
+            padding: 8px 16px;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+            background-color: white;
+            color: #495057;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .filter-button:hover,
+        .filter-button:focus {
+            background-color: #f8f9fa;
+            border-color: #adb5bd;
+            outline: none;
+        }
+
+        .filter-button.primary {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .filter-button.primary:hover,
+        .filter-button.primary:focus {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .results-summary {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            padding: 15px 20px;
+            background-color: #e3f2fd;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .results-count {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .results-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .sort-select {
+            padding: 6px 10px;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            background-color: white;
+            font-size: 0.9em;
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }
+
+        .no-results-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .no-results h3 {
+            margin-bottom: 10px;
+            color: #495057;
+        }
+
+        .no-results p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
         @media (max-width: 768px) {
             .dashboard {
                 grid-template-columns: 1fr;
             }
+
+            .filters-container {
+                padding: 20px 15px;
+            }
+
+            .filters-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .tags-container {
+                justify-content: center;
+            }
+
+            .filter-actions {
+                justify-content: center;
+            }
+
+            .results-summary {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
         }
 
         /* Style dla trybu wysokiego kontrastu */
+        body.high-contrast .filters-container {
+            background-color: #000;
+            border: 2px solid #fff;
+        }
+
+        body.high-contrast .filters-title {
+            color: #ffff00;
+        }
+
+        body.high-contrast .filter-label {
+            color: #fff;
+        }
+
+        body.high-contrast .search-input {
+            background-color: #000;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        body.high-contrast .search-input:focus {
+            border-color: #ffff00;
+        }
+
+        body.high-contrast .tag-filter {
+            background-color: #000;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+
+        body.high-contrast .tag-filter.active {
+            background-color: #ffff00;
+            color: #000;
+            border-color: #ffff00;
+        }
+
+        body.high-contrast .results-summary {
+            background-color: #222;
+            border-left: 4px solid #ffff00;
+        }
+
+        body.high-contrast .results-count {
+            color: #ffff00;
+        }
+
         body.high-contrast .tile {
             background-color: #000;
             border: 2px solid #fff;
@@ -258,10 +698,40 @@
         body.high-contrast .tool-type-item.repo,
         body.high-contrast .tool-type-item.online,
         body.high-contrast .tool-type-item.library,
-        body.high-contrast .tool-type-item.screenreader {
+        body.high-contrast .tool-type-item.screenreader,
+        body.high-contrast .tool-type-item.script {
             background-color: #000;
             border: 1px solid #fff;
             color: #ffff00;
+        }
+
+        body.high-contrast .tool-platforms {
+            background-color: #222;
+            border-left: 3px solid #ffff00;
+            color: #fff;
+        }
+
+        body.high-contrast .tool-platforms i {
+            color: #ffff00;
+        }
+
+        body.high-contrast .platform-item.windows,
+        body.high-contrast .platform-item.mac,
+        body.high-contrast .platform-item.linux,
+        body.high-contrast .platform-item.ios,
+        body.high-contrast .platform-item.android {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .platform-filter i {
+            font-size: 1em;
+            width: 16px;
+            text-align: center;
+        }
+
+        .platform-filter.active i {
+            color: white;
         }
     </style>
 </head>
@@ -287,505 +757,87 @@
                 i poprawie dostępności Twoich stron internetowych.</p>
         </div>
 
-        <div class="dashboard">
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item extension">Wtyczka</span>
-                    <span class="tool-type-item online">Web App</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-wave-square"></i></span>
-                    WAVE
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Kompleksowe narzędzie do oceny dostępności stron internetowych,
-                        dostępne jako rozszerzenie do popularnych przeglądarek. Analizuje stronę pod kątem błędów
-                        dostępności i sugeruje poprawki.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://wave.webaim.org/" class="tile-link" target="_blank" rel="noopener">Strona
-                        narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
+        <!-- Zaawansowane filtry -->
+        <div class="filters-container">
+            <div class="filters-header">
+                <h3 class="filters-title">
+                    <i class="fa-solid fa-filter"></i>
+                    Filtry i wyszukiwanie
+                </h3>
+                <button class="filters-toggle" id="filters-toggle" aria-expanded="true" aria-controls="filters-content">
+                    <i class="fa-solid fa-chevron-up"></i>
+                </button>
             </div>
 
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item app">Aplikacja</span>
-                    <span class="tool-type-item screenreader">Screen Reader</span>
+            <div class="filters-content" id="filters-content">
+                <div class="filter-section">
+                    <label class="filter-label" for="search-input">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        Wyszukaj narzędzie
+                    </label>
+                    <div class="search-container">
+                        <input type="text" id="search-input" class="search-input"
+                            placeholder="Wpisz nazwę narzędzia lub słowo kluczowe..." aria-describedby="search-help">
+                        <button class="clear-search" id="clear-search" title="Wyczyść wyszukiwanie">
+                            <i class="fa-solid fa-times"></i>
+                        </button>
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    </div>
+                    <div id="search-help" class="note">
+                        Wyszukiwanie obejmuje nazwy narzędzi i ich opisy
+                    </div>
                 </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-universal-access"></i></span>
-                    Screen Reader NVDA
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Darmowy czytnik ekranu dla systemu Windows, który pozwala testować,
-                        jak Twoja strona będzie odczytywana przez osoby niewidome lub słabowidzące.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://www.nvaccess.org/" class="tile-link" target="_blank" rel="noopener">Strona
-                        narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
 
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item app">Aplikacja</span>
-                    <span class="tool-type-item screenreader">Screen Reader</span>
+                <div class="filter-section">
+                    <label class="filter-label">
+                        <i class="fa-solid fa-tags"></i>
+                        Filtruj według typu narzędzia
+                    </label>
+                    <div class="tags-container" id="type-filters">
+                        <!-- Tagi będą generowane dynamicznie -->
+                    </div>
                 </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-universal-access"></i></span>
-                    JAWS Screen Reader
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Profesjonalny czytnik ekranu dla systemu Windows, szeroko
-                        wykorzystywany przez osoby niewidome. Pozwala na zaawansowane testowanie dostępności stron
-                        i aplikacji internetowych w warunkach zbliżonych do rzeczywistych.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://www.freedomscientific.com/products/software/jaws/" class="tile-link"
-                        target="_blank" rel="noopener">Strona
-                        narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
 
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item app">Aplikacja</span>
-                    <span class="tool-type-item screenreader">Screen Reader</span>
+                <div class="filter-section">
+                    <label class="filter-label">
+                        <i class="fa-solid fa-desktop"></i>
+                        Filtruj według platformy
+                    </label>
+                    <div class="tags-container" id="platform-filters">
+                        <!-- Tagi platform będą generowane dynamicznie -->
+                    </div>
                 </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-brands fa-apple"></i></span>
-                    VoiceOver
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Wbudowany czytnik ekranu w systemie macOS i iOS. Doskonałe narzędzie
-                        do testowania dostępności stron na urządzeniach Apple, szczególnie ważne ze względu na dużą
-                        popularność wśród użytkowników niewidomych i słabowidzących.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://www.apple.com/accessibility/mac/vision/" class="tile-link" target="_blank"
-                        rel="noopener">Strona
-                        narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
 
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item extension">Wtyczka</span>
-                    <span class="tool-type-item library">Biblioteka</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-code-branch"></i></span>
-                    Axe DevTools
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Zestaw narzędzi dla deweloperów do testowania dostępności,
-                        zintegrowany z przeglądarkami. Umożliwia wykrywanie problemów z dostępnością podczas procesu
-                        rozwoju.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://www.deque.com/axe/" class="tile-link" target="_blank" rel="noopener">Strona
-                        narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
+                <div class="filter-actions">
+                    <button class="filter-button" id="clear-filters">
+                        <i class="fa-solid fa-eraser"></i>
+                        Wyczyść filtry
+                    </button>
+                    <button class="filter-button primary" id="apply-filters">
+                        <i class="fa-solid fa-check"></i>
+                        Zastosuj filtry
+                    </button>
                 </div>
             </div>
+        </div>
 
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item online">Wbudowane</span>
-                    <span class="tool-type-item extension">CLI</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></span>
-                    Lighthouse
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Narzędzie wbudowane w Chrome DevTools, które analizuje strony
-                        internetowe pod kątem wydajności, SEO, dobrych praktyk i dostępności.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://developers.google.com/web/tools/lighthouse" class="tile-link" target="_blank"
-                        rel="noopener">Strona narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
+        <!-- Podsumowanie wyników -->
+        <div class="results-summary" id="results-summary" style="display: none;">
+            <div class="results-count" id="results-count">
+                Wyświetlane: 0 z 0 narzędzi
             </div>
+            <div class="results-actions">
+                <label for="sort-select" class="sr-only">Sortuj według:</label>
+                <select id="sort-select" class="sort-select">
+                    <option value="name">Sortuj: A-Z</option>
+                    <option value="name-desc">Sortuj: Z-A</option>
+                    <option value="type">Sortuj: według typu</option>
+                </select>
+            </div>
+        </div>
 
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item extension">Wtyczka</span>
-                    <span class="tool-type-item app">Aplikacja</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-brands fa-microsoft"></i></span>
-                    Accessibility Insights
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Rozszerzenie do przeglądarek od Microsoft, które oferuje testy
-                        dostępności dla stron i aplikacji internetowych, w tym szczegółowe analizy i wskazówki.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://accessibilityinsights.io/" class="tile-link" target="_blank" rel="noopener">Strona
-                        narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
-
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item extension">Wtyczka</span>
-                    <span class="tool-type-item online">Web App</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-square-check"></i></span>
-                    IBM Accessibility Checker
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Narzędzie do testowania dostępności od IBM, które pomaga wykrywać i
-                        naprawiać problemy z dostępnością w aplikacjach webowych. Dostępne jako wtyczka do
-                        przeglądarki i jako usługa online.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://www.ibm.com/able/toolkit/verify" class="tile-link" target="_blank"
-                        rel="noopener">Strona narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
-
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item extension">Wtyczka</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-universal-access"></i></span>
-                    ARC Toolkit
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Rozszerzenie do przeglądarek, które pozwala sprawdzać dostępność
-                        stron internetowych bezpośrednio podczas przeglądania. Zawiera zestaw testów opartych na
-                        WCAG 2.1.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://www.tpgi.com/arc-platform/arc-toolkit/" class="tile-link" target="_blank"
-                        rel="noopener">Strona narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
-
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item app">Aplikacja</span>
-                    <span class="tool-type-item online">Web App</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-palette"></i></span>
-                    Colour Contrast Analyser
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Darmowe narzędzie do sprawdzania kontrastu kolorów tworzone przez
-                        TPGi. Umożliwia testowanie zgodności z WCAG 2.0, 2.1 i 2.2 na poziomach AA i AAA. Dostępne
-                        jako aplikacja desktopowa oraz narzędzie online z symulatorami różnych dysfunkcji wzroku.
-                    </p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://www.tpgi.com/color-contrast-checker/" class="tile-link" target="_blank"
-                        rel="noopener">Strona narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
-
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item app">Aplikacja</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-file-pdf"></i></span>
-                    PDF Accessibility Checker (PAC)
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Darmowe narzędzie do sprawdzania dostępności dokumentów PDF,
-                        globalnie używane od 2010 roku. Sprawdza zgodność z PDF/UA i WCAG, oferuje podgląd struktury
-                        oraz symulację czytnika ekranu. Nie wymaga instalacji - wystarczy pobrać i uruchomić.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://pac.pdf-accessibility.org/en" class="tile-link" target="_blank"
-                        rel="noopener">Strona narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
-
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item extension">Wtyczka</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-code"></i></span>
-                    Web Developer
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Rozszerzenie dodające pasek narzędzi do przeglądarki z różnymi
-                        narzędziami dla programistów stron internetowych. Umożliwia m.in. wyłączanie stylów CSS,
-                        JavaScript, sprawdzanie formularzy, obrazów oraz inspekcję elementów HTML.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://chromewebstore.google.com/detail/web-developer/bfbameneiokkgbdmiekhjnmfkcnldhhm"
-                        class="tile-link" target="_blank" rel="noopener">Strona narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
-
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item online">Skrypt</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-sitemap"></i></span>
-                    ANDI
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Narzędzie od U.S. Social Security Administration, które instaluje
-                        się jako bookmarklet i analizuje stronę pod kątem dostępności, w tym testuje elementy
-                        formularzy, tabele, obrazy i nawigację.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://www.ssa.gov/accessibility/andi/help/install.html" class="tile-link" target="_blank"
-                        rel="noopener">Strona narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
-
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item app">Aplikacja</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-                    Badacz
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Aplikacja od firmy Logos dostępna na urządzenia z systemem iOS,
-                        która umożliwia badanie dostępności witryn internetowych. Pozwala testować zgodność stron z
-                        WCAG oraz analizować strukturę serwisów.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://logios.dev/badacz/" class="tile-link" target="_blank" rel="noopener">Strona
-                        narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
-
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item library">Biblioteka</span>
-                    <span class="tool-type-item repo">GitHub</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-vial-circle-check"></i></span>
-                    cypress-accessibility-checker
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Biblioteka integrująca IBM Accessibility Checker z frameworkiem
-                        testowym Cypress. Umożliwia automatyczne testowanie dostępności w ramach testów end-to-end
-                        aplikacji internetowych.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://github.com/IBMa/equal-access/tree/master/cypress-accessibility-checker"
-                        class="tile-link" target="_blank" rel="noopener">Strona narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
-
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item online">Web App</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-clipboard-check"></i></span>
-                    Accessibility Audit
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Narzędzie internetowe wykorzystujące Playwright, axe-core i
-                        Lighthouse do skanowania stron pod kątem problemów z dostępnością. Generuje szczegółowe
-                        raporty zgodności z WCAG na różnych poziomach (A/AA/AAA).</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://a11yaudit.up.railway.app/" class="tile-link" target="_blank" rel="noopener">Strona
-                        narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
-
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item extension">Wtyczka</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></span>
-                    Hoverify
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Wszechstronne rozszerzenie dla twórców stron internetowych oferujące
-                        szereg narzędzi w jednym miejscu. Umożliwia inspekcję elementów poprzez najechanie kursorem,
-                        testowanie responsywności na wielu urządzeniach, wyodrębnianie zasobów, analizę stosów
-                        technologicznych oraz narzędzia SEO - wszystko bez konieczności otwierania DevTools.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://tryhoverify.com/" class="tile-link" target="_blank" rel="noopener">Strona
-                        narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
-
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item online">Web App</span>
-                    <span class="tool-type-item app">Aplikacja</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></span>
-                    Silktide
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Kompleksowa platforma do zarządzania jakością stron internetowych,
-                        która automatycznie wykrywa i pomaga naprawiać problemy z dostępnością, treścią, SEO i
-                        doświadczeniem użytkownika. Silktide pozwala monitorować zgodność z WCAG 2.2 i ADA.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://silktide.com/" class="tile-link" target="_blank" rel="noopener">Strona
-                        narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
-
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item online">Web App</span>
-                    <span class="tool-type-item repo">Skrypt</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-code"></i></span>
-                    HTML_CodeSniffer PL
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Polska wersja narzędzia HTML_CodeSniffer, które sprawdza kod
-                        źródłowy HTML i wykrywa naruszenia zdefiniowanego standardu kodowania. Pozwala sprawdzić
-                        zgodność z WCAG 2.1 na poziomach A, AA i AAA oraz przepisami Sekcji 508.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://www.irdpl.pl/HTML_CodeSniffer/" class="tile-link" target="_blank"
-                        rel="noopener">Strona narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
-
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item online">Web App</span>
-                    <span class="tool-type-item repo">Skrypt</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-code"></i></span>
-                    HTML_CodeSniffer EN
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Oryginalna wersja narzędzia HTML_CodeSniffer, które sprawdza kod
-                        źródłowy HTML i wykrywa naruszenia zdefiniowanego standardu kodowania. Dostępne jako
-                        skryptozakładka i aplikacja webowa umożliwiająca audyt stron pod kątem zgodności z WCAG 2.1.
-                    </p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://squizlabs.github.io/HTML_CodeSniffer/" class="tile-link" target="_blank"
-                        rel="noopener">Strona narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
-
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item repo">GitHub</span>
-                    <span class="tool-type-item library">Biblioteka</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-brands fa-github"></i></span>
-                    HTML_CodeSniffer kod
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Oficjalne repozytorium kodu źródłowego HTML_CodeSniffer. Biblioteka
-                        JavaScript do sprawdzania zgodności z WCAG 2.0/2.1 oraz przepisami Sekcji 508. Dostępna na
-                        licencji BSD 3-Clause, z możliwością rozszerzenia o własne "sniffy".</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://github.com/squizlabs/HTML_CodeSniffer" class="tile-link" target="_blank"
-                        rel="noopener">Strona narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
-
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item extension">Wtyczka</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-keyboard"></i></span>
-                    TabA11y
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Rozszerzenie do przeglądarki Chrome, które wizualizuje porządek
-                        nawigacji tabulatorem na stronie internetowej. Pomaga zidentyfikować i naprawić problemy z
-                        dostępnością związane z kolejnością tabulacji, co jest kluczowe dla użytkowników
-                        korzystających z klawiatury.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://chromewebstore.google.com/detail/taba11y-tab-order-accessi/aocppmckdocdjkphmofnklcjhdidgmga"
-                        class="tile-link" target="_blank" rel="noopener">Strona narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
-
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item app">Aplikacja</span>
-                    <span class="tool-type-item online">Web App</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-sitemap"></i></span>
-                    Power Mapper
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Profesjonalne narzędzie do mapowania i testowania stron
-                        internetowych, które pomaga w identyfikacji problemów z dostępnością, mapowaniu struktury
-                        strony i analizie zgodności z WCAG.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://www.powermapper.com/" class="tile-link" target="_blank" rel="noopener">Strona
-                        narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
-
-            <div class="tile">
-                <div class="tool-type">
-                    <span class="tool-type-item extension">Wtyczka</span>
-                    <span class="tool-type-item library">Biblioteka</span>
-                </div>
-                <div class="tile-header">
-                    <span class="tile-icon"><i class="fa-solid fa-code"></i></span>
-                    axe DevTools
-                </div>
-                <div class="tile-content">
-                    <p class="tile-description">Rozszerzenie do przeglądarki Chrome, które umożliwia szybkie
-                        testowanie dostępności stron internetowych. Wykorzystuje silnik axe-core do wykrywania
-                        problemów z dostępnością i dostarcza szczegółowe raporty.</p>
-                </div>
-                <div class="tile-footer">
-                    <a href="https://chromewebstore.google.com/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd"
-                        class="tile-link" target="_blank" rel="noopener">Strona narzędzia</a>
-                    <a href="#" class="tile-link disabled">Dodatkowy opis</a>
-                </div>
-            </div>
+        <div id="tools-container" class="loading">
+            <i class="fa-solid fa-spinner fa-spin"></i> Ładowanie narzędzi zewnętrznych...
         </div>
     </main>
 
@@ -794,6 +846,470 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script src="external-tools-generator.js"></script>
+    <script>
+        // Zaawansowany system filtrowania narzędzi zewnętrznych
+        class AdvancedToolsFilter {
+            constructor(toolsGenerator) {
+                this.toolsGenerator = toolsGenerator;
+                this.activeFilters = {
+                    search: '',
+                    types: new Set(),
+                    platforms: new Set()
+                };
+                this.filteredTools = [];
+                this.sortBy = 'name';
+
+                this.initializeElements();
+                this.bindEvents();
+                this.generateTypeFilters();
+                this.generatePlatformFilters();
+            }
+
+            initializeElements() {
+                this.searchInput = document.getElementById('search-input');
+                this.clearSearchBtn = document.getElementById('clear-search');
+                this.typeFiltersContainer = document.getElementById('type-filters');
+                this.clearFiltersBtn = document.getElementById('clear-filters');
+                this.applyFiltersBtn = document.getElementById('apply-filters');
+                this.filtersToggle = document.getElementById('filters-toggle');
+                this.filtersContent = document.getElementById('filters-content');
+                this.resultsCount = document.getElementById('results-count');
+                this.resultsSummary = document.getElementById('results-summary');
+                this.sortSelect = document.getElementById('sort-select');
+                this.toolsContainer = document.getElementById('tools-container');
+            }
+
+            bindEvents() {
+                // Wyszukiwanie w czasie rzeczywistym
+                this.searchInput.addEventListener('input', () => {
+                    this.activeFilters.search = this.searchInput.value.trim();
+                    this.updateClearSearchButton();
+                    this.applyFilters();
+                });
+
+                // Czyszczenie wyszukiwania
+                this.clearSearchBtn.addEventListener('click', () => {
+                    this.searchInput.value = '';
+                    this.activeFilters.search = '';
+                    this.updateClearSearchButton();
+                    this.applyFilters();
+                    this.searchInput.focus();
+                });
+
+                // Czyszczenie wszystkich filtrów
+                this.clearFiltersBtn.addEventListener('click', () => {
+                    this.clearAllFilters();
+                });
+
+                // Zastosowanie filtrów (dla dostępności)
+                this.applyFiltersBtn.addEventListener('click', () => {
+                    this.applyFilters();
+                });
+
+                // Zwijanie/rozwijanie filtrów
+                this.filtersToggle.addEventListener('click', () => {
+                    this.toggleFilters();
+                });
+
+                // Sortowanie
+                this.sortSelect.addEventListener('change', () => {
+                    this.sortBy = this.sortSelect.value;
+                    this.applyFilters();
+                });
+
+                // Obsługa klawiatury dla wyszukiwania
+                this.searchInput.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') {
+                        this.searchInput.value = '';
+                        this.activeFilters.search = '';
+                        this.updateClearSearchButton();
+                        this.applyFilters();
+                    }
+                });
+            }
+
+            generateTypeFilters() {
+                const typeStats = this.getTypeStatistics();
+                const typeLabels = {
+                    'extension': 'Wtyczki',
+                    'app': 'Aplikacje',
+                    'online': 'Web App',
+                    'repo': 'Repozytoria',
+                    'library': 'Biblioteki',
+                    'screenreader': 'Screen Readery',
+                    'script': 'Skrypty'
+                };
+
+                this.typeFiltersContainer.innerHTML = '';
+
+                Object.entries(typeStats).forEach(([type, count]) => {
+                    const tag = document.createElement('button');
+                    tag.className = 'tag-filter';
+                    tag.setAttribute('data-type', type);
+                    tag.setAttribute('role', 'checkbox');
+                    tag.setAttribute('aria-checked', 'false');
+                    tag.setAttribute('aria-label', `Filtruj według typu: ${typeLabels[type] || type}`);
+
+                    tag.innerHTML = `
+                        <span class="tag-icon ${type}"></span>
+                        <span>${typeLabels[type] || type}</span>
+                        <span class="tag-count">${count}</span>
+                    `;
+
+                    tag.addEventListener('click', () => {
+                        this.toggleTypeFilter(type, tag);
+                    });
+
+                    tag.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            this.toggleTypeFilter(type, tag);
+                        }
+                    });
+
+                    this.typeFiltersContainer.appendChild(tag);
+                });
+            }
+
+            generatePlatformFilters() {
+                const platformStats = this.getPlatformStatistics();
+                const platformLabels = {
+                    'windows': 'Windows',
+                    'mac': 'macOS',
+                    'linux': 'Linux',
+                    'ios': 'iOS',
+                    'android': 'Android'
+                };
+
+                const platformIcons = {
+                    'windows': 'fa-brands fa-windows',
+                    'mac': 'fa-brands fa-apple',
+                    'linux': 'fa-brands fa-linux',
+                    'ios': 'fa-brands fa-apple',
+                    'android': 'fa-brands fa-android'
+                };
+
+                // Znajdź kontener dla filtrów platform (dodamy go do HTML)
+                const platformFiltersContainer = document.getElementById('platform-filters');
+                if (!platformFiltersContainer) return;
+
+                platformFiltersContainer.innerHTML = '';
+
+                Object.entries(platformStats).forEach(([platform, count]) => {
+                    const tag = document.createElement('button');
+                    tag.className = 'tag-filter platform-filter';
+                    tag.setAttribute('data-platform', platform);
+                    tag.setAttribute('role', 'checkbox');
+                    tag.setAttribute('aria-checked', 'false');
+                    tag.setAttribute('aria-label', `Filtruj według platformy: ${platformLabels[platform] || platform}`);
+
+                    tag.innerHTML = `
+                        <i class="${platformIcons[platform] || 'fa-solid fa-desktop'}"></i>
+                        <span>${platformLabels[platform] || platform}</span>
+                        <span class="tag-count">${count}</span>
+                    `;
+
+                    tag.addEventListener('click', () => {
+                        this.togglePlatformFilter(platform, tag);
+                    });
+
+                    tag.addEventListener('keydown', (e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            this.togglePlatformFilter(platform, tag);
+                        }
+                    });
+
+                    platformFiltersContainer.appendChild(tag);
+                });
+            }
+
+            getTypeStatistics() {
+                const stats = {};
+                this.toolsGenerator.tools.forEach(tool => {
+                    if (tool.types) {
+                        tool.types.forEach(type => {
+                            stats[type] = (stats[type] || 0) + 1;
+                        });
+                    }
+                });
+                return stats;
+            }
+
+            getPlatformStatistics() {
+                const stats = {};
+                this.toolsGenerator.tools.forEach(tool => {
+                    if (tool.platforms) {
+                        tool.platforms.forEach(platform => {
+                            stats[platform] = (stats[platform] || 0) + 1;
+                        });
+                    }
+                });
+                return stats;
+            }
+
+            toggleTypeFilter(type, tagElement) {
+                const isActive = this.activeFilters.types.has(type);
+
+                if (isActive) {
+                    this.activeFilters.types.delete(type);
+                    tagElement.classList.remove('active');
+                    tagElement.setAttribute('aria-checked', 'false');
+                } else {
+                    this.activeFilters.types.add(type);
+                    tagElement.classList.add('active');
+                    tagElement.setAttribute('aria-checked', 'true');
+                }
+
+                this.applyFilters();
+            }
+
+            togglePlatformFilter(platform, tagElement) {
+                const isActive = this.activeFilters.platforms.has(platform);
+
+                if (isActive) {
+                    this.activeFilters.platforms.delete(platform);
+                    tagElement.classList.remove('active');
+                    tagElement.setAttribute('aria-checked', 'false');
+                } else {
+                    this.activeFilters.platforms.add(platform);
+                    tagElement.classList.add('active');
+                    tagElement.setAttribute('aria-checked', 'true');
+                }
+
+                this.applyFilters();
+            }
+
+            updateClearSearchButton() {
+                if (this.searchInput.value.trim()) {
+                    this.clearSearchBtn.classList.add('visible');
+                } else {
+                    this.clearSearchBtn.classList.remove('visible');
+                }
+            }
+
+            clearAllFilters() {
+                // Wyczyść wyszukiwanie
+                this.searchInput.value = '';
+                this.activeFilters.search = '';
+                this.updateClearSearchButton();
+
+                // Wyczyść filtry typów
+                this.activeFilters.types.clear();
+                this.typeFiltersContainer.querySelectorAll('.tag-filter').forEach(tag => {
+                    tag.classList.remove('active');
+                    tag.setAttribute('aria-checked', 'false');
+                });
+
+                // Wyczyść filtry platform
+                this.activeFilters.platforms.clear();
+                const platformFiltersContainer = document.getElementById('platform-filters');
+                if (platformFiltersContainer) {
+                    platformFiltersContainer.querySelectorAll('.tag-filter').forEach(tag => {
+                        tag.classList.remove('active');
+                        tag.setAttribute('aria-checked', 'false');
+                    });
+                }
+
+                // Resetuj sortowanie
+                this.sortSelect.value = 'name';
+                this.sortBy = 'name';
+
+                this.applyFilters();
+            }
+
+            toggleFilters() {
+                const isExpanded = this.filtersToggle.getAttribute('aria-expanded') === 'true';
+                const newState = !isExpanded;
+
+                this.filtersToggle.setAttribute('aria-expanded', newState);
+                this.filtersContent.classList.toggle('collapsed', !newState);
+
+                const icon = this.filtersToggle.querySelector('i');
+                icon.className = newState ? 'fa-solid fa-chevron-up' : 'fa-solid fa-chevron-down';
+            }
+
+            applyFilters() {
+                let filtered = [...this.toolsGenerator.tools];
+
+                // Filtrowanie według wyszukiwania
+                if (this.activeFilters.search) {
+                    const query = this.activeFilters.search.toLowerCase();
+                    filtered = filtered.filter(tool =>
+                        tool.name.toLowerCase().includes(query) ||
+                        tool.description.toLowerCase().includes(query)
+                    );
+                }
+
+                // Filtrowanie według typów
+                if (this.activeFilters.types.size > 0) {
+                    filtered = filtered.filter(tool =>
+                        tool.types && tool.types.some(type => this.activeFilters.types.has(type))
+                    );
+                }
+
+                // Filtrowanie według platform
+                if (this.activeFilters.platforms.size > 0) {
+                    filtered = filtered.filter(tool =>
+                        tool.platforms && tool.platforms.some(platform => this.activeFilters.platforms.has(platform))
+                    );
+                }
+
+                // Sortowanie
+                this.sortTools(filtered);
+
+                this.filteredTools = filtered;
+                this.renderFilteredTools();
+                this.updateResultsSummary();
+            }
+
+            sortTools(tools) {
+                switch (this.sortBy) {
+                    case 'name':
+                        tools.sort((a, b) => a.name.localeCompare(b.name, 'pl'));
+                        break;
+                    case 'name-desc':
+                        tools.sort((a, b) => b.name.localeCompare(a.name, 'pl'));
+                        break;
+                    case 'type':
+                        tools.sort((a, b) => {
+                            const aType = a.types ? a.types[0] : '';
+                            const bType = b.types ? b.types[0] : '';
+                            return aType.localeCompare(bType);
+                        });
+                        break;
+                }
+            }
+
+            renderFilteredTools() {
+                if (this.filteredTools.length === 0) {
+                    this.renderNoResults();
+                } else {
+                    const tempGenerator = new ExternalToolsGenerator();
+                    tempGenerator.tools = this.filteredTools;
+                    this.toolsContainer.innerHTML = tempGenerator.generateAllToolsHTML();
+                }
+            }
+
+            renderNoResults() {
+                const hasActiveFilters = this.activeFilters.search || this.activeFilters.types.size > 0 || this.activeFilters.platforms.size > 0;
+
+                this.toolsContainer.innerHTML = `
+                    <div class="no-results">
+                        <div class="no-results-icon">
+                            <i class="fa-solid fa-search"></i>
+                        </div>
+                        <h3>Nie znaleziono narzędzi</h3>
+                        <p>
+                            ${hasActiveFilters
+                        ? 'Spróbuj zmienić kryteria wyszukiwania lub wyczyść filtry.'
+                        : 'Brak dostępnych narzędzi do wyświetlenia.'
+                    }
+                        </p>
+                        ${hasActiveFilters ? `
+                            <button class="filter-button primary" onclick="advancedFilter.clearAllFilters()">
+                                <i class="fa-solid fa-eraser"></i>
+                                Wyczyść wszystkie filtry
+                            </button>
+                        ` : ''}
+                    </div>
+                `;
+            }
+
+            updateResultsSummary() {
+                const total = this.toolsGenerator.tools.length;
+                const filtered = this.filteredTools.length;
+
+                this.resultsCount.textContent = `Wyświetlane: ${filtered} z ${total} narzędzi`;
+                this.resultsSummary.style.display = 'flex';
+
+                // Aktualizuj liczniki w tagach
+                this.updateTagCounts();
+            }
+
+            updateTagCounts() {
+                const typeStats = {};
+                const platformStats = {};
+
+                this.filteredTools.forEach(tool => {
+                    if (tool.types) {
+                        tool.types.forEach(type => {
+                            typeStats[type] = (typeStats[type] || 0) + 1;
+                        });
+                    }
+                    if (tool.platforms) {
+                        tool.platforms.forEach(platform => {
+                            platformStats[platform] = (platformStats[platform] || 0) + 1;
+                        });
+                    }
+                });
+
+                // Aktualizuj liczniki typów
+                this.typeFiltersContainer.querySelectorAll('.tag-filter').forEach(tag => {
+                    const type = tag.getAttribute('data-type');
+                    const countElement = tag.querySelector('.tag-count');
+                    const count = typeStats[type] || 0;
+                    countElement.textContent = count;
+
+                    // Wyłącz tag jeśli nie ma wyników
+                    if (count === 0 && !this.activeFilters.types.has(type)) {
+                        tag.style.opacity = '0.5';
+                        tag.style.pointerEvents = 'none';
+                    } else {
+                        tag.style.opacity = '1';
+                        tag.style.pointerEvents = 'auto';
+                    }
+                });
+
+                // Aktualizuj liczniki platform
+                const platformFiltersContainer = document.getElementById('platform-filters');
+                if (platformFiltersContainer) {
+                    platformFiltersContainer.querySelectorAll('.tag-filter').forEach(tag => {
+                        const platform = tag.getAttribute('data-platform');
+                        const countElement = tag.querySelector('.tag-count');
+                        const count = platformStats[platform] || 0;
+                        countElement.textContent = count;
+
+                        // Wyłącz tag jeśli nie ma wyników
+                        if (count === 0 && !this.activeFilters.platforms.has(platform)) {
+                            tag.style.opacity = '0.5';
+                            tag.style.pointerEvents = 'none';
+                        } else {
+                            tag.style.opacity = '1';
+                            tag.style.pointerEvents = 'auto';
+                        }
+                    });
+                }
+            }
+        }
+
+        // Inicjalizacja aplikacji
+        document.addEventListener('DOMContentLoaded', async function () {
+            const toolsGenerator = new ExternalToolsGenerator('./external-tools.json');
+
+            try {
+                await toolsGenerator.init('tools-container');
+
+                // Inicjalizacja zaawansowanych filtrów
+                const advancedFilter = new AdvancedToolsFilter(toolsGenerator);
+
+                // Początkowe zastosowanie filtrów
+                advancedFilter.applyFilters();
+
+                // Udostępnienie globalnie dla debugowania
+                window.toolsGenerator = toolsGenerator;
+                window.advancedFilter = advancedFilter;
+
+                console.log(`Załadowano ${toolsGenerator.tools.length} narzędzi zewnętrznych z zaawansowanym filtrowaniem`);
+
+            } catch (error) {
+                console.error('Błąd podczas inicjalizacji narzędzi:', error);
+                document.getElementById('tools-container').innerHTML =
+                    '<div class="error">Wystąpił błąd podczas ładowania narzędzi zewnętrznych. Sprawdź konsolę przeglądarki, aby uzyskać więcej informacji.</div>';
+            }
+        });
+    </script>
 </body>
 
 </html>

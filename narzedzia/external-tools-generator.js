@@ -48,10 +48,37 @@ class ExternalToolsGenerator {
 	}
 
 	/**
+	 * Generuje HTML dla platform narzędzia
+	 */
+	generatePlatformHTML(platforms, platformLabels) {
+		if (!platforms || platforms.length === 0) return "";
+
+		const platformItems = platforms
+			.map((platform, index) => {
+				const label =
+					platformLabels && platformLabels[index]
+						? platformLabels[index]
+						: platform;
+				return `<span class="platform-item ${platform}">${label}</span>`;
+			})
+			.join(", ");
+
+		return `
+                <div class="tool-platforms">
+                    <i class="fa-solid fa-desktop"></i>
+                    ${platformItems}
+                </div>`;
+	}
+
+	/**
 	 * Generuje HTML dla pojedynczego narzędzia
 	 */
 	generateToolHTML(tool) {
 		const toolTypeHTML = this.generateToolTypeHTML(tool.types, tool.typeLabels);
+		const platformHTML = this.generatePlatformHTML(
+			tool.platforms,
+			tool.platformLabels
+		);
 
 		const additionalLinkHTML = tool.additionalLink
 			? `<a href="${tool.additionalLink}" class="tile-link" target="_blank" rel="noopener">Dodatkowy opis</a>`
@@ -66,6 +93,7 @@ class ExternalToolsGenerator {
                 </div>
                 <div class="tile-content">
                     <p class="tile-description">${tool.description}</p>
+                    ${platformHTML}
                 </div>
                 <div class="tile-footer">
                     <a href="${tool.mainLink}" class="tile-link" target="_blank" rel="noopener">Strona narzędzia</a>
@@ -127,6 +155,8 @@ class ExternalToolsGenerator {
 			description: tool.description,
 			types: tool.types || ["online"],
 			typeLabels: tool.typeLabels || ["Web App"],
+			platforms: tool.platforms || ["windows", "mac", "linux"],
+			platformLabels: tool.platformLabels || ["Windows", "macOS", "Linux"],
 			mainLink: tool.mainLink,
 			additionalLink: tool.additionalLink || null,
 		};
@@ -160,6 +190,15 @@ class ExternalToolsGenerator {
 	}
 
 	/**
+	 * Filtruje narzędzia według platformy
+	 */
+	filterByPlatform(platform) {
+		return this.tools.filter(
+			tool => tool.platforms && tool.platforms.includes(platform)
+		);
+	}
+
+	/**
 	 * Wyszukuje narzędzia według nazwy lub opisu
 	 */
 	search(query) {
@@ -185,12 +224,18 @@ class ExternalToolsGenerator {
 		const stats = {
 			total: this.tools.length,
 			byType: {},
+			byPlatform: {},
 		};
 
 		this.tools.forEach(tool => {
 			if (tool.types) {
 				tool.types.forEach(type => {
 					stats.byType[type] = (stats.byType[type] || 0) + 1;
+				});
+			}
+			if (tool.platforms) {
+				tool.platforms.forEach(platform => {
+					stats.byPlatform[platform] = (stats.byPlatform[platform] || 0) + 1;
 				});
 			}
 		});
