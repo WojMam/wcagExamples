@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- WCAG 2.4.2 Unikalny tytuł strony -->
+    <!-- Tytuł strony powinien być unikalny i opisowy -->
+    <title>Strona główna - Przykład WCAG - Dobre praktyki dostępności</title>
+
+    <!-- Link do zewnętrznego pliku CSS -->
+    <link rel="stylesheet" href="wcag-good-styles.css?v=2024-fix">
+</head>
+
+<body>
+    <!-- WCAG 2.4.1 Pomijanie bloków -->
+    <!-- Skiplinki umożliwiają szybkie przejście do głównych sekcji strony -->
+    <div class="skip-links">
+        <a href="#main-content" class="skip-link">Przejdź do głównej treści</a>
+        <a href="#navigation" class="skip-link">Przejdź do nawigacji</a>
+        <a href="#prawidlowy-slider" class="skip-link">Przejdź do slidera</a>
+        <a href="#formularz-kontaktowy" class="skip-link">Przejdź do formularza kontaktowego</a>
+        <a href="#footer-content" class="skip-link">Przejdź do stopki</a>
+    </div>
+
+    <div class="container">
+        <!-- WCAG 1.3.1 Informacje i relacje -->
+        <!-- Użycie semantycznych znaczników HTML do strukturyzacji treści -->
+        <header>
+            <h1>Przykłady dobrych praktyk WCAG</h1>
+            <p>Strona demonstrująca prawidłowe implementacje kryteriów dostępności</p>
+        </header>
+
+        <!-- WCAG 1.3.1 Informacje i relacje -->
+        <!-- Semantyczna nawigacja dla lepszej struktury -->
+        <nav role="navigation" aria-label="Nawigacja główna" id="navigation">
+            <h2>Menu nawigacji</h2>
+            <ul>
+                <li><a href="#tresc-nietekstowa">Treść nietekstowa</a></li>
+                <li><a href="#prawidlowy-slider">Prawidłowy slider</a></li>
+                <li><a href="#prawidlowe-naglowki">Prawidłowe nagłówki</a></li>
+                <li><a href="#najnowsze-artykuly">Najnowsze artykuły</a></li>
+                <li><a href="#dokumenty">Dokumenty do pobrania</a></li>
+                <li><a href="#formularz-kontaktowy">Formularz kontaktowy</a></li>
+                <li><a href="#dodatkowe-informacje">Dodatkowe informacje</a></li>
+            </ul>
+        </nav>
+
+        <!-- WCAG 1.3.1 Informacje i relacje -->
+        <!-- Semantyczny znacznik main dla głównej treści -->
+        <main id="main-content">
+            <section class="image-section" id="tresc-nietekstowa">
+                <h2>Treść nietekstowa</h2>
+
+                <!-- WCAG 1.1.1 Treść nietekstowa -->
+                <!-- Obraz z odpowiednim opisem alternatywnym -->
+                <img src="images/accessibility-example.jpg"
+                    alt="Ikona reprezentująca dostępność cyfrową - osoba na wózku inwalidzkim z symbolem dostępności"
+                    width="300" height="200">
+
+                <p>Powyższy obraz przedstawia symbol dostępności cyfrowej i zawiera odpowiedni opis alternatywny.</p>
+            </section>
+
+            <section id="prawidlowy-slider">
+                <h2>Prawidłowy slider</h2>
+
+                <!-- WCAG 2.2.2 Pauza, zatrzymanie, ukrywanie -->
+                <!-- WCAG 2.1.1 Klawiatura -->
+                <!-- WCAG 4.1.2 Nazwa, rola, wartość -->
+                <!-- Slider z możliwością zatrzymania automatycznego przesuwania -->
+                <p>Poniższy slider demonstruje dostępny carousel z automatycznym przesuwaniem, kontrolami i nawigacją
+                    klawiaturową:</p>
+
+                <div class="slider-container" role="region" aria-label="Galeria zdjęć dostępności"
+                    aria-describedby="slider-description">
+                    <div id="slider-description" class="visually-hidden">
+                        Slider z obrazami związanymi z dostępnością cyfrową. Używaj strzałek lub klawiatury do
+                        nawigacji.
+                    </div>
+
+                    <!-- Kontrolki slidera -->
+                    <div class="slider-controls">
+                        <button id="play-pause-btn" class="slider-btn" aria-label="Zatrzymaj automatyczne przesuwanie">
+                            <span aria-hidden="true">⏸️</span>
+                            <span class="btn-text">Pauza</span>
+                        </button>
+                        <div class="slider-info">
+                            <span id="slide-counter" aria-live="polite">Slajd 1 z 4</span>
+                        </div>
+                    </div>
+
+                    <!-- Główny slider -->
+                    <div class="slider-wrapper">
+                        <button class="slider-nav prev" id="prev-btn" aria-label="Poprzedni slajd">
+                            <span aria-hidden="true">‹</span>
+                        </button>
+
+                        <div class="slider-track" id="slider-track">
+                            <div class="slide active" data-slide="1">
+                                <img src="images/accessibility-example.jpg"
+                                    alt="Symbol dostępności cyfrowej - osoba na wózku inwalidzkim z ikoną dostępności"
+                                    loading="lazy">
+                                <div class="slide-content">
+                                    <h3>Dostępność cyfrowa</h3>
+                                </div>
+                            </div>
+
+                            <div class="slide" data-slide="2">
+                                <img src="images/article-accessibility.jpg"
+                                    alt="Osoba pracująca na laptopie z włączonymi narzędziami dostępności ekranu"
+                                    loading="lazy">
+                                <div class="slide-content">
+                                    <h3>Narzędzia dostępności</h3>
+                                </div>
+                            </div>
+
+                            <div class="slide" data-slide="3">
+                                <img src="images/article-wcag.jpg"
+                                    alt="Schemat przedstawiający cztery zasady WCAG: postrzegalność, funkcjonalność, zrozumiałość i solidność"
+                                    loading="lazy">
+                                <div class="slide-content">
+                                    <h3>Wytyczne WCAG</h3>
+                                </div>
+                            </div>
+
+                            <div class="slide" data-slide="4">
+                                <img src="images/article-forms.jpg"
+                                    alt="Przykład dostępnego formularza z wyraźnymi etykietami i wskaźnikami błędów"
+                                    loading="lazy">
+                                <div class="slide-content">
+                                    <h3>Dostępne formularze</h3>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="slider-nav next" id="next-btn" aria-label="Następny slajd">
+                            <span aria-hidden="true">›</span>
+                        </button>
+                    </div>
+
+                    <!-- Wskaźniki slajdów (dots) -->
+                    <div class="slider-dots" role="tablist" aria-label="Wybierz slajd">
+                        <button class="dot active" role="tab" aria-selected="true" aria-label="Przejdź do slajdu 1"
+                            data-slide="1"></button>
+                        <button class="dot" role="tab" aria-selected="false" aria-label="Przejdź do slajdu 2"
+                            data-slide="2"></button>
+                        <button class="dot" role="tab" aria-selected="false" aria-label="Przejdź do slajdu 3"
+                            data-slide="3"></button>
+                        <button class="dot" role="tab" aria-selected="false" aria-label="Przejdź do slajdu 4"
+                            data-slide="4"></button>
+                    </div>
+                </div>
+
+                <div class="slider-features">
+                    <h3>Funkcje dostępności slidera:</h3>
+                    <ul>
+                        <li><strong>Automatyczne odtwarzanie z możliwością zatrzymania</strong> - zgodnie z WCAG 2.2.2
+                        </li>
+                        <li><strong>Nawigacja klawiaturą</strong> - strzałki, Tab, Enter, spacja</li>
+                        <li><strong>Czytniki ekranu</strong> - odpowiednie role i etykiety ARIA</li>
+                        <li><strong>Widoczny fokus</strong> - wyraźne wskaźniki dla użytkowników klawiatury</li>
+                        <li><strong>Live regions</strong> - powiadomienia o zmianach dla czytników ekranu</li>
+                        <li><strong>Opisowe teksty alternatywne</strong> - dla wszystkich obrazów</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="prawidlowe-naglowki">
+                <h2>Prawidłowe nagłówki</h2>
+
+                <!-- WCAG 1.3.1 Informacje i relacje oraz WCAG 2.4.6 Nagłówki i etykiety -->
+                <!-- Demonstracja właściwej hierarchii nagłówków HTML -->
+                <p>Poniżej przedstawiono przykład prawidłowej struktury nagłówków, która tworzy logiczną hierarchię
+                    treści:</p>
+
+                <div class="headings-example">
+                    <!-- Główny nagłówek strony (tylko jeden H1 na stronę) -->
+                    <h1 style="font-size: 1.5rem; margin: 1rem 0;">Główny nagłówek strony (H1)</h1>
+                    <p style="margin: 0.5rem 0 1.5rem 0; color: var(--text-light); font-size: 0.875rem;">
+                        Powinien być tylko jeden na stronę i opisywać główny temat
+                    </p>
+
+                    <!-- Nagłówki poziomu 2 - główne sekcje -->
+                    <h2 style="font-size: 1.375rem; margin: 1rem 0 0.5rem 0;">Sekcja główna (H2)</h2>
+                    <p style="margin: 0.5rem 0 1rem 0; color: var(--text-light); font-size: 0.875rem;">
+                        Używane do oznaczania głównych sekcji treści
+                    </p>
+
+                    <!-- Nagłówki poziomu 3 - podsekcje -->
+                    <h3 style="font-size: 1.25rem; margin: 1rem 0 0.5rem 0;">Podsekcja (H3)</h3>
+                    <p style="margin: 0.5rem 0 1rem 0; color: var(--text-light); font-size: 0.875rem;">
+                        Używane do dalszego podziału treści w sekcji H2
+                    </p>
+
+                    <!-- Nagłówki poziomu 4 - szczegóły -->
+                    <h4 style="font-size: 1.125rem; margin: 1rem 0 0.5rem 0;">Szczegółowy temat (H4)</h4>
+                    <p style="margin: 0.5rem 0 1rem 0; color: var(--text-light); font-size: 0.875rem;">
+                        Używane do jeszcze bardziej szczegółowych podziałów
+                    </p>
+
+                    <!-- Kolejna sekcja H2 -->
+                    <h2 style="font-size: 1.375rem; margin: 1.5rem 0 0.5rem 0;">Druga sekcja główna (H2)</h2>
+                    <p style="margin: 0.5rem 0 1rem 0; color: var(--text-light); font-size: 0.875rem;">
+                        Kolejna równorzędna sekcja na tym samym poziomie
+                    </p>
+
+                    <!-- Podsekcja w drugiej sekcji -->
+                    <h3 style="font-size: 1.25rem; margin: 1rem 0 0.5rem 0;">Podsekcja drugiej sekcji (H3)</h3>
+                    <p style="margin: 0.5rem 0 1.5rem 0; color: var(--text-light); font-size: 0.875rem;">
+                        Hierarchia powinna być logiczna i sekwencyjna
+                    </p>
+                </div>
+
+                <div class="headings-info">
+                    <h3>Najważniejsze zasady nagłówków:</h3>
+                    <ul>
+                        <li><strong>Nie pomijaj poziomów</strong> - nie przechodź z H2 bezpośrednio do H4</li>
+                        <li><strong>Jeden H1 na stronę</strong> - opisuje główny temat całej strony</li>
+                        <li><strong>Logiczna kolejność</strong> - nagłówki powinny tworzyć spójną strukturę</li>
+                        <li><strong>Opisowe treści</strong> - nagłówki powinny jasno opisywać zawartość sekcji</li>
+                        <li><strong>Nie używaj nagłówków tylko do stylizacji</strong> - użyj CSS do wyglądu</li>
+                        <li><strong>Pomyśl o czytnikach ekranu</strong> - użytkownicy nawigują po nagłówkach</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section id="najnowsze-artykuly">
+                <h2>Najnowsze artykuły</h2>
+
+                <!-- WCAG 1.3.1 Informacje i relacje -->
+                <!-- Semantyczna struktura artykułów z odpowiednimi nagłówkami -->
+                <div class="articles-grid">
+                    <article class="article-card">
+                        <div class="article-thumbnail">
+                            <!-- WCAG 1.1.1 Treść nietekstowa -->
+                            <!-- Miniaturka artykułu z opisem alternatywnym -->
+                            <img src="images/article-accessibility.jpg"
+                                alt="Osoba pracująca na laptopie z włączonymi narzędziami dostępności ekranu"
+                                width="300" height="200">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <time datetime="2024-03-15" class="article-date">15 marca 2024</time>
+                                <span class="article-category">Dostępność</span>
+                            </div>
+
+                            <!-- WCAG 2.4.4 Cel linku (w kontekście) -->
+                            <!-- Link z opisowym tytułem artykułu -->
+                            <h3>
+                                <a href="artykuly/jak-testowac-dostepnosc-strony.html">
+                                    Jak testować dostępność strony internetowej - kompletny przewodnik
+                                </a>
+                            </h3>
+
+                            <p class="article-excerpt">
+                                Poznaj najefektywniejsze metody testowania dostępności witryn internetowych.
+                                Od automatycznych narzędzi po testy manualne z użytkownikami.
+                            </p>
+
+                            <div class="article-footer">
+                                <span class="article-author">Autor: Anna Kowalska</span>
+                                <span class="article-reading-time">Czas czytania: 8 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-thumbnail">
+                            <img src="images/article-wcag.jpg"
+                                alt="Schemat przedstawiający cztery zasady WCAG: postrzegalność, funkcjonalność, zrozumiałość i solidność"
+                                width="300" height="200">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <time datetime="2024-03-10" class="article-date">10 marca 2024</time>
+                                <span class="article-category">WCAG</span>
+                            </div>
+
+                            <h3>
+                                <a href="artykuly/wcag-2-2-nowe-wytyczne.html">
+                                    WCAG 2.2 - przegląd nowych wytycznych dostępności
+                                </a>
+                            </h3>
+
+                            <p class="article-excerpt">
+                                Sprawdź jakie nowe kryteria dostępności wprowadza WCAG 2.2 i jak wpłyną
+                                one na projektowanie i rozwój stron internetowych.
+                            </p>
+
+                            <div class="article-footer">
+                                <span class="article-author">Autor: Michał Nowak</span>
+                                <span class="article-reading-time">Czas czytania: 12 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-thumbnail">
+                            <img src="images/article-forms.jpg"
+                                alt="Przykład dostępnego formularza z wyraźnymi etykietami i wskaźnikami błędów"
+                                width="300" height="200">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <time datetime="2024-03-05" class="article-date">5 marca 2024</time>
+                                <span class="article-category">UX/UI</span>
+                            </div>
+
+                            <h3>
+                                <a href="artykuly/dostepne-formularze-best-practices.html">
+                                    Projektowanie dostępnych formularzy - najlepsze praktyki
+                                </a>
+                            </h3>
+
+                            <p class="article-excerpt">
+                                Kompendium wiedzy o tworzeniu formularzy internetowych, które są
+                                użyteczne dla wszystkich użytkowników, w tym osób z niepełnosprawnościami.
+                            </p>
+
+                            <div class="article-footer">
+                                <span class="article-author">Autor: Katarzyna Wiśniewska</span>
+                                <span class="article-reading-time">Czas czytania: 6 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="article-card">
+                        <div class="article-thumbnail">
+                            <img src="images/article-screen-readers.jpg"
+                                alt="Osoba niewidoma używająca czytnika ekranu do nawigacji po stronie internetowej"
+                                width="300" height="200">
+                        </div>
+                        <div class="article-content">
+                            <div class="article-meta">
+                                <time datetime="2024-02-28" class="article-date">28 lutego 2024</time>
+                                <span class="article-category">Technologie wspomagające</span>
+                            </div>
+
+                            <h3>
+                                <a href="artykuly/czytniki-ekranu-przewodnik.html">
+                                    Czytniki ekranu - jak działają i jak je wspierać
+                                </a>
+                            </h3>
+
+                            <p class="article-excerpt">
+                                Poznaj sposób działania najpopularniejszych czytników ekranu i dowiedz się,
+                                jak optymalizować strony internetowe dla tych narzędzi.
+                            </p>
+
+                            <div class="article-footer">
+                                <span class="article-author">Autor: Tomasz Zieliński</span>
+                                <span class="article-reading-time">Czas czytania: 10 min</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="articles-footer">
+                    <a href="artykuly/wszystkie-artykuly.html" class="view-all-articles">
+                        Zobacz wszystkie artykuły
+                    </a>
+                </div>
+            </section>
+
+            <section id="dokumenty">
+                <h2>Dokumenty do pobrania</h2>
+
+                <!-- WCAG 2.4.4 Cel linku (w kontekście) -->
+                <!-- Link z opisowym tekstem wskazującym cel i typ pliku -->
+                <p>
+                    <a href="raport2024.pdf">Pobierz raport finansowy za 2024 rok (PDF, 2.5 MB)</a>
+                </p>
+                <p>
+                    <a href="instrukcja-dostepnosci.pdf">Pobierz instrukcję dostępności strony (PDF, 1.2 MB)</a>
+                </p>
+                <p>
+                    <a href="mailto:kontakt@example.com">Wyślij e-mail do działu obsługi klienta</a>
+                </p>
+            </section>
+
+            <section id="formularz-kontaktowy">
+                <h2>Formularz kontaktowy</h2>
+
+                <!-- WCAG 3.3.2 Etykiety lub instrukcje -->
+                <!-- Formularz z odpowiednimi etykietami powiązanymi z polami -->
+                <form action="#" method="post">
+                    <div class="form-group">
+                        <label for="name">Imię i nazwisko (wymagane):</label>
+                        <input type="text" id="name" name="name" required aria-describedby="name-help">
+                        <small id="name-help">Podaj swoje pełne imię i nazwisko</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Adres e-mail (wymagane):</label>
+                        <input type="email" id="email" name="email" required aria-describedby="email-help">
+                        <small id="email-help">Podaj prawidłowy adres e-mail, np. jan@example.com</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Numer telefonu (opcjonalnie):</label>
+                        <input type="tel" id="phone" name="phone" aria-describedby="phone-help">
+                        <small id="phone-help">Podaj numer w formacie: +48 123 456 789</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Temat wiadomości (wymagane):</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Treść wiadomości (wymagane):</label>
+                        <textarea id="message" name="message" rows="5" required
+                            aria-describedby="message-help"></textarea>
+                        <small id="message-help">Opisz szczegółowo swoją sprawę (minimum 10 znaków)</small>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="checkbox" id="privacy" name="privacy" required>
+                        <label for="privacy">Akceptuję politykę prywatności (wymagane)</label>
+                    </div>
+
+                    <button type="submit">Wyślij wiadomość</button>
+                </form>
+            </section>
+
+            <section id="dodatkowe-informacje">
+                <h2>Dodatkowe informacje</h2>
+                <p>Ta strona została stworzona zgodnie z wytycznymi WCAG 2.1 poziom AA. Wszystkie elementy są dostępne
+                    dla użytkowników technologii wspomagających.</p>
+
+                <h3>Zaimplementowane kryteria WCAG:</h3>
+                <ul>
+                    <li><strong>1.1.1 Treść nietekstowa</strong> - Wszystkie obrazy posiadają odpowiednie opisy
+                        alternatywne</li>
+                    <li><strong>1.3.1 Informacje i relacje</strong> - Użyto semantycznych znaczników HTML</li>
+                    <li><strong>2.1.1 Klawiatura</strong> - Slider dostępny przez nawigację klawiaturową</li>
+                    <li><strong>2.2.2 Pauza, zatrzymanie, ukrywanie</strong> - Automatyczne przesuwanie z opcją
+                        zatrzymania</li>
+                    <li><strong>2.4.1 Pomijanie bloków</strong> - Skiplinki umożliwiają szybkie przejście do głównych
+                        sekcji strony</li>
+                    <li><strong>2.4.2 Unikalny tytuł strony</strong> - Strona ma unikalny i opisowy tytuł</li>
+                    <li><strong>2.4.4 Cel linku (w kontekście)</strong> - Linki mają opisowe teksty</li>
+                    <li><strong>2.4.6 Nagłówki i etykiety</strong> - Nagłówki tworzą logiczną hierarchię i opisują
+                        zawartość sekcji</li>
+                    <li><strong>2.4.7 Widoczny fokus</strong> - Wyraźne wskaźniki fokusa dla nawigacji klawiaturowej
+                    </li>
+                    <li><strong>3.3.2 Etykiety lub instrukcje</strong> - Pola formularza mają odpowiednie etykiety</li>
+                    <li><strong>4.1.2 Nazwa, rola, wartość</strong> - Slider ma odpowiednie role i etykiety ARIA</li>
+                </ul>
+            </section>
+        </main>
+
+        <!-- WCAG 1.3.1 Informacje i relacje -->
+        <!-- Semantyczny znacznik footer dla stopki -->
+        <footer id="footer-content">
+            <p>&copy; 2024 Przykład WCAG. Wszystkie prawa zastrzeżone.</p>
+            <p>Ta strona powinna być zgodna z WCAG 2.1 poziom AA.</p>
+        </footer>
+    </div>
+
+    <!-- Script dla dostępnego slidera -->
+    <script src="slider.js"></script>
+</body>
+
+</html>
