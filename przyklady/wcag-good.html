@@ -10,7 +10,7 @@
     <title>Strona główna - Przykład WCAG - Dobre praktyki dostępności</title>
 
     <!-- Link do zewnętrznego pliku CSS -->
-    <link rel="stylesheet" href="wcag-good-styles.css?v=2024-fix">
+    <link rel="stylesheet" href="wcag-good-styles.css?v=2024-tables-fix">
 </head>
 
 <body>
@@ -20,6 +20,7 @@
         <a href="#main-content" class="skip-link">Przejdź do głównej treści</a>
         <a href="#navigation" class="skip-link">Przejdź do nawigacji</a>
         <a href="#prawidlowy-slider" class="skip-link">Przejdź do slidera</a>
+        <a href="#tabele-i-listy" class="skip-link">Przejdź do tabel i list</a>
         <a href="#formularz-kontaktowy" class="skip-link">Przejdź do formularza kontaktowego</a>
         <a href="#footer-content" class="skip-link">Przejdź do stopki</a>
     </div>
@@ -41,6 +42,7 @@
                 <li><a href="#prawidlowy-slider">Prawidłowy slider</a></li>
                 <li><a href="#prawidlowe-naglowki">Prawidłowe nagłówki</a></li>
                 <li><a href="#najnowsze-artykuly">Najnowsze artykuły</a></li>
+                <li><a href="#tabele-i-listy">Dostępne tabele i listy</a></li>
                 <li><a href="#dokumenty">Dokumenty do pobrania</a></li>
                 <li><a href="#formularz-kontaktowy">Formularz kontaktowy</a></li>
                 <li><a href="#dodatkowe-informacje">Dodatkowe informacje</a></li>
@@ -363,6 +365,175 @@
                 </div>
             </section>
 
+            <section id="tabele-i-listy">
+                <h2>Dostępne tabele i listy</h2>
+
+                <!-- WCAG 1.3.1 Informacje i relacje -->
+                <!-- Demonstracja różnych typów list z odpowiednią semantyką -->
+                <h3>Przykłady dostępnych list</h3>
+
+                <h4>Lista nieuporządkowana (ul)</h4>
+                <p>Używana do prezentacji elementów bez określonej kolejności:</p>
+                <ul>
+                    <li>Dostępność dla osób niewidomych i słabowidzących</li>
+                    <li>Wsparcie dla osób z zaburzeniami słuchu</li>
+                    <li>Dostępność dla osób z niepełnosprawnościami ruchowymi</li>
+                    <li>Wsparcie dla osób z trudnościami poznawczymi</li>
+                </ul>
+
+                <h4>Lista uporządkowana (ol)</h4>
+                <p>Używana gdy kolejność elementów ma znaczenie:</p>
+                <ol>
+                    <li>Zaplanuj strukturę i architekturę informacji</li>
+                    <li>Zaprojektuj zgodnie z wytycznymi WCAG</li>
+                    <li>Zakoduj z użyciem semantycznego HTML</li>
+                    <li>Przetestuj z użytkownikami i narzędziami</li>
+                    <li>Wdróż i monitoruj dostępność na bieżąco</li>
+                </ol>
+
+                <h4>Lista definicji (dl)</h4>
+                <p>Używana do prezentacji terminów i ich definicji:</p>
+                <dl>
+                    <dt>WCAG</dt>
+                    <dd>Web Content Accessibility Guidelines - międzynarodowe wytyczne dostępności treści internetowych
+                    </dd>
+
+                    <dt>ARIA</dt>
+                    <dd>Accessible Rich Internet Applications - zestaw atrybutów poprawiających dostępność dynamicznych
+                        treści</dd>
+
+                    <dt>Technologie wspomagające</dt>
+                    <dd>Narzędzia i urządzenia pomocne osobom z niepełnosprawnościami, np. czytniki ekranu, przełączniki
+                    </dd>
+
+                    <dt>Kontrast kolorów</dt>
+                    <dd>Różnica jasności między tekstem a tłem, zapewniająca czytelność dla osób słabowidzących</dd>
+                </dl>
+
+                <!-- WCAG 1.3.1 Informacje i relacje -->
+                <!-- WCAG 2.4.6 Nagłówki i etykiety -->
+                <!-- Dostępna tabela z odpowiednimi nagłówkami i podpisem -->
+                <h3>Przykład dostępnej tabeli</h3>
+                <p>Poniższa tabela demonstruje prawidłowe użycie elementów semantycznych:</p>
+
+                <table>
+                    <caption>
+                        Poziomy zgodności WCAG 2.1 i liczba kryteriów w każdym poziomie
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Poziom zgodności</th>
+                            <th scope="col">Oznaczenie</th>
+                            <th scope="col">Liczba kryteriów</th>
+                            <th scope="col">Opis</th>
+                            <th scope="col">Zastosowanie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Poziom A</th>
+                            <td>A</td>
+                            <td>25</td>
+                            <td>Podstawowy poziom dostępności</td>
+                            <td>Minimalne wymagania dla wszystkich stron</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Poziom AA</th>
+                            <td>AA</td>
+                            <td>13</td>
+                            <td>Standardowy poziom dostępności</td>
+                            <td>Zalecany dla większości witryn publicznych</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Poziom AAA</th>
+                            <td>AAA</td>
+                            <td>12</td>
+                            <td>Najwyższy poziom dostępności</td>
+                            <td>Wyspecjalizowane zastosowania</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th scope="row">Razem</th>
+                            <td colspan="2">50 kryteriów</td>
+                            <td colspan="2">Łącznie wszystkie poziomy WCAG 2.1</td>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <h4>Tabela z grupowanymi nagłówkami</h4>
+                <p>Przykład bardziej złożonej tabeli z zagnieżdżonymi nagłówkami:</p>
+
+                <table>
+                    <caption>
+                        Wyniki testów dostępności różnych przeglądarek z technologiami wspomagającymi
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th rowspan="2" scope="col">Przeglądarka</th>
+                            <th colspan="3" scope="colgroup">Czytniki ekranu</th>
+                            <th colspan="2" scope="colgroup">Nawigacja klawiaturowa</th>
+                        </tr>
+                        <tr>
+                            <th scope="col">NVDA</th>
+                            <th scope="col">JAWS</th>
+                            <th scope="col">VoiceOver</th>
+                            <th scope="col">Tab</th>
+                            <th scope="col">Strzałki</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Chrome</th>
+                            <td>Excellent</td>
+                            <td>Excellent</td>
+                            <td>Good</td>
+                            <td>Excellent</td>
+                            <td>Good</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Firefox</th>
+                            <td>Excellent</td>
+                            <td>Good</td>
+                            <td>Good</td>
+                            <td>Excellent</td>
+                            <td>Excellent</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Safari</th>
+                            <td>Good</td>
+                            <td>Average</td>
+                            <td>Excellent</td>
+                            <td>Good</td>
+                            <td>Good</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Edge</th>
+                            <td>Good</td>
+                            <td>Excellent</td>
+                            <td>N/A</td>
+                            <td>Excellent</td>
+                            <td>Good</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-box">
+                    <h4>Najważniejsze zasady dostępnych tabel i list:</h4>
+                    <ul>
+                        <li><strong>Podpisy tabel (caption)</strong> - każda tabela powinna mieć opisowy podpis</li>
+                        <li><strong>Nagłówki tabel (th)</strong> - używaj elementu th z atrybutem scope dla nagłówków
+                        </li>
+                        <li><strong>Semantyka list</strong> - wybieraj odpowiedni typ listy (ul, ol, dl) zgodnie z
+                            treścią</li>
+                        <li><strong>Struktura nagłówków</strong> - używaj thead, tbody, tfoot dla struktury tabeli</li>
+                        <li><strong>Grupowanie kolumn</strong> - użyj colspan i rowspan z opisowymi nagłówkami</li>
+                        <li><strong>Czytelność</strong> - zapewnij odpowiedni kontrast i rozmiar tekstu</li>
+                        <li><strong>Responsywność</strong> - tabele powinny działać na urządzeniach mobilnych</li>
+                    </ul>
+                </div>
+            </section>
+
             <section id="dokumenty">
                 <h2>Dokumenty do pobrania</h2>
 
@@ -433,7 +604,9 @@
                 <ul>
                     <li><strong>1.1.1 Treść nietekstowa</strong> - Wszystkie obrazy posiadają odpowiednie opisy
                         alternatywne</li>
-                    <li><strong>1.3.1 Informacje i relacje</strong> - Użyto semantycznych znaczników HTML</li>
+                    <li><strong>1.3.1 Informacje i relacje</strong> - Użyto semantycznych znaczników HTML, włączając
+                        prawidłową strukturę nagłówków, tabel z odpowiednimi nagłówkami (th) i zakresami (scope),
+                        oraz różne typy list (ul, ol, dl)</li>
                     <li><strong>2.1.1 Klawiatura</strong> - Slider dostępny przez nawigację klawiaturową</li>
                     <li><strong>2.2.2 Pauza, zatrzymanie, ukrywanie</strong> - Automatyczne przesuwanie z opcją
                         zatrzymania</li>
@@ -442,7 +615,7 @@
                     <li><strong>2.4.2 Unikalny tytuł strony</strong> - Strona ma unikalny i opisowy tytuł</li>
                     <li><strong>2.4.4 Cel linku (w kontekście)</strong> - Linki mają opisowe teksty</li>
                     <li><strong>2.4.6 Nagłówki i etykiety</strong> - Nagłówki tworzą logiczną hierarchię i opisują
-                        zawartość sekcji</li>
+                        zawartość sekcji, tabele mają opisowe podpisy (caption) i nagłówki kolumn/wierszy</li>
                     <li><strong>2.4.7 Widoczny fokus</strong> - Wyraźne wskaźniki fokusa dla nawigacji klawiaturowej
                     </li>
                     <li><strong>3.3.2 Etykiety lub instrukcje</strong> - Pola formularza mają odpowiednie etykiety</li>
