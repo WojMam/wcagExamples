@@ -847,3 +847,185 @@ body.high-contrast a:focus {
 	content: "📝 ";
 	margin-right: 4px;
 }
+
+/* Style dla dashboardu głównej strony */
+.dashboard .tile .tile-header {
+	height: 160px !important;
+	min-height: 160px !important;
+	max-height: 160px !important;
+	box-sizing: border-box;
+}
+
+.dashboard {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 25px;
+	margin: 30px 0;
+}
+
+.tile {
+	background-color: #fff;
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s, box-shadow 0.3s;
+	position: relative;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.tile:hover,
+.tile:focus-within {
+	transform: translateY(-5px);
+	box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.tile-header {
+	background-color: var(--primary-color);
+	color: white;
+	padding: 20px;
+	font-size: 1.4em;
+	font-weight: bold;
+	height: 160px !important;
+	min-height: 160px !important;
+	max-height: 160px !important;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	box-sizing: border-box;
+}
+
+.tile-icon {
+	font-size: 48px;
+	margin-bottom: 10px;
+	display: block;
+	flex-shrink: 0;
+}
+
+.tile-content {
+	padding: 20px;
+	flex: 1;
+}
+
+.tile-description {
+	margin-bottom: 20px;
+	line-height: 1.6;
+}
+
+.tile-footer {
+	padding: 15px 20px;
+	text-align: right;
+	background-color: #f9f9f9;
+	border-top: 1px solid #eee;
+}
+
+.tile-link {
+	display: inline-block;
+	padding: 8px 20px;
+	background-color: var(--primary-color);
+	color: white;
+	text-decoration: none;
+	border-radius: 5px;
+	font-weight: bold;
+	transition: background-color 0.2s;
+}
+
+.tile-link:hover,
+.tile-link:focus {
+	background-color: var(--secondary-color);
+	outline: none;
+	text-decoration: none;
+}
+
+.hero {
+	background-color: var(--primary-color);
+	color: white;
+	padding: 40px;
+	border-radius: 10px;
+	margin-bottom: 30px;
+	position: relative;
+	overflow: hidden;
+}
+
+.hero h1 {
+	color: white;
+	font-size: 2.2em;
+	margin-bottom: 15px;
+}
+
+.hero p {
+	font-size: 1.2em;
+	max-width: 800px;
+	line-height: 1.5;
+}
+
+/* Style dla page-intro na stronie głównej */
+main .page-intro {
+	text-align: center;
+	max-width: 800px;
+	margin: 0 auto 40px;
+}
+
+main .page-intro h2 {
+	font-size: 1.8em;
+	border: none;
+	margin-bottom: 20px;
+}
+
+.disclaimer-banner {
+	margin-top: 20px;
+}
+
+/* Style dla trybu wysokiego kontrastu - dashboard */
+body.high-contrast .tile {
+	background-color: #000;
+	border: 2px solid #fff;
+	box-shadow: none;
+}
+
+body.high-contrast .tile-header {
+	background-color: #000;
+	color: #ffff00;
+	border-bottom: 2px solid #fff;
+}
+
+body.high-contrast .tile-content {
+	color: #fff;
+}
+
+body.high-contrast .tile-footer {
+	background-color: #222;
+	border-top: 2px solid #fff;
+}
+
+body.high-contrast .tile-link {
+	background-color: #000;
+	color: #ffff00;
+	border: 2px solid #ffff00;
+	font-weight: bold;
+}
+
+body.high-contrast .tile-link:hover,
+body.high-contrast .tile-link:focus {
+	background-color: #ffff00;
+	color: #000;
+}
+
+body.high-contrast .note {
+	color: #fff;
+	border-left: 3px solid #ffff00;
+}
+
+/* Responsywność dla dashboardu */
+@media (max-width: 768px) {
+	.dashboard {
+		grid-template-columns: 1fr;
+	}
+
+	.hero {
+		padding: 30px 20px;
+	}
+}
