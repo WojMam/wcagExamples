@@ -22,6 +22,7 @@
         <a href="#prawidlowy-slider" class="skip-link">Przejdź do slidera</a>
         <a href="#tabele-i-listy" class="skip-link">Przejdź do tabel i list</a>
         <a href="#formularz-kontaktowy" class="skip-link">Przejdź do formularza kontaktowego</a>
+        <a href="#zaawansowany-formularz" class="skip-link">Przejdź do zaawansowanego formularza</a>
         <a href="#footer-content" class="skip-link">Przejdź do stopki</a>
     </div>
 
@@ -45,6 +46,7 @@
                 <li><a href="#tabele-i-listy">Dostępne tabele i listy</a></li>
                 <li><a href="#dokumenty">Dokumenty do pobrania</a></li>
                 <li><a href="#formularz-kontaktowy">Formularz kontaktowy</a></li>
+                <li><a href="#zaawansowany-formularz">Zaawansowany formularz</a></li>
                 <li><a href="#dodatkowe-informacje">Dodatkowe informacje</a></li>
             </ul>
         </nav>
@@ -595,6 +597,203 @@
                 </form>
             </section>
 
+            <section id="zaawansowany-formularz">
+                <h2>Zaawansowany formularz</h2>
+                <p>Poniższy formularz demonstruje różne dostępne elementy interaktywne zgodne z wytycznymi WCAG:</p>
+
+                <!-- WCAG 1.3.1 Informacje i relacje -->
+                <!-- WCAG 3.3.2 Etykiety lub instrukcje -->
+                <!-- WCAG 4.1.2 Nazwa, rola, wartość -->
+                <form action="#" method="post" novalidate>
+
+                    <!-- Grupa radio buttonów z fieldset i legend -->
+                    <fieldset>
+                        <legend>Wybierz swoją rolę zawodową (wymagane):</legend>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="role-developer" name="role" value="developer" required
+                                    aria-describedby="role-help">
+                                <label for="role-developer">Programista/Developer</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="role-designer" name="role" value="designer" required>
+                                <label for="role-designer">Designer UX/UI</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="role-manager" name="role" value="manager" required>
+                                <label for="role-manager">Project Manager</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="role-tester" name="role" value="tester" required>
+                                <label for="role-tester">Tester/QA</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="role-other" name="role" value="other" required>
+                                <label for="role-other">Inne</label>
+                            </div>
+                        </div>
+                        <small id="role-help">Wybierz opcję, która najlepiej opisuje Twoją obecną rolę zawodową</small>
+                    </fieldset>
+
+                    <!-- Dropdown (select) -->
+                    <div class="form-group">
+                        <label for="experience">Doświadczenie w dostępności cyfrowej (wymagane):</label>
+                        <select id="experience" name="experience" required aria-describedby="experience-help">
+                            <option value="">-- Wybierz poziom doświadczenia --</option>
+                            <option value="beginner">Początkujący (0-1 rok)</option>
+                            <option value="intermediate">Średniozaawansowany (1-3 lata)</option>
+                            <option value="advanced">Zaawansowany (3-5 lat)</option>
+                            <option value="expert">Ekspert (ponad 5 lat)</option>
+                        </select>
+                        <small id="experience-help">Uwzględnij zarówno doświadczenie teoretyczne jak i
+                            praktyczne</small>
+                    </div>
+
+                    <!-- Grupa checkboxów -->
+                    <fieldset>
+                        <legend>Technologie, z którymi pracujesz (wybierz wszystkie, które stosują się do Ciebie):
+                        </legend>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tech-html" name="technologies[]" value="html">
+                                <label for="tech-html">HTML5 i semantyczny markup</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tech-css" name="technologies[]" value="css">
+                                <label for="tech-css">CSS3 i responsive design</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tech-js" name="technologies[]" value="javascript">
+                                <label for="tech-js">JavaScript i ARIA</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tech-react" name="technologies[]" value="react">
+                                <label for="tech-react">React/Vue/Angular</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tech-testing" name="technologies[]" value="testing">
+                                <label for="tech-testing">Narzędzia testowania dostępności</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="tech-screen-readers" name="technologies[]"
+                                    value="screen-readers">
+                                <label for="tech-screen-readers">Czytniki ekranu (NVDA, JAWS, VoiceOver)</label>
+                            </div>
+                        </div>
+                        <small>Zaznacz wszystkie technologie, które regularnie używasz w swojej pracy</small>
+                    </fieldset>
+
+                    <!-- Range slider -->
+                    <div class="form-group">
+                        <label for="wcag-knowledge">Oceń swoją znajomość wytycznych WCAG (1-10):</label>
+                        <div class="range-container">
+                            <input type="range" id="wcag-knowledge" name="wcag_knowledge" min="1" max="10" value="5"
+                                aria-describedby="wcag-knowledge-help" aria-valuetext="5 z 10">
+                            <div class="range-labels">
+                                <span>1 (Początkujący)</span>
+                                <span id="range-value">5</span>
+                                <span>10 (Ekspert)</span>
+                            </div>
+                        </div>
+                        <small id="wcag-knowledge-help">Przesuń suwak, aby wskazać swój poziom znajomości WCAG</small>
+                    </div>
+
+                    <!-- Data input -->
+                    <div class="form-group">
+                        <label for="training-date">Preferowana data szkolenia z dostępności:</label>
+                        <input type="date" id="training-date" name="training_date" aria-describedby="training-date-help"
+                            min="2024-12-01">
+                        <small id="training-date-help">Wybierz preferowaną datę rozpoczęcia szkolenia
+                            (opcjonalnie)</small>
+                    </div>
+
+                    <!-- Multi-select z optgroups -->
+                    <div class="form-group">
+                        <label for="interests">Obszary zainteresowań w dostępności cyfrowej:</label>
+                        <select id="interests" name="interests[]" multiple size="8" aria-describedby="interests-help">
+                            <optgroup label="Techniczne aspekty">
+                                <option value="semantic-html">Semantyczny HTML</option>
+                                <option value="aria-attributes">Atrybuty ARIA</option>
+                                <option value="keyboard-navigation">Nawigacja klawiaturowa</option>
+                                <option value="screen-reader-testing">Testowanie z czytnikami ekranu</option>
+                            </optgroup>
+                            <optgroup label="Design i UX">
+                                <option value="color-contrast">Kontrast kolorów</option>
+                                <option value="typography">Typografia dostępna</option>
+                                <option value="responsive-design">Responsive design</option>
+                                <option value="user-research">Badania z użytkownikami z niepełnosprawnościami</option>
+                            </optgroup>
+                            <optgroup label="Zarządzanie i proces">
+                                <option value="accessibility-audits">Audyty dostępności</option>
+                                <option value="team-training">Szkolenia zespołu</option>
+                                <option value="legal-compliance">Zgodność prawna</option>
+                                <option value="accessibility-strategy">Strategia dostępności</option>
+                            </optgroup>
+                        </select>
+                        <small id="interests-help">Przytrzymaj Ctrl (Windows) lub Cmd (Mac) aby wybrać wiele
+                            opcji</small>
+                    </div>
+
+                    <!-- Textarea z licznikiem znaków -->
+                    <div class="form-group">
+                        <label for="challenges">Opisz największe wyzwania związane z dostępnością w Twojej pracy
+                            (opcjonalnie):</label>
+                        <textarea id="challenges" name="challenges" rows="4" maxlength="500"
+                            aria-describedby="challenges-help challenges-counter"
+                            placeholder="Np. brak czasu na testy dostępności, trudności z implementacją ARIA..."></textarea>
+                        <div class="textarea-footer">
+                            <small id="challenges-help">Podziel się swoimi doświadczeniami, aby pomóc nam lepiej
+                                dostosować treści</small>
+                            <small id="challenges-counter" aria-live="polite">0/500 znaków</small>
+                        </div>
+                    </div>
+
+                    <!-- Pojedynczy checkbox wymagany -->
+                    <div class="form-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+                            <label for="newsletter">Chcę otrzymywać newsletter z informacjami o dostępności
+                                cyfrowej</label>
+                        </div>
+                    </div>
+
+                    <!-- Wymagany checkbox z ARIA -->
+                    <div class="form-group">
+                        <div class="checkbox-item required">
+                            <input type="checkbox" id="terms" name="terms" required aria-describedby="terms-error"
+                                aria-invalid="false">
+                            <label for="terms">Akceptuję regulamin uczestnictwa w szkoleniach (wymagane) *</label>
+                            <div id="terms-error" class="error-message" aria-live="polite" role="alert"></div>
+                        </div>
+                    </div>
+
+                    <!-- Submit button -->
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Wyślij formularz</button>
+                        <button type="reset" class="btn-secondary">Wyczyść formularz</button>
+                    </div>
+
+                    <!-- Live region dla komunikatów -->
+                    <div id="form-status" aria-live="polite" aria-atomic="true" class="visually-hidden"></div>
+                </form>
+
+                <div class="form-info">
+                    <h3>Funkcje dostępności formularza:</h3>
+                    <ul>
+                        <li><strong>Grupowanie pól</strong> - fieldset i legend dla radio buttonów i checkboxów</li>
+                        <li><strong>Opisowe etykiety</strong> - każde pole ma powiązaną etykietę lub instrukcję</li>
+                        <li><strong>Wskazówki kontekstowe</strong> - aria-describedby łączy pola z dodatkowymi
+                            informacjami</li>
+                        <li><strong>Walidacja w czasie rzeczywistym</strong> - komunikaty błędów z role="alert"</li>
+                        <li><strong>Nawigacja klawiaturowa</strong> - wszystkie elementy dostępne przez Tab</li>
+                        <li><strong>Semantyka ARIA</strong> - aria-invalid, aria-required, aria-valuetext</li>
+                        <li><strong>Live regions</strong> - dynamiczne komunikaty dla czytników ekranu</li>
+                        <li><strong>Czytelne instrukcje</strong> - jasne informacje o sposobie wypełniania każdego pola
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
             <section id="dodatkowe-informacje">
                 <h2>Dodatkowe informacje</h2>
                 <p>Ta strona została stworzona zgodnie z wytycznymi WCAG 2.1 poziom AA. Wszystkie elementy są dostępne
@@ -606,20 +805,28 @@
                         alternatywne</li>
                     <li><strong>1.3.1 Informacje i relacje</strong> - Użyto semantycznych znaczników HTML, włączając
                         prawidłową strukturę nagłówków, tabel z odpowiednimi nagłówkami (th) i zakresami (scope),
-                        oraz różne typy list (ul, ol, dl)</li>
-                    <li><strong>2.1.1 Klawiatura</strong> - Slider dostępny przez nawigację klawiaturową</li>
+                        różne typy list (ul, ol, dl), oraz grupowanie pól formularza z fieldset i legend</li>
+                    <li><strong>2.1.1 Klawiatura</strong> - Slider i wszystkie elementy formularza dostępne przez
+                        nawigację klawiaturową,
+                        z ulepszeniem nawigacji strzałkami dla radio buttonów</li>
                     <li><strong>2.2.2 Pauza, zatrzymanie, ukrywanie</strong> - Automatyczne przesuwanie z opcją
                         zatrzymania</li>
                     <li><strong>2.4.1 Pomijanie bloków</strong> - Skiplinki umożliwiają szybkie przejście do głównych
-                        sekcji strony</li>
+                        sekcji strony, włączając nowy zaawansowany formularz</li>
                     <li><strong>2.4.2 Unikalny tytuł strony</strong> - Strona ma unikalny i opisowy tytuł</li>
                     <li><strong>2.4.4 Cel linku (w kontekście)</strong> - Linki mają opisowe teksty</li>
                     <li><strong>2.4.6 Nagłówki i etykiety</strong> - Nagłówki tworzą logiczną hierarchię i opisują
-                        zawartość sekcji, tabele mają opisowe podpisy (caption) i nagłówki kolumn/wierszy</li>
+                        zawartość sekcji, tabele mają opisowe podpisy (caption) i nagłówki kolumn/wierszy,
+                        wszystkie pola formularza mają jasne etykiety i instrukcje</li>
                     <li><strong>2.4.7 Widoczny fokus</strong> - Wyraźne wskaźniki fokusa dla nawigacji klawiaturowej
-                    </li>
-                    <li><strong>3.3.2 Etykiety lub instrukcje</strong> - Pola formularza mają odpowiednie etykiety</li>
-                    <li><strong>4.1.2 Nazwa, rola, wartość</strong> - Slider ma odpowiednie role i etykiety ARIA</li>
+                        we wszystkich elementach interaktywnych</li>
+                    <li><strong>3.3.2 Etykiety lub instrukcje</strong> - Pola formularza mają odpowiednie etykiety,
+                        instrukcje pomocnicze (aria-describedby), wskazówki dotyczące formatu danych i walidacji</li>
+                    <li><strong>3.3.3 Sugestie błędów</strong> - Komunikaty błędów z konkretnymi sugestiami naprawy,
+                        live regions dla dynamicznych powiadomień</li>
+                    <li><strong>4.1.2 Nazwa, rola, wartość</strong> - Slider, elementy formularza i kontrolki mają
+                        odpowiednie
+                        role ARIA, etykiety (aria-label, aria-describedby) i stany (aria-invalid, aria-valuetext)</li>
                 </ul>
             </section>
         </main>
@@ -634,6 +841,170 @@
 
     <!-- Script dla dostępnego slidera -->
     <script src="slider.js"></script>
+
+    <!-- Script dla zaawansowanego formularza -->
+    <script>
+        // Range slider value display
+        const rangeInput = document.getElementById('wcag-knowledge');
+        const rangeValue = document.getElementById('range-value');
+
+        if (rangeInput && rangeValue) {
+            rangeInput.addEventListener('input', function () {
+                const value = this.value;
+                rangeValue.textContent = value;
+                this.setAttribute('aria-valuetext', value + ' z 10');
+            });
+        }
+
+        // Textarea character counter
+        const challengesTextarea = document.getElementById('challenges');
+        const challengesCounter = document.getElementById('challenges-counter');
+
+        if (challengesTextarea && challengesCounter) {
+            challengesTextarea.addEventListener('input', function () {
+                const length = this.value.length;
+                const maxLength = this.getAttribute('maxlength');
+                challengesCounter.textContent = length + '/' + maxLength + ' znaków';
+
+                // Change color based on usage
+                const percentage = (length / maxLength) * 100;
+                if (percentage >= 90) {
+                    challengesCounter.style.color = '#e74c3c';
+                    challengesCounter.style.fontWeight = '600';
+                } else if (percentage >= 75) {
+                    challengesCounter.style.color = '#f39c12';
+                    challengesCounter.style.fontWeight = '500';
+                } else {
+                    challengesCounter.style.color = '#6c757d';
+                    challengesCounter.style.fontWeight = '500';
+                }
+            });
+        }
+
+        // Form validation
+        const advancedForm = document.querySelector('#zaawansowany-formularz form');
+        const formStatus = document.getElementById('form-status');
+
+        if (advancedForm) {
+            advancedForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                // Basic validation example
+                const roleInputs = document.querySelectorAll('input[name="role"]');
+                const experienceSelect = document.getElementById('experience');
+                const termsCheckbox = document.getElementById('terms');
+                const termsError = document.getElementById('terms-error');
+
+                let isValid = true;
+
+                // Check if role is selected
+                let roleSelected = false;
+                roleInputs.forEach(input => {
+                    if (input.checked) roleSelected = true;
+                });
+
+                if (!roleSelected) {
+                    isValid = false;
+                    roleInputs[0].focus();
+                }
+
+                // Check experience selection
+                if (!experienceSelect.value) {
+                    isValid = false;
+                    experienceSelect.focus();
+                }
+
+                // Check terms acceptance
+                if (!termsCheckbox.checked) {
+                    isValid = false;
+                    termsError.textContent = 'Musisz zaakceptować regulamin, aby kontynuować.';
+                    termsError.classList.add('show');
+                    termsCheckbox.setAttribute('aria-invalid', 'true');
+                    termsCheckbox.focus();
+                } else {
+                    termsError.classList.remove('show');
+                    termsCheckbox.setAttribute('aria-invalid', 'false');
+                }
+
+                if (isValid) {
+                    formStatus.textContent = 'Formularz został przesłany pomyślnie!';
+                    formStatus.style.color = '#27ae60';
+                    formStatus.classList.remove('visually-hidden');
+
+                    // Hide status after 5 seconds
+                    setTimeout(() => {
+                        formStatus.classList.add('visually-hidden');
+                    }, 5000);
+                } else {
+                    formStatus.textContent = 'Proszę wypełnić wszystkie wymagane pola.';
+                    formStatus.style.color = '#e74c3c';
+                    formStatus.classList.remove('visually-hidden');
+                }
+            });
+
+            // Clear errors when terms checkbox changes
+            const termsCheckbox = document.getElementById('terms');
+            const termsError = document.getElementById('terms-error');
+
+            if (termsCheckbox) {
+                termsCheckbox.addEventListener('change', function () {
+                    if (this.checked) {
+                        termsError.classList.remove('show');
+                        this.setAttribute('aria-invalid', 'false');
+                    }
+                });
+            }
+        }
+
+        // Enhanced keyboard navigation for radio and checkbox groups
+        function enhanceKeyboardNavigation() {
+            const radioGroups = document.querySelectorAll('.radio-group');
+            const checkboxGroups = document.querySelectorAll('.checkbox-group');
+
+            // Radio button arrow key navigation
+            radioGroups.forEach(group => {
+                const radios = group.querySelectorAll('input[type="radio"]');
+
+                radios.forEach((radio, index) => {
+                    radio.addEventListener('keydown', function (e) {
+                        if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+                            e.preventDefault();
+                            const nextIndex = (index + 1) % radios.length;
+                            radios[nextIndex].focus();
+                            radios[nextIndex].checked = true;
+                        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+                            e.preventDefault();
+                            const prevIndex = index === 0 ? radios.length - 1 : index - 1;
+                            radios[prevIndex].focus();
+                            radios[prevIndex].checked = true;
+                        }
+                    });
+                });
+            });
+        }
+
+        // Initialize enhanced navigation
+        enhanceKeyboardNavigation();
+
+        // Add focus indicators
+        document.addEventListener('DOMContentLoaded', function () {
+            const focusableElements = document.querySelectorAll(
+                'input, select, textarea, button, [tabindex]:not([tabindex="-1"])'
+            );
+
+            focusableElements.forEach(element => {
+                element.addEventListener('focus', function () {
+                    this.style.outline = '2px solid #1e90ff';
+                    this.style.outlineOffset = '2px';
+                });
+
+                element.addEventListener('blur', function () {
+                    this.style.outline = '';
+                    this.style.outlineOffset = '';
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
